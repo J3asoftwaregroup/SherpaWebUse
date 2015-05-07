@@ -1,23 +1,22 @@
-package com.j3a.sherpawebuser.view;
-
+package com.j3a.assurance.utilitaire;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import javax.enterprise.context.Dependent;
-import javax.inject.Named;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import com.j3a.sherpawebuser.controller.ObjectService;
-import com.j3a.sherpawebuser.dbEntityClasses.Contrat;
-import com.j3a.sherpawebuser.dbEntityClasses.Personne;
-import com.j3a.sherpawebuser.dbEntityClasses.Quittance;
-import com.j3a.sherpawebuser.dbEntityClasses.Vehicule;
-@Named
-@Dependent
+import com.j3a.assurance.model.Contrat;
+import com.j3a.assurance.model.Personne;
+import com.j3a.assurance.model.Quittance;
+import com.j3a.assurance.model.Vehicule;
+import com.j3a.assurance.objetService.ObjectService;
+@Component
 public class IdGenerateur implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Autowired
 	ObjectService objectService;
 
 

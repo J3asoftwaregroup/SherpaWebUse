@@ -1,4 +1,4 @@
-package com.j3a.sherpawebuser.utilitaire;
+package com.j3a.assurance.utilitaire;
 
 
 //import com.j3a.sherpawebuser.dbEntityClasses.ConducteurHabituel;
@@ -6,17 +6,15 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.j3a.sherpawebuser.utilitaire.ListGarantieparVehicule;
-import com.j3a.sherpawebuser.dbEntityClasses.Apporteur;
-import com.j3a.sherpawebuser.dbEntityClasses.Categorie;
-import com.j3a.sherpawebuser.dbEntityClasses.Conducteur;
-import com.j3a.sherpawebuser.dbEntityClasses.GarantieChoisie;
-import com.j3a.sherpawebuser.dbEntityClasses.GarantieChoisieIa;
-import com.j3a.sherpawebuser.dbEntityClasses.GarantieGarantieChoisie;
-import com.j3a.sherpawebuser.dbEntityClasses.Permis;
-import com.j3a.sherpawebuser.dbEntityClasses.SousCatVehicule;
-import com.j3a.sherpawebuser.dbEntityClasses.Vehicule;
-import com.j3a.sherpawebuser.dbEntityClasses.ZoneGeographique;
+import com.j3a.assurance.model.Apporteur;
+import com.j3a.assurance.model.Categorie;
+import com.j3a.assurance.model.Conducteur;
+import com.j3a.assurance.model.GarantieChoisie;
+import com.j3a.assurance.model.GarantieGarantieChoisie;
+import com.j3a.assurance.model.Permis;
+import com.j3a.assurance.model.SousCatVehicule;
+import com.j3a.assurance.model.Vehicule;
+import com.j3a.assurance.model.ZoneGeographique;
 
 public class VehiculeRow {
 	//AJOUT AU CONSTRUCTEUR PAR DEFAUT D'INSTRUCTION POUR INITIALISER LES DIFFERENTS CHAMPS DE L'OBJET AFIN D4EVITER LES NULLPOINTER EXCEPTION 
@@ -33,7 +31,7 @@ public class VehiculeRow {
 		Categorie cat = new Categorie();
 		cat.setCodeCategorie("");
 		cat.setLibelleCategorie("");
-		sv.setCodeCategorie(cat);
+		sv.setCategorie(cat);
 		setSouCatVehi(sv);
 		Vehicule vehi = new Vehicule();
 		vehi.setNbreCarte((short) 0);

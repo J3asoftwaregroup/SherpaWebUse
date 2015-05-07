@@ -1,4 +1,4 @@
-package com.j3a.sherpawebuser.utilitaire;
+package com.j3a.assurance.utilitaire;
 
 
 public class QuittanceAuto extends Quittances{

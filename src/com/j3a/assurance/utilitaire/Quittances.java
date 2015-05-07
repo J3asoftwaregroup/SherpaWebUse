@@ -1,5 +1,4 @@
-package com.j3a.sherpawebuser.utilitaire;
-
+package com.j3a.assurance.utilitaire;
 import java.math.BigDecimal;
 
 public class Quittances {

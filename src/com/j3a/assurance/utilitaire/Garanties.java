@@ -1,10 +1,10 @@
-package com.j3a.sherpawebuser.utilitaire;
+package com.j3a.assurance.utilitaire;
 
 import java.math.BigDecimal;
 
-import com.j3a.sherpawebuser.dbEntityClasses.Categorie;
-import com.j3a.sherpawebuser.dbEntityClasses.Risque;
-import com.j3a.sherpawebuser.dbEntityClasses.Garantie;
+import com.j3a.assurance.model.Categorie;
+import com.j3a.assurance.model.Garantie;
+import com.j3a.assurance.model.Risque;
 
 public class Garanties extends Garantie {
 	private static final long serialVersionUID = 1L;

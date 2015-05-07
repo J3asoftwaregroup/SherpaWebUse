@@ -4,30 +4,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Pays;
-import com.j3a.assurance.objetDao.Dao;
-import com.j3a.assurance.objetService.IService;
+import com.j3a.assurance.objetService.ObjectService;
 
 
 @Component
 public class ManagedPays {
 	@Autowired
-	IService service;
+	ObjectService objectService;
 	
 	private Pays pays = new Pays();
 
 	public void enregistrerPays(){
-		getService().saveObject(pays);
+		getObjectService().addObject(pays);
 		System.out.println("Enregistrement effectué");
 		
 	}
 
 
-	public IService getService() {
-		return service;
+	public ObjectService getObjectService() {
+		return objectService;
 	}
 
-	public void setService(IService service) {
-		this.service = service;
+	public void setObjectService(ObjectService objectService) {
+		this.objectService = objectService;
 	}
 
 

@@ -1,9 +1,9 @@
-package com.j3a.sherpawebuser.utilitaire;
+package com.j3a.assurance.utilitaire;
 import java.util.List;
 
-import com.j3a.sherpawebuser.dbEntityClasses.GarantieChoisie;
-import com.j3a.sherpawebuser.dbEntityClasses.GarantieGarantieChoisie;
-import com.j3a.sherpawebuser.dbEntityClasses.GarantieGarantieChoisiePK;
+import com.j3a.assurance.model.GarantieChoisie;
+import com.j3a.assurance.model.GarantieGarantieChoisie;
+import com.j3a.assurance.model.GarantieGarantieChoisieId;
 
 public class ListGarantieparVehicule {
 	/** 
@@ -16,7 +16,7 @@ public ListGarantieparVehicule(){
 
 
 private List<GarantieGarantieChoisie> garantieGarantieChoisieList;
-private List<GarantieGarantieChoisiePK> garantieGarantieChoisiePKList;
+private List<GarantieGarantieChoisieId> garantieGarantieChoisieIdList;
 private GarantieChoisie garantieChoisie;
 
 private java.math.BigDecimal primeAnnuelle,primeNetteAnnuelle, primeProrata,  primeRC, totalRed ;
@@ -84,11 +84,13 @@ public List<GarantieGarantieChoisie> getGarantieGarantieChoisieList() {
 public void setGarantieGarantieChoisieList(List<GarantieGarantieChoisie> garantieGarantieChoisieList) {
 	this.garantieGarantieChoisieList = garantieGarantieChoisieList;
 }
-public List<GarantieGarantieChoisiePK> getGarantieGarantieChoisiePKList() {
-	return garantieGarantieChoisiePKList;
+
+public List<GarantieGarantieChoisieId> getGarantieGarantieChoisieIdList() {
+	return garantieGarantieChoisieIdList;
 }
-public void setGarantieGarantieChoisiePKList(List<GarantieGarantieChoisiePK> garantieGarantieChoisiePKList) {
-	this.garantieGarantieChoisiePKList = garantieGarantieChoisiePKList;
+public void setGarantieGarantieChoisieIdList(
+		List<GarantieGarantieChoisieId> garantieGarantieChoisieIdList) {
+	this.garantieGarantieChoisieIdList = garantieGarantieChoisieIdList;
 }
 public GarantieChoisie getGarantieChoisie() {
 	return garantieChoisie;

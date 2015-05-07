@@ -1,18 +1,18 @@
-package com.j3a.sherpawebuser.prime;
+package com.j3a.assurance.prime;
 
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie1;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie10;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie11;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie12;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie2;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie3;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie4;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie5;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie6;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie7;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie8;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie9;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorieInterface;
+import com.j3a.assurance.prime.categorie.PrimeCategorie1;
+import com.j3a.assurance.prime.categorie.PrimeCategorie10;
+import com.j3a.assurance.prime.categorie.PrimeCategorie11;
+import com.j3a.assurance.prime.categorie.PrimeCategorie12;
+import com.j3a.assurance.prime.categorie.PrimeCategorie2;
+import com.j3a.assurance.prime.categorie.PrimeCategorie3;
+import com.j3a.assurance.prime.categorie.PrimeCategorie4;
+import com.j3a.assurance.prime.categorie.PrimeCategorie5;
+import com.j3a.assurance.prime.categorie.PrimeCategorie6;
+import com.j3a.assurance.prime.categorie.PrimeCategorie7;
+import com.j3a.assurance.prime.categorie.PrimeCategorie8;
+import com.j3a.assurance.prime.categorie.PrimeCategorie9;
+import com.j3a.assurance.prime.categorie.PrimeCategorieInterface;
 
 public class CalculPrimeGlobale {
 

@@ -1,5 +1,4 @@
-package com.j3a.sherpawebuser.prime.categorie;
-
+package com.j3a.assurance.prime.categorie;
 public class ReductionPrime {
 
 	private double dureePermis;

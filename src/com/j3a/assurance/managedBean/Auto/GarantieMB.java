@@ -1,4 +1,4 @@
-package com.j3a.sherpawebuser.view.Auto;
+package com.j3a.assurance.managedBean.Auto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -6,27 +6,25 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import com.j3a.sherpawebuser.controller.ObjectService;
-import com.j3a.sherpawebuser.dbEntityClasses.Garantie;
-import com.j3a.sherpawebuser.prime.CalculPrimeGlobale;
-import com.j3a.sherpawebuser.prime.CalculPrimeProrata;
-import com.j3a.sherpawebuser.prime.ReturnPrimeCategorie;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorieInterface;
-import com.j3a.sherpawebuser.utilitaire.Garanties;
-import com.j3a.sherpawebuser.utilitaire.VehiculeRow;
+import com.j3a.assurance.model.Garantie;
+import com.j3a.assurance.objetService.ObjectService;
+import com.j3a.assurance.prime.CalculPrimeGlobale;
+import com.j3a.assurance.prime.CalculPrimeProrata;
+import com.j3a.assurance.prime.ReturnPrimeCategorie;
+import com.j3a.assurance.prime.categorie.PrimeCategorie;
+import com.j3a.assurance.prime.categorie.PrimeCategorieInterface;
+import com.j3a.assurance.utilitaire.Garanties;
+import com.j3a.assurance.utilitaire.VehiculeRow;
 
 public class GarantieMB implements Serializable {
 	private static final long serialVersionUID = 1L;
-	@Inject
+	@Autowired
 	ObjectService objectService;
 	private double duree;
 	private Boolean statuRed;
@@ -673,7 +671,7 @@ public class GarantieMB implements Serializable {
 
 	public List<Garantie> getGarantiesList() {
 		GarantiesList = new ArrayList<Garantie>();
-		List<Garantie> listObject = getObjectService().getGarantieFacade().findAll();
+		List<Garantie> listObject = getObjectService().getObjects("Garantie");
 		for (Iterator it = listObject.iterator(); it.hasNext();) {
 			Garantie garantie = (Garantie) it.next();
 			try {

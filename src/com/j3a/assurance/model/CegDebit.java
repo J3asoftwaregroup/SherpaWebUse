@@ -3,6 +3,7 @@ package com.j3a.assurance.model;
 // Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

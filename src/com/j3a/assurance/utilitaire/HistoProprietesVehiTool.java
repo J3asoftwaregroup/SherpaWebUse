@@ -1,6 +1,6 @@
-package com.j3a.sherpawebuser.utilitaire;
-import com.j3a.sherpawebuser.dbEntityClasses.HistoProprietesVehicule;
-import com.j3a.sherpawebuser.dbEntityClasses.Vehicule;
+package com.j3a.assurance.utilitaire;
+import com.j3a.assurance.model.HistoProprietesVehicule;
+import com.j3a.assurance.model.Vehicule;
 
 public class HistoProprietesVehiTool {
 

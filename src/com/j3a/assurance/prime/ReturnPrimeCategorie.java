@@ -1,7 +1,7 @@
-package com.j3a.sherpawebuser.prime;
+package com.j3a.assurance.prime;
 
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorie;
-import com.j3a.sherpawebuser.prime.categorie.PrimeCategorieInterface;
+import com.j3a.assurance.prime.categorie.PrimeCategorie;
+import com.j3a.assurance.prime.categorie.PrimeCategorieInterface;
 
 public class ReturnPrimeCategorie {
 

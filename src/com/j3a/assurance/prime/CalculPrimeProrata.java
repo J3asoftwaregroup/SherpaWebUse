@@ -1,4 +1,4 @@
-package com.j3a.sherpawebuser.prime;
+package com.j3a.assurance.prime;
 
 import java.math.BigDecimal;
 

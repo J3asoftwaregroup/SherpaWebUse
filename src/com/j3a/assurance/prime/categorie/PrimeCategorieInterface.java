@@ -1,6 +1,4 @@
-package com.j3a.sherpawebuser.prime.categorie;
-
-import java.math.BigDecimal;
+package com.j3a.assurance.prime.categorie;
 
 public interface PrimeCategorieInterface {
 
