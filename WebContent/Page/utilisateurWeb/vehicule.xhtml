@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/templateWebAuto.xhtml">
+	<ui:define name="content">
+		
+		<h:form id="gnl">
+	<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
+	
+	<p:panel header=" Immatriculation du véhicule">
+	     <h:panelGrid columns="7">
+				 <h:outputText value="Numéro d'Immatriculation"/>
+				 <h:inputText 
+				 styleClass="identifiant"
+				 ></h:inputText>
+				 <h:outputText value="Date d'Immatriculation" style="margin-left: 20px;"></h:outputText>
+				 <p:inputMask  
+				 id="dateImmatpre" mask="99/99/9999" >
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+				
+				</p:inputMask>
+				
+				 </h:panelGrid>
+			</p:panel>
+			
+			<p:panel header="Caractéristiques du véhicule">
+								<h:panelGrid id="vehiProp" columns="4">
+								
+								<h:outputText value="Sous Categorie "/>
+										<p:selectOneMenu id="slctSCat">
+											<f:selectItem itemLabel="" itemValue=""/>
+											<f:selectItems value="" var="ca" itemLabel="" itemValue=""/>
+										</p:selectOneMenu>
+								
+								<h:outputText value="Catégorie " style="margin-left: 80px;"/>
+										<p:inputText id="catV" 
+										style="width:211px"/>
+										
+								<h:outputText value="1er Mise en circulation "/>
+								 <p:inputMask  id="datePms"  mask="99/99/9999" >
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+								</p:inputMask>
+								
+									
+								
+								<h:outputText value="Statut " style="margin-left: 80px;"/>
+										<p:selectOneMenu  id="statu" required="false" style="width:170px">
+											<f:selectItem itemLabel="Select Statut" itemValue=""/>
+											<f:selectItem itemLabel="Vehicule avec Atelage" itemValue="Vehicule avec Atelage"/>
+											<f:selectItem itemLabel="Vehicule sans Atelage" itemValue="Vehicule sans Atelage"/>
+											<f:selectItem itemLabel="Remorque" itemValue="Remorque"/>
+										</p:selectOneMenu>
+									
+								<h:outputText value="Carosserie "/>
+										<p:selectOneMenu  id="caross" required="false" 
+										 style="width:154px" label="Carosserie du vehicule">
+											<f:selectItem itemLabel="Choix de Carosserie" itemValue=""/>
+											<f:selectItem itemLabel="Berline tricorps" itemValue="Berline tricorps"/>
+											<f:selectItem itemLabel="Berline bicorps" itemValue="Berline bicorps"/>
+											<f:selectItem itemLabel="Berline monocorps" itemValue="Berline monocorps"/>
+											<f:selectItem itemLabel="Break" itemValue="Break"/>
+											<f:selectItem itemLabel="Coupé" itemValue="Coupe"/>
+											<f:selectItem itemLabel="Coupé sans montants" itemValue="Coupe sans montants"/>
+											<f:selectItem itemLabel="Coupé 4-portes" itemValue="Coupe 4-portes"/>
+											<f:selectItem itemLabel="Limousine" itemValue="Limousine"/>
+											<f:selectItem itemLabel="Roadster" itemValue="Roadster"/>
+											<f:selectItem itemLabel="Spider" itemValue="Spider"/>
+											<f:selectItem itemLabel="Pick-up" itemValue="Pick-up"/>
+											<f:selectItem itemLabel="Berline décapotable et landaulet" itemValue="Berline decapotable et landaulet"/>
+											<f:selectItem itemLabel="Coupéspace" itemValue="Coupespace"/>
+											<f:selectItem itemLabel="Coupé/cabriolet avec toit escamotable" itemValue="Coupe/cabriolet avec toit escamotable"/>
+											<f:selectItem itemLabel="Crossover" itemValue="Crossover"/>
+											<f:selectItem itemLabel="Minispace" itemValue="Minispace"/>
+											<f:selectItem itemLabel="SUV" itemValue="SUV"/>
+											<f:selectItem itemLabel="Monospace" itemValue="Monospace"/>
+											<f:selectItem itemLabel="Ludospace" itemValue="Ludospace"/>
+										</p:selectOneMenu>
+										
+										<h:outputText value="Genre " style="margin-left: 80px;"/>
+										<p:selectOneMenu id="genr"  required="false" style="width:127px">
+											<f:selectItem itemLabel="VP" itemValue="VP"/>
+											<f:selectItem itemLabel="VT" itemValue="VT"/>
+										</p:selectOneMenu>
+										
+										<h:outputText value="Marque " />
+										<p:selectOneMenu  id="marq" style="width:170px">
+											<f:selectItem itemLabel=" Sélectionnez"  itemValue=""/>
+											<f:selectItem itemLabel="ABARTH"  itemValue="ABARTH"/>										
+											<f:selectItem itemLabel="ACURA"  itemValue="ACURA"/>
+											<f:selectItem itemLabel="ALFA ROMEO"  itemValue="ALFA ROMEO"/>																						
+											<f:selectItem itemLabel="ALPINE"  itemValue="ALPINE"/>											
+											<f:selectItem itemLabel="ASTON MARTIN"  itemValue="ASTON MARTIN"/>											
+											<f:selectItem itemLabel="AUDI"  itemValue="AUDI"/>										
+											<f:selectItem itemLabel="AUTO UNION"  itemValue="AUTO UNION"/>
+											<f:selectItem itemLabel="AUTOBIANCHI"  itemValue="AUTOBIANCHI"/>
+											<f:selectItem itemLabel="BENTLEY"  itemValue="BENTLEY"/>
+											<f:selectItem itemLabel="BENZ"  itemValue="BENZ"/>
+											<f:selectItem itemLabel="BERTONE"  itemValue="BERTONE"/>
+											<f:selectItem itemLabel="BIZZARRINI"  itemValue="BIZZARRINI"/>
+											<f:selectItem itemLabel="BMW"  itemValue="BMW"/>																				
+											<f:selectItem itemLabel="BUGATTI"  itemValue="BUGATTI"/>									
+											<f:selectItem itemLabel="CADILLAC"  itemValue="CADILLAC"/>										
+											<f:selectItem itemLabel="CATERHAM"  itemValue="CATERHAM"/>											
+											<f:selectItem itemLabel="CHEVROLET"  itemValue="CHEVROLET"/>
+											<f:selectItem itemLabel="CHEVRON"  itemValue="CHEVRON"/>
+											<f:selectItem itemLabel="CHRYSLER"  itemValue="CHRYSLER"/>										
+											<f:selectItem itemLabel="CITROEN"  itemValue="CITROEN"/>								
+											<f:selectItem itemLabel="COOPER"  itemValue="COOPER"/>										
+											<f:selectItem itemLabel="DACIA"  itemValue="DACIA"/>
+											<f:selectItem itemLabel="DAEWOO"  itemValue="DAEWOO"/>
+											<f:selectItem itemLabel="DAIHATSU"  itemValue="DAIHATSU"/>
+											<f:selectItem itemLabel="DAIMLER"  itemValue="DAIMLER"/>
+											<f:selectItem itemLabel="DATSUN"  itemValue="DATSUN"/>											
+											<f:selectItem itemLabel="DODGE"  itemValue="DODGE"/>
+											<f:selectItem itemLabel="DONKERVOORT"  itemValue="DODGE"/>											
+											<f:selectItem itemLabel="FERRARI"  itemValue="FERRARI"/>						
+											<f:selectItem itemLabel="FIAT"  itemValue="FIAT"/>
+											<f:selectItem itemLabel="FIAT ABARTH"  itemValue="FIAT ABARTH"/>								
+											<f:selectItem itemLabel="FORD"  itemValue="FORD"/>							
+											<f:selectItem itemLabel="FRAZER NASH"  itemValue="FRAZER NASH"/>										
+											<f:selectItem itemLabel="GM"  itemValue="GM"/>
+											<f:selectItem itemLabel="GMC"  itemValue="GMC"/>									
+											<f:selectItem itemLabel="HONDA"  itemValue="HONDA"/>										
+											<f:selectItem itemLabel="HUMMER"  itemValue="HUMMER"/>
+											<f:selectItem itemLabel="HYUNDAI"  itemValue="HYUNDAI"/>									
+											<f:selectItem itemLabel="INFINITI"  itemValue="INFINITI"/>		
+											<f:selectItem itemLabel="ISUZU"  itemValue="ISUZU"/>							
+											<f:selectItem itemLabel="JAGUAR"  itemValue="JAGUAR"/>
+											<f:selectItem itemLabel="JEEP"  itemValue="JEEP"/>								
+											<f:selectItem itemLabel="KIA"  itemValue="KIA"/>
+											<f:selectItem itemLabel="KOENIGSEGG"  itemValue="KOENIGSEGG"/>
+											<f:selectItem itemLabel="KTM"  itemValue="KTM"/>									
+											<f:selectItem itemLabel="LAMBORGHINI"  itemValue="LAMBORGHINI"/>
+											<f:selectItem itemLabel="LANCIA"  itemValue="LANCIA"/>
+											<f:selectItem itemLabel="LAND ROVER"  itemValue="LAND ROVER"/>											
+											<f:selectItem itemLabel="LEXUS"  itemValue="LEXUS"/>											
+											<f:selectItem itemLabel="LINCOLN"  itemValue="LINCOLN"/>								
+											<f:selectItem itemLabel="LOTUS"  itemValue="LOTUS"/>									
+											<f:selectItem itemLabel="MASERATI"  itemValue="MASERATI"/>									
+											<f:selectItem itemLabel="MAZDA"  itemValue="MAZDA"/>							
+											<f:selectItem itemLabel="MCLAREN"  itemValue="MCLAREN"/>
+											<f:selectItem itemLabel="MERCEDES"  itemValue="MERCEDES"/>										
+											<f:selectItem itemLabel="MINI"  itemValue="MINI"/>										
+											<f:selectItem itemLabel="MITSUBISHI"  itemValue="MITSUBISHI"/>									
+											<f:selectItem itemLabel="NISSAN"  itemValue="NISSAN"/>											
+											<f:selectItem itemLabel="OPEL"  itemValue="OPEL"/>								
+											<f:selectItem itemLabel="PAGANI"  itemValue="PAGANI"/>										
+											<f:selectItem itemLabel="PEUGEOT"  itemValue="PEUGEOT"/>										
+											<f:selectItem itemLabel="PONTIAC"  itemValue="PONTIAC"/>
+											<f:selectItem itemLabel="PORSCHE"  itemValue="PORSCHE"/>							
+											<f:selectItem itemLabel="RENAULT"  itemValue="RENAULT"/>								
+											<f:selectItem itemLabel="ROLLAND PILAIN"  itemValue="ROLLAND PILAIN"/>
+											<f:selectItem itemLabel="ROLLS-ROYCE"  itemValue="ROLLS-ROYCE"/>						
+											<f:selectItem itemLabel="ROVER"  itemValue="ROVER"/>
+											<f:selectItem itemLabel="SAAB"  itemValue="SAAB"/>										
+											<f:selectItem itemLabel="SATURN"  itemValue="SATURN"/>
+											<f:selectItem itemLabel="SEAT"  itemValue="SEAT"/>										
+											<f:selectItem itemLabel="SHELBY"  itemValue="SHELBY"/>										
+											<f:selectItem itemLabel="SKODA"  itemValue="SKODA"/>
+											<f:selectItem itemLabel="SMART"  itemValue="SMART"/>										
+											<f:selectItem itemLabel="SSANGYONG"  itemValue="SSANGYONG"/>										
+											<f:selectItem itemLabel="SUBARU"  itemValue="SUBARU"/>								
+											<f:selectItem itemLabel="SUZUKI"  itemValue="SUZUKI"/>										
+											<f:selectItem itemLabel="TATRA"  itemValue="TATRA"/>									
+											<f:selectItem itemLabel="TESLA"  itemValue="TESLA"/>									
+											<f:selectItem itemLabel="TOYOTA"  itemValue="TOYOTA"/>																			
+											<f:selectItem itemLabel="VECTOR"  itemValue="VECTOR"/>
+											<f:selectItem itemLabel="VENTURI"  itemValue="VENTURI"/>									
+											<f:selectItem itemLabel="VOLKSWAGEN"  itemValue="VOLKSWAGEN"/>
+											<f:selectItem itemLabel="VOLVO"  itemValue="VOLVO"/>
+											
+
+										</p:selectOneMenu>
+										
+									
+									
+										<h:outputText value="Energie " style="margin-left: 80px;"/>
+										<p:selectOneMenu  id="enrg" style="width:154px">
+											<f:selectItem itemLabel="diesel" itemValue="diesel"/>
+											<f:selectItem itemLabel="essence" itemValue="essence"/>
+										</p:selectOneMenu>
+										
+							
+										<h:outputText value="Type Vehicule" />
+										<p:selectOneMenu id="typV"   style="width:154px">
+											<f:selectItem itemLabel="" itemValue=""/>
+											<f:selectItem itemLabel="Particulier" itemValue="VP"/>
+											<f:selectItem itemLabel="Taxi" itemValue="VTT"/>
+											<f:selectItem itemLabel="Car" itemValue="VTC"/>
+											<f:selectItem itemLabel="Tracteur Routier" itemValue="VAT"/>
+											<f:selectItem itemLabel="Cyclomoteur Cylindrée" itemValue="VC"/>
+											<f:selectItem itemLabel="Cyclomoteur Tendems" itemValue="VT"/>
+											<f:selectItem itemLabel="Avec Double Commande" itemValue="VDC"/>
+											<f:selectItem itemLabel="Sans Double Commande" itemValue="VSDC"/>
+											<f:selectItem itemLabel="Autres" itemValue="VA"/>
+										</p:selectOneMenu>
+										
+											
+										
+										
+										<h:outputText value="Châssis " style="margin-left: 80px;"/>
+										<p:inputText id="chass" 
+										 style="width:148px"/>
+										 
+										
+
+										<h:outputText value="Charge Utile (T)"
+											 />
+										<p:inputText id="poidsUtil"
+											
+											style="width:148px" 
+										>
+											<f:convertNumber type="number" />
+										</p:inputText>
+									
+								
+										<h:outputText value="Puissance Fiscale " style="margin-left: 80px;"/>
+										<p:inputText id="pfisc" 
+										style="width:149px">
+										<f:convertNumber integerOnly="true" ></f:convertNumber>
+										<f:validateLongRange minimum="0"  maximum="20"  ></f:validateLongRange>
+										<p:ajax  update="@this" global="false"/>
+										</p:inputText>
+
+									
+										<h:outputText value="Puissance Réelle Cm3&nbsp;&nbsp;"/>
+										<p:inputText id="preel" 
+										 style="width:148px">
+										 <p:ajax  update="@this" global="false"/>
+										 </p:inputText>
+										 
+										 <h:outputText value="Remorque" style="margin-left: 80px;"/>
+										<p:selectOneMenu id="remorq"   style="width:154px">
+											<f:selectItem itemLabel="Sans Remorque" itemValue="non"/>
+											<f:selectItem itemLabel="Avec Remorque" itemValue="oui"/>
+										</p:selectOneMenu>
+										
+										
+										<h:outputText value="Places.Cabine"/>
+										<p:inputText id="plcCab" 
+										style="width:149px">
+										 
+										 </p:inputText>
+										
+									
+										<h:outputText value="Places.HCabine" style="margin-left: 80px;"/>
+										<p:inputText id="plcHCab" 
+										 style="width:149px">
+										 </p:inputText>
+										 
+										 	<h:outputText value="Nombre.Transporté"/>
+										<p:inputText id="nbrTrans" 
+										readonly="true"
+										 style="width:149px"/>
+										 
+										
+										
+									
+										<h:outputText value="Valeur Neuve" style="margin-left: 80px;" />
+										<p:inputText id="valNv" 
+										 style="width:148px">
+										<f:convertNumber pattern="##,###.##"></f:convertNumber>
+										<p:ajax event="blur" update="@this" global="false"></p:ajax>
+										</p:inputText>
+										
+										<h:outputText value="Valeur Venale" />
+										<p:inputText id="valVn"   
+										 style="width:149px" >
+										<f:convertNumber pattern="##,###.##" ></f:convertNumber>
+										<p:ajax event="blur" update="@this" global="false"></p:ajax>
+										</p:inputText>
+										
+										
+										 <h:outputText  />
+										 <h:outputText  />
+	
+										
+										<h:outputText value="Ville* "  />
+										<p:selectOneMenu id="ville" label="Ville"
+											
+											 required="false" requiredMessage="Sélectionner une Ville !"
+											style="width:130px">
+											
+											<f:selectItems
+												
+												var="ca" itemLabel="" itemValue="" />
+											
+										</p:selectOneMenu>
+										
+										<h:outputText value="Zone &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+											 style="margin-left: 80px;"/>
+											
+										<p:inputText id="zoneGeo"
+										
+										readonly="true" style="width:170px" />
+										
+										
+									</h:panelGrid>
+									<fieldset style="background-color: maroon;">
+				                        <h:commandButton value="Saisir le Conducteur" action="conducteur" style="margin-left:350px"></h:commandButton>
+				           </fieldset>
+				 	                 
+                                   </p:panel>
+
+			</h:form>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+
+	</ui:define>
+</ui:composition>
+</html>
