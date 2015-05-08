@@ -15,17 +15,27 @@
 			
 		<p:wizard flowListener="#{userWizard.onFlowProcess}">
         <p:tab id="personal" title="Carateristique">
-            <p:panel header="Caractéristique sinistre aute">
+            <p:panel header="Caractéristique du sinistre">
             
-          <h:panelGrid columns="2">
+          <h:panelGrid columns="4">
           <p:outputLabel for="nom"  value="Nom"/>
-          <p:inputText id="nom" /> 
+          <p:inputText id="nom" required="true"/> 
           
-          <p:outputLabel for="preno"  value="Prenoms"/>
-          <p:inputText id="preno" /> 
+          <p:outputLabel for="preno"  value="Prenoms" style="margin-left: 15px;" />
+          <p:inputText id="preno" required="true"/> 
           
           <p:outputLabel for="poli"  value="Police"/>
-          <p:inputText id="poli" /> 
+          <p:inputText id="poli" required="true"/> 
+          </h:panelGrid>
+          <br />
+          <div style="color: blue">Merci d’indiquer l’adresse e-mail et le numéro téléphone sur lesquels vous souhaitez être contacté pour ce sinistre.</div>
+           <br />
+            <h:panelGrid columns="4">
+          <p:outputLabel for="mail"  value="E-mail"/>
+          <p:inputText id="mail" required="true"/> 
+          
+          <p:outputLabel for="tel"  value="Telephone" style="margin-left: 15px;"/>
+          <p:inputText id="tel" required="true"/> 
           </h:panelGrid>
             </p:panel>
         </p:tab>
