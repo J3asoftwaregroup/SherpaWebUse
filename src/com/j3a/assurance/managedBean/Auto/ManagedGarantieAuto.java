@@ -71,12 +71,12 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 	public String validateadd() {// ajouter une ligne dans la base de donnée
 
 		Garantie garantie = new Garantie();
-		garantie.setId(getId());
+		garantie.setCodeGarantie(getCodeGarantie());
 		garantie.setLibelleGarantie(getLibelleGarantie());
 		FacesMessage message = new FacesMessage("");
 		boolean checkeixte = false;
 		for (Object obj : getObjectService().getObjects("Garantie")) {
-			if (garantie.getId().equals(((Garantie) obj).getCodeGarantie())) {
+			if (garantie.getCodeGarantie().equals(((Garantie) obj).getCodeGarantie())) {
 				checkeixte = true;
 			}
 		}
@@ -101,12 +101,12 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		// donnée
 
 		Garantie garantie = new Garantie();
-		garantie.setId(getId());
+		garantie.setCodeGarantie(getCodeGarantie());
 		garantie.setLibelleGarantie(getLibelleGarantie());
 		FacesMessage message = new FacesMessage("");
 		boolean checkeixte = false;
 		for (Object obj : getObjectService().getObjects("Garantie")) {
-			if (garantie.getId().equals(((Garantie) obj).getId())) {
+			if (garantie.getCodeGarantie().equals(((Garantie) obj).getCodeGarantie())) {
 				checkeixte = true;
 			}
 		}
@@ -128,12 +128,12 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		// donnée
 
 		Garantie garantie = new Garantie();
-		garantie.setId(getId());
+		garantie.setId(getCodeGarantie());
 		garantie.setLibelleGarantie(getLibelleGarantie());
 		FacesMessage message = new FacesMessage("");
 		boolean checkeixte = false;
 		for (Object obj : getObjectService().getObjects("Garantie")) {
-			if (garantie.getId().equals(((Garantie) obj).getId())) {
+			if (garantie.getCodeGarantie().equals(((Garantie) obj).getCodeGarantie())) {
 				checkeixte = true;
 			}
 		}
@@ -166,10 +166,10 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 			} else {
 				Garantie gar = (Garantie) listObject.get(listObject.size() - 1);
 				System.out.println("taille de la Table=" + listObject.size());
-				System.out.println("valeur ds la table=" + gar.getId());
+				System.out.println("valeur ds la table=" + gar.getCodeGarantie());
 
-				// System.out.println("retourne l'id="+key.KeyGarantie(gar.getId()));
-				garantie.setId(key.KeyGarantie(gar.getId()));
+				// System.out.println("retourne l'id="+key.KeyGarantie(gar.getCodeGarantie()));
+				garantie.setId(key.KeyGarantie(gar.getCodeGarantie()));
 			}
 
 		} catch (Exception e1) {
@@ -202,37 +202,37 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 
 		getListegaranties().addAll(calculGarantieAuto(vehiculeRow));
 		Garanties garantie1 = new Garanties();
-		garantie1.setId("101");
+		garantie1.setCodeGarantie("101");
 		garantie1.setLibelleGarantie("RESPONSABILITE CIVILE");
 		garantie1.setnOrdre(1);
 		getListeGroupGaranties().add(garantie1);
 
 		Garanties garantie2 = new Garanties();
-		garantie2.setId("104");
+		garantie2.setCodeGarantie("104");
 		garantie2.setLibelleGarantie("DEFENSE ET RECOURS");
 		garantie2.setnOrdre(2);
 		getListeGroupGaranties().add(garantie2);
 
 		Garanties garantie3 = new Garanties();
-		garantie3.setId("106");
+		garantie3.setCodeGarantie("106");
 		garantie3.setLibelleGarantie("DOMMAGES");
 		garantie3.setnOrdre(3);
 		getListeGroupGaranties().add(garantie3);
 
 		Garanties garantie4 = new Garanties();
-		garantie4.setId("110");
+		garantie4.setCodeGarantie("110");
 		garantie4.setnOrdre(4);
 		garantie4.setLibelleGarantie("INCENDIES");
 		getListeGroupGaranties().add(garantie4);
 
 		Garanties garantie5 = new Garanties();
-		garantie5.setId("111");
+		garantie5.setCodeGarantie("111");
 		garantie5.setnOrdre(5);
 		garantie5.setLibelleGarantie("VOLS");
 		getListeGroupGaranties().add(garantie5);
 
 		Garanties garantie6 = new Garanties();
-		garantie6.setId("114");
+		garantie6.setCodeGarantie("114");
 		garantie6.setnOrdre(6);
 		garantie6.setLibelleGarantie("SECURITE ROUTIERE");
 		getListeGroupGaranties().add(garantie6);
@@ -270,10 +270,10 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		prime.setTypeTransporte(vehiculeRow.getVehi().getTypeTransporte());
 		prime.setPuissFisc(vehiculeRow.getVehi().getPuissFisc());
 		prime.setPuissReel(vehiculeRow.getVehi().getPuissReelle());
-		prime.setZone(vehiculeRow.getZonGeo().getId());
+		prime.setZone(vehiculeRow.getZonGeo().getCodeZoneGeo());
 		prime.setValeurNeuve(vehiculeRow.getVehi().getValNeuf());
 		prime.setValeurVenale(vehiculeRow.getVehi().getValVenale());
-		prime.setRemorque(vehiculeRow.getVehi().isRemorque());
+		prime.setRemorque(vehiculeRow.getVehi().getRemorque());
 		prime.setTypeVehicule(vehiculeRow.getVehi().getTypeVehicule());
 		// Conducteur
 		prime.setStatut(vehiculeRow.getConduHab().getCategsocioprocond());
@@ -291,13 +291,13 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		for (Iterator it = listObject.iterator(); it.hasNext();) {
 			Garantie gar = (Garantie) it.next();
 			Garanties garantie = new Garanties();
-			garantie.setId(gar.getId());
+			garantie.setCodeGarantie(gar.getCodeGarantie());
 			garantie.setLibelleGarantie(gar.getLibelleGarantie());
 			garantie.setCapitalGarantie(gar.getCapitalGarantie());
 			garantie.setFranchise(gar.getFranchise());
 			garantie.setCategorieGarantie(gar.getCategorieGarantie());
 
-			if (garantie.getId().equalsIgnoreCase("101")) {
+			if (garantie.getCodeGarantie().equalsIgnoreCase("101")) {
 				BigDecimal rc = prorata.primeProrata(duree, prime.getPrimeRc());
 				BigDecimal v1 = prime.getPrimeRc();
 				garantie.setPrimesAnnuelle(v1);
@@ -307,7 +307,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 				garantie.setChoix(true);
 			}
 
-			if (garantie.getId().equals("104") == true) {
+			if (garantie.getCodeGarantie().equals("104") == true) {
 
 				BigDecimal dr = prorata.primeProrata(duree,
 						prime.getDefenseRecours());
@@ -317,7 +317,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 				garantie.setPrimesProrata(dr);
 				garantie.setChoix(true);
 			}
-			if (garantie.getId().equals("105") == true) {
+			if (garantie.getCodeGarantie().equals("105") == true) {
 
 				BigDecimal ra = prorata.primeProrata(duree,
 						prime.getRemboursemmentAnticipe());
@@ -327,7 +327,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 				garantie.setPrimesProrata(ra);
 			}
 
-			if (garantie.getId().equals("106") == true) {
+			if (garantie.getCodeGarantie().equals("106") == true) {
 
 				BigDecimal d = prorata.primeProrata(duree, prime.getDommage());
 				BigDecimal v1 = prime.getDommage();
@@ -337,7 +337,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 
 			}
 
-			if (garantie.getId().equals("107") == true) {
+			if (garantie.getCodeGarantie().equals("107") == true) {
 
 				BigDecimal d = prorata
 						.primeProrata(duree, prime.getCollision());
@@ -347,7 +347,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 				garantie.setPrimesProrata(d);
 
 			}
-			if (garantie.getId().equals("108") == true) {
+			if (garantie.getCodeGarantie().equals("108") == true) {
 
 				BigDecimal bdg = prorata.primeProrata(duree,
 						prime.getBrisGlaceRC());
@@ -358,7 +358,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 
 			}
 
-			if (garantie.getId().equals("109") == true) {
+			if (garantie.getCodeGarantie().equals("109") == true) {
 
 				BigDecimal im = prorata.primeProrata(duree,
 						prime.getImmobilisation());
@@ -369,7 +369,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 
 			}
 
-			if (garantie.getId().equals("110") == true) {
+			if (garantie.getCodeGarantie().equals("110") == true) {
 
 				BigDecimal inc = prorata.primeProrata(duree,
 						prime.getIncendie());
@@ -380,7 +380,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 
 			}
 
-			if (garantie.getId().equals("111") == true) {
+			if (garantie.getCodeGarantie().equals("111") == true) {
 
 				BigDecimal vol = prorata
 						.primeProrata(duree, prime.getVolMain());
@@ -390,7 +390,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 				garantie.setPrimesProrata(vol);
 
 			}
-			if (garantie.getId().equals("112") == true) {
+			if (garantie.getCodeGarantie().equals("112") == true) {
 
 				BigDecimal volA = prorata.primeProrata(duree,
 						prime.getVolAccessoires());
@@ -400,7 +400,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 				garantie.setPrimesProrata(volA);
 
 			}
-			if (garantie.getId().equals("113") == true) {
+			if (garantie.getCodeGarantie().equals("113") == true) {
 
 				BigDecimal v = prorata.primeProrata(duree,
 						prime.getVolVandalisme());
@@ -411,7 +411,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 
 			}
 
-			if (garantie.getId().equals("114") == true) {
+			if (garantie.getCodeGarantie().equals("114") == true) {
 
 				BigDecimal sr = prorata.primeProrata(duree,
 						prime.getSecuriteRoutiere1());
@@ -422,14 +422,14 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 
 			}
 			/*
-			 * if (garantie.getId().equals("115") == true) { BigDecimal sr =
+			 * if (garantie.getCodeGarantie().equals("115") == true) { BigDecimal sr =
 			 * prorata.primeProrata(duree, prime.getSecuriteRoutiere1());
 			 * BigDecimal v1 = prime.getSecuriteRoutiere1();
 			 * garantie.setPrimesAnnuelle(v1);
 			 * garantie.setPrimesNetteAnnuelle(v1);
 			 * garantie.setPrimesProrata(sr);
 			 * 
-			 * } if (garantie.getId().equals("116") == true) { BigDecimal sr =
+			 * } if (garantie.getCodeGarantie().equals("116") == true) { BigDecimal sr =
 			 * prorata.primeProrata(duree, prime.getSecuriteRoutiere1());
 			 * BigDecimal v1 = prime.getSecuriteRoutiere1();
 			 * garantie.setPrimesAnnuelle(v1);
@@ -451,8 +451,8 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 
 		// gestion de RC et Defence Recours Obligatoire
 
-		if (((Garanties) event.getObject()).getId().equalsIgnoreCase("101")
-				|| ((Garanties) event.getObject()).getId().equalsIgnoreCase(
+		if (((Garanties) event.getObject()).getCodeGarantie().equalsIgnoreCase("101")
+				|| ((Garanties) event.getObject()).getCodeGarantie().equalsIgnoreCase(
 						"104")) {
 			((Garanties) event.getObject()).setChoix(true);
 		}
@@ -720,7 +720,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * 
 		 * Garantie garantie = new Garantie();
 		 * 
-		 * garantie.setId(listegarantie.get(i).getId());
+		 * garantie.setId(listegarantie.get(i).getCodeGarantie());
 		 * 
 		 * GarantieGarantieChoisie GarantieGarantieChoisie = new
 		 * GarantieGarantieChoisie(); GarantieGarantieChoisiePK
@@ -939,7 +939,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * CalculPrime prorata = new CalculPrime();
 		 * 
 		 * for(int j= 0;j<selectGaranties.size();j++){
-		 * if(selectGaranties.get(j).getId().equalsIgnoreCase("GA001")){
+		 * if(selectGaranties.get(j).getCodeGarantie().equalsIgnoreCase("GA001")){
 		 * selectGaranties.get(j).setReduction(BigDecimal.ZERO);
 		 * selectGaranties.get(j).setBonus(tauxBonus);
 		 * selectGaranties.get(j).setMalus(tauxMalus);
@@ -993,7 +993,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * 
 		 * if (listegarantie.size() == 0) {
 		 * 
-		 * if (selectGaranties.get(i).getId().equals("GA001")) {
+		 * if (selectGaranties.get(i).getCodeGarantie().equals("GA001")) {
 		 * garantieTable.setMontantRedRC
 		 * (selectGaranties.get(i).getMontantRed());
 		 * 
@@ -1003,7 +1003,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * listegarantie.add(selectGaranties.get(i)); }
 		 * 
 		 * } if (listegarantie.size() == 1) { if
-		 * (selectGaranties.get(i).getId().equals("GA002")) {
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA002")) {
 		 * garantieTable.setMontantRedDR
 		 * (selectGaranties.get(i).getMontantRed());
 		 * 
@@ -1012,7 +1012,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * 
 		 * listegarantie.add(selectGaranties.get(i)); }
 		 * 
-		 * } if (selectGaranties.get(i).getId().equals("GA003")) { if
+		 * } if (selectGaranties.get(i).getCodeGarantie().equals("GA003")) { if
 		 * (garantieTable.isStatutRA() == true) {
 		 * 
 		 * 
@@ -1029,7 +1029,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeAnRA(BigDecimal.ZERO);
 		 * garantieTable.setPrimeRA(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedRA(BigDecimal.ZERO); } } if
-		 * (selectGaranties.get(i).getId().equals("GA004")) { if
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA004")) { if
 		 * (garantieTable.isStatutDommagesCol() == true) {
 		 * 
 		 * 
@@ -1049,7 +1049,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeDommagesCol(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedDommagesCol(BigDecimal.ZERO); } }
 		 * 
-		 * if (selectGaranties.get(i).getId().equals("GA005")) { if
+		 * if (selectGaranties.get(i).getCodeGarantie().equals("GA005")) { if
 		 * (garantieTable.isStatutDommagesTA() == true) {
 		 * 
 		 * 
@@ -1066,7 +1066,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeDommagesTA(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedDommagesTA(BigDecimal.ZERO); } }
 		 * 
-		 * if (selectGaranties.get(i).getId().equals("GA006")) { if
+		 * if (selectGaranties.get(i).getCodeGarantie().equals("GA006")) { if
 		 * (garantieTable.isStatutIncendie() == true) {
 		 * 
 		 * 
@@ -1083,7 +1083,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeAnIncendie(BigDecimal.ZERO);
 		 * garantieTable.setPrimeIncendie(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedIncendie(BigDecimal.ZERO); } } if
-		 * (selectGaranties.get(i).getId().equals("GA007")) { if
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA007")) { if
 		 * (garantieTable.isStatutImmob() == true) {
 		 * 
 		 * 
@@ -1100,7 +1100,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeAnImmob(BigDecimal.ZERO);
 		 * garantieTable.setPrimeImmob(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedImmob(BigDecimal.ZERO); } } if
-		 * (selectGaranties.get(i).getId().equals("GA008")) { if
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA008")) { if
 		 * (garantieTable.isStatutBDGOpt1() == true) {
 		 * 
 		 * garantieTable.setStatutBDGOpt2(false);
@@ -1119,7 +1119,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeAnBDGOpt1(BigDecimal.ZERO);
 		 * garantieTable.setPrimeBDGOpt1(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedBDGOpt1(BigDecimal.ZERO); } } if
-		 * (selectGaranties.get(i).getId().equals("GA009")) { if
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA009")) { if
 		 * (garantieTable.isStatutBDGOpt2() == true) {
 		 * 
 		 * garantieTable.setStatutBDGOpt1(false);
@@ -1138,7 +1138,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeAnBDGOpt2(BigDecimal.ZERO);
 		 * garantieTable.setPrimeBDGOpt2(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedBDGOpt2(BigDecimal.ZERO); } } if
-		 * (selectGaranties.get(i).getId().equals("GA010")) { if
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA010")) { if
 		 * (garantieTable.isStatutBDGOpt3() == true) {
 		 * 
 		 * garantieTable.setStatutBDGOpt2(false);
@@ -1158,7 +1158,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeBDGOpt3(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedBDGOpt3(BigDecimal.ZERO); } }
 		 * 
-		 * if (selectGaranties.get(i).getId().equals("GA011")) { if
+		 * if (selectGaranties.get(i).getCodeGarantie().equals("GA011")) { if
 		 * (garantieTable.isStatutVol() == true) {
 		 * 
 		 * 
@@ -1175,7 +1175,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeAnVol(BigDecimal.ZERO);
 		 * garantieTable.setPrimeVol(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedVol(BigDecimal.ZERO); } } if
-		 * (selectGaranties.get(i).getId().equals("GA012")) { if
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA012")) { if
 		 * (garantieTable.isStatutVolAcc() == true) {
 		 * 
 		 * 
@@ -1192,7 +1192,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeAnVolAcc(BigDecimal.ZERO);
 		 * garantieTable.setPrimeVolAcc(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedVolAcc(BigDecimal.ZERO); } } if
-		 * (selectGaranties.get(i).getId().equals("GA013")) { if
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA013")) { if
 		 * (garantieTable.isStatutVandalisme() == true) {
 		 * 
 		 * 
@@ -1210,7 +1210,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeVandalisme(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedVandalisme(BigDecimal.ZERO); } }
 		 * 
-		 * if (selectGaranties.get(i).getId().equals("GA014")) { if
+		 * if (selectGaranties.get(i).getCodeGarantie().equals("GA014")) { if
 		 * (garantieTable.isStatutSROpt1() == true) {
 		 * 
 		 * garantieTable.setStatutSROpt2(false);
@@ -1229,7 +1229,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeAnSROpt1(BigDecimal.ZERO);
 		 * garantieTable.setPrimeSROpt1(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedSROpt1(BigDecimal.ZERO); } } if
-		 * (selectGaranties.get(i).getId().equals("GA015")) { if
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA015")) { if
 		 * (garantieTable.isStatutSROpt2() == true) {
 		 * 
 		 * garantieTable.setStatutSROpt1(false);
@@ -1248,7 +1248,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeAnSROpt2(BigDecimal.ZERO);
 		 * garantieTable.setPrimeSROpt2(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedSROpt2(BigDecimal.ZERO); } } if
-		 * (selectGaranties.get(i).getId().equals("GA016")) { if
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA016")) { if
 		 * (garantieTable.isStatutSROpt3() == true) {
 		 * 
 		 * garantieTable.setStatutSROpt2(false);
@@ -1267,7 +1267,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeAnSROpt3(BigDecimal.ZERO);
 		 * garantieTable.setPrimeSROpt3(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedSROpt3(BigDecimal.ZERO); } } if
-		 * (selectGaranties.get(i).getId().equals("GA017")) { if
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA017")) { if
 		 * (garantieTable.isStatutIndChaufOpt1() == true) {
 		 * 
 		 * garantieTable.setStatutIndChaufOpt2(false);
@@ -1288,7 +1288,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeAnIndChaufOpt1(BigDecimal.ZERO);
 		 * garantieTable.setPrimeIndChaufOpt1(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedIndChaufOpt1(BigDecimal.ZERO); } } if
-		 * (selectGaranties.get(i).getId().equals("GA018")) { if
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA018")) { if
 		 * (garantieTable.isStatutIndChaufOpt2() == true) {
 		 * 
 		 * garantieTable.setStatutIndChaufOpt1(false);
@@ -1309,7 +1309,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeAnIndChaufOpt2(BigDecimal.ZERO);
 		 * garantieTable.setPrimeIndChaufOpt2(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedIndChaufOpt2(BigDecimal.ZERO); } }if
-		 * (selectGaranties.get(i).getId().equals("GA019")) { if
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA019")) { if
 		 * (garantieTable.isStatutIndChaufOpt3() == true) {
 		 * 
 		 * garantieTable.setStatutIndChaufOpt2(false);
@@ -1330,7 +1330,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * garantieTable.setPrimeAnIndChaufOpt3(BigDecimal.ZERO);
 		 * garantieTable.setPrimeIndChaufOpt3(BigDecimal.ZERO);
 		 * garantieTable.setMontantRedIndChaufOpt3(BigDecimal.ZERO); } }if
-		 * (selectGaranties.get(i).getId().equals("GA020")) { if
+		 * (selectGaranties.get(i).getCodeGarantie().equals("GA020")) { if
 		 * (garantieTable.isStatutIndChaufSp() == true) {
 		 * 
 		 * garantieTable.setStatutIndChaufOpt1(false);
@@ -1381,36 +1381,36 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		 * 
 		 * for(int i= 0; i< getListgarantieAvenant().size();i++){
 		 * if(getListgarantieAvenant
-		 * ().get(i).getId().equalsIgnoreCase("GA001")){
+		 * ().get(i).getCodeGarantie().equalsIgnoreCase("GA001")){
 		 * garantieTable.setStatutRC(true); }
 		 * 
-		 * if(getListgarantieAvenant().get(i).getId().equalsIgnoreCase("GA002")){
+		 * if(getListgarantieAvenant().get(i).getCodeGarantie().equalsIgnoreCase("GA002")){
 		 * garantieTable.setStatutDR(true); }
 		 * if(getListgarantieAvenant().get(i).
-		 * getId().equalsIgnoreCase("GA003")){ garantieTable.setStatutRA(true);
+		 * getCodeGarantie().equalsIgnoreCase("GA003")){ garantieTable.setStatutRA(true);
 		 * }
-		 * if(getListgarantieAvenant().get(i).getId().equalsIgnoreCase("GA004")
+		 * if(getListgarantieAvenant().get(i).getCodeGarantie().equalsIgnoreCase("GA004")
 		 * ){ garantieTable.setStatutDommagesCol(true); }
 		 * if(getListgarantieAvenant
-		 * ().get(i).getId().equalsIgnoreCase("GA005")){
+		 * ().get(i).getCodeGarantie().equalsIgnoreCase("GA005")){
 		 * garantieTable.setStatutRA(true); }
 		 * if(getListgarantieAvenant().get(i).
-		 * getId().equalsIgnoreCase("GA006")){
+		 * getCodeGarantie().equalsIgnoreCase("GA006")){
 		 * garantieTable.setStatutBDGOpt1(true); }
 		 * if(getListgarantieAvenant().get
-		 * (i).getId().equalsIgnoreCase("GA007")){
+		 * (i).getCodeGarantie().equalsIgnoreCase("GA007")){
 		 * garantieTable.setStatutVol(true); }
 		 * if(getListgarantieAvenant().get(i)
-		 * .getId().equalsIgnoreCase("GA008")){
+		 * .getCodeGarantie().equalsIgnoreCase("GA008")){
 		 * garantieTable.setStatutVolAcc(true); }
 		 * if(getListgarantieAvenant().get
-		 * (i).getId().equalsIgnoreCase("GA009")){
+		 * (i).getCodeGarantie().equalsIgnoreCase("GA009")){
 		 * garantieTable.setStatutVandalisme(true); }
 		 * if(getListgarantieAvenant()
-		 * .get(i).getId().equalsIgnoreCase("GA010")){
+		 * .get(i).getCodeGarantie().equalsIgnoreCase("GA010")){
 		 * garantieTable.setStatutIncendie(true); }
 		 * if(getListgarantieAvenant().get
-		 * (i).getId().equalsIgnoreCase("GA011")){
+		 * (i).getCodeGarantie().equalsIgnoreCase("GA011")){
 		 * garantieTable.setStatutImmob(true); }
 		 * 
 		 * } }

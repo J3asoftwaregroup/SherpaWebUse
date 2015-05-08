@@ -19,38 +19,38 @@
 					<h:panelGrid id="cducgrid" columns="9">
 											
 												<h:outputText value="Code"  />
-												<p:inputText id="num_cond"
+												<p:inputText id="num_cond" value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.id}"
 												style="margin-left: 20px; width: 178px">
 													
 												</p:inputText>
 												<h:outputText value="" />
 						
 												<h:outputText value="Nom*" style="margin-left: 20px;" />
-												<p:inputText id="nameC" 
+												<p:inputText id="nameC" value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.nonCond}"
 													style="width:175px"/>
 												<p:message id="msgnameC" for="nameC" display="icon" />
 						
 												<h:outputText value="Prénoms*" style="margin-left: 20px;" />
-												<p:inputText id="prenC"
+												<p:inputText id="prenC" value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.prenomsCond}"
 													style="width:168px" />
 												<p:message id="msgprenC" for="prenC" display="icon" />
 						                      
 						                      
 						                      
 												<h:outputText value="Né le"  />
-												<p:inputMask 
+												<p:inputMask value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.dateNaissCond}"
 													id="dateC" style="width:178px ;margin-left: 20px;" mask="99/99/9999">
 													<f:convertDateTime pattern="dd/MM/yyyy" />
 												</p:inputMask>
 												<p:message id="msgdateNaissCond" for="dateC" display="icon" />
 						
 												<h:outputText value="Lieu naissance" style="margin-left: 20px;"/>
-												<p:inputText 
+												<p:inputText value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.lieuNaisCond}"
 													id="lieuNaisC" style="width:175px;"/>
 												<p:message id="msgdateC" for="dateC" display="icon" />
 												
 												<h:outputText value="Permis" style="margin-left: 20px;"/>
-													<p:selectOneMenu
+													<p:selectOneMenu value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.typpermiscond}"
 												id="permC" required="false" style="width:145px">
 												<f:selectItem itemLabel="Permis BCDE" itemValue="BCDE" />
 												<f:selectItem itemLabel="Permis B" itemValue="B" />
@@ -61,17 +61,17 @@
 												
 												
 												<h:outputText value="N° Permis"/>
-												<p:inputText 
+												<p:inputText value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.numpermiscond}"
 													id="numPermC" style="width:178px; margin-left: 20px;"/>
 												<p:message id="msgnumPermC" for="numPermC" display="icon" />
 												
 												<h:outputText value="Durée du permis" style="margin-left: 20px;"/>
-												<p:inputText 
+												<p:inputText value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.dureepermiscond}"
 													id="durpermC" style="width:175px;"/>
 												<p:message id="msgdurpermC" for="durpermC" display="icon" />
 												
 												<h:outputText value="Catégorie Socio-Professionnelle" style="margin-left: 20px;"/>
-												<p:selectOneMenu
+												<p:selectOneMenu value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.categsocioprocond}"
 													 style="width:154px"
 													id="catProCd" required="false">
 													
@@ -94,7 +94,7 @@
 											<h:panelGrid columns="6">
 
 											<h:outputText value="Date Emission*" />
-											<p:inputMask
+											<p:inputMask value="#{cotationAuto.contrat.emission}"
 												required="true"
 												requiredMessage="Date d'émission non renseignée" mask="99/99/9999"
 												 style="width:135px;"
@@ -104,7 +104,7 @@
 
 
 											<h:outputText value="Date Effet*" style="margin-left:25px" />
-											<p:inputMask
+											<p:inputMask value="#{cotationAuto.contrat.effet}"
 												requiredMessage="Date d'effet non renseignée"	
 												mask="99/99/9999 99:99"
 												style="width:150px;"
@@ -117,7 +117,7 @@
 
 											<h:outputText value="Durée (Mois)*"
 												style="margin-left:25px" />
-											<p:selectOneMenu>
+											<p:selectOneMenu value="#{cotationAuto.contrat.duree}">
 												<f:selectItem itemLabel="15 jours" itemValue="0.5" />
 												<f:selectItem itemLabel="1 mois" itemValue="1.0" />
 												<f:selectItem itemLabel="2 mois" itemValue="2.0" />
@@ -134,7 +134,7 @@
 											</p:selectOneMenu>
 
 											<h:outputText value="Date Echéance*" style="margin-right:20px;" />
-											<p:inputMask
+											<p:inputMask value="#{cotationAuto.contrat.echeance}"
 												requiredMessage="Date d'échéance non renseignée"
 												 id="ech" size="17" 
  												style="width:135px;"
@@ -145,13 +145,13 @@
 											
 											
 											<h:outputText value="Nombre de Jours"  style="margin-left:25px"/>
-											<p:inputText
+											<p:inputText value="#{cotationAuto.contrat.dureeEnjour}"
 												id="nbj" style="width:150px;" />
 
 									
 											<h:outputText value="Reconduction"  style="margin-left:25px"
 												></h:outputText>
-											<p:selectOneMenu id="modeR" 
+											<p:selectOneMenu id="modeR" value="#{cotationAuto.contrat.modeReconduction}"
 												 panelStyle="width:180px" style="width:160px"
 												 >
 												<f:selectItem itemLabel="Selectionner" itemValue="." />

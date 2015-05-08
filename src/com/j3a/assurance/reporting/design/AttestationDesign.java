@@ -20,7 +20,6 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Section;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.j3a.assurance.reporting.bean.factory.AttestationReportFactory;
 import com.lowagie.text.Cell;
 
 public class AttestationDesign {
