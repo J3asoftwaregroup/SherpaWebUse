@@ -9,6 +9,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.AffaireApporteur;
 import com.j3a.assurance.model.Apporteur;
@@ -20,7 +21,7 @@ import com.j3a.assurance.utilitaire.Garanties;
 import com.j3a.assurance.utilitaire.IdGenerateur;
 import com.j3a.assurance.utilitaire.QuittanceAuto;
 import com.j3a.assurance.utilitaire.VehiculeRow;
-
+@Component
 public class ManagedQuittanceAuto {
 
 
@@ -100,21 +101,21 @@ public class ManagedQuittanceAuto {
 
 		primeNette = primeNette.add(prime);
 		System.out.println("Commission de l'apporteur  ds Quittance ds le Vehicule = "+vrw.getCommissionApporteur());
-		System.out.println("Type de l'apporteur  = "+vrw.getApporteur().getIdType().getId());
+		System.out.println("Type de l'apporteur  = "+vrw.getApporteur().getTypeApporteur().getIdType());
 		//Accessoire Compagnie
 		
 		acceComp = primeNette.multiply(BigDecimal.valueOf(0.1));
 		//calcul de la commission de l'apporteur
-		if(vrw.getApporteur().getIdType().getId().equals("1")){
+		if(vrw.getApporteur().getTypeApporteur().getIdType().equals("1")){
 			comInter = comInter.add(vrw.getCommissionApporteur());	
 			System.out.println("Commission de l'apporteur  ds Quittance type comInter = "+comInter);
 		}
-		if(vrw.getApporteur().getIdType().getId().equals("2")){
+		if(vrw.getApporteur().getTypeApporteur().getIdType().equals("2")){
 			comInter = comInter.add(vrw.getCommissionApporteur());	
 			System.out.println("Commission de l'apporteur  ds Quittance type comInter = "+comInter);
 		}
 		
-		if(vrw.getApporteur().getIdType().getId().equals("3")){
+		if(vrw.getApporteur().getTypeApporteur().getIdType().equals("3")){
 			comCon = comCon.add(vrw.getCommissionApporteur());
 			System.out.println("Commission de l'apporteur  ds Quittance type comCon = "+comCon);
 		}
@@ -211,11 +212,11 @@ public void addcommissionApporteur(Apporteur apporteur, Avenant Avn){
 	java.math.BigDecimal commission = BigDecimal.ZERO;
 	
 	//calcul de la commission de l'apporteur
-			if(apporteur.getIdType().getId().equals("1") || apporteur.getIdType().getId().equals("2")){
+			if(apporteur.getTypeApporteur().getIdType().equals("1") || apporteur.getTypeApporteur().getIdType().equals("2")){
 				commission = commission.add(quittanceAuto.getCommissionInterm());	
 			}
 			
-			if(apporteur.getIdType().getId().equals("3")){
+			if(apporteur.getTypeApporteur().getIdType().equals("3")){
 				commission = commission.add(quittanceAuto.getCommissionConseil());
 			}
 			System.out.println(" <<<<<<Commission  de l'apporteur= "+commission); 
@@ -223,7 +224,7 @@ public void addcommissionApporteur(Apporteur apporteur, Avenant Avn){
 			Date date = new Date();
 			date = Calendar.getInstance().getTime();
 			AffaireApporteur affaire = new AffaireApporteur();
-			affaire.setCodeApporteur(apporteur);
+			affaire.setApporteur(apporteur);
 			affaire.setId(getIdGenerateur().getIdAffaireApporteur(apporteur));
 			//affaire.getComAff().add(
 			affaire.setComAff(commission);
@@ -232,11 +233,11 @@ public void addcommissionApporteur(Apporteur apporteur, Avenant Avn){
 			//affaire.getResteAPayerAff().add(
 			affaire.setResteAPayerAff(commission);
 			affaire.setMouvementAffApp(Avn.getMouvement());
-			affaire.setNumeroPoliceAff(Avn.getNumPolice().getId());
-			affaire.setNumAvenantAff(Avn.getId());
+			affaire.setNumeroPoliceAff(Avn.getContrat().getNumPolice());
+			affaire.setNumAvenantAff(Avn.getNumAvenant());
 			CompteApporteur compte = new CompteApporteur();
-			compte = (CompteApporteur)getObjectService().getById("compte_apporteur", "CODE_APPORTEUR", apporteur.getId(), CompteApporteur.class);
-			System.out.println(" <<<<<<Compte de l'apporteur= "+compte.getId()); 
+			compte = (CompteApporteur)getObjectService().getObjectById("compte_apporteur", "CODE_APPORTEUR", apporteur.getCodeApporteur(), CompteApporteur.class);
+			System.out.println(" <<<<<<Compte de l'apporteur= "+compte.getCodeCompteApp()); 
 			System.out.println(" <<<<<<Compte de l'apporteur Total Commission= "+compte.getTotalComApp()); 
 		
 			compte.setTotalComApp(compte.getTotalComApp().add(commission));
@@ -273,7 +274,7 @@ public void addcommissionApporteur(Apporteur apporteur, Avenant Avn){
 		date = Calendar.getInstance().getTime();
 		Quittance quittances = new Quittance();
 
-		quittances.setId(getQuittanceid());
+		quittances.setCodeQuittance(getQuittanceid());
 		quittances.setEtatQuittance("NON SOLDEE");
 		quittances.setAccessoire(getQuittanceAuto()
 				.getTotalAccessoire());
@@ -311,12 +312,12 @@ public void addcommissionApporteur(Apporteur apporteur, Avenant Avn){
 		quittances.setPrec(getQuittanceAuto().getPrec());
 		quittances.setPrimeExoEncours(getQuittanceAuto().getPrimeExoEncours());
 		quittances.setPrimeReport(getQuittanceAuto().getPrimeReport());
-		quittances.setNumAvenant(Avn);
+		quittances.setAvenant(Avn);
 		quittances.setDateQuittance(date);
 		try {
 			getObjectService().addObject(quittances);
 
-			quittanceid = quittances.getId();// recupère l'id de la quittance
+			quittanceid = quittances.getCodeQuittance();// recupère l'id de la quittance
 
 		} catch (DataAccessException e) {
 			logger.error(

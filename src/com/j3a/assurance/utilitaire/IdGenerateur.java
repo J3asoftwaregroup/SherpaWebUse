@@ -5,6 +5,7 @@ import java.util.Calendar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.j3a.assurance.model.Apporteur;
 import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.model.Quittance;
@@ -156,6 +157,14 @@ public class IdGenerateur implements Serializable {
 		String idReg = getObjectService().getCodeTable(pseudo, 11, 2,
 				"contact", "ID_CONTACT");
 		return idReg;
+	}
+	
+	public String getIdAffaireApporteur(Apporteur apporteur) {
+		//AP00n-AF = 8
+		String pseudo = apporteur.getCodeApporteur()+"-AF";
+		String IdAffaire = getObjectService().getCodeTable(pseudo, 8, 3,
+				"affaire_apporteur", "CODE_AFFAIRE");
+		return IdAffaire;
 	}
 
 	public ObjectService getObjectService() {

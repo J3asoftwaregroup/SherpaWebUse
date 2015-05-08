@@ -19,41 +19,29 @@ public class PrimesGarantie implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private ObjectService objectService;
 	
+	
+
 	/**
 	 * methode qui construit l'objet {@link PrimeByGarantie} du vehicule
 	 * 
 	 * @param garantieChoisie
 	 * @return List<PrimeByGarantie>
 	 */
-	public List<GarantieGarantieChoisie> getPrimeByGarantie(
+	public List<PrimeByGarantie> getPrimeByGarantie(
 			GarantieChoisie garantieChoisie) {
 		// objet qui recupère la collection de PrimeByGarantie
-		List<GarantieGarantieChoisie> listPrimeGaranties = new ArrayList<GarantieGarantieChoisie>();
+		List<PrimeByGarantie> listPrimeGaranties = new ArrayList<PrimeByGarantie>();
 		// recupère la collection de garantie
-<<<<<<< HEAD
 		Set<GarantieGarantieChoisie> listGarantieGarantieChoisie = garantieChoisie.getGarantieGarantieChoisies();
 		for (GarantieGarantieChoisie ggc : listGarantieGarantieChoisie) {
 			//GarantieGarantieChoisieId id = new GarantieGarantieChoisieId();
 			//PrimeByGarantie primeByGarantie = new PrimeByGarantie();
-=======
-		Set<Garantie> listGaranties = garantieChoisie.getGaranties();
-		// pour chaque garantie de la list
-		for (Garantie garantie : listGaranties) {
-			GarantieGarantieChoisieId pk = new GarantieGarantieChoisieId();
-			PrimeByGarantie primeByGarantie = new PrimeByGarantie();
->>>>>>> branch 'master' of https://github.com/J3asoftwaregroup/SherpaWebUse
 			// contruire la clé primaire de GarantieGarantieChoisie
-<<<<<<< HEAD
 		//	id.setCodeGarantieChoisie(garantieChoisie.getCodeGarantieChoisie());
 			//id.setCodeGarantie(garantie.getCodeGarantie());
-=======
-			pk.setCodeGarantieChoisie(garantieChoisie.getCodeGarantieChoisie());
-			pk.setCodeGarantie(garantie.getCodeGarantie());
->>>>>>> branch 'master' of https://github.com/J3asoftwaregroup/SherpaWebUse
 			// recupère GarantieGarantieChoisie par pk
 			//GarantieGarantieChoisie choisie = (GarantieGarantieChoisie) getObjectService()
 					//.getObjectById(pk, "GarantieGarantieChoisie");
-<<<<<<< HEAD
 			// GarantieGarantieChoisie choisie =(GarantieGarantieChoisie)getObjectService().getByIdPK(id, "garantieGarantieChoisie");
 			//System.out.println("id de GarantieGarantieChoisie :" + ggc.getPrimeNetteProrata());
 			System.out.println("prime prorata de GarantieGarantieChoisie :" + ggc.getPrimeAnnuelle());
@@ -61,7 +49,7 @@ public class PrimesGarantie implements Serializable {
 			//primeByGarantie.setChoisie(ggc.getGarantieChoisie());
 			//primeByGarantie.setGarantie(ggc.getGarantie());
 			// ajouter a la list des primeByGarantie
-			listPrimeGaranties.add(ggc);
+			//listPrimeGaranties.add(ggc);
 		}
 		
 		
@@ -78,9 +66,6 @@ public class PrimesGarantie implements Serializable {
 			//GarantieGarantieChoisie choisie = (GarantieGarantieChoisie) getObjectService()
 					//.getObjectById(pk, "GarantieGarantieChoisie");
 			 GarantieGarantieChoisie choisie =(GarantieGarantieChoisie)getObjectService().getByIdPK(id, "garantieGarantieChoisie");
-=======
-			 GarantieGarantieChoisie choisie =(GarantieGarantieChoisie)selectInfo.getById(pk);
->>>>>>> branch 'master' of https://github.com/J3asoftwaregroup/SherpaWebUse
 			System.out.println("id de GarantieGarantieChoisie :" + choisie.getId().getCodeGarantieChoisie());
 			System.out.println("prime prorata de GarantieGarantieChoisie :" + choisie.getPrimeAnnuelle());
 			// constuire l'objet PrimebyGarantie

@@ -242,7 +242,7 @@ public class ContratMB implements Serializable{
 
 		public void recupererPersonne() {// By ALekerand
 			setMaPersonne(monContrat.getPersonne());
-			Object personnePhysique = getObjectService().getObject(
+			Object personnePhysique = getObjectService().getObjectById(
 					monContrat.getPersonne().getNumSouscripteur(), "Physique");
 		}
 
