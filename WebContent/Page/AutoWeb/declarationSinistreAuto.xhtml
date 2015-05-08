@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/templateWebAuto.xhtml">
+	<ui:define name="content">
+		
+		<h:form id="gnl">
+			<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
+			
+		<p:wizard flowListener="#{userWizard.onFlowProcess}">
+        <p:tab id="personal" title="Carateristique">
+            <p:panel header="Caractéristique sinistre aute">
+            
+          <h:panelGrid columns="2">
+          <p:outputLabel for="nom"  value="Nom"/>
+          <p:inputText id="nom" /> 
+          
+          <p:outputLabel for="preno"  value="Prenoms"/>
+          <p:inputText id="preno" /> 
+          
+          <p:outputLabel for="poli"  value="Police"/>
+          <p:inputText id="poli" /> 
+          </h:panelGrid>
+            </p:panel>
+        </p:tab>
+ 
+        <p:tab id="address" title="Nature evenement">
+            <p:panel header="Nature de l'événement">
+                
+            </p:panel>
+        </p:tab>
+
+    </p:wizard>
+						
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>
