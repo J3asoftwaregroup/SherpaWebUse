@@ -10,22 +10,16 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 
-
-
-
-
-
-import com.j3a.assurance.hibernate.bean.AffaireApporteur;
-import com.j3a.assurance.hibernate.bean.Apporteur;
-import com.j3a.assurance.hibernate.bean.Avenant;
-import com.j3a.assurance.hibernate.bean.CompteApporteur;
-import com.j3a.assurance.hibernate.bean.Quittance;
-import com.j3a.assurance.service.ObjectService;
-import com.j3a.assurance.utilitaires.ClasseCalculDure;
-import com.j3a.assurance.utilitaires.Garanties;
-import com.j3a.assurance.utilitaires.IdGenerateur;
-import com.j3a.assurance.utilitaires.QuittanceAuto;
-import com.j3a.assurance.utilitaires.VehiculeRow;
+import com.j3a.assurance.model.AffaireApporteur;
+import com.j3a.assurance.model.Apporteur;
+import com.j3a.assurance.model.Avenant;
+import com.j3a.assurance.model.CompteApporteur;
+import com.j3a.assurance.model.Quittance;
+import com.j3a.assurance.objetService.ObjectService;
+import com.j3a.assurance.utilitaire.Garanties;
+import com.j3a.assurance.utilitaire.IdGenerateur;
+import com.j3a.assurance.utilitaire.QuittanceAuto;
+import com.j3a.assurance.utilitaire.VehiculeRow;
 
 public class ManagedQuittanceAuto {
 

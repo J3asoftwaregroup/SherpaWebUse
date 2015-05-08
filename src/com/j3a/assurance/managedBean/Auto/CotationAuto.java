@@ -34,7 +34,7 @@ public class CotationAuto implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-		private GarantieMB managedGarantieAuto;
+		
 		private ContratMB contrat;
 		private ClientMB client;
 		private CarteGriseMB carteGriseMB;
@@ -577,13 +577,7 @@ public class CotationAuto implements Serializable{
 			this.idGenerateur = idGenerateur;
 		}
 
-		public GarantieMB getManagedGarantieAuto() {
-			return managedGarantieAuto;
-		}
-
-		public void setManagedGarantieAuto(GarantieMB managedGarantieAuto) {
-			this.managedGarantieAuto = managedGarantieAuto;
-		}
+		
 
 		public String getRisque() {
 			return risque;

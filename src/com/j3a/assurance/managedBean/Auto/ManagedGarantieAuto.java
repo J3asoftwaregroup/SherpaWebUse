@@ -14,17 +14,14 @@ import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.springframework.dao.DataAccessException;
 
-import com.j3a.assurance.Key.ClasseKey;
-import com.j3a.assurance.ManagedBean.ManagedGarantie;
-import com.j3a.assurance.hibernate.bean.Garantie;
+import com.j3a.assurance.model.Garantie;
 import com.j3a.assurance.prime.CalculPrimeGlobale;
 import com.j3a.assurance.prime.CalculPrimeProrata;
 import com.j3a.assurance.prime.ReturnPrimeCategorie;
 import com.j3a.assurance.prime.categorie.PrimeCategorie;
 import com.j3a.assurance.prime.categorie.PrimeCategorieInterface;
-import com.j3a.assurance.utilitaires.GarantieTable;
-import com.j3a.assurance.utilitaires.Garanties;
-import com.j3a.assurance.utilitaires.VehiculeRow;
+import com.j3a.assurance.utilitaire.Garanties;
+import com.j3a.assurance.utilitaire.VehiculeRow;
 
 public class ManagedGarantieAuto extends ManagedGarantie {
 	Logger logger = Logger.getLogger(ManagedGarantieAuto.class);
