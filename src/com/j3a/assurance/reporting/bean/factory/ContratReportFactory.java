@@ -7,13 +7,14 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.Garantie;
 import com.j3a.assurance.model.GarantieChoisie;
 import com.j3a.assurance.model.GarantieGarantieChoisie;
-import com.j3a.assurance.model.GarantieGarantieChoisieId;
 import com.j3a.assurance.model.Morale;
 import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.model.Physique;
@@ -31,22 +32,23 @@ import com.j3a.assurance.reporting.bean.VehiculeAttributsBean;
  * @author N'ZI
  * 
  */
+@Component
 public class ContratReportFactory implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Autowired
 	private ObjectService objectService;
 	private ContratReport contratReport;
-	private transient SelectInfoAttestation selectInfoAttestation;
 	private boolean etatRech = false;
 	private static Logger logger = Logger.getLogger(ContratReportFactory.class);
 
 	public void ContratReportProvider(String idQuittance) throws NullPointerException {
 
 		// recupère la quittance
-		Quittance quittance = (Quittance) getObjectService().getObject(
+		Quittance quittance = (Quittance) getObjectService().getObjectById(
 				idQuittance, "Quittance");
 		
 		System.out.println("qqqqqqqqqqqqqtrouve"+quittance.getCodeQuittance());
@@ -87,7 +89,7 @@ public class ContratReportFactory implements Serializable {
 	 * @return list<VehiculeAttributsBean>
 	 */
 	public List<VehiculeAttributsBean> propertiesProvider(Contrat contrat) {
-		SelectInfoAttestation selectInfo = getSelectInfoAttestation();
+	
 		// classe enveloppe
 		// encapsule la liste des classe enveloppant le vehicule et ses
 		// garanties
@@ -98,7 +100,7 @@ public class ContratReportFactory implements Serializable {
 		// recupère la list des vehicules actifs du contrat
 		try {
 
-			listVehicules = selectInfo.getListVehiculesContrat(contrat.getNumPolice());
+			listVehicules = selectInfo.getListVehiculesContrat(contrat.getId());
 
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
@@ -116,7 +118,7 @@ public class ContratReportFactory implements Serializable {
 				// associe le véhicule à la classe enveloppe
 				vehiculeAttributsBean.setVehicule(vehicule);
 				System.out.println("-----dffffffffffffffffffffffffffffffffdd> Code du vehicule :"
-						+ vehicule.getNumImmat());
+						+ vehicule.getCodeVehicule());
 				// associe la propriété du vehicule
 				/*
 				 * ProprietesVehicule proprietesVehicule = selectInfo
@@ -127,9 +129,9 @@ public class ContratReportFactory implements Serializable {
 				// associe la garantieChoisie au vehicule
 
 				GarantieChoisie garantieChoisie = selectInfo
-						.getGarantie(vehicule.getNumImmat());
+						.getGarantie(vehicule.getId());
 				System.out.println("-----> Code garantieChoisie :"
-						+ garantieChoisie.getCodeGarantieChoisie());
+						+ garantieChoisie.getId());
 				vehiculeAttributsBean.setGarantieChoisie(garantieChoisie);
 				// associe la list des primes par garanties du vehicule
 				vehiculeAttributsBean
@@ -159,14 +161,14 @@ public class ContratReportFactory implements Serializable {
 		Set<Garantie> listGaranties = garantieChoisie.getGaranties();
 		// pour chaque garantie de la list
 		for (Garantie garantie : listGaranties) {
-			GarantieGarantieChoisieId pk = new GarantieGarantieChoisieId();
+			GarantieGarantieChoisiePK pk = new GarantieGarantieChoisiePK();
 			PrimeByGarantie primeByGarantie = new PrimeByGarantie();
 			// contruire le clé primaire de GarantieGarantieChoisie
-			pk.setCodeGarantieChoisie(garantieChoisie.getCodeGarantieChoisie());
-			pk.setCodeGarantie(garantie.getCodeGarantie());
+			pk.setCodeGarantieChoisie(garantieChoisie);
+			pk.setCodeGarantie(garantie);
 			// recupère GarantieGarantieChoisie par pk
 			GarantieGarantieChoisie choisie = (GarantieGarantieChoisie) getObjectService()
-					.getObject(pk, "GarantieGarantieChoisie");
+					.getObjectById(pk, "GarantieGarantieChoisie");
 			// GarantieGarantieChoisie choisie =selectInfo.getById(pk);
 			System.out.println("GarantieGarantieChoisie :" + choisie);
 			// contuire l'objet PrimebyGarantie
@@ -188,7 +190,7 @@ public class ContratReportFactory implements Serializable {
 	 */
 	public Physique chargerPersPhysique(String paramNumPersonne) {
 		etatRech = false;
-		Physique unphysique = (Physique) getObjectService().getObject(
+		Physique unphysique = (Physique) getObjectService().getObjectById(
 				paramNumPersonne, "Personne");
 		if (!(unphysique.equals(null))) {
 			etatRech = true;
@@ -206,7 +208,7 @@ public class ContratReportFactory implements Serializable {
 	 */
 	public Morale chargerMorale(String paramNumPersonne) {
 		etatRech = false;
-		Morale uneMorale = (Morale) getObjectService().getObject(
+		Morale uneMorale = (Morale) getObjectService().getObjectById(
 				paramNumPersonne, "Morale");
 		if (!(uneMorale.equals(null))) {
 			etatRech = true;
@@ -237,12 +239,4 @@ public class ContratReportFactory implements Serializable {
 		this.contratReport = contratReport;
 	}
 
-	public SelectInfoAttestation getSelectInfoAttestation() {
-		return selectInfoAttestation;
-	}
-
-	public void setSelectInfoAttestation(
-			SelectInfoAttestation selectInfoAttestation) {
-		this.selectInfoAttestation = selectInfoAttestation;
-	}
 }

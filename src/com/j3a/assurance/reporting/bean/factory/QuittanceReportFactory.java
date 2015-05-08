@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.Contrat;
@@ -14,7 +16,7 @@ import com.j3a.assurance.model.Quittance;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.reporting.bean.QuittanceReport;
-
+@Component
 public class QuittanceReportFactory implements Serializable {
 
 	/**
@@ -22,8 +24,8 @@ public class QuittanceReportFactory implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(QuittanceReportFactory.class);
-	private ObjectService objectService;
-	SelectInfoAttestation selectInfo;
+	@Autowired
+	ObjectService objectService;
 	private String idQuittance;
 	private QuittanceReport quittanceReport;
 	private String codeAssure;
@@ -33,7 +35,7 @@ public class QuittanceReportFactory implements Serializable {
 		try {
 			// recueration de la quittance par l'id
 			System.out.println("<----getIdQuittance :" + getIdQuittance());// Clean after
-			Quittance quittance = (Quittance) getObjectService().getObject(
+			Quittance quittance = (Quittance) getObjectService().getObjectById(
 					getIdQuittance(), "Quittance");
 			System.out.println("<----quittance :" + quittance);// Clean after
 			// peuplement des attributs relatifs à la quittance du bean quittance
@@ -113,8 +115,8 @@ public class QuittanceReportFactory implements Serializable {
 		StringBuffer buf = new StringBuffer();
 		buf.append(personne.getNomRaisonSociale());
 		buf.append(" ");
-		if (personne instanceof Physique) {
-			buf.append(((Physique) personne).getPrenomPers());
+		if (personne.getPhysique()!=null) {
+			buf.append( personne.getPhysique().getPrenomPers());
 		}
 		System.out
 				.println("methode du recupération du nom executée avec succès");
@@ -124,7 +126,7 @@ public class QuittanceReportFactory implements Serializable {
 
 	public String getTypeAssurance(Contrat contrat) {
 
-		List<Vehicule> vehiculelist = getSelectInfo().getListVehiculesContrat(
+		List<Vehicule> vehiculelist = getObjectService().getListVehiculesContrat(
 				contrat.getNumPolice());
 
 		System.out.println("le type de l'assurance est bien ajouté :"
@@ -162,14 +164,6 @@ public class QuittanceReportFactory implements Serializable {
 
 	public QuittanceReport getQuittanceReport() {
 		return quittanceReport;
-	}
-
-	public SelectInfoAttestation getSelectInfo() {
-		return selectInfo;
-	}
-
-	public void setSelectInfo(SelectInfoAttestation selectInfo) {
-		this.selectInfo = selectInfo;
 	}
 
 	public String getCodeAssure() {

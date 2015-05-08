@@ -3,6 +3,7 @@ package com.j3a.assurance.objetDao;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.type.StandardBasicTypes;
@@ -27,7 +28,7 @@ public class Dao implements IDao {
 	}
 
 	@Override
-	public Object getObject(int id, String objet) {
+	public Object getObjectById(int id, String objet) {
 		Session session= getSessionFactory().getCurrentSession();
 		String query= "from" +" "+ objet + " "+ " where id =?";
 		  List liste = session.createQuery(query).setParameter(0,id).list();
@@ -37,7 +38,7 @@ public class Dao implements IDao {
 	}
 
 	@Override
-	public Object getObject(String id, String objet) {
+	public Object getObjectById(String id, String objet) {
 		Session session= getSessionFactory().getCurrentSession();
 		String query= "from" +" "+ objet + " "+ " where id =?";
 		  List liste = session.createQuery(query).setParameter(0,id).list();
@@ -128,6 +129,21 @@ public class Dao implements IDao {
 		// TODO Auto-generated method stub
 		return list ;
 	}
+	
+	@Transactional
+	public Object getByIdPK(Object object, String table)
+			throws HibernateException {
+		Query query = getSessionFactory().getCurrentSession().createQuery(
+				"from " + table + " O where O.id=:pk");
+		query.setParameter("pk", object);
+		List list = query.list();
+		System.out
+				.println("/********************requ�te Pk reussie***********************/");
+		if (list.size() == 0)
+			return null;
+		return list.get(0);
+	}
+
 
 	//getters et setters
 	public SessionFactory getSessionFactory() {

@@ -1,64 +1,96 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title></title>
+</h:head>
 <ui:composition template="/template/templateWebAuto.xhtml">
+
 	<ui:define name="content">
-		
-		<h:form id="gnl">
-	<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
-	
-	<p:panel header=" Immatriculation du véhicule">
-	     <h:panelGrid columns="7">
+
+			<h:form id="VehiculeProp">
+				<p:messages id="pmessagePropVehi" showDetail="false" sticky="true" closable="true"/>
+				 <fieldset class="fieldset"  style="width:97%"><legend>Immatriculation Actuelle</legend>
+				 <h:panelGrid columns="4">
+				               <h:outputText value="Numéro d'Immatriculation "/>
+										<p:inputText id="imat" value="#{carteGriseMB.slctdVehiRw.vehi.numImmat}"
+										 required="true" requiredMessage="Sélectionner une Immatriculation !"
+										 styleClass="identifiant">
+										<p:ajax  update="@this, pmessagePropVehi" global="false"/>
+										</p:inputText>
+										
+									<h:outputText value="Date d'Immatriculation " style="margin-left: 20px;"/>
+									 <p:inputMask value="#{carteGriseMB.slctdVehiRw.vehi.dateImmat}" id="dateActu"  mask="99/99/9999" 
+									 required="true" requiredMessage="Sélectionner une date d'Immatriculation !">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+									<p:ajax  event="blur" listener="#{carteGriseMB.changedateImmat}"
+									  update="@this, dateImmatpre, datePms, pmessagePropVehi" global="false"/>
+									</p:inputMask>
+								
+										
+				 </h:panelGrid>
+				 
+				 
+				 
+				 </fieldset>
+						     
+						     
+			   <fieldset class="fieldset"  style="width:97%"><legend>Immatriculation Précédente</legend>
+			    <h:panelGrid columns="7">
 				 <h:outputText value="Numéro d'Immatriculation"/>
-				 <h:inputText 
+				 <h:inputText value="#{carteGriseMB.slctdVehiRw.vehi.numImmatPrec}"
 				 styleClass="identifiant"
 				 ></h:inputText>
 				 <h:outputText value="Date d'Immatriculation" style="margin-left: 20px;"></h:outputText>
-				 <p:inputMask  
+				 <p:inputMask value="#{carteGriseMB.slctdVehiRw.vehi.dateImmatPrec}" 
 				 id="dateImmatpre" mask="99/99/9999" >
 				<f:convertDateTime pattern="dd/MM/yyyy" />
-				
+				<p:ajax  event="blur" listener="#{carteGriseMB.changedateImmatprec}"
+									  update="@this, datePms" global="false"/>
 				</p:inputMask>
+				<h:outputText value="Nombres de cartes" style="margin-left: 20px;"></h:outputText>
+				 <h:inputText value="#{carteGriseMB.slctdVehiRw.vehi.nbreCarte}"></h:inputText>
+				<p:selectBooleanCheckbox itemLabel="Facturation" style="margin-left: 20px;"></p:selectBooleanCheckbox>
 				
-				 </h:panelGrid>
-			</p:panel>
-			
-			<p:panel header="Caractéristiques du véhicule">
-								<h:panelGrid id="vehiProp" columns="4">
+				 </h:panelGrid></fieldset>
+						     
+							
+								<fieldset class="fieldset" style="width:97%" >
+								<legend>Carte Grise</legend>
+								
+								<h:panelGrid id="vehiProp" columns="6">
 								
 								<h:outputText value="Sous Categorie "/>
-										<p:selectOneMenu id="slctSCat">
+										<p:selectOneMenu id="slctSCat"  value="#{carteGriseMB.slctdVehiRw.souCatVehi}" required="true" requiredMessage="Sélectionner une sous Catégorie !" converter="#{scatVehiCvtr}" style="width:170px">
 											<f:selectItem itemLabel="" itemValue=""/>
-											<f:selectItems value="" var="ca" itemLabel="" itemValue=""/>
-										</p:selectOneMenu>
+											<f:selectItems value="#{scatVehiCvtr.catVehiList}" var="ca" itemLabel="#{ca.libelleSousCatVehicule}" itemValue="#{ca}"/>
+											</p:selectOneMenu>
 								
-								<h:outputText value="Catégorie " style="margin-left: 80px;"/>
-										<p:inputText id="catV" 
+								<h:outputText value="Catégorie " style="margin-left: 20px;"/>
+										<p:inputText id="catV" value="#{carteGriseMB.slctdVehiRw.souCatVehi.codeCategorie.libelleCategorie}" 
 										style="width:211px"/>
 										
-								<h:outputText value="1er Mise en circulation "/>
-								 <p:inputMask  id="datePms"  mask="99/99/9999" >
+								<h:outputText value="1er Mise en circulation " style="margin-left: 20px;"/>
+								 <p:inputMask value="#{carteGriseMB.slctdVehiRw.vehi.datePremiereCirc}" id="datePms"  mask="99/99/9999" >
 								<f:convertDateTime pattern="dd/MM/yyyy" />
 								</p:inputMask>
 								
 									
 								
-								<h:outputText value="Statut " style="margin-left: 80px;"/>
-										<p:selectOneMenu  id="statu" required="false" style="width:170px">
+								<h:outputText value="Statut "/>
+										<p:selectOneMenu value="#{carteGriseMB.slctdVehiRw.vehi.statut}" id="statu" required="false" style="width:170px">
 											<f:selectItem itemLabel="Select Statut" itemValue=""/>
 											<f:selectItem itemLabel="Vehicule avec Atelage" itemValue="Vehicule avec Atelage"/>
 											<f:selectItem itemLabel="Vehicule sans Atelage" itemValue="Vehicule sans Atelage"/>
 											<f:selectItem itemLabel="Remorque" itemValue="Remorque"/>
 										</p:selectOneMenu>
 									
-								<h:outputText value="Carosserie "/>
-										<p:selectOneMenu  id="caross" required="false" 
+								<h:outputText value="Carosserie " style="margin-left: 20px;"/>
+										<p:selectOneMenu value="#{carteGriseMB.slctdVehiRw.vehi.carrosserie}" id="caross" required="false" 
 										 style="width:154px" label="Carosserie du vehicule">
 											<f:selectItem itemLabel="Choix de Carosserie" itemValue=""/>
 											<f:selectItem itemLabel="Berline tricorps" itemValue="Berline tricorps"/>
@@ -82,14 +114,14 @@
 											<f:selectItem itemLabel="Ludospace" itemValue="Ludospace"/>
 										</p:selectOneMenu>
 										
-										<h:outputText value="Genre " style="margin-left: 80px;"/>
-										<p:selectOneMenu id="genr"  required="false" style="width:127px">
+										<h:outputText value="Genre " style="margin-left: 20px;"/>
+										<p:selectOneMenu id="genr" value="#{carteGriseMB.slctdVehiRw.vehi.genre}" required="false" style="width:127px">
 											<f:selectItem itemLabel="VP" itemValue="VP"/>
 											<f:selectItem itemLabel="VT" itemValue="VT"/>
 										</p:selectOneMenu>
 										
 										<h:outputText value="Marque " />
-										<p:selectOneMenu  id="marq" style="width:170px">
+										<p:selectOneMenu value="#{carteGriseMB.slctdVehiRw.vehi.marque}" id="marq" style="width:170px">
 											<f:selectItem itemLabel=" Sélectionnez"  itemValue=""/>
 											<f:selectItem itemLabel="ABARTH"  itemValue="ABARTH"/>										
 											<f:selectItem itemLabel="ACURA"  itemValue="ACURA"/>
@@ -180,15 +212,15 @@
 										
 									
 									
-										<h:outputText value="Energie " style="margin-left: 80px;"/>
-										<p:selectOneMenu  id="enrg" style="width:154px">
+										<h:outputText value="Energie " style="margin-left: 20px;"/>
+										<p:selectOneMenu value="#{carteGriseMB.slctdVehiRw.vehi.energie}" id="enrg" style="width:154px">
 											<f:selectItem itemLabel="diesel" itemValue="diesel"/>
 											<f:selectItem itemLabel="essence" itemValue="essence"/>
 										</p:selectOneMenu>
 										
 							
-										<h:outputText value="Type Vehicule" />
-										<p:selectOneMenu id="typV"   style="width:154px">
+										<h:outputText value="Type Vehicule" style="margin-left: 20px;"/>
+										<p:selectOneMenu id="typV" value="#{carteGriseMB.slctdVehiRw.vehi.typeVehicule}"  style="width:154px">
 											<f:selectItem itemLabel="" itemValue=""/>
 											<f:selectItem itemLabel="Particulier" itemValue="VP"/>
 											<f:selectItem itemLabel="Taxi" itemValue="VTT"/>
@@ -201,27 +233,57 @@
 											<f:selectItem itemLabel="Autres" itemValue="VA"/>
 										</p:selectOneMenu>
 										
-											
+											<h:outputText value="Type Transporte"/>
+										<p:selectOneMenu id="typTr" value="#{carteGriseMB.slctdVehiRw.vehi.typeTransporte}"  style="width:154px">
+											<f:selectItem itemLabel="" itemValue=""/>
+											<f:selectItem itemLabel="Elève" itemValue="TE"/>
+											<f:selectItem itemLabel="Employés" itemValue="TEM"/>
+											<f:selectItem itemLabel="Clandestins" itemValue="TC"/>
+											<f:selectItem itemLabel="Hydrocarbures" itemValue="TH"/>
+											<f:selectItem itemLabel="Autres" itemValue="TA"/>
+										</p:selectOneMenu>
+										
+										<h:outputText value="Type commercial" style="margin-left: 20px;"/>
+										<p:inputText id="typcomer" value="#{carteGriseMB.slctdVehiRw.vehi.typeCommercial}"
+										style="width:211px"/>
 										
 										
-										<h:outputText value="Châssis " style="margin-left: 80px;"/>
-										<p:inputText id="chass" 
+										<h:outputText value="Châssis " style="margin-left: 20px;"/>
+										<p:inputText id="chass" value="#{carteGriseMB.slctdVehiRw.vehi.chassis}"
 										 style="width:148px"/>
 										 
+										<h:outputText value="Numéro Moteur" />
+										<p:inputText id="nmoteur" value="#{carteGriseMB.slctdVehiRw.vehi.numMoteur}"
+										 style="width:149px"
+										/>
+										
+								
+										<h:outputText value="Poids à vide (Kg)"
+											style="margin-left: 20px;" />
+										<p:inputText id="poidsVid"  style="width:148px"
+											value="#{carteGriseMB.slctdVehiRw.vehi.poidsVide}" binding="#{carteGriseMB.inputPoidV}"
+											 >
+											<f:convertNumber type="number"></f:convertNumber>
+										</p:inputText>
 										
 
+
+
+
 										<h:outputText value="Charge Utile (T)"
-											 />
+											style="margin-left: 20px;" />
 										<p:inputText id="poidsUtil"
-											
+											value="#{carteGriseMB.slctdVehiRw.vehi.chargeUtile}" binding="#{carteGriseMB.inputCu}"
 											style="width:148px" 
 										>
 											<f:convertNumber type="number" />
 										</p:inputText>
 									
 								
-										<h:outputText value="Puissance Fiscale " style="margin-left: 80px;"/>
-										<p:inputText id="pfisc" 
+										<h:outputText value="Puissance Fiscale "/>
+										<p:inputText id="pfisc" value="#{carteGriseMB.slctdVehiRw.vehi.puissFisc}" 
+										
+										binding="#{carteGriseMB.inputPf}" 
 										style="width:149px">
 										<f:convertNumber integerOnly="true" ></f:convertNumber>
 										<f:validateLongRange minimum="0"  maximum="20"  ></f:validateLongRange>
@@ -229,103 +291,220 @@
 										</p:inputText>
 
 									
-										<h:outputText value="Puissance Réelle Cm3&nbsp;&nbsp;"/>
-										<p:inputText id="preel" 
+										<h:outputText value="Puissance Réelle Cm3&nbsp;&nbsp;" style="margin-left: 20px;"/>
+										<p:inputText id="preel" value="#{carteGriseMB.slctdVehiRw.vehi.puissReelle}" binding="#{carteGriseMB.inputPr}"
 										 style="width:148px">
 										 <p:ajax  update="@this" global="false"/>
 										 </p:inputText>
 										 
-										 <h:outputText value="Remorque" style="margin-left: 80px;"/>
-										<p:selectOneMenu id="remorq"   style="width:154px">
+										 <h:outputText value="Remorque" style="margin-left: 20px;"/>
+										<p:selectOneMenu id="remorq" value="#{carteGriseMB.remorque}"  style="width:154px">
 											<f:selectItem itemLabel="Sans Remorque" itemValue="non"/>
 											<f:selectItem itemLabel="Avec Remorque" itemValue="oui"/>
+											<p:ajax
+												listener="#{carteGriseMB.choixRemorque}" process="@this" />
+										
 										</p:selectOneMenu>
 										
 										
 										<h:outputText value="Places.Cabine"/>
-										<p:inputText id="plcCab" 
+										<p:inputText id="plcCab" value="#{carteGriseMB.slctdVehiRw.vehi.nbrePlaceCab}" binding="#{carteGriseMB.inputPlcCab}"
 										style="width:149px">
-										 
+										 <p:ajax
+												listener="#{carteGriseMB.chxNbrTran}"
+												process="@this" update=":VehiculeProp:nbrTrans" global="false"/>
 										 </p:inputText>
 										
 									
-										<h:outputText value="Places.HCabine" style="margin-left: 80px;"/>
-										<p:inputText id="plcHCab" 
+										<h:outputText value="Places.HCabine" style="margin-left: 20px;"/>
+										<p:inputText id="plcHCab" value="#{carteGriseMB.slctdVehiRw.vehi.nbrePlaceHorscab}" binding="#{carteGriseMB.inputPlcHcab}"
 										 style="width:149px">
+										 <p:ajax
+												listener="#{carteGriseMB.chxNbrTran}"
+												process="@this" update=":VehiculeProp:nbrTrans"  global="false"/>
 										 </p:inputText>
 										 
-										 	<h:outputText value="Nombre.Transporté"/>
-										<p:inputText id="nbrTrans" 
+										 	<h:outputText value="Nombre.Transporté" style="margin-left: 20px;"/>
+										<p:inputText id="nbrTrans" value="#{carteGriseMB.slctdVehiRw.vehi.nbreTransporte}"
 										readonly="true"
 										 style="width:149px"/>
 										 
 										
 										
 									
-										<h:outputText value="Valeur Neuve" style="margin-left: 80px;" />
-										<p:inputText id="valNv" 
+										<h:outputText value="Valeur Neuve  " />
+										<p:inputText id="valNv" value="#{carteGriseMB.slctdVehiRw.vehi.valNeuf}" 
+										binding="#{carteGriseMB.inputValNeuv}" 
 										 style="width:148px">
 										<f:convertNumber pattern="##,###.##"></f:convertNumber>
 										<p:ajax event="blur" update="@this" global="false"></p:ajax>
 										</p:inputText>
 										
-										<h:outputText value="Valeur Venale" />
-										<p:inputText id="valVn"   
+										<h:outputText value="Valeur Venale" style="margin-left: 20px;" />
+										<p:inputText id="valVn" value="#{carteGriseMB.slctdVehiRw.vehi.valVenale}"
+										binding="#{carteGriseMB.inputValVen}"  
 										 style="width:149px" >
 										<f:convertNumber pattern="##,###.##" ></f:convertNumber>
 										<p:ajax event="blur" update="@this" global="false"></p:ajax>
 										</p:inputText>
 										
 										
-										 <h:outputText  />
-										 <h:outputText  />
-	
+										 <h:outputText value="" />
+										 <h:outputText value="" />
 										
-										<h:outputText value="Ville* "  />
+								
+								
+								<h:outputText value="Couleur" />
+										<p:selectOneMenu
+											value="#{carteGriseMB.slctdVehiRw.vehi.couleur}"
+											id="clr" required="false" style="width:170px">
+											<f:selectItem itemLabel="Select Couleur" itemValue="" />
+											<f:selectItem itemLabel="Blanc" itemValue="blanc" />
+											<f:selectItem itemLabel="Noir" itemValue="noir" />
+											<f:selectItem itemLabel="Bleu" itemValue="bleu" />
+											<f:selectItem itemLabel="Vert" itemValue="vert" />
+											<f:selectItem itemLabel="Rouge" itemValue="rouge" />
+											<f:selectItem itemLabel="Gris" itemValue="gris" />
+											<f:selectItem itemLabel="Jaune" itemValue="jaune" />
+										</p:selectOneMenu>
+										
+										<h:outputText value="Protection "
+											style="margin-left: 20px;"/>
+										<p:selectOneMenu
+											value="#{carteGriseMB.slctdVehiRw.vehi.protection}" style="width:154px"
+											id="protect" required="false">
+											<f:selectItem itemLabel="Select Protection" itemValue="" />
+											<f:selectItem itemLabel="Option 1" itemValue="Option 1" />
+											<f:selectItem itemLabel="Option 2" itemValue="Option 2" />
+											<f:selectItem itemLabel="Option 3" itemValue="Option 3" />
+										</p:selectOneMenu>
+										
+										<h:outputText value="Ville* " style="margin-left: 20px;" />
 										<p:selectOneMenu id="ville" label="Ville"
-											
-											 required="false" requiredMessage="Sélectionner une Ville !"
+											value="#{carteGriseMB.slctdville}"
+											converter="#{villeCvtr}" required="false" requiredMessage="Sélectionner une Ville !"
 											style="width:130px">
 											
 											<f:selectItems
-												
-												var="ca" itemLabel="" itemValue="" />
-											
+												value="#{carteGriseMB.villeList}"
+												var="ca" itemLabel="#{ca.libelleVille}" itemValue="#{ca}" />
+											<p:ajax
+												listener="#{carteGriseMB.chxVille}"
+												process="@this" update=":VehiculeProp:zoneGeo" global="false"/>
 										</p:selectOneMenu>
 										
 										<h:outputText value="Zone &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-											 style="margin-left: 80px;"/>
+											 />
 											
 										<p:inputText id="zoneGeo"
-										
-										readonly="true" style="width:170px" />
-										
-										
+										value="#{carteGriseMB.slctdVehiRw.zonGeo.libelleZoneGeo}" 
+										readonly="true" style="width:211px" />
+										<h:outputText value="Taux Apporteur" style="margin-left: 20px;"/>
+											<p:inputText id="txapp"
+												value="#{carteGriseMB.slctdVehiRw.tauxCommissionApporteur}"
+												>
+												<f:convertNumber pattern="##,###.##" ></f:convertNumber>
+											</p:inputText>
 									</h:panelGrid>
-									<fieldset style="background-color: maroon;">
-				                        <h:commandButton value="Saisir le Conducteur" action="conducteur" style="margin-left:350px"></h:commandButton>
-				           </fieldset>
-				 	                 
-                                   </p:panel>
+                                     </fieldset>
+										<fieldset class="fieldset" style="width: 97%">
+											<legend> Identité Conducteur </legend>
+											<h:panelGrid id="cducgrid" columns="9">
+											
+												<h:outputText value="Code"  />
+												<p:inputText id="num_cond" value="#{carteGriseMB.slctdVehiRw.conduHab.numCond}"
+												style="margin-left: 20px; width: 178px">
+													<p:ajax listener="#{affaireNouvelleMB.chxConducteur}"
+															process="@this" update="" global="false"/>
+												</p:inputText>
+												<h:outputText value="" />
+						
+												<h:outputText value="Nom/Denomination*" style="margin-left: 20px;" />
+												<p:inputText id="nameC" value="#{carteGriseMB.slctdVehiRw.conduHab.nonCond}"
+													style="width:175px"/>
+												<p:message id="msgnameC" for="nameC" display="icon" />
+						
+												<h:outputText value="Prénoms*" style="margin-left: 20px;" />
+												<p:inputText id="prenC"
+													value="#{carteGriseMB.slctdVehiRw.conduHab.prenomsCond}"
+													style="width:168px" />
+												<p:message id="msgprenC" for="prenC" display="icon" />
+						                      
+						                      
+						                      
+												<h:outputText value="Né le"  />
+												<p:inputMask value="#{carteGriseMB.slctdVehiRw.conduHab.dateNaissCond}"
+													id="dateC" style="width:178px ;margin-left: 20px;" mask="99/99/9999">
+													<f:convertDateTime pattern="dd/MM/yyyy" />
+												</p:inputMask>
+												<p:message id="msgdateNaissCond" for="dateC" display="icon" />
+						
+												<h:outputText value="Lieu naissance" style="margin-left: 20px;"/>
+												<p:inputText value="#{carteGriseMB.slctdVehiRw.conduHab.lieuNaisCond}"
+													id="lieuNaisC" style="width:175px;"/>
+												<p:message id="msgdateC" for="dateC" display="icon" />
+												
+												<h:outputText value="Permis" style="margin-left: 20px;"/>
+													<p:selectOneMenu
+												value="#{carteGriseMB.slctdVehiRw.conduHab.typpermiscond}"
+												id="permC" required="false" style="width:145px">
+												<f:selectItem itemLabel="Permis BCDE" itemValue="BCDE" />
+												<f:selectItem itemLabel="Permis B" itemValue="B" />
+												<f:selectItem itemLabel="Permis A" itemValue="A" />
+												<f:selectItem itemLabel="Autre" itemValue="Autre" />
+											</p:selectOneMenu>	
+												<p:message id="msgpermC" for="permC" display="icon" />
+												
+												
+												<h:outputText value="N° Permis"/>
+												<p:inputText value="#{carteGriseMB.slctdVehiRw.conduHab.numpermiscond}"
+													id="numPermC" style="width:178px; margin-left: 20px;"/>
+												<p:message id="msgnumPermC" for="numPermC" display="icon" />
+												
+												<h:outputText value="Durée du permis" style="margin-left: 20px;"/>
+												<p:inputText value="#{carteGriseMB.slctdVehiRw.conduHab.dureepermiscond}"
+													id="durpermC" style="width:175px;"/>
+												<p:message id="msgdurpermC" for="durpermC" display="icon" />
+												
+												<h:outputText value="Catégorie Socio-Professionnelle" style="margin-left: 20px;"/>
+												<p:selectOneMenu
+													value="#{carteGriseMB.slctdVehiRw.conduHab.categsocioprocond}" style="width:154px"
+													id="catProCd" required="false">
+													
+													<f:selectItem itemLabel="a" itemValue="a" />
+													<f:selectItem itemLabel=" b" itemValue="b" />
+													<f:selectItem itemLabel="c" itemValue="c" />
+													<f:selectItem itemLabel="d" itemValue="d" />
+													<f:selectItem itemLabel="e" itemValue="e" />
+												</p:selectOneMenu>
+												<p:message id="msgcatProCd" for="catProCd" display="icon" />
+												
+												
+												
+											</h:panelGrid>
+										</fieldset>
+										
+								
+								
+								
+								
+								<h:panelGrid columns="8">
 
+										<f:facet name="footer">
+
+										<p:commandButton id="savProp" value="Valider les Proprietes" 
+											disabled="#{carteGriseMB.buttonPropVehicule}"
+											actionListener="#{carteGriseMB.validerProp}" 
+											process="VehiculeProp" update=":VehiculeProp"
+											/>
+										
+									</f:facet>
+								</h:panelGrid>
+								
+								
 			</h:form>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+ 
+</ui:define>
 
-
-	</ui:define>
 </ui:composition>
 </html>
