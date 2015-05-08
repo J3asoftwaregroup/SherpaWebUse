@@ -14,12 +14,14 @@ import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.springframework.dao.DataAccessException;
 
+import com.j3a.assurance.managedBean.ManagedGarantie;
 import com.j3a.assurance.model.Garantie;
 import com.j3a.assurance.prime.CalculPrimeGlobale;
 import com.j3a.assurance.prime.CalculPrimeProrata;
 import com.j3a.assurance.prime.ReturnPrimeCategorie;
 import com.j3a.assurance.prime.categorie.PrimeCategorie;
 import com.j3a.assurance.prime.categorie.PrimeCategorieInterface;
+import com.j3a.assurance.utilitaire.GarantieTable;
 import com.j3a.assurance.utilitaire.Garanties;
 import com.j3a.assurance.utilitaire.VehiculeRow;
 
@@ -74,7 +76,7 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 		FacesMessage message = new FacesMessage("");
 		boolean checkeixte = false;
 		for (Object obj : getObjectService().getObjects("Garantie")) {
-			if (garantie.getId().equals(((Garantie) obj).getId())) {
+			if (garantie.getId().equals(((Garantie) obj).getCodeGarantie())) {
 				checkeixte = true;
 			}
 		}

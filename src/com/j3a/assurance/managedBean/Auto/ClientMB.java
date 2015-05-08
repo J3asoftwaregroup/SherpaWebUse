@@ -136,8 +136,6 @@ public class ClientMB implements Serializable{
 				physique.setProfession(getProfession());
 				physique.setSituationMatPers(situationMatrimoniale);
 				
-				
-				
 					//Reseigner Personne_Nationalite
 				personneNationalitePk.setNumSouscripteur(physique.getNumSouscripteur());
 				//personneNationalitePk.setCodeNationalite(comboNationalite.getSelectedNationalite());
