@@ -106,8 +106,9 @@ public class ClientMB implements Serializable{
 		private InputText dirigeantInputText = new InputText();
 		private InputText mailDGInputText = new InputText();
 		
-		public void addPersonnePhysique() {//By ALekerand	
-			//Recupération des données Affichées
+		
+		public void addPersonnePhysique() {	
+			
 			try {
 				setPersonne(maPersonne);
 				getPersonne();//Attribuer un code au client
@@ -116,7 +117,7 @@ public class ClientMB implements Serializable{
 				
 				//Renseigner l'objet Physique
 				setPhysique(monPhysique);
-				physique.setId(personne.getId());//Attribuer le code de pers à physique
+				physique.setPersonne(personne);//Attribuer le code de pers à physique
 				physique.setNomRaisonSociale(getMaPersonne().getNomRaisonSociale());
 				physique.setDatePers(personne.getDatePers());
 
@@ -135,17 +136,15 @@ public class ClientMB implements Serializable{
 				physique.setProfession(getProfession());
 				physique.setSituationMatPers(situationMatrimoniale);
 				
-				
-				
 					//Reseigner Personne_Nationalite
-				personneNationalitePk.setNumSouscripteur(physique);
-				personneNationalitePk.setCodeNationalite(comboNationalite.getSelectedNationalite());
+				personneNationalitePk.setNumSouscripteur(physique.getNumSouscripteur());
+				//personneNationalitePk.setCodeNationalite(comboNationalite.getSelectedNationalite());
 				personneNationalite.setId(personneNationalitePk);
 				personneNationalite.setDateNationalite(Calendar.getInstance().getTime());
 							
 					//Renseigner EtreType (client)
-				etrePk.setCodeTypePers((TypePersonne) getObjectService().getObjectById(1, "TypePersonne"));
-				etrePk.setNumSouscripteur(personne);
+				etrePk.setCodeTypePers((int) getObjectService().getObject(1, "TypePersonne"));
+				etrePk.setNumSouscripteur(personne.getNumSouscripteur());
 				etre.setId(etrePk);
 				etre.setDatePers(Calendar.getInstance().getTime());
 				
@@ -153,7 +152,7 @@ public class ClientMB implements Serializable{
 				getObjectService().addObject(physique);
 				getObjectService().addObject(etre);
 				setEtatEngSouscripteur(true);
-				setMaPersonne(physique);
+				//setMaPersonne(physique);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -164,30 +163,14 @@ public class ClientMB implements Serializable{
 					
 		}
 
-		
-		public void chargerCombos() {
-				//Charger la combo Nationaté
-				try {
-					comboNationalite.setSelectedNationalite(getFindObject().findNationalite(getMaPersonne().getId()));
-				} catch (NullPointerException e) {
-				}
-				//Charger la combo Sexe
-				try {
-					comboSexe.setSelectedSexe(getMonPhysique().getSexe());
-				} catch (NullPointerException e) {
-				}
-				getProfession();
-		}
-		
-		
-		
+
 
 		public void viderPhysique(Physique objPhyq) {
 			// Vider l'objet physique de l'affichage
-			objPhyq.setId(null);
+			objPhyq.setNumSouscripteur(null);
 			objPhyq.setDatePers(null);
 			//objPhyq.setTitre(null);
-			objPhyq.setNationalites(null);
+			//objPhyq.setNationalites(null);
 			objPhyq.setNomRaisonSociale(null);
 			objPhyq.setPrenomPers(null);
 			objPhyq.setDatePers(null);
@@ -210,7 +193,7 @@ public class ClientMB implements Serializable{
 		}
 
 		public void viderPersonne(Personne objPersonne){
-			objPersonne.setId(null);
+			objPersonne.setNumSouscripteur(null);
 			objPersonne.setNomRaisonSociale(null);
 			objPersonne.setDatePers(null);
 			objPersonne.setAdresse(null);
@@ -219,8 +202,8 @@ public class ClientMB implements Serializable{
 			objPersonne.setFax(null);
 			objPersonne.setEmail(null);
 			objPersonne.setContrats(null);
-			objPersonne.setTypePersonnes(null);
-			objPersonne.setNationalites(null);
+			//objPersonne.setTypePersonnes(null);
+			//objPersonne.setNationalites(null);
 			
 		}
 		
@@ -244,7 +227,7 @@ public class ClientMB implements Serializable{
 			String key = getObjectService().getCodeTable("Perso", 5, 4, "personne",
 					"NUM_SOUSCRIPTEUR");
 
-			personne.setId(key);
+			personne.setNumSouscripteur(key);
 			return personne;
 		}
 
@@ -278,23 +261,7 @@ public class ClientMB implements Serializable{
 
 		
 
-		@SuppressWarnings("null")
-		public List<SelectItem> getProfPersonneList() {
-			if (profPersonneList == null) {
-				profPersonneList = new ArrayList<SelectItem>();
-				for (Object obj : getObjectService().getObjects("Physique")) {
-
-					profPersonneList.add(new SelectItem(((Physique) obj)
-							.getProfession(), ((Physique) obj).getProfession()));
-
-				}
-			}
-			return profPersonneList;
-		}
 		
-		public void setPiecePersList(List<Physique> piecePersList) {
-			this.piecePersList = piecePersList;
-		}
 
 		public ObjectService getObjectService() {
 			return objectService;
@@ -402,24 +369,7 @@ public class ClientMB implements Serializable{
 		}
 
 
-		public PersonneModel getPersonneModel() {
-			return personneModel;
-		}
 
-
-		public void setPersonneModel(PersonneModel personneModel) {
-			this.personneModel = personneModel;
-		}
-
-
-		public Client getSelectedClient() {
-			return selectedClient;
-		}
-
-
-		public void setSelectedClient(Client selectedClient) {
-			this.selectedClient = selectedClient;
-		}
 
 		public String getValeurRecherchePers() {
 			return valeurRecherchePers;
@@ -430,26 +380,8 @@ public class ClientMB implements Serializable{
 			this.valeurRecherchePers = valeurRecherchePers;
 		}
 
-		public Client getMonClient() {
-			return monClient;
-		}
+		
 
-
-		public void setMonClient(Client monClient) {
-			this.monClient = monClient;
-		}
-
-
-
-		public List getClientList() {
-			return clientList;
-		}
-
-
-
-		public void setClientList(List clientList) {
-			this.clientList = clientList;
-		}
 
 
 		public Personne getMaPersonne() {
@@ -462,17 +394,6 @@ public class ClientMB implements Serializable{
 			this.maPersonne = maPersonne;
 		}
 
-
-
-		public RechercheMethode getRecherchermethode() {
-			return recherchermethode;
-		}
-
-
-
-		public void setRecherchermethode(RechercheMethode recherchermethode) {
-			this.recherchermethode = recherchermethode;
-		}
 
 		public TypePersonne getTypePersonne() {
 			return typePersonne;
@@ -498,13 +419,13 @@ public class ClientMB implements Serializable{
 
 
 
-		public EtrePK getEtrePk() {
+		public EtreId getEtrePk() {
 			return etrePk;
 		}
 
 
 
-		public void setEtrePk(EtrePK etrePk) {
+		public void setEtrePk(EtreId etrePk) {
 			this.etrePk = etrePk;
 		}
 
@@ -524,36 +445,14 @@ public class ClientMB implements Serializable{
 			this.personneNationalite = personneNationalite;
 		}
 
-		public PersonneNationalitePK getPersonneNationalitePk() {
+		public PersonneNationaliteId getPersonneNationalitePk() {
 			return personneNationalitePk;
 		}
 
-		public void setPersonneNationalitePk(PersonneNationalitePK personneNationalitePk) {
+		public void setPersonneNationalitePk(PersonneNationaliteId personneNationalitePk) {
 			this.personneNationalitePk = personneNationalitePk;
 		}
 
-
-		public CheckPerson getCheckPerson() {
-			return checkPerson;
-		}
-
-
-
-		public void setCheckPerson(CheckPerson checkPerson) {
-			this.checkPerson = checkPerson;
-		}
-
-
-
-		public FindObject getFindObject() {
-			return findObject;
-		}
-
-
-
-		public void setFindObject(FindObject findObject) {
-			this.findObject = findObject;
-		}
 
 
 
@@ -590,15 +489,7 @@ public class ClientMB implements Serializable{
 		}
 
 
-		public ComboNationalite getComboNationalite() {
-			return comboNationalite;
-		}
-
-
-		public void setComboNationalite(ComboNationalite comboNationalite) {
-			this.comboNationalite = comboNationalite;
-		}
-
+		
 
 		public String getTittre() {
 			return tittre;
@@ -650,25 +541,7 @@ public class ClientMB implements Serializable{
 		}
 
 
-		public List getFilteredClients() {
-			return filteredClients;
-		}
-
-
-		public void setFilteredClients(List filteredClients) {
-			this.filteredClients = filteredClients;
-		}
-
-
-		public RequettePersonne getRequettePersonne() {
-			return requettePersonne;
-		}
-
-
-		public void setRequettePersonne(RequettePersonne requettePersonne) {
-			this.requettePersonne = requettePersonne;
-		}
-
+		
 
 		public InputText getNomInputText() {
 			return nomInputText;

@@ -93,14 +93,14 @@ public class CotationAuto implements Serializable{
 		// les methodes de choix Avenant Affaire Nouvelle
 		public void tabChange() {
 			// good
-			getManagedGarantieAuto().setDuree(getContrat().getDuree());
+			/*getManagedGarantieAuto().setDuree(getContrat().getDuree());
 			getManagedGarantieAuto().getListeGroupGaranties().clear();
 			getManagedGarantieAuto().getListegaranties().clear();
 			getManagedGarantieAuto().getListegarantieFiltre().clear();
 			getManagedGarantieAuto().cleanChamps();
 			
 			getManagedGarantieAuto().affichegarantiesAuto(
-					getCarteGriseMB().getSlctdVehiRw());
+			*/		getCarteGriseMB().getSlctdVehiRw());
 		}
 
 		// methode de validation de la prime
@@ -113,19 +113,17 @@ public class CotationAuto implements Serializable{
 		}
 
 		
-		public void enregisterClient() {
-			getClient().enregistrerClient();
-		}
+		
 
 		public void validerPrime() {
-			getManagedGarantieAuto().validerPrime();
+			//getManagedGarantieAuto().validerPrime();
 
 			// listGarantieparVehicule
 			getCarteGriseMB().getSlctdVehiRw().getListGarantieparVehicule()
 					.clear();
 
 			getCarteGriseMB().getSlctdVehiRw().getListegaranties().clear();
-			getCarteGriseMB().getSlctdVehiRw().getListegaranties()
+			//getCarteGriseMB().getSlctdVehiRw().getListegaranties()
 					.addAll(getManagedGarantieAuto().getListegaranties());
 
 			getCarteGriseMB().setValidVehiEtat(false);
@@ -134,26 +132,15 @@ public class CotationAuto implements Serializable{
 		public void majConducteur() {
 
 			getCarteGriseMB().getConduHab().setDateNaissCond(
-					getManagedClient().getMaPersonne().getDatePers());
+					getClient().getMaPersonne().getDatePers());
 			getCarteGriseMB().getConduHab().setNonCond(
-					getManagedClient().getMaPersonne().getNomRaisonSociale());
+					getClient().getMaPersonne().getNomRaisonSociale());
 			String lieunaiss = null, prenom = null;
-			if (getManagedClient().getMaPersonne() instanceof Physique) {
-				prenom = ((Physique) getManagedClient().getMaPersonne())
-						.getPrenomPers();
-				lieunaiss = ((Physique) getManagedClient().getMaPersonne())
-						.getLieuNaissPers();
-			}
+			
 			getCarteGriseMB().getConduHab().setPrenomsCond(prenom);
 			getCarteGriseMB().getConduHab().setLieuNaisCond(lieunaiss);
 			String numpiece = null;
-			if (getManagedClient().getMaPersonne() instanceof Physique) {
-				numpiece = ((Physique) getManagedClient().getMaPersonne())
-						.getNumPiecePers();
-			}
-			if (getManagedClient().getMaPersonne() instanceof Morale) {
-				numpiece = ((Morale) getManagedClient().getMaPersonne()).getNumRc();
-			}
+			
 			getCarteGriseMB().getConduHab().setId(numpiece);
 			getCarteGriseMB().getConduHab().setDureepermiscond((short) 0);
 			System.out.println("+++++++Conducteur habituel du Vehicule+++++++"
@@ -163,12 +150,12 @@ public class CotationAuto implements Serializable{
 
 		public boolean isClientConduc() {
 			String numpiece = "";
-			if (getManagedClient().getMaPersonne() instanceof Physique) {
-				numpiece = ((Physique) getManagedClient().getMaPersonne())
+			if (getClient().getMaPersonne() instanceof Physique) {
+				numpiece = ((Physique) getClient().getMaPersonne())
 						.getNumPiecePers();
 			}
-			if (getManagedClient().getMaPersonne() instanceof Morale) {
-				numpiece = ((Morale) getManagedClient().getMaPersonne()).getNumRc();
+			if (getClient().getMaPersonne() instanceof Morale) {
+				numpiece = ((Morale) getClient().getMaPersonne()).getNumRc();
 			}
 
 			return numpiece.equalsIgnoreCase(getCarteGriseMB()
@@ -254,7 +241,7 @@ public class CotationAuto implements Serializable{
 
 			if (newStep.equalsIgnoreCase("ongletContrat")
 					&& oldStep.equalsIgnoreCase("ongletClient")) { // /+Dob
-				if (!getManagedClient().getStatutRechercheClient()) {
+				if (!getClient().getStatutRechercheClient()) {
 					a = oldStep;
 					FacesMessage msg = new FacesMessage(
 							"Vous devez Selectionner/Creer un client");
@@ -280,7 +267,7 @@ public class CotationAuto implements Serializable{
 					getContrat().getContrat().setCodePointVente(
 							getContrat().getCodePointVente());
 					getContrat().getContrat().setNumSouscripteur(
-							getManagedClient().getMaPersonne());
+							getClient().getMaPersonne());
 					// getManagedContrat().getAvenant().setId(
 					// getManagedContrat().getNumAvenant());
 					getContrat().getContrat().setCodeRisque(
@@ -299,7 +286,7 @@ public class CotationAuto implements Serializable{
 									.getId());
 
 					majConducteur();
-					getCarteGriseMB().choixSousCat();
+					getCarteGriseMB().choixSousCat();*/
 				}
 			}
 
@@ -478,7 +465,7 @@ public class CotationAuto implements Serializable{
 
 		public String getNomclient() {
 			try {
-				Personne personne = getManagedClient().getMaPersonne();
+				Personne personne = getClient().getMaPersonne();
 
 				if (personne instanceof Physique) {
 					Physique physique = (Physique) personne;
@@ -506,7 +493,7 @@ public class CotationAuto implements Serializable{
 		public String getAdresseclient() {
 
 			try {
-				Personne personne = getManagedClient().getMaPersonne();
+				Personne personne = getClient().getMaPersonne();
 
 				adresseclient = personne.getAdresse();
 			} catch (Exception e) { //

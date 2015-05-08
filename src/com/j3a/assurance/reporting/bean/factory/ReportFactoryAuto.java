@@ -56,52 +56,52 @@ public class ReportFactoryAuto implements Serializable {
 		// recueration de la quittance par l'id
 			Quittance quittance = (Quittance) getObjectService().getObjectById(getIdQuittance(), "Quittance");
 			if(quittance!=null){
-				if(quittance.getNumAvenant().getNumPolice().getCodeRisque().getId().equalsIgnoreCase("1")){
+				if(quittance.getAvenant().getContrat().getRisque().getCodeRisque().equalsIgnoreCase("1")){
 					
 					getReportingAuto().setQuittance(quittance);
 					
 					// recuperation de l'avenant
-						Avenant avenant = quittance.getNumAvenant();
+						Avenant avenant = quittance.getAvenant();
 						getReportingAuto().setAvenant(avenant);
 						
 					// recuperation du contrat
-					   Contrat contrat = avenant.getNumPolice();
+					   Contrat contrat = avenant.getContrat();
 					   getReportingAuto().setContrat(contrat);
 						   
 					// recuperation de l'agence
-					   getReportingAuto().setPointVente(contrat.getCodePointVente());
+					   getReportingAuto().setPointVente(contrat.getPointVente());
 					   			  
 					// recuperation de la personne
-						Personne personne = contrat.getNumSouscripteur();
+						Personne personne = contrat.getPersonne();
 						getReportingAuto().setPersonne(personne);
 						
 						getReportingAuto().setPersonne(personne);
 						// peuplement des attributs relatifs souscripteur du bean quittance
-						if (personne instanceof Physique) {
-							Physique physique = (Physique) getObjectService().getObjectById(personne.getId(), "Personne");
+						if (personne.getPhysique()!=null) {
+							Physique physique = (Physique) getObjectService().getObjectById(personne.getNumSouscripteur(), "Personne");
 							getReportingAuto().setPhysique((physique));
 							getReportingAuto().setNom(physique.getNomRaisonSociale()+" "+physique.getPrenomPers());
 
 						}else{
-							Morale morale = (Morale) getObjectService().getObjectById(personne.getId(), "Morale");
+							Morale morale = (Morale) getObjectService().getObjectById(personne.getNumSouscripteur(), "Morale");
 							getReportingAuto().setMorale(morale);
 							getReportingAuto().setNom(morale.getNomRaisonSociale());
 						}
 						
 							
 						//recupération du risque du contrat
-						getReportingAuto().setRisque(contrat.getCodeRisque());
+						getReportingAuto().setRisque(contrat.getRisque());
 						
 						//Recuperation du vehicule Assuré
 						List vehiculeAssureList = new ArrayList<>();
 					//	VehiculesAssures vehiculesAssures = (VehiculesAssures) vehiculeAssureList.get(0);
-						VehiculesAssures vehiculesAssures = avenant.getIdVehiculesAssures();
+						VehiculesAssures vehiculesAssures = avenant.getVehiculesAssures();
 						List listeHistoMouvement = new ArrayList<>();
 					//	listeHistoMouvement
 						
 					//	List listeHistoMouvement = getRequetteHistoMouvement().recuperHistoMouvements(avenant.getId());
-						for(HistoMouvement histoMouvement : getRequetteHistoMouvement().recuperLisHistoMouvement(avenant.getId())){
-							getReportingAuto().getListVehiculeAssure().add(histoMouvement.getCodeVehicule());
+						for(HistoMouvement histoMouvement : getRequetteHistoMouvement().recuperLisHistoMouvement(avenant.getNumAvenant())){
+							getReportingAuto().getListVehiculeAssure().add(histoMouvement.getVehicule());
 						}
 				return reportingAuto;
 				}else{

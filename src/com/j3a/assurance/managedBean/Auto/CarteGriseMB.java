@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -90,6 +91,28 @@ public class CarteGriseMB implements Serializable {
 			}
 			
 		}*/
+        
+     /*   @PostConstruct
+       public void postconstruct(){
+        	GarantieGarantieChoisieId garantieGarantieChoisieId = new GarantieGarantieChoisieId();
+
+			garantieGarantieChoisieId.setCodeGarantie("101");
+			garantieGarantieChoisieId.setCodeGarantieChoisie("001KA0315AUT001-V001GA");
+
+			GarantieGarantieChoisie garantieGarantieChoisie =	(GarantieGarantieChoisie)getObjectService().getByIdPK(garantieGarantieChoisieId, "garantieGarantieChoisie");
+			System.out
+			.println("-------garantieGarantieChoisie----------- "+garantieGarantieChoisie.getId()+"-Prime- "+garantieGarantieChoisie.getPrimeAnnuelle());
+			
+			GarantieChoisie garantieChoisie =	(GarantieChoisie)getObjectService().getObjectById("001KA0315AUT001-V001GA", "GarantieChoisie");
+			for (GarantieGarantieChoisie ggc : garantieChoisie.getGarantieGarantieChoisies()) {
+				System.out.println("code Garantie ds GarantieGarantieChoisie :" + ggc.getGarantie().getCodeGarantie());
+				System.out.println("code GarantieChoisie ds GarantieGarantieChoisie :" + ggc.getGarantieChoisie().getCodeGarantieChoisie());
+				
+				System.out.println("prime prorata de GarantieGarantieChoisie :" + ggc.getPrimeAnnuelle());
+				
+				
+			}
+        }*/
 		public void gestionCarteGrise(Avenant Avn) {
 
 			try {
@@ -188,7 +211,7 @@ public class CarteGriseMB implements Serializable {
 					getObjectService().addObject(histoPropVehi);
 					getObjectService().addObject(histoMouvement);
 					// add Cond habituel
-					cduc =  (Conducteur) getObjectService().getObject(getSlctdVehiRw().getConduHab().getNumCond(), "Conducteur");
+					cduc =  (Conducteur) getObjectService().getObjectById(getSlctdVehiRw().getConduHab().getNumCond(), "Conducteur");
 					if (cduc == null) {
 						getObjectService().addObject(F.getConduHab());
 					} else {
@@ -440,7 +463,7 @@ public class CarteGriseMB implements Serializable {
 						getObjectService().addObject(ApporteurVehi);
 
 						// add Cond habituel
-						cduc =  (Conducteur) getObjectService().getObject(getSlctdVehiRw().getConduHab().getNumCond(), "Conducteur");
+						cduc =  (Conducteur) getObjectService().getObjectById(getSlctdVehiRw().getConduHab().getNumCond(), "Conducteur");
 						if (cduc == null) {
 							getObjectService().addObject(F.getConduHab());
 						} else {
@@ -843,7 +866,7 @@ public class CarteGriseMB implements Serializable {
 			// Si oui ses valeur st chargées ds les champs
 			// Si non le processus continue normalement
 			//logs.info(">>>>/ INSIDE -chxConducteur-");
-			cduc =  (Conducteur) getObjectService().getObject(getSlctdVehiRw().getConduHab().getNumCond(), "Conducteur");
+			cduc =  (Conducteur) getObjectService().getObjectById(getSlctdVehiRw().getConduHab().getNumCond(), "Conducteur");
 			if (cduc != null) {
 				getSlctdVehiRw().setConduHab(cduc);
 			}

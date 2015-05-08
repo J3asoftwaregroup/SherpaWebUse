@@ -92,7 +92,7 @@ public class ConditionsParticulieresDesign {
 			// On instancie le nouveau "PdfWriter"
 			PdfWriter writer = PdfWriter.getInstance(document,
 					new FileOutputStream("c:/reports/contrats/Contrat_"
-							+ contratReport.getContrat().getId() + "_"
+							+ contratReport.getContrat().getNumPolice() + "_"
 							+ compteur + ".pdf"));// libelle<<contrat_police_compteur>>
 
 			// On ouvre notre "Document"
@@ -129,7 +129,7 @@ public class ConditionsParticulieresDesign {
 		Phrase phrase = (Phrase) ajoutElement("Phrase", "", textFont);
 		phrase.add(chunk);// ajout du chunk � la phrase
 		// on renseigne le numero du client
-		chunk = new Chunk(contratReport.getPersonne().getId());
+		chunk = new Chunk(contratReport.getPersonne().getNumSouscripteur());
 		phrase.add(chunk);
 		// we add a cell with colspan 2
 		table.addCell(createCell(phrase, 2));
@@ -137,7 +137,7 @@ public class ConditionsParticulieresDesign {
 		chunk = new Chunk("POLICE : ");// construction du chunk
 		phrase = (Phrase) ajoutElement("Phrase", "", textFont);
 		phrase.add(chunk);// ajout du chunk � la phrase
-		chunk = new Chunk(contratReport.getContrat().getId());
+		chunk = new Chunk(contratReport.getContrat().getNumPolice());
 		phrase.add(chunk);
 		// we add a cell with colspan 2
 		table.addCell(createCell(phrase, 2));
@@ -224,7 +224,7 @@ public class ConditionsParticulieresDesign {
 						+ contratReport.getContrat().getModeReconduction(), textFont), 1));
 		table.addCell(createCell(
 				(Phrase) ajoutElement("Phrase", contratReport.getAvenant()
-						.getId(), textFont), 1));
+						.getNumAvenant(), textFont), 1));
 		table.addCell(createCell(
 				(Phrase) ajoutElement("Phrase", "B000", textFont), 1));
 		table.setSpacingAfter(4);
@@ -381,7 +381,7 @@ public class ConditionsParticulieresDesign {
 		tableInsert.addCell(new Phrase("Cat�gorie du V�hicule : ", smallBold));
 		tableInsert
 				.addCell(new Phrase(vehiculeAttributsBean.getVehicule()
-						.getCodeSousCatVehicule().getLibelleSousCatVehicule(),
+						.getSousCatVehicule().getLibelleSousCatVehicule(),
 						textFont));
 		tableInsert.addCell(new Phrase("Usage du v�hicule : ", smallBold));
 		tableInsert.addCell(new Phrase("Promenade et affaires", textFont));

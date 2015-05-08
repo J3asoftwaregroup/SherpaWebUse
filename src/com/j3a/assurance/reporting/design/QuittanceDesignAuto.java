@@ -100,7 +100,7 @@ public class QuittanceDesignAuto implements Serializable {
 		try {
 			Document document = new Document(PageSize.A4);
 			document.setMargins(20, 20, 20, 20);
-			nomFichier = reportingAuto.getQuittance().getId() + ".pdf";
+			nomFichier = reportingAuto.getQuittance().getCodeQuittance() + ".pdf";
 
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			PdfWriter.getInstance(document, baos);
@@ -185,7 +185,7 @@ public class QuittanceDesignAuto implements Serializable {
 	}
 
 	private void createEteteDoc(Document document) throws DocumentException {
-		String quit = "Quittance N° " + reportingAuto.getQuittance().getId();
+		String quit = "Quittance N° " + reportingAuto.getQuittance().getCodeQuittance();
 		PdfPTable tabEntete = new PdfPTable(1);
 
 		PdfPCell cell = new PdfPCell();
@@ -270,15 +270,15 @@ public class QuittanceDesignAuto implements Serializable {
 
 		// 1er ligne
 		tabQuit.addCell(new Phrase("Police:", normalText));
-		tabQuit.addCell(new Phrase(reportingAuto.getContrat().getId(),
+		tabQuit.addCell(new Phrase(reportingAuto.getContrat().getNumPolice(),
 				smallText));
 
 		tabQuit.addCell(new Phrase("Categorie:", normalText));
-		tabQuit.addCell(new Phrase(reportingAuto.getRisque().getId(), smallText));
+		tabQuit.addCell(new Phrase(reportingAuto.getRisque().getCodeRisque(), smallText));
 
 		// 2em ligne
 		tabQuit.addCell(new Phrase("Avenant:", normalText));
-		cell = new PdfPCell(new Phrase(reportingAuto.getAvenant().getId(),
+		cell = new PdfPCell(new Phrase(reportingAuto.getAvenant().getNumAvenant(),
 				smallText));
 		cell.setBorder(Rectangle.NO_BORDER);
 
@@ -518,7 +518,7 @@ public class QuittanceDesignAuto implements Serializable {
 		tableau.addCell(cell);
 
 		// 2e Ligne
-		cell = new PdfPCell(new Phrase(reportingAuto.getRisque().getId(),
+		cell = new PdfPCell(new Phrase(reportingAuto.getRisque().getCodeRisque(),
 				normalText));
 		cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 		tableau.addCell(cell);
@@ -621,7 +621,7 @@ public class QuittanceDesignAuto implements Serializable {
 
 		Paragraph dateEdition = new Paragraph(new Chunk(
 				"Fait en 3 exemplaires à "
-						+ reportingAuto.getPointVente().getCodeVille()
+						+ reportingAuto.getPointVente().getVille()
 								.getLibelleVille()
 						+ ", le "
 						+ sdf.format(reportingAuto.getAvenant()

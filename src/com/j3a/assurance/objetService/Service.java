@@ -25,16 +25,16 @@ public class Service implements ObjectService {
 	}
 
 	@Override
-	public Object getObject(int id, String objet) {
+	public Object getObjectById(int id, String objet) {
 		// TODO Auto-generated method stub
-	return	getDao().getObject(id, objet);
+	return	getDao().getObjectById(id, objet);
 		 
 	}
 
 	@Override
-	public Object getObject(String id, String objet) {
+	public Object getObjectById(String id, String objet) {
 		// TODO Auto-generated method stub
-		return getDao().getObject(id, objet);
+		return getDao().getObjectById(id, objet);
 		 
 	}
 	
@@ -80,6 +80,14 @@ public class Service implements ObjectService {
 	public List<Object> getListGarantieByRisque(String codeRisque)
 			throws HibernateException {
 		return getDao().getListGarantieByRisque(codeRisque);
+	}
+	
+
+	@Transactional(readOnly=false)
+	@Override
+	public Object getByIdPK(Object object, String table){
+		
+		return getDao().getByIdPK(object, table);
 	}
 
 	//getter et setter de Idao qui a été injecté

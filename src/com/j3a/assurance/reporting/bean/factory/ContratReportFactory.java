@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.Contrat;
@@ -30,15 +32,16 @@ import com.j3a.assurance.reporting.bean.VehiculeAttributsBean;
  * @author N'ZI
  * 
  */
+@Component
 public class ContratReportFactory implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@Autowired
 	private ObjectService objectService;
 	private ContratReport contratReport;
-	private transient SelectInfoAttestation selectInfoAttestation;
 	private boolean etatRech = false;
 	private static Logger logger = Logger.getLogger(ContratReportFactory.class);
 
@@ -48,22 +51,22 @@ public class ContratReportFactory implements Serializable {
 		Quittance quittance = (Quittance) getObjectService().getObjectById(
 				idQuittance, "Quittance");
 		
-		System.out.println("qqqqqqqqqqqqqtrouve"+quittance.getId());
+		System.out.println("qqqqqqqqqqqqqtrouve"+quittance.getCodeQuittance());
 		// renseigne la quittance
 		getContratReport().setQuittance(quittance);
-		System.out.println("qqqqqqqqqqqqqiiiiiiiiiiiiiiiiii"+quittance.getId());
+		System.out.println("qqqqqqqqqqqqqiiiiiiiiiiiiiiiiii"+quittance.getCodeQuittance());
 		// recupère l'avenant
-		Avenant avenant = quittance.getNumAvenant();
-		System.out.println("aaaaaaaaaaaaaaaaaaaaiiiiiiiiiiiiiiiiii"+avenant.getId());
+		Avenant avenant = quittance.getAvenant();
+		System.out.println("aaaaaaaaaaaaaaaaaaaaiiiiiiiiiiiiiiiiii"+avenant.getNumAvenant());
 		// renseigne l'avenant
 		getContratReport().setAvenant(avenant);
 		// recupère le contrat
-		Contrat contrat = avenant.getNumPolice();
-		System.out.println("esaitestghhg"+contrat.getId());
+		Contrat contrat = avenant.getContrat();
+		System.out.println("esaitestghhg"+contrat.getNumPolice());
 		// renseigne le contrat
 		getContratReport().setContrat(contrat);
 		// recupère le souscripteur
-		Personne personne = contrat.getNumSouscripteur();
+		Personne personne = contrat.getPersonne();
 		// renseigne le souscripteur
 		getContratReport().setPersonne(personne);
 		// Donner la nature de la personne
@@ -86,7 +89,7 @@ public class ContratReportFactory implements Serializable {
 	 * @return list<VehiculeAttributsBean>
 	 */
 	public List<VehiculeAttributsBean> propertiesProvider(Contrat contrat) {
-		SelectInfoAttestation selectInfo = getSelectInfoAttestation();
+	
 		// classe enveloppe
 		// encapsule la liste des classe enveloppant le vehicule et ses
 		// garanties
@@ -101,7 +104,7 @@ public class ContratReportFactory implements Serializable {
 
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Element " + contrat.getId() + " non trouvé");
+			System.out.println("Element " + contrat.getNumPolice() + " non trouvé");
 			logger.error("erreur de chargement des propriété de la C.P");
 			e.printStackTrace();
 		}
@@ -115,7 +118,7 @@ public class ContratReportFactory implements Serializable {
 				// associe le véhicule à la classe enveloppe
 				vehiculeAttributsBean.setVehicule(vehicule);
 				System.out.println("-----dffffffffffffffffffffffffffffffffdd> Code du vehicule :"
-						+ vehicule.getId());
+						+ vehicule.getCodeVehicule());
 				// associe la propriété du vehicule
 				/*
 				 * ProprietesVehicule proprietesVehicule = selectInfo
@@ -215,9 +218,9 @@ public class ContratReportFactory implements Serializable {
 	}
 
 	public void chargerNaturePersonne() {
-		chargerPersPhysique(getContratReport().getPersonne().getId());
+		chargerPersPhysique(getContratReport().getPersonne().getNumSouscripteur());
 		if (etatRech == false)
-			chargerMorale(getContratReport().getPersonne().getId());
+			chargerMorale(getContratReport().getPersonne().getNumSouscripteur());
 	}
 
 	public ObjectService getObjectService() {
@@ -236,12 +239,4 @@ public class ContratReportFactory implements Serializable {
 		this.contratReport = contratReport;
 	}
 
-	public SelectInfoAttestation getSelectInfoAttestation() {
-		return selectInfoAttestation;
-	}
-
-	public void setSelectInfoAttestation(
-			SelectInfoAttestation selectInfoAttestation) {
-		this.selectInfoAttestation = selectInfoAttestation;
-	}
 }

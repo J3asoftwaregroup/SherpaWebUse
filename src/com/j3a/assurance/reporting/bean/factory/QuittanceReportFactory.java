@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.Contrat;
@@ -14,7 +16,7 @@ import com.j3a.assurance.model.Quittance;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.reporting.bean.QuittanceReport;
-
+@Component
 public class QuittanceReportFactory implements Serializable {
 
 	/**
@@ -22,8 +24,8 @@ public class QuittanceReportFactory implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(QuittanceReportFactory.class);
-	private ObjectService objectService;
-	SelectInfoAttestation selectInfo;
+	@Autowired
+	ObjectService objectService;
 	private String idQuittance;
 	private QuittanceReport quittanceReport;
 	private String codeAssure;
@@ -37,7 +39,7 @@ public class QuittanceReportFactory implements Serializable {
 					getIdQuittance(), "Quittance");
 			System.out.println("<----quittance :" + quittance);// Clean after
 			// peuplement des attributs relatifs à la quittance du bean quittance
-			getQuittanceReport().setIdQuittance(quittance.getId());
+			getQuittanceReport().setIdQuittance(quittance.getCodeQuittance());
 			getQuittanceReport().setTaxes(quittance.getTaxes());
 			getQuittanceReport().setAccessoires(quittance.getAccessoire());
 			getQuittanceReport().setPrimeNette(quittance.getPrimeNette());
@@ -53,10 +55,10 @@ public class QuittanceReportFactory implements Serializable {
 			getQuittanceReport().setCommission(quittance.getCommision());
 			
 			// recuperation de l'avenant
-			Avenant avenant = quittance.getNumAvenant();
+			Avenant avenant = quittance.getAvenant();
 			
 			// peuplement des attributs relatifs à l'avenant du bean quittance
-			getQuittanceReport().setNumAvenant(avenant.getId());
+			getQuittanceReport().setNumAvenant(avenant.getNumAvenant());
 			getQuittanceReport().setDateEffet(avenant.getEffet());
 			getQuittanceReport().setDateEcheance(avenant.getEcheance());
 			getQuittanceReport().setEmission(avenant.getDateEmission());
@@ -65,13 +67,13 @@ public class QuittanceReportFactory implements Serializable {
 			
 			
 			// recuperation du contrat
-			Contrat contrat = avenant.getNumPolice();
+			Contrat contrat = avenant.getContrat();
 			
 			// peuplement des attributs relatifs au contrat du bean quittance
-			getQuittanceReport().setPolice(contrat.getId());
+			getQuittanceReport().setPolice(contrat.getNumPolice());
 			
 			//recupération du risque du contrat
-			getQuittanceReport().setRisque(contrat.getCodeRisque().getLibelleRisque());
+			getQuittanceReport().setRisque(contrat.getRisque().getLibelleRisque());
 			
 			//recupération du barème du contrat
 			getQuittanceReport().setBareme(contrat.getBareme());
@@ -82,7 +84,7 @@ public class QuittanceReportFactory implements Serializable {
 					this.getTypeAssurance(contrat));
 			
 			// recuperation de la personne
-			Personne personne = contrat.getNumSouscripteur();
+			Personne personne = contrat.getPersonne();
 			// peuplement des attributs relatifs souscripteur du bean quittance
 			getQuittanceReport().setNom(this.getNomSouscripteur(personne));
 			
@@ -93,7 +95,7 @@ public class QuittanceReportFactory implements Serializable {
 			getQuittanceReport().setFax(personne.getFax());
 			
 			// recuperation de l'agence
-			PointVente pointVente = contrat.getCodePointVente();
+			PointVente pointVente = contrat.getPointVente();
 			
 			// peuplement des attributs relatifs a l'agence du bean quittance
 			getQuittanceReport().setAgence(pointVente.getLibellePointVente());
@@ -113,8 +115,8 @@ public class QuittanceReportFactory implements Serializable {
 		StringBuffer buf = new StringBuffer();
 		buf.append(personne.getNomRaisonSociale());
 		buf.append(" ");
-		if (personne instanceof Physique) {
-			buf.append(((Physique) personne).getPrenomPers());
+		if (personne.getPhysique()!=null) {
+			buf.append( personne.getPhysique().getPrenomPers());
 		}
 		System.out
 				.println("methode du recupération du nom executée avec succès");
@@ -124,15 +126,15 @@ public class QuittanceReportFactory implements Serializable {
 
 	public String getTypeAssurance(Contrat contrat) {
 
-		List<Vehicule> vehiculelist = getSelectInfo().getListVehiculesContrat(
-				contrat.getId());
+		List<Vehicule> vehiculelist = getObjectService().getListVehiculesContrat(
+				contrat.getNumPolice());
 
 		System.out.println("le type de l'assurance est bien ajouté :"
 				+ vehiculelist);
 		if (vehiculelist.size() == 1) {
 			Vehicule vehicule = vehiculelist.get(0);
-			String typeAssurance = vehicule.getCodeSousCatVehicule()
-					.getCodeCategorie().getLibelleCategorie();
+			String typeAssurance = vehicule.getSousCatVehicule()
+					.getCategorie().getLibelleCategorie();
 			return typeAssurance;
 		} else {
 			return "Flotte";
@@ -162,14 +164,6 @@ public class QuittanceReportFactory implements Serializable {
 
 	public QuittanceReport getQuittanceReport() {
 		return quittanceReport;
-	}
-
-	public SelectInfoAttestation getSelectInfo() {
-		return selectInfo;
-	}
-
-	public void setSelectInfo(SelectInfoAttestation selectInfo) {
-		this.selectInfo = selectInfo;
 	}
 
 	public String getCodeAssure() {

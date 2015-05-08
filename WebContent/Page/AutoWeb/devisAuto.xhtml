@@ -14,7 +14,7 @@
 	<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
 			
 			
-				<p:panel header="Assuré principal">
+				<p:panel header="AssurÃ© principal">
 				<br />
 				<h:outputText value="Etes vous client j3A?"></h:outputText>
 				<p:selectOneRadio label="Oui"></p:selectOneRadio>
@@ -27,28 +27,28 @@
 
 												<p:outputLabel for="nameP" value="Nom"/>
 												<p:inputText id="nameP" styleClass="uppercase"
-													 required="false" requiredMessage="Le nom doit etre obligatoirement renseigné"/>
-				
-
+												 value="#{cotationAuto.client.maPersonne.nomRaisonSociale}" required="true" requiredMessage="Le nom doit être obligatoirement renseigné"/>
+													 
 												<p:outputLabel for="prenoms" value="Prénoms" style="margin-left:80px"/>
-												<p:inputText id="prenoms" required="false" requiredMessage="Le prénom doit Ãªtre obligatoirement renseignÃ©" styleClass="uppercase"></p:inputText>
+												<p:inputText id="prenoms" required="false" value="#{cotationAuto.client.monPhysique.prenomPers}"
+												requiredMessage="Le prÃ©nom doit ÃƒÂªtre obligatoirement renseignÃƒÂ©" styleClass="uppercase"></p:inputText>
 													
 													
-												<p:outputLabel for="dateN" value="Né le" style="margin-left:80px"/>
-												<p:inputMask mask="99/99/9999"  id="dateN">
+												<p:outputLabel for="dateN" value="Née le" style="margin-left:80px"/>
+												<p:inputMask mask="99/99/9999"  id="dateN" value="#{cotationAuto.client.monPhysique.dateNaissPers}" >
 													<f:convertDateTime pattern="dd/MM/yyyy" />
 												</p:inputMask>
 												
 
 												<p:outputLabel for="lieuNais" value="Lieu naissance"/>
-												<p:inputText  
+												<p:inputText  value="#{cotationAuto.client.monPhysique.lieuNaissPers}"
 													id="lieuNais"/>
 											
 
 												<p:outputLabel for="cb_prof" value="Profession"  style="margin-left:80px"/>
-												<p:selectOneMenu id="cb_prof" 
+												<p:selectOneMenu id="cb_prof" value="#{cotationAuto.client.profession}"
 													effect="drop" 
-													>
+													binding="#{cotationAuto.client.professionOneMenu}">
 													<f:selectItem itemLabel="Select One" itemValue="" />
 													<f:selectItem itemLabel="Instituteur" itemValue="Instituteur"/>
 													<f:selectItem itemLabel="Informaticien" itemValue="Informaticien"/>
@@ -56,6 +56,7 @@
 													<f:selectItem itemLabel="Phamarcien" itemValue="Phamarcien"/>
 													<f:selectItem itemLabel="Comptable" itemValue="Comptable"/>
 												</p:selectOneMenu>
+												
 												
 
 
@@ -68,42 +69,46 @@
 
 
 												<p:outputLabel for="cb_sitMat" value="Situation matrimoniale"/>
-												<p:selectOneMenu id="cb_sitMat"  effect="drop" editable="false">
+												<p:selectOneMenu id="cb_sitMat" binding="#{cotationAuto.client.sitationMatOneMenu}"
+													value="#{cotationAuto.client.situationMatrimoniale}" effect="drop" editable="false">
 													<f:selectItem itemLabel="Select One" itemValue=" " />
-													<f:selectItem itemLabel="Celibataire"
-														itemValue="celibataire" />
+													<f:selectItem itemLabel="Célibataire"
+														itemValue="célibataire" />
 													<f:selectItem itemLabel="Marié(e)" itemValue="marié(e)" />
-												</p:selectOneMenu>
+					                             </p:selectOneMenu>
 												
 												
 												<p:outputLabel for="typePiece" value="Type piece" style="margin-left:80px"/>
-												<p:selectOneMenu id="typePiece" >
+												<p:selectOneMenu id="typePiece" value="#{cotationAuto.client.typePiece}"
+													effect="drop" editable="false" binding="#{cotationAuto.client.typepieceOneMenu}">
 													<f:selectItem itemLabel="Select One" itemValue="" />
 													<f:selectItem itemLabel="CNI" itemValue="CNI"/>
 													<f:selectItem itemLabel="Attestation identité" itemValue="Attestation"/>
 													<f:selectItem itemLabel="Passeport" itemValue="Passeport"/>
 												</p:selectOneMenu>
 												
+												
 												<p:outputLabel  value="N° Pièce" style="margin-left:80px"/>
-												<p:inputText  />
+												<p:inputText value="#{cotationAuto.client.monPhysique.numPiecePers}" id="numPiece"
+												/>
 											
 									
 												<p:outputLabel for="adrs" value="Adresse"/>
-												<p:inputText id="adrs" required="false" requiredMessage="L'adresse doit Ãªtre obligatoirement renseignÃ©"
-													/>
+												<p:inputText id="adrs" required="false" requiredMessage="L'adresse doit ÃƒÂªtre obligatoirement renseignÃƒÂ©"
+													value="#{cotationAuto.client.maPersonne.adresse}"/>
 													
 												<p:outputLabel for="tel" value="Tel" style="margin-left:80px" />
-												<p:inputText id="tel" />
+												<p:inputText id="tel"  value="#{cotationAuto.client.maPersonne.telephone}" />
 					
 												<h:outputText value="Mail" style="margin-left:80px" />
-												<p:inputText
-													/>
+												<p:inputText value="#{cotationAuto.client.maPersonne.email}"/>
+													
 												<h:outputText value="Fax"/>
-												<p:inputText
-													 />
+												<p:inputText value="#{cotationAuto.client.maPersonne.fax}" />
+													
 												<h:outputText value="Adr géo" style="margin-left:80px"/>
 												<p:inputTextarea rows="1" cols="20"
-													 />
+													value="#{cotationAuto.client.maPersonne.adresseGeo}" />
                                             
 							                </h:panelGrid>
 							                <br />
