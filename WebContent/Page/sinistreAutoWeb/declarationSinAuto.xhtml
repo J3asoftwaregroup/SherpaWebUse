@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template/templateWebAuto.xhtml">
+	<ui:define name="content">
+		<h:form id="gnl">
+			<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
+		<p:wizard flowListener="#{userWizard.onFlowProcess}">
+        <p:tab id="personal" title="Carateristique">
+            <p:panel header="Caractéristiques du sinistre">
+            
+            <fieldset>
+	<legend > Critère</legend>
+
+<p:selectOneRadio id="customRadio" value="#{declarationSinistreAuto.optionRech}" layout="custom"   >
+<f:selectItem itemLabel="Option 1" itemValue="1" />
+<f:selectItem itemLabel="Option 2" itemValue="2" />
+<f:selectItem itemLabel="Option 3" itemValue="3" />
+</p:selectOneRadio>
+
+	<h:panelGrid columns="6" id="rechercheGrid">
+	<p:radioButton id="opt1" for="customRadio" itemIndex="0"/>
+	<p:outputLabel for="opt1" value=" Numéro de Police&nbsp;&nbsp;&nbsp;"/>
+	<p:radioButton id="opt2" for="customRadio" itemIndex="1"/>
+	<p:outputLabel for="opt2" value=" Immatriculation"/>
+		
+	<p:inputText id="imputRech" value="#{declarationSinistreAuto.valeurDeRecherche}" style="width: 140px; margin-left: 34px;"   required="true" 
+	requiredMessage="Veuillez entrez un numero de police ou l'immatriculation du véhicule" placeholder="Entrer le critère"/>
+	<p:commandButton id="rech_button" value="Rechercher" actionListener="#{declarationSinistreAuto.rechercherDossierProduction}"   
+	style="width: 100px;" process="opt1;imputRech"/>
+	</h:panelGrid>
+	</fieldset>	
+ 
+          <h:panelGrid columns="4">
+          <p:outputLabel for="nom"  value="Nom"/>
+          <p:inputText id="nom" readonly="true"/> 
+          
+          <p:outputLabel for="preno"  value="Prenoms" style="margin-left: 15px;" />
+          <p:inputText id="preno" readonly="true"/> 
+          
+          <p:outputLabel for="poli"  value="Police"/>
+          <p:inputText id="poli" readonly="true"/>
+          
+          <p:outputLabel for="imat" value="Imatriculation" style="margin-left: 15px;" />
+          <p:inputText id="imat" readonly="true"/> 
+          </h:panelGrid>
+          <br />
+          
+          <hr style="color:white; background-color:#E6E6E6;" size="7"/>
+          <div style="color: blue">Merci d’indiquer l’adresse e-mail et le numéro téléphone sur lesquels vous souhaitez être contacté pour ce sinistre.</div>
+           <br />
+            <h:panelGrid columns="4">
+          <p:outputLabel for="mail"  value="E-mail"/>
+          <p:inputText id="mail" required="true"/> 
+          
+          <p:outputLabel for="tel"  value="Telephone" style="margin-left: 15px;"/>
+          <p:inputText id="tel" required="true"/> 
+          </h:panelGrid>
+            </p:panel>
+        </p:tab>
+ 
+        <p:tab id="address" title="Nature evenement">
+            <p:panel header="Nature de l'événement">
+                
+            </p:panel>
+        </p:tab>
+
+    </p:wizard>
+						
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

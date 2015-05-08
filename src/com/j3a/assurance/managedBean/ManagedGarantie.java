@@ -3,27 +3,17 @@ package com.j3a.assurance.managedBean;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.faces.component.UIComponent;
-
-
 import org.apache.log4j.Logger;
-
-
-
-import com.j3a.assurance.hibernate.bean.Garantie;
-import com.j3a.assurance.service.ObjectService;
-import com.j3a.assurance.utilitaires.Garanties;
-
-import org.primefaces.event.CellEditEvent;
-import org.primefaces.event.RowEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import com.j3a.assurance.model.Garantie;
+import com.j3a.assurance.objetService.ObjectService;
+import com.j3a.assurance.utilitaire.Garanties;
 
 @Component
 @Scope("session")

@@ -81,7 +81,7 @@ public class CarteGriseMB implements Serializable {
 		private Boolean buttonEditGar = true;
 		private Boolean buttonPropVehicule;
         private String libelleRisque, renouvellement, remorque ="non";
-		
+		private String test;
 		//Logger logs = Logger.getLogger(CarteGriseMB.class);
 		/*@PostConstruct
 		public void postConstuct(){
