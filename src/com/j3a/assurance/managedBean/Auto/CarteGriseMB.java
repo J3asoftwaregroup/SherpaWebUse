@@ -92,17 +92,17 @@ public class CarteGriseMB implements Serializable {
 			
 		}*/
         
-        @PostConstruct
+     /*   @PostConstruct
        public void postconstruct(){
         	GarantieGarantieChoisieId garantieGarantieChoisieId = new GarantieGarantieChoisieId();
 
 			garantieGarantieChoisieId.setCodeGarantie("101");
 			garantieGarantieChoisieId.setCodeGarantieChoisie("001KA0315AUT001-V001GA");
 
-			/*GarantieGarantieChoisie garantieGarantieChoisie =	(GarantieGarantieChoisie)getObjectService().getByIdPK(garantieGarantieChoisieId, "garantieGarantieChoisie");
+			GarantieGarantieChoisie garantieGarantieChoisie =	(GarantieGarantieChoisie)getObjectService().getByIdPK(garantieGarantieChoisieId, "garantieGarantieChoisie");
 			System.out
 			.println("-------garantieGarantieChoisie----------- "+garantieGarantieChoisie.getId()+"-Prime- "+garantieGarantieChoisie.getPrimeAnnuelle());
-			*/
+			
 			GarantieChoisie garantieChoisie =	(GarantieChoisie)getObjectService().getObjectById("001KA0315AUT001-V001GA", "GarantieChoisie");
 			for (GarantieGarantieChoisie ggc : garantieChoisie.getGarantieGarantieChoisies()) {
 				System.out.println("code Garantie ds GarantieGarantieChoisie :" + ggc.getGarantie().getCodeGarantie());
@@ -112,7 +112,7 @@ public class CarteGriseMB implements Serializable {
 				
 				
 			}
-        }
+        }*/
 		public void gestionCarteGrise(Avenant Avn) {
 
 			try {
