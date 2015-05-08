@@ -51,7 +51,7 @@ public class CarteGriseMB implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
 		@Autowired
-		private ObjectService objectService;
+	    ObjectService objectService;
 		@Autowired
 		private IdGenerateur idGenerateur;
 		// private static Logger logs=Logger.getLogger(ManagedCarteGrise.class);

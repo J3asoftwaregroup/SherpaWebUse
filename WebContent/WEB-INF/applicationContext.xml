@@ -48,8 +48,5 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
-     <!-- User Service Declaration -->
-     <bean id="Service" class="com.j3a.assurance.objetService.Service">
-        <property name="dao" ref="Dao" />
-	 </bean>
+    
 </beans>
