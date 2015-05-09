@@ -5,14 +5,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
 
 import org.apache.log4j.Logger;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
-import org.springframework.dao.DataAccessException;
 
 import com.j3a.assurance.managedBean.ManagedGarantie;
 import com.j3a.assurance.model.Garantie;

@@ -8,6 +8,8 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,21 +36,27 @@ public class CotationAuto implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-		
-		private ContratMB contrat;
-		private ClientMB client;
+	    @Autowired
+		private ContratMB contratMB;
+	    @Autowired
+		private ClientMB clientMB;
+	    @Autowired
 		private CarteGriseMB carteGriseMB;
+	    @Autowired
 		private QuittanceAuto quittanceAuto;
 		private Conducteur cduc;
 		private Boolean showNavBar = false;
 		private Exercice exercice;
+		@Autowired
 		private ManagedQuittanceAuto managedQuittanceAuto;
+		@Autowired
+		private GarantieMB garantieMB;
 
 		private String nomclient, adresseclient, sousCategorieV, risque;
 
 		@Autowired
 		IdGenerateur idGenerateur;
-				@Autowired
+		@Autowired
 		ConditionPartAuto conditionPartAuto;
 		@Autowired
 		private QuittanceDesignAuto quittanceDesignAuto;
@@ -56,16 +64,16 @@ public class CotationAuto implements Serializable{
 		@PostConstruct
 		public void postConstru() {
 			risque = "Automobile";
-			getContrat().setUtilisateur(getContrat().utlsateur());
-			String pv = getContrat().getUtilisateur().getCodePointVente()
+			getContratMB().setUtilisateur(getContratMB().utlsateur());
+			String pv = getContratMB().getUtilisateur().getCodePointVente()
 					.getId();
-			String util = getContrat().getUtilisateur().getId();
-			getContrat().getContrat().setId(
+			String util = getContratMB().getUtilisateur().getId();
+			getContratMB().getContrat().setId(
 					getIdGenerateur().getPoliceID(pv, util, "AUT"));
 			String idAven = getIdGenerateur().getIdNewAvenant(
-					getContrat().getContrat().getId());
-			getContrat().getAvenant().setId(idAven);
-			getContrat().setDureeEnjour((long) 365);
+					getContratMB().getContrat().getId());
+			getContratMB().getAvenant().setId(idAven);
+			getContratMB().setDureeEnjour((long) 365);
 			getManagedQuittanceAuto().setQuittanceid(
 					getIdGenerateur().getIdQuittance(idAven));
 			setExercice(getInfoAvenantContrat().exerciceOuvert());
@@ -73,40 +81,40 @@ public class CotationAuto implements Serializable{
 
 		public void chxApporteur() {
 
-			getContrat().chxApporteur();
+			getContratMB().chxApporteur();
 		}
 
 		public void choixSousCat() {
 			// recupיration du taux de l'apporteur et l'apporteur
 			getCarteGriseMB().getSlctdVehiRw().setApporteur(
-					getContrat().getCodeApporteur());
+					getContratMB().getCodeApporteur());
 
-			getContrat().getCalculCommission().getTauxCommissionApporteur(
+			getContratMB().getCalculCommission().getTauxCommissionApporteur(
 					getCarteGriseMB().getSlctdVehiRw().getApporteur().getId(),
 					getCarteGriseMB().getSlctdVehiRw().getSouCatVehi()
 							.getCodeCategorie().getId());
 			getCarteGriseMB().getSlctdVehiRw().setTauxCommissionApporteur(
-					getContrat().getCalculCommission().getTauxCommission());
+					getContratMB().getCalculCommission().getTauxCommission());
 			getCarteGriseMB().choixSousCat();
 		}
 
 		// les methodes de choix Avenant Affaire Nouvelle
 		public void tabChange() {
 			// good
-			/*getManagedGarantieAuto().setDuree(getContrat().getDuree());
-			getManagedGarantieAuto().getListeGroupGaranties().clear();
-			getManagedGarantieAuto().getListegaranties().clear();
-			getManagedGarantieAuto().getListegarantieFiltre().clear();
-			getManagedGarantieAuto().cleanChamps();
+			/*getGarantieMB().setDuree(getContrat().getDuree());
+			getGarantieMB().getListeGroupGaranties().clear();
+			getGarantieMB().getListegaranties().clear();
+			getGarantieMB().getListegarantieFiltre().clear();
+			getGarantieMB().cleanChamps();
 			
-			getManagedGarantieAuto().affichegarantiesAuto(
+			getGarantieMB().affichegarantiesAuto(
 			*/		getCarteGriseMB().getSlctdVehiRw());
 		}
 
 		// methode de validation de la prime
 		public void rechercherClient() {
-			getClient().rechercherClient();
-			if (getClient().getStatutRechercheClient() == true) {
+			getClientMB().rechercherClient();
+			if (getClientMB().getStatutRechercheClient() == true) {
 				showNavBar = true;
 			}
 
@@ -116,7 +124,7 @@ public class CotationAuto implements Serializable{
 		
 
 		public void validerPrime() {
-			//getManagedGarantieAuto().validerPrime();
+			//getGarantieMB().validerPrime();
 
 			// listGarantieparVehicule
 			getCarteGriseMB().getSlctdVehiRw().getListGarantieparVehicule()
@@ -124,7 +132,7 @@ public class CotationAuto implements Serializable{
 
 			getCarteGriseMB().getSlctdVehiRw().getListegaranties().clear();
 			//getCarteGriseMB().getSlctdVehiRw().getListegaranties()
-					.addAll(getManagedGarantieAuto().getListegaranties());
+					.addAll(getGarantieMB().getListegaranties());
 
 			getCarteGriseMB().setValidVehiEtat(false);
 		}
@@ -132,9 +140,9 @@ public class CotationAuto implements Serializable{
 		public void majConducteur() {
 
 			getCarteGriseMB().getConduHab().setDateNaissCond(
-					getClient().getMaPersonne().getDatePers());
+					getClientMB().getMaPersonne().getDatePers());
 			getCarteGriseMB().getConduHab().setNonCond(
-					getClient().getMaPersonne().getNomRaisonSociale());
+					getClientMB().getMaPersonne().getNomRaisonSociale());
 			String lieunaiss = null, prenom = null;
 			
 			getCarteGriseMB().getConduHab().setPrenomsCond(prenom);
@@ -150,16 +158,16 @@ public class CotationAuto implements Serializable{
 
 		public boolean isClientConduc() {
 			String numpiece = "";
-			if (getClient().getMaPersonne() instanceof Physique) {
-				numpiece = ((Physique) getClient().getMaPersonne())
+			if (getClientMB().getMaPersonne() instanceof Physique) {
+				numpiece = ((Physique) getClientMB().getMaPersonne())
 						.getNumPiecePers();
 			}
-			if (getClient().getMaPersonne() instanceof Morale) {
-				numpiece = ((Morale) getClient().getMaPersonne()).getNumRc();
+			if (getClientMB().getMaPersonne() instanceof Morale) {
+				numpiece = ((Morale) getClientMB().getMaPersonne()).getNumRc();
 			}
 
 			return numpiece.equalsIgnoreCase(getCarteGriseMB()
-					.getSlctdVehiRw().getConduHab().getId());
+					.getSlctdVehiRw().getConduHab().getNumCond());
 		}
 
 		public void chxConducteur() {
@@ -175,26 +183,26 @@ public class CotationAuto implements Serializable{
 				cduc = (Conducteur) getCarteGriseMB().getObjectService()
 						.getObjectById(
 								getCarteGriseMB().getSlctdVehiRw()
-										.getConduHab().getId(), "Conducteur");
+										.getConduHab().getNumCond(), "Conducteur");
 				if (cduc != null) {
 					getCarteGriseMB().getSlctdVehiRw().setConduHab(cduc);
 				} else {
 					getCarteGriseMB().getSlctdVehiRw().setConduHab(
 							new Conducteur(getCarteGriseMB().getSlctdVehiRw()
-									.getConduHab().getId()));
+									.getConduHab().getNumCond()));
 				}
 			}
 			// logs.info(">>>>/ END -chxConducteur-");
 		}
 
 		public void validerGarantie() {
-			getManagedGarantieAuto().validerGarantie();
+			getGarantieMB().validerGarantie();
 			getCarteGriseMB().getSlctdVehiRw().getListegaranties().clear();
-	if(!getManagedGarantieAuto().getListeGarantiesSelect().isEmpty()){
+	if(!getGarantieMB().getListeGarantiesSelect().isEmpty()){
 			getCarteGriseMB().getSlctdVehiRw().getListegaranties()
-					.addAll(getManagedGarantieAuto().getListeGarantiesSelect());
+					.addAll(getGarantieMB().getListeGarantiesSelect());
 			getCarteGriseMB().getSlctdVehiRw().setPrimeNette(
-					getManagedGarantieAuto().getPrimeTotale());
+					getGarantieMB().getPrimeTotale());
 			// calcul de l'accessoire de l'apporteur
 			BigDecimal d = BigDecimal.ZERO;
 			d = getCarteGriseMB()
@@ -228,7 +236,7 @@ public class CotationAuto implements Serializable{
 			getCarteGriseMB().setEditGarEtat(true);
 			getCarteGriseMB().setValidVehiEtat(true);
 			getCarteGriseMB().setSlctdVehiRwTb(null);
-			// System.out.println("ששששששששששששששששששששששששששששששששששששששש"+getManagedContrat().getBaremes());
+			// System.out.println("ששששששששששששששששששששששששששששששששששששששש"+getContratMB().getBaremes());
 		}
 
 		public String handleflow(FlowEvent event) {
@@ -241,7 +249,7 @@ public class CotationAuto implements Serializable{
 
 			if (newStep.equalsIgnoreCase("ongletContrat")
 					&& oldStep.equalsIgnoreCase("ongletClient")) { // /+Dob
-				if (!getClient().getStatutRechercheClient()) {
+				if (!getClientMB().getStatutRechercheClient()) {
 					a = oldStep;
 					FacesMessage msg = new FacesMessage(
 							"Vous devez Selectionner/Creer un client");
@@ -253,40 +261,40 @@ public class CotationAuto implements Serializable{
 			if (newStep.equalsIgnoreCase("ongletVehicule")
 					&& oldStep.equalsIgnoreCase("ongletContrat")) {
 
-				if (getContrat().getCodeApporteur() == null) {
+				if (getContratMB().getCodeApporteur() == null) {
 					a = oldStep;
 					FacesMessage msg = new FacesMessage(
 							"Vous devez saisir un Apporteur valide");
 					FacesContext.getCurrentInstance().addMessage(null, msg);
 				} else {
-					getContrat().getContrat().setCodeSocieteAssurance(
-							getContrat().getSocieteAssurance());
-					// getManagedContrat().getContrat().setId(getManagedContrat().getId());
-					getContrat().getContrat().setCodeApporteur(
-							getContrat().getCodeApporteur());
-					getContrat().getContrat().setCodePointVente(
-							getContrat().getCodePointVente());
-					getContrat().getContrat().setNumSouscripteur(
-							getClient().getMaPersonne());
-					// getManagedContrat().getAvenant().setId(
-					// getManagedContrat().getNumAvenant());
-					getContrat().getContrat().setCodeRisque(
-							getContrat().getRisq("1"));
-					getContrat().getAvenant().setCodeUtilisateur(
-							getContrat().getUtilisateur());
-					getContrat().getAvenant().setDuree(
-							getContrat().getDureeEnjour().shortValue());
-					getManagedGarantieAuto().setCodeRisque("1");
-					getContrat().getAvenant().setEffet(
-							getContrat().getEffet());
-					getContrat().getAvenant().setEcheance(
-							getManagedContrat().getEcheance());
+					getContratMB().getContrat().setSocieteAssurance(
+							getContratMB().getSocieteAssurance());
+					// getContratMB().getContrat().setId(getContratMB().getId());
+					getContratMB().getContrat().setApporteur(
+							getContratMB().getCodeApporteur());
+					getContratMB().getContrat().setCodePointVente(
+							getContratMB().getCodePointVente());
+					getContratMB().getContrat().setPersonne(
+							getClientMB().getMaPersonne());
+					// getContratMB().getAvenant().setId(
+					// getContratMB().getNumAvenant());
+					getContratMB().getContrat().setCodeRisque(
+							getContratMB().getRisq("1"));
+					getContratMB().getAvenant().setCodeUtilisateur(
+							getContratMB().getUtilisateur());
+					getContratMB().getAvenant().setDuree(
+							getContratMB().getDureeEnjour().shortValue());
+					getGarantieMB().setCodeRisque("1");
+					getContratMB().getAvenant().setEffet(
+							getContratMB().getEffet());
+					getContratMB().getAvenant().setEcheance(
+							getContratMB().getEcheance());
 					System.out.println("xxxpersonnexxx"
-							+ getManagedContrat().getContrat().getNumSouscripteur()
-									.getId());
+							+ getContratMB().getContrat().getPersonne()
+									.getNumSouscripteur());
 
 					majConducteur();
-					getCarteGriseMB().choixSousCat();*/
+					getCarteGriseMB().choixSousCat();
 				}
 			}
 
@@ -312,14 +320,14 @@ public class CotationAuto implements Serializable{
 				/*	System.out.println(getCarteGriseMB().getSlctdVehiRw()
 							.getConduHab());*/
 					System.out.println("********Avenant date Effet = "
-							+ getManagedContrat().getAvenant().getEffet()
+							+ getContratMB().getAvenant().getEffet()
 							+ " Date Echיance = "
-							+ getManagedContrat().getAvenant().getEcheance());
+							+ getContratMB().getAvenant().getEcheance());
 
 					getManagedQuittanceAuto().setAvenant(
-							getManagedContrat().getAvenant());
+							getContratMB().getAvenant());
 
-					getManagedQuittanceAuto().setExercice(getExercice().getId());// A corriger
+					getManagedQuittanceAuto().setExercice(getExercice().getCodeexercice());// A corriger
 
 					System.out
 							.println("********Quittance Auto Avenant date Effet = "
@@ -331,8 +339,8 @@ public class CotationAuto implements Serializable{
 					getManagedQuittanceAuto().calculPrime();
 					getManagedQuittanceAuto().calculQuittance();
 
-					if (getManagedContrat().getContrat().getNumSouscripteur()
-							.getId().equals(null)) {
+					if (getContratMB().getContrat().getPersonne()
+							.getNumSouscripteur().equals(null)) {
 						getManagedQuittanceAuto().setDisableaddContrats(false);
 
 					}
@@ -375,7 +383,7 @@ public class CotationAuto implements Serializable{
 				getExercice().setPrimeExercice(BigDecimal.valueOf(PE));
 				getExercice().setPrimeAReporterExo(BigDecimal.valueOf(PR));
 				getExercice().setPrecExo(BigDecimal.valueOf(PREC));
-				getExercice().setLibelleExercice("" + getExercice().getId() + "");
+				getExercice().setLibelleExercice("" + getExercice().getCodeexercice() + "");
 				System.out
 						.println("********Quittance dans add Contrat  Chiffre d'affaire= "
 								+ getManagedQuittanceAuto().getQuittanceAuto()
@@ -400,14 +408,14 @@ public class CotationAuto implements Serializable{
 								+ " Prec = "
 								+ getExercice().getPrecExo());
 
-				getManagedContrat().setExercice(getExercice());
-				getManagedContrat().addContrat();
-				getManagedContrat().majExercice();
+				getContratMB().setExercice(getExercice());
+				getContratMB().addContrat();
+				getContratMB().majExercice();
 				getCarteGriseMB().gestionCarteGrise(
-						getManagedContrat().getAvenant());
+						getContratMB().getAvenant());
 				getManagedQuittanceAuto().addQuittance(
-						getManagedContrat().getAvenant());
-				getManagedQuittanceAuto().addcommissionApporteur(getManagedContrat().getCodeApporteur(), getManagedContrat().getAvenant());
+						getContratMB().getAvenant());
+				getManagedQuittanceAuto().addcommissionApporteur(getContratMB().getCodeApporteur(), getContratMB().getAvenant());
 
 				System.out.println("------->>> Edition  condition particuliטre");// Clean
 																					// after
@@ -460,21 +468,21 @@ public class CotationAuto implements Serializable{
 		public void testRecord() {
 			// addContrats();
 			getCarteGriseMB().gestionCarteGrise(
-					getContrat().getAvenant());
+					getContratMB().getAvenant());
 		}
 
 		public String getNomclient() {
 			try {
-				Personne personne = getClient().getMaPersonne();
+				Personne personne = getClientMB().getMaPersonne();
 
-				if (personne instanceof Physique) {
-					Physique physique = (Physique) personne;
+				if (personne.getPhysique()!=null) {
+					Physique physique = personne.getPhysique();
 
 					nomclient = physique.getNomRaisonSociale() + " "
 							+ physique.getPrenomPers();
 				} else {
-					if (personne instanceof Morale) {
-						Morale morale = (Morale) personne;
+					if (personne.getMorale()!=null) {
+						Morale morale =  personne.getMorale();
 						nomclient = morale.getNomRaisonSociale();
 					}
 				}
@@ -493,7 +501,7 @@ public class CotationAuto implements Serializable{
 		public String getAdresseclient() {
 
 			try {
-				Personne personne = getClient().getMaPersonne();
+				Personne personne = getClientMB().getMaPersonne();
 
 				adresseclient = personne.getAdresse();
 			} catch (Exception e) { //
@@ -507,21 +515,6 @@ public class CotationAuto implements Serializable{
 			this.adresseclient = adresseclient;
 		}
 
-		public ContratMB getContrat() {
-			return contrat;
-		}
-
-		public void setContrat(ContratMB contrat) {
-			this.contrat = contrat;
-		}
-
-		public ClientMB getClient() {
-			return client;
-		}
-
-		public void setClient(ClientMB client) {
-			this.client = client;
-		}
 
 		public CarteGriseMB getCarteGriseMB() {
 			return carteGriseMB;
@@ -608,6 +601,38 @@ public class CotationAuto implements Serializable{
 
 		public void setCarteGriseMB(CarteGriseMB carteGriseMB) {
 			this.carteGriseMB = carteGriseMB;
+		}
+
+		public ManagedQuittanceAuto getManagedQuittanceAuto() {
+			return managedQuittanceAuto;
+		}
+
+		public void setManagedQuittanceAuto(ManagedQuittanceAuto managedQuittanceAuto) {
+			this.managedQuittanceAuto = managedQuittanceAuto;
+		}
+
+		public GarantieMB getGarantieMB() {
+			return garantieMB;
+		}
+
+		public void setGarantieMB(GarantieMB garantieMB) {
+			this.garantieMB = garantieMB;
+		}
+
+		public ContratMB getContratMB() {
+			return contratMB;
+		}
+
+		public void setContratMB(ContratMB contratMB) {
+			this.contratMB = contratMB;
+		}
+
+		public ClientMB getClientMB() {
+			return clientMB;
+		}
+
+		public void setClientMB(ClientMB clientMB) {
+			this.clientMB = clientMB;
 		}
 
 		

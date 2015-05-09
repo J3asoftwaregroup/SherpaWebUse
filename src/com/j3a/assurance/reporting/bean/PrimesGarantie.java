@@ -5,10 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import com.j3a.assurance.model.Garantie;
 import com.j3a.assurance.model.GarantieChoisie;
 import com.j3a.assurance.model.GarantieGarantieChoisie;
-import com.j3a.assurance.model.GarantieGarantieChoisieId;
 import com.j3a.assurance.objetService.ObjectService;
 
 public class PrimesGarantie implements Serializable {

@@ -6,6 +6,23 @@ import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.j3a.assurance.model.ApporteurVehicule;
+import com.j3a.assurance.model.Avenant;
+import com.j3a.assurance.model.ConduireVehicule;
+import com.j3a.assurance.model.Contrat;
+import com.j3a.assurance.model.GarantieChoisie;
+import com.j3a.assurance.model.GarantieGarantieChoisie;
+import com.j3a.assurance.model.HistoMouvement;
+import com.j3a.assurance.model.Morale;
+import com.j3a.assurance.model.Personne;
+import com.j3a.assurance.model.Physique;
+import com.j3a.assurance.model.Quittance;
+import com.j3a.assurance.model.Risque;
+import com.j3a.assurance.model.Sinistre;
+import com.j3a.assurance.model.SocieteAssurance;
+import com.j3a.assurance.model.Vehicule;
+import com.j3a.assurance.model.VehiculeSinistre;
+import com.j3a.assurance.model.VehiculeZoneGeographique;
 import com.j3a.assurance.objetDao.IDao;
 
 @org.springframework.stereotype.Service
@@ -89,6 +106,119 @@ public class Service implements ObjectService {
 		
 		return getDao().getByIdPK(object, table);
 	}
+	
+	@Override
+	@Transactional
+	public Object getById(String Table, String key, String id, Class TableClass) {
+		return getDao().getById(Table, key, id, TableClass);
+	}
+	
+	public VehiculeZoneGeographique recupDerniereZoneGeo(String codeVehicule){
+		return getDao().recupDerniereZoneGeo(codeVehicule);
+			}
+	
+	public GarantieChoisie recuperGarantiChoisie(String codeVehicule, String numAvenant){
+		return getDao().recuperGarantiChoisie(codeVehicule, numAvenant);
+		}
+	
+
+	public List<GarantieGarantieChoisie> recupGartGartChoisie(String codeGartChoisi){
+		return getDao().recupGartGartChoisie(codeGartChoisi);
+		}
+	
+	public ConduireVehicule recupConducteur(String codeVehicule){
+		return getDao().recupConducteur(codeVehicule);
+		}
+	
+	public ConduireVehicule recupConduireVehicule(String codeVehicule) {
+		return getDao().recupConduireVehicule(codeVehicule);
+		}
+	
+	public Avenant getContratLie(String param){
+		return getDao().getContratLie(param);
+		}
+	public SocieteAssurance recupererSteAssurance() {
+		return getDao().recupererSteAssurance();
+		}
+	
+	public GarantieChoisie getGarantie(String idVehicule){
+		return getDao().getGarantie(idVehicule);
+		}
+	public List<Vehicule> getListVehiculesContrat(String police) {
+		return getDao().getListVehiculesContrat(police);
+		}
+	public List<Physique> physiqueByNom(String nom){
+		return getDao().physiqueByNom(nom);
+		}
+	public List<Morale> moraleByNom(String nom){
+		return getDao().moraleByNom(nom);
+		}	
+	public List<Personne> personneByNom(String nom){
+		return getDao().personneByNom(nom);
+		}
+	public Vehicule findVehicule(String numImatriculation){
+		return getDao().findVehicule(numImatriculation);
+		}
+	
+	public List<Vehicule> trouverVehicules(String numImatriculation){
+		return getDao().trouverVehicules(numImatriculation);
+		}
+	public List<HistoMouvement> recuperHistoMouvements(String codeAvenant){
+		return getDao().recuperHistoMouvements(codeAvenant);
+		}
+	public List<HistoMouvement> recuperLisHistoMouvement(String codeAvenant) {
+		return getDao().recuperLisHistoMouvement(codeAvenant);
+		}
+
+	public Quittance findQuittanceByAvenant(String numAvenant)
+	{return getDao().findQuittanceByAvenant(numAvenant);
+	}
+	public Quittance findQuittance(String police) {
+		return getDao().findQuittance(police);
+		}
+	public Avenant DernierAvenant(String paramPolice) {
+		return getDao().DernierAvenant(paramPolice);
+				}
+
+	public Risque findRisque(String police) {
+		return getDao().findRisque(police);
+		}
+	
+	public List<Avenant> findAvenant(String souscripteur){
+		return getDao().findAvenant(souscripteur);
+		}
+	
+	public List<Quittance> findquitQuittance(String souscripteur){
+		return getDao().findquitQuittance(souscripteur);
+		}
+
+	public VehiculeSinistre infoSinistreAuto(String param){
+		return getDao().infoSinistreAuto(param);
+		}
+	
+	public List <ApporteurVehicule> infoapporteuVehicule(String codevehicule,String debut,String fin){
+		return getDao().infoapporteuVehicule(codevehicule, debut, fin);
+		}
+	
+    public List <Avenant> listeAvenant(String debut,String fin) {
+    	return getDao().listeAvenant(debut, fin);}
+    
+	public Sinistre DernierSinistre(String police) {
+		return getDao().DernierSinistre(police);
+		}
+	
+	public Contrat Contrattrouve(String souscripteur) {
+		return getDao().Contrattrouve(souscripteur);
+		}
+	public List<Contrat> ContratList(String souscripteur) {
+		return getDao().ContratList(souscripteur);
+		}
+	public Quittance recoverQuittanceOfLasAvenant(String paramNumPolice){
+		return getDao().recoverQuittanceOfLasAvenant(paramNumPolice);
+		}		
+	public Quittance recoverQuittanceAuto(String paramNumPolice){
+		return getDao().recoverQuittanceAuto(paramNumPolice);
+		}
 
 	//getter et setter de Idao qui a été injecté
 	

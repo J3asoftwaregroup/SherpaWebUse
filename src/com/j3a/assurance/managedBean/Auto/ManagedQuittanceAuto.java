@@ -17,6 +17,7 @@ import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.CompteApporteur;
 import com.j3a.assurance.model.Quittance;
 import com.j3a.assurance.objetService.ObjectService;
+import com.j3a.assurance.utilitaire.ClasseCalculDure;
 import com.j3a.assurance.utilitaire.Garanties;
 import com.j3a.assurance.utilitaire.IdGenerateur;
 import com.j3a.assurance.utilitaire.QuittanceAuto;
@@ -225,7 +226,7 @@ public void addcommissionApporteur(Apporteur apporteur, Avenant Avn){
 			date = Calendar.getInstance().getTime();
 			AffaireApporteur affaire = new AffaireApporteur();
 			affaire.setApporteur(apporteur);
-			affaire.setId(getIdGenerateur().getIdAffaireApporteur(apporteur));
+			affaire.setCodeAffaire(getIdGenerateur().getIdAffaireApporteur(apporteur));
 			//affaire.getComAff().add(
 			affaire.setComAff(commission);
 			affaire.setDateAff(date);
@@ -236,7 +237,7 @@ public void addcommissionApporteur(Apporteur apporteur, Avenant Avn){
 			affaire.setNumeroPoliceAff(Avn.getContrat().getNumPolice());
 			affaire.setNumAvenantAff(Avn.getNumAvenant());
 			CompteApporteur compte = new CompteApporteur();
-			compte = (CompteApporteur)getObjectService().getObjectById("compte_apporteur", "CODE_APPORTEUR", apporteur.getCodeApporteur(), CompteApporteur.class);
+			compte = (CompteApporteur)getObjectService().getById("compte_apporteur", "CODE_APPORTEUR", apporteur.getCodeApporteur(), CompteApporteur.class);
 			System.out.println(" <<<<<<Compte de l'apporteur= "+compte.getCodeCompteApp()); 
 			System.out.println(" <<<<<<Compte de l'apporteur Total Commission= "+compte.getTotalComApp()); 
 		

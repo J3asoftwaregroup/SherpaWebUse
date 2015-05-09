@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.Personne;
-import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.model.PointVente;
 import com.j3a.assurance.model.Quittance;
 import com.j3a.assurance.model.Vehicule;
