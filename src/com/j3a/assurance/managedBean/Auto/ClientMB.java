@@ -139,7 +139,7 @@ public class ClientMB implements Serializable{
 				personneNationalite.setDateNationalite(Calendar.getInstance().getTime());
 							
 					//Renseigner EtreType (client)
-				etrePk.setCodeTypePers((int) getObjectService().getObject(1, "TypePersonne"));
+				etrePk.setCodeTypePers((int) getObjectService().getObjectById(1, "TypePersonne"));
 				etrePk.setNumSouscripteur(personne.getNumSouscripteur());
 				etre.setId(etrePk);
 				etre.setDatePers(Calendar.getInstance().getTime());
