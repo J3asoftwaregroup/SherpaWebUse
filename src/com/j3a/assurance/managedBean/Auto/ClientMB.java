@@ -145,8 +145,10 @@ public class ClientMB implements Serializable{
 				etre.setDatePers(Calendar.getInstance().getTime());
 				
 					//Enregistrement en basse
+				getObjectService().addObject(personne);
 				getObjectService().addObject(physique);
 				getObjectService().addObject(etre);
+				getObjectService().addObject(personneNationalite);
 				setEtatEngSouscripteur(true);
 				//setMaPersonne(physique);
 			} catch (Exception e) {

@@ -23,6 +23,7 @@ import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.model.PointVente;
 import com.j3a.assurance.model.Quittance;
 import com.j3a.assurance.model.Risque;
+import com.j3a.assurance.model.SocieteAssurance;
 import com.j3a.assurance.model.SousCatVehicule;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.objetService.ObjectService;
@@ -57,13 +58,13 @@ public class ContratMB implements Serializable{
 		private String remplace;
 		private String mouvement = "AFFAIRE NOUVELLE", typeContrat,
 				modeReconduction;
-
+        private Exercice exerciceOuvert;
 		private String codeTypeContrats;
 		private BigDecimal commission;
 		private String bareme, baremeR;
-
+        private SocieteAssurance societeAssurance;
 		private String observation;
-
+        private PointVente pointVente;
 		public Personne getPersAvenant() {
 			return persAvenant;
 		}
@@ -75,7 +76,7 @@ public class ContratMB implements Serializable{
 		}
 
 		private String numAvenant;
-
+        private Risque risque;
 		private String nature;
 		private Date effet = Calendar.getInstance().getTime();
 		private Date resiliation;
@@ -909,6 +910,54 @@ public class ContratMB implements Serializable{
 
 		public void setEcheance2(Date echeance2) {
 			this.echeance2 = echeance2;
+		}
+
+
+
+		public SocieteAssurance getSocieteAssurance() {
+			return societeAssurance;
+		}
+
+
+
+		public void setSocieteAssurance(SocieteAssurance societeAssurance) {
+			this.societeAssurance = societeAssurance;
+		}
+
+
+
+		public PointVente getPointVente() {
+			return pointVente;
+		}
+
+
+
+		public void setPointVente(PointVente pointVente) {
+			this.pointVente = pointVente;
+		}
+
+
+
+		public Risque getRisque() {
+			return risque;
+		}
+
+
+
+		public void setRisque(Risque risque) {
+			this.risque = risque;
+		}
+
+
+
+		public Exercice getExerciceOuvert() {
+			return exerciceOuvert;
+		}
+
+
+
+		public void setExerciceOuvert(Exercice exerciceOuvert) {
+			this.exerciceOuvert = exerciceOuvert;
 		}
 
 		

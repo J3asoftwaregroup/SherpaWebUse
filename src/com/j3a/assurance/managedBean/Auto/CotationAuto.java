@@ -77,7 +77,7 @@ public class CotationAuto implements Serializable{
 			getContratMB().setDureeEnjour((long) 365);
 			getManagedQuittanceAuto().setQuittanceid(
 					getIdGenerateur().getIdQuittance(idAven));
-			setExercice(getContratMB().exerciceOuvert()); 
+			setExercice(getContratMB().getExerciceOuvert()); 
 		}
 
 		
@@ -264,14 +264,14 @@ public class CotationAuto implements Serializable{
 							getContratMB().getSocieteAssurance());
 					// getContratMB().getContrat().setId(getContratMB().getId());
 				
-					getContratMB().getContrat().setCodePointVente(
+					getContratMB().getContrat().setPointVente(
 							getContratMB().getPointVente());
 					getContratMB().getContrat().setPersonne(
 							getClientMB().getMaPersonne());
 					// getContratMB().getAvenant().setId(
 					// getContratMB().getNumAvenant());
 					getContratMB().getContrat().setCodeRisque(
-							getContratMB().getRisq("1"));
+							getContratMB().getRisque("1"));
 					getContratMB().getAvenant().setCodeUtilisateur(
 							getContratMB().getUtilisateur());
 					getContratMB().getAvenant().setDuree(
