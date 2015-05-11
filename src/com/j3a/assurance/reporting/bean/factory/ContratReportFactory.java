@@ -100,7 +100,7 @@ public class ContratReportFactory implements Serializable {
 		// recupère la list des vehicules actifs du contrat
 		try {
 
-			listVehicules = selectInfo.getListVehiculesContrat(contrat.getId());
+			listVehicules = getObjectService().getListVehiculesContrat(contrat.getNumPolice());
 
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
@@ -128,10 +128,10 @@ public class ContratReportFactory implements Serializable {
 				 */
 				// associe la garantieChoisie au vehicule
 
-				GarantieChoisie garantieChoisie = selectInfo
-						.getGarantie(vehicule.getId());
+				GarantieChoisie garantieChoisie = getObjectService()
+						.getGarantie(vehicule.getCodeVehicule());
 				System.out.println("-----> Code garantieChoisie :"
-						+ garantieChoisie.getId());
+						+ garantieChoisie.getCodeGarantieChoisie());
 				vehiculeAttributsBean.setGarantieChoisie(garantieChoisie);
 				// associe la list des primes par garanties du vehicule
 				vehiculeAttributsBean
@@ -154,26 +154,20 @@ public class ContratReportFactory implements Serializable {
 	 */
 	public List<PrimeByGarantie> getPrimeByGarantie(
 			GarantieChoisie garantieChoisie) {
-		SelectInfoAttestation selectInfo = getSelectInfoAttestation();
 		// objet qui recupère la collection de PrimeByGarantie
 		List<PrimeByGarantie> listPrimeGaranties = new ArrayList<PrimeByGarantie>();
 		// recupère la collection de garantie
-		Set<Garantie> listGaranties = garantieChoisie.getGaranties();
+		Set<GarantieGarantieChoisie> listGaranties = garantieChoisie.getGarantieGarantieChoisies();
 		// pour chaque garantie de la list
-		for (Garantie garantie : listGaranties) {
-			GarantieGarantieChoisiePK pk = new GarantieGarantieChoisiePK();
+		for (GarantieGarantieChoisie ggc : listGaranties) {
+			
 			PrimeByGarantie primeByGarantie = new PrimeByGarantie();
 			// contruire le clé primaire de GarantieGarantieChoisie
-			pk.setCodeGarantieChoisie(garantieChoisie);
-			pk.setCodeGarantie(garantie);
-			// recupère GarantieGarantieChoisie par pk
-			GarantieGarantieChoisie choisie = (GarantieGarantieChoisie) getObjectService()
-					.getObjectById(pk, "GarantieGarantieChoisie");
-			// GarantieGarantieChoisie choisie =selectInfo.getById(pk);
-			System.out.println("GarantieGarantieChoisie :" + choisie);
+			
+		//	System.out.println("GarantieGarantieChoisie :" + ggc.);
 			// contuire l'objet PrimebyGarantie
-			primeByGarantie.setChoisie(choisie);
-			primeByGarantie.setGarantie(garantie);
+			primeByGarantie.setChoisie(ggc);
+			primeByGarantie.setGarantie(ggc.getGarantie());
 			// ajouter a la list des primeByGarantie
 			listPrimeGaranties.add(primeByGarantie);
 		}

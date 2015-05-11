@@ -7,11 +7,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
-import org.primefaces.event.FlowEvent;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +24,6 @@ import com.j3a.assurance.model.PointVente;
 import com.j3a.assurance.model.Quittance;
 import com.j3a.assurance.model.Risque;
 import com.j3a.assurance.model.SousCatVehicule;
-import com.j3a.assurance.model.Utilisateur;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.prime.CalculComission;

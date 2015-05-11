@@ -40,10 +40,6 @@ public class ReportFactoryAuto implements Serializable {
 	@Autowired
 	ReportingAuto reportingAuto;
 	
-
-	@Autowired
-	RequetteHistoMouvement requetteHistoMouvement;
-	
 		
 	//Attibut d'instance
 	private String idQuittance;
@@ -99,8 +95,8 @@ public class ReportFactoryAuto implements Serializable {
 						List listeHistoMouvement = new ArrayList<>();
 					//	listeHistoMouvement
 						
-					//	List listeHistoMouvement = getRequetteHistoMouvement().recuperHistoMouvements(avenant.getId());
-						for(HistoMouvement histoMouvement : getRequetteHistoMouvement().recuperLisHistoMouvement(avenant.getNumAvenant())){
+						
+						for(HistoMouvement histoMouvement : getObjectService().recuperLisHistoMouvement(avenant.getNumAvenant())){
 							getReportingAuto().getListVehiculeAssure().add(histoMouvement.getVehicule());
 						}
 				return reportingAuto;
@@ -152,16 +148,6 @@ public class ReportFactoryAuto implements Serializable {
 		this.reportingAuto = reportingAuto;
 	}
 	
-	public RequetteHistoMouvement getRequetteHistoMouvement() {
-		return requetteHistoMouvement;
-	}
-
-
-	public void setRequetteHistoMouvement(
-			RequetteHistoMouvement requetteHistoMouvement) {
-		this.requetteHistoMouvement = requetteHistoMouvement;
-	}
-
 
 	public boolean isEtatcontrat() {
 		return etatcontrat;

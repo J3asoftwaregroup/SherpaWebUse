@@ -65,7 +65,7 @@ public class ManagedGarantie implements Serializable  {
 		for (Iterator it = listObject.iterator(); it.hasNext();) {
 			Garantie garantie = (Garantie) it.next();
 			Garanties garanties = new Garanties(); 
-			garanties.setId(garantie.getId());
+			garanties.setCodeGarantie(garantie.getCodeGarantie());
 			garanties.setLibelleGarantie(garantie.getLibelleGarantie());
 			garantiesList.add(garanties);
 		}

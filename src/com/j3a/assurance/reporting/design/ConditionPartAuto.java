@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -43,6 +45,7 @@ import com.j3a.assurance.model.GarantieGarantieChoisie;
 import com.j3a.assurance.model.SousCatVehicule;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.model.VehiculeZoneGeographique;
+import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.reporting.bean.ReportingAuto;
 import com.j3a.assurance.reporting.bean.factory.ReportFactoryAuto;
 import com.lowagie.text.Cell;
@@ -63,15 +66,12 @@ public class ConditionPartAuto implements Serializable {
 
 	// Injection par spring
 	@Autowired
+	ObjectService objectService;
+	@Autowired
 	ReportFactoryAuto reportFactoryAuto;
 	@Autowired
-	InfoGarantiesAuto infoGarantiesAuto;
-	@Autowired
-	RequetteZoneGeographiq requetteZoneGeographiq;
-	@Autowired
-	RequetteConducteur requetteConducteur;
-	@Autowired
 	ReportingAuto reportingAuto;
+	
 
 	// Attribut d'instance
 	private String idQuittance; // Détacher pour les tests (parametre d'edition)
@@ -133,7 +133,7 @@ public class ConditionPartAuto implements Serializable {
 
 		Document document = new Document(PageSize.A4);
 		document.setMargins(20, 20, 20, 20);
-		nomFichier = "CP-" + reportingAuto.getQuittance().getId() + ".pdf";
+		nomFichier = "CP-" + reportingAuto.getQuittance().getCodeQuittance() + ".pdf";
 		// step 2
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		PdfWriter.getInstance(document, baos);
@@ -146,25 +146,25 @@ public class ConditionPartAuto implements Serializable {
 		for (Vehicule vehicule : getReportingAuto().getListVehiculeAssure()) {
 			document.newPage();
 			// Recuperer la sous catégorie
-			SousCatVehicule sousCatVehicule = vehicule.getCodeSousCatVehicule();
+			SousCatVehicule sousCatVehicule = vehicule.getSousCatVehicule();
 
 			// Recuperer la zone de geographie
-			VehiculeZoneGeographique vehiculeZoneGeographique = requetteZoneGeographiq
-					.recupDerniereZoneGeo(vehicule.getId());
+			VehiculeZoneGeographique vehiculeZoneGeographique = getObjectService()
+					.recupDerniereZoneGeo(vehicule.getCodeVehicule());
 
 			// Recuperer le conducteur habituel
-			ConduireVehicule conduireVehicule = requetteConducteur
-					.recupConducteur(vehicule.getId());
+			ConduireVehicule conduireVehicule = getObjectService()
+					.recupConducteur(vehicule.getCodeVehicule());
 
 			// recuperer la derniere garantieChoisie
-			GarantieChoisie garantieChoisie = getInfoGarantiesAuto()
-					.recuperGarantiChoisie(vehicule.getId(),
-							getReportingAuto().getAvenant().getId());
+			GarantieChoisie garantieChoisie = getObjectService()
+					.recuperGarantiChoisie(vehicule.getCodeVehicule(),
+							getReportingAuto().getAvenant().getNumAvenant());
 
 			// Recuperer la liste des gartgartchoisies
 			List<GarantieGarantieChoisie> listgartieGartieChoisies = new ArrayList<GarantieGarantieChoisie>(
-					getInfoGarantiesAuto().recupGartGartChoisie(
-							garantieChoisie.getId()));
+					getObjectService().recupGartGartChoisie(
+							garantieChoisie.getCodeGarantieChoisie()));
 			try {
 
 				addContent(document, vehicule, garantieChoisie,
@@ -315,14 +315,14 @@ public class ConditionPartAuto implements Serializable {
 
 		// 1er ligne
 		tabQuit.addCell(new Phrase("Police:", normalText));
-		tabQuit.addCell(new Phrase(reportingAuto.getContrat().getId(),smallText));
+		tabQuit.addCell(new Phrase(reportingAuto.getContrat().getNumPolice(),smallText));
 
 		tabQuit.addCell(new Phrase("Categorie:", normalText));
-		tabQuit.addCell(new Phrase(reportingAuto.getRisque().getId(), smallText));
+		tabQuit.addCell(new Phrase(reportingAuto.getRisque().getCodeRisque(), smallText));
 
 		// 2em ligne
 		tabQuit.addCell(new Phrase("Avenant:", normalText));
-		cell = new PdfPCell(new Phrase(reportingAuto.getAvenant().getId(),
+		cell = new PdfPCell(new Phrase(reportingAuto.getAvenant().getNumAvenant(),
 				smallText));
 		
 		cell.setBorder(Rectangle.NO_BORDER);
@@ -469,8 +469,8 @@ public class ConditionPartAuto implements Serializable {
 		tableauVehicul.addCell(cellCont);
 
 		cellLib = new PdfPCell(new Phrase("Zone Geo", normalText));
-		cellCont = new PdfPCell(new Phrase(vehiculeZoneGeographique.getId()
-				.getCodeZoneGeo().getLibelleZoneGeo(), smallText));
+		cellCont = new PdfPCell(new Phrase(vehiculeZoneGeographique
+				.getZoneGeographique().getLibelleZoneGeo(), smallText));
 		tableauVehicul.addCell(cellLib);
 		tableauVehicul.addCell(cellCont);
 
@@ -528,14 +528,14 @@ public class ConditionPartAuto implements Serializable {
 
 		// 1ere colonne
 		cellLib = new PdfPCell(new Phrase("Tarif", normalText));
-		cellCont = new PdfPCell(new Phrase(vehicule.getCodeSousCatVehicule()
+		cellCont = new PdfPCell(new Phrase(vehicule.getSousCatVehicule()
 				.getTarif(), smallText));
 		tableauVehicul.addCell(cellLib);
 		tableauVehicul.addCell(cellCont);
 
 		// 2e colonne
 		cellLib = new PdfPCell(new Phrase("Catégorie", normalText));
-		cellCont = new PdfPCell(new Phrase(vehicule.getCodeSousCatVehicule()
+		cellCont = new PdfPCell(new Phrase(vehicule.getSousCatVehicule()
 				.getTarif(), smallText));
 		tableauVehicul.addCell(cellLib);
 		tableauVehicul.addCell(cellCont);
@@ -543,8 +543,8 @@ public class ConditionPartAuto implements Serializable {
 		// 3e colonne
 		cellLib = new PdfPCell(new Phrase("Conducteur habituel", normalText));
 		if (conduireVehicule != null) {
-			cellCont = new PdfPCell(new Phrase(conduireVehicule.getId()
-					.getNumCond().getNonCond(), smallText));
+			cellCont = new PdfPCell(new Phrase(conduireVehicule
+					.getConducteur().getNonCond(), smallText));
 		} else {
 			cellCont = new PdfPCell(new Phrase("", smallText));
 		}
@@ -651,7 +651,7 @@ public class ConditionPartAuto implements Serializable {
 			garantieGarantieChoisie = occurenceGartGartChoisie;
 			// recup la garantie
 			Garantie garantie = new Garantie();
-			garantie = garantieGarantieChoisie.getId().getCodeGarantie();
+			garantie = garantieGarantieChoisie.getGarantie();
 
 			// Contenu
 			// 1e Colonne
@@ -816,7 +816,7 @@ public class ConditionPartAuto implements Serializable {
 	public void creerEmagement(Document document) throws DocumentException {
 
 		Paragraph dateJour = new Paragraph(new Chunk("Fait en 3 exemplaires à "
-				+ reportingAuto.getPointVente().getCodeVille()
+				+ reportingAuto.getPointVente().getVille()
 						.getLibelleVille() + ", le " + sdf.format(new Date())));
 		dateJour.setIndentationLeft(200);
 
@@ -958,29 +958,16 @@ public class ConditionPartAuto implements Serializable {
 		this.reportingAuto = reportingAuto;
 	}
 
-	public InfoGarantiesAuto getInfoGarantiesAuto() {
-		return infoGarantiesAuto;
+	public ObjectService getObjectService() {
+		return objectService;
 	}
 
-	public void setInfoGarantiesAuto(InfoGarantiesAuto infoGarantiesAuto) {
-		this.infoGarantiesAuto = infoGarantiesAuto;
+	public void setObjectService(ObjectService objectService) {
+		this.objectService = objectService;
 	}
 
-	public RequetteZoneGeographiq getRequetteZoneGeographiq() {
-		return requetteZoneGeographiq;
-	}
+	
 
-	public void setRequetteZoneGeographiq(
-			RequetteZoneGeographiq requetteZoneGeographiq) {
-		this.requetteZoneGeographiq = requetteZoneGeographiq;
-	}
-
-	public RequetteConducteur getRequetteConducteur() {
-		return requetteConducteur;
-	}
-
-	public void setRequetteConducteur(RequetteConducteur requetteConducteur) {
-		this.requetteConducteur = requetteConducteur;
-	}
+	
 
 }
