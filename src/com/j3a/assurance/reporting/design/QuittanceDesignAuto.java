@@ -47,7 +47,6 @@ import com.lowagie.text.Cell;
  */
 
 @Component
-@Scope("request")
 public class QuittanceDesignAuto implements Serializable {
 	/**
 		 * 

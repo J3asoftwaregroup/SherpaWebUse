@@ -25,7 +25,6 @@ import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.reporting.bean.ReportingAuto;
 
 @Component
-@Scope("request")
 public class ReportFactoryAuto implements Serializable {
 
 	/**

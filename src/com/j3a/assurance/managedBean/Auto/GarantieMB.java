@@ -11,6 +11,7 @@ import javax.faces.component.UIComponent;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Garantie;
 import com.j3a.assurance.objetService.ObjectService;
@@ -21,7 +22,7 @@ import com.j3a.assurance.prime.categorie.PrimeCategorie;
 import com.j3a.assurance.prime.categorie.PrimeCategorieInterface;
 import com.j3a.assurance.utilitaire.Garanties;
 import com.j3a.assurance.utilitaire.VehiculeRow;
-
+@Component
 public class GarantieMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Autowired

@@ -20,7 +20,6 @@ import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.model.VehiculesAssures;
 
 @Component
-@Scope("request")
 public class ReportingAuto implements Serializable {
 	/**
 	 * 

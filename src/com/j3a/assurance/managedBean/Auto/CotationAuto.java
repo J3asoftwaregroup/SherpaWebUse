@@ -43,8 +43,6 @@ public class CotationAuto implements Serializable{
 		private ClientMB clientMB;
 	    @Autowired
 		private CarteGriseMB carteGriseMB;
-	    @Autowired
-		private QuittanceAuto quittanceAuto;
 		private Conducteur cduc;
 		private Boolean showNavBar = false;
 		private Exercice exercice;
@@ -508,15 +506,6 @@ public class CotationAuto implements Serializable{
 
 		public void setManagedCarteGrise(CarteGriseMB carteGriseMB) {
 			this.carteGriseMB = carteGriseMB;
-		}
-
-		public QuittanceAuto getQuittanceAuto() {
-			return quittanceAuto;
-		}
-
-		public void setQuittanceAuto(
-				QuittanceAuto quittanceAuto) {
-			this.quittanceAuto = quittanceAuto;
 		}
 
 		public String getSousCategorieV() {

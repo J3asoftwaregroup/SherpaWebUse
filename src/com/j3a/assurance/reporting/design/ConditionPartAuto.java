@@ -57,7 +57,6 @@ import com.lowagie.text.Cell;
  */
 
 @Component
-@Scope("request")
 public class ConditionPartAuto implements Serializable {
 	/**
 		 * 
