@@ -43,14 +43,14 @@ public class ClientMB implements Serializable{
 		@Autowired
 	    ObjectService objectService;
 		
-		private Personne maPersonne ;
+		private Personne maPersonne= new Personne() ;
 		private ComboSexes comboSexe;
 		
 		@Autowired
 		IdGenerateur idGenerateur;
 		
 		
-		private String indentifiacationClient;
+		
 		private Morale maMorale = new Morale();
 		private Physique monPhysique = new Physique();
 		private TypePersonne typePersonne = new TypePersonne();
@@ -60,16 +60,10 @@ public class ClientMB implements Serializable{
 		private PersonneNationaliteId personneNationalitePk = new PersonneNationaliteId();
 		private TypePersonne objTypePersonne = new TypePersonne();
 		private Contrat monContrat = new Contrat();
-		private String optionRech = "1"; //Option recherche par numéro
-		private String valeurRecherche;
-		private String valeurRecherchePers;
-		private String  rechByNumSous;
-		private String qualitePers = "persPhysique";
 		private String situationMatrimoniale;
 		private String tittre;
 		private String profession;
 		private String typePiece;
-		private Boolean statutRechercheClient = false;
 		private Etre etreType = new Etre();
 		private Personne personne = new Personne();
 		private Physique physique = new Physique();
@@ -127,7 +121,7 @@ public class ClientMB implements Serializable{
 				
 				//Affecter la valeur des combos
 				physique.setTitre(getTittre());
-				physique.setSexe(comboSexe.getSelectedSexe());
+				//physique.setSexe(comboSexe.getSelectedSexe());
 				System.out.println("----->>> Sexe du client:"+physique.getSexe().getCodeSexe());//clean after
 				physique.setTypePiece(getTypePiece());
 				physique.setProfession(getProfession());
@@ -297,33 +291,6 @@ public class ClientMB implements Serializable{
 		}
 
 		
-
-		public String getIndentifiacationClient() {
-			return indentifiacationClient;
-		}
-
-
-		public void setIndentifiacationClient(String indentifiacationClient) {
-			this.indentifiacationClient = indentifiacationClient;
-		}
-
-		public String getOptionRech() {
-			return optionRech;
-		}
-
-		public void setOptionRech(String optionRech) {
-			this.optionRech = optionRech;
-		}
-
-
-		public String getValeurRecherche() {
-			return valeurRecherche;
-		}
-
-		public void setValeurRecherche(String valeurRecherche) {
-			this.valeurRecherche = valeurRecherche;
-		}
-
 		public Contrat getMonContrat() {
 			return monContrat;
 		}
@@ -333,14 +300,6 @@ public class ClientMB implements Serializable{
 		}
 
 		
-
-		public String getRechByNumSous() {
-			return rechByNumSous;
-		}
-
-		public void setRechByNumSous(String rechByNumSous) {
-			this.rechByNumSous = rechByNumSous;
-		}
 		
 		public String getNom() {
 			return nom;
@@ -357,29 +316,6 @@ public class ClientMB implements Serializable{
 		public void setNumSouscripteur(String numSouscripteur) {
 			this.numSouscripteur = numSouscripteur;
 		}
-
-		public String getQualitePers() {
-			return qualitePers;
-		}
-
-		
-		public void setQualitePers(String qualitePers) {
-			this.qualitePers = qualitePers;
-		}
-
-
-
-
-		public String getValeurRecherchePers() {
-			return valeurRecherchePers;
-		}
-
-
-		public void setValeurRecherchePers(String valeurRecherchePers) {
-			this.valeurRecherchePers = valeurRecherchePers;
-		}
-
-		
 
 
 
@@ -519,15 +455,6 @@ public class ClientMB implements Serializable{
 			this.typePiece = typePiece;
 		}
 
-
-		public Boolean getStatutRechercheClient() {
-			return statutRechercheClient;
-		}
-
-
-		public void setStatutRechercheClient(Boolean statutRechercheClient) {
-			this.statutRechercheClient = statutRechercheClient;
-		}
 
 
 		public IdGenerateur getIdGenerateur() {
