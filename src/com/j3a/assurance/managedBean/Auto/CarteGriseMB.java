@@ -16,6 +16,8 @@ import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.j3a.assurance.converter.ScatVehiCvtr;
+import com.j3a.assurance.converter.VilleCvtr;
 import com.j3a.assurance.model.ApporteurVehicule;
 import com.j3a.assurance.model.ApporteurVehiculeId;
 import com.j3a.assurance.model.Avenant;
@@ -53,6 +55,10 @@ public class CarteGriseMB implements Serializable {
 	    ObjectService objectService;
 		@Autowired
 		private IdGenerateur idGenerateur;
+		@Autowired
+		VilleCvtr villeCvtr;
+		@Autowired
+		ScatVehiCvtr scatVehiCvtr;
 		// private static Logger logs=Logger.getLogger(ManagedCarteGrise.class);
 		private VehiculeRow slctdVehiRw = new VehiculeRow();
 		private VehiculeRow slctdVehiRwTb = new VehiculeRow();
@@ -839,6 +845,7 @@ public class CarteGriseMB implements Serializable {
 			// la zone Géo correspondante ds le slctdVehiRw
 			//logs.info(">>>>/ INSIDE -chxVille-");
 			//logs.info(">>>>/ set de la Zone Geo correspondante à la ville choisit ds SlctdVehiRw");
+			 System.out.println("Ville "+getSlctdville().getLibelleVille());
 			getSlctdVehiRw().setZonGeo(getSlctdville().getZoneGeographique());
 			// System.out.println("ùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùù"+getManagedContrat().getTypeContrat()+getManagedContrat().getBaremes());
 			//logs.info(">>>>/ END -chxVille-");
@@ -1257,6 +1264,22 @@ public class CarteGriseMB implements Serializable {
 
 		public void setIdGenerateur(IdGenerateur idGenerateur) {
 			this.idGenerateur = idGenerateur;
+		}
+
+		public VilleCvtr getVilleCvtr() {
+			return villeCvtr;
+		}
+
+		public void setVilleCvtr(VilleCvtr villeCvtr) {
+			this.villeCvtr = villeCvtr;
+		}
+
+		public ScatVehiCvtr getScatVehiCvtr() {
+			return scatVehiCvtr;
+		}
+
+		public void setScatVehiCvtr(ScatVehiCvtr scatVehiCvtr) {
+			this.scatVehiCvtr = scatVehiCvtr;
 		}
 
 

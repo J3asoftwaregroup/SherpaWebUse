@@ -68,10 +68,12 @@
 										<p:selectOneMenu id="slctSCat"  value="#{carteGriseMB.slctdVehiRw.souCatVehi}" required="true" requiredMessage="Sélectionner une sous Catégorie !" converter="#{scatVehiCvtr}" style="width:170px">
 											<f:selectItem itemLabel="" itemValue=""/>
 											<f:selectItems value="#{scatVehiCvtr.catVehiList}" var="ca" itemLabel="#{ca.libelleSousCatVehicule}" itemValue="#{ca}"/>
+											  <p:ajax process="slctSCat"  listener="#{carteGriseMB.choixSousCat}" partialSubmit="true" event="valueChange"  update="@this, catV"/>
+    
 											</p:selectOneMenu>
 								
 								<h:outputText value="Catégorie " style="margin-left: 20px;"/>
-										<p:inputText id="catV" value="#{carteGriseMB.slctdVehiRw.souCatVehi.codeCategorie.libelleCategorie}" 
+										<p:inputText id="catV" value="#{carteGriseMB.slctdVehiRw.souCatVehi.categorie.libelleCategorie}" 
 										style="width:211px"/>
 										
 								<h:outputText value="1er Mise en circulation " style="margin-left: 20px;"/>
@@ -386,11 +388,11 @@
 											style="width:130px">
 											
 											<f:selectItems
-												value="#{carteGriseMB.villeList}"
+												value="#{villeCvtr.villeList}"
 												var="ca" itemLabel="#{ca.libelleVille}" itemValue="#{ca}" />
-											<p:ajax
+											<p:ajax event="valueChange"
 												listener="#{carteGriseMB.chxVille}"
-												process="@this" update=":VehiculeProp:zoneGeo" global="false"/>
+												 update="zoneGeo" global="false"/>
 										</p:selectOneMenu>
 										
 										<h:outputText value="Zone &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
@@ -399,12 +401,7 @@
 										<p:inputText id="zoneGeo"
 										value="#{carteGriseMB.slctdVehiRw.zonGeo.libelleZoneGeo}" 
 										readonly="true" style="width:211px" />
-										<h:outputText value="Taux Apporteur" style="margin-left: 20px;"/>
-											<p:inputText id="txapp"
-												value="#{carteGriseMB.slctdVehiRw.tauxCommissionApporteur}"
-												>
-												<f:convertNumber pattern="##,###.##" ></f:convertNumber>
-											</p:inputText>
+										
 									</h:panelGrid>
                                      </fieldset>
 										<fieldset class="fieldset" style="width: 97%">
