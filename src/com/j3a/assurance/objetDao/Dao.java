@@ -15,6 +15,7 @@ import com.j3a.assurance.model.ApporteurVehicule;
 import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.ConduireVehicule;
 import com.j3a.assurance.model.Contrat;
+import com.j3a.assurance.model.Exercice;
 import com.j3a.assurance.model.GarantieChoisie;
 import com.j3a.assurance.model.GarantieGarantieChoisie;
 import com.j3a.assurance.model.HistoMouvement;
@@ -227,7 +228,12 @@ public class Dao implements IDao {
 		return avenant;
 
 	}
-	
+	public Exercice exerciceOuvert() throws HibernateException {
+		String req = "SELECT * FROM EXERCICE WHERE ETAT_EXERCICE LIKE 'ouvert%' order by CODEEXERCICE DESC LIMIT 0,1";
+		Exercice exo = (Exercice) getSessionFactory().getCurrentSession()
+				.createSQLQuery(req).addEntity(Exercice.class).uniqueResult();
+		return exo;
+	}
 	
 	/**
 	 * Méthode de recupération de la société d'Assurance

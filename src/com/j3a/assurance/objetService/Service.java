@@ -10,6 +10,7 @@ import com.j3a.assurance.model.ApporteurVehicule;
 import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.ConduireVehicule;
 import com.j3a.assurance.model.Contrat;
+import com.j3a.assurance.model.Exercice;
 import com.j3a.assurance.model.GarantieChoisie;
 import com.j3a.assurance.model.GarantieGarantieChoisie;
 import com.j3a.assurance.model.HistoMouvement;
@@ -112,7 +113,10 @@ public class Service implements ObjectService {
 	public Object getById(String Table, String key, String id, Class TableClass) {
 		return getDao().getById(Table, key, id, TableClass);
 	}
-	
+	public Exercice exerciceOuvert(){
+		
+		return getDao().exerciceOuvert();
+	}
 	public VehiculeZoneGeographique recupDerniereZoneGeo(String codeVehicule){
 		return getDao().recupDerniereZoneGeo(codeVehicule);
 			}

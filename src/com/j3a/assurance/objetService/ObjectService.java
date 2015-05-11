@@ -6,6 +6,7 @@ import com.j3a.assurance.model.ApporteurVehicule;
 import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.ConduireVehicule;
 import com.j3a.assurance.model.Contrat;
+import com.j3a.assurance.model.Exercice;
 import com.j3a.assurance.model.GarantieChoisie;
 import com.j3a.assurance.model.GarantieGarantieChoisie;
 import com.j3a.assurance.model.HistoMouvement;
@@ -45,7 +46,7 @@ public void addObject(Object objet);
 	public VehiculeZoneGeographique recupDerniereZoneGeo(String codeVehicule);
 	public GarantieChoisie recuperGarantiChoisie(String codeVehicule, String numAvenant);
 	
-
+	public Exercice exerciceOuvert();
 	public List<GarantieGarantieChoisie> recupGartGartChoisie(String codeGartChoisi);
 	public ConduireVehicule recupConducteur(String codeVehicule);
 	public ConduireVehicule recupConduireVehicule(String codeVehicule) ;
