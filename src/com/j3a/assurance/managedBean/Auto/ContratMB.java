@@ -30,7 +30,7 @@ import com.j3a.assurance.model.Utilisateur;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.utilitaire.IdGenerateur;
-import com.j3a.assurance.utilitaire.InfoAvenantContrat;
+
 
 @Component
 public class ContratMB implements Serializable{
@@ -102,8 +102,7 @@ public class ContratMB implements Serializable{
 		private String codePointVente;
 		private PointVente rechPintVente;
 		private Apporteur resultatApporteur;
-		@Autowired
-		InfoAvenantContrat infoAvenantContrat;
+		
 		private Personne maPersonne;
 		private Physique monPhysique;
 		
@@ -139,7 +138,7 @@ public class ContratMB implements Serializable{
 	}
 
 	   public void societe() {
-			SocieteAssurance sta = infoAvenantContrat.SteAss();
+			SocieteAssurance sta = getObjectService().recupererSteAssurance();
 			societeAssurance.setCodeSocieteAssurance(sta.getCodeSocieteAssurance());
 			societeAssurance.setAbrege(sta.getAbrege());
 			societeAssurance.setAdressePostale(sta.getAdressePostale());
@@ -499,6 +498,14 @@ public class ContratMB implements Serializable{
 			setDureeEnjour(nbjour);
 		}
 
+		public void recupererPointVente() {
+			try {
+				setRechPintVente((PointVente) getObjectService().getObjectById(
+						monContrat.getPointVente().getCodePointVente(), "PointVente"));
+			} catch (Exception e) {
+			}
+		}
+		
 		public Long getDureeEnjour() {
 			ConvertDureeEnjour();
 			return dureeEnjour;
