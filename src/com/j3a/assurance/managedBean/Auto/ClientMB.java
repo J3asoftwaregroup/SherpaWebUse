@@ -24,6 +24,7 @@ import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.model.PersonneNationalite;
 import com.j3a.assurance.model.PersonneNationaliteId;
 import com.j3a.assurance.model.Physique;
+import com.j3a.assurance.model.Sexe;
 import com.j3a.assurance.model.TypePersonne;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.utilitaire.IdGenerateur;
@@ -65,8 +66,8 @@ public class ClientMB implements Serializable{
 		private String profession;
 		private String typePiece;
 		private Etre etreType = new Etre();
-		private Personne personne = new Personne();
-		private Physique physique = new Physique();
+		private Personne personne;
+		private Physique physique;
 		private Morale morale = new Morale();
 		private String nom;
 		private String numSouscripteur;
@@ -122,19 +123,22 @@ public class ClientMB implements Serializable{
 				//Affecter la valeur des combos
 				physique.setTitre(getTittre());
 				//physique.setSexe(comboSexe.getSelectedSexe());
-				System.out.println("----->>> Sexe du client:"+physique.getSexe().getCodeSexe());//clean after
+				Sexe sexe=(Sexe) getObjectService().getObjectById(1, "Sexe");
+				physique.setSexe(sexe);
+				//System.out.println("----->>> Sexe du client:"+physique.getSexe().getCodeSexe());//clean after
 				physique.setTypePiece(getTypePiece());
 				physique.setProfession(getProfession());
 				physique.setSituationMatPers(situationMatrimoniale);
 				
 					//Reseigner Personne_Nationalite
-				personneNationalitePk.setNumSouscripteur(physique.getNumSouscripteur());
-				//personneNationalitePk.setCodeNationalite(comboNationalite.getSelectedNationalite());
+				personneNationalitePk.setNumSouscripteur(personne.getNumSouscripteur());
+				personneNationalitePk.setCodeNationalite(1);
 				personneNationalite.setId(personneNationalitePk);
 				personneNationalite.setDateNationalite(Calendar.getInstance().getTime());
 							
 					//Renseigner EtreType (client)
-				etrePk.setCodeTypePers((int) getObjectService().getObjectById(1, "TypePersonne"));
+				typePersonne=(TypePersonne) getObjectService().getObjectById(1, "TypePersonne");
+				etrePk.setCodeTypePers(typePersonne.getCodeTypePers());
 				etrePk.setNumSouscripteur(personne.getNumSouscripteur());
 				etre.setId(etrePk);
 				etre.setDatePers(Calendar.getInstance().getTime());
@@ -145,7 +149,6 @@ public class ClientMB implements Serializable{
 				getObjectService().addObject(etre);
 				getObjectService().addObject(personneNationalite);
 				setEtatEngSouscripteur(true);
-				//setMaPersonne(physique);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

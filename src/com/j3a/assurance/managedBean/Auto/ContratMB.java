@@ -67,7 +67,7 @@ public class ContratMB implements Serializable{
 		private String codeTypeContrats;
 		private BigDecimal commission;
 		private String bareme, baremeR;
-        private SocieteAssurance societeAssurance;
+        private SocieteAssurance societeAssurance = new SocieteAssurance();
 		private String observation;
         private PointVente pointVente;
 		public Personne getPersAvenant() {
@@ -128,7 +128,7 @@ public class ContratMB implements Serializable{
 		// Contrat contrat = new Contrat();
 		public Avenant avenant = new Avenant();
 
-		private Contrat contrat;
+		private Contrat contrat = new Contrat();
 		
 		
 		
@@ -150,11 +150,15 @@ public class ContratMB implements Serializable{
 	   
 		public String addContrat() {
 			try {
-
-				contrat.setNumPolice(getId());
-				//contrat.setCodeApporteur(codeApporteur);
-				contrat.setPointVente(getPointVente());
 				
+				String pv = getUtilisateur().getPointVente()
+				.getCodePointVente();
+				String util =getUtilisateur().getCodeUtilisateur();
+				contrat.setNumPolice(getIdGenerateur().getPoliceID(pv, util, "AUT"));
+				//contrat.setCodeApporteur(codeApporteur);
+				contrat.setPersonne(getMaPersonne());
+				contrat.setPointVente(getUtilisateur().getPointVente());
+				contrat.setPersonne(getNumSouscripteur());
 				contrat.setSocieteAssurance(getSocieteAssurance());
 				getObjectService().addObject(contrat);
 				
@@ -238,7 +242,7 @@ public class ContratMB implements Serializable{
 	public Utilisateur utlsateur() {
 		try {
 			Utilisateur user;
-			user=(Utilisateur) getObjectService().getObjectById("", "Utilisateur");
+			user=(Utilisateur) getObjectService().getObjectById("WEB1", "Utilisateur");
 			utilisateur.setCodeUtilisateur(user.getCodeUtilisateur());
 			utilisateur.setLoginUtilisateur(user.getLoginUtilisateur());
 			utilisateur.setMailUtilisateur(user.getMailUtilisateur());
@@ -273,10 +277,9 @@ public class ContratMB implements Serializable{
 
 		
 
-		public void recupererPersonne() {// By ALekerand
+		public void recupererPersonne() {
 			setMaPersonne(monContrat.getPersonne());
-			Object personnePhysique = getObjectService().getObjectById(
-					monContrat.getPersonne().getNumSouscripteur(), "Physique");
+			Object personnePhysique = getObjectService().getObjectById(monContrat.getPersonne().getNumSouscripteur(), "Physique");
 		}
 
 		
@@ -980,6 +983,7 @@ public class ContratMB implements Serializable{
 
 
 		public SocieteAssurance getSocieteAssurance() {
+			societe();
 			return societeAssurance;
 		}
 
@@ -1004,6 +1008,7 @@ public class ContratMB implements Serializable{
 
 
 		public Risque getRisque() {
+			Risque risque=(Risque) getObjectService().getObjectById("1", "Risque");
 			return risque;
 		}
 
@@ -1028,6 +1033,7 @@ public class ContratMB implements Serializable{
 
 
 		public Utilisateur getUtilisateur() {
+			utilisateur=(Utilisateur) getObjectService().getObjectById("WEB1", "Utilisateur");
 			return utilisateur;
 		}
 

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Conducteur;
@@ -78,8 +79,43 @@ public class CotationAuto implements Serializable{
 			setExercice(getContratMB().getExerciceOuvert()); 
 		}
 
-		
+		public void valider(){
+			
+		    	getClientMB().addPersonnePhysique();
+				String pv = getContratMB().getUtilisateur().getPointVente()
+				.getCodePointVente();
+				String util =getContratMB().getUtilisateur().getCodeUtilisateur();
+				getContratMB().getContrat().setNumPolice(getIdGenerateur().getPoliceID(pv, util, "AUT"));
+				getContratMB().getContrat().setPointVente(getContratMB().getUtilisateur().getPointVente());
+				getContratMB().getContrat().setPersonne(getClientMB().getPhysique().getPersonne());
+				getContratMB().getContrat().setRisque(getContratMB().getRisque());
+				getContratMB().getContrat().setSocieteAssurance(getContratMB().getSocieteAssurance());
+				getContratMB().getObjectService().addObject(getContratMB().getContrat());
+				//avenant
+				String idAven = getIdGenerateur().getIdNewAvenant(getContratMB().getContrat().getNumPolice());
+				getContratMB().getAvenant().setNumAvenant(idAven);
+				short d = (short) (getContratMB().getDuree()* 30);
+				int mail = 1;
+				
+				getContratMB().getAvenant().setDateAvenant(getContratMB().getdateAvenant());
+				getContratMB().getAvenant().setEffet(getContratMB().getEffet());
+				getContratMB().getAvenant().setDateEmission(getContratMB().getEmission());
+				getContratMB().getAvenant().setMouvement(getContratMB().getMouvement());
+				getContratMB().getAvenant().setEcheance(getContratMB().getEcheance());
+				getContratMB().getAvenant().setContrat(getContratMB().getContrat());
+				getContratMB().getAvenant().setUtilisateur(getContratMB().getUtilisateur());
+				getContratMB().getObjectService().addObject(getContratMB().getAvenant());
+				
+		}
 
+
+		
+		
+		
+		
+		
+		
+		
 		public void choixSousCat() {
 			// recupération du taux de l'apporteur et l'apporteur
 			//getCarteGriseMB().getSlctdVehiRw().setApporteur(
@@ -245,12 +281,12 @@ public class CotationAuto implements Serializable{
 
 			if (newStep.equalsIgnoreCase("ongletContrat")
 					&& oldStep.equalsIgnoreCase("ongletClient")) { // /+Dob
-				if (!getClientMB().getStatutRechercheClient()) {
+				/*if (!getClientMB().getStatutRechercheClient()) {
 					a = oldStep;
 					FacesMessage msg = new FacesMessage(
 							"Vous devez Selectionner/Creer un client");
 					FacesContext.getCurrentInstance().addMessage(null, msg);
-				}
+				}*/
 			}
 
 			// TRAITEMENT POUR LE PASSAGE DE CONTRAT A VEHICULE
