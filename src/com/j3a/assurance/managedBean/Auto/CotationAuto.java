@@ -16,7 +16,6 @@ import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.j3a.assurance.ManagedBean.ManagedAffaireNouvelle;
 import com.j3a.assurance.model.Conducteur;
 import com.j3a.assurance.model.Exercice;
 import com.j3a.assurance.model.Morale;
