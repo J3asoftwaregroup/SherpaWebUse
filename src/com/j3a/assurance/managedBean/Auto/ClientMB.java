@@ -39,14 +39,15 @@ public class ClientMB implements Serializable{
 	private static final long serialVersionUID = 1L;
 		private static final String SUCCESS = "success";
 		private static final String ERROR = "error";
-		//Injection par Spring
-		private ObjectService objectService;
+		
+		@Autowired
+	    ObjectService objectService;
 		
 		private Personne maPersonne ;
 		private ComboSexes comboSexe;
 		
 		@Autowired
-		private IdGenerateur idGenerateur;
+		IdGenerateur idGenerateur;
 		
 		
 		private String indentifiacationClient;

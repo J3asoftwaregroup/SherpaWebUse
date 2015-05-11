@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
@@ -28,8 +29,8 @@ import com.j3a.assurance.model.SousCatVehicule;
 import com.j3a.assurance.model.Utilisateur;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.objetService.ObjectService;
-import com.j3a.assurance.prime.CalculComission;
 import com.j3a.assurance.utilitaire.IdGenerateur;
+import com.j3a.assurance.utilitaire.InfoAvenantContrat;
 
 @Component
 public class ContratMB implements Serializable{
@@ -40,9 +41,12 @@ public class ContratMB implements Serializable{
 		private static final long serialVersionUID = 1L;
 		private static final String SUCCESS = "success";
 		private static final String ERROR = "error";
-		ClientMB managedClient;
+		
+		@Autowired
+		ClientMB clientMB;
+		@Autowired
 		ObjectService objectService;
-		CalculComission calculCommission;
+		@Autowired
 		IdGenerateur idGenerateur;
 		private String slctdApporteur;
 		private String slctdTypeApporteur;
@@ -75,7 +79,7 @@ public class ContratMB implements Serializable{
 		public void setPersAvenant(Personne persAvenant) {
 			this.persAvenant = persAvenant;
 		}
-
+		
 		private String numAvenant;
         private Risque risque;
 		private String nature;
@@ -98,7 +102,8 @@ public class ContratMB implements Serializable{
 		private String codePointVente;
 		private PointVente rechPintVente;
 		private Apporteur resultatApporteur;
-		
+		@Autowired
+		InfoAvenantContrat infoAvenantContrat;
 		private Personne maPersonne;
 		private Physique monPhysique;
 		
@@ -133,6 +138,17 @@ public class ContratMB implements Serializable{
 		getObjectService().updateObject(getExercice());
 	}
 
+	   public void societe() {
+			SocieteAssurance sta = infoAvenantContrat.SteAss();
+			societeAssurance.setCodeSocieteAssurance(sta.getCodeSocieteAssurance());
+			societeAssurance.setAbrege(sta.getAbrege());
+			societeAssurance.setAdressePostale(sta.getAdressePostale());
+			societeAssurance.setDeviseUtilise(sta.getDeviseUtilise());
+			societeAssurance.setNomSocieteAssurance(sta.getNomSocieteAssurance());
+
+		}
+
+	   
 		public String addContrat() {
 			try {
 
@@ -220,7 +236,26 @@ public class ContratMB implements Serializable{
 
 	}
 		
-
+	public Utilisateur utlsateur() {
+		try {
+			Utilisateur user;
+			user=(Utilisateur) getObjectService().getObjectById("", "Utilisateur");
+			utilisateur.setCodeUtilisateur(user.getCodeUtilisateur());
+			utilisateur.setLoginUtilisateur(user.getLoginUtilisateur());
+			utilisateur.setMailUtilisateur(user.getMailUtilisateur());
+			utilisateur.setMotPasse(user.getMotPasse());
+			utilisateur.setNomUtilisateur(user.getNomUtilisateur());
+			utilisateur.setPrenomUtilisateur(user.getPrenomUtilisateur());
+			utilisateur.setDateCreationUtilisateur(user
+					.getDateCreationUtilisateur());
+			utilisateur.setPointVente(user.getPointVente());
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 		
 		public ObjectService getObjectService() {
@@ -623,14 +658,7 @@ public class ContratMB implements Serializable{
 			this.echeance.setDate(effet.getDate() + (d - 1));
 		}
 
-		public ClientMB getManagedClient() {
-			return managedClient;
-		}
-
-		public void setManagedClient(ClientMB managedClient) {
-			this.managedClient = managedClient;
-		}
-
+		
 		public Physique getMonPhysique() {
 			return monPhysique;
 		}
@@ -807,17 +835,46 @@ public class ContratMB implements Serializable{
 			this.utilisateurTest = utilisateurTest;
 		}
 		
-		public CalculComission getCalculCommission() {
-			return calculCommission;
-		}
-
-		public void setCalculCommission(CalculComission calculCommission) {
-			this.calculCommission = calculCommission;
-		}
-
+		
 		public IdGenerateur getIdGenerateur() {
 			return idGenerateur;
 		}
+
+		public ClientMB getClientMB() {
+			return clientMB;
+		}
+
+
+
+		public void setClientMB(ClientMB clientMB) {
+			this.clientMB = clientMB;
+		}
+
+
+
+		public Date getDateAvenant() {
+			return dateAvenant;
+		}
+
+
+
+		public void setDateAvenant(Date dateAvenant) {
+			this.dateAvenant = dateAvenant;
+		}
+
+
+
+		public List<Avenant> getAvenantList() {
+			return avenantList;
+		}
+
+
+
+		public void setAvenantList(List<Avenant> avenantList) {
+			this.avenantList = avenantList;
+		}
+
+
 
 		public void setIdGenerateur(IdGenerateur idGenerateur) {
 			this.idGenerateur = idGenerateur;
