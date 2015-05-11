@@ -147,48 +147,6 @@ public class ContratMB implements Serializable{
 
 		}
 
-	   
-		public String addContrat() {
-			try {
-				
-				String pv = getUtilisateur().getPointVente()
-				.getCodePointVente();
-				String util =getUtilisateur().getCodeUtilisateur();
-				contrat.setNumPolice(getIdGenerateur().getPoliceID(pv, util, "AUT"));
-				//contrat.setCodeApporteur(codeApporteur);
-				contrat.setPersonne(getMaPersonne());
-				contrat.setPointVente(getUtilisateur().getPointVente());
-				contrat.setPersonne(getNumSouscripteur());
-				contrat.setSocieteAssurance(getSocieteAssurance());
-				getObjectService().addObject(contrat);
-				
-				short d = (short) (duree * 30);
-				int mail = 1;
-				// avenant.setEnvoyerMail((short) mail);
-				// avenant.setId(getNumAvenant());
-				avenant.setDateAvenant(getdateAvenant());
-				avenant.setEffet(getEffet());
-				avenant.setDateEmission(getEmission());
-				avenant.setMouvement(getMouvement());
-				avenant.setEcheance(getEcheance());
-				// avenant.setDuree(d);
-				// avenant.setObservation(getObservation());
-				// avenant.setResiliation(getResiliation());
-				getObjectService().addObject(avenant);
-				
-
-				System.out.println("Enregistrement de l'avenant");
-				
-				return "contratOk";
-			} catch (DataAccessException e) {
-
-				
-				e.printStackTrace();
-			}
-
-			return "contratOk";
-		}
-
 		/**
 		 * Reset Fields
 		 * 

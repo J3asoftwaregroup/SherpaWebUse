@@ -431,7 +431,6 @@ public class CotationAuto implements Serializable{
 								+ getExercice().getPrecExo());
 
 				getContratMB().setExercice(getExercice());
-				getContratMB().addContrat();
 				getContratMB().majExercice();
 				getCarteGriseMB().gestionCarteGrise(
 						getContratMB().getAvenant());
