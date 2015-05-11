@@ -48,7 +48,7 @@ public class CotationAuto implements Serializable{
 
 		@Autowired
 		IdGenerateur idGenerateur;
-				@Autowired
+		@Autowired
 		ConditionPartAuto conditionPartAuto;
 		@Autowired
 		private QuittanceDesignAuto quittanceDesignAuto;

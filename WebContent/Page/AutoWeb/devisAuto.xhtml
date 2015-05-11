@@ -46,9 +46,9 @@
 											
 
 												<p:outputLabel for="cb_prof" value="Profession"  style="margin-left:80px"/>
-												<p:selectOneMenu id="cb_prof" value="#{cotationAuto.client.profession}"
+												<p:selectOneMenu id="cb_prof" value="#{cotationAuto.client.monPhysique.profession}"
 													effect="drop" 
-													binding="#{cotationAuto.client.professionOneMenu}">
+													>
 													<f:selectItem itemLabel="Select One" itemValue="" />
 													<f:selectItem itemLabel="Instituteur" itemValue="Instituteur"/>
 													<f:selectItem itemLabel="Informaticien" itemValue="Informaticien"/>
@@ -69,8 +69,8 @@
 
 
 												<p:outputLabel for="cb_sitMat" value="Situation matrimoniale"/>
-												<p:selectOneMenu id="cb_sitMat" binding="#{cotationAuto.client.sitationMatOneMenu}"
-													value="#{cotationAuto.client.situationMatrimoniale}" effect="drop" editable="false">
+												<p:selectOneMenu id="cb_sitMat"
+													value="#{cotationAuto.client.monPhysique.situationMatrimoniale}" effect="drop" editable="false">
 													<f:selectItem itemLabel="Select One" itemValue=" " />
 													<f:selectItem itemLabel="Célibataire"
 														itemValue="célibataire" />
@@ -79,8 +79,8 @@
 												
 												
 												<p:outputLabel for="typePiece" value="Type piece" style="margin-left:80px"/>
-												<p:selectOneMenu id="typePiece" value="#{cotationAuto.client.typePiece}"
-													effect="drop" editable="false" binding="#{cotationAuto.client.typepieceOneMenu}">
+												<p:selectOneMenu id="typePiece" value="#{cotationAuto.client.monPhysique.typePiece}"
+													effect="drop" editable="false" >
 													<f:selectItem itemLabel="Select One" itemValue="" />
 													<f:selectItem itemLabel="CNI" itemValue="CNI"/>
 													<f:selectItem itemLabel="Attestation identité" itemValue="Attestation"/>
