@@ -25,6 +25,7 @@ import com.j3a.assurance.model.Quittance;
 import com.j3a.assurance.model.Risque;
 import com.j3a.assurance.model.SocieteAssurance;
 import com.j3a.assurance.model.SousCatVehicule;
+import com.j3a.assurance.model.Utilisateur;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.prime.CalculComission;
@@ -90,11 +91,11 @@ public class ContratMB implements Serializable{
 		private Date echeance2;
 		private Date effet2;
 		private Contrat monContrat = new Contrat();
-
+        private Utilisateur utilisateur;
 		private Avenant monAvenant = new Avenant();
 		private Quittance maQuittance;
 		private Quittance quittance=new Quittance();
-		
+		private String codePointVente;
 		private PointVente rechPintVente;
 		private Apporteur resultatApporteur;
 		
@@ -135,11 +136,11 @@ public class ContratMB implements Serializable{
 		public String addContrat() {
 			try {
 
-				// contrat.setId(getId());
+				contrat.setNumPolice(getId());
 				//contrat.setCodeApporteur(codeApporteur);
-				//contrat.setCodePointVente(getCodePointVente());
+				contrat.setPointVente(getPointVente());
 				
-				//contrat.setCodeSocieteAssurance(getSocieteAssurance());
+				contrat.setSocieteAssurance(getSocieteAssurance());
 				getObjectService().addObject(contrat);
 				
 				short d = (short) (duree * 30);
@@ -958,6 +959,30 @@ public class ContratMB implements Serializable{
 
 		public void setExerciceOuvert(Exercice exerciceOuvert) {
 			this.exerciceOuvert = exerciceOuvert;
+		}
+
+
+
+		public Utilisateur getUtilisateur() {
+			return utilisateur;
+		}
+
+
+
+		public void setUtilisateur(Utilisateur utilisateur) {
+			this.utilisateur = utilisateur;
+		}
+
+
+
+		public String getCodePointVente() {
+			return codePointVente;
+		}
+
+
+
+		public void setCodePointVente(String codePointVente) {
+			this.codePointVente = codePointVente;
 		}
 
 		
