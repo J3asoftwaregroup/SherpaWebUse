@@ -65,18 +65,18 @@ public class CotationAuto implements Serializable{
 		@PostConstruct
 		public void postConstru() {
 			risque = "Automobile";
-			getContratMB().setUtilisateur(getContratMB().utlsateur());
-			String pv = getContratMB().getUtilisateur().getCodePointVente()
+			//getContratMB().setUtilisateur(getContratMB().utlsateur());
+			/*String pv = getContratMB().getUtilisateur().getCodePointVente()
 					.getId();
 			String util = getContratMB().getUtilisateur().getId();
 			getContratMB().getContrat().setNumPolice(
 					getIdGenerateur().getPoliceID(pv, util, "AUT"));
 			String idAven = getIdGenerateur().getIdNewAvenant(
 					getContratMB().getContrat().getNumPolice());
-			getContratMB().getAvenant().setNumAvenant(idAven);
+			getContratMB().getAvenant().setNumAvenant(idAven);*/
 			getContratMB().setDureeEnjour((long) 365);
-			getManagedQuittanceAuto().setQuittanceid(
-					getIdGenerateur().getIdQuittance(idAven));
+			/*getManagedQuittanceAuto().setQuittanceid(
+					getIdGenerateur().getIdQuittance(idAven));*/
 			setExercice(getContratMB().getExerciceOuvert()); 
 		}
 
@@ -262,18 +262,14 @@ public class CotationAuto implements Serializable{
 				
 					getContratMB().getContrat().setSocieteAssurance(
 							getContratMB().getSocieteAssurance());
-					// getContratMB().getContrat().setId(getContratMB().getId());
 				
 					getContratMB().getContrat().setPointVente(
 							getContratMB().getPointVente());
 					getContratMB().getContrat().setPersonne(
 							getClientMB().getMaPersonne());
-					// getContratMB().getAvenant().setId(
-					// getContratMB().getNumAvenant());
-					getContratMB().getContrat().setCodeRisque(
-							getContratMB().getRisque("1"));
-					getContratMB().getAvenant().setCodeUtilisateur(
-							getContratMB().getUtilisateur());
+					
+					getContratMB().getContrat().getRisque().setCodeRisque("1");
+					
 					getContratMB().getAvenant().setDuree(
 							getContratMB().getDureeEnjour().shortValue());
 					getGarantieMB().setCodeRisque("1");
