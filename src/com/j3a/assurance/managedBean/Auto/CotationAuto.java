@@ -68,57 +68,54 @@ public class CotationAuto implements Serializable{
 			String pv = getContratMB().getUtilisateur().getCodePointVente()
 					.getId();
 			String util = getContratMB().getUtilisateur().getId();
-			getContratMB().getContrat().setId(
+			getContratMB().getContrat().setNumPolice(
 					getIdGenerateur().getPoliceID(pv, util, "AUT"));
 			String idAven = getIdGenerateur().getIdNewAvenant(
-					getContratMB().getContrat().getId());
-			getContratMB().getAvenant().setId(idAven);
+					getContratMB().getContrat().getNumPolice());
+			getContratMB().getAvenant().setNumAvenant(idAven);
 			getContratMB().setDureeEnjour((long) 365);
 			getManagedQuittanceAuto().setQuittanceid(
 					getIdGenerateur().getIdQuittance(idAven));
-			setExercice(getInfoAvenantContrat().exerciceOuvert());
+			setExercice(getContratMB().exerciceOuvert()); 
 		}
 
-		public void chxApporteur() {
-
-			getContratMB().chxApporteur();
-		}
+		
 
 		public void choixSousCat() {
 			// recupération du taux de l'apporteur et l'apporteur
-			getCarteGriseMB().getSlctdVehiRw().setApporteur(
-					getContratMB().getCodeApporteur());
+			//getCarteGriseMB().getSlctdVehiRw().setApporteur(
+			//		getContratMB().getCodeApporteur());
 
-			getContratMB().getCalculCommission().getTauxCommissionApporteur(
-					getCarteGriseMB().getSlctdVehiRw().getApporteur().getId(),
+		/*	getContratMB().getCalculCommission().getTauxCommissionApporteur(
+					getCarteGriseMB().getSlctdVehiRw().getApporteur().getCodeApporteur(),
 					getCarteGriseMB().getSlctdVehiRw().getSouCatVehi()
-							.getCodeCategorie().getId());
-			getCarteGriseMB().getSlctdVehiRw().setTauxCommissionApporteur(
-					getContratMB().getCalculCommission().getTauxCommission());
+							.getCategorie().getCodeCategorie());*/
+			//getCarteGriseMB().getSlctdVehiRw().setTauxCommissionApporteur(
+				//	getContratMB().getCalculCommission().getTauxCommission());
 			getCarteGriseMB().choixSousCat();
 		}
 
 		// les methodes de choix Avenant Affaire Nouvelle
 		public void tabChange() {
 			// good
-			/*getGarantieMB().setDuree(getContrat().getDuree());
+			getGarantieMB().setDuree(getContratMB().getDuree());
 			getGarantieMB().getListeGroupGaranties().clear();
 			getGarantieMB().getListegaranties().clear();
 			getGarantieMB().getListegarantieFiltre().clear();
 			getGarantieMB().cleanChamps();
 			
 			getGarantieMB().affichegarantiesAuto(
-			*/		getCarteGriseMB().getSlctdVehiRw());
+					getCarteGriseMB().getSlctdVehiRw());
 		}
 
 		// methode de validation de la prime
-		public void rechercherClient() {
+		/*public void rechercherClient() {
 			getClientMB().rechercherClient();
 			if (getClientMB().getStatutRechercheClient() == true) {
 				showNavBar = true;
 			}
 
-		}
+		}*/
 
 		
 		
@@ -131,7 +128,7 @@ public class CotationAuto implements Serializable{
 					.clear();
 
 			getCarteGriseMB().getSlctdVehiRw().getListegaranties().clear();
-			//getCarteGriseMB().getSlctdVehiRw().getListegaranties()
+			getCarteGriseMB().getSlctdVehiRw().getListegaranties()
 					.addAll(getGarantieMB().getListegaranties());
 
 			getCarteGriseMB().setValidVehiEtat(false);
@@ -149,7 +146,7 @@ public class CotationAuto implements Serializable{
 			getCarteGriseMB().getConduHab().setLieuNaisCond(lieunaiss);
 			String numpiece = null;
 			
-			getCarteGriseMB().getConduHab().setId(numpiece);
+			getCarteGriseMB().getConduHab().setNumCond(numpiece);
 			getCarteGriseMB().getConduHab().setDureepermiscond((short) 0);
 			System.out.println("+++++++Conducteur habituel du Vehicule+++++++"
 					+ getCarteGriseMB().getConduHab().getNonCond());
