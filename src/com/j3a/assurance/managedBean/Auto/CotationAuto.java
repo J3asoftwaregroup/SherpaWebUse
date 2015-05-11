@@ -11,10 +11,12 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.j3a.assurance.ManagedBean.ManagedAffaireNouvelle;
 import com.j3a.assurance.model.Conducteur;
 import com.j3a.assurance.model.Exercice;
 import com.j3a.assurance.model.Morale;
@@ -31,7 +33,7 @@ import com.j3a.assurance.utilitaire.VehiculeRow;
 
 @Component
 public class CotationAuto implements Serializable{
-
+	Logger logger = Logger.getLogger(CotationAuto.class);
 	/**
 	 * 
 	 */
@@ -155,12 +157,12 @@ public class CotationAuto implements Serializable{
 
 		public boolean isClientConduc() {
 			String numpiece = "";
-			if (getClientMB().getMaPersonne() instanceof Physique) {
-				numpiece = ((Physique) getClientMB().getMaPersonne())
+			if (getClientMB().getMaPersonne().getPhysique()!=null) {
+				numpiece = (getClientMB().getMaPersonne().getPhysique())
 						.getNumPiecePers();
 			}
-			if (getClientMB().getMaPersonne() instanceof Morale) {
-				numpiece = ((Morale) getClientMB().getMaPersonne()).getNumRc();
+			if (getClientMB().getMaPersonne().getMorale()!=null) {
+				numpiece = (getClientMB().getMaPersonne().getMorale()).getNumRc();
 			}
 
 			return numpiece.equalsIgnoreCase(getCarteGriseMB()
@@ -258,19 +260,13 @@ public class CotationAuto implements Serializable{
 			if (newStep.equalsIgnoreCase("ongletVehicule")
 					&& oldStep.equalsIgnoreCase("ongletContrat")) {
 
-				if (getContratMB().getCodeApporteur() == null) {
-					a = oldStep;
-					FacesMessage msg = new FacesMessage(
-							"Vous devez saisir un Apporteur valide");
-					FacesContext.getCurrentInstance().addMessage(null, msg);
-				} else {
+				
 					getContratMB().getContrat().setSocieteAssurance(
 							getContratMB().getSocieteAssurance());
 					// getContratMB().getContrat().setId(getContratMB().getId());
-					getContratMB().getContrat().setApporteur(
-							getContratMB().getCodeApporteur());
+				
 					getContratMB().getContrat().setCodePointVente(
-							getContratMB().getCodePointVente());
+							getContratMB().getPointVente());
 					getContratMB().getContrat().setPersonne(
 							getClientMB().getMaPersonne());
 					// getContratMB().getAvenant().setId(
@@ -293,7 +289,7 @@ public class CotationAuto implements Serializable{
 					majConducteur();
 					getCarteGriseMB().choixSousCat();
 				}
-			}
+			
 
 			// TRAITEMENT POUR LE PASSAGE DE VEHICULE A QUITTANCE
 			if (newStep.equalsIgnoreCase("ongletQuittance")
@@ -412,8 +408,6 @@ public class CotationAuto implements Serializable{
 						getContratMB().getAvenant());
 				getManagedQuittanceAuto().addQuittance(
 						getContratMB().getAvenant());
-				getManagedQuittanceAuto().addcommissionApporteur(getContratMB().getCodeApporteur(), getContratMB().getAvenant());
-
 				System.out.println("------->>> Edition  condition particulière");// Clean
 																					// after
 				FacesMessage msg = new FacesMessage(
