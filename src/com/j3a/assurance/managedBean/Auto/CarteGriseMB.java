@@ -8,12 +8,16 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.converter.ScatVehiCvtr;
@@ -56,15 +60,13 @@ public class CarteGriseMB implements Serializable {
 		@Autowired
 		private IdGenerateur idGenerateur;
 		@Autowired
-		VilleCvtr villeCvtr;
-		@Autowired
 		ScatVehiCvtr scatVehiCvtr;
 		// private static Logger logs=Logger.getLogger(ManagedCarteGrise.class);
 		private VehiculeRow slctdVehiRw = new VehiculeRow();
 		private VehiculeRow slctdVehiRwTb = new VehiculeRow();
 		private String warnMsg;
 		private List<SousCatVehicule> scategList;
-		private Ville slctdville;
+		private String slctdville;
 		private List<Ville> villeList;
 		private List<VehiculeRow> vehiculeList = new ArrayList<VehiculeRow>();
 		private Boolean editGarEtat = true;
@@ -839,14 +841,17 @@ public class CarteGriseMB implements Serializable {
 		}
 
 		public void chxVille() {
+			Ville v = (Ville)getObjectService().getObjectById(getSlctdville(), "Ville");
+			getSlctdVehiRw().setZonGeo(v.getZoneGeographique());
 			// Methode lancé lorsque le user choisit la ville de circulation du
 			// véhicule
 			// Fctionnemt lorsque la ville est choisit la methode permet de setter
 			// la zone Géo correspondante ds le slctdVehiRw
 			//logs.info(">>>>/ INSIDE -chxVille-");
 			//logs.info(">>>>/ set de la Zone Geo correspondante à la ville choisit ds SlctdVehiRw");
-			 System.out.println("Ville "+getSlctdville().getLibelleVille());
-			getSlctdVehiRw().setZonGeo(getSlctdville().getZoneGeographique());
+			
+			//System.out.println("Ville "+getSlctdville().getLibelleVille());
+		//	getSlctdVehiRw().setZonGeo(getSlctdville().getZoneGeographique());
 			// System.out.println("ùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùù"+getManagedContrat().getTypeContrat()+getManagedContrat().getBaremes());
 			//logs.info(">>>>/ END -chxVille-");
 		}
@@ -903,7 +908,6 @@ public class CarteGriseMB implements Serializable {
 		}
 
 		public void choixSousCat() {
-
 			// default
 			inputPr.setDisabled(true);
 			inputPf.setDisabled(true);
@@ -1050,16 +1054,21 @@ public class CarteGriseMB implements Serializable {
 			this.scategList = scategList;
 		}
 
-		public Ville getSlctdville() {
+		public String getSlctdville() {
 			return slctdville;
 		}
 
-		public void setSlctdville(Ville slctdville) {
+		public void setSlctdville(String slctdville) {
 			this.slctdville = slctdville;
 		}
 
 		public List<Ville> getVilleList() {
-			return villeList;
+			List<Ville> A = new ArrayList<Ville>();
+			for (Object c : getObjectService().getObjects("Ville")) {  
+				A.add((Ville) c);  
+	            } 
+			
+			return A;
 		}
 
 		public void setVilleList(List<Ville> villeList) {
@@ -1264,14 +1273,6 @@ public class CarteGriseMB implements Serializable {
 
 		public void setIdGenerateur(IdGenerateur idGenerateur) {
 			this.idGenerateur = idGenerateur;
-		}
-
-		public VilleCvtr getVilleCvtr() {
-			return villeCvtr;
-		}
-
-		public void setVilleCvtr(VilleCvtr villeCvtr) {
-			this.villeCvtr = villeCvtr;
 		}
 
 		public ScatVehiCvtr getScatVehiCvtr() {

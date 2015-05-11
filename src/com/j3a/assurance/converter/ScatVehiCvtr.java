@@ -19,7 +19,6 @@ import com.j3a.assurance.objetService.ObjectService;
 
 
 @Component
-@javax.persistence.Converter
 public class ScatVehiCvtr implements Converter {
 
 	public ScatVehiCvtr() {

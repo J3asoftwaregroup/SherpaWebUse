@@ -39,7 +39,7 @@ public class VilleCvtr implements Converter {
 		            	String X = submittedValue;  
 		  
 		                for (Ville c : getVilleList()) {  
-		                    if (c.getLibelleVille().equalsIgnoreCase(X)) {  
+		                    if (c.getCodeVille().equalsIgnoreCase(X)) {  
 		                        return c;  
 		                    }  
 		                }  
@@ -57,7 +57,7 @@ public class VilleCvtr implements Converter {
 		        if (value == null || value.equals("")) {  
 		            return "";  
 		        } else {  
-		            return ((Ville) value).getLibelleVille();  
+		            return ((Ville) value).getCodeVille();  
 		        }  
 		    }
 

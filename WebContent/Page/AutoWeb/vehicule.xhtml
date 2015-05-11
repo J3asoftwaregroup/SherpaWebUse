@@ -114,6 +114,8 @@
 											<f:selectItem itemLabel="SUV" itemValue="SUV"/>
 											<f:selectItem itemLabel="Monospace" itemValue="Monospace"/>
 											<f:selectItem itemLabel="Ludospace" itemValue="Ludospace"/>
+				
+    
 										</p:selectOneMenu>
 										
 										<h:outputText value="Genre " style="margin-left: 20px;"/>
@@ -384,15 +386,15 @@
 										<h:outputText value="Ville* " style="margin-left: 20px;" />
 										<p:selectOneMenu id="ville" label="Ville"
 											value="#{carteGriseMB.slctdville}"
-											converter="#{villeCvtr}" required="false" requiredMessage="Sélectionner une Ville !"
+											 required="false" requiredMessage="Sélectionner une Ville !"
 											style="width:130px">
 											
 											<f:selectItems
-												value="#{villeCvtr.villeList}"
-												var="ca" itemLabel="#{ca.libelleVille}" itemValue="#{ca}" />
-											<p:ajax event="valueChange"
-												listener="#{carteGriseMB.chxVille}"
-												 update="zoneGeo" global="false"/>
+												value="#{carteGriseMB.villeList}"
+												var="ca" itemLabel="#{ca.libelleVille}" itemValue="#{ca.codeVille}" />
+											<p:ajax  
+												process="ville"
+												partialSubmit="true" event="valueChange" update="@this, pmessagePropVehi, zoneGeo" listener="#{carteGriseMB.chxVille}" global="false" />
 										</p:selectOneMenu>
 										
 										<h:outputText value="Zone &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
