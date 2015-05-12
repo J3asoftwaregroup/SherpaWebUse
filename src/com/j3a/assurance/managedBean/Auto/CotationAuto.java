@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
@@ -27,9 +28,6 @@ import com.j3a.assurance.reporting.design.QuittanceDesignAuto;
 import com.j3a.assurance.utilitaire.IdGenerateur;
 import com.j3a.assurance.utilitaire.QuittanceAuto;
 import com.j3a.assurance.utilitaire.VehiculeRow;
-
-
-
 
 @Component
 public class CotationAuto implements Serializable{
@@ -79,9 +77,14 @@ public class CotationAuto implements Serializable{
 			setExercice(getContratMB().getExerciceOuvert()); 
 		}
 
+		
+		
+		//irene
 		public void valider(){
-			
+			     //client
 		    	getClientMB().addPersonnePhysique();
+		    	
+		    	//contrat
 				String pv = getContratMB().getUtilisateur().getPointVente()
 				.getCodePointVente();
 				String util =getContratMB().getUtilisateur().getCodeUtilisateur();
@@ -91,12 +94,12 @@ public class CotationAuto implements Serializable{
 				getContratMB().getContrat().setRisque(getContratMB().getRisque());
 				getContratMB().getContrat().setSocieteAssurance(getContratMB().getSocieteAssurance());
 				getContratMB().getObjectService().addObject(getContratMB().getContrat());
+				
 				//avenant
 				String idAven = getIdGenerateur().getIdNewAvenant(getContratMB().getContrat().getNumPolice());
 				getContratMB().getAvenant().setNumAvenant(idAven);
 				short d = (short) (getContratMB().getDuree()* 30);
 				int mail = 1;
-				
 				getContratMB().getAvenant().setDateAvenant(getContratMB().getdateAvenant());
 				getContratMB().getAvenant().setEffet(getContratMB().getEffet());
 				getContratMB().getAvenant().setDateEmission(getContratMB().getEmission());
@@ -106,10 +109,40 @@ public class CotationAuto implements Serializable{
 				getContratMB().getAvenant().setUtilisateur(getContratMB().getUtilisateur());
 				getContratMB().getObjectService().addObject(getContratMB().getAvenant());
 				
+				//conducteur
+				getClientMB().addConducteur();
+				
 		}
 
 
-		
+		//irene
+		public void majconducteur(){
+			if(getClientMB().isEtatClient()){
+				getClientMB().getConducteur().setNonCond(getClientMB().getMaPersonne().getNomRaisonSociale());
+				getClientMB().getConducteur().setDateNaissCond(getClientMB().getMaPersonne().getDatePers());
+				String lieunaiss = null, prenom = null;
+				
+				getClientMB().getConducteur().setPrenomsCond(prenom);
+				getClientMB().getConducteur().setLieuNaisCond(lieunaiss);
+				String numpiece = null;
+				
+				getClientMB().getConducteur().setNumCond(numpiece);
+				getClientMB().getConducteur().setDureepermiscond((short) 0);
+				
+			}
+			else {
+				getClientMB().setConducteur((Conducteur) getClientMB().getObjectService()
+						.getObjectById(getClientMB().getConducteur().getNumCond(), "Conducteur"));
+				if (cduc != null) {
+					getCarteGriseMB().getSlctdVehiRw().setConduHab(cduc);
+				} else {
+					getCarteGriseMB().getSlctdVehiRw().setConduHab(
+							new Conducteur(getCarteGriseMB().getSlctdVehiRw()
+									.getConduHab().getNumCond()));
+				}
+			}
+			
+		}
 		
 		
 		
@@ -203,12 +236,6 @@ public class CotationAuto implements Serializable{
 		}
 
 		public void chxConducteur() {
-			// Methode lancé lorsque le user saisit un numéro de conducteur
-			// Fctionnemt lorsque le conducteur est choisi la methode permet de
-			// vérifier en BD si un tel conducteur exite
-			// Si oui ses valeur st chargées ds les champs
-			// Si non le processus continue normalement
-			// logs.info(">>>>/ INSIDE -chxConducteur-");
 			if (isClientConduc()) {
 				majConducteur();
 			} else {
@@ -224,7 +251,6 @@ public class CotationAuto implements Serializable{
 									.getConduHab().getNumCond()));
 				}
 			}
-			// logs.info(">>>>/ END -chxConducteur-");
 		}
 
 		public void validerGarantie() {

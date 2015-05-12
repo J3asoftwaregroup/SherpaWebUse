@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +31,6 @@ import com.j3a.assurance.model.Utilisateur;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.utilitaire.IdGenerateur;
-
 
 @Component
 public class ContratMB implements Serializable{
@@ -92,8 +92,6 @@ public class ContratMB implements Serializable{
 		private Date dateAv = Calendar.getInstance().getTime();
 		private Date dateAvenant;
 		private String critere;
-		private Date echeance2;
-		private Date effet2;
 		private Contrat monContrat = new Contrat();
         private Utilisateur utilisateur;
 		private Avenant monAvenant = new Avenant();
@@ -361,7 +359,6 @@ public class ContratMB implements Serializable{
 			this.emission = emission;
 		}
 
-		@SuppressWarnings("deprecation")
 		public Date getEcheance() {
 			// int d = (int)(duree*30);
 			// Date dat = new Date();
@@ -371,27 +368,6 @@ public class ContratMB implements Serializable{
 			return echeance;
 		}
 
-		public void majEcheance2() {
-			Calendar calender = Calendar.getInstance();
-			calender.setTime(effet2);
-
-			try {
-				if (duree == 0.5) {
-					calender.add(Calendar.DATE, 15);
-				} else {
-					calender.add(Calendar.MONTH, (int) getDuree());
-				}
-				calender.add(Calendar.DATE, -1);
-				calender.set(Calendar.HOUR_OF_DAY, 23);
-				calender.set(Calendar.MINUTE, 59);
-				setEcheance2(calender.getTime());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			//System.out.println(" echeanceeeeeeee"+getEcheance2());
-			
-		}
 		
 		public void majEcheance() {
 			Calendar calender = Calendar.getInstance();
@@ -409,22 +385,7 @@ public class ContratMB implements Serializable{
 			System.out.println(" nbjour :" + getDureeEnjour());
 			
 		}
-		public Date getEcheance2() {
-			try {
-				majEcheance2();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			//System.out.println("date echeanceeeeeeeeeeeeeeeeee"+getEcheance2());
-			return echeance2;
-		}
 		
-		public void majEffet2() {
-
-	       setEffet2(getEcheance());
-			
-		}
 		
 		public Date getDateEcheance(Date effets, short durees) {
 			Calendar calender = Calendar.getInstance();
@@ -923,21 +884,7 @@ public class ContratMB implements Serializable{
 
 		
 
-		public Date getEffet2() {
-			majEffet2();
-			return effet2;
-		}
-
-		public void setEffet2(Date effet2) {
-			this.effet2 = effet2;
-		}
-
 		
-
-		public void setEcheance2(Date echeance2) {
-			this.echeance2 = echeance2;
-		}
-
 
 
 		public SocieteAssurance getSocieteAssurance() {

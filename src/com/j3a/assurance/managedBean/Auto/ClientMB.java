@@ -10,12 +10,16 @@ import javax.faces.context.FacesContext;
 import org.primefaces.component.dialog.Dialog;
 import org.primefaces.component.inputmask.InputMask;
 import org.primefaces.component.inputtext.InputText;
+import org.primefaces.component.selectbooleancheckbox.SelectBooleanCheckbox;
 import org.primefaces.component.selectonemenu.SelectOneMenu;
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.converter.ComboSexes;
+import com.j3a.assurance.model.Conducteur;
+import com.j3a.assurance.model.ConduireVehicule;
+import com.j3a.assurance.model.ConduireVehiculeId;
 import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.Etre;
 import com.j3a.assurance.model.EtreId;
@@ -51,7 +55,7 @@ public class ClientMB implements Serializable{
 		IdGenerateur idGenerateur;
 		
 		
-		
+		private Conducteur conducteur=new Conducteur();
 		private Morale maMorale = new Morale();
 		private Physique monPhysique = new Physique();
 		private TypePersonne typePersonne = new TypePersonne();
@@ -75,7 +79,7 @@ public class ClientMB implements Serializable{
 		private StringBuffer identiteSouscripteur = new StringBuffer();
 		private String identiteClient;
 		private boolean etatEngSouscripteur = false;
-		
+		private boolean etatClient=false;
 		//Gestion des champs du formulaire
 		//Physique
 		private InputText nomInputText = new InputText();
@@ -92,11 +96,7 @@ public class ClientMB implements Serializable{
 		private SelectOneMenu categProfOneMenu = new SelectOneMenu();
 		private Dialog dialogSous;
 
-		//Morale
-		private InputText numCCInputText = new InputText();
-		private InputText numRCInputText = new InputText();
-		private InputText dirigeantInputText = new InputText();
-		private InputText mailDGInputText = new InputText();
+		
 		
 		
 		public void addPersonnePhysique() {	
@@ -148,18 +148,51 @@ public class ClientMB implements Serializable{
 				getObjectService().addObject(physique);
 				getObjectService().addObject(etre);
 				getObjectService().addObject(personneNationalite);
-				setEtatEngSouscripteur(true);
+				
+				if(isEtatClient()){
+					getConducteur().setNonCond(getMaPersonne().getNomRaisonSociale());
+					getConducteur().setDateNaissCond(getMaPersonne().getDatePers());
+					String lieunaiss = null, prenom = null;
+					
+					getConducteur().setPrenomsCond(prenom);
+					getConducteur().setLieuNaisCond(lieunaiss);
+					String numpiece = null;
+					
+					getConducteur().setNumCond(numpiece);
+					getConducteur().setDureepermiscond((short) 0);
+					
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successful", "Enregistrement effectué"));
-
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Successful", "Enregistrement effectué"));		
+		}
+       
+		public void majconducteur(){
+			if(isEtatClient()){
+				getConducteur().setNonCond(getMaPersonne().getNomRaisonSociale());
+				getConducteur().setDateNaissCond(getMaPersonne().getDatePers());
+				String lieunaiss = null, prenom = null;
+				
+				getConducteur().setPrenomsCond(prenom);
+				getConducteur().setLieuNaisCond(lieunaiss);
+				String numpiece = null;
+				
+				getConducteur().setNumCond(numpiece);
+				getConducteur().setDureepermiscond((short) 0);
+				
+			}
 			
-					
+			
 		}
 
-
+		public void addConducteur(){
+		String id=getIdGenerateur().getIdConducteur(getMaPersonne());
+		getConducteur().setNumCond(id);
+		getObjectService().addObject(conducteur);	
+		
+		}
 
 		public void viderPhysique(Physique objPhyq) {
 			// Vider l'objet physique de l'affichage
@@ -562,46 +595,6 @@ public class ClientMB implements Serializable{
 		}
 
 
-		public InputText getNumCCInputText() {
-			return numCCInputText;
-		}
-
-
-		public void setNumCCInputText(InputText numCCInputText) {
-			this.numCCInputText = numCCInputText;
-		}
-
-
-		public InputText getNumRCInputText() {
-			return numRCInputText;
-		}
-
-
-		public void setNumRCInputText(InputText numRCInputText) {
-			this.numRCInputText = numRCInputText;
-		}
-
-
-		public InputText getDirigeantInputText() {
-			return dirigeantInputText;
-		}
-
-
-		public void setDirigeantInputText(InputText dirigeantInputText) {
-			this.dirigeantInputText = dirigeantInputText;
-		}
-
-
-		public InputText getMailDGInputText() {
-			return mailDGInputText;
-		}
-
-
-		public void setMailDGInputText(InputText mailDGInputText) {
-			this.mailDGInputText = mailDGInputText;
-		}
-
-
 		public SelectOneMenu getTypepieceOneMenu() {
 			return typepieceOneMenu;
 		}
@@ -687,6 +680,33 @@ public class ClientMB implements Serializable{
 	public void editerClient() {
 		
 		
+	}
+
+
+
+
+
+
+	public boolean isEtatClient() {
+		return etatClient;
+	}
+
+
+
+	public void setEtatClient(boolean etatClient) {
+		this.etatClient = etatClient;
+	}
+
+
+
+	public Conducteur getConducteur() {
+		return conducteur;
+	}
+
+
+
+	public void setConducteur(Conducteur conducteur) {
+		this.conducteur = conducteur;
 	}
 
 }

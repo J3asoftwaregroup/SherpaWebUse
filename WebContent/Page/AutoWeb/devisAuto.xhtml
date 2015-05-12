@@ -14,20 +14,23 @@
 	<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
 			
 			
-				<p:panel header="AssurÃ© principal">
+				<p:panel header="Assuré principal">
 				<br />
-				<h:outputText value="Etes vous clientMB j3A?"></h:outputText>
-				<p:selectOneRadio label="Oui"></p:selectOneRadio>
-				<p:selectOneRadio label="Non"></p:selectOneRadio>
+				<h:panelGrid columns="3">
+				<h:outputText value="Etes vous client j3A?"></h:outputText>
+				<p:selectBooleanCheckbox label="oui" value="Oui"></p:selectBooleanCheckbox>
+				<p:selectBooleanCheckbox label="Non" value="Non"></p:selectBooleanCheckbox>
+				</h:panelGrid>
 					</p:panel>	
 					<br />
 					
 					<p:panel header="Coordonnées">
-							<h:panelGrid id="clientMBGrid_Eng" columns="6">
+							<h:panelGrid id="clientGrid_Eng" columns="6">
 
 												<p:outputLabel for="nameP" value="Nom"/>
 												<p:inputText id="nameP" styleClass="uppercase"
-												 value="#{cotationAuto.clientMB.maPersonne.nomRaisonSociale}" required="true" requiredMessage="Le nom doit être obligatoirement renseigné"/>
+												 value="#{cotationAuto.clientMB.maPersonne.nomRaisonSociale}" required="true" 
+												 requiredMessage="Le nom doit être obligatoirement renseigné" placeholder="Saisir le nom"/>
 													 
 												<p:outputLabel for="prenoms" value="Prénoms" style="margin-left:80px"/>
 												<p:inputText id="prenoms" required="false" value="#{cotationAuto.clientMB.monPhysique.prenomPers}"
@@ -58,8 +61,6 @@
 												</p:selectOneMenu>
 												
 												
-
-
 												<p:outputLabel for="cb_sexe" value="Sexe" style="margin-left:80px"/>
 												<p:selectOneMenu id="cb_sexe"  effect="drop">
 													<f:selectItem itemLabel="Select One" itemValue="" />
@@ -108,6 +109,9 @@
 												<h:outputText value="Adr géo" style="margin-left:80px"/>
 												<p:inputTextarea rows="1" cols="20"
 													value="#{cotationAuto.clientMB.maPersonne.adresseGeo}" />
+													
+													<h:outputText value="etes vous le conducteur? " style="margin-left:80px"></h:outputText>
+													<p:selectBooleanCheckbox value="#{cotationAuto.clientMB.etatClient}"/>
                                             
 							                </h:panelGrid>
 							                <br />
