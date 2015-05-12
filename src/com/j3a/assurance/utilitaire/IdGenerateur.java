@@ -150,7 +150,12 @@ public class IdGenerateur implements Serializable {
 		return idReg;
 	}
 	
-
+    public String getIdConducteur(Personne clt){
+    	String IdCond = clt.getNumSouscripteur() + "Cd";
+		return IdCond;	
+    }
+	
+	
 
 	public String getIdContact(Personne personne) {
 		String pseudo = personne.getNumSouscripteur() + "-C";
