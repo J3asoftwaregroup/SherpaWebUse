@@ -3,6 +3,7 @@ package com.j3a.assurance.managedBean.Auto;
 import java.io.IOException;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -19,6 +20,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Conducteur;
+import com.j3a.assurance.model.ConduireVehicule;
+import com.j3a.assurance.model.ConduireVehiculeId;
 import com.j3a.assurance.model.Exercice;
 import com.j3a.assurance.model.Morale;
 import com.j3a.assurance.model.Personne;
@@ -112,40 +115,18 @@ public class CotationAuto implements Serializable{
 				//conducteur
 				getClientMB().addConducteur();
 				
+				//conduireVehicule
+				ConduireVehicule conduireVehicule =new ConduireVehicule();
+				ConduireVehiculeId conduireVehiculeId =new ConduireVehiculeId();
+				conduireVehiculeId.setCodeVehicule(getCarteGriseMB().getSlctdVehiRw().getVehi().getCodeVehicule());
+				conduireVehiculeId.setNumCond(getClientMB().getConducteur().getNumCond());
+				conduireVehicule.setId(conduireVehiculeId);
+				conduireVehicule.setDateConduite(Calendar.getInstance().getTime());
+				getClientMB().getObjectService().addObject(conduireVehicule);
+				
 		}
 
 
-		//irene
-		public void majconducteur(){
-			if(getClientMB().isEtatClient()){
-				getClientMB().getConducteur().setNonCond(getClientMB().getMaPersonne().getNomRaisonSociale());
-				getClientMB().getConducteur().setDateNaissCond(getClientMB().getMaPersonne().getDatePers());
-				String lieunaiss = null, prenom = null;
-				
-				getClientMB().getConducteur().setPrenomsCond(prenom);
-				getClientMB().getConducteur().setLieuNaisCond(lieunaiss);
-				String numpiece = null;
-				
-				getClientMB().getConducteur().setNumCond(numpiece);
-				getClientMB().getConducteur().setDureepermiscond((short) 0);
-				
-			}
-			else {
-				getClientMB().setConducteur((Conducteur) getClientMB().getObjectService()
-						.getObjectById(getClientMB().getConducteur().getNumCond(), "Conducteur"));
-				if (cduc != null) {
-					getCarteGriseMB().getSlctdVehiRw().setConduHab(cduc);
-				} else {
-					getCarteGriseMB().getSlctdVehiRw().setConduHab(
-							new Conducteur(getCarteGriseMB().getSlctdVehiRw()
-									.getConduHab().getNumCond()));
-				}
-			}
-			
-		}
-		
-		
-		
 		
 		
 		
