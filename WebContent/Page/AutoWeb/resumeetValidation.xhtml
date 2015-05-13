@@ -27,26 +27,26 @@
 											
 											<h:panelGrid columns="8">
 
-												<h:outputText value="Nom:" style="margin-right:65px;"></h:outputText>
+												<h:outputText value="Nom " style="margin-right:65px;"></h:outputText>
 												<p:inputText
-													value="#{CotationAuto.client.nomclient}"
+													value="#{CotationAuto.ClientMB.mapersonne.nomRaisonSociale}"
 													style="width:150px;margin-right:20px;">
 												</p:inputText>
 
-												<h:outputText value="Prenoms:" style="margin-right:35px;" 
+												<h:outputText value="Prenom:" style="margin-right:35px;" 
 													></h:outputText>
 												<p:inputText style="width:150px;margin-right:35px;"
-													value="#{CotationAuto.client.prenomclient}"
+													value="#{CotationAuto.ClentMB.mapersonne.prenomPers}"
 													readonly="true">
 													
 													<p:ajax  
 									  				update="@this" global="false"/>
 												</p:inputText>
 												
-                                                   <h:outputText value="Date de naissance:" style="margin-right:30px;" 
+                                                   <h:outputText value="Numero telephone:" style="margin-right:30px;" 
 													></h:outputText>
 												<p:inputText
-													value=""
+													value="#{CotationAuto.ClientMB.mapersonne.telephone}"
 													style="width:150px;">
 													
 													<p:ajax  
@@ -55,18 +55,18 @@
                                                  
                                                  
 													
-												 <h:outputText value="Numero telephone:" style="margin-left: 40px;" 
+												 <h:outputText value="Adresse Client:" style="margin-left: 40px;" 
 													></h:outputText>
 												<p:inputText
-													value=""
+													value="#{CotationAuto.ClientMB.mapersonne.adresse}"
 													style="width:150px;">
 													
 													<p:ajax  event="blur"
 									  				update="@this" global="false"/>
 												</p:inputText>
-												<h:outputText value="Adresse :"  />
+												<h:outputText value="Date de naissance: " />
 												<p:inputText  
-													value=""
+													value="#{CotationAuto.ClientMB.mapersonne.dateNaissPers}"
 													style="width:150px;">
 													
 													<p:ajax  event="blur"
@@ -94,14 +94,14 @@
 
 												<h:outputText value="Mouvement"  style="margin-right: 20px;"></h:outputText>
 												<p:inputText
-													value="#{CotationAuto.ContratMB.mouvement}"
+													value="#{CotationAuto.ContratMB.avenant.mouvement}"
 													readonly="true"  style="width:150px;"/>
 
 
 												<h:outputText
 													value="Risque" style="margin-left: 20px;"></h:outputText>
 												<p:inputText
-													value="#{CotationAuto.ContratMB.contrat.codeRisque.libelleRisque}"
+													value="#{CotationAuto.ContratMB.contrat.risque.libelleRisque}"
 													readonly="true" style="width:150px;margin-left: 55px;" />
 
 
@@ -131,7 +131,7 @@
 
 												<h:outputText value="Date Emission" style="margin-right: 45px;"></h:outputText>
 												<p:inputMask
-													value=""
+													value="#{CotationAuto.ContratMB.avenant.dateEmission}"
 													readonly="true" mask="99/99/9999" style="margin-right:20px;width:150px;"
 													>
 													<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
@@ -140,7 +140,7 @@
 												<h:outputText value="Date Effet" style="margin-right: 70px;"
 													></h:outputText>
 												<p:inputMask style="margin-right:20px;width:150px;"
-													value=""
+													value="#{CotationAuto.ContratMB.avenant.effet}"
 													readonly="true" mask="99/99/9999"  
 													>
 													<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
@@ -158,7 +158,7 @@
 												<h:outputText value="Date Echéance"  
 													/>
 												<p:inputMask
-													value=""
+													value="#{CotationAuto.ContratMB.avenant.echeance}"
 													readonly="true" mask="99/99/9999" style="margin-right:20px;width:150px;" >
 													<f:convertDateTime pattern="dd/MM/yyyy" />
 
