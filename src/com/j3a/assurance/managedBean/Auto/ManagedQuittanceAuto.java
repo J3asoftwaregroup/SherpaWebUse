@@ -107,19 +107,6 @@ public class ManagedQuittanceAuto {
 		
 		acceComp = primeNette.multiply(BigDecimal.valueOf(0.1));
 		//calcul de la commission de l'apporteur
-		if(vrw.getApporteur().getTypeApporteur().getIdType().equals("1")){
-			comInter = comInter.add(vrw.getCommissionApporteur());	
-			System.out.println("Commission de l'apporteur  ds Quittance type comInter = "+comInter);
-		}
-		if(vrw.getApporteur().getTypeApporteur().getIdType().equals("2")){
-			comInter = comInter.add(vrw.getCommissionApporteur());	
-			System.out.println("Commission de l'apporteur  ds Quittance type comInter = "+comInter);
-		}
-		
-		if(vrw.getApporteur().getTypeApporteur().getIdType().equals("3")){
-			comCon = comCon.add(vrw.getCommissionApporteur());
-			System.out.println("Commission de l'apporteur  ds Quittance type comCon = "+comCon);
-		}
 		
 		comGes = comGes.add(Ges);
 		comCoass = comCoass.add(Coass);
@@ -130,7 +117,7 @@ public class ManagedQuittanceAuto {
 		quittanceAuto.setPrimeTotale(primeTotale);
 		quittanceAuto.setCommissionCoassu(comCoass);
 		quittanceAuto.setCommissionConseil(comCon);
-		quittanceAuto.setCommissionInterm(comInter);
+		quittanceAuto.setCommissionInterm(BigDecimal.ZERO);
 		quittanceAuto.setCommissionGest(comGes);
 		
 		quittanceAuto.setAccessoireComp(acceComp);
@@ -199,6 +186,7 @@ public void calculQuittance(){
 	
 	System.out.println(" Dans Quittance Auto primeExo = "+quittanceAuto.getPrimeExoEncours()+"cfa  ****Prime à Repporter = "+quittanceAuto.getPrimeReport()+"cfa ****PREC = "+quittanceAuto.getPrec()+"cfa");
 }
+
 public void calculAccessoires(){
 	java.math.BigDecimal totalAccessoire = BigDecimal.ZERO;
 	java.math.BigDecimal totalCommission = BigDecimal.ZERO;
@@ -209,10 +197,11 @@ public void calculAccessoires(){
 			 .add(quittanceAuto.getCommissionInterm());
 	 quittanceAuto.setTotalCommission(totalCommission);
 }
+
 public void addcommissionApporteur(Apporteur apporteur, Avenant Avn){
 	java.math.BigDecimal commission = BigDecimal.ZERO;
 	
-	//calcul de la commission de l'apporteur
+	/*//calcul de la commission de l'apporteur
 			if(apporteur.getTypeApporteur().getIdType().equals("1") || apporteur.getTypeApporteur().getIdType().equals("2")){
 				commission = commission.add(quittanceAuto.getCommissionInterm());	
 			}
@@ -220,7 +209,7 @@ public void addcommissionApporteur(Apporteur apporteur, Avenant Avn){
 			if(apporteur.getTypeApporteur().getIdType().equals("3")){
 				commission = commission.add(quittanceAuto.getCommissionConseil());
 			}
-			System.out.println(" <<<<<<Commission  de l'apporteur= "+commission); 
+			System.out.println(" <<<<<<Commission  de l'apporteur= "+commission); */
 	//Ajout de l'Affaire de l'apporteur et maj du compte de l'apporteur
 			Date date = new Date();
 			date = Calendar.getInstance().getTime();
