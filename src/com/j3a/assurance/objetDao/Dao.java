@@ -128,7 +128,7 @@ public class Dao implements IDao {
 				.getCurrentSession()
 				.createQuery(
 						" from Garantie where CODE_RISQUE='" + codeRisque
-								+ "' order by Id ASC").list();
+								+ "' order by CODE_GARANTIE ASC").list();
 		return list;
 	}
 
