@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 
 import org.primefaces.component.inputtext.InputText;
+import org.primefaces.component.outputlabel.OutputLabel;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,6 +83,19 @@ public class CarteGriseMB implements Serializable {
 		private InputText inputValNeuv;
 		private InputText inputValVen;
 		private InputText inputPlace;
+		private InputText inputNbrTran;
+		
+		private OutputLabel outputPf;
+		private OutputLabel outputPr;
+		private OutputLabel outputPlcCab;
+		private OutputLabel outputPlcHcab;
+		private OutputLabel outputPoidV;
+		private OutputLabel outputCu;
+		private OutputLabel outputValNeuv;
+		private OutputLabel outputValVen;
+		private OutputLabel outputPlace;
+		private OutputLabel outputNbrTran;
+		
 		private Boolean buttonSavVehicule = true;
 		private Boolean buttonAddVehicule;
 		private Boolean buttonDelVehicule = true;
@@ -720,30 +734,42 @@ public class CarteGriseMB implements Serializable {
 		
 
 		public String handleflow(FlowEvent event) {
-			// Methode lancée lorsque une navigation est faite dans le wizard
-			// Fctionnemet on recupère l'ancienne et la nouvelle étape et en fontion
-			// de ces données et del la logique métier
-			// on contrôle la navigation ds notre cas si la nouvelle étape est la
-			// quittance on vérifie que les garanties
-			// des véhicules ont été setté si c pas le cas on reste sur lancienne
-			// étape et on envoie une boite de dialogue
-			// à l'utilisateur pour lui indiquer les véhicules sans garanties
-			//logs.info(">>>>/ INSIDE -handleflow-");
-			// System.out.println("ùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùù"+getManagedContrat().getBaremes().getLibelleBareme());
+		
 			String oldStep = event.getOldStep();
 			String newStep = event.getNewStep();
 			String a = newStep;
-			// TRAITEMENT POUR LE PASSAGE DE CONTRAT A VEHICULE
-			if (newStep.equalsIgnoreCase("ongletVehicule")
-					&& oldStep.equalsIgnoreCase("ongletContrat")) {
-
+			// TRAITEMENT POUR LE PASSAGE DE Immat A categorie
+			if (newStep.equalsIgnoreCase("ongletCategorie")
+					&& oldStep.equalsIgnoreCase("ongletImmatriculation")) {
+				System.out.println("TRAITEMENT POUR LE PASSAGE DE Immat A categorie");
+				//V�rification des conditions
+				if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("")) {
+							
+			//on reste sur la partie
+					FacesMessage msg = new FacesMessage(
+							"Cat�gorie du vehicule non renseign�e");
+					FacesContext.getCurrentInstance().addMessage(null, msg);
+					a = oldStep;
 			}
-
+			}
 			// TRAITEMENT POUR LE PASSAGE DE VEHICULE A QUITTANCE
-			if (newStep.equalsIgnoreCase("ongletQuittance")
+			if (newStep.equalsIgnoreCase("ongletCategorie")
 					&& oldStep.equalsIgnoreCase("ongletVehicule")) {
-
+				System.out.println("TRAITEMENT POUR LE PASSAGE DE categorie A vehicule");
 			}
+			
+			// TRAITEMENT POUR LE PASSAGE DE VEHICULE A QUITTANCE
+						if (newStep.equalsIgnoreCase("ongletVehicule")
+								&& oldStep.equalsIgnoreCase("ongletConducteur")) {
+							System.out.println("TRAITEMENT POUR LE PASSAGE DE Vehicule A conducteur");
+						}
+						
+			// TRAITEMENT POUR LE PASSAGE DE VEHICULE A QUITTANCE
+						if (newStep.equalsIgnoreCase("ongletVehicule")
+								&& oldStep.equalsIgnoreCase("ongletConducteur")) {
+							System.out.println("TRAITEMENT POUR LE PASSAGE du conducteur aux garantie");
+							
+						}
 			//logs.info(">>>>/ END -handleflow-");
 			return a;
 		}
@@ -757,7 +783,7 @@ public class CarteGriseMB implements Serializable {
 		}
 
 		public void validerProp() {
-			
+			getSlctdVehiRw().getListeVehicules().clear();
 			// setEditGarEtat(false);
 			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("")
 					&& (getSlctdVehiRw().getVehi().getPuissFisc()
@@ -768,7 +794,7 @@ public class CarteGriseMB implements Serializable {
 
 				if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("")) {
 					FacesMessage msg = new FacesMessage(
-							"Catégorie du vehicule non renseignée");
+							"Cat�gorie du vehicule non renseign�e");
 					FacesContext.getCurrentInstance().addMessage(null, msg);
 				}
 
@@ -777,7 +803,7 @@ public class CarteGriseMB implements Serializable {
 						&& getSlctdVehiRw().getVehi().getPuissReelle()
 								.equals(BigDecimal.ZERO)) {
 					FacesMessage msg = new FacesMessage(
-							"Choisir une puissance fiscale ou Réelle");
+							"Choisir une puissance fiscale ou R�elle");
 					FacesContext.getCurrentInstance().addMessage(null, msg);
 				}
 
@@ -794,14 +820,7 @@ public class CarteGriseMB implements Serializable {
 						+ getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule());
 				getSlctdVehiRw().getVehi().setSousCatVehicule(getSlctdVehiRw().getSouCatVehi());
 				getSlctdVehiRw().getListeVehicules().clear();
-				
 				getSlctdVehiRw().getListeVehicules().add(getSlctdVehiRw());
-				
-				
-				
-				setButtonAddVehicule(true);
-				setButtonEditGar(false);
-				RequestContext.getCurrentInstance().execute("editVehicule.hide();");
 
 			}
 			System.out.println("NumOrdre de getSlctdVehiRw()=== "+getSlctdVehiRw().getNumOrdr());
@@ -909,64 +928,88 @@ public class CarteGriseMB implements Serializable {
 
 		public void choixSousCat() {
 			// default
-			inputPr.setDisabled(true);
-			inputPf.setDisabled(true);
-			inputPlcCab.setDisabled(true);
-			inputPlcHcab.setDisabled(true);
-			inputPoidV.setDisabled(true);
-			inputCu.setDisabled(true);
-			inputValNeuv.setDisabled(true);
-			inputValVen.setDisabled(true);
+			inputPr.setRendered(false);
+			inputPf.setRendered(false);
+			inputPlcCab.setRendered(false);
+			inputPlcHcab.setRendered(false);
+			inputPoidV.setRendered(false);
+			inputCu.setRendered(false);
+			inputValNeuv.setRendered(false);
+			inputValVen.setRendered(false);
+			
 			
 			inputValNeuv.setRequired(false);
 			inputValVen.setRequired(false);
 			inputPf.setRequired(false);
 			inputPr.setRequired(false);
 			inputCu.setRequired(false);
+			
+			outputPr.setRendered(false);
+			outputPf.setRendered(false);
+			outputPlcCab.setRendered(false);
+			outputPlcHcab.setRendered(false);
+			outputPoidV.setRendered(false);
+			outputCu.setRendered(false);
+			outputValNeuv.setRendered(false);
+			outputValVen.setRendered(false);
+			
 
 			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT1")||getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT10")) {
-				inputPr.setDisabled(true);
-				inputPf.setDisabled(false);
-				inputPlcCab.setDisabled(false);
-				inputPlcHcab.setDisabled(false);
-				inputPoidV.setDisabled(true);
-				inputCu.setDisabled(true);
-				inputValNeuv.setDisabled(false);
-				inputValVen.setDisabled(false);
+				inputPr.setRendered(false);
+				inputPf.setRendered(true);
+				inputPlcCab.setRendered(false);
+				inputPlcHcab.setRendered(false);
+				inputPoidV.setRendered(false);
+				inputCu.setRendered(false);
+				inputValNeuv.setRendered(true);
+				inputValVen.setRendered(true);
 
 
-				inputValNeuv.setRequired(true);
-				inputValVen.setRequired(true);
-				inputPf.setRequired(true);
-				inputPr.setRequired(false);
-				inputCu.setRequired(false);
+				
+				outputPr.setRendered(false);
+				outputPf.setRendered(true);
+				outputPlcCab.setRendered(false);
+				outputPlcHcab.setRendered(false);
+				outputPoidV.setRendered(false);
+				outputCu.setRendered(false);
+				outputValNeuv.setRendered(true);
+				outputValVen.setRendered(true);
 			}
 			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT2")||getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT3")) {
-				inputPr.setDisabled(true);
-				inputPf.setDisabled(true);
-				inputPlcCab.setDisabled(false);
-				inputPlcHcab.setDisabled(false);
-				inputPoidV.setDisabled(false);
-				inputCu.setDisabled(false);
+				inputPr.setRendered(true);
+				inputPf.setRendered(true);
+				inputPlcCab.setRendered(false);
+				inputPlcHcab.setRendered(false);
+				inputPoidV.setRendered(false);
+				inputCu.setRendered(false);
 				inputCu.setRequired(true);
-				inputValNeuv.setDisabled(true);
-				inputValVen.setDisabled(true);
+				inputValNeuv.setRendered(true);
+				inputValVen.setRendered(true);
 				
 				inputValNeuv.setRequired(false);
 				inputValVen.setRequired(false);
 				inputPf.setRequired(false);
 				inputPr.setRequired(false);
 				inputCu.setRequired(false);
+				
+				outputPr.setRendered(true);
+				outputPf.setRendered(true);
+				outputPlcCab.setRendered(true);
+				outputPlcHcab.setRendered(true);
+				outputPoidV.setRendered(true);
+				outputCu.setRendered(true);
+				outputValNeuv.setRendered(true);
+				outputValVen.setRendered(true);
 			}
 			/*if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT4")) {
-				inputPr.setDisabled(true);
-				inputPf.setDisabled(true);
-				inputPlcCab.setDisabled(false);
-				inputPlcHcab.setDisabled(false);
-				inputPoidV.setDisabled(true);
-				inputCu.setDisabled(true);
-				inputValNeuv.setDisabled(true);
-				inputValVen.setDisabled(true);
+				inputPr.setRendered(true);
+				inputPf.setRendered(true);
+				inputPlcCab.setRendered(false);
+				inputPlcHcab.setRendered(false);
+				inputPoidV.setRendered(true);
+				inputCu.setRendered(true);
+				inputValNeuv.setRendered(true);
+				inputValVen.setRendered(true);
 				
 				inputValNeuv.setRequired(false);
 				inputValVen.setRequired(false);
@@ -975,14 +1018,14 @@ public class CarteGriseMB implements Serializable {
 				inputCu.setRequired(false);
 			}*/
 			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT5")) {
-				inputPr.setDisabled(false);
-				inputPf.setDisabled(true);
-				inputPlcCab.setDisabled(true);
-				inputPlcHcab.setDisabled(true);
-				inputPoidV.setDisabled(true);
-				inputCu.setDisabled(true);
-				inputValNeuv.setDisabled(true);
-				inputValVen.setDisabled(true);
+				inputPr.setRendered(false);
+				inputPf.setRendered(true);
+				inputPlcCab.setRendered(true);
+				inputPlcHcab.setRendered(true);
+				inputPoidV.setRendered(true);
+				inputCu.setRendered(true);
+				inputValNeuv.setRendered(true);
+				inputValVen.setRendered(true);
 				
 				inputValNeuv.setRequired(false);
 				inputValVen.setRequired(false);
@@ -995,14 +1038,14 @@ public class CarteGriseMB implements Serializable {
 			}
 			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT7")||getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT8")||
 					getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT12")	) {
-				inputPr.setDisabled(true);
-				inputPf.setDisabled(false);
-				inputPlcCab.setDisabled(false);
-				inputPlcHcab.setDisabled(false);
-				inputPoidV.setDisabled(false);
-				inputCu.setDisabled(false);
-				inputValNeuv.setDisabled(false);
-				inputValVen.setDisabled(false);
+				inputPr.setRendered(true);
+				inputPf.setRendered(false);
+				inputPlcCab.setRendered(false);
+				inputPlcHcab.setRendered(false);
+				inputPoidV.setRendered(false);
+				inputCu.setRendered(false);
+				inputValNeuv.setRendered(false);
+				inputValVen.setRendered(false);
 				
 				inputValNeuv.setRequired(false);
 				inputValVen.setRequired(false);
@@ -1013,14 +1056,14 @@ public class CarteGriseMB implements Serializable {
 			
 			
 			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT10")) {
-				inputPr.setDisabled(false);
-				inputPf.setDisabled(true);
-				inputPlcCab.setDisabled(true);
-				inputPlcHcab.setDisabled(true);
-				inputPoidV.setDisabled(true);
-				inputCu.setDisabled(true);
-				inputValNeuv.setDisabled(true);
-				inputValVen.setDisabled(true);
+				inputPr.setRendered(false);
+				inputPf.setRendered(true);
+				inputPlcCab.setRendered(true);
+				inputPlcHcab.setRendered(true);
+				inputPoidV.setRendered(true);
+				inputCu.setRendered(true);
+				inputValNeuv.setRendered(true);
+				inputValVen.setRendered(true);
 				
 				inputValNeuv.setRequired(false);
 				inputValVen.setRequired(false);
@@ -1282,6 +1325,96 @@ public class CarteGriseMB implements Serializable {
 		public void setScatVehiCvtr(ScatVehiCvtr scatVehiCvtr) {
 			this.scatVehiCvtr = scatVehiCvtr;
 		}
+
+		public InputText getInputNbrTran() {
+			return inputNbrTran;
+		}
+
+		public void setInputNbrTran(InputText inputNbrTran) {
+			this.inputNbrTran = inputNbrTran;
+		}
+
+		public OutputLabel getOutputPf() {
+			return outputPf;
+		}
+
+		public void setOutputPf(OutputLabel outputPf) {
+			this.outputPf = outputPf;
+		}
+
+		public OutputLabel getOutputPr() {
+			return outputPr;
+		}
+
+		public void setOutputPr(OutputLabel outputPr) {
+			this.outputPr = outputPr;
+		}
+
+		public OutputLabel getOutputPlcCab() {
+			return outputPlcCab;
+		}
+
+		public void setOutputPlcCab(OutputLabel outputPlcCab) {
+			this.outputPlcCab = outputPlcCab;
+		}
+
+		public OutputLabel getOutputPlcHcab() {
+			return outputPlcHcab;
+		}
+
+		public void setOutputPlcHcab(OutputLabel outputPlcHcab) {
+			this.outputPlcHcab = outputPlcHcab;
+		}
+
+		public OutputLabel getOutputPoidV() {
+			return outputPoidV;
+		}
+
+		public void setOutputPoidV(OutputLabel outputPoidV) {
+			this.outputPoidV = outputPoidV;
+		}
+
+		public OutputLabel getOutputCu() {
+			return outputCu;
+		}
+
+		public void setOutputCu(OutputLabel outputCu) {
+			this.outputCu = outputCu;
+		}
+
+		public OutputLabel getOutputValNeuv() {
+			return outputValNeuv;
+		}
+
+		public void setOutputValNeuv(OutputLabel outputValNeuv) {
+			this.outputValNeuv = outputValNeuv;
+		}
+
+		public OutputLabel getOutputValVen() {
+			return outputValVen;
+		}
+
+		public void setOutputValVen(OutputLabel outputValVen) {
+			this.outputValVen = outputValVen;
+		}
+
+		public OutputLabel getOutputPlace() {
+			return outputPlace;
+		}
+
+		public void setOutputPlace(OutputLabel outputPlace) {
+			this.outputPlace = outputPlace;
+		}
+
+		public OutputLabel getOutputNbrTran() {
+			return outputNbrTran;
+		}
+
+		public void setOutputNbrTran(OutputLabel outputNbrTran) {
+			this.outputNbrTran = outputNbrTran;
+		}
+
+		
 
 
 }

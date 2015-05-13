@@ -270,110 +270,48 @@ public class CotationAuto implements Serializable{
 			getCarteGriseMB().setSlctdVehiRwTb(null);
 			// System.out.println("ùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùù"+getContratMB().getBaremes());
 		}
-
 		public String handleflow(FlowEvent event) {
-
+			
 			String oldStep = event.getOldStep();
 			String newStep = event.getNewStep();
 			String a = newStep;
-
-			// TRAITEMENT POUR LE PASSAGE DE CLIENT A CONTRAT
-
-			if (newStep.equalsIgnoreCase("ongletContrat")
-					&& oldStep.equalsIgnoreCase("ongletClient")) { // /+Dob
-				/*if (!getClientMB().getStatutRechercheClient()) {
-					a = oldStep;
+			// TRAITEMENT POUR LE PASSAGE DE Immat A categorie
+			if (newStep.equalsIgnoreCase("ongletCategorie")
+					&& oldStep.equalsIgnoreCase("ongletImmatriculation")) {
+				System.out.println("TRAITEMENT POUR LE PASSAGE DE Immat A categorie");
+				//Vérification des conditions
+				if (getCarteGriseMB().getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("")) {
+							
+			//on reste sur la partie
 					FacesMessage msg = new FacesMessage(
-							"Vous devez Selectionner/Creer un client");
+							"Catégorie du vehicule non renseignée");
 					FacesContext.getCurrentInstance().addMessage(null, msg);
-				}*/
+					a = oldStep;
 			}
-
-			// TRAITEMENT POUR LE PASSAGE DE CONTRAT A VEHICULE
-			if (newStep.equalsIgnoreCase("ongletVehicule")
-					&& oldStep.equalsIgnoreCase("ongletContrat")) {
-
-				
-					getContratMB().getContrat().setSocieteAssurance(
-							getContratMB().getSocieteAssurance());
-				
-					getContratMB().getContrat().setPointVente(
-							getContratMB().getPointVente());
-					getContratMB().getContrat().setPersonne(
-							getClientMB().getMaPersonne());
-					
-					getContratMB().getContrat().getRisque().setCodeRisque("1");
-					
-					getContratMB().getAvenant().setDuree(
-							getContratMB().getDureeEnjour().shortValue());
-					getGarantieMB().setCodeRisque("1");
-					getContratMB().getAvenant().setEffet(
-							getContratMB().getEffet());
-					getContratMB().getAvenant().setEcheance(
-							getContratMB().getEcheance());
-					System.out.println("xxxpersonnexxx"
-							+ getContratMB().getContrat().getPersonne()
-									.getNumSouscripteur());
-
-					majConducteur();
-					getCarteGriseMB().choixSousCat();
-				}
-			
-
+			}
 			// TRAITEMENT POUR LE PASSAGE DE VEHICULE A QUITTANCE
-			if (newStep.equalsIgnoreCase("ongletQuittance")
+			if (newStep.equalsIgnoreCase("ongletCategorie")
 					&& oldStep.equalsIgnoreCase("ongletVehicule")) {
-
-				if (getCarteGriseMB().getVehiculeList().size() == 0) {
-					// on reste sur la page des Engins
-					a = oldStep;
-					FacesMessage msg = new FacesMessage(
-							"Vous devez editer au moins un véhcule !");
-					FacesContext.getCurrentInstance().addMessage(null, msg);
-
-				} else {
-
-					getManagedQuittanceAuto().setDisableaddContrats(true);
-					// gestion des apporteur dans la quittance
-
-					getManagedQuittanceAuto().getListVehicules().clear();
-					getManagedQuittanceAuto().getListVehicules().addAll(
-							getCarteGriseMB().getVehiculeList());
-				/*	System.out.println(getCarteGriseMB().getSlctdVehiRw()
-							.getConduHab());*/
-					System.out.println("********Avenant date Effet = "
-							+ getContratMB().getAvenant().getEffet()
-							+ " Date Echéance = "
-							+ getContratMB().getAvenant().getEcheance());
-
-					getManagedQuittanceAuto().setAvenant(
-							getContratMB().getAvenant());
-
-					getManagedQuittanceAuto().setExercice(getExercice().getCodeexercice());// A corriger
-
-					System.out
-							.println("********Quittance Auto Avenant date Effet = "
-									+ getManagedQuittanceAuto().getAvenant()
-											.getEffet()
-									+ " Date Echéance = "
-									+ getManagedQuittanceAuto().getAvenant()
-											.getEcheance());
-					getManagedQuittanceAuto().calculPrime();
-					getManagedQuittanceAuto().calculQuittance();
-
-					if (getContratMB().getContrat().getPersonne()
-							.getNumSouscripteur().equals(null)) {
-						getManagedQuittanceAuto().setDisableaddContrats(false);
-
-					}
-					if (getCarteGriseMB().getVehiculeList().size() >= 1) {
-						getManagedQuittanceAuto().setDisableaddContrats(false);
-
-					}
-				}
-
+				System.out.println("TRAITEMENT POUR LE PASSAGE DE categorie A vehicule");
 			}
-
+			
+			// TRAITEMENT POUR LE PASSAGE DE VEHICULE A QUITTANCE
+						if (newStep.equalsIgnoreCase("ongletVehicule")
+								&& oldStep.equalsIgnoreCase("ongletConducteur")) {
+							System.out.println("TRAITEMENT POUR LE PASSAGE DE Vehicule A conducteur");
+						}
+						
+			// TRAITEMENT POUR LE PASSAGE DE VEHICULE A QUITTANCE
+						if (newStep.equalsIgnoreCase("ongletGarantie")
+								&& oldStep.equalsIgnoreCase("ongletConducteur")) {
+							System.out.println("TRAITEMENT POUR LE PASSAGE du conducteur aux garanties");
+							getCarteGriseMB().validerProp();
+							tabChange();
+							
+							
+							
+						}
+			//logs.info(">>>>/ END -handleflow-");
 			return a;
 		}
 

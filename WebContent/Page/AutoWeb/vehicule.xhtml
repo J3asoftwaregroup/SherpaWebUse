@@ -13,119 +13,61 @@
 	<ui:define name="content">
 
 			<h:form id="VehiculeProp">
+			
+			<p:wizard id="wizar"
+				flowListener="#{cotationAuto.handleflow}" widgetVar="wiz"
+				nextLabel="Suivant"
+				backLabel="Précedant" styleClass="wizardStyle" style="width:93%">
 				<p:messages id="pmessagePropVehi" showDetail="false" sticky="true" closable="true"/>
-				 <fieldset class="fieldset"  style="width:97%"><legend>Immatriculation Actuelle</legend>
-				 <h:panelGrid columns="4">
-				               <h:outputText value="Numéro d'Immatriculation "/>
-										<p:inputText id="imat" value="#{carteGriseMB.slctdVehiRw.vehi.numImmat}"
-										 required="true" requiredMessage="Sélectionner une Immatriculation !"
-										 styleClass="identifiant">
-										<p:ajax  update="@this, pmessagePropVehi" global="false"/>
-										</p:inputText>
-										
-									<h:outputText value="Date d'Immatriculation " style="margin-left: 20px;"/>
-									 <p:inputMask value="#{carteGriseMB.slctdVehiRw.vehi.dateImmat}" id="dateActu"  mask="99/99/9999" 
-									 required="true" requiredMessage="Sélectionner une date d'Immatriculation !">
-									<f:convertDateTime pattern="dd/MM/yyyy" />
-									<p:ajax  event="blur" listener="#{carteGriseMB.changedateImmat}"
-									  update="@this, dateImmatpre, datePms, pmessagePropVehi" global="false"/>
-									</p:inputMask>
-								
-										
-				 </h:panelGrid>
-				 
-				 
-				 
-				 </fieldset>
-						     
-						     
-			   <fieldset class="fieldset"  style="width:97%"><legend>Immatriculation Précédente</legend>
-			    <h:panelGrid columns="7">
-				 <h:outputText value="Numéro d'Immatriculation"/>
-				 <h:inputText value="#{carteGriseMB.slctdVehiRw.vehi.numImmatPrec}"
-				 styleClass="identifiant"
-				 ></h:inputText>
-				 <h:outputText value="Date d'Immatriculation" style="margin-left: 20px;"></h:outputText>
-				 <p:inputMask value="#{carteGriseMB.slctdVehiRw.vehi.dateImmatPrec}" 
-				 id="dateImmatpre" mask="99/99/9999" >
-				<f:convertDateTime pattern="dd/MM/yyyy" />
-				<p:ajax  event="blur" listener="#{carteGriseMB.changedateImmatprec}"
-									  update="@this, datePms" global="false"/>
-				</p:inputMask>
-				<h:outputText value="Nombres de cartes" style="margin-left: 20px;"></h:outputText>
-				 <h:inputText value="#{carteGriseMB.slctdVehiRw.vehi.nbreCarte}"></h:inputText>
-				<p:selectBooleanCheckbox itemLabel="Facturation" style="margin-left: 20px;"></p:selectBooleanCheckbox>
 				
-				 </h:panelGrid></fieldset>
-						     
-							
-								<fieldset class="fieldset" style="width:97%" >
-								<legend>Carte Grise</legend>
-								
+				
+
+
+				<p:tab id="ongletCategorie" title="Vehicule">
+				<fieldset class="fieldset" style="width:97%" >
+		
 								<h:panelGrid id="vehiProp" columns="6">
 								
 								<h:outputText value="Sous Categorie "/>
-										<p:selectOneMenu id="slctSCat"  value="#{carteGriseMB.slctdVehiRw.souCatVehi}" required="true" requiredMessage="Sélectionner une sous Catégorie !" converter="#{scatVehiCvtr}" style="width:170px">
+										<p:selectOneMenu id="slctSCat"  value="#{cotationAuto.carteGriseMB.slctdVehiRw.souCatVehi}" required="true" requiredMessage="Sélectionner une sous Catégorie !" converter="#{scatVehiCvtr}" style="width:170px">
 											<f:selectItem itemLabel="" itemValue=""/>
 											<f:selectItems value="#{scatVehiCvtr.catVehiList}" var="ca" itemLabel="#{ca.libelleSousCatVehicule}" itemValue="#{ca}"/>
-											  <p:ajax process="slctSCat"  listener="#{carteGriseMB.choixSousCat}" partialSubmit="true" event="valueChange"  update="@this, catV"/>
+											  <p:ajax process="slctSCat"  listener="#{cotationAuto.carteGriseMB.choixSousCat}" partialSubmit="true" event="valueChange"  update="@this, catV"/>
     
 											</p:selectOneMenu>
 								
-								<h:outputText value="Catégorie " style="margin-left: 20px;"/>
-										<p:inputText id="catV" value="#{carteGriseMB.slctdVehiRw.souCatVehi.categorie.libelleCategorie}" 
+								<h:outputText value="Catégorie " style="margin-left: 15px;"/>
+										<p:inputText id="catV" value="#{cotationAuto.carteGriseMB.slctdVehiRw.souCatVehi.categorie.libelleCategorie}" 
 										style="width:211px"/>
 										
-								<h:outputText value="1er Mise en circulation " style="margin-left: 20px;"/>
-								 <p:inputMask value="#{carteGriseMB.slctdVehiRw.vehi.datePremiereCirc}" id="datePms"  mask="99/99/9999" >
-								<f:convertDateTime pattern="dd/MM/yyyy" />
-								</p:inputMask>
-								
-									
-								
-								<h:outputText value="Statut "/>
-										<p:selectOneMenu value="#{carteGriseMB.slctdVehiRw.vehi.statut}" id="statu" required="false" style="width:170px">
-											<f:selectItem itemLabel="Select Statut" itemValue=""/>
-											<f:selectItem itemLabel="Vehicule avec Atelage" itemValue="Vehicule avec Atelage"/>
-											<f:selectItem itemLabel="Vehicule sans Atelage" itemValue="Vehicule sans Atelage"/>
-											<f:selectItem itemLabel="Remorque" itemValue="Remorque"/>
-										</p:selectOneMenu>
-									
-								<h:outputText value="Carosserie " style="margin-left: 20px;"/>
-										<p:selectOneMenu value="#{carteGriseMB.slctdVehiRw.vehi.carrosserie}" id="caross" required="false" 
-										 style="width:154px" label="Carosserie du vehicule">
-											<f:selectItem itemLabel="Choix de Carosserie" itemValue=""/>
-											<f:selectItem itemLabel="Berline tricorps" itemValue="Berline tricorps"/>
-											<f:selectItem itemLabel="Berline bicorps" itemValue="Berline bicorps"/>
-											<f:selectItem itemLabel="Berline monocorps" itemValue="Berline monocorps"/>
-											<f:selectItem itemLabel="Break" itemValue="Break"/>
-											<f:selectItem itemLabel="Coupé" itemValue="Coupe"/>
-											<f:selectItem itemLabel="Coupé sans montants" itemValue="Coupe sans montants"/>
-											<f:selectItem itemLabel="Coupé 4-portes" itemValue="Coupe 4-portes"/>
-											<f:selectItem itemLabel="Limousine" itemValue="Limousine"/>
-											<f:selectItem itemLabel="Roadster" itemValue="Roadster"/>
-											<f:selectItem itemLabel="Spider" itemValue="Spider"/>
-											<f:selectItem itemLabel="Pick-up" itemValue="Pick-up"/>
-											<f:selectItem itemLabel="Berline décapotable et landaulet" itemValue="Berline decapotable et landaulet"/>
-											<f:selectItem itemLabel="Coupéspace" itemValue="Coupespace"/>
-											<f:selectItem itemLabel="Coupé/cabriolet avec toit escamotable" itemValue="Coupe/cabriolet avec toit escamotable"/>
-											<f:selectItem itemLabel="Crossover" itemValue="Crossover"/>
-											<f:selectItem itemLabel="Minispace" itemValue="Minispace"/>
-											<f:selectItem itemLabel="SUV" itemValue="SUV"/>
-											<f:selectItem itemLabel="Monospace" itemValue="Monospace"/>
-											<f:selectItem itemLabel="Ludospace" itemValue="Ludospace"/>
-				
-    
+										
+										
+										<h:outputText value="Energie " style="margin-left: 15px;"/>
+										<p:selectOneMenu value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.energie}" id="enrg" style="width:154px">
+											<f:selectItem itemLabel="diesel" itemValue="diesel"/>
+											<f:selectItem itemLabel="essence" itemValue="essence"/>
 										</p:selectOneMenu>
 										
-										<h:outputText value="Genre " style="margin-left: 20px;"/>
-										<p:selectOneMenu id="genr" value="#{carteGriseMB.slctdVehiRw.vehi.genre}" required="false" style="width:127px">
-											<f:selectItem itemLabel="VP" itemValue="VP"/>
-											<f:selectItem itemLabel="VT" itemValue="VT"/>
+										
+							<h:outputText value="Type Vehicule"/>
+										<p:selectOneMenu id="typV" value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.typeVehicule}"  style="width:154px">
+											<f:selectItem itemLabel="" itemValue=""/>
+											<f:selectItem itemLabel="Particulier" itemValue="VP"/>
+											<f:selectItem itemLabel="Taxi" itemValue="VTT"/>
+											<f:selectItem itemLabel="Car" itemValue="VTC"/>
+											<f:selectItem itemLabel="Tracteur Routier" itemValue="VAT"/>
+											<f:selectItem itemLabel="Cyclomoteur Cylindrée" itemValue="VC"/>
+											<f:selectItem itemLabel="Cyclomoteur Tendems" itemValue="VT"/>
+											<f:selectItem itemLabel="Avec Double Commande" itemValue="VDC"/>
+											<f:selectItem itemLabel="Sans Double Commande" itemValue="VSDC"/>
+											<f:selectItem itemLabel="Autres" itemValue="VA"/>
 										</p:selectOneMenu>
 										
-										<h:outputText value="Marque " />
-										<p:selectOneMenu value="#{carteGriseMB.slctdVehiRw.vehi.marque}" id="marq" style="width:170px">
+										
+									
+										
+								<h:outputText value="Marque "  style="margin-left: 15px;"/>
+										<p:selectOneMenu value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.marque}" id="marq" style="width:170px">
 											<f:selectItem itemLabel=" Sélectionnez"  itemValue=""/>
 											<f:selectItem itemLabel="ABARTH"  itemValue="ABARTH"/>										
 											<f:selectItem itemLabel="ACURA"  itemValue="ACURA"/>
@@ -214,153 +156,10 @@
 
 										</p:selectOneMenu>
 										
-									
-									
-										<h:outputText value="Energie " style="margin-left: 20px;"/>
-										<p:selectOneMenu value="#{carteGriseMB.slctdVehiRw.vehi.energie}" id="enrg" style="width:154px">
-											<f:selectItem itemLabel="diesel" itemValue="diesel"/>
-											<f:selectItem itemLabel="essence" itemValue="essence"/>
-										</p:selectOneMenu>
 										
-							
-										<h:outputText value="Type Vehicule" style="margin-left: 20px;"/>
-										<p:selectOneMenu id="typV" value="#{carteGriseMB.slctdVehiRw.vehi.typeVehicule}"  style="width:154px">
-											<f:selectItem itemLabel="" itemValue=""/>
-											<f:selectItem itemLabel="Particulier" itemValue="VP"/>
-											<f:selectItem itemLabel="Taxi" itemValue="VTT"/>
-											<f:selectItem itemLabel="Car" itemValue="VTC"/>
-											<f:selectItem itemLabel="Tracteur Routier" itemValue="VAT"/>
-											<f:selectItem itemLabel="Cyclomoteur Cylindrée" itemValue="VC"/>
-											<f:selectItem itemLabel="Cyclomoteur Tendems" itemValue="VT"/>
-											<f:selectItem itemLabel="Avec Double Commande" itemValue="VDC"/>
-											<f:selectItem itemLabel="Sans Double Commande" itemValue="VSDC"/>
-											<f:selectItem itemLabel="Autres" itemValue="VA"/>
-										</p:selectOneMenu>
-										
-											<h:outputText value="Type Transporte"/>
-										<p:selectOneMenu id="typTr" value="#{carteGriseMB.slctdVehiRw.vehi.typeTransporte}"  style="width:154px">
-											<f:selectItem itemLabel="" itemValue=""/>
-											<f:selectItem itemLabel="Elève" itemValue="TE"/>
-											<f:selectItem itemLabel="Employés" itemValue="TEM"/>
-											<f:selectItem itemLabel="Clandestins" itemValue="TC"/>
-											<f:selectItem itemLabel="Hydrocarbures" itemValue="TH"/>
-											<f:selectItem itemLabel="Autres" itemValue="TA"/>
-										</p:selectOneMenu>
-										
-										<h:outputText value="Type commercial" style="margin-left: 20px;"/>
-										<p:inputText id="typcomer" value="#{carteGriseMB.slctdVehiRw.vehi.typeCommercial}"
-										style="width:211px"/>
-										
-										
-										<h:outputText value="Châssis " style="margin-left: 20px;"/>
-										<p:inputText id="chass" value="#{carteGriseMB.slctdVehiRw.vehi.chassis}"
-										 style="width:148px"/>
-										 
-										<h:outputText value="Numéro Moteur" />
-										<p:inputText id="nmoteur" value="#{carteGriseMB.slctdVehiRw.vehi.numMoteur}"
-										 style="width:149px"
-										/>
-										
-								
-										<h:outputText value="Poids à vide (Kg)"
-											style="margin-left: 20px;" />
-										<p:inputText id="poidsVid"  style="width:148px"
-											value="#{carteGriseMB.slctdVehiRw.vehi.poidsVide}" binding="#{carteGriseMB.inputPoidV}"
-											 >
-											<f:convertNumber type="number"></f:convertNumber>
-										</p:inputText>
-										
-
-
-
-
-										<h:outputText value="Charge Utile (T)"
-											style="margin-left: 20px;" />
-										<p:inputText id="poidsUtil"
-											value="#{carteGriseMB.slctdVehiRw.vehi.chargeUtile}" binding="#{carteGriseMB.inputCu}"
-											style="width:148px" 
-										>
-											<f:convertNumber type="number" />
-										</p:inputText>
-									
-								
-										<h:outputText value="Puissance Fiscale "/>
-										<p:inputText id="pfisc" value="#{carteGriseMB.slctdVehiRw.vehi.puissFisc}" 
-										
-										binding="#{carteGriseMB.inputPf}" 
-										style="width:149px">
-										<f:convertNumber integerOnly="true" ></f:convertNumber>
-										<f:validateLongRange minimum="0"  maximum="20"  ></f:validateLongRange>
-										<p:ajax  update="@this" global="false"/>
-										</p:inputText>
-
-									
-										<h:outputText value="Puissance Réelle Cm3&nbsp;&nbsp;" style="margin-left: 20px;"/>
-										<p:inputText id="preel" value="#{carteGriseMB.slctdVehiRw.vehi.puissReelle}" binding="#{carteGriseMB.inputPr}"
-										 style="width:148px">
-										 <p:ajax  update="@this" global="false"/>
-										 </p:inputText>
-										 
-										 <h:outputText value="Remorque" style="margin-left: 20px;"/>
-										<p:selectOneMenu id="remorq" value="#{carteGriseMB.remorque}"  style="width:154px">
-											<f:selectItem itemLabel="Sans Remorque" itemValue="non"/>
-											<f:selectItem itemLabel="Avec Remorque" itemValue="oui"/>
-											<p:ajax
-												listener="#{carteGriseMB.choixRemorque}" process="@this" />
-										
-										</p:selectOneMenu>
-										
-										
-										<h:outputText value="Places.Cabine"/>
-										<p:inputText id="plcCab" value="#{carteGriseMB.slctdVehiRw.vehi.nbrePlaceCab}" binding="#{carteGriseMB.inputPlcCab}"
-										style="width:149px">
-										 <p:ajax
-												listener="#{carteGriseMB.chxNbrTran}"
-												process="@this" update=":VehiculeProp:nbrTrans" global="false"/>
-										 </p:inputText>
-										
-									
-										<h:outputText value="Places.HCabine" style="margin-left: 20px;"/>
-										<p:inputText id="plcHCab" value="#{carteGriseMB.slctdVehiRw.vehi.nbrePlaceHorscab}" binding="#{carteGriseMB.inputPlcHcab}"
-										 style="width:149px">
-										 <p:ajax
-												listener="#{carteGriseMB.chxNbrTran}"
-												process="@this" update=":VehiculeProp:nbrTrans"  global="false"/>
-										 </p:inputText>
-										 
-										 	<h:outputText value="Nombre.Transporté" style="margin-left: 20px;"/>
-										<p:inputText id="nbrTrans" value="#{carteGriseMB.slctdVehiRw.vehi.nbreTransporte}"
-										readonly="true"
-										 style="width:149px"/>
-										 
-										
-										
-									
-										<h:outputText value="Valeur Neuve  " />
-										<p:inputText id="valNv" value="#{carteGriseMB.slctdVehiRw.vehi.valNeuf}" 
-										binding="#{carteGriseMB.inputValNeuv}" 
-										 style="width:148px">
-										<f:convertNumber pattern="##,###.##"></f:convertNumber>
-										<p:ajax event="blur" update="@this" global="false"></p:ajax>
-										</p:inputText>
-										
-										<h:outputText value="Valeur Venale" style="margin-left: 20px;" />
-										<p:inputText id="valVn" value="#{carteGriseMB.slctdVehiRw.vehi.valVenale}"
-										binding="#{carteGriseMB.inputValVen}"  
-										 style="width:149px" >
-										<f:convertNumber pattern="##,###.##" ></f:convertNumber>
-										<p:ajax event="blur" update="@this" global="false"></p:ajax>
-										</p:inputText>
-										
-										
-										 <h:outputText value="" />
-										 <h:outputText value="" />
-										
-								
-								
-								<h:outputText value="Couleur" />
+										<h:outputText value="Couleur"  style="margin-left: 15px;"/>
 										<p:selectOneMenu
-											value="#{carteGriseMB.slctdVehiRw.vehi.couleur}"
+											value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.couleur}"
 											id="clr" required="false" style="width:170px">
 											<f:selectItem itemLabel="Select Couleur" itemValue="" />
 											<f:selectItem itemLabel="Blanc" itemValue="blanc" />
@@ -372,10 +171,228 @@
 											<f:selectItem itemLabel="Jaune" itemValue="jaune" />
 										</p:selectOneMenu>
 										
+										
+										
+										<h:outputText value="Genre " />
+										<p:selectOneMenu id="genr" value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.genre}" required="false" style="width:127px">
+											<f:selectItem itemLabel="VP" itemValue="VP"/>
+											<f:selectItem itemLabel="VT" itemValue="VT"/>
+										</p:selectOneMenu>
+					
+								<h:outputText value="Carosserie " style="margin-left: 15px;"/>
+										<p:selectOneMenu value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.carrosserie}" id="caross" required="false" 
+										 style="width:154px" label="Carosserie du vehicule">
+											<f:selectItem itemLabel="Choix de Carosserie" itemValue=""/>
+											<f:selectItem itemLabel="Berline tricorps" itemValue="Berline tricorps"/>
+											<f:selectItem itemLabel="Berline bicorps" itemValue="Berline bicorps"/>
+											<f:selectItem itemLabel="Berline monocorps" itemValue="Berline monocorps"/>
+											<f:selectItem itemLabel="Break" itemValue="Break"/>
+											<f:selectItem itemLabel="Coupé" itemValue="Coupe"/>
+											<f:selectItem itemLabel="Coupé sans montants" itemValue="Coupe sans montants"/>
+											<f:selectItem itemLabel="Coupé 4-portes" itemValue="Coupe 4-portes"/>
+											<f:selectItem itemLabel="Limousine" itemValue="Limousine"/>
+											<f:selectItem itemLabel="Roadster" itemValue="Roadster"/>
+											<f:selectItem itemLabel="Spider" itemValue="Spider"/>
+											<f:selectItem itemLabel="Pick-up" itemValue="Pick-up"/>
+											<f:selectItem itemLabel="Berline décapotable et landaulet" itemValue="Berline decapotable et landaulet"/>
+											<f:selectItem itemLabel="Coupéspace" itemValue="Coupespace"/>
+											<f:selectItem itemLabel="Coupé/cabriolet avec toit escamotable" itemValue="Coupe/cabriolet avec toit escamotable"/>
+											<f:selectItem itemLabel="Crossover" itemValue="Crossover"/>
+											<f:selectItem itemLabel="Minispace" itemValue="Minispace"/>
+											<f:selectItem itemLabel="SUV" itemValue="SUV"/>
+											<f:selectItem itemLabel="Monospace" itemValue="Monospace"/>
+											<f:selectItem itemLabel="Ludospace" itemValue="Ludospace"/>
+				
+    
+										</p:selectOneMenu>
+										
+								
+							
+										
+									<h:outputText value="Statut "  style="margin-left: 20px;"/>
+										<p:selectOneMenu value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.statut}" id="statu" required="false" style="width:20%">
+											<f:selectItem itemLabel="Select Statut" itemValue=""/>
+											<f:selectItem itemLabel="Vehicule avec Atelage" itemValue="Vehicule avec Atelage"/>
+											<f:selectItem itemLabel="Vehicule sans Atelage" itemValue="Vehicule sans Atelage"/>
+											<f:selectItem itemLabel="Remorque" itemValue="Remorque"/>
+										</p:selectOneMenu>
+									
+				
+									 <h:outputText value="Remorque" />
+										<p:selectOneMenu id="remorq" value="#{cotationAuto.carteGriseMB.remorque}"  style="width:154px" >
+											<f:selectItem itemLabel="Sans Remorque" itemValue="non"/>
+											<f:selectItem itemLabel="Avec Remorque" itemValue="oui"/>
+											<p:ajax
+												listener="#{cotationAuto.carteGriseMB.choixRemorque}" process="@this" />
+										
+										</p:selectOneMenu>
+										
+							
+											<h:outputText value="Type Transporte" style="margin-left: 20px;"/>
+										<p:selectOneMenu id="typTr" value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.typeTransporte}"  style="width:154px">
+											<f:selectItem itemLabel="" itemValue=""/>
+											<f:selectItem itemLabel="Elève" itemValue="TE"/>
+											<f:selectItem itemLabel="Employés" itemValue="TEM"/>
+											<f:selectItem itemLabel="Clandestins" itemValue="TC"/>
+											<f:selectItem itemLabel="Hydrocarbures" itemValue="TH"/>
+											<f:selectItem itemLabel="Autres" itemValue="TA"/>
+										</p:selectOneMenu>
+																
+							
+								
+								
+									</h:panelGrid>
+                                     </fieldset>
+				</p:tab>
+				
+				<p:tab id="ongletImmatriculation" title="Immatriculation">
+				<fieldset class="fieldset"  style="width:97%"><legend>Immatriculation Actuelle</legend>
+				 <h:panelGrid columns="4">
+				               <h:outputText value="Numéro d'Immatriculation "/>
+										<p:inputText id="imat" value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.numImmat}"
+										 required="true" requiredMessage="Sélectionner une Immatriculation !"
+										 styleClass="identifiant">
+										<p:ajax  update="@this, pmessagePropVehi" global="false"/>
+										</p:inputText>
+										
+									<h:outputText value="Date d'Immatriculation " style="margin-left: 20px;"/>
+									 <p:inputMask value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.dateImmat}" id="dateActu"  mask="99/99/9999" 
+									 required="true" requiredMessage="Sélectionner une date d'Immatriculation !">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+									<p:ajax  event="blur" listener="#{cotationAuto.carteGriseMB.changedateImmat}"
+									  update="@this, dateImmatpre, datePms, pmessagePropVehi" global="false"/>
+									</p:inputMask>
+								
+										
+				 </h:panelGrid>
+				 
+				 
+				 
+				 </fieldset>
+						     
+						     
+			   <fieldset class="fieldset"  style="width:97%"><legend>Immatriculation Précédente</legend>
+			    <h:panelGrid columns="7">
+				 <h:outputText value="Numéro d'Immatriculation"/>
+				 <h:inputText value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.numImmatPrec}"
+				 styleClass="identifiant"
+				 ></h:inputText>
+				 <h:outputText value="Date d'Immatriculation" style="margin-left: 20px;"></h:outputText>
+				 <p:inputMask value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.dateImmatPrec}" 
+				 id="dateImmatpre" mask="99/99/9999" >
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+				<p:ajax  event="blur" listener="#{cotationAuto.carteGriseMB.changedateImmatprec}"
+									  update="@this, datePms" global="false"/>
+									  
+				</p:inputMask>
+				
+				<h:outputText value="1er Mise en circulation " style="margin-left: 20px;"/>
+								 <p:inputMask value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.datePremiereCirc}" id="datePms"  mask="99/99/9999" >
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+								</p:inputMask>
+								
+								
+			
+				
+				 </h:panelGrid>
+				 
+				 
+				 </fieldset>
+				</p:tab>
+				
+				
+				
+				<p:tab id="ongletVehicule" title="Caractéristiques">
+				<fieldset class="fieldset" style="width:97%" >
+								<legend>Caractéristiques</legend>
+								
+								<h:panelGrid id="vehiProp2" columns="6">
+								
+								
+										
+								
+										<p:outputLabel value="Poids à vide (Kg)"
+											style="margin-left: 15px;"  binding="#{cotationAuto.carteGriseMB.outputPoidV}"/>
+										<p:inputText id="poidsVid"  style="width:148px"
+											value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.poidsVide}" binding="#{cotationAuto.carteGriseMB.inputPoidV}"
+											 >
+											<f:convertNumber type="number"></f:convertNumber>
+										</p:inputText>
+										
+
+										<p:outputLabel value="Charge Utile (T)"
+											style="margin-left: 15px;" binding="#{cotationAuto.carteGriseMB.outputCu}"/>
+										<p:inputText id="poidsUtil"
+											value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.chargeUtile}" binding="#{cotationAuto.carteGriseMB.inputCu}"
+											style="width:148px" 
+										>
+											<f:convertNumber type="number" />
+										</p:inputText>
+									
+								
+										<p:outputLabel value="Puissance Fiscale " binding="#{cotationAuto.carteGriseMB.outputPf}" style="margin-left: 15px;"/>
+										<p:inputText id="pfisc" value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.puissFisc}" 
+										
+										binding="#{cotationAuto.carteGriseMB.inputPf}" 
+										style="width:149px">
+										<f:convertNumber integerOnly="true" ></f:convertNumber>
+										<f:validateLongRange minimum="0"  maximum="20"  ></f:validateLongRange>
+										<p:ajax  update="@this" global="false"/>
+										</p:inputText>
+
+									
+										<p:outputLabel value="Puissance Réelle Cm3&nbsp;&nbsp;" style="margin-left: 15px;" binding="#{cotationAuto.carteGriseMB.outputPr}"/>
+										<p:inputText id="preel" value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.puissReelle}" binding="#{cotationAuto.carteGriseMB.inputPr}"
+										 style="width:148px">
+										 <p:ajax  update="@this" global="false"/>
+										 </p:inputText>
+										 
+										
+										
+										<p:outputLabel value="Places.Cabine" binding="#{cotationAuto.carteGriseMB.outputPlcCab}" style="margin-left: 15px;"/>
+										<p:inputText id="plcCab" value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.nbrePlaceCab}" binding="#{cotationAuto.carteGriseMB.inputPlcCab}"
+										style="width:149px">
+										 <p:ajax
+												listener="#{cotationAuto.carteGriseMB.chxNbrTran}"
+												process="@this" update=":VehiculeProp:nbrTrans" global="false"/>
+										 </p:inputText>
+										
+									
+										<p:outputLabel value="Places.HCabine" style="margin-left: 15px;" binding="#{cotationAuto.carteGriseMB.outputPlcHcab}"/>
+										<p:inputText id="plcHCab" value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.nbrePlaceHorscab}" binding="#{cotationAuto.carteGriseMB.inputPlcHcab}"
+										 style="width:149px">
+										 <p:ajax
+												listener="#{cotationAuto.carteGriseMB.chxNbrTran}"
+												process="@this" update=":VehiculeProp:nbrTrans"  global="false"/>
+										 </p:inputText>
+										 
+										 
+									
+										<p:outputLabel value="Valeur Neuve  " binding="#{cotationAuto.carteGriseMB.outputValNeuv}" style="margin-left: 15px;"/>
+										<p:inputText id="valNv" value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.valNeuf}" 
+										binding="#{cotationAuto.carteGriseMB.inputValNeuv}" 
+										 style="width:148px">
+										<f:convertNumber pattern="##,###.##"></f:convertNumber>
+										<p:ajax event="blur" update="@this" global="false"></p:ajax>
+										</p:inputText>
+										
+										<p:outputLabel value="Valeur Venale" style="margin-left: 15px;" binding="#{cotationAuto.carteGriseMB.outputValVen}"/>
+										<p:inputText id="valVn" value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.valVenale}"
+										binding="#{cotationAuto.carteGriseMB.inputValVen}"  
+										 style="width:149px" >
+										<f:convertNumber pattern="##,###.##" ></f:convertNumber>
+										<p:ajax event="blur" update="@this" global="false"></p:ajax>
+										</p:inputText>
+										
+										<p:outputLabel value="Nombre.Transporté" style="margin-left: 15px;" binding="#{cotationAuto.carteGriseMB.outputNbrTran}"/>
+										<p:inputText id="nbrTrans" value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.nbreTransporte}"
+										readonly="true"  binding="#{cotationAuto.carteGriseMB.inputNbrTran}"
+										 style="width:149px"/>
+								
 										<h:outputText value="Protection "
-											style="margin-left: 20px;"/>
+											style="margin-left: 15px;"/>
 										<p:selectOneMenu
-											value="#{carteGriseMB.slctdVehiRw.vehi.protection}" style="width:154px"
+											value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.protection}" style="width:154px"
 											id="protect" required="false">
 											<f:selectItem itemLabel="Select Protection" itemValue="" />
 											<f:selectItem itemLabel="Option 1" itemValue="Option 1" />
@@ -383,69 +400,72 @@
 											<f:selectItem itemLabel="Option 3" itemValue="Option 3" />
 										</p:selectOneMenu>
 										
-										<h:outputText value="Ville* " style="margin-left: 20px;" />
+										<h:outputText value="Ville* " style="margin-left: 15px;" />
 										<p:selectOneMenu id="ville" label="Ville"
-											value="#{carteGriseMB.slctdville}"
+											value="#{cotationAuto.carteGriseMB.slctdville}"
 											 required="false" requiredMessage="Sélectionner une Ville !"
 											style="width:130px">
 											
 											<f:selectItems
-												value="#{carteGriseMB.villeList}"
+												value="#{cotationAuto.carteGriseMB.villeList}"
 												var="ca" itemLabel="#{ca.libelleVille}" itemValue="#{ca.codeVille}" />
 											<p:ajax  
 												process="ville"
-												partialSubmit="true" event="valueChange" update="@this, pmessagePropVehi, zoneGeo" listener="#{carteGriseMB.chxVille}" global="false" />
+												partialSubmit="true" event="valueChange" update="@this, pmessagePropVehi, zoneGeo" listener="#{cotationAuto.carteGriseMB.chxVille}" global="false" />
 										</p:selectOneMenu>
 										
-										<h:outputText value="Zone &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-											 />
+										<h:outputText value="Zone"
+											style="margin-left: 15px;" />
 											
 										<p:inputText id="zoneGeo"
-										value="#{carteGriseMB.slctdVehiRw.zonGeo.libelleZoneGeo}" 
-										readonly="true" style="width:211px" />
+										value="#{cotationAuto.carteGriseMB.slctdVehiRw.zonGeo.libelleZoneGeo}" 
+										readonly="true" style="width:148px" />
 										
 									</h:panelGrid>
                                      </fieldset>
-										<fieldset class="fieldset" style="width: 97%">
+				</p:tab>
+				
+				<p:tab id="ongletConducteur" title="Conducteur">
+				<fieldset class="fieldset" style="width: 70%">
 											<legend> Identité Conducteur </legend>
 											<h:panelGrid id="cducgrid" columns="9">
 											
 												<h:outputText value="Code"  />
-												<p:inputText id="num_cond" value="#{carteGriseMB.slctdVehiRw.conduHab.numCond}"
+												<p:inputText id="num_cond" value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.numCond}"
 												style="margin-left: 20px; width: 178px">
-													<p:ajax listener="#{affaireNouvelleMB.chxConducteur}"
+													<p:ajax listener="#{cotationAuto.chxConducteur}"
 															process="@this" update="" global="false"/>
 												</p:inputText>
 												<h:outputText value="" />
 						
 												<h:outputText value="Nom/Denomination*" style="margin-left: 20px;" />
-												<p:inputText id="nameC" value="#{carteGriseMB.slctdVehiRw.conduHab.nonCond}"
+												<p:inputText id="nameC" value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.nonCond}"
 													style="width:175px"/>
 												<p:message id="msgnameC" for="nameC" display="icon" />
 						
 												<h:outputText value="Prénoms*" style="margin-left: 20px;" />
 												<p:inputText id="prenC"
-													value="#{carteGriseMB.slctdVehiRw.conduHab.prenomsCond}"
+													value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.prenomsCond}"
 													style="width:168px" />
 												<p:message id="msgprenC" for="prenC" display="icon" />
 						                      
 						                      
 						                      
 												<h:outputText value="Né le"  />
-												<p:inputMask value="#{carteGriseMB.slctdVehiRw.conduHab.dateNaissCond}"
+												<p:inputMask value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.dateNaissCond}"
 													id="dateC" style="width:178px ;margin-left: 20px;" mask="99/99/9999">
 													<f:convertDateTime pattern="dd/MM/yyyy" />
 												</p:inputMask>
 												<p:message id="msgdateNaissCond" for="dateC" display="icon" />
 						
 												<h:outputText value="Lieu naissance" style="margin-left: 20px;"/>
-												<p:inputText value="#{carteGriseMB.slctdVehiRw.conduHab.lieuNaisCond}"
+												<p:inputText value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.lieuNaisCond}"
 													id="lieuNaisC" style="width:175px;"/>
 												<p:message id="msgdateC" for="dateC" display="icon" />
 												
 												<h:outputText value="Permis" style="margin-left: 20px;"/>
 													<p:selectOneMenu
-												value="#{carteGriseMB.slctdVehiRw.conduHab.typpermiscond}"
+												value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.typpermiscond}"
 												id="permC" required="false" style="width:145px">
 												<f:selectItem itemLabel="Permis BCDE" itemValue="BCDE" />
 												<f:selectItem itemLabel="Permis B" itemValue="B" />
@@ -456,18 +476,18 @@
 												
 												
 												<h:outputText value="N° Permis"/>
-												<p:inputText value="#{carteGriseMB.slctdVehiRw.conduHab.numpermiscond}"
+												<p:inputText value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.numpermiscond}"
 													id="numPermC" style="width:178px; margin-left: 20px;"/>
 												<p:message id="msgnumPermC" for="numPermC" display="icon" />
 												
 												<h:outputText value="Durée du permis" style="margin-left: 20px;"/>
-												<p:inputText value="#{carteGriseMB.slctdVehiRw.conduHab.dureepermiscond}"
+												<p:inputText value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.dureepermiscond}"
 													id="durpermC" style="width:175px;"/>
 												<p:message id="msgdurpermC" for="durpermC" display="icon" />
 												
 												<h:outputText value="Catégorie Socio-Professionnelle" style="margin-left: 20px;"/>
 												<p:selectOneMenu
-													value="#{carteGriseMB.slctdVehiRw.conduHab.categsocioprocond}" style="width:154px"
+													value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.categsocioprocond}" style="width:154px"
 													id="catProCd" required="false">
 													
 													<f:selectItem itemLabel="a" itemValue="a" />
@@ -483,25 +503,293 @@
 											</h:panelGrid>
 										</fieldset>
 										
-								
-								
-								
-								
-								<h:panelGrid columns="8">
+				</p:tab>
+				
+				<p:tab id="ongletGarantie" title="Garantie">
+				
+						
+						
+<h:panelGrid >
+							<p:fieldset>
 
-										<f:facet name="footer">
+	<fieldset class="fieldset">
+	<legend>Groupe  de Garanties </legend>
+	<p:dataTable id="garTablegroup" var="garSeltd" 
+				value="#{cotationAuto.garantieMB.listeGroupGaranties}"
+				selectionMode="single" selection="#{cotationAuto.garantieMB.selectGarantieGroup}" 
+				scrollable="true"
+				scrollWidth="1250"
+				emptyMessage="Aucune Données"
+				rowKey="#{garSeltd.nOrdre}">
+				<p:ajax event="rowSelect" listener="#{cotationAuto.garantieMB.onRowSelectGroupGarantie}"  global="false"
+				 update=":VehiculeProp:cmdPrime, :VehiculeProp:garTable, :VehiculeProp:panelPrimes"/>
+				
+				<p:column headerText="Code" style="width:40px">
+				<h:outputText value="#{garSeltd.codeGarantie}" />
+				</p:column>
 
-										<p:commandButton id="savProp" value="Valider les Proprietes" 
-											disabled="#{carteGriseMB.buttonPropVehicule}"
-											actionListener="#{carteGriseMB.validerProp}" 
-											process="VehiculeProp" update=":VehiculeProp"
-											/>
+				<p:column headerText="Garantie" style="width:200px">
+				<h:outputText value="#{garSeltd.libelleGarantie}" />
+				</p:column>
+				
+				<p:column headerText="Nette Prorata" style="width:60px">
+				<h:outputText value="#{garSeltd.primesProrata}" >
+						<f:convertNumber pattern="##,###.##"></f:convertNumber>
+					</h:outputText>
+				</p:column>
+				
+						</p:dataTable>
+	
+	</fieldset>
+	<fieldset class="fieldset">
+		<legend> Garanties </legend>
+		<h:panelGrid id="factGar">
+		<p:dataTable id="garTable" var="garanties" widgetVar="garTable"  
+			filteredValue="#{cotationAuto.garantieMB.listegarantieFiltre}"
+				value="#{cotationAuto.garantieMB.listegaranties}"
+				editable="true" editMode="row"
+				scrollable="true"
+				scrollWidth="1250"
+				emptyMessage="Aucune Données">
+				<p:ajax event="rowEdit" listener="#{cotationAuto.garantieMB.onEditRow}"  global="false" 
+				update=":VehiculeProp:cmdPrime, :VehiculeProp:panelPrimes, :VehiculeProp:garTablegroup"/>
+				
+				<p:column headerText="" style="width:40px">
+				   <p:rowEditor />  
+				</p:column>
+				
+				<p:column headerText="" style="width:10px">
+				<p:cellEditor>  
+				<f:facet name="output"><p:selectBooleanCheckbox value="#{garanties.choix}" disabled="true"/></f:facet>  
+				<f:facet name="input"><p:selectBooleanCheckbox value="#{garanties.choix}" /></f:facet>  
+				</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Code" style="width:30px">
+				<p:cellEditor>  
+				<f:facet name="output"><h:outputText value="#{garanties.codeGarantie}" /></f:facet>  
+				<f:facet name="input"><h:outputText value="#{garanties.codeGarantie}" /></f:facet>  
+				</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Garantie" style="width:250px">
+				<p:cellEditor>  
+				<f:facet name="output"><h:outputText value="#{garanties.libelleGarantie}" /></f:facet>  
+				<f:facet name="input"><h:outputText value="#{garanties.libelleGarantie}" /></f:facet>  
+				</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="Capital" style="width:150px">
+				<p:cellEditor>  
+				<f:facet name="output"><h:outputText value="#{garanties.capitalGarantie}" >
+						<f:convertNumber pattern="##,###.##"></f:convertNumber>
+					</h:outputText></f:facet>  
+				<f:facet name="input"><h:outputText id="capitalInput" value="#{garanties.capitalGarantie}" readonly="true" style="width:96%"/></f:facet>  
+				</p:cellEditor>
+				</p:column>
+				
+				
+				<p:column headerText="Franchise" style="width:150px">
+				<p:cellEditor>  
+				<f:facet name="output"><h:outputText value="#{garanties.franchise}" >
+						<f:convertNumber pattern="##,###.##"></f:convertNumber>
+					</h:outputText></f:facet>  
+				<f:facet name="input"><h:outputText id="franchiseInput" value="#{garanties.franchise}" style="width:96%"/></f:facet>  
+				</p:cellEditor>
+				</p:column>
+		
+				<p:column headerText="Prime Annuelle" style="width:100px">
+				<p:cellEditor>  
+				<f:facet name="output"><h:outputText value="#{garanties.primesAnnuelle}" >
+						<f:convertNumber pattern="##,###.##"></f:convertNumber>
+					</h:outputText></f:facet>  
+				<f:facet name="input"><h:outputText value="#{garanties.primesAnnuelle}" >
+						<f:convertNumber pattern="##,###.##"></f:convertNumber>
+					</h:outputText></f:facet>  
+				</p:cellEditor>
+				</p:column>
+				
+				
+				
+				<p:column headerText="Red%" style="width:30px">
+				<p:cellEditor>  
+				<f:facet name="output"><h:outputText value="#{garanties.tauxRed}" /></f:facet>  
+				<f:facet name="input"><p:inputText id="tauxRedInput" value="#{garanties.tauxRed}" style="width:96%"/></f:facet>  
+				</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="Reduction" style="width:70px">
+				<p:cellEditor>  
+				<f:facet name="output"><h:outputText value="#{garanties.reductions}" >
+						<f:convertNumber pattern="##,###.##"></f:convertNumber>
+					</h:outputText></f:facet>  
+				<f:facet name="input"><h:outputText value="#{garanties.reductions}" >
+						<f:convertNumber pattern="##,###.##"></f:convertNumber>
+					</h:outputText></f:facet>  
+				</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="Nette Annuelle" style="width:100px">
+				<p:cellEditor>  
+				<f:facet name="output"><h:outputText value="#{garanties.primesNetteAnnuelle}" >
+						<f:convertNumber pattern="##,###.##"></f:convertNumber>
+					</h:outputText></f:facet>  
+				<f:facet name="input"><h:outputText value="#{garanties.primesNetteAnnuelle}" >
+						<f:convertNumber pattern="##,###.##"></f:convertNumber>
+					</h:outputText></f:facet>  
+				</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="Nette Prorata" style="width:100px">
+				<p:cellEditor>  
+				<f:facet name="output"><h:outputText value="#{garanties.primesProrata}" >
+						<f:convertNumber pattern="##,###.##"></f:convertNumber>
+					</h:outputText></f:facet>  
+				<f:facet name="input"><h:outputText id="tauxRfactrInput" value="#{garanties.facteur}" style="width:96%"/></f:facet>  
+				</p:cellEditor>
+				</p:column>
+				
+				<p:column headerText="Bonus%" style="width:50px">
+				<p:cellEditor>  
+				<f:facet name="output"><h:outputText value="#{garanties.bonus}" /></f:facet>  
+				<f:facet name="input"><p:inputText id="tauxBonInput" value="#{garanties.bonus}" style="width:96%"/></f:facet>  
+				</p:cellEditor>
+				</p:column>
+				
+					<p:column headerText="Malus%" style="width:50px">
+				<p:cellEditor>  
+				<f:facet name="output"><h:outputText value="#{garanties.malus}" /></f:facet>  
+				<f:facet name="input"><p:inputText id="tauxMalInput" value="#{garanties.malus}" style="width:96%"/></f:facet>  
+				</p:cellEditor>
+				</p:column>
+				
+						</p:dataTable>
+
+									</h:panelGrid>
+									
+									<h:panelGrid id= "panelPrimes" columns="12" style="margin-bottom:0px"
+									>
+						
+								<h:outputText value="Reduction Permis" styleClass="outputextK" />
+								<h:inputText 
+									value="#{cotationAuto.garantieMB.reductionPermis}"
+									readonly="true" style="width:80px" >
+									<f:convertNumber pattern="##,###.##"></f:convertNumber>
+										</h:inputText>
+
+
+								<h:outputText value="Reduction Flote"
+									styleClass="outputextcl1" />
+								<h:inputText 
+									value="#{cotationAuto.garantieMB.reductionFlote}"
+									readonly="true" style="width:80px" >
+									<f:convertNumber pattern="##,###.##"></f:convertNumber>
+										</h:inputText>
+
+								<h:outputText value="Autres Reductions" styleClass="outputextcl1" />
+								<h:inputText 
+									value="#{cotationAuto.garantieMB.reductionAutres}"
+									readonly="true" style="width:80px" >
+									<f:convertNumber pattern="##,###.##"></f:convertNumber>
+										</h:inputText>
 										
-									</f:facet>
-								</h:panelGrid>
+								<h:outputText value="Bonus" styleClass="outputextcl1" />
+								<h:inputText 
+									value="#{cotationAuto.garantieMB.bonus}"
+									readonly="true" style="width:80px" >
+									<f:convertNumber pattern="##,###.##"></f:convertNumber>
+										</h:inputText>
+										
+										<h:outputText value="Malus" styleClass="outputextcl1" />
+								<h:inputText 
+									value="#{cotationAuto.garantieMB.malus}"
+									readonly="true" style="width:80px" >
+									<f:convertNumber pattern="##,###.##"></f:convertNumber>
+										</h:inputText>
+												
+									<h:outputText value="Total Reductions" styleClass="outputextcl1" />
+								<h:inputText 
+									value="#{cotationAuto.garantieMB.totalReductions}"
+									readonly="true"
+									 style="width:80px" >
+									<f:convertNumber pattern="##,###.##"></f:convertNumber>
+										</h:inputText>
+										
+									<h:outputText value="Surprimes" styleClass="outputextcl1" />
+								<h:inputText 
+									value="#{cotationAuto.garantieMB.surprimes}"
+									readonly="true"
+									 style="width:80px" >
+									<f:convertNumber pattern="##,###.##"></f:convertNumber>
+										</h:inputText>
+										
+										<h:outputText value="Accessoires" styleClass="outputextcl1" />
+								<h:inputText 
+									value="#{cotationAuto.garantieMB.accessoires}"
+									 style="width:80px" >
+									<f:convertNumber pattern="##,###.##"></f:convertNumber>
+									<p:ajax event="blur" listener="#{cotationAuto.garantieMB.calculAcc}" update="panelPrimes" global="false"></p:ajax>
+										</h:inputText>
+										
+										
+										
+												<h:outputText value="PrimesNette" styleClass="outputextcl1" />
+								<h:inputText 
+									value="#{cotationAuto.garantieMB.primeNette}"
+									readonly="true" style="width:80px" >
+									<f:convertNumber pattern="##,###.##"></f:convertNumber>
+										</h:inputText>
+										
+									</h:panelGrid>
+									
+										
+								<h:panelGrid id= "panelAcc" columns="2" style="margin-bottom:0px"
+									>		
+						</h:panelGrid>
+
+
+						<h:panelGrid id="cmdPrime" columns="6" style="margin-bottom:0px">
+							
+							<h:outputText value=""></h:outputText>
+							<p:commandButton id="validerPrime" value="Valider la Prime"
 								
-								
-			</h:form>
+								 icon="ui-icon-check" style="width:150px"
+								 />
+
+								<p:commandButton id="fermer" value="Fermer Le Formulaire"
+                                             update="factGar"
+												 style="width:200px"
+								                />
+								                
+
+
+							<h:outputText value=""></h:outputText>
+							<p:commandButton id="annulerPrime" value="Annuler"
+								update="factGar" process="@this" icon="ui-icon-closethick"
+								style="width:150px" />
+						</h:panelGrid>
+
+					
+
+									
+								</fieldset>
+
+
+							</p:fieldset>
+
+
+
+						</h:panelGrid>
+
+						
+						
+						
+						
+										
+				</p:tab>
+				
+				</p:wizard>
+				</h:form>
  
 </ui:define>
 
