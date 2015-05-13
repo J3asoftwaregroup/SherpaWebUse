@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Conducteur;
@@ -29,7 +27,6 @@ import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.reporting.design.ConditionPartAuto;
 import com.j3a.assurance.reporting.design.QuittanceDesignAuto;
 import com.j3a.assurance.utilitaire.IdGenerateur;
-import com.j3a.assurance.utilitaire.QuittanceAuto;
 import com.j3a.assurance.utilitaire.VehiculeRow;
 
 @Component
@@ -152,6 +149,7 @@ public class CotationAuto implements Serializable{
 			getGarantieMB().getListegaranties().clear();
 			getGarantieMB().getListegarantieFiltre().clear();
 			getGarantieMB().cleanChamps();
+			getGarantieMB().setCodeRisque("1");
 			
 			getGarantieMB().affichegarantiesAuto(
 					getCarteGriseMB().getSlctdVehiRw());
@@ -234,7 +232,7 @@ public class CotationAuto implements Serializable{
 			}
 		}
 
-		public void validerGarantie() {
+		public void ValiderCotation() {
 			getGarantieMB().validerGarantie();
 			getCarteGriseMB().getSlctdVehiRw().getListegaranties().clear();
 	if(!getGarantieMB().getListeGarantiesSelect().isEmpty()){
@@ -243,21 +241,10 @@ public class CotationAuto implements Serializable{
 			getCarteGriseMB().getSlctdVehiRw().setPrimeNette(
 					getGarantieMB().getPrimeTotale());
 			// calcul de l'accessoire de l'apporteur
-			BigDecimal d = BigDecimal.ZERO;
-			d = getCarteGriseMB()
-					.getSlctdVehiRw()
-					.getPrimeNette()
-					.multiply(
-							getCarteGriseMB().getSlctdVehiRw()
-									.getTauxCommissionApporteur())
-					.divide(BigDecimal.valueOf(100.0));
-			getCarteGriseMB().getSlctdVehiRw().setCommissionApporteur(d);
-			getCarteGriseMB().setButtonSavVehicule(false);
+			getCarteGriseMB().getSlctdVehiRw().setCommissionApporteur(BigDecimal.ZERO);
+			getCarteGriseMB().validerVehicule();
 
-			System.out
-					.println("<<<<<<<<<Commission de l'apporteur ds vehiculeRow>>>>>>"
-							+ getCarteGriseMB().getSlctdVehiRw()
-									.getCommissionApporteur());
+		
 	}
 		}
 

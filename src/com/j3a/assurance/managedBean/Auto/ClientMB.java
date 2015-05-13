@@ -10,7 +10,6 @@ import javax.faces.context.FacesContext;
 import org.primefaces.component.dialog.Dialog;
 import org.primefaces.component.inputmask.InputMask;
 import org.primefaces.component.inputtext.InputText;
-import org.primefaces.component.selectbooleancheckbox.SelectBooleanCheckbox;
 import org.primefaces.component.selectonemenu.SelectOneMenu;
 import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,6 @@ import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.converter.ComboSexes;
 import com.j3a.assurance.model.Conducteur;
-import com.j3a.assurance.model.ConduireVehicule;
-import com.j3a.assurance.model.ConduireVehiculeId;
 import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.Etre;
 import com.j3a.assurance.model.EtreId;

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.Contrat;
-import com.j3a.assurance.model.Garantie;
 import com.j3a.assurance.model.GarantieChoisie;
 import com.j3a.assurance.model.GarantieGarantieChoisie;
 import com.j3a.assurance.model.Morale;

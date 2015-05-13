@@ -8,21 +8,16 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ValueChangeEvent;
 
 import org.primefaces.component.inputtext.InputText;
 import org.primefaces.component.outputlabel.OutputLabel;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.converter.ScatVehiCvtr;
-import com.j3a.assurance.converter.VilleCvtr;
 import com.j3a.assurance.model.ApporteurVehicule;
 import com.j3a.assurance.model.ApporteurVehiculeId;
 import com.j3a.assurance.model.Avenant;
@@ -856,7 +851,7 @@ public class CarteGriseMB implements Serializable {
 			setButtonEditGar(true);
 			setButtonAddVehicule(false);
 			setSlctdVehiRwTb(null);
-			// System.out.println("ùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùù"+getManagedContrat().getBaremes());
+			 System.out.println("ùùùùùùùùùùùùùùùùùù"+getVehiculeList().size());
 		}
 
 		public void chxVille() {
