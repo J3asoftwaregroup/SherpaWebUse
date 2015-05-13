@@ -27,23 +27,23 @@
 											
 											<h:panelGrid columns="8">
 
-												<h:outputText value="Nom:" style="margin-right:65px;"></h:outputText>
+												<h:outputText value="Nom:" style="margin-right:70px;"></h:outputText>
 												<p:inputText
-													value="#{CotationAuto.client.nomclient}"
+													value=" "
 													style="width:150px;margin-right:20px;">
 												</p:inputText>
 
 												<h:outputText value="Prenoms:" style="margin-right:35px;" 
 													></h:outputText>
 												<p:inputText style="width:150px;margin-right:35px;"
-													value="#{CotationAuto.client.prenomclient}"
+													value=""
 													readonly="true">
 													
 													<p:ajax  
 									  				update="@this" global="false"/>
 												</p:inputText>
 												
-                                                   <h:outputText value="Date de naissance:" style="margin-right:30px;" 
+                                                   <h:outputText value="Date de naissance:" style="margin-right:20px;" 
 													></h:outputText>
 												<p:inputText
 													value=""
@@ -55,11 +55,11 @@
                                                  
                                                  
 													
-												 <h:outputText value="Numero telephone:" style="margin-left: 40px;" 
+												 <h:outputText value="Numero de telephone:" style="margin-left: 20px;" 
 													></h:outputText>
 												<p:inputText
 													value=""
-													style="width:150px;">
+													style="width:130px;">
 													
 													<p:ajax  event="blur"
 									  				update="@this" global="false"/>
@@ -92,36 +92,36 @@
 											
 											<h:panelGrid columns="8">
 
-												<h:outputText value="Mouvement"  style="margin-right: 20px;"></h:outputText>
+												<h:outputText value="Mouvement"></h:outputText>
 												<p:inputText
-													value="#{CotationAuto.ContratMB.mouvement}"
+													value=""
 													readonly="true"  style="width:150px;"/>
 
 
 												<h:outputText
 													value="Risque" style="margin-left: 20px;"></h:outputText>
 												<p:inputText
-													value="#{CotationAuto.ContratMB.contrat.codeRisque.libelleRisque}"
+													value=""
 													readonly="true" style="width:150px;margin-left: 55px;" />
 
 
 												<h:outputText value="Police" style="margin-left: 30px;"></h:outputText>
 												<p:inputText
-													value="{CotationAuto.ContratMB.contrat.id}"
+													value=""
 													readonly="true"  style="width:150px;margin-left: 60px;"/>
 
 
 
 												<h:outputText value="Avenant"  style="margin-left: 30px;"></h:outputText>
 												<p:inputText
-													value="#{CotationAuto.ContratMB.avenant.id}"  style="width:150px;margin-right: 10px;"
+													value=""  style="width:150px;margin-right: 10px;"
 													readonly="true"  />
 
 
 
-												<h:outputText value="Numéro Quittance"  style="margin-right: 45px;"/>
+												<h:outputText value="Numéro Quittance"  />
 												<p:inputText
-													value="#{CotationAuto.ContratMB.quittance.id}"
+													value=""
 													readonly="true"  style="width:150px;"/>
 
 											
@@ -179,7 +179,7 @@
 													/>
 												<p:inputMask
 													value=""
-													readonly="true" mask="99/99/9999" style="margin-right:20px;width:150px;" >
+													readonly="true" mask="99/99/9999" style="margin-right:20px;width:130px;" >
 													<f:convertDateTime pattern="dd/MM/yyyy" />
 
 												</p:inputMask>
@@ -188,8 +188,6 @@
 
 
 										</h:panelGroup>
-									
-									
 									
 									
 									<fieldset>
@@ -232,31 +230,24 @@
 									</fieldset>
 									
 									
-									
-									
-									
-									
-									
-									
-									
 
 									<h:panelGroup>
-									<p:panel header="Tarif Quittance" />
+									<p:panel header="Quittance" />
 					                       <br />
 
 
 											<h:panelGrid columns="8" cellspacing="1">
 
 												<h:outputText value="Prime Nette" style="margin-right: 30px;" />
-												<p:inputText   
-													value="#{affaireNouvelleMB.managedQuittanceAuto.quittanceAuto.primeNette}"
+												<p:inputText
+													value=""
 													readonly="true" size="9"  style="width:150px;margin-right: 20px;">
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
 												</p:inputText>
 
 											 <h:outputText value="Accessoires" style="margin-left: 0px;" />
 												<p:inputText style="margin-right:20px; width:150px;" id="totalAcc"
-													value="#{affaireNouvelleMB.managedQuittanceAuto.quittanceAuto.totalAccessoire}"
+													value=""
 													readonly="false"  >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
 												</p:inputText>
@@ -267,27 +258,43 @@
 												<h:outputText value="Taxe" 
 													 />
 												<p:inputText 
-													value="#{affaireNouvelleMB.managedQuittanceAuto.quittanceAuto.taxeEnr}"
+													value=""
 													readonly="true" size="9"  style="width:150px;">
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
 												</p:inputText>
 
 												<h:outputText value="FGA"  style="margin-right: 30px;"/>
-												<p:inputText style="margin-right: 20px; width:150px;"
-													value="#{affaireNouvelleMB.managedQuittanceAuto.quittanceAuto.taxeFGA}"
+												<p:inputText style="margin-right: 20px; width:130px;"
+													value=""
 													readonly="true" size="9" >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
 												</p:inputText>
 
 												<h:outputText value="Prime Cedée"/>
 												<p:inputText
-													value="#{affaireNouvelleMB.managedQuittanceAuto.quittanceAuto.primeCedee}"
+													value=""
 													readonly="true" size="9" style="width:150px; margin-right: 20px;" >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
 												</p:inputText>
 
 
-                               			 
+                               			 <h:outputText value="Red Commerciale" /> 
+													
+												<p:inputText style="margin-right:20px; width:150px;"
+													value=""
+													readonly="true" >
+													<f:convertNumber pattern="##,###.##"></f:convertNumber>
+												</p:inputText>
+												
+                                              
+                                              <h:outputText value="Reduction Spéciale"/>
+												<p:inputText
+													value=""
+													readonly="true" size="9"  style="width:150px;margin-right:20px;">
+													<f:convertNumber pattern="##,###.##"></f:convertNumber>
+													<p:ajax event="blur" update="@this" global="false"></p:ajax>
+												</p:inputText>
+                                       
 
 
 												
@@ -304,7 +311,7 @@
 												<h:outputText value="Nette à Payer" style="font-size:20px;"
 													 />
 												<h:inputText
-													value="#{affaireNouvelleMB.managedQuittanceAuto.quittanceAuto.netteApayer}"
+													value=""
 													readonly="true" styleClass="outputPayer" style="font-size:20px;">
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
 													<p:ajax event="blur" update="@this" global="false"></p:ajax>
@@ -326,8 +333,10 @@
 								<h:panelGroup>
 									<fieldset style="background-color: maroon;">
 										
+											
 											<p:commandButton id="addContrats1"  style="margin-left:500px" value="Recevez le devis"/>
 											<p:commandButton id="addContrats2"  style="margin-left:500px" value="Souscrivez en ligne et payer maintenant"/>
+												
 
 									</fieldset>
 								</h:panelGroup>
