@@ -121,7 +121,9 @@ public class Dao implements IDao {
 				// sess.close();
 
 	}
+	
 	@Override
+	  @Transactional
 	public List<Object> getListGarantieByRisque(String codeRisque)
 			throws HibernateException {
 		List list = getSessionFactory()

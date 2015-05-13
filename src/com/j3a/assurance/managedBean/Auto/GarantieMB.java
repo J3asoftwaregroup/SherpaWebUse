@@ -137,7 +137,7 @@ public class GarantieMB implements Serializable {
 	}
 
 	public List<Garanties> calculGarantieAuto(VehiculeRow vehiculeRow) {
-
+		System.out.println("-------------Calcul Garantie Debut----------------");
 		setPrimeCategorie(new PrimeCategorie());
 		CalculPrimeGlobale primeGlobale = new CalculPrimeGlobale();
 
@@ -307,24 +307,8 @@ public class GarantieMB implements Serializable {
 				garantie.setPrimesProrata(sr);
 
 			}
-			/*
-			 * if (garantie.getId().equals("115") == true) { BigDecimal sr =
-			 * prorata.primeProrata(duree, prime.getSecuriteRoutiere1());
-			 * BigDecimal v1 = prime.getSecuriteRoutiere1();
-			 * garantie.setPrimesAnnuelle(v1);
-			 * garantie.setPrimesNetteAnnuelle(v1);
-			 * garantie.setPrimesProrata(sr);
-			 * 
-			 * } if (garantie.getId().equals("116") == true) { BigDecimal sr =
-			 * prorata.primeProrata(duree, prime.getSecuriteRoutiere1());
-			 * BigDecimal v1 = prime.getSecuriteRoutiere1();
-			 * garantie.setPrimesAnnuelle(v1);
-			 * garantie.setPrimesNetteAnnuelle(v1);
-			 * garantie.setPrimesProrata(sr);
-			 * 
-			 * }
-			 */
-
+			
+			System.out.println("-------------Calcul Garantie Debut----------------");
 			System.out.println("ssssssssssssssssssssssssssssssssssss"
 					+ garantie.getCategorieGarantie());
 			garantieList.add(garantie);

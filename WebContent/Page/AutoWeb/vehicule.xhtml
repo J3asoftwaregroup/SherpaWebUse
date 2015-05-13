@@ -512,13 +512,13 @@
 <h:panelGrid >
 							<p:fieldset>
 
-	<fieldset class="fieldset">
+	<fieldset class="fieldset" style="width:97%">
 	<legend>Groupe  de Garanties </legend>
 	<p:dataTable id="garTablegroup" var="garSeltd" 
 				value="#{cotationAuto.garantieMB.listeGroupGaranties}"
 				selectionMode="single" selection="#{cotationAuto.garantieMB.selectGarantieGroup}" 
 				scrollable="true"
-				scrollWidth="1250"
+				scrollWidth="850"
 				emptyMessage="Aucune Données"
 				rowKey="#{garSeltd.nOrdre}">
 				<p:ajax event="rowSelect" listener="#{cotationAuto.garantieMB.onRowSelectGroupGarantie}"  global="false"
@@ -541,7 +541,7 @@
 						</p:dataTable>
 	
 	</fieldset>
-	<fieldset class="fieldset">
+	<fieldset class="fieldset" style="width:70%">
 		<legend> Garanties </legend>
 		<h:panelGrid id="factGar">
 		<p:dataTable id="garTable" var="garanties" widgetVar="garTable"  
@@ -549,7 +549,7 @@
 				value="#{cotationAuto.garantieMB.listegaranties}"
 				editable="true" editMode="row"
 				scrollable="true"
-				scrollWidth="1250"
+				scrollWidth="850"
 				emptyMessage="Aucune Données">
 				<p:ajax event="rowEdit" listener="#{cotationAuto.garantieMB.onEditRow}"  global="false" 
 				update=":VehiculeProp:cmdPrime, :VehiculeProp:panelPrimes, :VehiculeProp:garTablegroup"/>
@@ -678,60 +678,7 @@
 										</h:inputText>
 
 
-								<h:outputText value="Reduction Flote"
-									styleClass="outputextcl1" />
-								<h:inputText 
-									value="#{cotationAuto.garantieMB.reductionFlote}"
-									readonly="true" style="width:80px" >
-									<f:convertNumber pattern="##,###.##"></f:convertNumber>
-										</h:inputText>
-
-								<h:outputText value="Autres Reductions" styleClass="outputextcl1" />
-								<h:inputText 
-									value="#{cotationAuto.garantieMB.reductionAutres}"
-									readonly="true" style="width:80px" >
-									<f:convertNumber pattern="##,###.##"></f:convertNumber>
-										</h:inputText>
-										
-								<h:outputText value="Bonus" styleClass="outputextcl1" />
-								<h:inputText 
-									value="#{cotationAuto.garantieMB.bonus}"
-									readonly="true" style="width:80px" >
-									<f:convertNumber pattern="##,###.##"></f:convertNumber>
-										</h:inputText>
-										
-										<h:outputText value="Malus" styleClass="outputextcl1" />
-								<h:inputText 
-									value="#{cotationAuto.garantieMB.malus}"
-									readonly="true" style="width:80px" >
-									<f:convertNumber pattern="##,###.##"></f:convertNumber>
-										</h:inputText>
-												
-									<h:outputText value="Total Reductions" styleClass="outputextcl1" />
-								<h:inputText 
-									value="#{cotationAuto.garantieMB.totalReductions}"
-									readonly="true"
-									 style="width:80px" >
-									<f:convertNumber pattern="##,###.##"></f:convertNumber>
-										</h:inputText>
-										
-									<h:outputText value="Surprimes" styleClass="outputextcl1" />
-								<h:inputText 
-									value="#{cotationAuto.garantieMB.surprimes}"
-									readonly="true"
-									 style="width:80px" >
-									<f:convertNumber pattern="##,###.##"></f:convertNumber>
-										</h:inputText>
-										
-										<h:outputText value="Accessoires" styleClass="outputextcl1" />
-								<h:inputText 
-									value="#{cotationAuto.garantieMB.accessoires}"
-									 style="width:80px" >
-									<f:convertNumber pattern="##,###.##"></f:convertNumber>
-									<p:ajax event="blur" listener="#{cotationAuto.garantieMB.calculAcc}" update="panelPrimes" global="false"></p:ajax>
-										</h:inputText>
-										
-										
+					
 										
 												<h:outputText value="PrimesNette" styleClass="outputextcl1" />
 								<h:inputText 
@@ -752,21 +699,11 @@
 							
 							<h:outputText value=""></h:outputText>
 							<p:commandButton id="validerPrime" value="Valider la Prime"
-								
+								actionListener="#{cotationAuto.ValiderCotation}"
 								 icon="ui-icon-check" style="width:150px"
 								 />
 
-								<p:commandButton id="fermer" value="Fermer Le Formulaire"
-                                             update="factGar"
-												 style="width:200px"
-								                />
-								                
-
-
-							<h:outputText value=""></h:outputText>
-							<p:commandButton id="annulerPrime" value="Annuler"
-								update="factGar" process="@this" icon="ui-icon-closethick"
-								style="width:150px" />
+								
 						</h:panelGrid>
 
 					

@@ -856,7 +856,7 @@ public class CarteGriseMB implements Serializable {
 			setButtonEditGar(true);
 			setButtonAddVehicule(false);
 			setSlctdVehiRwTb(null);
-			// System.out.println("ùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùùù"+getManagedContrat().getBaremes());
+			 System.out.println("ùùùùùùùùùùùùùùùùùù"+getVehiculeList().size());
 		}
 
 		public void chxVille() {

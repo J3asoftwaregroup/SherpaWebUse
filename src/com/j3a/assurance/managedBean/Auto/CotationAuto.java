@@ -152,6 +152,7 @@ public class CotationAuto implements Serializable{
 			getGarantieMB().getListegaranties().clear();
 			getGarantieMB().getListegarantieFiltre().clear();
 			getGarantieMB().cleanChamps();
+			getGarantieMB().setCodeRisque("1");
 			
 			getGarantieMB().affichegarantiesAuto(
 					getCarteGriseMB().getSlctdVehiRw());
@@ -234,7 +235,7 @@ public class CotationAuto implements Serializable{
 			}
 		}
 
-		public void validerGarantie() {
+		public void ValiderCotation() {
 			getGarantieMB().validerGarantie();
 			getCarteGriseMB().getSlctdVehiRw().getListegaranties().clear();
 	if(!getGarantieMB().getListeGarantiesSelect().isEmpty()){
@@ -243,21 +244,10 @@ public class CotationAuto implements Serializable{
 			getCarteGriseMB().getSlctdVehiRw().setPrimeNette(
 					getGarantieMB().getPrimeTotale());
 			// calcul de l'accessoire de l'apporteur
-			BigDecimal d = BigDecimal.ZERO;
-			d = getCarteGriseMB()
-					.getSlctdVehiRw()
-					.getPrimeNette()
-					.multiply(
-							getCarteGriseMB().getSlctdVehiRw()
-									.getTauxCommissionApporteur())
-					.divide(BigDecimal.valueOf(100.0));
-			getCarteGriseMB().getSlctdVehiRw().setCommissionApporteur(d);
-			getCarteGriseMB().setButtonSavVehicule(false);
+			getCarteGriseMB().getSlctdVehiRw().setCommissionApporteur(BigDecimal.ZERO);
+			getCarteGriseMB().validerVehicule();
 
-			System.out
-					.println("<<<<<<<<<Commission de l'apporteur ds vehiculeRow>>>>>>"
-							+ getCarteGriseMB().getSlctdVehiRw()
-									.getCommissionApporteur());
+		
 	}
 		}
 
