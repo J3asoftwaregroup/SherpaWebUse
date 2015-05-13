@@ -129,12 +129,7 @@
 											
                            </h:panelGrid>
 
-
-										
-
 									</h:panelGroup>
-
-									
 
 
 
@@ -191,21 +186,21 @@
 									
 									
 									
+								<p:panel header="Voiture à assurer" />
+					<br />
+											
+											<h:panelGrid columns="8">
 									
-									<fieldset>
-									<legend>Voiture à assurer </legend>
-									
-									
-									
-									<h:outputText value="Marque" style="margin-right: 30px;" />
+		
+									<h:outputText value="Marque" style="margin-right: 45px;" />
 												<p:inputText   
 													value=""
 													readonly="true" size="9"  style="width:150px;margin-right: 20px;">
 													
 												</p:inputText>
 
-											 <h:outputText value="Energie" style="margin-left: 0px;" />
-												<p:inputText style="margin-right:20px; width:150px;" id=""
+											 <h:outputText value="Energie" style="margin-right: 60px;" />
+												<p:inputText style="margin-right:20px; width:150px;"
 													value=""
 													readonly="false"  >
 													
@@ -214,14 +209,14 @@
 
 												
 
-												<h:outputText value="Puissance" 
+												<h:outputText value="Puissance" style="margin-right: 55px;"
 													 />
 												<p:inputText 
 													value=""
 													readonly="true" size="9"  style="width:150px;">
 													
 												</p:inputText>
-									<h:outputText value="Sous categorie" 
+									<h:outputText value="Sous categorie" style="margin-left: 0px;"
 													 />
 												<p:inputText 
 													value=""
@@ -229,7 +224,7 @@
 													
 												</p:inputText>
 									
-									</fieldset>
+									</h:panelGrid>
 									
 									
 									
@@ -254,7 +249,7 @@
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
 												</p:inputText>
 
-											 <h:outputText value="Accessoires" style="margin-left: 0px;" />
+											 <h:outputText value="Accessoires" style="margin-right: 30px;" />
 												<p:inputText style="margin-right:20px; width:150px;" id="totalAcc"
 													value="#{affaireNouvelleMB.managedQuittanceAuto.quittanceAuto.totalAccessoire}"
 													readonly="false"  >
@@ -264,18 +259,18 @@
 
 												
 
-												<h:outputText value="Taxe" 
+												<h:outputText value=" Taxe " style="margin-right:70px;margin-left: 15px;"
 													 />
-												<p:inputText 
+												<p:inputText  style="width:150px;"
 													value="#{affaireNouvelleMB.managedQuittanceAuto.quittanceAuto.taxeEnr}"
-													readonly="true" size="9"  style="width:150px;">
+													readonly="true"  >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
 												</p:inputText>
 
-												<h:outputText value="FGA"  style="margin-right: 30px;"/>
-												<p:inputText style="margin-right: 20px; width:150px;"
+												<h:outputText value="FGA"  style="margin-right: 40px;margin-left: 20px;"/>
+												<p:inputText style="margin-right:0px; width:150px;"
 													value="#{affaireNouvelleMB.managedQuittanceAuto.quittanceAuto.taxeFGA}"
-													readonly="true" size="9" >
+													readonly="true"  >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
 												</p:inputText>
 
@@ -286,6 +281,12 @@
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
 												</p:inputText>
 
+                                                <h:outputText value="Nette à Payer"/>
+												<p:inputText
+													value="#{affaireNouvelleMB.managedQuittanceAuto.quittanceAuto.netteApayer}"
+													readonly="true" size="9" style="width:150px; margin-right: 20px;" >
+													<f:convertNumber pattern="##,###.##"></f:convertNumber>
+												</p:inputText>
 
                                			 
 
@@ -321,17 +322,11 @@
 								</h:panelGrid>
 							
 						<h:panelGroup>
-							<h:panelGrid>
-
-								<h:panelGroup>
-									<fieldset style="background-color: maroon;">
+							<h:panelGrid  columns="4">
 										
-											<p:commandButton id="addContrats1"  style="margin-left:500px" value="Recevez le devis"/>
-											<p:commandButton id="addContrats2"  style="margin-left:500px" value="Souscrivez en ligne et payer maintenant"/>
+											<p:commandButton id="addContrats1"   value="Recevez le devis"/>
+											<p:commandButton id="addContrats2"  value="Souscrivez en ligne et payer maintenant"/>
 
-									</fieldset>
-								</h:panelGroup>
-								
 
 							</h:panelGrid>
 						</h:panelGroup>
