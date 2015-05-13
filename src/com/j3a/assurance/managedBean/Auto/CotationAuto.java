@@ -3,6 +3,7 @@ package com.j3a.assurance.managedBean.Auto;
 import java.io.IOException;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -14,10 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Conducteur;
+import com.j3a.assurance.model.ConduireVehicule;
+import com.j3a.assurance.model.ConduireVehiculeId;
 import com.j3a.assurance.model.Exercice;
 import com.j3a.assurance.model.Morale;
 import com.j3a.assurance.model.Personne;
@@ -27,9 +31,6 @@ import com.j3a.assurance.reporting.design.QuittanceDesignAuto;
 import com.j3a.assurance.utilitaire.IdGenerateur;
 import com.j3a.assurance.utilitaire.QuittanceAuto;
 import com.j3a.assurance.utilitaire.VehiculeRow;
-
-
-
 
 @Component
 public class CotationAuto implements Serializable{
@@ -79,9 +80,14 @@ public class CotationAuto implements Serializable{
 			setExercice(getContratMB().getExerciceOuvert()); 
 		}
 
+		
+		
+		//irene
 		public void valider(){
-			
+			     //client
 		    	getClientMB().addPersonnePhysique();
+		    	
+		    	//contrat
 				String pv = getContratMB().getUtilisateur().getPointVente()
 				.getCodePointVente();
 				String util =getContratMB().getUtilisateur().getCodeUtilisateur();
@@ -91,12 +97,12 @@ public class CotationAuto implements Serializable{
 				getContratMB().getContrat().setRisque(getContratMB().getRisque());
 				getContratMB().getContrat().setSocieteAssurance(getContratMB().getSocieteAssurance());
 				getContratMB().getObjectService().addObject(getContratMB().getContrat());
+				
 				//avenant
 				String idAven = getIdGenerateur().getIdNewAvenant(getContratMB().getContrat().getNumPolice());
 				getContratMB().getAvenant().setNumAvenant(idAven);
 				short d = (short) (getContratMB().getDuree()* 30);
 				int mail = 1;
-				
 				getContratMB().getAvenant().setDateAvenant(getContratMB().getdateAvenant());
 				getContratMB().getAvenant().setEffet(getContratMB().getEffet());
 				getContratMB().getAvenant().setDateEmission(getContratMB().getEmission());
@@ -106,13 +112,21 @@ public class CotationAuto implements Serializable{
 				getContratMB().getAvenant().setUtilisateur(getContratMB().getUtilisateur());
 				getContratMB().getObjectService().addObject(getContratMB().getAvenant());
 				
+				//conducteur
+				getClientMB().addConducteur();
+				
+				//conduireVehicule
+				ConduireVehicule conduireVehicule =new ConduireVehicule();
+				ConduireVehiculeId conduireVehiculeId =new ConduireVehiculeId();
+				conduireVehiculeId.setCodeVehicule(getCarteGriseMB().getSlctdVehiRw().getVehi().getCodeVehicule());
+				conduireVehiculeId.setNumCond(getClientMB().getConducteur().getNumCond());
+				conduireVehicule.setId(conduireVehiculeId);
+				conduireVehicule.setDateConduite(Calendar.getInstance().getTime());
+				getClientMB().getObjectService().addObject(conduireVehicule);
+				
 		}
 
 
-		
-		
-		
-		
 		
 		
 		
@@ -203,12 +217,6 @@ public class CotationAuto implements Serializable{
 		}
 
 		public void chxConducteur() {
-			// Methode lancé lorsque le user saisit un numéro de conducteur
-			// Fctionnemt lorsque le conducteur est choisi la methode permet de
-			// vérifier en BD si un tel conducteur exite
-			// Si oui ses valeur st chargées ds les champs
-			// Si non le processus continue normalement
-			// logs.info(">>>>/ INSIDE -chxConducteur-");
 			if (isClientConduc()) {
 				majConducteur();
 			} else {
@@ -224,7 +232,6 @@ public class CotationAuto implements Serializable{
 									.getConduHab().getNumCond()));
 				}
 			}
-			// logs.info(">>>>/ END -chxConducteur-");
 		}
 
 		public void validerGarantie() {
@@ -369,7 +376,6 @@ public class CotationAuto implements Serializable{
 								+ getExercice().getPrecExo());
 
 				getContratMB().setExercice(getExercice());
-				getContratMB().addContrat();
 				getContratMB().majExercice();
 				getCarteGriseMB().gestionCarteGrise(
 						getContratMB().getAvenant());
