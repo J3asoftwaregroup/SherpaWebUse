@@ -101,8 +101,8 @@ public class ManagedQuittanceAuto {
 								
 
 		primeNette = primeNette.add(prime);
-		System.out.println("Commission de l'apporteur  ds Quittance ds le Vehicule = "+vrw.getCommissionApporteur());
-		System.out.println("Type de l'apporteur  = "+vrw.getApporteur().getTypeApporteur().getIdType());
+
+
 		//Accessoire Compagnie
 		
 		acceComp = primeNette.multiply(BigDecimal.valueOf(0.1));

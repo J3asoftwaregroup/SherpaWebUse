@@ -246,7 +246,26 @@ public class CotationAuto implements Serializable{
 
 		
 	}
+	
+	
 		}
+		public String voirQuittance(){
+			getManagedQuittanceAuto().getListVehicules().clear();
+			getManagedQuittanceAuto().getListVehicules().addAll(
+					getCarteGriseMB().getVehiculeList());
+		
+
+			getManagedQuittanceAuto().setAvenant(
+					getContratMB().getAvenant());
+
+			//getManagedQuittanceAuto().setExercice(getExercice().getCodeexercice());// A corriger
+
+			getManagedQuittanceAuto().calculPrime();
+			getManagedQuittanceAuto().calculQuittance();
+
+			return "resumeetValidation";
+		}
+		
 
 		public void validerVehicule() {
 			if (!getCarteGriseMB().getVehiculeList().contains(
