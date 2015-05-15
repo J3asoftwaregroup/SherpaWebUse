@@ -61,7 +61,6 @@ public class ContratMB implements Serializable{
 		private String remplace;
 		private String mouvement = "AFFAIRE NOUVELLE", typeContrat,
 				modeReconduction;
-        private Exercice exerciceOuvert;
 		private String codeTypeContrats;
 		private BigDecimal commission;
 		private String bareme, baremeR;
@@ -127,7 +126,10 @@ public class ContratMB implements Serializable{
 		private Contrat contrat = new Contrat();
 		
 		
-		
+		public Exercice getExerciceOuvert(){
+			
+			return (Exercice)getObjectService().exerciceOuvert();
+		}
 	
 	   public void majExercice(){
 		getObjectService().updateObject(getExercice());
@@ -920,19 +922,6 @@ public class ContratMB implements Serializable{
 		public void setRisque(Risque risque) {
 			this.risque = risque;
 		}
-
-
-
-		public Exercice getExerciceOuvert() {
-			return exerciceOuvert;
-		}
-
-
-
-		public void setExerciceOuvert(Exercice exerciceOuvert) {
-			this.exerciceOuvert = exerciceOuvert;
-		}
-
 
 
 		public Utilisateur getUtilisateur() {

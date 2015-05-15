@@ -44,7 +44,7 @@ public class CotationAuto implements Serializable{
 		private CarteGriseMB carteGriseMB;
 		private Conducteur cduc;
 		private Boolean showNavBar = false;
-		private Exercice exercice;
+		private Exercice exercice = new Exercice();
 		@Autowired
 		private ManagedQuittanceAuto managedQuittanceAuto;
 		@Autowired
@@ -75,6 +75,9 @@ public class CotationAuto implements Serializable{
 			/*getManagedQuittanceAuto().setQuittanceid(
 					getIdGenerateur().getIdQuittance(idAven));*/
 			setExercice(getContratMB().getExerciceOuvert()); 
+			System.out.println("+++++++Exercice+++++++"
+					+getExercice().getCodeexercice() );
+			
 		}
 
 		
@@ -258,7 +261,7 @@ public class CotationAuto implements Serializable{
 			getManagedQuittanceAuto().setAvenant(
 					getContratMB().getAvenant());
 
-			//getManagedQuittanceAuto().setExercice(getExercice().getCodeexercice());// A corriger
+			getManagedQuittanceAuto().setExercice(getExercice().getCodeexercice());// A corriger
 
 			getManagedQuittanceAuto().calculPrime();
 			getManagedQuittanceAuto().calculQuittance();
@@ -292,6 +295,10 @@ public class CotationAuto implements Serializable{
 			if (newStep.equalsIgnoreCase("ongletCategorie")
 					&& oldStep.equalsIgnoreCase("ongletImmatriculation")) {
 				System.out.println("TRAITEMENT POUR LE PASSAGE DE Immat A categorie");
+				getContratMB().getAvenant().setEffet(getContratMB().getEffet());
+				getContratMB().getAvenant().setDateEmission(getContratMB().getEmission());
+				getContratMB().getAvenant().setEcheance(getContratMB().getEcheance());
+			
 				//Vérification des conditions
 				if (getCarteGriseMB().getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("")) {
 							
