@@ -257,7 +257,10 @@ public class CotationAuto implements Serializable{
 			getManagedQuittanceAuto().getListVehicules().addAll(
 					getCarteGriseMB().getVehiculeList());
 		
-
+			getContratMB().getAvenant().setEffet(getContratMB().getEffet());
+			getContratMB().getAvenant().setDateEmission(getContratMB().getEmission());
+			getContratMB().getAvenant().setEcheance(getContratMB().getEcheance());
+			
 			getManagedQuittanceAuto().setAvenant(
 					getContratMB().getAvenant());
 
