@@ -19,187 +19,19 @@
 	
 	
 	
-	<p:columnGroup>
-
-										
-										<p:panel header="Informations Clients" />
-					<br />
-											
-											<h:panelGrid columns="8">
-
-												<h:outputText value="Nom:" style="margin-right:70px;"></h:outputText>
-												<p:inputText
-													value=" "
-													style="width:150px;margin-right:20px;">
-												</p:inputText>
-
-												<h:outputText value="Prenoms:" style="margin-right:35px;" 
-													></h:outputText>
-												<p:inputText style="width:150px;margin-right:35px;"
-													value=""
-													readonly="true">
-													
-													<p:ajax  
-									  				update="@this" global="false"/>
-												</p:inputText>
-												
-                                                   <h:outputText value="Date de naissance:" style="margin-right:20px;" 
-													></h:outputText>
-												<p:inputText
-													value=""
-													style="width:150px;">
-													
-													<p:ajax  
-									  				update="@this" global="false"/>
-												</p:inputText>
-                                                 
-                                                 
-													
-												 <h:outputText value="Numero de telephone:" style="margin-left: 20px;" 
-													></h:outputText>
-												<p:inputText
-													value=""
-													style="width:130px;">
-													
-													<p:ajax  event="blur"
-									  				update="@this" global="false"/>
-												</p:inputText>
-												<h:outputText value="Adresse :"  />
-												<p:inputText  
-													value=""
-													style="width:150px;">
-													
-													<p:ajax  event="blur"
-									  				update="@this" global="false"/>
-												</p:inputText>
-
-                                                  
-										
-												
-											</h:panelGrid>
-										
-                                 </p:columnGroup>
 	
 	
-	
-	
-	
-	
-                     <h:panelGroup>
-					
-										<p:panel header="Contrat" />
-					                       <br />
-											
-											<h:panelGrid columns="8">
-
-												<h:outputText value="Mouvement"></h:outputText>
-												<p:inputText
-													value=""
-													readonly="true"  style="width:150px;"/>
-
-
-												<h:outputText
-													value="Risque" style="margin-left: 20px;"></h:outputText>
-												<p:inputText
-													value=""
-													readonly="true" style="width:150px;margin-left: 55px;" />
-
-
-												<h:outputText value="Police" style="margin-left: 30px;"></h:outputText>
-												<p:inputText
-													value=""
-													readonly="true"  style="width:150px;margin-left: 60px;"/>
-
-
-
-												<h:outputText value="Avenant"  style="margin-left: 30px;"></h:outputText>
-												<p:inputText
-													value=""  style="width:150px;margin-right: 10px;"
-													readonly="true"  />
-
-
-
-												<h:outputText value="Numéro Quittance"  />
-												<p:inputText
-													value=""
-													readonly="true"  style="width:150px;"/>
-
-											
-												
-											
-                           </h:panelGrid>
-
-
-										
-
-									</h:panelGroup>
-
-									
-
-
-
-
-								
-
-								<h:panelGrid>
-
-									<h:panelGroup>
-										<p:panel header="Couverture" />
-					<br />
-											
-											<h:panelGrid columns="8">
-
-												<h:outputText value="Date Emission" style="margin-right: 45px;"></h:outputText>
-												<p:inputMask
-													value=""
-													readonly="true" mask="99/99/9999" style="margin-right:20px;width:150px;"
-													>
-													<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
-												</p:inputMask>
-
-												<h:outputText value="Date Effet" style="margin-right: 70px;"
-													></h:outputText>
-												<p:inputMask style="margin-right:20px;width:150px;"
-													value=""
-													readonly="true" mask="99/99/9999"  
-													>
-													<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
-												</p:inputMask>
-													
-
-
-												<h:outputText value="Durée (jours)" style="margin-right:70px;"
-													></h:outputText>
-												<p:inputText
-													value=""
-													readonly="true"  style="margin-right:20px;width:150px;"/>
-												
-
-												<h:outputText value="Date Echéance"  
-													/>
-												<p:inputMask
-													value=""
-													readonly="true" mask="99/99/9999" style="margin-right:20px;width:130px;" >
-													<f:convertDateTime pattern="dd/MM/yyyy" />
-
-												</p:inputMask>
-
-											</h:panelGrid>
-
-
-										</h:panelGroup>
-									
-									
-								
+										<fieldset>
+								<legend>Voiture à assurer </legend>
 									<p:panel header="Voiture à assurer" />
 					<br />
 											
-											<h:panelGrid columns="8">
+											<h:panelGrid columns="4">
 									
 									
 									
 									
-									<h:outputText value="Marque" style="margin-right: 30px;" />
+									<h:outputLabel value="Marque" style="margin-right: 30px;" />
 												<p:inputText   
 													value=""
 													readonly="true" size="9"  style="width:150px;margin-right: 20px;">
@@ -232,15 +64,27 @@
 												</p:inputText>
 									</h:panelGrid>
 									
+									</fieldset>
 									
+                                
+                                <br />
+                                
+                                <fieldset>
+                                 <legend>Tarif Quittance   </legend>
 									
-
-									<h:panelGroup>
-									<p:panel header="Quittance" />
+								
 					                       <br />
 
 
-											<h:panelGrid columns="8" cellspacing="1">
+											<h:panelGrid columns="2" cellspacing="1">
+	
+	<h:panelGroup>
+	
+	<div style="margin-left: 300px" >							
+	<fieldset>					
+
+<h:panelGrid columns="2"  >
+
 
 												<h:outputText value="Prime Nette" style="margin-right: 30px;" />
 												<p:inputText
@@ -280,75 +124,39 @@
 													readonly="true" size="9" style="width:150px; margin-right: 20px;" >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
 												</p:inputText>
-
-
-                               			 <h:outputText value="Red Commerciale" /> 
-													
-												<p:inputText style="margin-right:20px; width:150px;"
-													value=""
-													readonly="true" >
-													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-												</p:inputText>
 												
-                                              
-                                              <h:outputText value="Reduction Spéciale"/>
+<p:separator></p:separator><p:separator></p:separator>
+
+                               			 <h:outputText value="NET A PAYER" style="margin-right:20px;"/>
 												<p:inputText
-													value=""
-													readonly="true" size="9"  style="width:150px;margin-right:20px;">
+													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.netteApayer}"
+													readonly="true" size="9" style="width:150px; font-size:15px;" 
+													 styleClass="outputPayer" >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-													<p:ajax event="blur" update="@this" global="false"></p:ajax>
 												</p:inputText>
-                                       
-
-
-												
-
-												
-											</h:panelGrid>
-
-											<p:separator></p:separator>
-
-											<h:panelGrid columns="4" cellspacing="1">
-
-												<h:outputText value="" style="margin-left: 700px;" />
-												<h:outputText value="" />
-												<h:outputText value="Nette à Payer" style="font-size:20px;"
-													 />
-												<h:inputText
-													value=""
-													readonly="true" styleClass="outputPayer" style="font-size:20px;">
-													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-													<p:ajax event="blur" update="@this" global="false"></p:ajax>
-
-												</h:inputText>
-
-
-
-
-
-											</h:panelGrid>
-									</h:panelGroup>
-
-								</h:panelGrid>
-							
-						<h:panelGroup>
-							<h:panelGrid>
-
-								<h:panelGroup>
-									<fieldset style="background-color: maroon;">
+                                        
+</h:panelGrid>    </fieldset>  </div>
+<br /> <br /> </h:panelGroup>
+                                         <br /> <br /> 
+											</h:panelGrid>	
+											<div style="margin-left: 200px" >
+                                   <h:panelGrid  columns="2">
 										
-											
-											<p:commandButton id="addContrats1"  style="margin-left:500px" value="Recevez le devis"/>
-											<p:commandButton id="addContrats2"  style="margin-left:500px" value="Souscrivez en ligne et payer maintenant"/>
+											<p:commandButton id="addContrats1"   value="Recevez le devis" style="width:150px;font-size:15px;margin-left: 100px" />
+											<p:commandButton id="addContrats2"  value="Souscrivez en ligne" style="width:150px; margin-left: 20px;font-size:15px;"/>
+
+
+							      </h:panelGrid>
 												
+											
+</div>
+										
 
-									</fieldset>
-								</h:panelGroup>
+									
+</fieldset>
 								
-
-							</h:panelGrid>
-						</h:panelGroup>
-
+							
+						
 
 
 				</p:tab>
