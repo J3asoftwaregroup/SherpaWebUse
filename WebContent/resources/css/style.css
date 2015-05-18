@@ -567,12 +567,79 @@ height: auto !important;
 		    Le Splash
 /////////////////////////////////////*/
 
-.dashBoard{
-	height:60px;
-	width:60px;
+.souscrip{
+	height:120px;
+	width:120px;
 	display:block;
-	background-image:url(#{resource['images:configuration.png']}));
+	background-image:url(../resources/images/souscription.png);
 }
+
+.souscrip:hover{
+	height:120px;
+	width:120px;
+	display:block;
+	background-image:url(../resources/images/souscriptionHover.png);
+}
+
+.blankTale{
+        display: block;
+        width: 120px ;
+        height: 120px;
+        background-image:url(../resources/images/blankTale.png);
+       
+    }
+    
+ .blankTale:hover {
+     display: block;
+     width: 120px;
+     height: 120px;
+     background-image:url(../resources/images/blankTaleHover.png);
+ }
+ 
+ .declarSin{
+        display: block;
+        width: 120px ;
+        height: 120px;
+        background-image:url(../resources/images/DeclaratioSin.png);
+       
+    }
+    
+ .declarSin:hover {
+     display: block;
+     width: 120px;
+     height: 120px;
+     background-image:url(../resources/images/DeclaratioSinHover.png);
+ }
+ 
+  .connex{
+        display: block;
+        width: 120px ;
+        height: 120px;
+        background-image:url(../resources/images/connexion.png);
+       
+    }
+    
+ .connex:hover {
+     display: block;
+     width: 120px;
+     height: 120px;
+     background-image:url(../resources/images/connexionHover.png);
+ }
+ 
+   .cotation{
+        display: block;
+        width: 120px ;
+        height: 120px;
+        background-image:url(../resources/images/cotation.png);
+       
+    }
+    
+ .cotation:hover {
+     display: block;
+     width: 120px;
+     height: 120px;
+     background-image:url(../resources/images/cotationHover.png);
+ }
 
 .ui-icon { 
    	height:inherit; 
@@ -589,12 +656,7 @@ height: auto !important;
    background:  url(#{resource['images:configuration.png']}) no-repeat top left;
 }
 
-.dashBoard:hover{
-	height:60px;
-	width:60px;
-	display:block;
-	background-image:url(../resources/images/configuration.png);
-}
+
 
 .wu_Ppl_Left{
 	width:66%;
@@ -609,6 +671,10 @@ height: auto !important;
 	text-align: center;
 	height: 60px;
 }
+
+
+
+
 /*/////////////////////////////////////
 		    Le Splash Fin
 /////////////////////////////////////*/
@@ -735,4 +801,29 @@ height: 50px;
 .uppercase {
     text-transform: uppercase;
 }
+
+.libelOneLine{
+	width: 34%;
+	text-align: right;
+}
+.inputOneLine{
+	width: 33%;
+	text-align: left;
+}
+.msgOneline{
+	width: 33%;
+	text-align: left;
+}
+
+.floatDiv {
+				position: relative;
+				top: 50px;
+				left: 150px;
+			}
+
+.overlayDiv {/*Class of the fix*/
+             left: 0;
+             position: fixed;
+             top: 0;
+         }
 
