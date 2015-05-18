@@ -18,51 +18,21 @@
 	<p:tab id="ongletQuittance" title="Quittance">
 	
 	
-	
+	<h:outputLabel value="Voici l'offre que nous allons négocier pour vous dans l'heure!" style="margin-left:200px ;font-size:15px; color:red" />
 	
 	
 										<fieldset>
-								<legend>Voiture à assurer </legend>
+								<legend>RECAPITULATIF </legend>
 									<p:panel header="Voiture à assurer" />
 					<br />
 											
-											<h:panelGrid columns="4">
+											
 									
 									
 									
+									<h:outputLabel     style="margin-left:300px ;font-size:20px"  value="le vehicule à assurer est :#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.marque}  #{cotationAuto.carteGriseMB.slctdVehiRw.vehi.energie}  #{cotationAuto.carteGriseMB.slctdVehiRw.vehi.carrosserie}  #{cotationAuto.carteGriseMB.slctdVehiRw.vehi.puissFisc}CV"/>
 									
-									<h:outputLabel value="Marque" style="margin-right: 30px;" />
-												<p:inputText   
-													value=""
-													readonly="true" size="9"  style="width:150px;margin-right: 20px;">
-													
-												</p:inputText>
-
-											 <h:outputText value="Energie" style="margin-left: 0px;" />
-												<p:inputText style="margin-right:20px; width:150px;" 
-													value=""
-													readonly="false"  >
-													
-												</p:inputText>
-
-
-												
-
-												<h:outputText value="Puissance" 
-													 />
-												<p:inputText 
-													value=""
-													readonly="true" size="9"  style="width:150px;">
-													
-												</p:inputText>
-									<h:outputText value="Sous categorie" 
-													 />
-												<p:inputText 
-													value=""
-													readonly="true" size="9"  style="width:150px;">
-													
-												</p:inputText>
-									</h:panelGrid>
+									
 									
 									</fieldset>
 									
@@ -80,71 +50,74 @@
 	
 	<h:panelGroup>
 	
-	<div style="margin-left: 300px" >							
+	<div style="margin-left: 330px" >							
 	<fieldset>					
 
 <h:panelGrid columns="2"  >
 
 
 												<h:outputText value="Prime Nette" style="margin-right: 30px;" />
-												<p:inputText
-													value=""
-													readonly="true" size="9"  style="width:150px;margin-right: 20px;">
+												<h:outputLabel
+													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.primeNette}"
+													readonly="true" size="9"  style="width:100px;margin-right: 20px;">
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-												</p:inputText>
+												</h:outputLabel>
 
 											 <h:outputText value="Accessoires" style="margin-left: 0px;" />
-												<p:inputText style="margin-right:20px; width:150px;" id="totalAcc"
-													value=""
+												<h:outputLabel style="margin-right:20px; width:100px;" id="totalAcc"
+													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.totalAccessoire}"
 													readonly="false"  >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-												</p:inputText>
+												</h:outputLabel>
 
 
 												
 
 												<h:outputText value="Taxe" 
 													 />
-												<p:inputText 
-													value=""
-													readonly="true" size="9"  style="width:150px;">
+												<h:outputLabel 
+													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.taxeEnr}"
+													readonly="true" size="9"  style="width:100px;">
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-												</p:inputText>
+												</h:outputLabel>
 
 												<h:outputText value="FGA"  style="margin-right: 30px;"/>
-												<p:inputText style="margin-right: 20px; width:130px;"
-													value=""
+												<h:outputLabel style="margin-right: 20px; width:100px;"
+													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.taxeFGA}"
 													readonly="true" size="9" >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-												</p:inputText>
+												</h:outputLabel>
 
 												<h:outputText value="Prime Cedée"/>
-												<p:inputText
-													value=""
-													readonly="true" size="9" style="width:150px; margin-right: 20px;" >
+												<h:outputLabel
+													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.primeCedee}"
+													readonly="true" size="9" style="width:100px; margin-right: 20px;" >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-												</p:inputText>
+												</h:outputLabel>
 												
 <p:separator></p:separator><p:separator></p:separator>
 
-                               			 <h:outputText value="NET A PAYER" style="margin-right:20px;"/>
-												<p:inputText
+                               			 <h:outputText value="NET A PAYER (CFA)" style="margin-right:20px;"/>
+												<h:outputLabel
 													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.netteApayer}"
-													readonly="true" size="9" style="width:150px; font-size:15px;" 
+													readonly="true" size="9" style="width:110px; font-size:15px; font-weight:17px;color:red;" 
 													 styleClass="outputPayer" >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-												</p:inputText>
+												</h:outputLabel>
                                         
 </h:panelGrid>    </fieldset>  </div>
 <br /> <br /> </h:panelGroup>
                                          <br /> <br /> 
 											</h:panelGrid>	
+											
+                                   
+										<h:outputLabel style="margin-left: 200px"  value= "   Total TTc annuel: #{cotationAuto.managedQuittanceAuto.quittanceAuto.netteApayer} "/>
 											<div style="margin-left: 200px" >
-                                   <h:panelGrid  columns="2">
-										
-											<p:commandButton id="addContrats1"   value="Recevez le devis" style="width:150px;font-size:15px;margin-left: 100px" />
-											<p:commandButton id="addContrats2"  value="Souscrivez en ligne" style="width:150px; margin-left: 20px;font-size:15px;"/>
-
+										<h:panelGrid  columns="2">	
+											<h:commandButton id="addContrats1"  actionListener="#{cotationAuto.sendDevis}" value="Recevez le devis" style="width:150px;font-size:15px;margin-left: 100px" />
+											<p:commandButton id="addContrats2"  action="/Page/Paypal/confirmation"  value="Souscrivez en ligne"  style="width:150px; margin-left: 20px;font-size:15px;"/>
+                                           
+                                             
 
 							      </h:panelGrid>
 												

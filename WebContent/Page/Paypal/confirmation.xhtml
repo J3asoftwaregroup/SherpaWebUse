@@ -10,7 +10,7 @@
 <ui:composition template="/template/templateWebAuto.xhtml">
 	<ui:define name="content">
 		
-		<h:form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+		<h:form id="gnl">
 	<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
 		
 			<p:panel header="Paiement">
@@ -65,11 +65,11 @@
 			<p:calendar></p:calendar>
 			<h:outputText value="Cryptogramme visuel"></h:outputText>
 			<p:inputText></p:inputText>
-            <h:commandButton value="Connectez-vous?" ></h:commandButton>
+            <h:commandButton value="Connectez-vous?"></h:commandButton>
                 </h:panelGrid>
           </p:fieldset>
 		<fieldset style="background-color: maroon;">	
-	 <h:commandButton value="Inscription" action="https://www.sandbox.paypal.com/cgi-bin/webscr" style="margin-left:350px"></h:commandButton>
+	 <h:commandButton value="Inscription"  style="margin-left:350px"></h:commandButton>
 		</fieldset>		           
 	 
 			
