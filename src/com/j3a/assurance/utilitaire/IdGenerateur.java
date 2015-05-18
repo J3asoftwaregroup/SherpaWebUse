@@ -171,6 +171,25 @@ public class IdGenerateur implements Serializable {
 				"affaire_apporteur", "CODE_AFFAIRE");
 		return IdAffaire;
 	}
+	
+	
+	
+	public String getIdSinistre(Contrat ctrat) {
+		String pseudo = ctrat.getNumPolice() + "-SIN";
+		String idSin = getObjectService().getCodeTable(pseudo, 19, 3,
+				"sinistre", "CODE_SINISTRE");
+		return idSin;
+	}
+	
+	
+	public String getIdCondSinistre() {
+
+		String pseudo ="CondS";
+		String IdCondsinistre = getObjectService().getCodeTable(pseudo, 5, 6,
+				"conducteur_sinistre", "CODE_CONDUCTEUR_SINISTRE");
+		return IdCondsinistre;
+	}
+	
 
 	public ObjectService getObjectService() {
 		return objectService;

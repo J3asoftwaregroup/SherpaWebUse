@@ -31,6 +31,7 @@ public interface IDao {
 	public void deleteObject(Object objet);
 	public  List getObjects(String objet);
 	public List<Object> getojects(Object object);
+	
 	public List<Object> getListGarantieByRisque(String codeRisque);
 	public Object getByIdPK(Object object, String table);
 	public Object getById(String Table, String key, String id, Class TableClass);
@@ -72,5 +73,6 @@ public interface IDao {
 	public List<Contrat> ContratList(String souscripteur) ;
 	public Quittance recoverQuittanceOfLasAvenant(String paramNumPolice);		
 	public Quittance recoverQuittanceAuto(String paramNumPolice);
+	
 			
 }
