@@ -17,6 +17,8 @@ import com.j3a.assurance.model.Risque;
 import com.j3a.assurance.model.SocieteAssurance;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.model.VehiculesAssures;
+import com.j3a.assurance.utilitaire.QuittanceAuto;
+import com.j3a.assurance.utilitaire.VehiculeRow;
 
 @Component
 public class ReportingAuto implements Serializable {
@@ -36,8 +38,10 @@ public class ReportingAuto implements Serializable {
 	private Avenant avenant = new Avenant();
 	private PointVente pointVente = new PointVente();
 	private Quittance quittance = new Quittance();
+	private QuittanceAuto quittanceAuto = new QuittanceAuto();
 	private VehiculesAssures vehiculesAssures = new VehiculesAssures();
 	private List<Vehicule> listVehiculeAssure = new ArrayList<>();
+	private List<VehiculeRow> listVehiculeRow = new ArrayList<VehiculeRow>();
 
 		
 		
@@ -117,6 +121,18 @@ public class ReportingAuto implements Serializable {
 	}
 	public void setSocieteAssurance(SocieteAssurance societeAssurance) {
 		this.societeAssurance = societeAssurance;
+	}
+	public List<VehiculeRow> getListVehiculeRow() {
+		return listVehiculeRow;
+	}
+	public void setListVehiculeRow(List<VehiculeRow> listVehiculeRow) {
+		this.listVehiculeRow = listVehiculeRow;
+	}
+	public QuittanceAuto getQuittanceAuto() {
+		return quittanceAuto;
+	}
+	public void setQuittanceAuto(QuittanceAuto quittanceAuto) {
+		this.quittanceAuto = quittanceAuto;
 	}
 	
 }
