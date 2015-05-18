@@ -33,7 +33,7 @@
 		
 	<p:inputText value="#{managedSinistre.valeurDeRecherche}" style="width: 138px; margin-left: 60px;"  
 	 required="true" requiredMessage="Veuillez entrez un numero de police ou l'immatriculation du véhicule" placeholder="Entrer le critère" />
-	<p:commandButton id="rech_button" binding="#{managedSinistre.button_seach}" value="Rechercher" actionListener="#{managedSinistre.rechercherDossierProduction}"   
+	<p:commandButton id="rech_button" value="Rechercher" actionListener="#{managedSinistre.rechercherDossierProduction}"   
 	style="width: 100px;" update="resulTable, infoGrid, growl, :sous_form"/>
 	</h:panelGrid>
 	
@@ -138,18 +138,20 @@
         <p:tab id="declaration" title="Declaration">
         	<p:panel header="Déclaration du sinistre">
         	
-        	<hr style="color:white; background-color:#E6E6E6;" size="7"/>
           <div style="color: blue">Merci d’indiquer l’adresse e-mail et le numéro téléphone sur lesquels vous souhaitez être contacté pour ce sinistre.</div>
            <br />
-            <h:panelGrid columns="4">
+          <h:panelGrid columns="4">
           <p:outputLabel for="mail"  value="E-mail"/>
-          <p:inputText id="mail" required="true" validatorMessage="Invalid email format" requiredMessage="Please enter your email address.">
+          <p:inputText id="mail" required="true" value="#{managedSinistre.monContratResum.personneResum.email}" validatorMessage="Invalid email format" requiredMessage="Please enter your email address.">
           	<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
           </p:inputText>
           
           <p:outputLabel for="tel"  value="Telephone" style="margin-left: 15px;"/>
-          <p:inputText id="tel" required="true"/> 
+          <p:inputText id="tel" required="true" value="#{managedSinistre.monContratResum.personneResum.telephone}" /> 
           </h:panelGrid>
+          
+                  	<hr style="color:white; background-color:#E6E6E6;" size="7"/>
+          
         
 					<fieldset id="save_sinistre" style="background-color: #DDECDF">
 						<legend>Formulaire d'enregistrement</legend>
@@ -163,14 +165,11 @@
 								<f:convertDateTime pattern="dd/MM/yyyy" locale="fr_FR" />
 							</p:calendar>
 							
-							<p:outputLabel value="Date Déclaration:"
-								style="margin-left: 30px !important;" for="date_declaration"/>
-							<p:calendar id="date_declaration" pattern="dd/MM/yyyy"
-								locale="fr" value="#{managedSinistre.dateDeclaration}"
-								style="height:10px" required="true"
-								requiredMessage="La date de déclaration obligatoire">
+							<p:outputLabel value="Date Déclaration:"  style="margin-left: 30px !important;" for="date_declaration"/>
+							<p:inputText  id="date_declaration" pattern="dd/MM/yyyy" locale="fr" value="#{managedSinistre.dateDeclaration}" style="height:10px" required="true"
+								requiredMessage="La date de déclaration obligatoire" readonly="true">
 								<f:convertDateTime pattern="dd/MM/yyyy" locale="fr"/>
-							</p:calendar>
+							</p:inputText>
 							
 							<p:outputLabel for="police" value="Numéro police:" style="margin-left: 30px !important;"/>
 							<p:inputText id="police" value="#{managedSinistre.monContratResum.policeResum.numPolice}" readonly="true"/>
@@ -222,14 +221,6 @@
 							<h:inputTextarea value="#{managedSinistre.sinistre.circonstance}" cols="50" style="margin-left: 30px;" />
 						</h:panelGrid>
 						
-						<h:panelGrid columns="10">
-							<h:outputText value="Corporel :"
-								style="margin-left: 200px !important;" />
-							<p:selectBooleanCheckbox value="#{managedSinistre.domageCorps}" />
-							<h:outputText value="Matériel :" style="margin-left: 375px"/>
-							<p:selectBooleanCheckbox value="#{managedSinistre.domageMat}" />
-						</h:panelGrid>
-						
 						<h:panelGrid columns="4">
 							<h:outputText value="Dommage corporel:" />
 							<h:inputTextarea value="#{managedSinistre.vehiculeSinistre.libelleDomageCorp}" cols="50"/>
@@ -244,7 +235,7 @@
 								style="margin-left: 65px !important;" />
 							<p:inputText value="#{managedSinistre.vehiculeSinistre.nbreBlesse}"
 								style="width: 25px;">
-								<f:convertNumber integerOnly="true" minIntegerDigits="0" />
+								<f:convertNumber integerOnly="true" minIntegerDigits="0"/>
 							</p:inputText>
 							
 							<h:outputText value="Decès :"
@@ -385,7 +376,8 @@
 				
 				</p:dataTable>
 				
-				<p:commandButton value="Valider" action="#{managedSinistre.chargerlechoix}" onclick="contrat_Dialog.hide()" update=":rech_contrat"></p:commandButton>
+				<p:commandButton value="Valider" action="#{managedSinistre.chargerlechoix}" onclick="contrat_Dialog.hide()" update=":rech_contrat">
+				</p:commandButton>
 		</fieldset>					
 		</h:form>
 	</p:dialog>

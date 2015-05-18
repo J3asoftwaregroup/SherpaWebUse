@@ -48,14 +48,13 @@ public class ManagedSinistre implements Serializable {
 	private IdGenerateur idGenerateur;
 	@Autowired
 	private ObjectService objectService;
-	@Autowired
-	
+
 	private Sinistre sinistre = new Sinistre();
 	private ConducteurSinistre conducteurSinistre = new ConducteurSinistre();
     private VehiculeSinistre vehiculeSinistre = new VehiculeSinistre();
     private Conducteur conducteur;
-    private boolean domageCorps;
-	private boolean domageMat;
+//    private boolean domageCorps;
+//	private boolean domageMat;
 	private String optionRech ="1"; 
 	private String optionConducteur = "1";
 	private String valeurDeRecherche;
@@ -100,7 +99,6 @@ public class ManagedSinistre implements Serializable {
 	public void creeSinitre(){//By Alekerand
 		
 		//Declaration necessaire pour la création du sinistre
-		
 		vehiculeSinistre = new VehiculeSinistre();
         SinistreConducteur sinistreConducteur = new SinistreConducteur();
 		
@@ -303,9 +301,8 @@ public class ManagedSinistre implements Serializable {
 	public void clearSinistre() {
 		// instancier sinistre afin de cree une nouvelle donnÃ©e
 		numPolice = "";
-		domageCorps = domageMat = false;
 		codeVehicule = "";
-		sinistre = new Sinistre();
+	//	sinistre = new Sinistre();
 	}
 
 	public String getNumPolice() {
@@ -324,7 +321,6 @@ public class ManagedSinistre implements Serializable {
 				}
 			} catch (Exception e) {
 				logger.error("Erreur lors de la recherche d'un contrat en production");
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		return resultacontrat;
@@ -340,7 +336,6 @@ public class ManagedSinistre implements Serializable {
 				}
 			} catch (Exception e) {
 				logger.error("Erreur lors de la recherche d'une Personne liï¿½ ï¿½ un contrat en production" );
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 				return resultatPersonne;
@@ -383,22 +378,6 @@ public class ManagedSinistre implements Serializable {
 
 	public void setFiltre(String filtre) {
 		this.filtre = filtre;
-	}
-
-	public boolean isDomageCorps() {
-		return domageCorps;
-	}
-
-	public void setDomageCorps(boolean domageCorps) {
-		this.domageCorps = domageCorps;
-	}
-
-	public boolean isDomageMat() {
-		return domageMat;
-	}
-
-	public void setDomageMat(boolean domageMat) {
-		this.domageMat = domageMat;
 	}
 
 	public Facture getFacture() {
