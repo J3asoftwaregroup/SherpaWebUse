@@ -127,7 +127,7 @@
 												
 				<div class="overlayDiv">
 				<p:overlayPanel id="logCnx" for=":gnl:login" widgetVar="LoginWidVar" showCloseIcon="TRUE"  
-										style="height:150px; width:400px; padding:5px;" >
+										style="height:200px; width:400px; padding:5px;" >
 										
 									
 							 <h:panelGrid columns="3"  columnClasses="libelOneLine, inputOneLine, msgOneline" style="width:100%" cellspacing="10">
@@ -199,10 +199,13 @@
 						
 						
 						<div class="overlayDiv">
-						<p:overlayPanel id="cotationChx" for="cota" widgetVar="cotaWidVar" showCloseIcon="true"  >
-							 <h:panelGrid columns="3" columnClasses="wu_Ppl_Left_tales,wu_Ppl_Left_tales,wu_Ppl_Left_tales" style="width:100%" border="0">
+						<p:overlayPanel id="cotationChx" for="cota" widgetVar="cotaWidVar" showCloseIcon="true"  style=" width:400px; padding:5px;">
+							 <h:panelGrid columns="3" columnClasses="wu_Ppl_Left_tales,wu_Ppl_Left_tales,wu_Ppl_Left_tales" style="width:100%" cellspacing="10">
+								<f:facet name="header">
+											QUELLE BRANCHE D'ASSURANCE 
+									</f:facet>
 								
-								<p:commandLink >
+								<p:commandLink id="cotaAuto"  action="/Page/AutoWeb/devisAuto?faces-redirect=true">
 								  <p:graphicImage 
 									            value="#{resource['images:auto.png']}"
 									            width="60"
@@ -210,7 +213,7 @@
 									  </p:graphicImage>
 								</p:commandLink>
 								
-								<p:commandLink>
+								<p:commandLink id="cotaMrh">
 								 <p:graphicImage 
 									            value="#{resource['images:mrh.png']}"
 									            width="60"
@@ -218,7 +221,7 @@
 									  </p:graphicImage>
 								</p:commandLink>
 								
-								<p:commandLink >
+								<p:commandLink id="cotaIA">
 								  <p:graphicImage 
 									            value="#{resource['images:indivAcc.png']}"
 									            width="60"
@@ -231,11 +234,14 @@
 						</div>
 						
 						<div class="overlayDiv">
-						<p:overlayPanel id="declarChx" for="sinDeclar" widgetVar="declarWidVar" showCloseIcon="true"   >
+						<p:overlayPanel id="declarChx" for="sinDeclar" widgetVar="declarWidVar" showCloseIcon="true"  style=" width:400px; padding:5px;" >
 							 
-							 <h:panelGrid columns="3" columnClasses="wu_Ppl_Left_tales,wu_Ppl_Left_tales,wu_Ppl_Left_tales" style="width:100%" border="0">
+							 <h:panelGrid columns="3" columnClasses="wu_Ppl_Left_tales,wu_Ppl_Left_tales,wu_Ppl_Left_tales" style="width:100%" cellspacing="10">
+								<f:facet name="header">
+											QUELLE BRANCHE D'ASSURANCE 
+									</f:facet>
 								
-								<p:commandLink >
+								<p:commandLink id="sinDeclAuto"  action="/Page/sinistreAutoWeb/declarationSinnistreAuto?faces-redirect=true">
 								  <p:graphicImage 
 									            value="#{resource['images:auto.png']}"
 									            width="60"
@@ -243,7 +249,7 @@
 									  </p:graphicImage>
 								</p:commandLink>
 								
-								<p:commandLink>
+								<p:commandLink id="sinDeclMrh">
 								 <p:graphicImage 
 									            value="#{resource['images:mrh.png']}"
 									            width="60"
@@ -251,7 +257,7 @@
 									  </p:graphicImage>
 								</p:commandLink>
 								
-								<p:commandLink >
+								<p:commandLink id="sinDeclIA">
 								  <p:graphicImage 
 									            value="#{resource['images:indivAcc.png']}"
 									            width="60"
