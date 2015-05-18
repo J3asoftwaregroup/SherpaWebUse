@@ -24,6 +24,8 @@ import com.j3a.assurance.model.Exercice;
 import com.j3a.assurance.model.Morale;
 import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.model.Physique;
+import com.j3a.assurance.model.Quittance;
+import com.j3a.assurance.reporting.bean.ReportingAuto;
 import com.j3a.assurance.reporting.design.ConditionPartAuto;
 import com.j3a.assurance.reporting.design.QuittanceDesignAuto;
 import com.j3a.assurance.utilitaire.IdGenerateur;
@@ -188,18 +190,17 @@ public class CotationAuto implements Serializable{
 
 			getCarteGriseMB().getSlctdVehiRw().getConduHab().setDateNaissCond(
 					getClientMB().getMaPersonne().getDatePers());
-			getCarteGriseMB().getConduHab().setNonCond(
+			getCarteGriseMB().getSlctdVehiRw().getConduHab().setNonCond(
 					getClientMB().getMaPersonne().getNomRaisonSociale());
-			String lieunaiss = null, prenom = null;
 			
-			getCarteGriseMB().getConduHab().setPrenomsCond(prenom);
-			getCarteGriseMB().getConduHab().setLieuNaisCond(lieunaiss);
-			String numpiece = null;
+			getCarteGriseMB().getSlctdVehiRw().getConduHab().setPrenomsCond(getClientMB().getMonPhysique().getPrenomPers());
+			getCarteGriseMB().getSlctdVehiRw().getConduHab().setLieuNaisCond(getClientMB().getMonPhysique().getLieuNaissPers());
 			
-			getCarteGriseMB().getConduHab().setNumCond(numpiece);
-			getCarteGriseMB().getConduHab().setDureepermiscond((short) 0);
+			
+			getCarteGriseMB().getSlctdVehiRw().getConduHab().setNumCond(getClientMB().getMonPhysique().getNumPiecePers());
+			getCarteGriseMB().getSlctdVehiRw().getConduHab().setDureepermiscond((short) 0);
 			System.out.println("+++++++Conducteur habituel du Vehicule+++++++"
-					+ getCarteGriseMB().getConduHab().getNonCond());
+					+ getCarteGriseMB().getSlctdVehiRw().getConduHab().getNonCond());
 
 		}
 
@@ -269,7 +270,38 @@ public class CotationAuto implements Serializable{
 			getManagedQuittanceAuto().calculPrime();
 			getManagedQuittanceAuto().calculQuittance();
 
-			return "resumeetValidation";
+			return "Validation";
+		}
+		
+		public void sendDevis(){
+			//chargement des données pour le rapport pdf
+			ReportingAuto report = new ReportingAuto();
+			report.setAvenant(getContratMB().getAvenant());
+			report.setContrat(getContratMB().getContrat());
+			report.setListVehiculeRow(getCarteGriseMB().getVehiculeList());
+			Quittance quit = new Quittance();
+			quit.setAccessoire(getManagedQuittanceAuto().getQuittanceAuto().getAccessoire());
+			quit.setTaxes(getManagedQuittanceAuto().getQuittanceAuto().getTaxeEnr());
+			quit.setFga(getManagedQuittanceAuto().getQuittanceAuto().getTaxeFGA());
+			quit.setNetAPayer(getManagedQuittanceAuto().getQuittanceAuto().getNetteApayer());
+			report.setQuittance(quit);
+			report.setPersonne(getClientMB().getMaPersonne());
+			report.setPointVente(getContratMB().getPointVente());
+			report.setRisque(getContratMB().getRisque());
+			report.setSocieteAssurance(getContratMB().getSocieteAssurance());
+			try{
+			getConditionPartAuto().setReportingAuto(report);
+			getConditionPartAuto().editerConditionPart(report, (HttpServletRequest) FacesContext.getCurrentInstance()
+							.getExternalContext().getRequest(),
+					(HttpServletResponse) FacesContext.getCurrentInstance()
+							.getExternalContext().getResponse());
+		} catch (IOException e) {
+			logger.error("Erreur d'édition de piece", e);
+		} catch (Exception e) {
+			logger.error(
+					"Erreur lors de l'enregistrement du enregistrement du contrat Auto",
+					e);
+		}
 		}
 		
 
@@ -319,11 +351,12 @@ public class CotationAuto implements Serializable{
 			}
 			
 			// TRAITEMENT POUR LE PASSAGE DE VEHICULE A QUITTANCE
-						if (newStep.equalsIgnoreCase("ongletVehicule")
-								&& oldStep.equalsIgnoreCase("ongletConducteur")) {
+						if (newStep.equalsIgnoreCase("ongletConducteur")
+								&& oldStep.equalsIgnoreCase("ongletVehicule")) {
 							if (getClientMB().isEtatClient()==true){
 								getClientMB().majconducteur();
 								majConducteur();
+								System.out.println("conducteur"+getCarteGriseMB().getSlctdVehiRw().getConduHab().getNumCond());
 								getCarteGriseMB().getSlctdVehiRw().setConduHab(getClientMB().getConducteur());
 							}
 							System.out.println("TRAITEMENT POUR LE PASSAGE DE Vehicule A conducteur");
