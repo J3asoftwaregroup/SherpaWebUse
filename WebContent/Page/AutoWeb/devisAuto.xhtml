@@ -118,7 +118,10 @@
 												requiredMessage="Le téléphone doit etre obligatoirement renseigné" maxlength="8"/>
 					
 												<h:outputText value="Mail" style="margin-left:80px" />
-												<p:inputText value="#{cotationAuto.clientMB.maPersonne.email}"/>
+												<p:inputText value="#{cotationAuto.clientMB.maPersonne.email}" validatorMessage="L'email est incorrect">
+								       <f:validateRegex
+									     pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+							           </p:inputText>
 													
 												<h:outputText value="Fax"/>
 												<p:inputText value="#{cotationAuto.clientMB.maPersonne.fax}" />
