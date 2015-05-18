@@ -269,7 +269,7 @@ public class CotationAuto implements Serializable{
 			getManagedQuittanceAuto().calculPrime();
 			getManagedQuittanceAuto().calculQuittance();
 
-			return "resumeetValidation";
+			return "Validation";
 		}
 		
 

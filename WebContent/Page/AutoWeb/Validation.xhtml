@@ -114,7 +114,7 @@
 										<h:outputLabel style="margin-left: 200px"  value= "Total TTc mensuel :#{cotationAuto.managedQuittanceAuto.quittanceAuto.netteApayer}    Total TTc annuel: #{cotationAuto.managedQuittanceAuto.quittanceAuto.netteApayer} "/>
 											<div style="margin-left: 200px" >
 										<h:panelGrid  columns="2">	
-											<p:commandButton id="addContrats1"   value="Recevez le devis" style="width:150px;font-size:15px;margin-left: 100px" />
+											<p:commandButton id="addContrats1"  actionListener="#{cotationAuto.sendDevis}" value="Recevez le devis" style="width:150px;font-size:15px;margin-left: 100px" />
 											<p:commandButton id="addContrats2"  value="Souscrivez en ligne"  action="paiement" style="width:150px; margin-left: 20px;font-size:15px;"/>
 
 
