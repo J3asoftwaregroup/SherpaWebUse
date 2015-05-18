@@ -27,13 +27,13 @@
 											
 											<h:panelGrid columns="2">
 
-												<h:outputText value="Email " style="margin-right:65px;"></h:outputText>
+												<h:outputText value="Email* " style="margin-right:65px;"></h:outputText>
 												<p:inputText
 													value="#{cotationAuto.clientMB.maPersonne.nomRaisonSociale}"
 													style="width:150px;margin-right:20px;"  readonly="true">
 												</p:inputText>
 
-												<h:outputText value="Confirmation email:" style="margin-right:35px;" 
+												<h:outputText value="Confirmation email: *" style="margin-right:35px;" 
 													></h:outputText>
 												<p:inputText style="width:150px;margin-right:35px;"
 													value="#{cotationAuto.clientMB.monPhysique.prenomPers}"
@@ -74,8 +74,8 @@
                                  <br />
 
                    <h:outputLabel value="Acceptez vous de recevoir des offres notamment par email : " style="margin-left:0px ;font-size:15px; color:red" />   
-				<p:commandButton id="confirm" value="OUI" onclick="edition_sous.show(); sousCriat_Dialog.hide();" />
-				<p:commandButton id="decline" value="NON" onclick="sousCriat_Dialog.hide()" type="button"/>	
+				<p:commandButton id="confirm" value="OUI" onclick="" />
+				<p:commandButton id="decline" value="NON" onclick="" type="button"/>	
 							
 							<p:separator></p:separator>
 				

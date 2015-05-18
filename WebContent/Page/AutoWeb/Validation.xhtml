@@ -57,53 +57,53 @@
 
 
 												<h:outputText value="Prime Nette" style="margin-right: 30px;" />
-												<p:inputText
+												<h:outputLabel
 													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.primeNette}"
 													readonly="true" size="9"  style="width:100px;margin-right: 20px;">
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-												</p:inputText>
+												</h:outputLabel>
 
 											 <h:outputText value="Accessoires" style="margin-left: 0px;" />
-												<p:inputText style="margin-right:20px; width:100px;" id="totalAcc"
+												<h:outputLabel style="margin-right:20px; width:100px;" id="totalAcc"
 													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.totalAccessoire}"
 													readonly="false"  >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-												</p:inputText>
+												</h:outputLabel>
 
 
 												
 
 												<h:outputText value="Taxe" 
 													 />
-												<p:inputText 
+												<h:outputLabel 
 													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.taxeEnr}"
 													readonly="true" size="9"  style="width:100px;">
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-												</p:inputText>
+												</h:outputLabel>
 
 												<h:outputText value="FGA"  style="margin-right: 30px;"/>
-												<p:inputText style="margin-right: 20px; width:100px;"
+												<h:outputLabel style="margin-right: 20px; width:100px;"
 													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.taxeFGA}"
 													readonly="true" size="9" >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-												</p:inputText>
+												</h:outputLabel>
 
 												<h:outputText value="Prime Cedée"/>
-												<p:inputText
+												<h:outputLabel
 													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.primeCedee}"
 													readonly="true" size="9" style="width:100px; margin-right: 20px;" >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-												</p:inputText>
+												</h:outputLabel>
 												
 <p:separator></p:separator><p:separator></p:separator>
 
                                			 <h:outputText value="NET A PAYER (CFA)" style="margin-right:20px;"/>
-												<p:inputText
+												<h:outputLabel
 													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.netteApayer}"
 													readonly="true" size="9" style="width:110px; font-size:15px; font-weight:17px;color:red;" 
 													 styleClass="outputPayer" >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
-												</p:inputText>
+												</h:outputLabel>
                                         
 </h:panelGrid>    </fieldset>  </div>
 <br /> <br /> </h:panelGroup>
