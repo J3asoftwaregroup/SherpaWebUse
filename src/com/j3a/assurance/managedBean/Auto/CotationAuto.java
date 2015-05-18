@@ -285,8 +285,11 @@ public class CotationAuto implements Serializable{
 			quit.setFga(getManagedQuittanceAuto().getQuittanceAuto().getTaxeFGA());
 			quit.setNetAPayer(getManagedQuittanceAuto().getQuittanceAuto().getNetteApayer());
 			report.setQuittance(quit);
+			report.setNom("Devis");
 			report.setPersonne(getClientMB().getMaPersonne());
-			report.setPointVente(getContratMB().getPointVente());
+			if(getContratMB().getUtilisateur().getPointVente()!=null){
+			report.setPointVente(getContratMB().getUtilisateur().getPointVente());
+			}
 			report.setRisque(getContratMB().getRisque());
 			report.setSocieteAssurance(getContratMB().getSocieteAssurance());
 			try{
@@ -356,7 +359,7 @@ public class CotationAuto implements Serializable{
 							if (getClientMB().isEtatClient()==true){
 								getClientMB().majconducteur();
 								majConducteur();
-								System.out.println("conducteur"+getCarteGriseMB().getSlctdVehiRw().getConduHab().getNumCond());
+								//System.out.println("conducteur"+getCarteGriseMB().getSlctdVehiRw().getConduHab().getNumCond());
 								getCarteGriseMB().getSlctdVehiRw().setConduHab(getClientMB().getConducteur());
 							}
 							System.out.println("TRAITEMENT POUR LE PASSAGE DE Vehicule A conducteur");
