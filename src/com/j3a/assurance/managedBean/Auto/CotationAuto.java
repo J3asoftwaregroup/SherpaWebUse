@@ -24,6 +24,8 @@ import com.j3a.assurance.model.Exercice;
 import com.j3a.assurance.model.Morale;
 import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.model.Physique;
+import com.j3a.assurance.model.Quittance;
+import com.j3a.assurance.reporting.bean.ReportingAuto;
 import com.j3a.assurance.reporting.design.ConditionPartAuto;
 import com.j3a.assurance.reporting.design.QuittanceDesignAuto;
 import com.j3a.assurance.utilitaire.IdGenerateur;
@@ -270,6 +272,37 @@ public class CotationAuto implements Serializable{
 			getManagedQuittanceAuto().calculQuittance();
 
 			return "Validation";
+		}
+		
+		public void sendDevis(){
+			//chargement des données pour le rapport pdf
+			ReportingAuto report = new ReportingAuto();
+			report.setAvenant(getContratMB().getAvenant());
+			report.setContrat(getContratMB().getContrat());
+			report.setListVehiculeRow(getCarteGriseMB().getVehiculeList());
+			Quittance quit = new Quittance();
+			quit.setAccessoire(getManagedQuittanceAuto().getQuittanceAuto().getAccessoire());
+			quit.setTaxes(getManagedQuittanceAuto().getQuittanceAuto().getTaxeEnr());
+			quit.setFga(getManagedQuittanceAuto().getQuittanceAuto().getTaxeFGA());
+			quit.setNetAPayer(getManagedQuittanceAuto().getQuittanceAuto().getNetteApayer());
+			report.setQuittance(quit);
+			report.setPersonne(getClientMB().getMaPersonne());
+			report.setPointVente(getContratMB().getPointVente());
+			report.setRisque(getContratMB().getRisque());
+			report.setSocieteAssurance(getContratMB().getSocieteAssurance());
+			try{
+			getConditionPartAuto().setReportingAuto(report);
+			getConditionPartAuto().editerConditionPart(report, (HttpServletRequest) FacesContext.getCurrentInstance()
+							.getExternalContext().getRequest(),
+					(HttpServletResponse) FacesContext.getCurrentInstance()
+							.getExternalContext().getResponse());
+		} catch (IOException e) {
+			logger.error("Erreur d'édition de piece", e);
+		} catch (Exception e) {
+			logger.error(
+					"Erreur lors de l'enregistrement du enregistrement du contrat Auto",
+					e);
+		}
 		}
 		
 
