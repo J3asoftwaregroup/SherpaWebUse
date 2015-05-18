@@ -53,8 +53,6 @@ public class ManagedSinistre implements Serializable {
 	private ConducteurSinistre conducteurSinistre = new ConducteurSinistre();
     private VehiculeSinistre vehiculeSinistre = new VehiculeSinistre();
     private Conducteur conducteur;
-//    private boolean domageCorps;
-//	private boolean domageMat;
 	private String optionRech ="1"; 
 	private String optionConducteur = "1";
 	private String valeurDeRecherche;
@@ -125,6 +123,9 @@ public class ManagedSinistre implements Serializable {
 		getObjectService().addObject(conducteurSinistre);
 		getObjectService().addObject(vehiculeSinistre);
         getObjectService().addObject(sinistreConducteur);
+        
+        //mettre à jour les mail et le téléphone
+        	getObjectService().updateObject(monContratResum.getPersonneResum());        
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sinistre déclaré et enregistré!", ""));
         //Vder le formulaire
         viderObjet();
@@ -212,6 +213,7 @@ public class ManagedSinistre implements Serializable {
 				 
 				 //Recuperer le conducteur
 				 contratResum.setConducteurResum(recupererCondHabituel(contratResum.getVehiculeResum()));
+				 
 				  //Editer le conducteur sinistre
 				 chargerConducteurSinistre(contratResum.getConducteurResum(), conducteurSinistre);
 				 
@@ -283,7 +285,12 @@ public class ManagedSinistre implements Serializable {
 		ConduireVehicule conduireVehicule = getObjectService().recupConduireVehicule(vehicule.getCodeVehicule());
 		//Recuperation du conducteur
 		conducteur = new Conducteur();
-		conducteur = conduireVehicule.getConducteur();
+		try {
+			conducteur = conduireVehicule.getConducteur();
+		} catch (Exception e) {
+			conducteur = new Conducteur(getIdGenerateur().getIdConducteur(monContratResum.getPersonneResum()));
+			setOptionConducteur("2");
+		}
 		return conducteur;
 		
 	}

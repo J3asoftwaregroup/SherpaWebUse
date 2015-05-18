@@ -274,17 +274,13 @@
 								<p:outputLabel for="opt22" value="Autre conducteur"/>
 							</h:panelGrid>
 						
-						
-						
 						<h:panelGrid columns="6">
 							
-							<h:outputText value="Nom :" />
-							<p:inputText
-								value="#{managedSinistre.conducteurSinistre.nomCondSinistre}" />
+							<p:outputLabel for="nomCon" value="Nom :" />
+							<p:inputText id="nomCon" value="#{managedSinistre.conducteurSinistre.nomCondSinistre}" required="true" />
 							
-							<h:outputText value="Prénom :" style="margin-left: 30px !important;"/>
-							<p:inputText
-								value="#{managedSinistre.conducteurSinistre.prenomCondSinistre}" />
+							<p:outputLabel for="prenCond" value="Prénom :" style="margin-left: 30px !important;"/>
+							<p:inputText id="prenCond" value="#{managedSinistre.conducteurSinistre.prenomCondSinistre}" required="true" />
 							
 							<h:outputText value="Date de naissance :" style="margin-left: 30px !important;" />
 							<p:calendar pattern="dd/MM/yyyy" locale="fr"
@@ -292,15 +288,14 @@
 								<f:convertDateTime pattern="dd/MM/yyyy" locale="fr" />
 							</p:calendar>
 							
-							<h:outputText value="Numéro de permis :" />
-							<p:inputText
-								value="#{managedSinistre.conducteurSinistre.numPermis}" />
+							<p:outputLabel for="numPer" value="Numéro de permis :" />
+							<p:inputText id="numPer" value="#{managedSinistre.conducteurSinistre.numPermis}" required="true" />
 							
 							<p:outputLabel value="Catégorie de permis :"
-								style="margin-left: 30px !important;" />
+								style="margin-left: 30px !important;" for="catePermis" />
 							<p:selectOneMenu
 								value="#{managedSinistre.conducteurSinistre.categoriePermis}"
-								style="width:50px" >
+								style="width:50px" required="true" id="catePermis">
 								<f:selectItem itemLabel="Choisir" itemValue=" " />
 								<f:selectItem itemLabel="A" itemValue="A" />
 								<f:selectItem itemLabel="B" itemValue="B" />
