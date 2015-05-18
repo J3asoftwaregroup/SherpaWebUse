@@ -6,21 +6,17 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
 
 import org.apache.log4j.Logger;
-import org.primefaces.component.commandbutton.CommandButton;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.j3a.assurance.converter.RequetteConducteur;
 import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.Conducteur;
 import com.j3a.assurance.model.ConducteurSinistre;
@@ -29,7 +25,6 @@ import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.Facture;
 import com.j3a.assurance.model.Garantie;
 import com.j3a.assurance.model.Personne;
-import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.model.Sinistre;
 import com.j3a.assurance.model.SinistreConducteur;
 import com.j3a.assurance.model.SinistreConducteurId;
@@ -54,7 +49,6 @@ public class ManagedSinistre implements Serializable {
 	@Autowired
 	private ObjectService objectService;
 	@Autowired
-	private RequetteConducteur requetteConducteur;
 	
 	private Sinistre sinistre = new Sinistre();
 	private ConducteurSinistre conducteurSinistre = new ConducteurSinistre();
