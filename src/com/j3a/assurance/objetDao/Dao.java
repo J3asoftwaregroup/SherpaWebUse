@@ -515,6 +515,9 @@ public class Dao implements IDao {
 				.addEntity(Quittance.class).uniqueResult();
 		return quittance;
 	}
+	
+	
+	
 
 	
 
