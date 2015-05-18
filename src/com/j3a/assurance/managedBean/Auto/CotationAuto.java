@@ -186,7 +186,7 @@ public class CotationAuto implements Serializable{
 
 		public void majConducteur() {
 
-			getCarteGriseMB().getConduHab().setDateNaissCond(
+			getCarteGriseMB().getSlctdVehiRw().getConduHab().setDateNaissCond(
 					getClientMB().getMaPersonne().getDatePers());
 			getCarteGriseMB().getConduHab().setNonCond(
 					getClientMB().getMaPersonne().getNomRaisonSociale());
