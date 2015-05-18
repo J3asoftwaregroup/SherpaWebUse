@@ -1,7 +1,9 @@
 package com.j3a.assurance.managedBean.Auto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 
 import javax.faces.application.FacesMessage;
@@ -27,6 +29,7 @@ import com.j3a.assurance.model.PersonneNationaliteId;
 import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.model.Sexe;
 import com.j3a.assurance.model.TypePersonne;
+import com.j3a.assurance.model.Ville;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.utilitaire.IdGenerateur;
 
@@ -51,7 +54,8 @@ public class ClientMB implements Serializable{
 		@Autowired
 		IdGenerateur idGenerateur;
 		
-		
+		private String slctsexe;
+		private List<Sexe> sexeList;
 		private Conducteur conducteur=new Conducteur();
 		private Morale maMorale = new Morale();
 		private Physique monPhysique = new Physique();
@@ -120,7 +124,7 @@ public class ClientMB implements Serializable{
 				//Affecter la valeur des combos
 				physique.setTitre(getTittre());
 				//physique.setSexe(comboSexe.getSelectedSexe());
-				Sexe sexe=(Sexe) getObjectService().getObjectById(1, "Sexe");
+				Sexe sexe=(Sexe) getObjectService().getObjectById(getSlctsexe(), "Sexe");
 				physique.setSexe(sexe);
 				//System.out.println("----->>> Sexe du client:"+physique.getSexe().getCodeSexe());//clean after
 				physique.setTypePiece(getTypePiece());
@@ -145,20 +149,6 @@ public class ClientMB implements Serializable{
 				getObjectService().addObject(physique);
 				getObjectService().addObject(etre);
 				getObjectService().addObject(personneNationalite);
-				
-				if(isEtatClient()){
-					getConducteur().setNonCond(getMaPersonne().getNomRaisonSociale());
-					getConducteur().setDateNaissCond(getMaPersonne().getDatePers());
-					String lieunaiss = null, prenom = null;
-					
-					getConducteur().setPrenomsCond(prenom);
-					getConducteur().setLieuNaisCond(lieunaiss);
-					String numpiece = null;
-					
-					getConducteur().setNumCond(numpiece);
-					getConducteur().setDureepermiscond((short) 0);
-					
-				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -167,7 +157,7 @@ public class ClientMB implements Serializable{
 		}
        
 		public void majconducteur(){
-			if(isEtatClient()){
+			
 				getConducteur().setNonCond(getMaPersonne().getNomRaisonSociale());
 				getConducteur().setDateNaissCond(getMaPersonne().getDatePers());
 				String lieunaiss = null, prenom = null;
@@ -182,7 +172,7 @@ public class ClientMB implements Serializable{
 			}
 			
 			
-		}
+
 
 		public void addConducteur(){
 		String id=getIdGenerateur().getIdConducteur(getMaPersonne());
@@ -704,6 +694,27 @@ public class ClientMB implements Serializable{
 
 	public void setConducteur(Conducteur conducteur) {
 		this.conducteur = conducteur;
+	}
+
+	public List<Sexe> getSexeList() {
+		List<Sexe> A = new ArrayList<Sexe>();
+		for (Object c : getObjectService().getObjects("Sexe")) {  
+			A.add((Sexe) c);  
+            } 
+		
+		return A;
+	}
+
+	public void setSexeList(List<Sexe> sexeList) {
+		this.sexeList = sexeList;
+	}
+
+	public String getSlctsexe() {
+		return slctsexe;
+	}
+
+	public void setSlctsexe(String slctsexe) {
+		this.slctsexe = slctsexe;
 	}
 
 }

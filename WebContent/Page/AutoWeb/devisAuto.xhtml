@@ -62,11 +62,15 @@
 												
 												
 												<p:outputLabel for="cb_sexe" value="Sexe" style="margin-left:80px"/>
-												<p:selectOneMenu id="cb_sexe"  effect="drop">
-													<f:selectItem itemLabel="Select One" itemValue="" />
-													<f:selectItems var="sexe"
-														itemLabel="" itemValue="" />
-												</p:selectOneMenu>
+												<p:selectOneMenu id="cb_sexe" label="Sexe" 
+											value="#{cotationAuto.clientMB.slctsexe}"
+											 required="false" requiredMessage="Veillez renseigner le sexe !"
+											style="width:130px">
+											
+											<f:selectItems
+												value="#{cotationAuto.clientMB.sexeList}"
+												var="ca" itemLabel="#{ca.libelleSexe}" itemValue="#{ca.codeSexe}" />
+											</p:selectOneMenu>
 
 
 												<p:outputLabel for="cb_sitMat" value="Situation matrimoniale"/>
@@ -97,8 +101,9 @@
 												<p:inputText id="adrs" required="false" requiredMessage="L'adresse doit ÃƒÂªtre obligatoirement renseignÃƒÂ©"
 													value="#{cotationAuto.clientMB.maPersonne.adresse}"/>
 													
-												<p:outputLabel for="tel" value="Tel" style="margin-left:80px" />
-												<p:inputText id="tel"  value="#{cotationAuto.clientMB.maPersonne.telephone}" />
+												<p:outputLabel for="tel" value="Tel *" style="margin-left:80px" />
+												<p:inputText id="tel"  value="#{cotationAuto.clientMB.maPersonne.telephone}" required="true" 
+												requiredMessage="Le téléphone doit etre obligatoirement renseigné" maxlength="8"/>
 					
 												<h:outputText value="Mail" style="margin-left:80px" />
 												<p:inputText value="#{cotationAuto.clientMB.maPersonne.email}"/>
