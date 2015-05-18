@@ -43,6 +43,7 @@ public class Service implements ObjectService {
 	}
 
 	@Override
+	@Transactional
 	public Object getObjectById(int id, String objet) {
 		// TODO Auto-generated method stub
 	return	getDao().getObjectById(id, objet);
@@ -50,6 +51,7 @@ public class Service implements ObjectService {
 	}
 
 	@Override
+	@Transactional
 	public Object getObjectById(String id, String objet) {
 		// TODO Auto-generated method stub
 		return getDao().getObjectById(id, objet);
