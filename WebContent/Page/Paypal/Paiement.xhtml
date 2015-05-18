@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/templateWebAuto.xhtml">
+	<ui:define name="content">
+		
+		<h:form id="gnl">
+	<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
+		
+			<p:panel header="Paiement">
+			
+			<fieldset><legend>Choix du mode de paiement</legend>
+			
+			<p:panelGrid columns="2" >
+			<h:graphicImage value="/resources/images/ae.GIF" />
+			<h:graphicImage value="/resources/images/cb.GIF" />
+			<h:graphicImage value="/resources/images/mc.GIF" />
+			<h:graphicImage value="/resources/images/visa.GIF" />
+			<f:facet name="header">Paiement securisé</f:facet>
+			</p:panelGrid>
+			</fieldset>
+
+		<fieldset style="background-color: maroon;">	
+	 <h:commandButton value="Valider Paiement" style="margin-left:350px"></h:commandButton>
+		</fieldset>		           
+	 
+			
+        </p:panel>
+
+			</h:form>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+
+	</ui:define>
+</ui:composition>
+</html>
