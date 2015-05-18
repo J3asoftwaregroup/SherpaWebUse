@@ -14,7 +14,7 @@
 <navigation-rule>
 <from-view-id>*</from-view-id>
 <navigation-case>
-			<from-outcome>Validation</from-outcome>
+			<from-outcome>inscriptionPaypal</from-outcome>
 			<to-view-id>/Page/Paypal/inscriptionPaypal.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
