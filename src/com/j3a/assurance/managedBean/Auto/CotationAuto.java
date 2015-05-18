@@ -323,6 +323,7 @@ public class CotationAuto implements Serializable{
 								&& oldStep.equalsIgnoreCase("ongletConducteur")) {
 							if (getClientMB().isEtatClient()==true){
 								getClientMB().majconducteur();
+								majConducteur();
 								getCarteGriseMB().getSlctdVehiRw().setConduHab(getClientMB().getConducteur());
 							}
 							System.out.println("TRAITEMENT POUR LE PASSAGE DE Vehicule A conducteur");
