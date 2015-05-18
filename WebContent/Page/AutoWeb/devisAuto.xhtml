@@ -9,7 +9,19 @@
 
 <ui:composition template="/template/templateWebAuto.xhtml">
 	<ui:define name="content">
-		
+			<p:ajaxStatus styleClass="ajaxStatut">  
+	<f:facet name="prestart">
+	<h:outputText value="Starting..." />
+	</f:facet>
+	
+    <f:facet name="start">  
+        <h:graphicImage value="../../resources/images/loader16.gif"/>  
+    </f:facet>  
+      
+    <f:facet name="complete">  
+        <h:outputText value="" />  
+    </f:facet>  
+	</p:ajaxStatus> 
 		<h:form id="gnl">
 	<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
 			
