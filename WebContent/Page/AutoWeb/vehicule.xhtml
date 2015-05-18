@@ -11,20 +11,34 @@
 <ui:composition template="/template/templateWebAuto.xhtml">
 
 	<ui:define name="content">
+	<p:ajaxStatus styleClass="ajaxStatut">  
+	<f:facet name="prestart">
+	<h:outputText value="Starting..." />
+	</f:facet>
+	
+    <f:facet name="start">  
+        <h:graphicImage value="../../resources/images/loader16.gif"/>  
+    </f:facet>  
+      
+    <f:facet name="complete">  
+        <h:outputText value="" />  
+    </f:facet>  
+	</p:ajaxStatus>  
 
 			<h:form id="VehiculeProp">
 			
 			<p:wizard id="wizar"
 				flowListener="#{cotationAuto.handleflow}" widgetVar="wiz"
 				nextLabel="Suivant"
-				backLabel="Précedant" styleClass="wizardStyle" style="width:93%">
+				backLabel="Précedant" styleClass="wizardStyle" style="width:95%">
 				<p:messages id="pmessagePropVehi" showDetail="false" sticky="true" closable="true"/>
 				
 				
 
 
 				<p:tab id="ongletCategorie" title="Vehicule">
-				<fieldset class="fieldset" style="width:97%" >
+					<p:panel header="Véhicule">
+				<br />
 		
 								<h:panelGrid id="vehiProp" columns="6">
 								
@@ -242,11 +256,13 @@
 								
 								
 									</h:panelGrid>
-                                     </fieldset>
+                                     </p:panel>
 				</p:tab>
 				
 				<p:tab id="ongletImmatriculation" title="Immatriculation">
-				<fieldset class="fieldset"  style="width:97%"><legend>Immatriculation Actuelle</legend>
+					<p:panel header="Immatriculation">
+				<br />
+				
 				 <h:panelGrid columns="4">
 				               <h:outputText value="Numéro d'Immatriculation "/>
 										<p:inputText id="imat" value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.numImmat}"
@@ -268,15 +284,16 @@
 				 
 				 
 				 
-				 </fieldset>
+				 </p:panel>
 						     
-						     
-			   <fieldset class="fieldset"  style="width:97%"><legend>Immatriculation Précédente</legend>
+						<p:panel header="Immatriculation Précédente">
+				<br />	     
+			   
 			    <h:panelGrid columns="7">
 				 <h:outputText value="Numéro d'Immatriculation"/>
-				 <h:inputText value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.numImmatPrec}"
+				 <p:inputText value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.numImmatPrec}"
 				 styleClass="identifiant"
-				 ></h:inputText>
+				 ></p:inputText>
 				 <h:outputText value="Date d'Immatriculation" style="margin-left: 20px;"></h:outputText>
 				 <p:inputMask value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.dateImmatPrec}" 
 				 id="dateImmatpre" mask="99/99/9999" >
@@ -297,14 +314,15 @@
 				 </h:panelGrid>
 				 
 				 
-				 </fieldset>
+				</p:panel>
 				</p:tab>
 				
 				
 				
 				<p:tab id="ongletVehicule" title="Caractéristiques">
-				<fieldset class="fieldset" style="width:97%" >
-								<legend>Caractéristiques</legend>
+					<p:panel header="Caractéristiques">
+				<br />
+								
 								
 								<h:panelGrid id="vehiProp2" columns="6">
 								
@@ -422,7 +440,7 @@
 										readonly="true" style="width:148px" />
 										
 									</h:panelGrid>
-                                     </fieldset>
+                                     </p:panel>
 				</p:tab>
 				
 				<p:tab id="ongletConducteur" title="Conducteur">
@@ -503,7 +521,7 @@
 												
 											</h:panelGrid>
 										</p:panel>
-										<p:panel header="Informations sur le contratMB">
+										<p:panel header="Informations sur le contrat">
 											<br />
 											<h:panelGrid columns="6">
 
@@ -589,10 +607,10 @@
 						
 						
 <h:panelGrid >
-							<p:fieldset>
+							<p:panel>
 
-	<fieldset class="fieldset" style="width:97%">
-	<legend>Groupe  de Garanties </legend>
+		<p:panel header="Groupe  de Garanties ">
+				<br />
 	<p:dataTable id="garTablegroup" var="garSeltd" 
 				value="#{cotationAuto.garantieMB.listeGroupGaranties}"
 				selectionMode="single" selection="#{cotationAuto.garantieMB.selectGarantieGroup}" 
@@ -619,9 +637,10 @@
 				
 						</p:dataTable>
 	
-	</fieldset>
-	<fieldset class="fieldset" style="width:70%">
-		<legend> Garanties </legend>
+	</p:panel>
+		<p:panel header="Garanties">
+				<br />
+		
 		<h:panelGrid id="factGar">
 		<p:dataTable id="garTable" var="garanties" widgetVar="garTable"  
 			filteredValue="#{cotationAuto.garantieMB.listegarantieFiltre}"
@@ -788,10 +807,10 @@
 					
 
 									
-								</fieldset>
+								</p:panel>
 
 
-							</p:fieldset>
+							</p:panel>
 
 
 

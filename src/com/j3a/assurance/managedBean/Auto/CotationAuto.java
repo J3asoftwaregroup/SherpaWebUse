@@ -321,6 +321,10 @@ public class CotationAuto implements Serializable{
 			// TRAITEMENT POUR LE PASSAGE DE VEHICULE A QUITTANCE
 						if (newStep.equalsIgnoreCase("ongletVehicule")
 								&& oldStep.equalsIgnoreCase("ongletConducteur")) {
+							if (getClientMB().isEtatClient()==true){
+								getClientMB().majconducteur();
+								getCarteGriseMB().getSlctdVehiRw().setConduHab(getClientMB().getConducteur());
+							}
 							System.out.println("TRAITEMENT POUR LE PASSAGE DE Vehicule A conducteur");
 						}
 						

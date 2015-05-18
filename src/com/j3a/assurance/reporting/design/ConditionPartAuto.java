@@ -41,12 +41,15 @@ import com.j3a.assurance.model.ConduireVehicule;
 import com.j3a.assurance.model.Garantie;
 import com.j3a.assurance.model.GarantieChoisie;
 import com.j3a.assurance.model.GarantieGarantieChoisie;
+import com.j3a.assurance.model.GarantieGarantieChoisieId;
 import com.j3a.assurance.model.SousCatVehicule;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.model.VehiculeZoneGeographique;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.reporting.bean.ReportingAuto;
 import com.j3a.assurance.reporting.bean.factory.ReportFactoryAuto;
+import com.j3a.assurance.utilitaire.Garanties;
+import com.j3a.assurance.utilitaire.VehiculeRow;
 import com.lowagie.text.Cell;
 
 /**
@@ -78,7 +81,7 @@ public class ConditionPartAuto implements Serializable {
 	private String nomFichier;
 	private BigDecimal totalAccessoir;
 	private SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-	public static final String RESOURCE = "http://localhost:8080/Sherpa/resources/images/logo_j3a.jpg";
+	public static final String RESOURCE = "http://localhost:8080/SherpaWebUser/resources/images/logo_j3a.jpg";
 
 	// Pour la mise en forme
 	private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 28,
@@ -191,6 +194,58 @@ public class ConditionPartAuto implements Serializable {
 		  os.close();
 		  }
 	}
+	
+	public void editerConditionPart(ReportingAuto reporting,
+			HttpServletRequest request, HttpServletResponse response)
+			throws IOException, Exception {
+		// Créer le dosier de stockage des fichier générés
+		repectoire = new File("c:/Etats/Cond_Part/AUTO");
+		repectoire.mkdirs();
+		
+		if(reporting!=null){
+
+		Document document = new Document(PageSize.A4);
+		document.setMargins(20, 20, 20, 20);
+		nomFichier = "devis-" + "001" + ".pdf";
+		// step 2
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		PdfWriter.getInstance(document, baos);
+		PdfWriter.getInstance(document, new FileOutputStream(repectoire + "/"
+				+ nomFichier));
+
+		// step 3
+		document.open();
+
+		for (VehiculeRow vehiculeRow : reporting.getListVehiculeRow()) {
+			document.newPage();
+			
+		
+			try {
+
+				addContent(document, vehiculeRow);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Erreur1");
+				e.printStackTrace();
+			} catch (DocumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("Erreur2");
+			}
+		}
+
+		document.close();
+		  // setting some response headers response.setHeader("Expires", "0");
+		  response.setHeader("Cache-Control","must-revalidate, post-check=0, pre-check=0");
+//		  response.setHeader("Pragma", "public"); // setting the content type
+		  response.setContentType("application/pdf"); // the contentlength
+		  response.setContentLength(baos.size()); // write ByteArrayOutputStream to the ServletOutputStream 
+		  OutputStream os = response.getOutputStream(); 
+		  baos.writeTo(os);
+		  os.flush();
+		  os.close();
+		  }
+	}
 
 	private void addContent(Document document, Vehicule vehicule,
 			GarantieChoisie garantieChoisie,
@@ -229,6 +284,146 @@ public class ConditionPartAuto implements Serializable {
 
 		// Recap de la prime
 		createtableRecapPrime(document, garantieChoisie);
+
+		// Emagement
+		creerEmagement(document);
+
+	}
+	
+	private void addContent(Document document, VehiculeRow vehiculeRow) throws DocumentException,
+			MalformedURLException, IOException {
+		// Ajout de logo
+		Image logo = Image.getInstance(new URL(RESOURCE));
+		logo.scalePercent(40f);
+		document.add(logo);
+		/*Paragraph saut = new Paragraph();
+		addEmptyLine(saut, 1);
+		document.add(sautLigne(1));*/
+		//Ajout du nom de la societe d'assurance
+		AjouterNomEntreprise(document);
+		
+		// Entête du document
+		creerTitreDocument(document);
+
+		// Information de la quittance
+		creatTableInfo(document);
+
+		// Titre du document
+		ajoutTitre(document);
+
+		// Information du vehicule
+		VehiculeZoneGeographique vz = new VehiculeZoneGeographique();
+		vz.setVehicule(vehiculeRow.getVehi());
+		vz.setZoneGeographique(vehiculeRow.getZonGeo());
+		identifierVehicule(document, vehiculeRow.getVehi(), vz);
+
+		// conducteur du vehicule
+		ConduireVehicule cv = new ConduireVehicule();
+		if(vehiculeRow.getConduHab()!= null){
+			cv.setConducteur(vehiculeRow.getConduHab());
+		}
+		cv.setVehicule(vehiculeRow.getVehi());
+		tarifVehicule(document, vehiculeRow.getVehi(), cv);
+		
+		//creation de GarantieChoisie et ListeGarantieGarantieChoisie
+		// add Garanties
+		GarantieChoisie garchoi = new GarantieChoisie();
+
+
+
+		// Garantie Garantie choisie
+
+		List<GarantieGarantieChoisie> garantieGarantieChoisieList = new ArrayList<GarantieGarantieChoisie>();
+
+		for (Garanties G : vehiculeRow.getListegaranties()) {
+
+			// on calcul la prime
+
+			Garantie gar = new Garantie();
+			GarantieGarantieChoisie garantieGarantieChoisie = new GarantieGarantieChoisie();
+			GarantieGarantieChoisieId garantieGarantieChoisieId = new GarantieGarantieChoisieId();
+
+			gar.setCodeGarantie(G.getCodeGarantie());
+			garantieGarantieChoisieId.setCodeGarantie(gar.getCodeGarantie());
+			garantieGarantieChoisieId.setCodeGarantieChoisie(garchoi.getCodeGarantieChoisie());
+
+			garantieGarantieChoisie.setId(garantieGarantieChoisieId);
+
+			
+			garantieGarantieChoisie.setPrimeAnnuelle(G
+					.getPrimesAnnuelle());
+			garantieGarantieChoisie.setPrimeNetteAnnuelle(G
+					.getPrimesNetteAnnuelle());
+			garantieGarantieChoisie.setPrimeNetteProrata(G
+					.getPrimesProrata());
+			garantieGarantieChoisie.setMontantReduction(G
+					.getReductions());
+
+			garantieGarantieChoisie.setAutreReduction(BigDecimal.ZERO);
+			garantieGarantieChoisie.setBonus(G.getBonus());
+			garantieGarantieChoisie.setMalus(G.getMalus());
+			garantieGarantieChoisie.setReductionFlotte(BigDecimal.ZERO);
+			garantieGarantieChoisie.setReductionPermis(BigDecimal.ZERO);
+			garantieGarantieChoisie
+					.setTauxAutreReduction(BigDecimal.ZERO);
+			garantieGarantieChoisie.setTauxBonus(G.getBonus());
+			garantieGarantieChoisie.setTauxMalus(G.getMalus());
+			garantieGarantieChoisie.setTauxFlotte(BigDecimal.ZERO);
+			garantieGarantieChoisie.setTauxPermis(BigDecimal.ZERO);
+
+			// on ajoute l'ensemble dans la liste des garantiesChoisies
+			garantieGarantieChoisieList.add(garantieGarantieChoisie);
+
+		}
+
+		// Calcul du montant de la prime de la somme des garanties pour
+		// garantie choiosie
+		BigDecimal prime = BigDecimal.ZERO, primeAnnuelle = BigDecimal.ZERO, primeNetteAnnuelle = BigDecimal.ZERO, red = BigDecimal.ZERO, com = BigDecimal.ZERO, ges = BigDecimal.ZERO, con = BigDecimal.ZERO, interm = BigDecimal.ZERO, taxe = BigDecimal.ZERO, coass;
+		for (GarantieGarantieChoisie GC : garantieGarantieChoisieList) {
+			prime = prime.add(GC.getPrimeNetteProrata());
+			primeAnnuelle = primeAnnuelle.add(GC.getPrimeAnnuelle());
+			primeNetteAnnuelle = primeNetteAnnuelle.add(GC
+					.getPrimeNetteAnnuelle());
+			red = red.add(GC.getMontantReduction());
+			/*
+			 * com =
+			 * com.add(GC.getTauxCom().multiply(prime).divide(BigDecimal
+			 * .valueOf(100))); con =
+			 * con.add(GC.getTauxConsIa().multiply
+			 * (prime).divide(BigDecimal.valueOf(100))); interm =
+			 * interm.
+			 * add(GC.getTauxintermIa().multiply(prime).divide(BigDecimal
+			 * .valueOf(100))); ges =
+			 * ges.add(GC.getTauxGesIa().multiply(
+			 * prime).divide(BigDecimal.valueOf(100)));
+			 */
+			// coass = coass+GT.getT*prime/100;
+			taxe = taxe.add(prime.divide(BigDecimal.valueOf(0.03), 2));
+		}
+		garchoi.setPrimeNetteProrata(prime);
+		garchoi.setPrimeNetteAnnuelle(primeAnnuelle);
+		garchoi.setPrimeAnnuelle(primeNetteAnnuelle);
+
+		garchoi.setBonus(BigDecimal.ZERO);
+		garchoi.setMalus(BigDecimal.ZERO);
+		garchoi.setReductionSocioProf(BigDecimal.ZERO);
+		garchoi.setReductionPermis(BigDecimal.ZERO);
+		garchoi.setReductionCommercial(BigDecimal.ZERO);
+		garchoi.setAutre(BigDecimal.ZERO);
+		garchoi.setMontantReduction(BigDecimal.ZERO);
+
+		garchoi.setAccessoireauto(BigDecimal.ZERO);
+		// garchoi.setMontantGarantieIa(G.getMontantGarantie());
+		// garchoi.setTaux(new Float(G.getTaux()));
+		// Ajout taux de la franchise
+
+
+		// Tableau de garantie
+		creerTableauGaranties(document, garantieGarantieChoisieList,
+				garchoi);
+
+		// Recap de la prime
+		createtableRecapPrime(document, garchoi);
 
 		// Emagement
 		creerEmagement(document);
@@ -741,6 +936,7 @@ public class ConditionPartAuto implements Serializable {
 	// Recap de la prime
 	public void createtableRecapPrime(Document document,
 			GarantieChoisie garantieChoisie) throws DocumentException {
+		
 		PdfPTable tableTotall = new PdfPTable(2);
 		PdfPCell cell;
 
