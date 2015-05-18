@@ -215,8 +215,9 @@ public class ConditionPartAuto implements Serializable {
 
 		// step 3
 		document.open();
-
+		System.out.println("Avant le véhicule");
 		for (VehiculeRow vehiculeRow : reporting.getListVehiculeRow()) {
+			System.out.println("dans le véhicule");
 			document.newPage();
 			
 		
@@ -261,6 +262,7 @@ public class ConditionPartAuto implements Serializable {
 		addEmptyLine(saut, 1);
 		document.add(sautLigne(1));*/
 		//Ajout du nom de la societe d'assurance
+		System.out.println("Entète du document");
 		AjouterNomEntreprise(document);
 		
 		// Entête du document
@@ -344,12 +346,14 @@ public class ConditionPartAuto implements Serializable {
 			GarantieGarantieChoisieId garantieGarantieChoisieId = new GarantieGarantieChoisieId();
 
 			gar.setCodeGarantie(G.getCodeGarantie());
+			gar.setLibelleGarantie(G.getLibelleGarantie());
+			gar.setFranchise(G.getFranchise());
 			garantieGarantieChoisieId.setCodeGarantie(gar.getCodeGarantie());
 			garantieGarantieChoisieId.setCodeGarantieChoisie(garchoi.getCodeGarantieChoisie());
-
+			
 			garantieGarantieChoisie.setId(garantieGarantieChoisieId);
 
-			
+			garantieGarantieChoisie.setGarantie(gar);
 			garantieGarantieChoisie.setPrimeAnnuelle(G
 					.getPrimesAnnuelle());
 			garantieGarantieChoisie.setPrimeNetteAnnuelle(G
@@ -375,6 +379,7 @@ public class ConditionPartAuto implements Serializable {
 			garantieGarantieChoisieList.add(garantieGarantieChoisie);
 
 		}
+		System.out.println("Liste Garantie "+garantieGarantieChoisieList.size());
 
 		// Calcul du montant de la prime de la somme des garanties pour
 		// garantie choiosie
@@ -442,6 +447,7 @@ public class ConditionPartAuto implements Serializable {
 
 	private void creatTableInfo(Document document) throws DocumentException {
 		// Info sur le Souscripteur
+		System.out.println("Info sur le Souscripteur");
 		PdfPTable tabSous = new PdfPTable(4);
 		tabSous.setWidths(new int[] { 15, 20, 15, 20 });
 
@@ -450,40 +456,66 @@ public class ConditionPartAuto implements Serializable {
 
 		// 1er ligne
 		tabSous.addCell(new Phrase("Nom:", normalText));
+		if(reportingAuto.getNom()==null){
+			cell = new PdfPCell(new Phrase("", smallText));
+			}else{
+		
 		cell = new PdfPCell(new Phrase(reportingAuto.getNom(), smallText));
+	   }
 		cell.setBorder(Rectangle.NO_BORDER);
 		cell.setColspan(3);
 		tabSous.addCell(cell);
-
 		// 2em ligne
 		tabSous.addCell(new Phrase("Adresse:", normalText));
+		if(reportingAuto.getPersonne().getAdresse()==null){
+			cell = new PdfPCell(new Phrase("", smallText));
+		}else{
+		
 		cell = new PdfPCell(new Phrase(
 				reportingAuto.getPersonne().getAdresse(), smallText));
+			}
 		cell.setBorder(Rectangle.NO_BORDER);
 		tabSous.addCell(cell);
 		tabSous.addCell(new Phrase("Tel:", normalText));
+		if(reportingAuto.getPersonne().getTelephone()==null){
+			tabSous.addCell(new Phrase("",smallText));
+		}else{
 		tabSous.addCell(new Phrase(reportingAuto.getPersonne().getTelephone(),
 				smallText));
-
+		}
 		// 3em ligne
 		tabSous.addCell(new Phrase("Mail:", normalText));
-		cell = new PdfPCell(new Phrase(reportingAuto.getPersonne().getEmail(),
-				smallText));
+		if(reportingAuto.getPersonne().getEmail()!=null){
+			cell = new PdfPCell(new Phrase(reportingAuto.getPersonne().getEmail(),
+					smallText));
+		}else{
+			cell = new PdfPCell(new Phrase("",
+					smallText));
+		}
+		System.out.println("Info sur le Souscripteur3");
+		
 		cell.setBorder(Rectangle.NO_BORDER);
 		tabSous.addCell(cell);
 		tabSous.addCell(new Phrase("Fax:", normalText));
-		tabSous.addCell(new Phrase(reportingAuto.getPersonne().getFax(),
-				smallText));
-
+		if(reportingAuto.getPersonne().getFax()!=null){
+			tabSous.addCell(new Phrase(reportingAuto.getPersonne().getFax(),
+				smallText));}else{
+		tabSous.addCell(new Phrase("",smallText));}
+		System.out.println("Info sur le Souscripteur4");
 		// 4em ligne
 		tabSous.addCell(new Phrase("Intermédiaire:", normalText));
 		cell = new PdfPCell(new Phrase("non renseigné"));
 		cell.setBorder(Rectangle.NO_BORDER);
 		tabSous.addCell(cell);
 		tabSous.addCell(new Phrase("Réseaux:", normalText));
-		tabSous.addCell(new Phrase(reportingAuto.getPointVente()
-				.getLibellePointVente(), smallText));
-
+		if(reportingAuto.getPointVente().getLibellePointVente()!=null){
+			tabSous.addCell(new Phrase(reportingAuto.getPointVente()
+					.getLibellePointVente(), smallText));
+		}else{
+		
+		tabSous.addCell(new Phrase("", smallText));
+		}
+		System.out.println("Info sur le Souscripteur5");
 		// Tableau général information
 		PdfPTable tabInfo = new PdfPTable(3);
 		tabInfo.setWidthPercentage(100);
@@ -500,7 +532,7 @@ public class ConditionPartAuto implements Serializable {
 		cellTitre.setBackgroundColor(BaseColor.LIGHT_GRAY);
 		cellTitre.setHorizontalAlignment(Element.ALIGN_CENTER);
 		tabInfo.addCell(cellTitre);
-
+		
 		// Info sur la quittance
 		PdfPTable tabQuit = new PdfPTable(4);
 		tabQuit.setWidths(new int[] { 21, 29, 21, 29 });
@@ -508,43 +540,72 @@ public class ConditionPartAuto implements Serializable {
 
 		// 1er ligne
 		tabQuit.addCell(new Phrase("Police:", normalText));
-		tabQuit.addCell(new Phrase(reportingAuto.getContrat().getNumPolice(),smallText));
-
+		if(reportingAuto.getContrat().getNumPolice()!=null){
+			tabQuit.addCell(new Phrase(reportingAuto.getContrat().getNumPolice(),smallText));
+		}else{
+		
+		tabQuit.addCell(new Phrase("",smallText));
+		}
 		tabQuit.addCell(new Phrase("Categorie:", normalText));
-		tabQuit.addCell(new Phrase(reportingAuto.getRisque().getCodeRisque(), smallText));
+		if(reportingAuto.getRisque().getCodeRisque()!=null){
+			tabQuit.addCell(new Phrase(reportingAuto.getRisque().getCodeRisque(), smallText));
+			}else{
+				tabQuit.addCell(new Phrase("", smallText));
+			}
+		
+		
 
 		// 2em ligne
 		tabQuit.addCell(new Phrase("Avenant:", normalText));
-		cell = new PdfPCell(new Phrase(reportingAuto.getAvenant().getNumAvenant(),
-				smallText));
+		if(reportingAuto.getAvenant().getNumAvenant()!=null){
+			cell = new PdfPCell(new Phrase(reportingAuto.getAvenant().getNumAvenant(),
+					smallText));}else{cell = new PdfPCell(new Phrase("",
+							smallText));
+		}
 		
 		cell.setBorder(Rectangle.NO_BORDER);
 
 		tabQuit.addCell(cell);
 		tabQuit.addCell(new Phrase("Mouvement:", normalText));
-		tabQuit.addCell(new Phrase(reportingAuto.getAvenant().getMouvement(),
-				smallText));
+		if(reportingAuto.getAvenant().getMouvement()!=null){tabQuit.addCell(new Phrase(reportingAuto.getAvenant().getMouvement(),
+				smallText));}else{tabQuit.addCell(new Phrase("",
+						smallText));
+				}
+		System.out.println("Info sur le Souscripteur5");
 
 		// 3e Ligne
 		tabQuit.addCell(new Phrase("Effet:", normalText));
-		cell = new PdfPCell(new Phrase(sdf.format(reportingAuto.getAvenant().getEffet()), smallText));
+		if(reportingAuto.getAvenant().getEffet()!=null){cell = new PdfPCell(new Phrase(sdf.format(reportingAuto.getAvenant().getEffet()), smallText));}else{
+			cell = new PdfPCell(new Phrase("", smallText));
+		}
+		
+	
 		cell.setBorder(Rectangle.NO_BORDER);
 
 		tabQuit.addCell(cell);
 		tabQuit.addCell(new Phrase("Echéance:", normalText));
-		tabQuit.addCell(new Phrase(sdf.format(reportingAuto.getAvenant()
-				.getEcheance()), smallText));
+		if(reportingAuto.getAvenant().getEcheance()!=null){cell = new PdfPCell(new Phrase(sdf.format(reportingAuto.getAvenant().getEcheance()), smallText));}else{
+			cell = new PdfPCell(new Phrase("", smallText));
+		}
 
 		// 4e Ligne
 		tabQuit.addCell(new Phrase("Barème:", normalText));
-		cell = new PdfPCell(new Phrase(reportingAuto.getContrat().getBareme(),
-				smallText));
+		if(reportingAuto.getContrat().getBareme()!=null){cell = new PdfPCell(new Phrase(reportingAuto.getContrat().getBareme(),
+				smallText));}else{
+					cell = new PdfPCell(new Phrase("",
+							smallText));
+				}
+		
 		cell.setBorder(Rectangle.NO_BORDER);
 
 		tabQuit.addCell(cell);
 		tabQuit.addCell(new Phrase("Durée:", normalText));
-		tabQuit.addCell(new Phrase("" + reportingAuto.getAvenant().getDuree(),
-				smallText));
+		if(reportingAuto.getAvenant().getDuree()!=null){tabQuit.addCell(new Phrase("" + reportingAuto.getAvenant().getDuree(),
+				smallText));}else{
+					tabQuit.addCell(new Phrase("",
+							smallText));
+				}
+		
 
 		tabInfo.addCell(tabSous);
 		cell = new PdfPCell(new Phrase(""));
@@ -555,9 +616,11 @@ public class ConditionPartAuto implements Serializable {
 		
 		tabInfo.setSpacingAfter(15);
 		document.add(tabInfo);
+		System.out.println("Fin info");
 	}
 
 	private static void ajoutTitre(Document document) throws DocumentException{
+		System.out.println("Ajout titre");
 		Paragraph titre = new Paragraph();
 		Paragraph paragraph = new Paragraph("CONDITIONS PARTICULIERES", TITRE3);
 		paragraph.setAlignment(Element.ALIGN_CENTER);
@@ -568,7 +631,7 @@ public class ConditionPartAuto implements Serializable {
 	
 	
 	public void AjouterNomEntreprise(Document document) throws DocumentException{
-		Paragraph societeAssurance = new Paragraph(getReportingAuto().getSocieteAssurance().getAbrege());
+		Paragraph societeAssurance = new Paragraph(reportingAuto.getSocieteAssurance().getAbrege());
 		societeAssurance.setAlignment(Element.ALIGN_LEFT);
 		document.add(societeAssurance);
 	}
@@ -577,6 +640,7 @@ public class ConditionPartAuto implements Serializable {
 			VehiculeZoneGeographique vehiculeZoneGeographique)
 			throws DocumentException {
 		// Tableau général information
+		System.out.println("debut Identité vehicule");
 		PdfPTable tableauVehicul = new PdfPTable(6);
 		tableauVehicul.setWidthPercentage(100);
 		tableauVehicul.setWidths(new int[] { 16, 16, 16, 16, 16, 16 });
@@ -705,12 +769,14 @@ public class ConditionPartAuto implements Serializable {
 		tableauVehicul.addCell(cellCont);
 
 		document.add(tableauVehicul);
+		System.out.println("fin Identité vehicule");
 	}
 
 	// Tableau detail Vehicule
 	public void tarifVehicule(Document document, Vehicule vehicule,
 			ConduireVehicule conduireVehicule) throws DocumentException {
 		// Tableau général information
+		System.out.println("debut Tarif véhicule");
 		PdfPTable tableauVehicul = new PdfPTable(6);
 		tableauVehicul.setWidthPercentage(100);
 		tableauVehicul.setWidths(new int[] { 16, 16, 16, 16, 16, 16 });
@@ -725,7 +791,7 @@ public class ConditionPartAuto implements Serializable {
 				.getTarif(), smallText));
 		tableauVehicul.addCell(cellLib);
 		tableauVehicul.addCell(cellCont);
-
+		System.out.println("Tarif véhicule1");
 		// 2e colonne
 		cellLib = new PdfPCell(new Phrase("Catégorie", normalText));
 		cellCont = new PdfPCell(new Phrase(vehicule.getSousCatVehicule()
@@ -735,18 +801,20 @@ public class ConditionPartAuto implements Serializable {
 
 		// 3e colonne
 		cellLib = new PdfPCell(new Phrase("Conducteur habituel", normalText));
-		if (conduireVehicule != null) {
+		if (conduireVehicule != null && conduireVehicule
+				.getConducteur().getNonCond()!=null ) {
 			cellCont = new PdfPCell(new Phrase(conduireVehicule
 					.getConducteur().getNonCond(), smallText));
 		} else {
 			cellCont = new PdfPCell(new Phrase("", smallText));
 		}
+		System.out.println("Tarif véhicule2");
 		tableauVehicul.addCell(cellLib);
 		tableauVehicul.addCell(cellCont);
 
 		tableauVehicul.setSpacingAfter(10);
 		document.add(tableauVehicul);
-
+		System.out.println("fin Tarif véhicule");
 	}
 
 	// Tableau de recap des garanties
@@ -760,7 +828,7 @@ public class ConditionPartAuto implements Serializable {
 		PdfPCell cell;
 		PdfPCell cellLib;
 		PdfPCell cellCont;
-
+		System.out.println("Tableau de recap des garanties");
 		// Titre du tableau
 		cell = new PdfPCell(new Phrase("GARANTIES SOUSCRITES", normalTitle));
 		cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
@@ -840,6 +908,7 @@ public class ConditionPartAuto implements Serializable {
 		// Fonction de la taille des garanties souscrite
 		for (GarantieGarantieChoisie occurenceGartGartChoisie : listGartGartChoisies) {
 			// Recuperer la gartgartchoisie
+			
 			GarantieGarantieChoisie garantieGarantieChoisie = new GarantieGarantieChoisie();
 			garantieGarantieChoisie = occurenceGartGartChoisie;
 			// recup la garantie
@@ -852,27 +921,24 @@ public class ConditionPartAuto implements Serializable {
 					smallText));// Garanties
 			cellCont.setHorizontalAlignment(Element.ALIGN_LEFT);
 			tableauGaranties.addCell(cellCont);
-
+			System.out.println(" Recuperer la gartgartchoisie2");
 			// 2e Colonne
 			cellCont = new PdfPCell(new Phrase(""
 					+ garantieGarantieChoisie.getPrimeNetteProrata().setScale(
 							2, BigDecimal.ROUND_HALF_UP), smallText));// Nature-Franchise
 			cellCont.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			tableauGaranties.addCell(cellCont);
-
 			// 3e Colonne
 			cellCont = new PdfPCell(new Phrase("" + garantie.getFranchise(),
 					smallText));
 			cellCont.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			tableauGaranties.addCell(cellCont);
-
 			// 4e Colonne
 			cellCont = new PdfPCell(new Phrase(""
 					+ garantieGarantieChoisie.getPrimeAnnuelle().setScale(2,
 							BigDecimal.ROUND_HALF_UP), smallText));
 			cellCont.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			tableauGaranties.addCell(cellCont);
-
 			// 5e Colonne
 			cellCont = new PdfPCell(new Phrase(""
 					+ garantieGarantieChoisie.getBonus().setScale(2,
@@ -915,14 +981,13 @@ public class ConditionPartAuto implements Serializable {
 							2, BigDecimal.ROUND_HALF_UP), smallText));
 			cellCont.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			tableauGaranties.addCell(cellCont);
-
 		}
 
 		cellLib = new PdfPCell(new Phrase("Total", normalText));
 		cellLib.setHorizontalAlignment(Element.ALIGN_LEFT);
 		cellLib.setColspan(10);
 		tableauGaranties.addCell(cellLib);
-
+		System.out.println(" Recuperer la gartgartchoisie out");
 		cellCont = new PdfPCell(new Phrase(""
 				+ garantieChoisie.getPrimeNetteProrata().setScale(2,
 						BigDecimal.ROUND_HALF_UP), smallText));
@@ -939,7 +1004,7 @@ public class ConditionPartAuto implements Serializable {
 		
 		PdfPTable tableTotall = new PdfPTable(2);
 		PdfPCell cell;
-
+		System.out.println(" Recuperer la garchoisie");
 		cell = new PdfPCell(new Phrase("Prime nette:", normalText));
 		cell.setBorder(Rectangle.NO_BORDER);
 		tableTotall.addCell(cell);
@@ -1008,10 +1073,14 @@ public class ConditionPartAuto implements Serializable {
 
 	// Emargement
 	public void creerEmagement(Document document) throws DocumentException {
-
+String pv = "Abidjan2";
+System.out.println(" Fin de document debut");
+if(reportingAuto.getPointVente().getVille()!=null){
+	pv = reportingAuto.getPointVente().getVille()
+			.getLibelleVille();
+}
 		Paragraph dateJour = new Paragraph(new Chunk("Fait en 3 exemplaires à "
-				+ reportingAuto.getPointVente().getVille()
-						.getLibelleVille() + ", le " + sdf.format(new Date())));
+				+ pv + ", le " + sdf.format(new Date())));
 		dateJour.setIndentationLeft(200);
 
 		PdfPTable tabEmerg = new PdfPTable(3);
@@ -1038,6 +1107,7 @@ public class ConditionPartAuto implements Serializable {
 		tabEmerg.setSpacingBefore(15);
 		document.add(dateJour);
 		document.add(tabEmerg);
+		System.out.println(" Fin de document fin");
 	}
 
 	public static void addEmptyLine(Paragraph paragraph, int nbrLigne) {
