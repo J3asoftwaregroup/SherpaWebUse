@@ -796,14 +796,14 @@
 						<h:panelGrid id="cmdPrime" columns="6" style="margin-bottom:0px">
 							
 							<h:outputText value=""></h:outputText> 
-							<p:commandButton id="validerPrime" value="Valider la Prime"
+							<h:commandButton id="validerPrime" value="Valider la Prime"
 								actionListener="#{cotationAuto.ValiderCotation}" disabled="#{cotationAuto.garantieMB.vuePrimes}"
 								update=":VehiculeProp:cmdPrime, :VehiculeProp:panelPrimes"
 								process="@this"
-								 icon="ui-icon-check" style="width:150px"
+								 icon="ui-icon-check"  style="width:150px;height:40px;margin-left:250px;font-size:12px;border-radius:20px;" 
 								 />
 
-							<p:commandButton value="Recap de la Prime" action="#{cotationAuto.voirQuittance}"  style="margin-left:350px"></p:commandButton>	
+							<h:commandButton value="Recapitulatif de la Prime" action="#{cotationAuto.voirQuittance}"  style="width:150px;height:40px; margin-left:50px;font-size:12px;border-radius:20px;" />	
 						</h:panelGrid>
 
 					
