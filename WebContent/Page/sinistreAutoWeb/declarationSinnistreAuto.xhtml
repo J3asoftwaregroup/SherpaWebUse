@@ -151,9 +151,8 @@
           </h:panelGrid>
           
                   	<hr style="color:white; background-color:#E6E6E6;" size="7"/>
-          
-        
-					<fieldset id="save_sinistre" style="background-color: #DDECDF">
+         
+					<fieldset >
 						<legend>Formulaire d'enregistrement</legend>
 						
 						<h:panelGrid columns="6" border="0">
@@ -208,8 +207,9 @@
 						</h:panelGrid>
 					</fieldset>
 
+					<hr style="color:white; background-color:#E6E6E6;" size="7"/>
 
-					<fieldset style="background-color: #DDECDF">
+					<fieldset>
 						<legend>Informations Sinistre</legend>
 						<h:panelGrid columns="4">
 						
@@ -253,13 +253,15 @@
 						
 					</fieldset>
 					
+				<hr style="color:white; background-color:#E6E6E6;" size="7"/>
+					
 			 </p:panel>
         </p:tab>
 					
 					<p:tab id="conduc" title="Conducteur">
         	<p:panel header="Conducteur lors du sinistre">
 
-					<fieldset style="background-color: #DDECDF"> 
+					<fieldset> 
 						<legend>Informations Conducteur Sinistre</legend>
 						
 						<p:selectOneRadio id="customRadio1" value="#{managedSinistre.optionConducteur}" layout="custom">
@@ -352,11 +354,11 @@
 				<p:column selectionMode="single" style="width:16px;text-align:center"/>
 				
 				<p:column headerText="Police">
-			    <h:outputText value="#{var.policeResum.id}" style="text-align:center"/>
+			    <h:outputText value="#{var.policeResum.numPolice}" style="text-align:center"/>
 				</p:column>
 				
 			    <p:column headerText="N° Souscripteur">
-			    <h:outputText value="#{var.personneResum.id}" style="text-align:center"/>
+			    <h:outputText value="#{var.personneResum.numSouscripteur}" style="text-align:center"/>
 			    </p:column>
 			    
 			    <p:column headerText="Nom  Prénoms">

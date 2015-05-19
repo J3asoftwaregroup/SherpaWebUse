@@ -268,6 +268,7 @@ public class ManagedSinistre implements Serializable {
 	}
 	
 	
+	@Transactional
 	public void chargerlechoix(){
 		//Charger la liste
 		listeContratResum.add(selectedContratResumVeh);
@@ -276,6 +277,7 @@ public class ManagedSinistre implements Serializable {
 		
 		//Recuperer le conducteur
 		monContratResum.setConducteurResum(recupererCondHabituel(monContratResum.getVehiculeResum()));
+
 		//Charger 
 		chargerConducteurSinistre(monContratResum.getConducteurResum(), conducteurSinistre);
 	}
@@ -298,6 +300,9 @@ public class ManagedSinistre implements Serializable {
 
 	public void chargerConducteurSinistre(Conducteur paramCond, ConducteurSinistre paramCondSinist){
 		//Renseigner le conducteurSinistre par les info du conducteur
+			System.out.println("------>>conducteur du sinistre:"+paramCond.getNumCond());
+			System.out.println("------>>conducteur du sinistre:"+paramCond.getNonCond());
+
 		paramCondSinist.setNomCondSinistre(paramCond.getNonCond());
 		paramCondSinist.setPrenomCondSinistre(paramCond.getPrenomsCond());
 		paramCondSinist.setDateNaissCondSinistre(paramCond.getDateNaissCond());
