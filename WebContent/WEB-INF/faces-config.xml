@@ -17,6 +17,24 @@
 			<from-outcome>inscriptionPaypal</from-outcome>
 			<to-view-id>/Page/Paypal/inscriptionPaypal.xhtml</to-view-id>
 			<redirect />
-		</navigation-case>
+</navigation-case>
+
+
+
+<navigation-case>
+			<from-outcome>vehicule</from-outcome>
+			<to-view-id>/Page/AutoWeb/vehicule.xhtml</to-view-id>
+			<redirect />
+</navigation-case>
+
+<navigation-case>
+			<from-outcome>Validation</from-outcome>
+			<to-view-id>/Page/AutoWeb/Validation.xhtml</to-view-id>
+			<redirect />
+</navigation-case>
 </navigation-rule>
+
+
+
+
 </faces-config>
