@@ -3,10 +3,6 @@
 .identifiant{
   text-transform : uppercase;
 }
-.ajaxStatut{
-	width:16px;
-	height:16px;
-}
 .tabviewCarteG{
 width: 1000px;
 	height:400px;
@@ -561,124 +557,264 @@ height: auto !important;
 }
 
 
+/*/////////////////////////////////////
+		    Le Splash
+/////////////////////////////////////*/
+#splash {
+        position: fixed;
+        top:70px;
+        left:50px;
+		height:500px;
+        width: 1300px;
+        border :5px;
+        z-index: 1;
+		background-image:url(../resources/images/SherpaSplash2.png);
+		background-repeat: no-repeat;
+}
+
+
+
+
+
+
+#splash ul {
+	display:block;
+	position:relative;
+	left:270px;
+	top:290px;
+	margin:5px;
+	list-style:none;
+}
+
+#splash ul li{
+	float:left;
+	margin:5px;
+	list-style:none;
+}
+
+
+
 
 
 /*/////////////////////////////////////
 		    Le Splash
 /////////////////////////////////////*/
 
-.souscrip{
-	height:120px;
-	width:120px;
+.dashBoard{
+	height:45px;
+	width:122px;
 	display:block;
-	background-image:url(../resources/images/souscription.png);
+	background-image:url(../resources/images/DashBoard-NonSlctd.jpg);
 }
 
-.souscrip:hover{
-	height:120px;
-	width:120px;
+.dashBoard:hover{
+	height:45px;
+	width:122px;
 	display:block;
-	background-image:url(../resources/images/souscriptionHover.png);
-}
-
-.blankTale{
-        display: block;
-        width: 120px ;
-        height: 120px;
-        background-image:url(../resources/images/blankTale.png);
-       
-    }
-    
- .blankTale:hover {
-     display: block;
-     width: 120px;
-     height: 120px;
-     background-image:url(../resources/images/blankTaleHover.png);
- }
- 
- .declarSin{
-        display: block;
-        width: 120px ;
-        height: 120px;
-        background-image:url(../resources/images/DeclaratioSin.png);
-       
-    }
-    
- .declarSin:hover {
-     display: block;
-     width: 120px;
-     height: 120px;
-     background-image:url(../resources/images/DeclaratioSinHover.png);
- }
- 
-  .connex{
-        display: block;
-        width: 120px ;
-        height: 120px;
-        background-image:url(../resources/images/connexion.png);
-       
-    }
-    
- .connex:hover {
-     display: block;
-     width: 120px;
-     height: 120px;
-     background-image:url(../resources/images/connexionHover.png);
- }
- 
-   .cotation{
-        display: block;
-        width: 120px ;
-        height: 120px;
-        background-image:url(../resources/images/cotation.png);
-       
-    }
-    
- .cotation:hover {
-     display: block;
-     width: 120px;
-     height: 120px;
-     background-image:url(../resources/images/cotationHover.png);
- }
-
-.ui-icon { 
-   	height:inherit; 
-	width:100%;
-	background-color:white;
-	background:  url(#{resource['images:configuration.png']}) no-repeat top left;
-    /* background-image: url(#{resource['images:configuration.png']});  */
+	background-image:url(../resources/images/DashBoard-Slctd.jpg);
 }
 
 
+.PrdAuto{
+	height:45px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/ProdAuto-NonSlctd.jpg);
+}
 
-.image {
-	width:100%
-   background:  url(#{resource['images:configuration.png']}) no-repeat top left;
+.PrdAuto:hover{
+	height:45px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/ProdAuto-Slctd.jpg);
+}
+
+.Sante{
+	height:46px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/sante-NonSlctd.jpg);
+}
+
+.Sante:hover{
+	height:46px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/sante-Slctd.jpg);
+}
+
+.Sante2{
+	height:56px;
+	width:152px;
+	display:block;
+	background-image:url(../resources/images/sante-NonSlctd2.jpg);
+}
+
+.Sante2:hover{
+	height:57px;
+	width:153px;
+	display:block;
+	background-image:url(../resources/images/sante-Slctd2.jpg);
+}
+
+.NTA{
+	height:46px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/RNTA-NonSlctd.jpg);
+}
+
+.NTA:hover{
+	height:46px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/RNTA-Slctd.jpg);
+}
+
+
+.PrdTP{
+	height:46px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/ProdTP-NonSlctd.jpg);
+}
+
+.PrdTP:hover{
+	height:45px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/ProdTP-Slctd.jpg);
+}
+
+.MRH{
+	height:45px;
+	width:121px;
+	display:block;
+	background-image:url(../resources/images/MRH-NonSlctd.jpg);
+}
+
+.MRH:hover{
+	height:46px;
+	width:121px;
+	display:block;
+	background-image:url(../resources/images/MRH-Slctd.jpg);
+}
+
+.IndivAccid{
+	height:46px;
+	width:121px;
+	display:block;
+	background-image:url(../resources/images/IndivAccid-NonSlctd.jpg);
+}
+
+.IndivAccid:hover{
+	height:46px;
+	width:121px;
+	display:block;
+	background-image:url(../resources/images/IndivAccid-Slctd.jpg);
+}
+
+.Admin{
+	height:46px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/Admin-NonSlctd.jpg);
+}
+.Admin:hover{
+	height:45px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/Admin-Slctd.jpg);
+}
+
+.Production:hover{
+	height:56px;
+	width:152px;
+	display:block;
+	background-image:url(../resources/images/Production-Slctd.jpg);
+}
+
+.Production{
+	height:57px;
+	width:153px;
+	display:block;
+	background-image:url(../resources/images/Production-NonSlctd.jpg);
 }
 
 
 
-.wu_Ppl_Left{
-	width:66%;
-	text-align: center;
-}
-.wu_Ppl_Right{
-	width:34%;
-	text-align: center;
-}
-.wu_Ppl_Left_tales{
-	width:33%;
-	text-align: center;
-	height: 60px;
+.Sinistre{
+	height:57px;
+	width:153px;
+	display:block;
+	background-image:url(../resources/images/Sinstre-NonSlctd.jpg);
 }
 
+.Sinistre:hover{
+	height:56px;
+	width:152px;
+	display:block;
+	background-image:url(../resources/images/Sinistre-Slctd.jpg);
+}
+
+.SinFacAM{
+	height:57px;
+	width:227px;
+	display:block;
+	background-image:url(../resources/images/FacAM-NonSlctd-.jpg);
+}
+
+.SinFacAM:hover{
+	height:56px;
+	width:227px;
+	display:block;
+	background-image:url(../resources/images/FacAM-Slctd-.jpg);
+}
 
 
+.SinFacTer{
+	height:57px;
+	width:227px;
+	display:block;
+	background-image:url(../resources/images/FacTer-NonSlctd-.jpg);
+}
 
-/*/////////////////////////////////////
-		    Le Splash Fin
-/////////////////////////////////////*/
+.SinFacTer:hover{
+	height:57px;
+	width:227px;
+	display:block;
+	background-image:url(../resources/images/FacTer-Slctd-.jpg);
+}
 
+
+.SinCorpsAM{
+	height:57px;
+	width:227px;
+	display:block;
+	background-image:url(../resources/images/CorpsAM-NonSlctd-.jpg);
+}
+
+.SinCorpsAM:hover{
+	height:57px;
+	width:227px;
+	display:block;
+	background-image:url(../resources/images/CorpsAM-Slctd-.jpg);
+}
+
+
+.Caisse{
+	height:46px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/Caisse-NonSlctd.jpg);
+}
+
+.Caisse:hover{
+	height:45px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/Caisse-Slctd.jpg);
+}
 
 .outPutKer{
 	color:red;
@@ -687,7 +823,103 @@ height: auto !important;
 	font-weight: 900;
 	
 }
+.Maritime{
+	height:57px;
+	width:153px;
+	display:block;
+	background-image:url(../resources/images/Maritime-NonSlctd.jpg);
+}
 
+.Maritime:hover{
+	height:56px;
+	width:152px;
+	display:block;
+	background-image:url(../resources/images/Maritime-Slctd.jpg);
+}
+.Aerien{
+	height:57px;
+	width:153px;
+	display:block;
+	background-image:url(../resources/images/Aerien-NonSlctd.jpg);
+}
+
+.Aerien:hover{
+	height:56px;
+	width:152px;
+	display:block;
+	background-image:url(../resources/images/Aerien-Slctd.jpg);
+}
+
+.Routier{
+	height:57px;
+	width:153px;
+	display:block;
+	background-image:url(../resources/images/routier-NonSlctd.jpg);
+}
+
+.Routier:hover{
+	height:56px;
+	width:152px;
+	display:block;
+	background-image:url(../resources/images/routier-Slctd.jpg);
+}
+
+.Faculte{
+	height:57px;
+	width:153px;
+	display:block;
+	background-image:url(../resources/images/Faculte-NonSlctd.jpg);
+}
+
+.Faculte:hover{
+	height:56px;
+	width:152px;
+	display:block;
+	background-image:url(../resources/images/Faculte-Slctd.jpg);
+}
+
+.corps{
+	height:57px;
+	width:153px;
+	display:block;
+	background-image:url(../resources/images/Corps-NonSlctd.jpg);
+}
+
+.corps:hover{
+	height:56px;
+	width:152px;
+	display:block;
+	background-image:url(../resources/images/Corps-Slctd.jpg);
+}
+
+.etatCima{
+	height:46px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/EtatsCima-NonSlctd-.jpg);
+}
+
+.etatCima:hover{
+	height:45px;
+	width:122px;
+	display:block;
+	background-image:url(../resources/images/EtatsCima-Slctd-.jpg);
+}
+
+
+.gesConf{
+	height:57px;
+	width:153px;
+	display:block;
+	background-image:url(../resources/images/GesConf-NonSlctd.jpg);
+}
+
+.gesConf:hover{
+	height:57px;
+	width:153px;
+	display:block;
+	background-image:url(../resources/images/GesConf-Slctd.jpg);
+}
 
  
 .ui-selectonemenu {
@@ -801,29 +1033,3 @@ height: 50px;
 .uppercase {
     text-transform: uppercase;
 }
-
-.libelOneLine{
-	width: 34%;
-	text-align: right;
-}
-.inputOneLine{
-	width: 33%;
-	text-align: left;
-}
-.msgOneline{
-	width: 33%;
-	text-align: left;
-}
-
-.floatDiv {
-				position: relative;
-				top: 50px;
-				left: 150px;
-			}
-
-.overlayDiv {/*Class of the fix*/
-             left: 0;
-             position: fixed;
-             top: 0;
-         }
-

@@ -6,9 +6,9 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/blitzer-1.0.10.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/common-4.0.1-sources.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-beanutils-1.8.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-collections-3.2.1.jar"/>
@@ -49,6 +49,5 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-tx-4.1.6.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-web-4.1.6.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/all-themes-1.0.10.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
