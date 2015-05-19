@@ -28,9 +28,10 @@
 			
 					
 					<p:panel header="Coordonnées">
+					<fieldset >
 							<h:panelGrid id="clientGrid_Eng" columns="6">
 
-												<p:outputLabel for="nameP" value="Nom"/>
+												<p:outputLabel for="nameP" value="Nom"  />
 												<p:inputText id="nameP" styleClass="uppercase"
 												 value="#{cotationAuto.clientMB.maPersonne.nomRaisonSociale}" required="true" 
 												 requiredMessage="Le nom doit être obligatoirement renseigné" placeholder="Saisir le nom"/>
@@ -126,9 +127,9 @@
                                             
 							                </h:panelGrid>
 							                <br />
-											<fieldset style="background-color: maroon;">
+											
 					                     
-				                        <h:commandButton value="Faire la cotation" action="vehicule"  style="margin-left:350px"></h:commandButton>
+				                        <h:commandButton value="Faire la cotation" action="vehicule" style="width:150px;height:40px; margin-left:350px;font-size:12px;border-radius:20px;"   /> 
 				 	                    </fieldset>
 											</p:panel>	
 									
