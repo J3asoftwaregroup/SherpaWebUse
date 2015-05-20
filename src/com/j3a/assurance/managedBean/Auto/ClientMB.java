@@ -124,7 +124,9 @@ public class ClientMB implements Serializable{
 				//Affecter la valeur des combos
 				physique.setTitre(getTittre());
 				//physique.setSexe(comboSexe.getSelectedSexe());
-				Sexe sexe=(Sexe) getObjectService().getObjectById(getSlctsexe(), "Sexe");
+				Sexe sexe= new Sexe();
+				
+				sexe.setCodeSexe(Integer.getInteger(getSlctsexe()).intValue());
 				physique.setSexe(sexe);
 				//System.out.println("----->>> Sexe du client:"+physique.getSexe().getCodeSexe());//clean after
 				physique.setTypePiece(getTypePiece());

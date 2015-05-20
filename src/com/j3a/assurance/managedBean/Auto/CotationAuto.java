@@ -85,7 +85,7 @@ public class CotationAuto implements Serializable{
 		
 		
 		//irene
-		public void valider(){
+		public void validerContrat(){
 			     //client
 		    	getClientMB().addPersonnePhysique();
 		    	
@@ -115,16 +115,16 @@ public class CotationAuto implements Serializable{
 				getContratMB().getObjectService().addObject(getContratMB().getAvenant());
 				
 				//conducteur
-				getClientMB().addConducteur();
+				//getClientMB().addConducteur();
 				
-				//conduireVehicule
+				/*//conduireVehicule
 				ConduireVehicule conduireVehicule =new ConduireVehicule();
 				ConduireVehiculeId conduireVehiculeId =new ConduireVehiculeId();
 				conduireVehiculeId.setCodeVehicule(getCarteGriseMB().getSlctdVehiRw().getVehi().getCodeVehicule());
 				conduireVehiculeId.setNumCond(getClientMB().getConducteur().getNumCond());
 				conduireVehicule.setId(conduireVehiculeId);
 				conduireVehicule.setDateConduite(Calendar.getInstance().getTime());
-				getClientMB().getObjectService().addObject(conduireVehicule);
+				getClientMB().getObjectService().addObject(conduireVehicule);*/
 				
 		}
 
@@ -380,7 +380,37 @@ public class CotationAuto implements Serializable{
 		}
 
 		public void addContrats() {
-
+			  //client
+	    	getClientMB().addPersonnePhysique();
+	    	
+	    	//contrat
+			String pv = getContratMB().getUtilisateur().getPointVente()
+			.getCodePointVente();
+			String util =getContratMB().getUtilisateur().getCodeUtilisateur();
+			getContratMB().getContrat().setNumPolice(getIdGenerateur().getPoliceID(pv, util, "AUT"));
+			getContratMB().getContrat().setPointVente(getContratMB().getUtilisateur().getPointVente());
+			getContratMB().getContrat().setPersonne(getClientMB().getPhysique().getPersonne());
+			getContratMB().getContrat().setRisque(getContratMB().getRisque());
+			getContratMB().getContrat().setSocieteAssurance(getContratMB().getSocieteAssurance());
+			//getContratMB().getObjectService().addObject(getContratMB().getContrat());
+			
+			//avenant
+			String idAven = getIdGenerateur().getIdNewAvenant(getContratMB().getContrat().getNumPolice());
+			getContratMB().getAvenant().setNumAvenant(idAven);
+			short d = (short) (getContratMB().getDuree()* 30);
+			int mail = 1;
+			getContratMB().getAvenant().setDateAvenant(getContratMB().getdateAvenant());
+			getContratMB().getAvenant().setEffet(getContratMB().getEffet());
+			getContratMB().getAvenant().setDateEmission(getContratMB().getEmission());
+			getContratMB().getAvenant().setMouvement(getContratMB().getMouvement());
+			getContratMB().getAvenant().setEcheance(getContratMB().getEcheance());
+			getContratMB().getAvenant().setContrat(getContratMB().getContrat());
+			getContratMB().getAvenant().setUtilisateur(getContratMB().getUtilisateur());
+			//getContratMB().getObjectService().addObject(getContratMB().getAvenant());
+			
+			getManagedQuittanceAuto().setQuittanceid(
+			getIdGenerateur().getIdQuittance(idAven));
+			
 			try {
 				// System.out.println("********Exercice dans add Contrat  Chiffre d'affaire= "+getExercice().getChiffreAffExo()+
 				// " Prime Exo = "+getExercice().getPrimeExercice()+" Prime Repporter = "+getExercice().getPrimeAReporterExo()+
@@ -388,7 +418,7 @@ public class CotationAuto implements Serializable{
 				String idQuitt = "";
 				idQuitt = getManagedQuittanceAuto().getQuittanceid();
 				// MAJ des champs de l'Exercice
-				// getExercice().getChiffreAffExo().add(getManagedQuittanceAuto().getQuittanceAuto().getPrimeTotale());
+				 getExercice().getChiffreAffExo().add(getManagedQuittanceAuto().getQuittanceAuto().getPrimeTotale());
 				double CA = getExercice().getChiffreAffExo().doubleValue()
 						+ getManagedQuittanceAuto().getQuittanceAuto()
 								.getPrimeTotale().doubleValue();
