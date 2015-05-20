@@ -236,16 +236,6 @@ public class CarteGriseMB implements Serializable {
 
 					getObjectService().addObject(conduirVehi);
 
-					Vehicule V = new Vehicule();
-
-					int index = getObjectService().getObjects("Vehicule")
-							.lastIndexOf(vehi);
-					V = (Vehicule) getObjectService().getObjects("Vehicule").get(
-							index);
-					System.out.println("index du vehicule:::::::::::" + index);
-					System.out.println("id du dernier vehicule:::::::::::"
-							+ V.getCodeVehicule());
-					// int v1 = V.getId();
 
 					// add Garanties
 					GarantieChoisie garchoi = new GarantieChoisie();
