@@ -39,7 +39,8 @@
 				<p:tab id="ongletCategorie" title="Vehicule">
 					<p:panel header="Véhicule">
 				<br />
-		
+		<fieldset>
+		<legend>Informations Vehicule </legend>
 								<h:panelGrid id="vehiProp" columns="6">
 								
 								<h:outputText value="Sous Categorie "/>
@@ -255,14 +256,17 @@
 							
 								
 								
-									</h:panelGrid>
-                                     </p:panel>
+									</h:panelGrid></fieldset>
+                                     </p:panel> 
 				</p:tab>
 				
 				<p:tab id="ongletImmatriculation" title="Immatriculation">
+				<fieldset>
 					<p:panel header="Immatriculation">
 				<br />
 				
+				
+		
 				 <h:panelGrid columns="4">
 				               <h:outputText value="Numéro d'Immatriculation "/>
 										<p:inputText id="imat" value="#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.numImmat}"
@@ -311,10 +315,10 @@
 								
 			
 				
-				 </h:panelGrid>
+				 </h:panelGrid> 
 				 
 				 
-				</p:panel>
+				</p:panel></fieldset>
 				</p:tab>
 				
 				
@@ -323,7 +327,7 @@
 					<p:panel header="Caractéristiques">
 				<br />
 								
-								
+								<fieldset>
 								<h:panelGrid id="vehiProp2" columns="6">
 								
 								
@@ -439,11 +443,12 @@
 										value="#{cotationAuto.carteGriseMB.slctdVehiRw.zonGeo.libelleZoneGeo}" 
 										readonly="true" style="width:148px" />
 										
-									</h:panelGrid>
+									</h:panelGrid></fieldset>
                                      </p:panel>
 				</p:tab>
 				
 				<p:tab id="ongletConducteur" title="Conducteur">
+				<fieldset>
 				<p:panel header="Identité Conducteur">
 				
 											
@@ -520,7 +525,7 @@
 												
 												
 											</h:panelGrid>
-										</p:panel>
+										</p:panel> 
 										<p:panel header="Informations sur le contrat">
 											<br />
 											<h:panelGrid columns="6">
@@ -595,15 +600,15 @@
 
 										
 												
-											</h:panelGrid>
+											</h:panelGrid> 
 				
 				 	                 
-											</p:panel>
+											</p:panel> </fieldset>
 										
 				</p:tab>
 				
 				<p:tab id="ongletGarantie" title="Garantie">
-				
+				<fieldset>
 						
 						
 <h:panelGrid >
@@ -822,7 +827,7 @@
 						
 						
 						
-										
+				</fieldset>
 				</p:tab>
 				
 				</p:wizard>
