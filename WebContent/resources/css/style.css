@@ -3,6 +3,10 @@
 .identifiant{
   text-transform : uppercase;
 }
+.ajaxStatut{
+ width:16px;
+ height:16px;
+}
 .tabviewCarteG{
 width: 1000px;
 	height:400px;
