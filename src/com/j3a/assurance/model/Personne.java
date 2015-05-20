@@ -31,6 +31,8 @@ public class Personne implements java.io.Serializable {
 	private String telephone;
 	private String fax;
 	private String email;
+	private String loginPers;
+	private String motPassePers;
 	private Set<Contrat> contrats = new HashSet<Contrat>(0);
 	private Physique physique;
 	private Set<Contact> contacts = new HashSet<Contact>(0);
@@ -48,7 +50,7 @@ public class Personne implements java.io.Serializable {
 
 	public Personne(String numSouscripteur, Date datePers,
 			String nomRaisonSociale, String adresseGeo, String adresse,
-			String telephone, String fax, String email, Set<Contrat> contrats,
+			String telephone, String fax, String email,String loginPers,String motPassePers, Set<Contrat> contrats,
 			Physique physique, Set<Contact> contacts, Set<Etre> etres,
 			Morale morale, Set<PersonneNationalite> personneNationalites) {
 		this.numSouscripteur = numSouscripteur;
@@ -65,6 +67,9 @@ public class Personne implements java.io.Serializable {
 		this.etres = etres;
 		this.morale = morale;
 		this.personneNationalites = personneNationalites;
+		this.loginPers = loginPers;
+		this.motPassePers = motPassePers;
+		
 	}
 
 	@Id
@@ -140,6 +145,25 @@ public class Personne implements java.io.Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	@Column(name = "LOGIN_PERS", length = 20)
+	public String getLoginPers() {
+		return loginPers;
+	}
+
+	public void setLoginPers(String loginPers) {
+		this.loginPers = loginPers;
+	}
+	
+	@Column(name = "MOT_PASSE_PERS", length = 10)
+	public String getMotPassePers() {
+		return motPassePers;
+	}
+
+	public void setMotPassePers(String motPassePers) {
+		this.motPassePers = motPassePers;
+	}
+
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personne")
 	public Set<Contrat> getContrats() {
@@ -196,4 +220,5 @@ public class Personne implements java.io.Serializable {
 		this.personneNationalites = personneNationalites;
 	}
 
+	
 }
