@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.managedBean.ManagedGarantie;
@@ -238,7 +239,25 @@ public class ContratMB implements Serializable{
 			Object personnePhysique = getObjectService().getObjectById(monContrat.getPersonne().getNumSouscripteur(), "Physique");
 		}
 
-		
+		public String addContrat() {
+			try {
+				getObjectService().addObject(contrat);
+				//logger.info("Enregistrement des informations de base du contrat");
+	
+				getObjectService().addObject(avenant);
+				
+
+				System.out.println("Enregistrement de l'avenant");
+				//logger.info("Enregistrement de l'avenant affaire nouvelle");
+				return "contratOk";
+			} catch (DataAccessException e) {
+
+				//logger.error("echec de l'enregistrement");
+				e.printStackTrace();
+			}
+
+			return "contratOk";
+		}	
 
 		// ------------------------- Here Setter and Getter
 		// ----------------------------//
