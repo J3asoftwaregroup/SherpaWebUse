@@ -816,6 +816,183 @@ height: auto !important;
 	background-image:url(../resources/images/Caisse-Slctd.jpg);
 }
 
+
+
+
+/*/////////////////////////////////////
+		    Le Splash
+/////////////////////////////////////*/
+
+.souscrip{
+	height:98px;
+	width:98px;
+	display:block;
+	background-image:url(../resources/images/souscription.png);
+}
+
+.souscrip:hover{
+	height:98px;
+	width:98px;
+	display:block;
+	background-image:url(../resources/images/souscriptionHover.png);
+}
+
+.blankTale{
+        display: block;
+        width: 120px ;
+        height: 120px;
+        background-image:url(../resources/images/blankTale.png);
+       
+    }
+    
+ .blankTale:hover {
+     display: block;
+     width: 120px;
+     height: 120px;
+     background-image:url(../resources/images/blankTaleHover.png);
+ }
+ 
+ .declarSin{
+        display: block;
+        width: 98px ;
+        height: 98px;
+        background-image:url(../resources/images/DeclaratioSin.png);
+       
+    }
+    
+ .declarSin:hover {
+     display: block;
+     width: 98px;
+     height: 98px;
+     background-image:url(../resources/images/DeclaratioSinHover.png);
+ }
+ 
+  .connex{
+        display: block;
+        width: 98px ;
+        height: 98px;
+        background-image:url(../resources/images/connexion.png);
+       
+    }
+    
+ .connex:hover {
+     display: block;
+     width: 98px;
+     height: 98px;
+     background-image:url(../resources/images/connexionHover.png);
+ }
+ 
+   .cotation{
+        display: block;
+        width: 98px ;
+        height: 98px;
+        background-image:url(../resources/images/cotation.png);
+       
+    }
+    
+ .cotation:hover {
+     display: block;
+     width: 98px;
+     height: 98px;
+     background-image:url(../resources/images/cotationHover.png);
+ }
+ 
+ 
+ .divSous {
+     position:absolute;
+     display: block;
+     top:15px;
+     left:229px;
+     width:98px;
+     height:98px;
+     background: none;
+ }
+ 
+ .divSous:hover {
+     /* background-color: black; */
+ }
+ 
+ .divDecla {
+     position:absolute;
+     display: block;
+     top:224px;
+     left:589px;
+     width:98px;
+     height:98px;
+     background-color: none;
+ }
+ 
+ .divDecla:hover {
+    /*  background-color: black; */
+ }
+
+ .divCota {
+     position:absolute;
+     display: block;
+     top:15px;
+     left:327px;
+     width:98px;
+     height:98px;
+     background-color: none;
+ }
+ 
+ .divCota:hover {
+    /*  background-color: black; */
+ }
+ 
+ .divConnex {
+     position:absolute;
+     display: block;
+     top:224px;
+     left:687px;
+     width:98px;
+     height:98px;
+     background-color: none;
+ }
+ 
+ ..divConnex:hover {
+    /*  background-color: black; */
+ }
+
+.ui-icon { 
+   	height:inherit; 
+	width:100%;
+	background-color:white;
+	background:  url(#{resource['images:configuration.png']}) no-repeat top left;
+    /* background-image: url(#{resource['images:configuration.png']});  */
+}
+
+
+
+.image {
+	width:100%
+   background:  url(#{resource['images:configuration.png']}) no-repeat top left;
+}
+
+
+
+.wu_Ppl_Left{
+	width:66%;
+	text-align: center;
+}
+.wu_Ppl_Right{
+	width:34%;
+	text-align: center;
+}
+.wu_Ppl_Left_tales{
+	width:33%;
+	text-align: center;
+	height: 60px;
+}
+
+
+
+
+/*/////////////////////////////////////
+		    Le Splash Fin
+/////////////////////////////////////*/
+
+
 .outPutKer{
 	color:red;
 	background-color:Silver;
@@ -1033,3 +1210,28 @@ height: 50px;
 .uppercase {
     text-transform: uppercase;
 }
+
+.libelOneLine{
+	width: 34%;
+	text-align: right;
+}
+.inputOneLine{
+	width: 33%;
+	text-align: left;
+}
+.msgOneline{
+	width: 33%;
+	text-align: left;
+}
+
+.floatDiv {
+				position: relative;
+				top: 50px;
+				left: 150px;
+			}
+
+.overlayDiv {/*Class of the fix*/
+             left: 0;
+             position: fixed;
+             top: 0;
+         }
