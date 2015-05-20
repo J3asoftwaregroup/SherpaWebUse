@@ -954,14 +954,6 @@ height: auto !important;
     /*  background-color: black; */
  }
 
-.ui-icon { 
-   	height:inherit; 
-	width:100%;
-	background-color:white;
-	background:  url(#{resource['images:configuration.png']}) no-repeat top left;
-    /* background-image: url(#{resource['images:configuration.png']});  */
-}
-
 
 
 .image {
