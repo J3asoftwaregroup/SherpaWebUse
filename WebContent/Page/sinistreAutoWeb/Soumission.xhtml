@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/templateWebAuto.xhtml">
+	<ui:define name="content">
+		
+		<h:form id="gnl">
+			<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
+			<p:panel header="Soumission des pièces">
+			<fieldset>
+			<legend>Liste des sinistres </legend>
+			
+			<p:dataTable emptyMessage="Aucun Sinistre">
+			
+			<p:column headerText="Code Sinistre">
+			<h:outputText value="" />
+			</p:column>
+			
+			<p:column headerText="Date Survenance">
+			<h:outputText value="" />
+			</p:column>
+			
+			<p:column headerText="Date Declaration">
+			<h:outputText value="" />
+			</p:column>
+			
+			</p:dataTable>
+			</fieldset>
+			<br></br>
+			
+			<fieldset >
+			<legend>Documents à soumettre</legend>
+			<h:panelGrid columns="6" border="0" id="doc">
+			
+			<h:outputText value="Code Sinistre"/>
+			<h:inputText value="" readonly="true"/>
+			
+			<h:outputText value="Date déclaration"/>
+			<h:inputText value="" readonly="true"/>
+			
+			<h:outputText value="Date Survenance"/>
+			<h:inputText value=""  readonly="true"/>
+			
+			
+			<p:selectBooleanCheckbox value="#{managedSoumission.bPv}"  itemLabel="Proces Verbal" >
+			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update="doc"/>
+			</p:selectBooleanCheckbox>
+			<p:fileUpload value="#{managedSoumission.filePv}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatPv}"/>
+			<h:outputText value="" />
+			<h:outputText value="" />
+			<h:outputText value="" />
+			<h:outputText value="" />
+			
+			
+			
+			<p:selectBooleanCheckbox value="#{managedSoumission.bRap}"  itemLabel="Rapport Intervenant" >
+			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update="doc"/>
+			</p:selectBooleanCheckbox>
+			<p:fileUpload value="#{managedSoumission.fileRap}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatRap}"/>
+			<h:outputText value=""/>
+			<h:outputText value="" />
+			<h:outputText value="" />
+			<h:outputText value="" />
+			
+			
+			
+			<p:selectBooleanCheckbox value="#{managedSoumission.bActMed}" itemLabel="Acte medical" >
+			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update="doc"/>
+			</p:selectBooleanCheckbox>
+			<p:fileUpload value="#{managedSoumission.fileActMed}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatActMed}"/>
+			<h:outputText value=""/>
+			<h:outputText value="" />
+			<h:outputText value="" />
+			<h:outputText value="" />
+			<h:commandButton value="Soumettre" style="height:40px;border-radius:20px"> </h:commandButton>
+			
+			</h:panelGrid>
+			</fieldset>
+			</p:panel>
+		</h:form>
+		
+	</ui:define>
+</ui:composition>			
+</html>

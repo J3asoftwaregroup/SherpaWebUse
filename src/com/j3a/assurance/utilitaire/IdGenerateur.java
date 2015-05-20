@@ -7,8 +7,10 @@ import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Apporteur;
 import com.j3a.assurance.model.Contrat;
+import com.j3a.assurance.model.Intervention;
 import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.model.Quittance;
+import com.j3a.assurance.model.Sinistre;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.objetService.ObjectService;
 @Component
@@ -190,6 +192,31 @@ public class IdGenerateur implements Serializable {
 		return IdCondsinistre;
 	}
 	
+	public String getIdFactureIntervention(Intervention intervention){
+		String libelle="FACT-"+intervention.getRefIntervention();
+		String Code = getObjectService().getCodeTable(libelle,16,2,"Facture","CODE_FACTURE");
+		return Code;
+	}
+	
+	public String getIdFactureActeMed() {
+		String pseudo = "F-ActMed";
+		String idFacActMed = getObjectService().getCodeTable(pseudo, 8, 6,
+				"facture", "CODE_FACTURE");
+		return idFacActMed;
+	}
+	
+	public String getIdIntervention(Sinistre sinistre){
+		String libelle="INT-"+sinistre.getCodeSinistre();
+		String Code = getObjectService().getCodeTable(libelle,16,2,"Intervention","REF_INTERVENTION");
+		return Code;
+	}
+	
+	public String getIdActeMed(Sinistre sinistre){
+		String libelle="ACM-"+sinistre.getCodeSinistre();
+		String Code = getObjectService().getCodeTable(libelle,16,2,"Acte_Medical","REFERENCE_ACTE");
+		return Code;
+	}
+
 
 	public ObjectService getObjectService() {
 		return objectService;
