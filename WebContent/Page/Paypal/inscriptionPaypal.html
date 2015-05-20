@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+       <input type="Hidden"    name="upload" value="1" />
+       <input  type="Hidden"  name="return" value="http://localhost:8080/SherpaWebUse/Page/Paypal/succes.xhtml"/>
+       <!-- Indication du type d'action -->
+        <input  type="Hidden" name="cmd"  value="_xclick" />
+        <input  type="Hidden" name="business" value="fouairene-facilitator@yahoo.fr"/>
+        <!-- <input name="currency_code" type="hidden" value="US" />--!>
+         
+         <!--   Indication de l'URL de retour si annulation du paiement -->
+    <input name="cancel_return" type="hidden" value="http://localhost:8080/SherpaWebUse/page/AutoWeb/Validation.xhtml"/>
+    
+    <!-- Indication de l'URL de retour pour contrôler le paiement -->
+    <input name="notify_url" type="hidden" value="http://localhost:8080/SherpaWebUse/page/paypal/ipn.xhtml" />
+    
+    <!--   Indication du libellé de la commande qui apparaitra sur Paypal -->
+   <input name="item_name" type="hidden" value="La prime nette à payer" />
+   
+    <!-- Indication de la langue -->
+<input name="lc" type="hidden" value="FR" />
+
+<!-- Indication du type de paiement -->
+<input name="bn" type="hidden" value="PP-BuyNowBF" />
+       
+        <input alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et sécurisée" name="submit" 
+        src="https://www.paypal.com/fr_FR/FR/i/btn/btn_buynow_LG.gif" type="image" />
+        <img src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" border="0" alt="" width="1" height="1" />
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
