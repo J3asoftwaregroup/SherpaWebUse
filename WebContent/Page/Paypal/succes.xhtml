@@ -14,12 +14,12 @@
 	<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
 	
 	
-	<p:panel header="PIECES	" style="font-size:15px"/>
+	<p:panel header="EDITION PIECES	" style="font-size:15px"/>
 					<br />
 					
 					<div style="margin-left: 150px;margin-right: 150px" >
 					
-					<h:outputLabel     style="margin-left:00px ;font-size:15px ;color:red"  value="Vous avez effectuer le paiement avec succès!"/> <br />
+					<h:outputLabel     style="margin-left:100px ;font-size:15px ;color:red ;"  value="Vous avez effectuer le paiement avec succès!"/> <br />
 										<fieldset style="font-size:14px">	
 										<legend> Impressions Pieces  </legend>
 	
@@ -28,9 +28,9 @@
 	
 		
 		<br />
-		<h:outputLabel     style="margin-left:00px ;font-size:15px"  value=" Vous pouvez recuperer les pièces provisoires!"/>
+		<h:outputLabel     style="font-size:15px"  value=" Vous pouvez recuperer les pièces provisoires!"/>
 		<br /><br /><br />
-				<h:commandButton value="Imprimer pièces provisoires"  actionListener="#{cotationAuto.sendDevis}" style="width:200px;height:50px; margin-left: 200px;font-size:12px;text-align:center;border-radius:20px;"></h:commandButton>   
+				<h:commandButton value="Imprimer pièces provisoires"  actionListener="#{cotationAuto.succes}"  style="width:200px;height:50px; margin-left: 200px;font-size:14px;text-align:center;border-radius:20px;"></h:commandButton>   
 				<br />        
 	 <h:outputLabel     style="margin-left:00px ;font-size:12px"  value="Veuillez passer à l'agence avant 7jours pour recuperer vos differentes pièces définitifs !"/>
 			<br />
