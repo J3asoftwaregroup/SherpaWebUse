@@ -19,13 +19,16 @@
 				body {background: #f4f4f4;}
 				.wrapper {width:100%; margin: 0 auto; padding: 20px;}
 				.container {
-					background: none;
+					background-image:url(resources/images/SherpaWUSplashBase.png);
 					border-radius: 5px;
 					border: solid 0px #eee;
 					box-shadow: 0px 0px 10px rgba(0,0,0,.5);
 					padding:40px;
-					width:700px;
+					width:900px;
+					height:260px;
 					margin:60px auto 0px auto;
+					position: relative;
+					z-index: 0;
 					
 				}
 				pre, code {
@@ -67,210 +70,25 @@
 		    <h:form id="gnl">
 			<div class="wrapper">
 				<div class="container">
-						
-			        
-						<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
-						<h:panelGrid columns="2" border="0" columnClasses="wu_Ppl_Left" style="width:100%">
-							<h:panelGrid columns="3" columnClasses="wu_Ppl_Left_tales,wu_Ppl_Left_tales,wu_Ppl_Left_tales" style="width:100%" border="0">
-								
-								<p:commandLink id="login" styleClass="connex">
-								  
-								</p:commandLink>
-								
-								<p:commandLink id="subscribe" styleClass="souscrip">
-								  
-								</p:commandLink>
-								
-								<p:commandLink  styleClass="blankTale">
-								  
-								</p:commandLink>
-								
-								
-								
-								<p:commandLink id="cota"  styleClass="cotation">
-								  
-								</p:commandLink>
-								
-								<p:commandLink styleClass="blankTale">
-								  
-								</p:commandLink>
-								
-								<p:commandLink styleClass="blankTale">
-								  
-								</p:commandLink>
-								
-								
-								
-								<p:commandLink styleClass="blankTale">
-								  
-								</p:commandLink>
-								
-								<p:commandLink styleClass="blankTale">
-								  
-								</p:commandLink>
-								
-								<p:commandLink id="sinDeclar" styleClass="declarSin">
-								  
-								</p:commandLink>
-								
-							</h:panelGrid>
-							<h:panelGrid columns="1" columnClasses="wu_Ppl_Right" style="width:100%">
-									<p:graphicImage 
-									            value="#{resource['images:SherpaLogoVerti.png']}"
-									            width="295"
-									            height="521">
-									  </p:graphicImage>
-									<h:outputText value=""/>
-								</h:panelGrid>
-							</h:panelGrid>
-						
-												
-				<div class="overlayDiv">
-				<p:overlayPanel id="logCnx" for=":gnl:login" widgetVar="LoginWidVar" showCloseIcon="TRUE"  
-										style="height:200px; width:400px; padding:5px;" >
-										
-									
-							 <h:panelGrid columns="3"  columnClasses="libelOneLine, inputOneLine, msgOneline" style="width:100%" cellspacing="10">
-									<f:facet name="header">
-											VOS PARAMETRES DE CONNEXION 
-									</f:facet>
-										
-										
-									<h:outputText value="Login"/>
-									<p:inputText value="#{managedIndexConnex.login}" style="width:100%"/>
-									<h:outputText value=""/>
-									
-									<h:outputText value="Mot de passe"/>
-									<p:password value="#{managedIndexConnex.password}" style="width:100%" />
-									<h:outputText value=""/>
-									
-									<h:outputText value=""/>
-									<p:commandLink value="Mot de passe oublié ?" rendered="#{managedIndexConnex.askMdpForgot}"/>
-									<h:outputText value=""/>
-									
-									
-									
-									<f:facet name="footer">
-										<p:commandButton value="OK" actionListener="#{managedIndexConnex.logIn}" />
-									</f:facet>		
-							</h:panelGrid>
-						</p:overlayPanel>
+					<div class="divSous">
+						<p:commandLink id="subscribe" styleClass="souscrip">
+						</p:commandLink>
 					</div>
-						
-					<div class="overlayDiv">
-						<p:overlayPanel id="souscripChx" for=":gnl:subscribe" widgetVar="sousCripWidVar" showCloseIcon="true" style=" width:400px; padding:5px;" >
-							 <h:panelGrid columns="3" columnClasses="wu_Ppl_Left_tales,wu_Ppl_Left_tales,wu_Ppl_Left_tales" style="width:100%" cellspacing="10">
-								<f:facet name="header">
-											QUELLE BRANCHE D'ASSURANCE 
-									</f:facet>
-								<p:commandLink id="souscripAuto" action="/Page/AutoWeb/devisAuto?faces-redirect=true" >
-								  <p:graphicImage 
-									            value="#{resource['images:auto.png']}"
-									            width="60"
-									            height="60">
-									  </p:graphicImage>
-								</p:commandLink>
-								
-								
-								<p:commandLink id="souscripMrh">
-								 <p:graphicImage 
-									            value="#{resource['images:mrh.png']}"
-									            width="60"
-									            height="60">
-									  </p:graphicImage>
-								</p:commandLink>
-								
-								
-								<p:commandLink id="souscripIA" >
-								  <p:graphicImage 
-									            value="#{resource['images:indivAcc.png']}"
-									            width="60"
-									            height="60">
-									  </p:graphicImage>
-								</p:commandLink>
-								
-								
-							</h:panelGrid>
-						</p:overlayPanel>
-						<p:tooltip id="tipSubAuto" for="souscripAuto" value="Assurances Automobile" trackMouse="true" hideEvent="mouseout"/>
-						<p:tooltip id="tipSubMrh" for="souscripMrh" value="Assurances Multirisques Habitations" />
-						<p:tooltip id="tipSubIA" for="souscripIA" value="Assurances Individuelle Accident" />
+					<div class="divDecla">
+						<p:commandLink id="sinDeclar" styleClass="declarSin">
+						</p:commandLink>
 					</div>
-						
-						
-						<div class="overlayDiv">
-						<p:overlayPanel id="cotationChx" for="cota" widgetVar="cotaWidVar" showCloseIcon="true"  style=" width:400px; padding:5px;">
-							 <h:panelGrid columns="3" columnClasses="wu_Ppl_Left_tales,wu_Ppl_Left_tales,wu_Ppl_Left_tales" style="width:100%" cellspacing="10">
-								<f:facet name="header">
-											QUELLE BRANCHE D'ASSURANCE 
-									</f:facet>
-								
-								<p:commandLink id="cotaAuto"  action="/Page/AutoWeb/devisAuto?faces-redirect=true">
-								  <p:graphicImage 
-									            value="#{resource['images:auto.png']}"
-									            width="60"
-									            height="60">
-									  </p:graphicImage>
-								</p:commandLink>
-								
-								<p:commandLink id="cotaMrh">
-								 <p:graphicImage 
-									            value="#{resource['images:mrh.png']}"
-									            width="60"
-									            height="60">
-									  </p:graphicImage>
-								</p:commandLink>
-								
-								<p:commandLink id="cotaIA">
-								  <p:graphicImage 
-									            value="#{resource['images:indivAcc.png']}"
-									            width="60"
-									            height="60">
-									  </p:graphicImage>
-								</p:commandLink>
-								
-							</h:panelGrid>
-						</p:overlayPanel>
-						</div>
-						
-						<div class="overlayDiv">
-						<p:overlayPanel id="declarChx" for="sinDeclar" widgetVar="declarWidVar" showCloseIcon="true"  style=" width:400px; padding:5px;" >
-							 
-							 <h:panelGrid columns="3" columnClasses="wu_Ppl_Left_tales,wu_Ppl_Left_tales,wu_Ppl_Left_tales" style="width:100%" cellspacing="10">
-								<f:facet name="header">
-											QUELLE BRANCHE D'ASSURANCE 
-									</f:facet>
-								
-								<p:commandLink id="sinDeclAuto"  action="/Page/sinistreAutoWeb/declarationSinnistreAuto?faces-redirect=true">
-								  <p:graphicImage 
-									            value="#{resource['images:auto.png']}"
-									            width="60"
-									            height="60">
-									  </p:graphicImage>
-								</p:commandLink>
-								
-								<p:commandLink id="sinDeclMrh">
-								 <p:graphicImage 
-									            value="#{resource['images:mrh.png']}"
-									            width="60"
-									            height="60">
-									  </p:graphicImage>
-								</p:commandLink>
-								
-								<p:commandLink id="sinDeclIA">
-								  <p:graphicImage 
-									            value="#{resource['images:indivAcc.png']}"
-									            width="60"
-									            height="60">
-									  </p:graphicImage>
-								</p:commandLink>
-								
-							</h:panelGrid>
-						</p:overlayPanel>
+					<div class="divConnex">
+						<p:commandLink id="login" styleClass="connex">
+						</p:commandLink>
 					</div>
-		
+					<div class="divCota">
+						<p:commandLink id="cota"  styleClass="cotation">
+						</p:commandLink>
+					</div>
+					
+					
 				</div>
-				
 			</div>
 			
 			
