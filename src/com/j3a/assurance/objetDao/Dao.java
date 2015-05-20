@@ -516,11 +516,14 @@ public class Dao implements IDao {
 		return quittance;
 	}
 	
+	@Override
+	public Personne personneByLogin(String login, String motPass) {
+		String query = "SELECT `personne`.* FROM personne WHERE ((`personne`.`LOGIN_PERS` ='"+login+"') AND (`personne`.`MOT_PASSE_PERS` ='"+motPass+"'))";
+		Personne personne  = (Personne) getSessionFactory().getCurrentSession().createSQLQuery(query).addEntity(Personne.class).uniqueResult();
+		return null;
+	}
 	
 	
-
-	
-
 
 	//getters et setters
 	public SessionFactory getSessionFactory() {
@@ -529,6 +532,8 @@ public class Dao implements IDao {
     public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
+
+	
     
     
 }

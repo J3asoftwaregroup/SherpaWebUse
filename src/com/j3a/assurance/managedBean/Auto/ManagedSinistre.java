@@ -1,4 +1,4 @@
-package com.j3a.assurance.managedBean;
+package com.j3a.assurance.managedBean.Auto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -294,15 +294,11 @@ public class ManagedSinistre implements Serializable {
 			setOptionConducteur("2");
 		}
 		return conducteur;
-		
 	}
 
 
 	public void chargerConducteurSinistre(Conducteur paramCond, ConducteurSinistre paramCondSinist){
 		//Renseigner le conducteurSinistre par les info du conducteur
-			System.out.println("------>>conducteur du sinistre:"+paramCond.getNumCond());
-			System.out.println("------>>conducteur du sinistre:"+paramCond.getNonCond());
-
 		paramCondSinist.setNomCondSinistre(paramCond.getNonCond());
 		paramCondSinist.setPrenomCondSinistre(paramCond.getPrenomsCond());
 		paramCondSinist.setDateNaissCondSinistre(paramCond.getDateNaissCond());

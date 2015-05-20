@@ -66,7 +66,7 @@ public void addObject(Object objet);
 
 	public Quittance findQuittanceByAvenant(String numAvenant);
 	public Quittance findQuittance(String police) ;
-	public Avenant DernierAvenant(String paramPolice) ;
+	public Avenant DernierAvenant(String paramPolice);
 
 	public Risque findRisque(String police) ;
 	public List<Avenant> findAvenant(String souscripteur);
@@ -80,4 +80,5 @@ public void addObject(Object objet);
 	public List<Contrat> ContratList(String souscripteur) ;
 	public Quittance recoverQuittanceOfLasAvenant(String paramNumPolice);		
 	public Quittance recoverQuittanceAuto(String paramNumPolice);
+	public Personne personneByLogin(String login, String motPass);
 }

@@ -225,6 +225,12 @@ public class Service implements ObjectService {
 	public Quittance recoverQuittanceAuto(String paramNumPolice){
 		return getDao().recoverQuittanceAuto(paramNumPolice);
 		}
+	
+	
+	@Override
+	public Personne personneByLogin(String login, String motPass) {
+		return getDao().personneByLogin(login, motPass);
+	}
 
 	//getter et setter de Idao qui a été injecté
 	
@@ -235,5 +241,4 @@ public class Service implements ObjectService {
 	public void setDao(IDao dao) {
 		this.dao = dao;
 	}
-
 }

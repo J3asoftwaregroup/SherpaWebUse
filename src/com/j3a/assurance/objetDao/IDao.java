@@ -73,6 +73,6 @@ public interface IDao {
 	public List<Contrat> ContratList(String souscripteur) ;
 	public Quittance recoverQuittanceOfLasAvenant(String paramNumPolice);		
 	public Quittance recoverQuittanceAuto(String paramNumPolice);
-	
-			
+	public Personne personneByLogin(String login, String motPass);
+		
 }
