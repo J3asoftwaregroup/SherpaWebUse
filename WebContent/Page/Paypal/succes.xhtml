@@ -12,12 +12,40 @@
 		
 		<h:form id="gnl">
 	<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
+	
+	
+	<p:panel header="PIECES	" style="font-size:15px"/>
+					<br />
+					
+					<div style="margin-left: 150px;margin-right: 150px" >
+					
+					<h:outputLabel     style="margin-left:00px ;font-size:15px ;color:red"  value="Vous avez effectuer le paiement avec succès!"/> <br />
+										<fieldset style="font-size:14px">	
+										<legend> Impressions Pieces  </legend>
+	
+	
+	
+	
 		
-				<h:commandButton value="Imprimer conditions particulières"></h:commandButton>           
-	 
-			
-        
+		<br />
+		<h:outputLabel     style="margin-left:00px ;font-size:15px"  value=" Vous pouvez recuperer les pièces provisoires!"/>
+		<br /><br /><br />
+				<h:commandButton value="Imprimer pièces provisoires"  actionListener="#{cotationAuto.sendDevis}" style="width:200px;height:50px; margin-left: 200px;font-size:12px;text-align:center;border-radius:20px;"></h:commandButton>   
+				<br />        
+	 <h:outputLabel     style="margin-left:00px ;font-size:12px"  value="Veuillez passer à l'agence avant 7jours pour recuperer vos differentes pièces définitifs !"/>
+			<br />
+         </fieldset>
 
+			
+			
+		</div>	
+			
+			
+			
+			
+			
+			
+			
 			</h:form>
 		
 		

@@ -98,7 +98,7 @@
                                			 <h:outputText value="NET A PAYER (CFA)" style="margin-right:20px;"/>
 												<h:outputLabel
 													value="#{cotationAuto.managedQuittanceAuto.quittanceAuto.netteApayer}"
-													readonly="true" size="9" style="width:110px; font-size:15px; font-weight:17px;color:red;" 
+													readonly="false" size="9" style="width:110px; font-size:15px; font-weight:17px;color:red;" 
 													 styleClass="outputPayer" >
 													<f:convertNumber pattern="##,###.##"></f:convertNumber>
 												</h:outputLabel>
@@ -115,9 +115,7 @@
 											<h:commandButton id="addContrats1"  actionListener="#{cotationAuto.sendDevis}" value="Voir le devis" style="width:150px;height:40px; margin-left:20px;font-size:15px;border-radius:20px;" />
 											<h:commandButton id="addContrats2" action="inscriptionPaypal" value="Souscrivez en ligne"  style="width:150px;height:40px; margin-left: 35px;font-size:15px;border-radius:20px;"/>
                                            <h:commandButton id="addContrats3" actionListener="#{cotationAuto.addContrats}" value="Enregistrer le Contrat"  style="width:150px;height:40px; margin-left: 35px;font-size:15px;border-radius:20px;"/>
-                                           <h:outputLink id="amazonLink" value="http://localhost:8080/SherpaWebUse/Page/Paypal/inscriptionPaypal.html"><font size="size:15px"> Souscrivez en ligne </font></h:outputLink> 
-                                             
-                                              
+                                          
 							      </h:panelGrid>
 												
 											

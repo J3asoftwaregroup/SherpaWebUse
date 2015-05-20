@@ -141,7 +141,7 @@ public class CarteGriseMB implements Serializable {
 
 				if (Avn.getMouvement().equalsIgnoreCase("AFFAIRE NOUVELLE")) {
 					Avn.setVehiculesAssures(vehiAss);
-					getObjectService().updateObject(vehiAss);
+					getObjectService().addObject(vehiAss);
 				}
 
 				getObjectService().updateObject(Avn);
@@ -161,8 +161,8 @@ public class CarteGriseMB implements Serializable {
 					ConduireVehicule conduirVehi = new ConduireVehicule();
 					ConduireVehiculeId conduirVehiId = new ConduireVehiculeId();
 
-					ApporteurVehicule ApporteurVehi = new ApporteurVehicule();
-					ApporteurVehiculeId ApporteurVehiId = new ApporteurVehiculeId();
+				/*	ApporteurVehicule ApporteurVehi = new ApporteurVehicule();
+					ApporteurVehiculeId ApporteurVehiId = new ApporteurVehiculeId();*/
 
 					// on enregistre ici
 					String numOrdVSt = String.format("%02d", numOrdV);
@@ -208,7 +208,7 @@ public class CarteGriseMB implements Serializable {
 					conduirVehi.setId(conduirVehiId);
 					conduirVehi.setDateConduite(date);
 
-					ApporteurVehiId.setCodeVehicule(vehi.getCodeVehicule());
+					/*ApporteurVehiId.setCodeVehicule(vehi.getCodeVehicule());
 					ApporteurVehiId.setCodeApporteur(F.getApporteur().getCodeApporteur());
 
 					ApporteurVehi.setId(ApporteurVehiId);
@@ -216,13 +216,13 @@ public class CarteGriseMB implements Serializable {
 					ApporteurVehi
 							.setMontantComApporteur(F.getCommissionApporteur());
 					ApporteurVehi.setTauxComApporteur(F
-							.getTauxCommissionApporteur());
+							.getTauxCommissionApporteur());*/
 					// conduirVehi.setDateConduite(date);
 
 					// recup de l'id du vehicule
 					getObjectService().addObject(vehi);
 					getObjectService().addObject(VehiZoneGeo);
-					getObjectService().addObject(ApporteurVehi);
+					//getObjectService().addObject(ApporteurVehi);
 
 					getObjectService().addObject(histoPropVehi);
 					getObjectService().addObject(histoMouvement);
