@@ -523,6 +523,20 @@ public class CotationAuto implements Serializable{
 					getContratMB().getAvenant());
 		}
 
+		
+		public void succes(){
+			addContrats();
+			sendDevis();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		public String getNomclient() {
 			try {
 				Personne personne = getClientMB().getMaPersonne();
