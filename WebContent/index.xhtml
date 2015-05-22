@@ -29,6 +29,7 @@
 					margin:60px auto 0px auto;
 					position: relative;
 					z-index: 0;
+					border-radius: 15px;
 					
 				}
 				pre, code {
@@ -73,25 +74,65 @@
 					<div class="divSous">
 						<p:commandLink id="subscribe" styleClass="souscrip">
 						</p:commandLink>
+						
+						<p:overlayPanel id="souscripChx" for=":gnl:subscribe" widgetVar="sousCripWidVar" showCloseIcon="true" style=" width:400px; padding:5px;" >
+						 <h:panelGrid columns="3" columnClasses="wu_Ppl_Left_tales,wu_Ppl_Left_tales,wu_Ppl_Left_tales" style="width:100%" cellspacing="10">
+							<f:facet name="header">
+										QUELLE BRANCHE D'ASSURANCE 
+								</f:facet>
+							<p:commandLink id="souscripAuto" action="/Page/AutoWeb/devisAuto?faces-redirect=true" styleClass="tooltip">
+							  <p:graphicImage 
+								            value="#{resource['images:auto.png']}"
+								            width="60"
+								            height="60">
+								</p:graphicImage>
+								<span>
+							        <img class="callout" src="./resources/images/callout_black.gif" />
+							        <strong>CSS only Tooltip</strong><br />
+							        Pure CSS popup tooltips with clean semantic XHTML.
+							    </span>
+
+							</p:commandLink>
+							
+							
+							
+							<p:commandLink id="souscripMrh" styleClass="tooltip">
+							 <p:graphicImage 
+								            value="#{resource['images:mrh.png']}"
+								            width="60"
+								            height="60">
+								  </p:graphicImage>
+								  <span>
+							        <img class="callout" src="./resources/images/callout_black.gif" />
+							        <strong>Souscrire à une police d'assurance en Mutlirisque Habitation</strong><br />
+							        Pure CSS popup tooltips with clean semantic XHTML.
+							   	  </span>
+							</p:commandLink>
+							
+							
+							
+							<p:commandLink id="souscripIA" styleClass="tooltip">
+							  <p:graphicImage 
+								            value="#{resource['images:indivAcc.png']}"
+								            width="60"
+								            height="60">
+								  </p:graphicImage>
+								  <span>
+							        <img class="callout" src="./resources/images/callout_black.gif" />
+							        <strong>Souscrire à une police d'assurance en Individuel Accident</strong><br />
+							        Pure CSS popup tooltips with clean semantic XHTML.
+							   	  </span>
+							</p:commandLink>
+							
+						</h:panelGrid>
+					</p:overlayPanel>
+						
 					</div>
-					<div class="divDecla">
+					<div class="divDecla" >
 						<p:commandLink id="sinDeclar" styleClass="declarSin">
 						</p:commandLink>
-					</div>
-					<div class="divConnex">
-						<p:commandLink id="login" styleClass="connex">
-						</p:commandLink>
-					</div>
-					<div class="divCota">
-						<p:commandLink id="cota"  styleClass="cotation">
-						</p:commandLink>
-					</div>
-					
-					
-				</div>
-			</div>
-							
-					<p:overlayPanel id="logCnx" for=":gnl:login" widgetVar="LoginWidVar" showCloseIcon="TRUE"  
+						
+						<p:overlayPanel id="logCnxSin" for=":gnl:sinDeclar" widgetVar="LoginWidVar" showCloseIcon="TRUE"  
 										style="height:200px; width:400px; padding:5px;" >
 										
 									
@@ -120,125 +161,102 @@
 									</f:facet>		
 							</h:panelGrid>
 						</p:overlayPanel>
-				
+					</div>
+					<div class="divConnex" >
+						<p:commandLink id="login" styleClass="connex">
+						</p:commandLink>
 						
-				<div class="overlayDiv">
-					<p:overlayPanel id="souscripChx" for=":gnl:subscribe" widgetVar="sousCripWidVar" showCloseIcon="true" style=" width:400px; padding:5px;" >
-						 <h:panelGrid columns="3" columnClasses="wu_Ppl_Left_tales,wu_Ppl_Left_tales,wu_Ppl_Left_tales" style="width:100%" cellspacing="10">
-							<f:facet name="header">
-										QUELLE BRANCHE D'ASSURANCE 
-								</f:facet>
-							<p:commandLink id="souscripAuto" action="/Page/AutoWeb/devisAuto?faces-redirect=true" >
-							  <p:graphicImage 
-								            value="#{resource['images:auto.png']}"
-								            width="60"
-								            height="60">
-								  </p:graphicImage>
-							</p:commandLink>
-							
-							
-							<p:commandLink id="souscripMrh">
-							 <p:graphicImage 
-								            value="#{resource['images:mrh.png']}"
-								            width="60"
-								            height="60">
-								  </p:graphicImage>
-							</p:commandLink>
-							
-							
-							<p:commandLink id="souscripIA" >
-							  <p:graphicImage 
-								            value="#{resource['images:indivAcc.png']}"
-								            width="60"
-								            height="60">
-								  </p:graphicImage>
-							</p:commandLink>
-							
-							
-						</h:panelGrid>
-					</p:overlayPanel>
-					<p:tooltip id="tipSubAuto" for="souscripAuto" value="Assurances Automobile" trackMouse="true" hideEvent="mouseout"/>
-					<p:tooltip id="tipSubMrh" for="souscripMrh" value="Assurances Multirisques Habitations" />
-					<p:tooltip id="tipSubIA" for="souscripIA" value="Assurances Individuelle Accident" />
-				</div>
+						<p:overlayPanel id="logCnx" for=":gnl:login" widgetVar="LoginWidVar" showCloseIcon="TRUE"  
+										style="height:200px; width:400px; padding:5px;" >
+										
+									
+							 <h:panelGrid columns="3"  columnClasses="libelOneLine, inputOneLine, msgOneline" style="width:100%" cellspacing="10">
+									<f:facet name="header">
+											VOS PARAMETRES DE CONNEXION 
+									</f:facet>
+										
+										
+									<h:outputText value="Login"/>
+									<p:inputText value="#{managedIndexConnex.login}" style="width:100%"/>
+									<h:outputText value=""/>
+									
+									<h:outputText value="Mot de passe"/>
+									<p:password value="#{managedIndexConnex.password}" style="width:100%" />
+									<h:outputText value=""/>
+									
+									<h:outputText value=""/>
+									<p:commandLink value="Mot de passe oublié ?" rendered="#{managedIndexConnex.askMdpForgot}"/>
+									<h:outputText value=""/>
+									
+									
+									
+									<f:facet name="footer">
+										<p:commandButton value="OK" actionListener="#{managedIndexConnex.logIn}" />
+									</f:facet>		
+							</h:panelGrid>
+						</p:overlayPanel>
 						
+					</div>
+					<div class="divCota">
+						<p:commandLink id="cota"  styleClass="cotation">
+						</p:commandLink>
 						
-				<div class="overlayDiv">
 						<p:overlayPanel id="cotationChx" for="cota" widgetVar="cotaWidVar" showCloseIcon="true"  style=" width:400px; padding:5px;">
 							 <h:panelGrid columns="3" columnClasses="wu_Ppl_Left_tales,wu_Ppl_Left_tales,wu_Ppl_Left_tales" style="width:100%" cellspacing="10">
 								<f:facet name="header">
 											QUELLE BRANCHE D'ASSURANCE 
 									</f:facet>
 								
-								<p:commandLink id="cotaAuto"  action="/Page/AutoWeb/devisAuto?faces-redirect=true">
+								<p:commandLink id="cotaAuto"  action="/Page/AutoWeb/devisAuto?faces-redirect=true" styleClass="tooltip">
 								  <p:graphicImage 
 									            value="#{resource['images:auto.png']}"
 									            width="60"
 									            height="60">
 									  </p:graphicImage>
+									  
+									  <span>
+									        <img class="callout" src="./resources/images/callout_black.gif" />
+									        <strong>Cotation en Automobile</strong><br />
+									        Pure CSS popup tooltips with clean semantic XHTML.
+									    </span>
 								</p:commandLink>
 								
-								<p:commandLink id="cotaMrh">
-								 <p:graphicImage 
-									            value="#{resource['images:mrh.png']}"
-									            width="60"
-									            height="60">
-									  </p:graphicImage>
+								<p:commandLink id="cotaMrh" styleClass="tooltip">
+									 <p:graphicImage 
+										            value="#{resource['images:mrh.png']}"
+										            width="60"
+										            height="60">
+									</p:graphicImage>
+									<span>
+								        <img class="callout" src="./resources/images/callout_black.gif" />
+								        <strong>Cotation en MultiRisqie Habitation</strong><br />
+								        Pure CSS popup tooltips with clean semantic XHTML.
+								    </span>
 								</p:commandLink>
 								
-								<p:commandLink id="cotaIA">
+								<p:commandLink id="cotaIA" styleClass="tooltip">
 								  <p:graphicImage 
 									            value="#{resource['images:indivAcc.png']}"
 									            width="60"
 									            height="60">
 									  </p:graphicImage>
+									  <span>
+								        <img class="callout" src="./resources/images/callout_black.gif" />
+								        <strong>Cotation en Individuel Accident</strong><br />
+								        Pure CSS popup tooltips with clean semantic XHTML.
+								    </span>
 								</p:commandLink>
 								
 							</h:panelGrid>
 						</p:overlayPanel>
+					</div>
+					
+					
+				
+					
 				</div>
-						
-				<div class="overlayDiv">
-						<p:overlayPanel id="declarChx" for="sinDeclar" widgetVar="declarWidVar" showCloseIcon="true"  style=" width:400px; padding:5px;" >
-							 
-							 <h:panelGrid columns="3" columnClasses="wu_Ppl_Left_tales,wu_Ppl_Left_tales,wu_Ppl_Left_tales" style="width:100%" cellspacing="10">
-								<f:facet name="header">
-											QUELLE BRANCHE D'ASSURANCE 
-									</f:facet>
-								
-								<p:commandLink id="sinDeclAuto"  action="/Page/sinistreAutoWeb/declarationSinnistreAuto?faces-redirect=true">
-								  <p:graphicImage 
-									            value="#{resource['images:auto.png']}"
-									            width="60"
-									            height="60">
-									  </p:graphicImage>
-								</p:commandLink>
-								
-								<p:commandLink id="sinDeclMrh">
-								 <p:graphicImage 
-									            value="#{resource['images:mrh.png']}"
-									            width="60"
-									            height="60">
-									  </p:graphicImage>
-								</p:commandLink>
-								
-								<p:commandLink id="sinDeclIA">
-								  <p:graphicImage 
-									            value="#{resource['images:indivAcc.png']}"
-									            width="60"
-									            height="60">
-									  </p:graphicImage>
-								</p:commandLink>
-								
-							</h:panelGrid>
-						</p:overlayPanel>
-				</div>
-			
-			
-			
-						
-						
-			
+			</div>
+				
 			</h:form>
 	</h:body>
 		

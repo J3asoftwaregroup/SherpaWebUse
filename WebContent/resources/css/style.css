@@ -950,7 +950,7 @@ height: auto !important;
      background-color: none;
  }
  
- ..divConnex:hover {
+ .divConnex:hover {
     /*  background-color: black; */
  }
 
@@ -1227,3 +1227,26 @@ height: 50px;
              position: fixed;
              top: 0;
          }
+
+.tooltip {outline:none; }
+.tooltip strong {line-height:30px;}
+.tooltip:hover {text-decoration:none;} 
+.tooltip span {
+    z-index:10;display:none; padding:14px 20px;
+    margin-top:60px; margin-left:-160px;
+    width:300px; line-height:16px;
+}
+.tooltip:hover span{
+    display:inline; position:absolute; 
+    border:2px solid #FFF;  color:#EEE;
+    background:#333 url(../resources/images/css-tooltip-gradient-bg.png) repeat-x 0 0;
+}
+.callout {z-index:20;position:absolute;border:0;top:-14px;left:120px;}
+    
+/*CSS3 extras*/
+.tooltip span
+{
+    border-radius:2px;        
+    box-shadow: 0px 0px 8px 4px #666;
+    /*opacity: 0.8;*/
+}
