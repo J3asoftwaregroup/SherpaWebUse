@@ -9,6 +9,14 @@
 
 <ui:composition template="/template/templateWebAuto.xhtml">
 	<ui:define name="content">
+	<h:form>
+	<p:breadCrumb>
+		    <p:menuitem value="Home" action="/index?faces-redirect=true" />
+		    <p:menuitem value="Auto" action="/Pages/AutoWeb/indexAuto?faces-redirect=true" />
+		    <p:menuitem value="Cotation / Souscription :Qui êtes vous?" action="/Pages/AutoWeb/devisAuto?faces-redirect=true" />
+		</p:breadCrumb>
+	</h:form>
+	
 			<p:ajaxStatus styleClass="ajaxStatut">  
 	<f:facet name="prestart">
 	<h:outputText value="Starting..." />
