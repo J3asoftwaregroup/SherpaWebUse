@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui">
+<h:head>
+        <title>connexion</title>
+        <style type="text/css">
+            .ui-widget {
+                font-size: 90%;
+            }
+        </style>
+    </h:head>
+     
+    <h:body>
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="username" value="Username :" />
+            <p:inputText id="username" value="#{userLoginDeclaSinintre.login}" required="true" label="username"/>
+ 
+            <h:outputLabel for="password" value="Password :" />
+            <p:password id="password" value="#{userLoginDeclaSinintre.motPass}" required="true" label="password"/>  
+        </h:panelGrid>
+    </h:body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="inscriptionPaypal::#Page#Paypal#inscriptionPaypal.xhtml"
+    NAME="output" PATH="/Page/Paypal/inscriptionPaypal.xhtml"
+    TARGET="rules:#Page#Paypal#inscriptionPaypal.xhtml"
+    TITLE="inscriptionPaypal" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="vehicule::#Page#AutoWeb#vehicule.xhtml"
+    NAME="output1" PATH="/Page/AutoWeb/vehicule.xhtml"
+    TARGET="rules:#Page#AutoWeb#vehicule.xhtml" TITLE="vehicule" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="Validation::#Page#AutoWeb#Validation.xhtml"
+    NAME="output2" PATH="/Page/AutoWeb/Validation.xhtml"
+    TARGET="rules:#Page#AutoWeb#Validation.xhtml" TITLE="Validation" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#Page#AutoWeb#vehicule.xhtml"
+  PATH="/Page/AutoWeb/vehicule.xhtml" SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Page#AutoWeb#Validation.xhtml"
+  PATH="/Page/AutoWeb/Validation.xhtml" SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Page#Paypal#inscriptionPaypal.xhtml"
+  PATH="/Page/Paypal/inscriptionPaypal.xhtml" SHAPE="272,33,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>
