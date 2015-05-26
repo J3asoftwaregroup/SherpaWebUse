@@ -15,19 +15,33 @@
 			<p:panel header="Soumission des pièces">
 			<fieldset>
 			<legend>Liste des sinistres </legend>
+			<h:panelGrid columns="2" border="0" id="police">
+			<h:outputText value="Numero Police"/>
+			<h:inputText value="#{managedSoumission.critere}" readonly="true"/>
+			<p:commandButton value="OK" icon="ui-icon-search" actionListener="#{managedSoumission.RechercheSinistreParContrat}" update="tabsin"> </p:commandButton>
+			</h:panelGrid>
 			
-			<p:dataTable emptyMessage="Aucun Sinistre">
+			</fieldset>
 			
+			<br></br>
+			
+			<fieldset>
+			<legend>Liste des sinistres </legend>
+			
+			<p:dataTable emptyMessage="Aucun Sinistre" var="sinistr" value="#{managedSoumission.listSinistre}" selectionMode="single" rowKey="#{sinistr.codeSinistre}" id="tabsin" selection="#{managedSoumission.sinistreSelectionne}">
+				
+				<p:ajax event="rowSelect" listener="#{managedSoumission.onRowSelect}" update="doc"/>
+				
 			<p:column headerText="Code Sinistre">
-			<h:outputText value="" />
+			<h:outputText value="#{sinistr.codeSinistre}" />
 			</p:column>
 			
 			<p:column headerText="Date Survenance">
-			<h:outputText value="" />
+			<h:outputText value="#{sinistr.dateSurvenance}" />
 			</p:column>
 			
 			<p:column headerText="Date Declaration">
-			<h:outputText value="" />
+			<h:outputText value="#{sinistr.dateDeclaration}" />
 			</p:column>
 			
 			</p:dataTable>
@@ -39,20 +53,24 @@
 			<h:panelGrid columns="6" border="0" id="doc">
 			
 			<h:outputText value="Code Sinistre"/>
-			<h:inputText value="" readonly="true"/>
+			<h:inputText value="#{managedSoumission.codeSinistre}" readonly="true"/>
 			
 			<h:outputText value="Date déclaration"/>
-			<h:inputText value="" readonly="true"/>
+			<h:inputText value="#{managedSoumission.dateDclaration}" readonly="true"/>
 			
 			<h:outputText value="Date Survenance"/>
-			<h:inputText value=""  readonly="true"/>
+			<h:inputText value="#{managedSoumission.dateSurvenance}"  readonly="true"/>
 			
 			
 			<p:selectBooleanCheckbox value="#{managedSoumission.bPv}"  itemLabel="Proces Verbal" >
 			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update="doc"/>
 			</p:selectBooleanCheckbox>
 			<p:fileUpload value="#{managedSoumission.filePv}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatPv}"/>
-			<h:outputText value="" />
+			<p:selectOneMenu value="#{managedSoumission.idIntervenant}" style="width:150px">
+							<f:selectItem itemValue="Choisir" itemLabel="Choisir" > </f:selectItem>
+							<f:selectItems value="#{managedSoumission.elementsNomInt}" />
+							<p:ajax event="change"  listener="#{interventionMB.RecupInt}" > </p:ajax>
+			</p:selectOneMenu>
 			<h:outputText value="" />
 			<h:outputText value="" />
 			<h:outputText value="" />
@@ -63,7 +81,11 @@
 			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update="doc"/>
 			</p:selectBooleanCheckbox>
 			<p:fileUpload value="#{managedSoumission.fileRap}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatRap}"/>
-			<h:outputText value=""/>
+			<p:selectOneMenu value="#{managedSoumission.idIntervenant}" style="width:150px">
+							<f:selectItem itemValue="Choisir" itemLabel="Choisir" > </f:selectItem>
+							<f:selectItems value="#{managedSoumission.elementsNomInt}" />
+							<p:ajax event="change"  listener="#{managedSoumission.RecupInt}" > </p:ajax>
+			</p:selectOneMenu>
 			<h:outputText value="" />
 			<h:outputText value="" />
 			<h:outputText value="" />

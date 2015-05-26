@@ -6,11 +6,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 
+import org.primefaces.event.SelectEvent;
 import org.primefaces.model.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,6 +25,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.ActeMedical;
 import com.j3a.assurance.model.Intervenant;
 import com.j3a.assurance.model.Intervention;
@@ -37,6 +42,8 @@ public class ManagedSoumission {
 		@Autowired
 		IdGenerateur idGenerateur;
 		
+		
+		
 		private UploadedFile filePv;
 		private UploadedFile fileRap;
 		private UploadedFile fileActMed;
@@ -45,6 +52,8 @@ public class ManagedSoumission {
 		private boolean bPv, bRap, bActMed;
 		private boolean etatPv=true, etatRap=true, etatActMed=true;
 		private Sinistre sinistre = new Sinistre();
+		private Sinistre sinistreSelectionne=new Sinistre();
+		private Contrat contrat = new Contrat();
 		private Intervention intervention = new Intervention();
 		private Intervenant intervenant = new Intervenant();
 		private ActeMedical acteMedical = new ActeMedical();
@@ -52,6 +61,10 @@ public class ManagedSoumission {
 		private String destination = "c:\\upload\\temp\\";
 		private java.lang.String typeRapport;
 		private String nomfichier;
+		private String idIntervenant;
+		private String critere;
+		private List<SelectItem> elementsNomInt;
+		ArrayList<Sinistre> listSinistre = new ArrayList<Sinistre>();
 		private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
 				Font.BOLD);
 		private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
@@ -102,8 +115,6 @@ public class ManagedSoumission {
 		}
 		
 		public void AjouPv(){
-			intervention.setRefIntervention(getIdGenerateur().getIdIntervention(getSinistre()));
-			intervention.setTypeRapport("Rapport Intervenant");
 			
 			handleFileUploadpv();
 		}
@@ -114,9 +125,17 @@ public void AjouActMed(){
 		}
 		
 		public void AjouRap(){
+			intervention.setRefIntervention(getIdGenerateur().getIdIntervention(getSinistre()));
+			intervention.setTypeRapport("Rapport Intervenant");
+			intervention.setIntervenant(getIntervenant());
 			handleFileUploadRap();
 		}
-		
+		//Recup l'intervenant
+		public void RecupInt() {
+			setIntervenant((Intervenant) getObjectService().getObjectById(
+					idIntervenant, "Intervenant"));
+			
+		}
 		public void handleFileUploadpv() {
 			byte[] bFile = new byte[102400];
 			if (filePv != null) {
@@ -357,7 +376,48 @@ public void AjouActMed(){
 		}
 
 		
-		
+		public void RechercheSinistreParContrat() {
+			setContrat((Contrat) getObjectService().getObjectById(critere,
+					"Contrat"));
+			if (getContrat() == null) {
+				System.out.println("Police Inexistante");
+				FacesContext.getCurrentInstance().addMessage(
+						null,
+						new FacesMessage(FacesMessage.SEVERITY_INFO,
+								"Avertissement",
+								"Ce numéro de Police n'est pas attribué!"));
+			} else {
+				if (!(getContrat().getRisque().getCodeRisque().equals("1"))) {
+					System.out
+							.println("Cette Police n'est pas une police du risque Auto");
+					FacesContext
+							.getCurrentInstance()
+							.addMessage(
+									null,
+									new FacesMessage(FacesMessage.SEVERITY_INFO,
+											"Avertissement",
+											"Cette Police n'est pas une police du risque Auto"));
+				} else {
+					if (getContrat().getSinistres().size() == 0) {
+						System.out.println("Aucun Sinistre pour cette police");
+						FacesContext.getCurrentInstance().addMessage(
+								null,
+								new FacesMessage(FacesMessage.SEVERITY_INFO,
+										"Avertissement",
+										"Aucun Sinistre pour cette police"));
+					} else {
+						for (Sinistre sin : getContrat().getSinistres()) {
+							getListSinistre().add(sin);
+						}
+					}
+				}
+			}
+		}
+
+		public void onRowSelect(SelectEvent event) {
+			//Sinistre Selectionnee
+			setSinistre(((Sinistre) event.getObject()));
+		}
 		 
 	    public UploadedFile getFilePv() {
 	        return filePv;
@@ -501,6 +561,67 @@ public void AjouActMed(){
 
 		public void setButtonadd(UIComponent buttonadd) {
 			this.buttonadd = buttonadd;
+		}
+
+		public String getIdIntervenant() {
+			return idIntervenant;
+		}
+
+		public void setIdIntervenant(String idIntervenant) {
+			this.idIntervenant = idIntervenant;
+		}
+
+		public List<SelectItem> getElementsNomInt() {
+			if (elementsNomInt == null) {
+				elementsNomInt = new ArrayList<SelectItem>();
+				try {
+					for (Object obj : getObjectService().getObjects("Intervenant")) {
+	       
+						elementsNomInt.add(new SelectItem(((Intervenant) obj)
+								.getCodeIntervenant(), ((Intervenant) obj).getNomIntervenant()));
+
+					}
+				} catch (Exception e) {
+
+				}
+			}
+			return elementsNomInt;
+		}
+
+		public void setElementsNomInt(List<SelectItem> elementsNomInt) {
+			this.elementsNomInt = elementsNomInt;
+		}
+
+		public String getCritere() {
+			return critere;
+		}
+
+		public void setCritere(String critere) {
+			this.critere = critere;
+		}
+
+		public Contrat getContrat() {
+			return contrat;
+		}
+
+		public void setContrat(Contrat contrat) {
+			this.contrat = contrat;
+		}
+
+		public ArrayList<Sinistre> getListSinistre() {
+			return listSinistre;
+		}
+
+		public void setListSinistre(ArrayList<Sinistre> listSinistre) {
+			this.listSinistre = listSinistre;
+		}
+
+		public Sinistre getSinistreSelectionne() {
+			return sinistreSelectionne;
+		}
+
+		public void setSinistreSelectionne(Sinistre sinistreSelectionne) {
+			this.sinistreSelectionne = sinistreSelectionne;
 		}
 	
 }
