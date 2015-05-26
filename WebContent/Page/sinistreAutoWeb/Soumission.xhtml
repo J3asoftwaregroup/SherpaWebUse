@@ -78,11 +78,17 @@
 			<h:outputText value="" />
 			<h:outputText value="" />
 			<h:outputText value="" />
-			<h:commandButton value="Soumettre" style="height:40px;border-radius:20px"> </h:commandButton>
+			<p:commandButton value="Soumettre" action="#{managedSoumission.soumettre}"  binding="#{managedSoumission.buttonadd}" style="height:40px;border-radius:20px"> 
+			  <p:confirm header="Confirmation" message="Confirmez vous?"   icon="ui-icon-alert" />
+			</p:commandButton>
 			
 			</h:panelGrid>
 			</fieldset>
 			</p:panel>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="explode"   height="40" width="300">  
+				        <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>  
+				        <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>       
+			</p:confirmDialog> 
 		</h:form>
 		
 	</ui:define>
