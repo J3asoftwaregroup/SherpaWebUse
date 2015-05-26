@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -13,22 +15,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.Conducteur;
-import com.j3a.assurance.model.ConduireVehicule;
-import com.j3a.assurance.model.ConduireVehiculeId;
+import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.Exercice;
 import com.j3a.assurance.model.Morale;
 import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.model.Quittance;
+import com.j3a.assurance.model.Vehicule;
+import com.j3a.assurance.model.VehiculesAssures;
 import com.j3a.assurance.reporting.bean.ReportingAuto;
 import com.j3a.assurance.reporting.design.ConditionPartAuto;
 import com.j3a.assurance.reporting.design.QuittanceDesignAuto;
 import com.j3a.assurance.utilitaire.IdGenerateur;
+import com.j3a.assurance.utilitaire.RecupObjetRow;
 import com.j3a.assurance.utilitaire.VehiculeRow;
 
 @Component
@@ -60,6 +66,11 @@ public class CotationAuto implements Serializable{
 		ConditionPartAuto conditionPartAuto;
 		@Autowired
 		private QuittanceDesignAuto quittanceDesignAuto;
+		
+		@Autowired
+		private RecupObjetRow recupObjetRow;
+		private Contrat contratF = new Contrat();
+		private Avenant avenantF = new Avenant();
 
 		@PostConstruct
 		public void postConstru() {
@@ -299,14 +310,108 @@ public class CotationAuto implements Serializable{
 					(HttpServletResponse) FacesContext.getCurrentInstance()
 							.getExternalContext().getResponse());
 		} catch (IOException e) {
-			logger.error("Erreur d'édition de piece", e);
+			
 		} catch (Exception e) {
-			logger.error(
-					"Erreur lors de l'enregistrement du enregistrement du contrat Auto",
-					e);
+			
 		}
+			
 		}
 		
+		public void rechercheContrat() {
+			Date date = new Date();
+			date = Calendar.getInstance().getTime();
+			String police="";
+			if(getContratF().getNumPolice()!=null){
+				  police = getContratF().getNumPolice();
+			}else{
+				  police = "001WEB115AUT003";
+			}
+          
+			// getManagedClient().getValeurRecherche();
+		 
+				setContratF((Contrat)getContratMB().getObjectService().getObjectById(police,"Contrat"));
+
+				getContratMB().setContrat(getContratF());
+
+				avenantF = getContratMB().getObjectService().DernierAvenant(police);
+				avenantF.setMouvement("Affaire Nouvelle");
+				/*avenantF.setDateAvenant(date);
+				avenantF.setDateEmission(date);
+				avenantF.setEffet(date);*/
+				//avenantF.setCodeexercice(getExercice());
+				/*avenantF.setEcheance(getContratMB().getDateEcheance(date,
+						getAvenantF().getDuree()));*/
+				rechercheVehicule();
+
+			
+		}
+		
+		public void rechercheVehicule() {
+			
+			getGarantieMB().getListegaranties().clear();
+			getCarteGriseMB().getVehiculeList().clear();
+			VehiculesAssures Vas = getAvenantF().getVehiculesAssures();
+
+			// getCarteGriseMB().setListeAssure(LIA);
+			int numOrd = 0;
+			for (Iterator its = Vas.getVehicules().iterator(); its.hasNext();) {
+				Vehicule V = (Vehicule) its.next();
+				numOrd = numOrd + 1;
+				VehiculeRow vehiculeRow = new VehiculeRow();
+
+				vehiculeRow = getRecupObjetRow().returnVehiculeRow(V);
+				vehiculeRow.setNumOrdr(numOrd);
+
+				getCarteGriseMB().getVehiculeList().add(vehiculeRow);
+				System.out.println("/contenu du vehicule/"
+						+ vehiculeRow.getVehi().getCodeVehicule() + "--"
+						+ vehiculeRow.getListegaranties().size());
+			}
+
+			try {
+				getCarteGriseMB().setSlctdVehiRw(
+						getCarteGriseMB().getVehiculeList().get(0));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			getGarantieMB().getListegaranties().addAll(
+					getCarteGriseMB().getVehiculeList().get(0)
+							.getListegaranties());
+
+		}
+		public String editerAttestation(){
+			
+			rechercheContrat();
+			
+			
+			//chargement des données pour le rapport pdf
+			ReportingAuto report = new ReportingAuto();
+			report.setAvenant(avenantF);
+			report.setContrat(contratF);
+			report.setListVehiculeRow(getCarteGriseMB().getVehiculeList());
+			//Quittance quit = new Quittance();
+			/*quit.setAccessoire(getManagedQuittanceAuto().getQuittanceAuto().getAccessoire());
+			quit.setTaxes(getManagedQuittanceAuto().getQuittanceAuto().getTaxeEnr());
+			quit.setFga(getManagedQuittanceAuto().getQuittanceAuto().getTaxeFGA());
+			quit.setNetAPayer(getManagedQuittanceAuto().getQuittanceAuto().getNetteApayer());
+			report.setQuittance(quit);*/
+			report.setNom("Devis");
+			report.setPersonne(contratF.getPersonne());
+			try{
+				getConditionPartAuto().setReportingAuto(report);
+				getConditionPartAuto().printPdf(report, (HttpServletRequest) FacesContext.getCurrentInstance()
+								.getExternalContext().getRequest(),
+						(HttpServletResponse) FacesContext.getCurrentInstance()
+								.getExternalContext().getResponse());
+			} catch (IOException e) {
+				
+			} catch (Exception e) {
+				
+			}
+		
+			return"attestation";
+		}
 
 		public void validerVehicule() {
 			if (!getCarteGriseMB().getVehiculeList().contains(
@@ -387,7 +492,9 @@ public class CotationAuto implements Serializable{
 			String pv = getContratMB().getUtilisateur().getPointVente()
 			.getCodePointVente();
 			String util =getContratMB().getUtilisateur().getCodeUtilisateur();
-			getContratMB().getContrat().setNumPolice(getIdGenerateur().getPoliceID(pv, util, "AUT"));
+			String police = getIdGenerateur().getPoliceID(pv, util, "AUT");
+			getContratMB().getContrat().setNumPolice(police);
+			getContratF().setNumPolice(police);
 			getContratMB().getContrat().setPointVente(getContratMB().getUtilisateur().getPointVente());
 			getContratMB().getContrat().setPersonne(getClientMB().getPhysique().getPersonne());
 			getContratMB().getContrat().setRisque(getContratMB().getRisque());
@@ -527,6 +634,7 @@ public class CotationAuto implements Serializable{
 		public void succes(){
 			addContrats();
 			sendDevis();
+			editerAttestation();
 		}
 		
 		
@@ -690,6 +798,42 @@ public class CotationAuto implements Serializable{
 
 		public void setClientMB(ClientMB clientMB) {
 			this.clientMB = clientMB;
+		}
+
+
+
+		public RecupObjetRow getRecupObjetRow() {
+			return recupObjetRow;
+		}
+
+
+
+		public void setRecupObjetRow(RecupObjetRow recupObjetRow) {
+			this.recupObjetRow = recupObjetRow;
+		}
+
+
+
+		public Contrat getContratF() {
+			return contratF;
+		}
+
+
+
+		public void setContratF(Contrat contratF) {
+			this.contratF = contratF;
+		}
+
+
+
+		public Avenant getAvenantF() {
+			return avenantF;
+		}
+
+
+
+		public void setAvenantF(Avenant avenantF) {
+			this.avenantF = avenantF;
 		}
 
 		

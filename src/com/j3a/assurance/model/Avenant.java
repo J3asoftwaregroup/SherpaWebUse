@@ -138,7 +138,7 @@ public class Avenant implements java.io.Serializable {
 		this.utilisateur = utilisateur;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_VEHICULES_ASSURES")
 	public VehiculesAssures getVehiculesAssures() {
 		return this.vehiculesAssures;
