@@ -27,6 +27,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.ActeMedical;
+import com.j3a.assurance.model.Facture;
 import com.j3a.assurance.model.Intervenant;
 import com.j3a.assurance.model.Intervention;
 import com.j3a.assurance.model.Sinistre;
@@ -57,6 +58,8 @@ public class ManagedSoumission {
 		private Intervention intervention = new Intervention();
 		private Intervenant intervenant = new Intervenant();
 		private ActeMedical acteMedical = new ActeMedical();
+		private Facture facAct = new Facture();
+		private Facture facPv = new Facture();
 		private static String FILE = "c:/upload/temp/default.pdf";
 		private String destination = "c:\\upload\\temp\\";
 		private java.lang.String typeRapport;
@@ -120,14 +123,23 @@ public class ManagedSoumission {
 		}
 		
 public void AjouActMed(){
+			facAct.setCodeFacture(getIdGenerateur().getIdFactureActeMed());
+			getObjectService().addObject(facAct);
 			acteMedical.setReferenceActe(getIdGenerateur().getIdActeMed(getSinistre()));
+			acteMedical.setFacture(facAct);
+	
+			getObjectService().addObject(acteMedical);
 			handleFileUploadActeMed();
 		}
 		
 		public void AjouRap(){
+			facPv.setCodeFacture(getIdGenerateur().getIdFactureIntervention(intervention));
+			getObjectService().addObject(facPv);
 			intervention.setRefIntervention(getIdGenerateur().getIdIntervention(getSinistre()));
 			intervention.setTypeRapport("Rapport Intervenant");
 			intervention.setIntervenant(getIntervenant());
+			intervention.setSinistre(sinistre);
+			getObjectService().addObject(intervenant);
 			handleFileUploadRap();
 		}
 		//Recup l'intervenant
@@ -622,6 +634,22 @@ public void AjouActMed(){
 
 		public void setSinistreSelectionne(Sinistre sinistreSelectionne) {
 			this.sinistreSelectionne = sinistreSelectionne;
+		}
+
+		public Facture getFacAct() {
+			return facAct;
+		}
+
+		public void setFacAct(Facture facAct) {
+			this.facAct = facAct;
+		}
+
+		public Facture getFacPv() {
+			return facPv;
+		}
+
+		public void setFacPv(Facture facPv) {
+			this.facPv = facPv;
 		}
 	
 }
