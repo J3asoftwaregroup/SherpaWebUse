@@ -823,6 +823,48 @@ height: auto !important;
 		    Le Splash
 /////////////////////////////////////*/
 
+.brchAuto{
+	height:98px;
+	width:98px;
+	display:block;
+	background-image:url(../resources/images/BrchAuto.png);
+}
+
+.brchAuto:hover{
+	height:98px;
+	width:98px;
+	display:block;
+	background-image:url(../resources/images/BrchAutoHover.png);
+}
+
+.brchMRH{
+	height:98px;
+	width:98px;
+	display:block;
+	background-image:url(../resources/images/BrchMRH.png);
+}
+
+.brchMRH:hover{
+	height:98px;
+	width:98px;
+	display:block;
+	background-image:url(../resources/images/BrchMRHHover.png);
+}
+
+.brchIA{
+	height:98px;
+	width:98px;
+	display:block;
+	background-image:url(../resources/images/BrchIA.png);
+}
+
+.brchIA:hover{
+	height:98px;
+	width:98px;
+	display:block;
+	background-image:url(../resources/images/BrchIAHover.png);
+}
+
 .souscrip{
 	height:98px;
 	width:98px;
@@ -836,6 +878,7 @@ height: auto !important;
 	display:block;
 	background-image:url(../resources/images/souscriptionHover.png);
 }
+
 
 .blankTale{
         display: block;
@@ -992,103 +1035,6 @@ height: auto !important;
 	font-weight: 900;
 	
 }
-.Maritime{
-	height:57px;
-	width:153px;
-	display:block;
-	background-image:url(../resources/images/Maritime-NonSlctd.jpg);
-}
-
-.Maritime:hover{
-	height:56px;
-	width:152px;
-	display:block;
-	background-image:url(../resources/images/Maritime-Slctd.jpg);
-}
-.Aerien{
-	height:57px;
-	width:153px;
-	display:block;
-	background-image:url(../resources/images/Aerien-NonSlctd.jpg);
-}
-
-.Aerien:hover{
-	height:56px;
-	width:152px;
-	display:block;
-	background-image:url(../resources/images/Aerien-Slctd.jpg);
-}
-
-.Routier{
-	height:57px;
-	width:153px;
-	display:block;
-	background-image:url(../resources/images/routier-NonSlctd.jpg);
-}
-
-.Routier:hover{
-	height:56px;
-	width:152px;
-	display:block;
-	background-image:url(../resources/images/routier-Slctd.jpg);
-}
-
-.Faculte{
-	height:57px;
-	width:153px;
-	display:block;
-	background-image:url(../resources/images/Faculte-NonSlctd.jpg);
-}
-
-.Faculte:hover{
-	height:56px;
-	width:152px;
-	display:block;
-	background-image:url(../resources/images/Faculte-Slctd.jpg);
-}
-
-.corps{
-	height:57px;
-	width:153px;
-	display:block;
-	background-image:url(../resources/images/Corps-NonSlctd.jpg);
-}
-
-.corps:hover{
-	height:56px;
-	width:152px;
-	display:block;
-	background-image:url(../resources/images/Corps-Slctd.jpg);
-}
-
-.etatCima{
-	height:46px;
-	width:122px;
-	display:block;
-	background-image:url(../resources/images/EtatsCima-NonSlctd-.jpg);
-}
-
-.etatCima:hover{
-	height:45px;
-	width:122px;
-	display:block;
-	background-image:url(../resources/images/EtatsCima-Slctd-.jpg);
-}
-
-
-.gesConf{
-	height:57px;
-	width:153px;
-	display:block;
-	background-image:url(../resources/images/GesConf-NonSlctd.jpg);
-}
-
-.gesConf:hover{
-	height:57px;
-	width:153px;
-	display:block;
-	background-image:url(../resources/images/GesConf-Slctd.jpg);
-}
 
  
 .ui-selectonemenu {
@@ -1227,6 +1173,82 @@ height: 50px;
              position: fixed;
              top: 0;
          }
+
+
+ .divSous {
+     position:absolute;
+     display: block;
+     top:15px;
+     left:229px;
+     width:98px;
+     height:98px;
+     background: none;
+ }
+ .divSous strong {line-height:30px;}
+ .divSous:hover {text-decoration:none;}
+.divSous span {
+    z-index:10;display:none; padding:14px 20px;
+    margin-top:110px; margin-left:-90px;
+    width:300px; line-height:16px;
+}
+.divSous:hover span{
+    display:inline; position:absolute; 
+    border:2px solid #FFF;  color:#EEE;
+    background:#333 url(../resources/images/css-tooltip-gradient-bg.png) repeat-x 0 0;
+}
+/*CSS3 extras*/
+.divSous span
+{
+    border-radius:2px;        
+    box-shadow: 0px 0px 8px 4px #666;
+    /*opacity: 0.8;*/
+}
+
+
+
+ 
+.divCota strong {line-height:30px;}
+ .divCota:hover {text-decoration:none;}
+.divCota span {
+    z-index:10;display:none; padding:14px 20px;
+    margin-top:110px; margin-left:-90px;
+    width:300px; line-height:16px;
+}
+.divCota:hover span{
+    display:inline; position:absolute; 
+    border:2px solid #FFF;  color:#EEE;
+    background:#333 url(../resources/images/css-tooltip-gradient-bg.png) repeat-x 0 0;
+}
+/*CSS3 extras*/
+.divCota span
+{
+    border-radius:2px;        
+    box-shadow: 0px 0px 8px 4px #666;
+    /*opacity: 0.8;*/
+}
+
+
+ 
+ 
+.divDecla strong {line-height:30px;}
+ .divDecla:hover {text-decoration:none;}
+.divDecla span {
+    z-index:10;display:none; padding:14px 20px;
+    margin-top:110px; margin-left:-90px;
+    width:300px; line-height:16px;
+}
+.divDecla:hover span{
+    display:inline; position:absolute; 
+    border:2px solid #FFF;  color:#EEE;
+    background:#333 url(../resources/images/css-tooltip-gradient-bg.png) repeat-x 0 0;
+}
+/*CSS3 extras*/
+.divDecla span
+{
+    border-radius:2px;        
+    box-shadow: 0px 0px 8px 4px #666;
+    /*opacity: 0.8;*/
+}
 
 .tooltip {outline:none; }
 .tooltip strong {line-height:30px;}
