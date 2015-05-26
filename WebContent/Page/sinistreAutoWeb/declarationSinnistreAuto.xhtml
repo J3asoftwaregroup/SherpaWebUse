@@ -9,6 +9,14 @@
 <ui:composition template="/template/templateWebAuto.xhtml">
 	
 	<ui:define name="content">
+	<h:form>
+	<p:breadCrumb>
+		    <p:menuitem value="Home" action="/index?faces-redirect=true" />
+		    <p:menuitem value="Auto" action="/Pages/AutoWeb/indexAuto?faces-redirect=true" />
+		    <p:menuitem value="Declaration de Sinistre" action="/Page/sinistreAutoWeb/declarationSinnistreAuto?faces-redirect=true" />
+		    
+		</p:breadCrumb>
+	</h:form>
 	 <h:form id="rech_contrat">
 	<p:messages id="growl" sticky="true" autoUpdate="true" closable="true"/>
 	
