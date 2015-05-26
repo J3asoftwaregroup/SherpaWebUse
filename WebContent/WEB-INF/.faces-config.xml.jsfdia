@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
- <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,16,53,74" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
     ID="inscriptionPaypal::#Page#Paypal#inscriptionPaypal.xhtml"
@@ -21,4 +21,20 @@
   PATH="/Page/AutoWeb/Validation.xhtml" SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#Page#Paypal#inscriptionPaypal.xhtml"
   PATH="/Page/Paypal/inscriptionPaypal.xhtml" SHAPE="272,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Page#sinistreAutoWeb#pageConnexion.xhtml"
+  PATH="/Page/sinistreAutoWeb/pageConnexion.xhtml" SHAPE="603,155,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Page#sinistreAutoWeb#pageConnexion.xhtml:0"
+   NAME="item" PATH="/Page/sinistreAutoWeb/pageConnexion.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="declarationSinnistreAuto::#Page#sinistreAutoWeb#declarationSinnistreAuto.xhtml"
+    NAME="output"
+    PATH="/Page/sinistreAutoWeb/declarationSinnistreAuto.xhtml"
+    TARGET="rules:#Page#sinistreAutoWeb#declarationSinnistreAuto.xhtml"
+    TITLE="declarationSinnistreAuto" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#Page#sinistreAutoWeb#declarationSinnistreAuto.xhtml"
+  PATH="/Page/sinistreAutoWeb/declarationSinnistreAuto.xhtml"
+  SHAPE="1156,194,0,0" model-entity="JSFProcessGroup" persistent="true"/>
 </PROCESS>

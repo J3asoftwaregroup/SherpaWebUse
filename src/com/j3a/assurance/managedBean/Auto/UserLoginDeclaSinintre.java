@@ -29,10 +29,12 @@ public class UserLoginDeclaSinintre {
 	//Injection spring
 	@Autowired
 	private ObjectService objectService;
+	private String validation;
 	
 
 @Transactional
 	public String loginConnexion() {
+	validation="";
 		FacesMessage message = null;
 			 Personne personne = new Personne();
 			personne = getObjectService().personneByLogin(login, motPass);
@@ -42,12 +44,14 @@ public class UserLoginDeclaSinintre {
 				FacesContext.getCurrentInstance().addMessage(null, message);
 				
 			}else {
-				message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienenu(e)! Vous êtes connecté","");
-				FacesContext.getCurrentInstance().addMessage(null, message);
-				return "OKSINSTRE";
+				validation="declarationSinnistreAuto";
+				System.out.println(validation);
+				
 			}
-			return"";
-		
+			
+			
+			
+			return validation;
     }  
 	
 	
