@@ -19,7 +19,7 @@
 			<h:outputText value="Numero Police"/>
 			<h:inputText value="#{managedSoumission.critere}" readonly="true" required="true"
 			requiredMessage="Saisir le numero de Police"/>
-			<p:commandButton value="OK" icon="ui-icon-search" actionListener="#{managedSoumission.RechercheSinistreParContrat}" update="tabsin"> </p:commandButton>
+			<p:commandButton value="OK" icon="ui-icon-search" actionListener="#{managedSoumission.RechercheSinistreParContrat}" update=":gnl:tabsin"> </p:commandButton>
 			</h:panelGrid>
 			
 			</fieldset>
@@ -31,7 +31,7 @@
 			
 			<p:dataTable emptyMessage="Aucun Sinistre" var="sinistr" value="#{managedSoumission.listSinistre}" selectionMode="single" rowKey="#{sinistr.codeSinistre}" id="tabsin" selection="#{managedSoumission.sinistreSelectionne}">
 				
-				<p:ajax event="rowSelect" listener="#{managedSoumission.onRowSelect}" update="doc"/>
+				<p:ajax event="rowSelect" listener="#{managedSoumission.onRowSelect}" update=":gnl:doc"/>
 				
 			<p:column headerText="Code Sinistre">
 			<h:outputText value="#{sinistr.codeSinistre}" />
@@ -54,17 +54,17 @@
 			<h:panelGrid columns="6" border="0" id="doc">
 			
 			<h:outputText value="Code Sinistre"/>
-			<h:inputText value="#{managedSoumission.codeSinistre}" readonly="true"/>
+			<h:inputText value="#{managedSoumission.sinistre.codeSinistre}" readonly="true"/>
 			
 			<h:outputText value="Date déclaration"/>
-			<h:inputText value="#{managedSoumission.dateDclaration}" readonly="true"/>
+			<h:inputText value="#{managedSoumission.sinistre.dateDeclaration}" readonly="true"/>
 			
 			<h:outputText value="Date Survenance"/>
-			<h:inputText value="#{managedSoumission.dateSurvenance}"  readonly="true"/>
+			<h:inputText value="#{managedSoumission.sinistre.dateSurvenance}"  readonly="true"/>
 			
 			
 			<p:selectBooleanCheckbox value="#{managedSoumission.bPv}"  itemLabel="Proces Verbal" >
-			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update="doc"/>
+			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update=":gnl:doc"/>
 			</p:selectBooleanCheckbox>
 			<p:fileUpload value="#{managedSoumission.filePv}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatPv}"/>
 			<p:selectOneMenu value="#{managedSoumission.idIntervenant}" style="width:150px">
@@ -79,7 +79,7 @@
 			
 			
 			<p:selectBooleanCheckbox value="#{managedSoumission.bRap}"  itemLabel="Rapport Intervenant" >
-			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update="doc"/>
+			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update=":gnl:doc"/>
 			</p:selectBooleanCheckbox>
 			<p:fileUpload value="#{managedSoumission.fileRap}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatRap}"/>
 			<p:selectOneMenu value="#{managedSoumission.idIntervenant}" style="width:150px">
@@ -94,7 +94,7 @@
 			
 			
 			<p:selectBooleanCheckbox value="#{managedSoumission.bActMed}" itemLabel="Acte medical" >
-			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update="doc"/>
+			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update=":gnl:doc"/>
 			</p:selectBooleanCheckbox>
 			<p:fileUpload value="#{managedSoumission.fileActMed}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatActMed}"/>
 			<h:outputText value=""/>
