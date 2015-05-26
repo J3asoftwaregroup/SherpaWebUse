@@ -174,7 +174,7 @@ public class Personne implements java.io.Serializable {
 		this.contrats = contrats;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "personne")
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "personne")
 	public Physique getPhysique() {
 		return this.physique;
 	}
@@ -183,7 +183,7 @@ public class Personne implements java.io.Serializable {
 		this.physique = physique;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personne")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "personne")
 	public Set<Contact> getContacts() {
 		return this.contacts;
 	}
@@ -201,7 +201,7 @@ public class Personne implements java.io.Serializable {
 		this.etres = etres;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "personne")
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "personne")
 	public Morale getMorale() {
 		return this.morale;
 	}
