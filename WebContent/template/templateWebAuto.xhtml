@@ -62,7 +62,7 @@
 		          "../resources/images/dome.jpg"
 		        ], {
 		        	fade: 1000,		//Speed of Fade
-		        	duration: 10000 	//Time of image display
+		        	duration: 1000 	//Time of image display
 		        });
 		    </script>
 		
@@ -95,26 +95,19 @@
 				                
 				                <ui:insert name="bottom">
 				                <div style=" font-family:verdana;padding:0px;border-radius:10px;border:1px solid red;background-color:#D6D6D6">
-									<h:panelGrid columns="2" columnClasses="non,eseLabel">
+									<h:panelGrid columns="2" >
 					
-										<a href="../../../../Sherpa/index.jsf" style="color: blue">Menu
-											Principal</a>
-					
-										<a href="../../../../Sherpa/pages/Auto/indexPrdAuto.jsf"
-											style="color: blue">Menu Auto</a>
 										
-										<a href="../../../../../../Sherpa/pages/springsecurity/logout.jsf"
-											style="color: red">Déconnecter</a>
-					
-										<h:outputLink value="http://www.j3atechnologies.com/" hreflang=""
-											style="text-decoration: none;font-size: 13px;margin-left: 20%;margin-right: 20%;" target="_bank">
-											<h:outputText value="J3A SOFTWARE GROUP, " style="color:red;" />
-											<h:outputText value="Créateur de Valeurs Ajoutées Technologiques"
-												style="font-style: italic;" />
+										
+										<h:outputLink value="http://www.j3atechnologies.com/" 
+											 target="_bank">
+											J3A SOFTWARE GROUP
 										</h:outputLink>
+										
+										<h:outputText value="Créateur de Valeurs Ajoutées Technologiques"
+														style="font-style: italic;" />
 										<br />
-										<h:outputText value="Copyright :  J3A SOFTWARE GROUP"
-											style="float: right;font-size: 12px;" />
+										
 					
 									</h:panelGrid>
 									</div>
