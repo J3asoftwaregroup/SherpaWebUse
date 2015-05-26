@@ -46,10 +46,7 @@ public class UserLoginDeclaSinintre {
 			}else {
 				validation="declarationSinnistreAuto";
 				System.out.println(validation);
-				
 			}
-			
-			
 			
 			return validation;
     }  
