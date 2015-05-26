@@ -9,109 +9,127 @@
 
 
 <h:head>
-	<title>DEVIS ASSURANCE</title>
+	<title>SHERPA WebUser</title>
 	<h:outputStylesheet library="css" name="main.css" />
-	<script src="https://maps.googleapis.com/maps/api/js?sensor=false"
-		type="text/javascript"></script>
-	<!-- <link href="main.css" rel="stylesheet" type="text/css" media="screen" /> -->
 	<link rel="icon" type="image/x-icon" href="../../../resources/images/favicon.ico" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+				<meta name="viewport" content="width=980"/>
+				
+				<style type="text/css">
+				h1 {color:black; text-align:center; margin-top:0;}
+				h1 a {text-decoration: none;color:black; text-align:center;}
+				p {color:#666; text-align:center;}
+				body {background: #f4f4f4;}
+				.wrapper {width:100%; margin: 0 auto; padding: 20px;}
+				.container {
+					background-color:white;
+					border-radius: 5px;
+					border: solid 0px #eee;
+					box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+					padding:10px;
+					width:900px;
+					height:500px;
+					margin:60px auto 0px auto;
+					position: relative;
+					z-index: 0;
+					border-radius: 15px;
+					
+				}
+				pre, code {
+					font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+					font-size: 12px;
+					color: #333;
+					-webkit-border-radius: 3px;
+					-moz-border-radius: 3px;
+					border-radius: 3px;
+				}
+				pre { border: 1px solid #CCC; background-color: #EEE; color: #333; padding: 10px; overflow: scroll; }
+				code { padding: 2px 4px; background-color: #F7F7F9; border: 1px solid #E1E1E8; color: #D14; }
+			</style>
 </h:head>
 
 <h:body>
 	 
 	<h:outputStylesheet library="css" name="style.css" />
-	<p:layout fullPage="true">
-		<!-- Le Header de la page -->
-
-		<p:layoutUnit id="top" position="north" size="75" style="">
-
-			<ui:insert name="top">
-				<div style=" font-family:verdana;padding:0px;border-radius:10px;border:1px solid red;background-color:#D6D6D6">
-			<h:panelGrid columns="3" columnClasses="non,eseLabel" style="width:100%;height:100%;padding:0px;">
-				<h:panelGrid columns="2">
-				
-					<h:graphicImage name="images/logo_j3a.jpg" style="margin:0px;"/>
-					
-				</h:panelGrid>
+	<!-- Backstretch JS -->
+		    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		    <script src="../resources/js/jquery.backstretch.js"></script>
+		    
+			<script>
+		        $.backstretch([
+		          "../resources/images/pot-holder.jpg",
+		          "../resources/images/coffee.jpg",
+		          "../resources/images/dome.jpg"
+		        ], {
+		        	fade: 1000,		//Speed of Fade
+		        	duration: 10000 	//Time of image display
+		        });
+		    </script>
 		
-				<div style="color:#40B3DF; font-size:18px; margin-left: 3%; margin-right: 20%;"> DEVIS <span style="background-color:#B4009E;color:#ffffff; font-size: 18px ">ASSURANCE</span></div>
+		
+		    <!-- Page Content -->
+		    
+			<div class="wrapper">
+				<div class="container">
+					<p:layout fullPage="false" style="width:890px;height:500px">
+						<!-- Le Header de la page -->
 				
-					<h:panelGrid >
-						</h:panelGrid>
-				</h:panelGrid>
+						<p:layoutUnit id="top" position="north" size="75">
+				
+							<ui:insert name="top">
+								<div style=" font-family:verdana;padding:0px;border-radius:10px;border:1px solid red;background-color:#D6D6D6">
+									<h:panelGrid columns="3" columnClasses="non,eseLabel" style="width:100%;height:100%;padding:0px;">
+										<h:panelGrid columns="2">
+										<h:graphicImage name="images/logo_j3a.jpg" style="margin:0px;"/>
+										</h:panelGrid>
+										<div style="color:#40B3DF; font-size:18px; margin-left: 3%; margin-right: 20%;"> DEVIS <span style="background-color:#B4009E;color:#ffffff; font-size: 18px ">ASSURANCE</span></div>
+										<h:panelGrid ></h:panelGrid>
+									</h:panelGrid>
+								</div>
+							</ui:insert>
+							
+						</p:layoutUnit>
+				
+						
+						<p:layoutUnit position="south" size="70" styleClass="myLayoutStyleClass">
+				                
+				                <ui:insert name="bottom">
+				                <div style=" font-family:verdana;padding:0px;border-radius:10px;border:1px solid red;background-color:#D6D6D6">
+									<h:panelGrid columns="2" columnClasses="non,eseLabel">
+					
+										<a href="../../../../Sherpa/index.jsf" style="color: blue">Menu
+											Principal</a>
+					
+										<a href="../../../../Sherpa/pages/Auto/indexPrdAuto.jsf"
+											style="color: blue">Menu Auto</a>
+										
+										<a href="../../../../../../Sherpa/pages/springsecurity/logout.jsf"
+											style="color: red">Déconnecter</a>
+					
+										<h:outputLink value="http://www.j3atechnologies.com/" hreflang=""
+											style="text-decoration: none;font-size: 13px;margin-left: 20%;margin-right: 20%;" target="_bank">
+											<h:outputText value="J3A SOFTWARE GROUP, " style="color:red;" />
+											<h:outputText value="Créateur de Valeurs Ajoutées Technologiques"
+												style="font-style: italic;" />
+										</h:outputLink>
+										<br />
+										<h:outputText value="Copyright :  J3A SOFTWARE GROUP"
+											style="float: right;font-size: 12px;" />
+					
+									</h:panelGrid>
+									</div>
+								</ui:insert> 
+							</p:layoutUnit>
+							
+						<p:layoutUnit position="center" id="content" size="700">
+				               <ui:insert name="content"> </ui:insert>
+				        </p:layoutUnit>
+				
+				        </p:layout>
+				    </div>
 				</div>
 
-			</ui:insert>
-		</p:layoutUnit>
-
 		
-		
-		 <p:layoutUnit position="south" size="70"
-			styleClass="myLayoutStyleClass">
-                
-                <ui:insert name="bottom">
-				<h:panelGrid columns="2" columnClasses="non,eseLabel"
-					style="width:100%;height:100%;padding:0px;border-color:silver;background-color: threedlightshadow;">
-
-					<a href="../../../../Sherpa/index.jsf" style="color: blue">Menu
-						Principal</a>
-
-					<a href="../../../../Sherpa/pages/Auto/indexPrdAuto.jsf"
-						style="color: blue">Menu Auto</a>
-					
-					<a href="../../../../../../Sherpa/pages/springsecurity/logout.jsf"
-						style="color: red">Déconnecter</a>
-
-					<h:outputLink value="http://www.j3atechnologies.com/" hreflang=""
-						style="text-decoration: none;font-size: 13px;margin-left: 20%;margin-right: 20%;" target="_bank">
-						<h:outputText value="J3A SOFTWARE GROUP, " style="color:red;" />
-						<h:outputText value="Créateur de Valeurs Ajoutées Technologiques"
-							style="font-style: italic;" />
-					</h:outputLink>
-					<br />
-					<h:outputText value="Copyright :  J3A SOFTWARE GROUP"
-						style="float: right;font-size: 12px;" />
-
-				</h:panelGrid>
-			</ui:insert> </p:layoutUnit>
-			
-		<p:layoutUnit position="west" size="200"> </p:layoutUnit>
-
-        <p:layoutUnit position="east" size="200">  </p:layoutUnit>
-
-        <p:layoutUnit position="center" id="centerGlobal"> <p:layout>
-
-        <p:layoutUnit position="north" size="10">
-                     
-             </p:layoutUnit>
-
-          
-		
-
-                <p:layoutUnit position="center" id="content">
-                    <ui:insert name="content"> </ui:insert>
-                </p:layoutUnit>
-
-            </p:layout>
-
-                </p:layoutUnit>
-
-        </p:layout>
-
-		
-
-				
-				
-			
-		
-
-		<!-- <p:layoutUnit id="right" position="east" size="250" header="Gallery" resizable="true" closable="false" collapsible="true"
-                              style="text-align:center">
-
-              
-                    <p:commandButton id="basic" value="Show Dialog" onclick="dlg1.show();" type="button" style="margin-top:10px"/>
-
-                </p:layoutUnit> -->
 
 		
 
