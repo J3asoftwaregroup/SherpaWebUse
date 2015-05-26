@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -34,8 +33,12 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfDocument;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.j3a.assurance.model.ConduireVehicule;
 import com.j3a.assurance.model.Garantie;
@@ -70,8 +73,8 @@ public class ConditionPartAuto implements Serializable {
 	ObjectService objectService;
 	@Autowired
 	ReportFactoryAuto reportFactoryAuto;
-	@Autowired
-	ReportingAuto reportingAuto;
+
+	ReportingAuto reportingAuto = new ReportingAuto();
 	
 
 	// Attribut d'instance
@@ -98,6 +101,8 @@ public class ConditionPartAuto implements Serializable {
 			Font.BOLD);
 	private static Font normalText1 = new Font(Font.FontFamily.TIMES_ROMAN, 12,
 			Font.NORMAL);
+	private static Font normalText3 = new Font(Font.FontFamily.TIMES_ROMAN, 15,
+			Font.BOLD,BaseColor.BLUE);
 	private static Font normalText1Gras = new Font(Font.FontFamily.TIMES_ROMAN,
 			12, Font.BOLD);
 
@@ -106,19 +111,272 @@ public class ConditionPartAuto implements Serializable {
 
 	private static Font smallText = new Font(Font.FontFamily.COURIER, 8,
 			Font.NORMAL);
+	private static Font smallText2 = new Font(Font.FontFamily.COURIER, 5,
+			Font.NORMAL);
 
 	private static Font smallTextGras = new Font(Font.FontFamily.COURIER, 8,
 			Font.BOLD);
 
 	private static Font TITRE3 = new Font(Font.FontFamily.TIMES_ROMAN, 14,
 			Font.BOLD);
+	
+	
+public void printPdf(ReportingAuto reporting,
+		HttpServletRequest request, HttpServletResponse response)
+		throws IOException, Exception {
+	
+	repectoire = new File("c:/Etats/Cond_Part/AUTO");
+	repectoire.mkdirs();
+	nomFichier = "attestation-" + "001" + ".pdf";
+	String fichier = repectoire + "/"
+			+ nomFichier;
+	
 
-	public void editerCondPart() throws IOException, Exception {
-		editerConditionPart(getIdQuittance(),
-				(HttpServletRequest) FacesContext.getCurrentInstance()
-						.getExternalContext().getRequest(),
-				(HttpServletResponse) FacesContext.getCurrentInstance()
-						.getExternalContext().getResponse());
+	Document document = new Document(PageSize.A4);
+	document.setMargins(20, 20, 20, 20);
+	// step 2
+	ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	PdfWriter.getInstance(document, baos);
+	PdfWriter.getInstance(document, new FileOutputStream(repectoire + "/"
+			+ nomFichier));
+
+	// step 3
+	document.open();
+	System.out.println("Avant le véhicule");
+	for (VehiculeRow vehiculeRow : reporting.getListVehiculeRow()) {
+		System.out.println("dans le véhicule");
+		document.newPage();
+		
+	
+		try {
+
+			addContentAttestation(document, vehiculeRow);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Erreur1");
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Erreur2");
+		}
+	}
+
+	document.close();
+	  // setting some response headers response.setHeader("Expires", "0");
+	  response.setHeader("Cache-Control","must-revalidate, post-check=0, pre-check=0");
+//	  response.setHeader("Pragma", "public"); // setting the content type
+	  response.setContentType("application/pdf"); // the contentlength
+	  response.setContentLength(baos.size()); // write ByteArrayOutputStream to the ServletOutputStream 
+	  OutputStream os = response.getOutputStream(); 
+	  baos.writeTo(os);
+	  os.flush();
+	  os.close();
+	  
+	openFile(fichier);
+	  }
+
+public void addContentAttestation(Document document, VehiculeRow vehiculeRow) throws DocumentException,
+MalformedURLException, IOException {
+// Ajout de logo
+Image logo = Image.getInstance(new URL(RESOURCE));
+logo.scalePercent(40f);
+document.add(logo);
+/*Paragraph saut = new Paragraph();
+addEmptyLine(saut, 1);
+document.add(sautLigne(1));*/
+//Ajout du nom de la societe d'assurance
+AjouterNomEntreprise(document);
+
+// Entête du document
+creerTitreDocumentAttestation(document);
+
+// Information de la quittance
+creatTableAttestation(document, vehiculeRow);
+
+// Emagement
+creerEmagementAttestation(document);
+
+}
+
+ public void creatTableAttestation(Document document, VehiculeRow vehiculeRow) throws DocumentException {
+	// Info sur le Souscripteur
+	System.out.println("Info sur le Souscripteur");
+	PdfPTable tabSous = new PdfPTable(4);
+	tabSous.setWidths(new int[] { 30, 25, 10, 35 });
+
+	tabSous.getDefaultCell().setBorder(Cell.NO_BORDER);
+	PdfPCell cell;
+
+	// 1er ligne Assuré et adresse
+	String nomAssure = "";
+	if(reportingAuto.getPersonne().getNomRaisonSociale()!=null){
+		nomAssure = nomAssure+ reportingAuto.getPersonne().getNomRaisonSociale();
+	}
+	if(reportingAuto.getPersonne().getAdresse()!=null){
+		nomAssure = nomAssure+" "+reportingAuto.getPersonne().getAdresse();
+	}
+		
+	
+	
+	cell = new PdfPCell(new Phrase("ASSURE NOM ET ADRESSE ", smallText));
+	cell.setBorder(Rectangle.NO_BORDER);
+	cell.setColspan(2);
+	tabSous.addCell(cell);
+	
+	cell = new PdfPCell(new Phrase("", smallText2));
+	cell.setBorder(Rectangle.NO_BORDER);
+	cell.setColspan(2);
+	tabSous.addCell(cell);
+	
+	
+	// 2em ligne Profession
+	tabSous.addCell(new Phrase("Profession :", smallText));
+	cell = new PdfPCell(new Phrase("", smallText2));
+	cell.setBorder(Rectangle.NO_BORDER);
+	cell.setColspan(3);
+	tabSous.addCell(cell);
+	
+	
+
+	// 3em ligne Police
+	
+	tabSous.addCell(new Phrase("Police :", smallText));
+	if(reportingAuto.getContrat().getNumPolice()!=null){
+		cell = new PdfPCell(new Phrase(reportingAuto.getContrat().getNumPolice(),
+				normalText));}else{cell = new PdfPCell(new Phrase("",
+						smallText));
+	}
+	cell.setBorder(Rectangle.NO_BORDER);
+	cell.setColspan(3);
+	tabSous.addCell(cell);
+	
+	
+
+	// 4em ligne date contrat
+	tabSous.addCell(new Phrase("DU ", smallText));
+	if(reportingAuto.getAvenant().getEffet()!=null){cell = new PdfPCell(new Phrase(sdf.format(reportingAuto.getAvenant().getEffet()), normalText));}else{
+		cell = new PdfPCell(new Phrase("", smallText));
+	}
+	cell.setBorder(Rectangle.NO_BORDER);
+	tabSous.addCell(cell);
+	tabSous.addCell(new Phrase(" AU ", smallText));
+	if(reportingAuto.getAvenant().getEcheance()!=null){cell = new PdfPCell(new Phrase(sdf.format(reportingAuto.getAvenant().getEcheance())+" A MINUIT", normalText));}else{
+		cell = new PdfPCell(new Phrase("", smallText));
+		
+	}
+	cell.setBorder(Rectangle.NO_BORDER);
+	tabSous.addCell(cell);
+	
+	
+	// 5em ligne vehicule
+	tabSous.addCell(new Phrase("Vehicule :", smallText));
+	if(vehiculeRow.getVehi().getGenre()!=null){
+	cell = new PdfPCell(new Phrase(vehiculeRow.getVehi().getGenre(), normalText));
+	}else{
+		cell = new PdfPCell(new Phrase("", smallText2));	
+	}
+	cell.setBorder(Rectangle.NO_BORDER);
+	cell.setColspan(3);
+	tabSous.addCell(cell);
+	
+	// 6em ligne marque
+	tabSous.addCell(new Phrase("Marque :", smallText));
+	if(vehiculeRow.getVehi().getMarque()!=null){
+		cell = new PdfPCell(new Phrase(vehiculeRow.getVehi().getMarque(), normalText));
+		}else{
+			cell = new PdfPCell(new Phrase("", smallText2));	
+		}
+	cell.setBorder(Rectangle.NO_BORDER);
+	cell.setColspan(3);
+	tabSous.addCell(cell);
+	
+	// 7em ligne Immatriculation
+	tabSous.addCell(new Phrase("Immatriculation :", smallText));
+	if(vehiculeRow.getVehi().getNumImmat()!=null){
+		cell = new PdfPCell(new Phrase(vehiculeRow.getVehi().getNumImmat(), normalText));
+		}else{
+			cell = new PdfPCell(new Phrase("", smallText2));	
+		}
+	cell.setBorder(Rectangle.NO_BORDER);
+	cell.setColspan(3);
+	tabSous.addCell(cell);
+	
+	
+	
+	// Tableau général information
+	PdfPTable tabInfo = new PdfPTable(1);
+
+	tabInfo.addCell(tabSous);
+	if(vehiculeRow.getSouCatVehi().getCategorie().getCodeCategorie()!=null){
+		cell = new PdfPCell(new Phrase(vehiculeRow.getSouCatVehi().getTarif()+" "+vehiculeRow.getSouCatVehi().getCategorie().getLibelleCategorie(), normalText3));
+		cell.setPaddingLeft(100);
+		tabInfo.addCell(cell);
+		
+		}else{
+			tabInfo.addCell("");
+		}
+	
+	
+	tabInfo.setSpacingAfter(15);
+	document.add(tabInfo);
+	System.out.println("Fin info");
+}
+
+
+
+	public void editerAttestation(ReportingAuto reporting,
+			HttpServletRequest request, HttpServletResponse response)
+			throws IOException, Exception {
+		// Créer le dosier de stockage des fichier générés
+		repectoire = new File("c:/Etats/Cond_Part/AUTO");
+		repectoire.mkdirs();
+		
+		
+
+		Document document = new Document(PageSize.A4);
+		document.setMargins(20, 20, 20, 20);
+		nomFichier = "attestation-" + "001" + ".pdf";
+		// step 2
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		PdfWriter.getInstance(document, baos);
+		PdfWriter.getInstance(document, new FileOutputStream(repectoire + "/"
+				+ nomFichier));
+
+		// step 3
+		document.open();
+		System.out.println("Avant le véhicule");
+		for (VehiculeRow vehiculeRow : reporting.getListVehiculeRow()) {
+			System.out.println("dans le véhicule");
+			document.newPage();
+			
+		
+			try {
+
+				addContent(document, vehiculeRow);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Erreur1");
+				e.printStackTrace();
+			} catch (DocumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("Erreur2");
+			}
+		}
+
+		document.close();
+		  // setting some response headers response.setHeader("Expires", "0");
+		  response.setHeader("Cache-Control","must-revalidate, post-check=0, pre-check=0");
+//		  response.setHeader("Pragma", "public"); // setting the content type
+		  response.setContentType("application/pdf"); // the contentlength
+		  response.setContentLength(baos.size()); // write ByteArrayOutputStream to the ServletOutputStream 
+		  OutputStream os = response.getOutputStream(); 
+		  baos.writeTo(os);
+		  os.flush();
+		  os.close();
+		  
+		  
 	}
 
 	public void editerConditionPart(String idQuittance,
@@ -199,6 +457,7 @@ public class ConditionPartAuto implements Serializable {
 			HttpServletRequest request, HttpServletResponse response)
 			throws IOException, Exception {
 		// Créer le dosier de stockage des fichier générés
+		String fichier="";
 		repectoire = new File("c:/Etats/Cond_Part/AUTO");
 		repectoire.mkdirs();
 		
@@ -207,11 +466,12 @@ public class ConditionPartAuto implements Serializable {
 		Document document = new Document(PageSize.A4);
 		document.setMargins(20, 20, 20, 20);
 		nomFichier = "devis-" + "001" + ".pdf";
+		fichier = repectoire + "/"
+				+ nomFichier;
 		// step 2
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		PdfWriter.getInstance(document, baos);
-		PdfWriter.getInstance(document, new FileOutputStream(repectoire + "/"
-				+ nomFichier));
+		PdfWriter.getInstance(document, new FileOutputStream(fichier));
 
 		// step 3
 		document.open();
@@ -245,6 +505,7 @@ public class ConditionPartAuto implements Serializable {
 		  baos.writeTo(os);
 		  os.flush();
 		  os.close();
+		openFile(fichier);
 		  
 	}
 
@@ -444,6 +705,16 @@ public class ConditionPartAuto implements Serializable {
 		titreDocument.setSpacingAfter(30);
 		document.add(titreDocument);
 	}
+	
+	// Titre du document
+		public void creerTitreDocumentAttestation(Document document) throws DocumentException {
+
+			Paragraph titreDocument = new Paragraph(new Chunk(
+					"ATTESTATION PROVISOIRE", TITRE3));
+			titreDocument.setAlignment(Element.ALIGN_CENTER);
+			titreDocument.setSpacingAfter(40);
+			document.add(titreDocument);
+		}
 
 	private void creatTableInfo(Document document) throws DocumentException {
 		// Info sur le Souscripteur
@@ -1109,6 +1380,48 @@ if(reportingAuto.getPointVente().getVille()!=null){
 		document.add(tabEmerg);
 		System.out.println(" Fin de document fin");
 	}
+	
+	
+	// Emargement
+		public void creerEmagementAttestation(Document document) throws DocumentException {
+	String pv = "Abidjan";
+	System.out.println(" Fin de document debut");
+	if(reportingAuto.getPointVente().getVille()!=null){
+		pv = reportingAuto.getPointVente().getVille()
+				.getLibelleVille();
+	}
+			Paragraph dateJour = new Paragraph(new Chunk("Fait à "
+					+ pv + ", le " + sdf.format(new Date())+", "+"Valable pour 7 jours"));
+			dateJour.setIndentationLeft(200);
+
+			PdfPTable tabEmerg = new PdfPTable(3);
+			tabEmerg.setWidthPercentage(100);
+			PdfPCell cell;
+
+			Chunk chunkSous = new Chunk("");
+			chunkSous.setUnderline(0.1f, -2f);
+			cell = new PdfPCell(new Phrase(chunkSous));
+			cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+			cell.setBorder(Rectangle.NO_BORDER);
+			tabEmerg.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(""));
+			cell.setBorder(Rectangle.NO_BORDER);
+			tabEmerg.addCell(cell);
+
+			Chunk chunkComp = new Chunk("");
+			chunkComp.setUnderline(0.1f, -2);
+			cell = new PdfPCell(new Phrase(chunkComp));
+			cell.setBorder(Rectangle.NO_BORDER);
+			tabEmerg.addCell(cell);
+
+			tabEmerg.setSpacingBefore(15);
+			document.add(dateJour);
+			document.add(tabEmerg);
+			System.out.println(" Fin de document fin");
+		}
+		
+	
 
 	public static void addEmptyLine(Paragraph paragraph, int nbrLigne) {
 		for (int i = 0; i < nbrLigne; i++) {
@@ -1152,6 +1465,10 @@ if(reportingAuto.getPointVente().getVille()!=null){
 		System.out.println("Fin ouverture du fichier pdf");
 
 	}
+	
+	public void printAttestation(){
+		
+	}
 
 	public void printFile() {
 		if (Desktop.isDesktopSupported()) {
@@ -1171,13 +1488,13 @@ if(reportingAuto.getPointVente().getVille()!=null){
 		}
 	}
 
-	public void openFile() {
+	public void openFile(String nomFichier) {
 
 		if (Desktop.isDesktopSupported()) {
 			if (Desktop.getDesktop().isSupported(java.awt.Desktop.Action.OPEN)) {
 				try {
 					java.awt.Desktop.getDesktop().open(
-							new File(repectoire + "/" + nomFichier));
+							new File(nomFichier));
 				} catch (IOException ex) {
 					// Traitement de l'exception
 				}

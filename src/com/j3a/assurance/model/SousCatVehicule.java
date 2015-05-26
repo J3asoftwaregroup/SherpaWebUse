@@ -53,7 +53,7 @@ public class SousCatVehicule implements java.io.Serializable {
 		this.codeSousCatVehicule = codeSousCatVehicule;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CODE_CATEGORIE")
 	public Categorie getCategorie() {
 		return this.categorie;
