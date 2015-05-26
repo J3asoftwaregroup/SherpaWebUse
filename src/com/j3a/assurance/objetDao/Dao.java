@@ -520,7 +520,8 @@ public class Dao implements IDao {
 	public Personne personneByLogin(String login, String motPass) {
 		String query = "SELECT `personne`.* FROM personne WHERE ((`personne`.`LOGIN_PERS` ='"+login+"') AND (`personne`.`MOT_PASSE_PERS` ='"+motPass+"'))";
 		Personne personne  = (Personne) getSessionFactory().getCurrentSession().createSQLQuery(query).addEntity(Personne.class).uniqueResult();
-		return null;
+			System.out.println("--->>>  Num Souscripteur"+personne.getNumSouscripteur());//Clean after
+		return personne;
 	}
 	
 	
