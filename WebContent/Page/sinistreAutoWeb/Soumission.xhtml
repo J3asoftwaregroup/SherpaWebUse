@@ -28,8 +28,10 @@
 			<fieldset>
 			<legend>Liste des sinistres </legend>
 			
-			<p:dataTable emptyMessage="Aucun Sinistre" var="sinistr" value="#{managedSoumission.listSinistre}" selectionMode="single" rowKey="#{sinistr.id}" id="tabsin">
-			
+			<p:dataTable emptyMessage="Aucun Sinistre" var="sinistr" value="#{managedSoumission.listSinistre}" selectionMode="single" rowKey="#{sinistr.codeSinistre}" id="tabsin" selection="#{managedSoumission.sinistreSelectionne}">
+				
+				<p:ajax event="rowSelect" listener="#{managedSoumission.onRowSelect}" update="doc"/>
+				
 			<p:column headerText="Code Sinistre">
 			<h:outputText value="#{sinistr.codeSinistre}" />
 			</p:column>
@@ -51,13 +53,13 @@
 			<h:panelGrid columns="6" border="0" id="doc">
 			
 			<h:outputText value="Code Sinistre"/>
-			<h:inputText value="" readonly="true"/>
+			<h:inputText value="#{managedSoumission.codeSinistre}" readonly="true"/>
 			
 			<h:outputText value="Date déclaration"/>
-			<h:inputText value="" readonly="true"/>
+			<h:inputText value="#{managedSoumission.dateDclaration}" readonly="true"/>
 			
 			<h:outputText value="Date Survenance"/>
-			<h:inputText value=""  readonly="true"/>
+			<h:inputText value="#{managedSoumission.dateSurvenance}"  readonly="true"/>
 			
 			
 			<p:selectBooleanCheckbox value="#{managedSoumission.bPv}"  itemLabel="Proces Verbal" >

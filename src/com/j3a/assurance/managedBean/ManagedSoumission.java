@@ -14,6 +14,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
+import org.primefaces.event.SelectEvent;
 import org.primefaces.model.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -51,6 +52,7 @@ public class ManagedSoumission {
 		private boolean bPv, bRap, bActMed;
 		private boolean etatPv=true, etatRap=true, etatActMed=true;
 		private Sinistre sinistre = new Sinistre();
+		private Sinistre sinistreSelectionne=new Sinistre();
 		private Contrat contrat = new Contrat();
 		private Intervention intervention = new Intervention();
 		private Intervenant intervenant = new Intervenant();
@@ -412,6 +414,10 @@ public void AjouActMed(){
 			}
 		}
 
+		public void onRowSelect(SelectEvent event) {
+			//Sinistre Selectionnee
+			setSinistre(((Sinistre) event.getObject()));
+		}
 		 
 	    public UploadedFile getFilePv() {
 	        return filePv;
@@ -608,6 +614,14 @@ public void AjouActMed(){
 
 		public void setListSinistre(ArrayList<Sinistre> listSinistre) {
 			this.listSinistre = listSinistre;
+		}
+
+		public Sinistre getSinistreSelectionne() {
+			return sinistreSelectionne;
+		}
+
+		public void setSinistreSelectionne(Sinistre sinistreSelectionne) {
+			this.sinistreSelectionne = sinistreSelectionne;
 		}
 	
 }
