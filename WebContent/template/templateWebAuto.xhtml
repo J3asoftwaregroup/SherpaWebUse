@@ -27,8 +27,8 @@
 					border: solid 0px #eee;
 					box-shadow: 0px 0px 10px rgba(0,0,0,.5);
 					padding:10px;
-					width:1000px;
-					height:700px;
+					width:950px;
+					height:600px;
 					margin:60px auto 0px auto;
 					position: relative;
 					z-index: 0;
@@ -52,14 +52,14 @@
 	 
 	<h:outputStylesheet library="css" name="style.css" />
 	<!-- Backstretch JS -->
-		    <script src="../resources/js/jquery.js"></script>
-		    <script src="../resources/js/jquery.backstretch.js"></script>
+			
+		    <h:outputScript name="js/jquery.backstretch.js" />
 		    
 			<script>
 		        $.backstretch([
-		          "resources/images/pot-holder.jpg",
-		          "resources/images/coffee.jpg",
-		          "resources/images/dome.jpg"
+		          "../../resources/images/pot-holder.jpg",
+		          "../../resources/images/coffee.jpg",
+		          "../../resources/images/dome.jpg"
 		        ], {
 		        	fade: 1000,		//Speed of Fade
 		        	duration: 10000 	//Time of image display
@@ -71,7 +71,7 @@
 		    
 			<div class="wrapper">
 				<div class="container">
-					<p:layout fullPage="false" style="width:990px;height:700px">
+					<p:layout fullPage="false" style="width:940px;height:600px">
 						<!-- Le Header de la page -->
 				
 						<p:layoutUnit id="top" position="north" size="75">
@@ -91,16 +91,15 @@
 						</p:layoutUnit>
 				
 						
-						<p:layoutUnit position="south" size="70" styleClass="myLayoutStyleClass">
+						<p:layoutUnit position="south" size="75" >
 				                
 				                <ui:insert name="bottom">
-				                <div style=" font-family:verdana;padding:0px;border-radius:10px;border:1px solid red;background-color:#D6D6D6">
-									<h:panelGrid columns="2" >
+				                <div style=" font-family:verdana;padding:0px;border-radius:10px;border:1px solid red;background-color:#D6D6D6; height: 60px;">
+									<h:panelGrid columns="2" columnClasses="HalfLeft,.HalfLeft" style="width:100%">
 					
 										
 										
-										<h:outputLink value="http://www.j3atechnologies.com/" 
-											 target="_bank">
+										<h:outputLink value="http://www.j3atechnologies.com/" target="_bank">
 											J3A SOFTWARE GROUP
 										</h:outputLink>
 										

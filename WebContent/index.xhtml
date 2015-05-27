@@ -54,7 +54,7 @@
 
 			<!-- Backstretch JS -->
 		    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		    <script src="resources/js/jquery.backstretch.js"></script>
+		   <h:outputScript name="js/jquery.backstretch.js" />
 			<script>
 		        $.backstretch([
 		          "resources/images/pot-holder.jpg",
@@ -101,6 +101,42 @@
 						<p:commandLink id="toIA"  styleClass="brchIA">
 						</p:commandLink>
 						
+						
+					</div>
+					
+					<div class="divConnex" >
+						<p:commandLink id="login" styleClass="connex">
+						</p:commandLink>
+						
+						<p:overlayPanel id="logCnx" for=":gnl:login" widgetVar="LoginWidVar" showCloseIcon="TRUE"  
+										style="height:200px; width:400px; padding:5px;" >
+										
+									
+							 <h:panelGrid columns="3"  columnClasses="libelOneLine, inputOneLine, msgOneline" style="width:100%" cellspacing="10">
+									<f:facet name="header">
+											VOS PARAMETRES DE CONNEXION 
+									</f:facet>
+										
+										
+									<h:outputText value="Login"/>
+									<p:inputText value="#{managedIndexConnex.login}" style="width:100%"/>
+									<h:outputText value=""/>
+									
+									<h:outputText value="Mot de passe"/>
+									<p:password value="#{managedIndexConnex.password}" style="width:100%" />
+									<h:outputText value=""/>
+									
+									<h:outputText value=""/>
+									<p:commandLink value="Mot de passe oublié ?" rendered="#{managedIndexConnex.askMdpForgot}"/>
+									<h:outputText value=""/>
+									
+									
+									
+									<f:facet name="footer">
+										<p:commandButton value="OK" actionListener="#{managedIndexConnex.logIn}" />
+									</f:facet>		
+							</h:panelGrid>
+						</p:overlayPanel>
 						
 					</div>
 					
