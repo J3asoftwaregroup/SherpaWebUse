@@ -39,32 +39,16 @@ public class UserLoginDeclaSinintre {
 			 Personne personne = new Personne();
 			personne = getObjectService().personneByLogin(login, motPass);
 			if (personne == null) {
-				
 				message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Désolé! Paramètres de connexion incorrectes","");
 				FacesContext.getCurrentInstance().addMessage(null, message);
-				
 			}else {
 				validation="declarationSinnistreAuto";
 				System.out.println(validation);
 			}
-			
 			return validation;
     }  
 	
 	
-	public void leverConnexion() {
-			System.out.println("----->> method called");
-        Map<String,Object> options = new HashMap<String, Object>();
-        options.put("modal", true);
-        options.put("draggable", false);
-        options.put("resizable", false);
-        options.put("contentHeight", 320);
-        RequestContext.getCurrentInstance().openDialog("connexionText", options, null);
-    }
-	
-	
-	
-
 	public ObjectService getObjectService() {
 		return objectService;
 	}
