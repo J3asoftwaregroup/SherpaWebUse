@@ -17,7 +17,7 @@
 		    
 		</p:breadCrumb>
 	</h:form>
-	 <h:form id="rech_contrat">
+	 <h:form id="rech_contrat" enctype="multipart/form-data">
 	<p:messages id="growl" sticky="true" autoUpdate="true" closable="true"/>
 	
 	<p:wizard flowListener="#{managedSinistre.onFlowProcess}" nextLabel="Suivant" backLabel="Précédent">
@@ -336,9 +336,6 @@
 					
 						<br />
 									
-					<p:commandButton value="Enregistrer" actionListener="#{managedSinistre.creeSinitre}" style="width:100px;margin-left: 400px !important;" update=":rech_contrat">
-						<p:confirm header="Confirmation" message="Confirmez-vous l'enregistrement?" icon="ui-icon-alert"/>
-					</p:commandButton>
 					
             </p:panel>
         </p:tab>
@@ -348,64 +345,67 @@
 
 					<fieldset> 
 						<legend>Pièces jointes</legend>
-						<fieldset >
-			<legend>Documents à soumettre</legend>
+						
 			<h:panelGrid columns="6" border="0" id="doc">
-			
-			<h:outputText value="Code Sinistre"/>
-			<h:inputText value="#{managedSoumission.sinistre.codeSinistre}" readonly="true"/>
-			
-			<h:outputText value="Date déclaration"/>
-			<h:inputText value="#{managedSoumission.sinistre.dateDeclaration}" readonly="true"/>
-			
-			<h:outputText value="Date Survenance"/>
-			<h:inputText value="#{managedSoumission.sinistre.dateSurvenance}"  readonly="true"/>
-			
-			
-			<p:selectBooleanCheckbox value="#{managedSoumission.bPv}"  itemLabel="Proces Verbal" >
-			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update=":gnl:doc"/>
+						
+			<p:selectBooleanCheckbox value="#{managedSinistre.bPv}"  itemLabel="Proces Verbal" >
+			<p:ajax event="change" listener="#{managedSinistre.ChangeValueChexBox}" update=":rech_contrat:fpv"/>
 			</p:selectBooleanCheckbox>
-			<p:fileUpload value="#{managedSoumission.filePv}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatPv}"/>
-			<p:selectOneMenu value="#{managedSoumission.idIntervenant}" style="width:150px">
+			<p:fileUpload value="#{managedSinistre.filePv}" mode="simple" skinSimple="true" disabled="#{managedSinistre.etatPv}" id="fpv">
+			 <f:validator validatorId="com.j3a.assurance.utilitaire.ValidateurPdf" />
+			</p:fileUpload>
+			<p:selectOneMenu value="#{managedSinistre.idIntervenant}" style="width:150px">
 							<f:selectItem itemValue="Choisir" itemLabel="Choisir" > </f:selectItem>
-							<f:selectItems value="#{managedSoumission.elementsNomInt}" />
-							<p:ajax event="change"  listener="#{interventionMB.RecupInt}" > </p:ajax>
+							<f:selectItems value="#{managedSinistre.elementsNomInt}" />
+							<p:ajax event="change"  listener="#{managedSinistre.RecupInt}" > </p:ajax>
 			</p:selectOneMenu>
 			<h:outputText value="" />
 			<h:outputText value="" />
 			<h:outputText value="" />
 			
-			<p:selectBooleanCheckbox value="#{managedSoumission.bRap}"  itemLabel="Rapport Intervenant" >
-			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update=":gnl:doc"/>
+			<p:selectBooleanCheckbox value="#{managedSinistre.bRap}"  itemLabel="Rapport Intervenant" >
+			<p:ajax event="change" listener="#{managedSinistre.ChangeValueChexBox}" update=":rech_contrat:frap"/>
 			</p:selectBooleanCheckbox>
-			<p:fileUpload value="#{managedSoumission.fileRap}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatRap}"/>
-			<p:selectOneMenu value="#{managedSoumission.idIntervenant}" style="width:150px">
+			<p:fileUpload value="#{managedSinistre.fileRap}" mode="simple" skinSimple="true" disabled="#{managedSinistre.etatRap}" id="frap">
+			<f:validator validatorId="com.j3a.assurance.utilitaire.ValidateurPdf" />
+			</p:fileUpload>
+			<p:selectOneMenu value="#{managedSinistre.idIntervenant}" style="width:150px">
 							<f:selectItem itemValue="Choisir" itemLabel="Choisir" > </f:selectItem>
-							<f:selectItems value="#{managedSoumission.elementsNomInt}" />
-							<p:ajax event="change"  listener="#{managedSoumission.RecupInt}" > </p:ajax>
+							<f:selectItems value="#{managedSinistre.elementsNomInt}" />
+							<p:ajax event="change"  listener="#{managedSinistre.RecupInt}" > </p:ajax>
 			</p:selectOneMenu>
 			<h:outputText value="" />
 			<h:outputText value="" />
 			<h:outputText value="" />
 			
-			<p:selectBooleanCheckbox value="#{managedSoumission.bActMed}" itemLabel="Acte medical" >
-			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update=":gnl:doc"/>
+			<p:selectBooleanCheckbox value="#{managedSinistre.bActMed}" itemLabel="Acte medical" >
+			<p:ajax event="change" listener="#{managedSinistre.ChangeValueChexBox}" update=":rech_contrat:fact"/>
 			</p:selectBooleanCheckbox>
-			<p:fileUpload value="#{managedSoumission.fileActMed}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatActMed}"/>
-			<h:outputText value=""/>
+			<p:fileUpload value="#{managedSinistre.fileActMed}" mode="simple" skinSimple="true" disabled="#{managedSinistre.etatActMed}" id="fact">
+			<f:validator validatorId="com.j3a.assurance.utilitaire.ValidateurPdf" />
+			</p:fileUpload>
+			<p:selectOneMenu value="#{managedSinistre.idMedecin}" style="width:150px">
+							<f:selectItem itemValue="Choisir" itemLabel="Choisir" > </f:selectItem>
+							<f:selectItems value="#{managedSinistre.elementsNomMed}" />
+							<p:ajax event="change"  listener="#{managedSinistre.RecupMed}" > </p:ajax>
+			</p:selectOneMenu>
 			<h:outputText value="" />
 			<h:outputText value="" />
 			<h:outputText value="" />
-			<p:commandButton value="Soumettre" action="#{managedSoumission.soumettre}"  binding="#{managedSoumission.buttonadd}" style="height:40px;border-radius:20px"> 
+			<p:commandButton value="Soumettre" action="#{managedSinistre.soumettre}"  ajax="false" style="height:40px;border-radius:20px"> 
 			  <p:confirm header="Confirmation" message="Confirmez vous?"   icon="ui-icon-alert" />
 			</p:commandButton>
 			
 			</h:panelGrid>
-			</fieldset>					
+							
 					</fieldset>	
 					
 						<br />
 									
+					<p:commandButton value="Enregistrer" actionListener="#{managedSinistre.creeSinitre}" style="width:100px;margin-left: 400px !important;" update=":rech_contrat">
+						<p:confirm header="Confirmation" message="Confirmez-vous l'enregistrement?" icon="ui-icon-alert"/>
+					</p:commandButton>
+					
 					<p:commandButton value="Enregistrer" actionListener="#{managedSinistre.creeSinitre}" style="width:100px;margin-left: 400px !important;" update=":rech_contrat">
 						<p:confirm header="Confirmation" message="Confirmez-vous l'enregistrement?" icon="ui-icon-alert"/>
 					</p:commandButton>
