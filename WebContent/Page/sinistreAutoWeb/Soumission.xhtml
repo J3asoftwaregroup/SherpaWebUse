@@ -17,7 +17,7 @@
 			<legend>Liste des sinistres </legend>
 			<h:panelGrid columns="2" border="0" id="police">
 			<h:outputText value="Numero Police"/>
-			<h:inputText value="#{managedSoumission.critere}" readonly="true" required="true"
+			<h:inputText value="#{managedSoumission.critere}"  required="true"
 			requiredMessage="Saisir le numero de Police"/>
 			<p:commandButton value="OK" icon="ui-icon-search" actionListener="#{managedSoumission.RechercheSinistreParContrat}" update=":gnl:tabsin"> </p:commandButton>
 			</h:panelGrid>
