@@ -265,7 +265,7 @@
 			 </p:panel>
         </p:tab>
 					
-					<p:tab id="conduc" title="Conducteur">
+			<p:tab id="conduc" title="Conducteur">
         	<p:panel header="Conducteur lors du sinistre">
 
 					<fieldset> 
@@ -332,6 +332,76 @@
 									pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
 							</p:inputText>
 						</h:panelGrid>						
+					</fieldset>	
+					
+						<br />
+									
+					<p:commandButton value="Enregistrer" actionListener="#{managedSinistre.creeSinitre}" style="width:100px;margin-left: 400px !important;" update=":rech_contrat">
+						<p:confirm header="Confirmation" message="Confirmez-vous l'enregistrement?" icon="ui-icon-alert"/>
+					</p:commandButton>
+					
+            </p:panel>
+        </p:tab>
+        
+        <p:tab id="piec" title="piece">
+        	<p:panel header="Pièces">
+
+					<fieldset> 
+						<legend>Pièces jointes</legend>
+						<fieldset >
+			<legend>Documents à soumettre</legend>
+			<h:panelGrid columns="6" border="0" id="doc">
+			
+			<h:outputText value="Code Sinistre"/>
+			<h:inputText value="#{managedSoumission.sinistre.codeSinistre}" readonly="true"/>
+			
+			<h:outputText value="Date déclaration"/>
+			<h:inputText value="#{managedSoumission.sinistre.dateDeclaration}" readonly="true"/>
+			
+			<h:outputText value="Date Survenance"/>
+			<h:inputText value="#{managedSoumission.sinistre.dateSurvenance}"  readonly="true"/>
+			
+			
+			<p:selectBooleanCheckbox value="#{managedSoumission.bPv}"  itemLabel="Proces Verbal" >
+			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update=":gnl:doc"/>
+			</p:selectBooleanCheckbox>
+			<p:fileUpload value="#{managedSoumission.filePv}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatPv}"/>
+			<p:selectOneMenu value="#{managedSoumission.idIntervenant}" style="width:150px">
+							<f:selectItem itemValue="Choisir" itemLabel="Choisir" > </f:selectItem>
+							<f:selectItems value="#{managedSoumission.elementsNomInt}" />
+							<p:ajax event="change"  listener="#{interventionMB.RecupInt}" > </p:ajax>
+			</p:selectOneMenu>
+			<h:outputText value="" />
+			<h:outputText value="" />
+			<h:outputText value="" />
+			
+			<p:selectBooleanCheckbox value="#{managedSoumission.bRap}"  itemLabel="Rapport Intervenant" >
+			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update=":gnl:doc"/>
+			</p:selectBooleanCheckbox>
+			<p:fileUpload value="#{managedSoumission.fileRap}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatRap}"/>
+			<p:selectOneMenu value="#{managedSoumission.idIntervenant}" style="width:150px">
+							<f:selectItem itemValue="Choisir" itemLabel="Choisir" > </f:selectItem>
+							<f:selectItems value="#{managedSoumission.elementsNomInt}" />
+							<p:ajax event="change"  listener="#{managedSoumission.RecupInt}" > </p:ajax>
+			</p:selectOneMenu>
+			<h:outputText value="" />
+			<h:outputText value="" />
+			<h:outputText value="" />
+			
+			<p:selectBooleanCheckbox value="#{managedSoumission.bActMed}" itemLabel="Acte medical" >
+			<p:ajax event="change" listener="#{managedSoumission.ChangeValueChexBox}" update=":gnl:doc"/>
+			</p:selectBooleanCheckbox>
+			<p:fileUpload value="#{managedSoumission.fileActMed}" mode="simple" skinSimple="true" disabled="#{managedSoumission.etatActMed}"/>
+			<h:outputText value=""/>
+			<h:outputText value="" />
+			<h:outputText value="" />
+			<h:outputText value="" />
+			<p:commandButton value="Soumettre" action="#{managedSoumission.soumettre}"  binding="#{managedSoumission.buttonadd}" style="height:40px;border-radius:20px"> 
+			  <p:confirm header="Confirmation" message="Confirmez vous?"   icon="ui-icon-alert" />
+			</p:commandButton>
+			
+			</h:panelGrid>
+			</fieldset>					
 					</fieldset>	
 					
 						<br />
