@@ -11,14 +11,26 @@
 <ui:composition template="/template/templateWebAuto.xhtml">
 
 	<ui:define name="content">
-	<h:form>
-	<p:breadCrumb>
-		    <p:menuitem value="Home" action="/index?faces-redirect=true" />
-		    <p:menuitem value="Auto" action="/Pages/AutoWeb/indexAuto?faces-redirect=true" />
-		    <p:menuitem value="Cotation / Souscription :Votre véhicule" action="/Pages/AutoWeb/vehicule?faces-redirect=true" />
+		<h:form>
+		<p:menubar>
+			<p:submenu label="Acceuil" icon="ui-icon-home">
+	            <p:menuitem value="Assurance Automobile" action="/index?faces-redirect=true"  />
+	            <p:menuitem value="Assurance Indiduel Accident" url="#"  />
+	            <p:menuitem value="Assurance MultiRisque Habitation" url="#"  />
+	            <p:menuitem value="Acceuil" action="/index?faces-redirect=true" />
+	        </p:submenu>
 		    
-		</p:breadCrumb>
+		    <p:separator/>
+		    <p:submenu label="Assurances Automobile" >
+		    	<p:menuitem value="Cotation -Auto-" action="/Page/AutoWeb/devisAuto?faces-redirect=true"  />
+	            <p:menuitem value="Souscription en ligne -Auto-" action="/Page/AutoWeb/devisAuto?faces-redirect=true"  />
+	            <p:menuitem value="Declaration Sinistre -Auto-" url="/Page/sinistreAutoWeb/declarationSinnistreAuto.xhtml?faces-redirect=true"  />
+	        </p:submenu>
+		    <p:separator/>
+		    <p:menuitem value="Cotation / Souscription :Informations du Vehicule" url="#" />
+		</p:menubar>
 	</h:form>
+	
 	<p:ajaxStatus styleClass="ajaxStatut">  
 	<f:facet name="prestart">
 	<h:outputText value="Starting..." />
