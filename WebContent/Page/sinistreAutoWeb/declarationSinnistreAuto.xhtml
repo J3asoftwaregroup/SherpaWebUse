@@ -41,7 +41,7 @@
 		
 	<p:inputText value="#{managedSinistre.valeurDeRecherche}" style="width: 138px; margin-left: 60px;"  
 	 required="true" requiredMessage="Veuillez entrez un numero de police ou l'immatriculation du véhicule" placeholder="Entrer le critère" />
-	<p:commandButton id="rech_button" value="Rechercher" actionListener="#{managedSinistre.rechercherDossierProduction}"   
+	<h:commandButton id="rech_button" value="Rechercher" action="#{managedSinistre.rechercherDossierProduction}"   
 	style="width: 100px;" update="resulTable, infoGrid, growl, :sous_form"/>
 	</h:panelGrid>
 	<fieldset>
@@ -392,20 +392,12 @@
 			<h:outputText value="" />
 			<h:outputText value="" />
 			<h:outputText value="" />
-			<p:commandButton value="Soumettre" action="#{managedSinistre.soumettre}"  ajax="false" style="height:40px;border-radius:20px"> 
-			  <p:confirm header="Confirmation" message="Confirmez vous?"   icon="ui-icon-alert" />
-			</p:commandButton>
-			
 			</h:panelGrid>
 							
 					</fieldset>	
 					
 						<br />
 									
-					<p:commandButton value="Enregistrer" actionListener="#{managedSinistre.creeSinitre}" style="width:100px;margin-left: 400px !important;" update=":rech_contrat">
-						<p:confirm header="Confirmation" message="Confirmez-vous l'enregistrement?" icon="ui-icon-alert"/>
-					</p:commandButton>
-					
 					<p:commandButton value="Enregistrer" actionListener="#{managedSinistre.creeSinitre}" style="width:100px;margin-left: 400px !important;" update=":rech_contrat">
 						<p:confirm header="Confirmation" message="Confirmez-vous l'enregistrement?" icon="ui-icon-alert"/>
 					</p:commandButton>

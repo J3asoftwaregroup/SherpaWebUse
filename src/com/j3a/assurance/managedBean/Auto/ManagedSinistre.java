@@ -172,7 +172,9 @@ public class ManagedSinistre implements Serializable {
         getObjectService().addObject(sinistreConducteur);
         
         //mettre à jour les mail et le téléphone
-        	getObjectService().updateObject(monContratResum.getPersonneResum());        
+        	getObjectService().updateObject(monContratResum.getPersonneResum()); 
+        	soumettre();
+        	
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sinistre déclaré et enregistré!", ""));
         //Vder le formulaire
         viderObjet();
@@ -216,6 +218,7 @@ public class ManagedSinistre implements Serializable {
 	
 	@Transactional
 	public void rechercherDossierProduction(){//By ALekerand
+		System.out.println("----->>> Méthode called");
 		//Vider la liste a chaque fois que la methode est appele
 		listeContratResum.clear();
 		

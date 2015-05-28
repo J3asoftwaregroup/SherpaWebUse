@@ -16,12 +16,34 @@
     </h:head>
      
     <h:body>
-        <h:panelGrid columns="2" cellpadding="5">
-            <h:outputLabel for="username" value="Username :" />
-            <p:inputText id="username" value="#{userLoginDeclaSinintre.login}" required="true" label="username"/>
- 
-            <h:outputLabel for="password" value="Password :" />
-            <p:password id="password" value="#{userLoginDeclaSinintre.motPass}" required="true" label="password"/>  
-        </h:panelGrid>
+       <form >
+	<div style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; border: solid 1px black">
+	<div style="position: absolute; width: 350px; height: 300px; top:0; bottom:0; left:0; right: 0; margin: auto;">
+ 	<fieldset style="background-color: #BBD2E1; border-radius: 6px 6px 6px 6px;">
+		<h3 style="text-align: center; background-color: #ED0018; color: white;">CONNEXION</h3>
+		<table>
+			<tr>
+				<td> Login:</td>
+				<td>
+					<p:inputText id="username" value="#{userLoginDeclaSinintre.login}" required="true" label="username"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Mot de passe:</td>
+				<td>
+					<p:password id="password" value="#{userLoginDeclaSinintre.motPass}" required="true" label="password"/>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 100px"></td>
+				<td style="margin-left: 25px" colspan='2'>
+					<p:commandButton value="Login" action="#{userLoginDeclaSinintre.loginConnexion}"/>
+				</td>
+			</tr>		
+		</table>
+		</fieldset>
+ 	</div>
+ 	</div>
+	</form>
     </h:body>
 </html>
