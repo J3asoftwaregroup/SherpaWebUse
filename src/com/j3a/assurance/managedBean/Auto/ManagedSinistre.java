@@ -466,24 +466,23 @@ public void AjouPv(){
 		}
 		
 public void AjouActMed(){
-			/*facAct.setCodeFacture(getIdGenerateur().getIdFactureActeMed());
+			facAct.setCodeFacture(getIdGenerateur().getIdFactureActeMed());
 			getObjectService().addObject(facAct);
 			acteMedical.setReferenceActe(getIdGenerateur().getIdActeMed(getSinistre()));
 			acteMedical.setFacture(facAct);
 			acteMedical.setMedecin(getMedecin());
-	
-			getObjectService().addObject(acteMedical);*/
+			getObjectService().addObject(acteMedical);
 			handleFileUploadActeMed();
 		}
 		
 		public void AjouRap(){
-			/*facPv.setCodeFacture(getIdGenerateur().getIdFactureIntervention(intervention));
+			facPv.setCodeFacture(getIdGenerateur().getIdFactureIntervention(intervention));
 			getObjectService().addObject(facPv);
 			intervention.setRefIntervention(getIdGenerateur().getIdIntervention(getSinistre()));
 			intervention.setTypeRapport("Rapport Intervenant");
 			intervention.setIntervenant(getIntervenant());
 			intervention.setSinistre(sinistre);
-			getObjectService().addObject(intervenant);*/
+			getObjectService().addObject(intervenant);
 			handleFileUploadRap();
 		}
 		
