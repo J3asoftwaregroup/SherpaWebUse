@@ -113,6 +113,9 @@ public class ClientMB implements Serializable{
 					getMaPersonne().setTelephone(ph.getTelephone());
 					getMonPhysique().setTypePiece(ph.getTypePiece());
 					getMaPersonne().setAdresse(ph.getAdresse());	
+				}else{
+					//viderPersonne(getMaPersonne());
+					viderPhysique(getMonPhysique());
 				}
 			}
 		}

@@ -200,7 +200,7 @@ public class CotationAuto implements Serializable{
 		public void majConducteur() {
 
 			getCarteGriseMB().getSlctdVehiRw().getConduHab().setDateNaissCond(
-					getClientMB().getMaPersonne().getDatePers());
+					getClientMB().getMonPhysique().getDateNaissPers());
 			getCarteGriseMB().getSlctdVehiRw().getConduHab().setNonCond(
 					getClientMB().getMaPersonne().getNomRaisonSociale());
 			
@@ -462,10 +462,10 @@ public class CotationAuto implements Serializable{
 						if (newStep.equalsIgnoreCase("ongletConducteur")
 								&& oldStep.equalsIgnoreCase("ongletVehicule")) {
 							if (getClientMB().isEtatClient()==true){
-								getClientMB().majconducteur();
+								//getClientMB().majconducteur();
 								majConducteur();
 								//System.out.println("conducteur"+getCarteGriseMB().getSlctdVehiRw().getConduHab().getNumCond());
-								getCarteGriseMB().getSlctdVehiRw().setConduHab(getClientMB().getConducteur());
+								//getCarteGriseMB().getSlctdVehiRw().setConduHab(getClientMB().getConducteur());
 							}
 							System.out.println("TRAITEMENT POUR LE PASSAGE DE Vehicule A conducteur");
 						}
