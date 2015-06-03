@@ -379,10 +379,6 @@ public class ContratMB implements Serializable{
 		}
 
 		public Date getEcheance() {
-			// int d = (int)(duree*30);
-			// Date dat = new Date();
-			// dat.setDate(getEffet().getDate()+d);
-			// echeance = dat;
 			majEcheance();
 			return echeance;
 		}

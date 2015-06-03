@@ -172,6 +172,8 @@ public class ClientMB implements Serializable{
 				getObjectService().addObject(physique);
 				getObjectService().addObject(etre);
 				getObjectService().addObject(personneNationalite);
+				personne.setLoginPers(personne.getNomRaisonSociale());
+				personne.setMotPassePers(personne.getNomRaisonSociale());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
