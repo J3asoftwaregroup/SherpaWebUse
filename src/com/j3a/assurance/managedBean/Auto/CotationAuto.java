@@ -296,8 +296,9 @@ public class CotationAuto implements Serializable{
 			quit.setFga(getManagedQuittanceAuto().getQuittanceAuto().getTaxeFGA());
 			quit.setNetAPayer(getManagedQuittanceAuto().getQuittanceAuto().getNetteApayer());
 			report.setQuittance(quit);
-			report.setNom("Devis");
-			report.setPersonne(getClientMB().getMaPersonne());
+			
+			report.setNom(getClientMB().getNomClient());
+			report.setPersonne(getClientMB().getClient());
 			if(getContratMB().getUtilisateur().getPointVente()!=null){
 			report.setPointVente(getContratMB().getUtilisateur().getPointVente());
 			}

@@ -59,7 +59,9 @@ public class ClientMB implements Serializable{
 		private List<Sexe> sexeList;
 		private Conducteur conducteur=new Conducteur();
 		private Morale maMorale = new Morale();
+		
 		private Physique monPhysique = new Physique();
+		private Personne client = new Personne() ;
 		private TypePersonne typePersonne = new TypePersonne();
 		private Etre etre = new Etre();
 		private EtreId etrePk = new EtreId();
@@ -68,6 +70,7 @@ public class ClientMB implements Serializable{
 		private TypePersonne objTypePersonne = new TypePersonne();
 		private Contrat monContrat = new Contrat();
 		private String situationMatrimoniale;
+		private String nomClient;
 		private String tittre;
 		private String profession;
 		private String typePiece;
@@ -689,9 +692,15 @@ public class ClientMB implements Serializable{
 	
 
 
-	public void editerClient() {
-		
-		
+	public String validerClient() {
+		try {
+			setClient(getMaPersonne());
+			nomClient = getMaPersonne().getNomRaisonSociale()+" "+getMonPhysique().getPrenomPers();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "vehicule";
 	}
 
 
@@ -740,6 +749,26 @@ public class ClientMB implements Serializable{
 
 	public void setSlctsexe(String slctsexe) {
 		this.slctsexe = slctsexe;
+	}
+
+
+	public Personne getClient() {
+		return client;
+	}
+
+
+	public void setClient(Personne client) {
+		this.client = client;
+	}
+
+
+	public String getNomClient() {
+		return nomClient;
+	}
+
+
+	public void setNomClient(String nomClient) {
+		this.nomClient = nomClient;
 	}
 
 }
