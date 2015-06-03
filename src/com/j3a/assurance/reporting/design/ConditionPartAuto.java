@@ -775,7 +775,7 @@ creerEmagementAttestation(document);
 		System.out.println("Info sur le Souscripteur4");
 		// 4em ligne
 		tabSous.addCell(new Phrase("Intermédiaire:", normalText));
-		cell = new PdfPCell(new Phrase("non renseigné"));
+		cell = new PdfPCell(new Phrase(" "));
 		cell.setBorder(Rectangle.NO_BORDER);
 		tabSous.addCell(cell);
 		tabSous.addCell(new Phrase("Réseaux:", normalText));
