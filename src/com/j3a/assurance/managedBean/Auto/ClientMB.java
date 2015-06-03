@@ -31,6 +31,7 @@ import com.j3a.assurance.model.Sexe;
 import com.j3a.assurance.model.TypePersonne;
 import com.j3a.assurance.model.Ville;
 import com.j3a.assurance.objetService.ObjectService;
+import com.j3a.assurance.utilitaire.ClientView;
 import com.j3a.assurance.utilitaire.IdGenerateur;
 
 @Component
@@ -97,7 +98,24 @@ public class ClientMB implements Serializable{
 		private SelectOneMenu categProfOneMenu = new SelectOneMenu();
 		private Dialog dialogSous;
 
-		
+		public void chargeClient(){
+			ClientView cv = new ClientView();
+			for(Physique ph: cv.getListClients()){
+				if(ph.getNomRaisonSociale().equalsIgnoreCase(getMaPersonne().getNomRaisonSociale())){
+					getMonPhysique().setDateNaissPers(ph.getDateNaissPers());
+					getMaPersonne().setNomRaisonSociale(ph.getNomRaisonSociale());
+					getMonPhysique().setPrenomPers(ph.getPrenomPers());
+					getMonPhysique().setProfession(ph.getProfession());
+					getMonPhysique().setLieuNaissPers(ph.getLieuNaissPers());
+					getMonPhysique().setSituationMatPers(ph.getSituationMatPers());
+					getMaPersonne().setEmail(ph.getEmail());
+					getMonPhysique().setNumPiecePers(ph.getNumPiecePers());
+					getMaPersonne().setTelephone(ph.getTelephone());
+					getMonPhysique().setTypePiece(ph.getTypePiece());
+					getMaPersonne().setAdresse(ph.getAdresse());	
+				}
+			}
+		}
 		
 		
 		public void addPersonnePhysique() {	

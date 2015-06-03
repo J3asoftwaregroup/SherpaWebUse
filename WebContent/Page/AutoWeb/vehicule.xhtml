@@ -50,7 +50,7 @@
 			<p:wizard id="wizar"
 				flowListener="#{cotationAuto.handleflow}" widgetVar="wiz"
 				nextLabel="Suivant"
-				backLabel="Précedant" styleClass="wizardStyle" style="width:95%">
+				backLabel="Précedant" styleClass="wizardStyle" style="width:99%">
 				<p:messages id="pmessagePropVehi" showDetail="false" sticky="true" closable="true"/>
 				
 				
@@ -473,21 +473,15 @@
 				
 											
 											<h:panelGrid id="cducgrid" columns="9">
-											
-												<h:outputText value="Code"  />
-												<p:inputText id="num_cond" value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.numCond}"
-												style="margin-left: 20px; width: 178px">
-													<p:ajax listener="#{cotationAuto.chxConducteur}"
-															process="@this" update="" global="false"/>
-												</p:inputText>
-												<h:outputText value="" />
-						
+											<h:outputText value="" />
+											<h:outputText value="" />
+											<h:outputText value="" />
 												<h:outputText value="Nom/Denomination*" style="margin-left: 20px;" />
 												<p:inputText id="nameC" value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.nonCond}"
-													style="width:175px"/>
+													style="width:155px"/>
 												<p:message id="msgnameC" for="nameC" display="icon" />
 						
-												<h:outputText value="Prénoms*" style="margin-left: 20px;" />
+												<h:outputText value="Prénoms*" style="margin-left: 15px;" />
 												<p:inputText id="prenC"
 													value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.prenomsCond}"
 													style="width:168px" />
@@ -495,16 +489,16 @@
 						                      
 						                      
 						                      
-												<h:outputText value="Né le"  />
+												<h:outputText value="Né le" />
 												<p:inputMask value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.dateNaissCond}"
-													id="dateC" style="width:178px ;margin-left: 20px;" mask="99/99/9999">
+													id="dateC" style="width:118px ;margin-left: 10px;" mask="99/99/9999">
 													<f:convertDateTime pattern="dd/MM/yyyy" />
 												</p:inputMask>
 												<p:message id="msgdateNaissCond" for="dateC" display="icon" />
 						
 												<h:outputText value="Lieu naissance" style="margin-left: 20px;"/>
 												<p:inputText value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.lieuNaisCond}"
-													id="lieuNaisC" style="width:175px;"/>
+													id="lieuNaisC" style="width:155px;"/>
 												<p:message id="msgdateC" for="dateC" display="icon" />
 												
 												<h:outputText value="Permis" style="margin-left: 20px;"/>
@@ -521,15 +515,15 @@
 												
 												<h:outputText value="N° Permis"/>
 												<p:inputText value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.numpermiscond}"
-													id="numPermC" style="width:178px; margin-left: 20px;"/>
+													id="numPermC" style="width:118px; margin-left: 10px;"/>
 												<p:message id="msgnumPermC" for="numPermC" display="icon" />
 												
 												<h:outputText value="Durée du permis" style="margin-left: 20px;"/>
 												<p:inputText value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.dureepermiscond}"
-													id="durpermC" style="width:175px;"/>
+													id="durpermC" style="width:155px;"/>
 												<p:message id="msgdurpermC" for="durpermC" display="icon" />
 												
-												<h:outputText value="Catégorie Socio-Professionnelle" style="margin-left: 20px;"/>
+												<h:outputText value="Catégorie Socio-Professionnelle" style="margin-left: 20px; font-size:9px;"/>
 												<p:selectOneMenu
 													value="#{cotationAuto.carteGriseMB.slctdVehiRw.conduHab.categsocioprocond}" style="width:154px"
 													id="catProCd" required="false">

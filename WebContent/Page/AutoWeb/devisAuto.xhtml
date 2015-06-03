@@ -56,7 +56,11 @@
 												<p:outputLabel for="nameP" value="Nom"  />
 												<p:inputText id="nameP" styleClass="uppercase"
 												 value="#{cotationAuto.clientMB.maPersonne.nomRaisonSociale}" required="true" 
-												 requiredMessage="Le nom doit être obligatoirement renseigné" placeholder="Saisir le nom"/>
+												 requiredMessage="Le nom doit être obligatoirement renseigné" placeholder="Saisir le nom">
+												 
+												 <p:ajax  event="blur" listener="#{cotationAuto.clientMB.chargeClient}"
+									  update="@this, clientGrid_Eng" />
+									  </p:inputText>
 													 
 												<p:outputLabel for="prenoms" value="Prénoms" style="margin-left:80px"/>
 												<p:inputText id="prenoms" required="true" value="#{cotationAuto.clientMB.monPhysique.prenomPers}"
@@ -144,7 +148,7 @@
 												<p:inputTextarea rows="1" cols="20"
 													value="#{cotationAuto.clientMB.maPersonne.adresseGeo}" />
 													
-													<h:outputText value="etes vous le conducteur? " style="margin-left:60px"></h:outputText>
+													<h:outputText value="etes vous le conducteur? " style="margin-left:60px; font-size:9px;"></h:outputText>
 													<p:selectBooleanCheckbox value="#{cotationAuto.clientMB.etatClient}"/>
                                             
 							                </h:panelGrid>
