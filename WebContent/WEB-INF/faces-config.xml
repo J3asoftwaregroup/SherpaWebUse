@@ -24,6 +24,7 @@
   <navigation-case>
    <from-outcome>declarationSinnistreAuto</from-outcome>
    <to-view-id>/Page/sinistreAutoWeb/declarationSinnistreAuto.xhtml</to-view-id>
+   <redirect/>
   </navigation-case>
  </navigation-rule>
  <application>
