@@ -397,8 +397,10 @@ public class CotationAuto implements Serializable{
 			quit.setFga(getManagedQuittanceAuto().getQuittanceAuto().getTaxeFGA());
 			quit.setNetAPayer(getManagedQuittanceAuto().getQuittanceAuto().getNetteApayer());
 			report.setQuittance(quit);*/
-			report.setNom("Devis");
-			report.setPersonne(contratF.getPersonne());
+			report.setNom(getClientMB().getNomClient());
+			
+			report.setPersonne(getClientMB().getClient());
+			//report.setPersonne(contratF.getPersonne());
 			try{
 				getConditionPartAuto().setReportingAuto(report);
 				getConditionPartAuto().printPdf(report, (HttpServletRequest) FacesContext.getCurrentInstance()

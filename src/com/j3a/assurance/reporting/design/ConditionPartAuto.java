@@ -214,25 +214,33 @@ creerEmagementAttestation(document);
 		nomAssure = nomAssure+ reportingAuto.getPersonne().getNomRaisonSociale();
 	}
 	if(reportingAuto.getPersonne().getAdresse()!=null){
-		nomAssure = nomAssure+" "+reportingAuto.getPersonne().getAdresse();
+		nomAssure = nomAssure+"  "+reportingAuto.getPersonne().getAdresse();
 	}
 		
 	
 	
-	cell = new PdfPCell(new Phrase("ASSURE NOM ET ADRESSE ", smallText));
+	cell = new PdfPCell(new Phrase("ASSURE NOM ET ADRESSE : ", smallText));
 	cell.setBorder(Rectangle.NO_BORDER);
-	cell.setColspan(2);
+	//cell.setColspan(2);
 	tabSous.addCell(cell);
 	
-	cell = new PdfPCell(new Phrase("", smallText2));
+	cell = new PdfPCell(new Phrase(nomAssure, normalText));
 	cell.setBorder(Rectangle.NO_BORDER);
-	cell.setColspan(2);
+	cell.setColspan(3);
 	tabSous.addCell(cell);
 	
 	
 	// 2em ligne Profession
 	tabSous.addCell(new Phrase("Profession :", smallText));
-	cell = new PdfPCell(new Phrase("", smallText2));
+	
+	if(reportingAuto.getPhysique().getProfession()!=null){
+		cell = new PdfPCell(new Phrase(reportingAuto.getPhysique().getProfession(),
+				normalText));
+		}else{cell = new PdfPCell(new Phrase("llll",smallText));
+	}
+	
+	
+	//cell = new PdfPCell(new Phrase(reportingAuto.getPersonne().getPhysique().getProfession(), normalText));
 	cell.setBorder(Rectangle.NO_BORDER);
 	cell.setColspan(3);
 	tabSous.addCell(cell);

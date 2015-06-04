@@ -154,8 +154,9 @@ public class ClientMB implements Serializable{
 				physique.setSexe(sexe);
 				//System.out.println("----->>> Sexe du client:"+physique.getSexe().getCodeSexe());//clean after
 				physique.setTypePiece(getTypePiece());
-				physique.setProfession(getProfession());
+				//physique.setProfession(getMonPhysique().getProfession());
 				physique.setSituationMatPers(situationMatrimoniale);
+				
 				
 					//Reseigner Personne_Nationalite
 				personneNationalitePk.setNumSouscripteur(personne.getNumSouscripteur());
