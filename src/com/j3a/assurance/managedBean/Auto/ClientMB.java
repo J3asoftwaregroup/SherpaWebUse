@@ -146,16 +146,11 @@ public class ClientMB implements Serializable{
 				physique.setAdresseGeo(maPersonne.getAdresseGeo());
 				
 				//Affecter la valeur des combos
-				physique.setTitre(getTittre());
-				//physique.setSexe(comboSexe.getSelectedSexe());
+				
 				Sexe sexe= new Sexe();
 				//Integer.getInteger(getSlctsexe()).intValue()
 				sexe.setCodeSexe(1);
 				physique.setSexe(sexe);
-				//System.out.println("----->>> Sexe du client:"+physique.getSexe().getCodeSexe());//clean after
-				physique.setTypePiece(getTypePiece());
-				//physique.setProfession(getMonPhysique().getProfession());
-				physique.setSituationMatPers(situationMatrimoniale);
 				
 				
 					//Reseigner Personne_Nationalite
