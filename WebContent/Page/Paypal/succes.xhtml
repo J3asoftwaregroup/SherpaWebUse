@@ -9,7 +9,8 @@
 
 <ui:composition template="/template/templateWebAuto.xhtml">
 	<ui:define name="content">
-		<h:form>
+		<h:form  >
+		
 		<p:menubar>
 			<p:submenu label="Acceuil" icon="ui-icon-home">
 	            <p:menuitem value="Assurance Automobile" action="/index?faces-redirect=true"  />
@@ -27,8 +28,8 @@
 		    <p:separator/>
 		    <p:menuitem value="Souscription :Paiement effectué!!" url="#" />
 		</p:menubar>
-	</h:form>
-		<h:form id="gnl">
+	</h:form  >
+		<h:form id="gnl"  target="_blank">
 	<p:messages id="growl" showDetail="true" autoUpdate="true" closable="true"/>
 	
 	
@@ -48,7 +49,7 @@
 		<br />
 		<h:outputLabel     style="font-size:15px"  value=" Vous pouvez recuperer les pièces provisoires!"/>
 		<br /><br /><br />
-				<h:commandButton value="Imprimer les pièces provisoires"  actionListener="#{cotationAuto.succes}"  style="width:200px;height:50px; margin-left: 250px;font-size:14px;text-align:center;border-radius:20px;"></h:commandButton>   
+				<p:commandButton value="Imprimer les pièces provisoires"  actionListener="#{cotationAuto.succes}" ajax="false" type="submit" style="width:200px;height:50px; margin-left: 250px;font-size:14px;text-align:center;border-radius:20px;"></p:commandButton>   
 				<br />        
 	 <h:outputLabel     style="margin-left:00px ;font-size:12px"  value="Veuillez passer à l'agence avant 7jours pour recuperer vos differentes pièces définitifs !"/>
 			<br />

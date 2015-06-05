@@ -131,6 +131,8 @@ public class ClientMB implements Serializable{
 				getPersonne();//Attribuer un code au client
 				personne.setAdresse(maPersonne.getAdresse());
 				personne.setDatePers(Calendar.getInstance().getTime());//Date création client
+				personne.setLoginPers(personne.getNomRaisonSociale());	
+				personne.setMotPassePers(personne.getNomRaisonSociale());
 				
 				//Renseigner l'objet Physique
 				setPhysique(monPhysique);
@@ -166,13 +168,13 @@ public class ClientMB implements Serializable{
 				etre.setId(etrePk);
 				etre.setDatePers(Calendar.getInstance().getTime());
 				
+				
 					//Enregistrement en basse
 				getObjectService().addObject(personne);
 				getObjectService().addObject(physique);
 				getObjectService().addObject(etre);
 				getObjectService().addObject(personneNationalite);
-				personne.setLoginPers(personne.getNomRaisonSociale());
-				personne.setMotPassePers(personne.getNomRaisonSociale());
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

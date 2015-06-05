@@ -211,7 +211,7 @@ creerEmagementAttestation(document);
 	// 1er ligne Assuré et adresse
 	String nomAssure = "";
 	if(reportingAuto.getPersonne().getNomRaisonSociale()!=null){
-		nomAssure = nomAssure+ reportingAuto.getPersonne().getNomRaisonSociale();
+		nomAssure = nomAssure+ reportingAuto.getPersonne().getNomRaisonSociale() +" "+reportingAuto.getPhysique().getPrenomPers();
 	}
 	if(reportingAuto.getPersonne().getAdresse()!=null){
 		nomAssure = nomAssure+"  "+reportingAuto.getPersonne().getAdresse();
@@ -231,12 +231,12 @@ creerEmagementAttestation(document);
 	
 	
 	// 2em ligne Profession
-	tabSous.addCell(new Phrase("Profession :", smallText));
+	tabSous.addCell(new Phrase("Profession :",smallText));
 	
 	if(reportingAuto.getPhysique().getProfession()!=null){
 		cell = new PdfPCell(new Phrase(reportingAuto.getPhysique().getProfession(),
 				normalText));
-		}else{cell = new PdfPCell(new Phrase("llll",smallText));
+		}else{cell = new PdfPCell(new Phrase(" ",smallText));
 	}
 	
 	

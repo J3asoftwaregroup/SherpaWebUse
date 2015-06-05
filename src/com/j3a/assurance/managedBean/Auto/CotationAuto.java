@@ -400,7 +400,9 @@ public class CotationAuto implements Serializable{
 			report.setNom(getClientMB().getNomClient());
 			
 			report.setPersonne(getClientMB().getClient());
+			report.setPhysique(getClientMB().getPhysique());
 			//report.setPersonne(contratF.getPersonne());
+			
 			try{
 				getConditionPartAuto().setReportingAuto(report);
 				getConditionPartAuto().printPdf(report, (HttpServletRequest) FacesContext.getCurrentInstance()
@@ -490,8 +492,10 @@ public class CotationAuto implements Serializable{
 		public void addContrats() {
 			  //client
 	    	getClientMB().addPersonnePhysique();
+	    	//System.out.println("------>>personne"+getClientMB().getPhysique().get);//Clean after
 	    	
 	    	//contrat
+	    	System.out.println("------>>Utilisateur"+getContratMB().getUtilisateur().getLoginUtilisateur());//Clean after
 			String pv = getContratMB().getUtilisateur().getPointVente()
 			.getCodePointVente();
 			String util =getContratMB().getUtilisateur().getCodeUtilisateur();
