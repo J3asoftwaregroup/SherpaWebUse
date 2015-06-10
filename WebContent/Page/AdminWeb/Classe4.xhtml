@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/templateWebAuto.xhtml">
+	<ui:define name="content">
+		<h:form id="cat">
+		<p:messages id="growl" autoUpdate="true" showDetail="true" />
+			<p:panel header="TARIF 04 : TRANSPORT PUBLIC DE VOYAGEURS (Catégorie 4)">
+			
+			
+			
+				<p:panelGrid style="margin-top:20px;">
+          <f:facet name="header">
+        <p:row>
+            <p:column colspan="7">ASSURANCE DE RESPONSABILITE CIVILE OBLIGATOIRE (RC)</p:column>
+            
+            <br />
+        </p:row>
+        <p:row>
+            <p:column  rowspan="2" colspan="0">NOMBRE DE PLACES</p:column>
+            <p:column colspan="3">Prime de base</p:column>
+            <p:column colspan="3">Majoration ou réduction ( à appliquer sur la prime de base)</p:column>
+           
+        </p:row>
+ 
+    </f:facet>
+ 
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 1</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 2</p:column>
+         <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 3</p:column>
+        
+        <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Remorque</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">Ancienneté de permis (1)</p:column>
+        
+    </p:row>
+ 
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;">Classe 1</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;">Classe 2</p:column>
+       
+        
+    </p:row>
+    
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;">TAXI</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="3"></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"></p:column>
+        
+        
+        
+    </p:row>
+    
+    
+    <p:row>
+        <p:column style="font-weight: bold; border: 1px solid black;">Jusqu’à 4 places</p:column>
+        
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+       
+       
+    </p:row>
+    
+     <p:row>
+        <p:column style="font-weight: bold; border: 1px solid black;">8 places</p:column>
+        
+        <p:column style="font-weight: bold; border: 1px solid black;">  <p:inputText ></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"> <p:inputText ></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"> <p:inputText ></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        
+        
+        
+        
+    </p:row>
+    
+     <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;">CARS</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="3"></p:column>
+        <p:column style="font-weight: bold;border-right: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border-right: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border-right: 1px solid black;"><p:inputText></p:inputText></p:column>
+    </p:row>
+    
+     <p:row>
+        <p:column style="font-weight: bold; border: 1px solid black;">De 9 à 22</p:column>
+       
+        <p:column style="font-weight: bold; border: 1px solid black;border-right: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black; border-right: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px outset black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black; border-left: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold;border-right: 1px solid black;"></p:column>
+    
+        
+    </p:row>
+    
+  <p:row>
+        <p:column style="font-weight: bold; border: 1px solid black;">De 23 à 40</p:column>
+       
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold;  border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold;border-right: 1px solid black; "></p:column>
+    
+        
+    </p:row>
+    
+    
+    
+     <p:row>
+        <p:column style="font-weight: bold; border: 1px solid black;">41 et plus</p:column>
+       
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px outset black;"></p:column>
+        <p:column style="font-weight: bold; border: 1px outset black; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold;border-right: 1px solid black; border: 1px outset black;"></p:column>
+    
+        
+    </p:row>
+    
+</p:panelGrid>
+				
+				
+			<p:panelGrid>	
+			<p:commandButton   value="Valider "  action="inscriptionPaypal"   style="width:120px;height:50px; position: absolute;font-size:12px; border-radius:20px;"/>	
+				
+			</p:panelGrid>	
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
