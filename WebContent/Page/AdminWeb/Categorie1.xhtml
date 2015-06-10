@@ -142,17 +142,43 @@
         <p:column style="font-weight: bold; border-right: 1px solid black; border: 1px outset black;"></p:column>
         <p:column style="font-weight: bold; border-left: 1px solid black; border: 1px outset black;"></p:column>
     </p:row>
-    
- 
-    
-</p:panelGrid>
-				
-				
-				
-				
-				
-				
-			</p:panel>
+   </p:panelGrid>	
+   </p:panel>
+			
+		<h:panelGroup>
+	 <h:panelGrid columns="3">	
+			<h:panelGroup>
+		<fieldset><legend>DEFENSE ET RECOURS</legend> 
+		<h:panelGrid columns="2">
+		<h:outputText value="Garantie Dommage ou Garantie Dommage  Collision "></h:outputText>
+		<p:inputText></p:inputText>
+		<h:outputText value="Absence de Garantie Dommage "></h:outputText>
+		<p:inputText></p:inputText>
+		</h:panelGrid>
+		</fieldset>	
+			</h:panelGroup>
+			
+			<h:panelGroup>
+			<fieldset><legend>IMMOBILISATION DU VEHICULE </legend> 
+		<h:panelGrid columns="1">
+		<h:outputText value="Prime forfaitaire"></h:outputText>
+		<p:inputText></p:inputText>
+		</h:panelGrid>
+		</fieldset>
+			</h:panelGroup>
+			
+			<h:panelGroup>
+		<fieldset><legend>GARANTIE REMBOURSEMENT ANTICIPE (GRA)</legend> 
+		<h:panelGrid columns="2">
+		<h:outputText value="Prime annuelle  "></h:outputText>
+		<p:inputText></p:inputText>
+		<h:outputText value="Prime courte période "></h:outputText>
+		<p:inputText></p:inputText>
+		</h:panelGrid>
+		</fieldset>	
+			</h:panelGroup>
+			
+			</h:panelGrid></h:panelGroup>
 		</h:form>
 	</ui:define>
 </ui:composition>
