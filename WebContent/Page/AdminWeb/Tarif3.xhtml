@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/templateadmin.xhtml">
+	<ui:define name="content">
+		<h:form id="cat">
+		<p:messages id="growl" autoUpdate="true" showDetail="true" />
+			<p:panel header="TARIF 03 : TRANSPORT PUBLIC DE MARCHANDISES  ">
+			
+			
+			
+				<p:panelGrid style="margin-top:20px;">
+          <f:facet name="header">
+        <p:row>
+            <p:column colspan="13">ASSURANCE DE RESPONSABILITE CIVILE OBLIGATOIRE (RC)</p:column>
+        </p:row>
+        <p:row>
+            <p:column rowspan="2">Charge utile</p:column>
+            <p:column colspan="3">Prime de base</p:column>
+            <p:column colspan="9">Majoration ou réduction ( à appliquer sur la prime de base)</p:column>
+           
+        </p:row>
+ 
+    </f:facet>
+ 
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2" > </p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 1</p:column>
+         <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 2</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 3</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Remorque</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">Ancienneté de permis (1)</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="6">Statut professionnel (2)</p:column>
+    </p:row>
+ 
+    <p:row>
+        
+        <p:column style="font-weight: bold;border: 1px solid black;">Classe 1</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;">Classe 2</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;">a</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;">b</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;">c</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;">d</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;">e</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;">Autres</p:column>
+        
+    </p:row>
+    
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;">Jusqu’à 1T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        
+    </p:row>
+    
+    
+    <p:row>
+       <p:column style="font-weight: bold;border: 1px solid black;">De 1,001T à 3T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+    </p:row>
+    
+    
+     <p:row>
+       <p:column style="font-weight: bold;border: 1px solid black;">De 3,001 T à 5T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+    </p:row>
+    
+    
+    
+     <p:row>
+        <p:column style="font-weight: bold; border: 1px solid black;">De 5,001T à 9T</p:column>
+       
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px"></p:inputText></p:column>
+        
+        
+        
+        
+    </p:row>
+    
+     
+         <p:row>
+       <p:column style="font-weight: bold;border: 1px solid black;">De 9,001T à 12T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+    </p:row>
+    
+    
+     <p:row>
+        <p:column style="font-weight: bold; border: 1px solid black;">De 12,001T à 15T</p:column>
+        
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold;border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black; "></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black; "></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black; "></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black; "></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black; border-left: 1px outset black;"></p:column>
+        <p:column style="font-weight: bold; border-left: 1px solid black; border-right: 1px solid black;"></p:column>
+        
+    </p:row>
+    
+    
+     <p:row>
+        <p:column style="font-weight: bold; border: 1px solid black;">De 15T et plus et tracteur routier</p:column>
+       
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px outset black;"></p:column>
+        <p:column style="font-weight: bold; border: 1px outset black; border-right: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold;border-right: 1px solid black; border: 1px outset black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black; border: 1px outset black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black; border: 1px outset black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black; border: 1px outset black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black; border: 1px outset black;"></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black; border: 1px outset black;"></p:column>
+        <p:column style="font-weight: bold; border-left: 1px solid black; border: 1px outset black;"></p:column>
+       
+    </p:row>
+    
+   </p:panelGrid>	
+   </p:panel>
+			
+		<h:panelGroup>
+	 <h:panelGrid columns="3">	
+			<h:panelGroup>
+		<fieldset><legend>DEFENSE ET RECOURS</legend> 
+		<h:panelGrid columns="2">
+		<h:outputText value="Garantie Dommage ou Garantie Dommage  Collision "></h:outputText>
+		<p:inputText></p:inputText>
+		<h:outputText value="Absence de Garantie Dommage "></h:outputText>
+		<p:inputText></p:inputText>
+		</h:panelGrid>
+		</fieldset>	
+			</h:panelGroup>
+			
+			<h:panelGroup>
+			<fieldset><legend>IMMOBILISATION DU VEHICULE </legend> 
+		<h:panelGrid columns="1">
+		<h:outputText value="Prime forfaitaire"></h:outputText>
+		<p:inputText></p:inputText>
+		</h:panelGrid>
+		</fieldset>
+			</h:panelGroup>
+			
+			<h:panelGroup>
+		<fieldset><legend>GARANTIE REMBOURSEMENT ANTICIPE (GRA)</legend> 
+		<h:panelGrid columns="2">
+		<h:outputText value="Prime annuelle  "></h:outputText>
+		<p:inputText></p:inputText>
+		<h:outputText value="Prime courte période "></h:outputText>
+		<p:inputText></p:inputText>
+		</h:panelGrid>
+		</fieldset>	
+			</h:panelGroup>
+			
+			</h:panelGrid></h:panelGroup>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

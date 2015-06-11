@@ -7,7 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/template/templateWebAuto.xhtml">
+<ui:composition template="/template/templateadmin.xhtml">
 	<ui:define name="content">
 		<h:form id="cat">
 		<p:messages id="growl" autoUpdate="true" showDetail="true" />
@@ -23,7 +23,7 @@
             <br />
         </p:row>
         <p:row>
-            <p:column  rowspan="2" colspan="0">NOMBRE DE PLACES</p:column>
+            <p:column rowspan="3">NOMBRE DE PLACES</p:column>
             <p:column colspan="3">Prime de base</p:column>
             <p:column colspan="3">Majoration ou réduction ( à appliquer sur la prime de base)</p:column>
            
@@ -32,6 +32,7 @@
     </f:facet>
  
     <p:row>
+    <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2"></p:column>
         <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 1</p:column>
         <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 2</p:column>
          <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 3</p:column>
@@ -138,14 +139,19 @@
         
     </p:row>
     
+    
+    
 </p:panelGrid>
 				
-				
-			<p:panelGrid>	
-			<p:commandButton   value="Valider "  action="inscriptionPaypal"   style="width:120px;height:50px; position: absolute;font-size:12px; border-radius:20px;"/>	
-				
-			</p:panelGrid>	
+			
 			</p:panel>
+			<br />
+			<fieldset >	
+			<legend> Validation  </legend>
+			<p:commandButton   value="Valider "    style="width:80px;height:30px; font-size:12px; border-radius:10px;"/>
+				
+			 </fieldset>
+			
 		</h:form>
 	</ui:define>
 </ui:composition>
