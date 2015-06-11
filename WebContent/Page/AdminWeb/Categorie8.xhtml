@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/templateadmin.xhtml">
+	<ui:define name="content">
+		<h:form id="cat">
+		<p:messages id="growl" autoUpdate="true" showDetail="true" />
+			<p:panel header="TARIF 08: VEHICULES DE LOCATION (Catégorie 8)">
+				<p:panelGrid style="margin-top:20px;">
+          <f:facet name="header">
+        <p:row>
+            <p:column colspan="5">ASSURANCE DE RESPONSABILITE CIVILE OBLIGATOIRE (RC)</p:column>
+        </p:row>
+        <p:row>
+            <p:column rowspan="2" colspan="2">Vehicule</p:column>
+            <p:column colspan="3">Prime de base</p:column>  
+        </p:row>
+    <p:row>
+         <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 1</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 2</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 3</p:column>
+    </p:row>
+    </f:facet>
+    
+    
+    <p:row>
+        <p:column style="font-weight: bold; border: 1px solid black;" colspan="2">Véhicule de tourisme</p:column>
+    </p:row>
+    
+     <p:row>
+       <p:column style="font-weight: bold; border: 1px solid black;">Diesel</p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;">Essence</p:column>
+        <p:column colspan="3"/>
+        
+    </p:row>
+    
+     <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;"></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;">1 à 2 CV</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;">2 à 4 CV</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;">3 à 6 CV</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+     <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;">5 à 6 CV</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;">7 à 9 CV</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;">7 à 8 CV</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;">10 à 11 CV</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;">9 CV et plus</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;">12 CV et plus</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+    <p:column colspan="5" style="font-weight: bold; font-size:14px">VEHICULE DE LA CATEGORIE 2</p:column>
+    </p:row>
+    
+     <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">Jusqu’à 1 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">1,001 à 3 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">3,001 à 5 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+     <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">5,001 à 8 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">8,001 à 11 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">11,001 à 13 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">13,001 à 15 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+     <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">Pus de 15 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+     <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">Tracteur routier</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+     <p:row>
+    <p:column colspan="5" style="font-weight: bold; font-size:14px">VEHICULE DE LA CATEGORIE 3</p:column>
+    </p:row>
+    
+     <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">Jusqu’à 1 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">1,001 à 3 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">3,001 à 5 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+     <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">5,001 à 9 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">9,001 à 12 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">12,001 T à 15 T</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+    <p:row>
+        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">15 T et plus et tracteur routier</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+    </p:row>
+    
+   </p:panelGrid>	
+   </p:panel>
+   <br />
+   
+		<fieldset><legend>AUTRES GARANTIES</legend>
+    <h:outputText value="Selon le type de véhicule appliquer les tarifs de la catégorie 1, 2 ou 3"></h:outputText>
+		</fieldset>
+		<br />
+    
+		<fieldset>
+<h:commandButton value="Enregistrer"  style="width:150px;height:40px; margin-left: 35px;font-size:15px;border-radius:20px;margin-left:250px"/>
+		</fieldset>
+		
+		
+		
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
