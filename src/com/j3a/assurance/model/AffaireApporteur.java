@@ -1,12 +1,11 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,8 +33,7 @@ public class AffaireApporteur implements java.io.Serializable {
 	private String etatReglAff;
 	private BigDecimal resteAPayerAff;
 	private String mouvementAffApp;
-	private Set<ReglementApporteur> reglementApporteurs = new HashSet<ReglementApporteur>(
-			0);
+	private Set reglementApporteurs = new HashSet(0);
 
 	public AffaireApporteur() {
 	}
@@ -48,7 +46,7 @@ public class AffaireApporteur implements java.io.Serializable {
 	public AffaireApporteur(String codeAffaire, Apporteur apporteur,
 			String numeroPoliceAff, String numAvenantAff, BigDecimal comAff,
 			Date dateAff, String etatReglAff, BigDecimal resteAPayerAff,
-			String mouvementAffApp, Set<ReglementApporteur> reglementApporteurs) {
+			String mouvementAffApp, Set reglementApporteurs) {
 		this.codeAffaire = codeAffaire;
 		this.apporteur = apporteur;
 		this.numeroPoliceAff = numeroPoliceAff;
@@ -62,7 +60,7 @@ public class AffaireApporteur implements java.io.Serializable {
 	}
 
 	@Id
-	@Column(name = "CODE_AFFAIRE", unique = true, nullable = false)
+	@Column(name = "CODE_AFFAIRE", unique = true, nullable = false, length = 30)
 	public String getCodeAffaire() {
 		return this.codeAffaire;
 	}
@@ -99,7 +97,7 @@ public class AffaireApporteur implements java.io.Serializable {
 		this.numAvenantAff = numAvenantAff;
 	}
 
-	@Column(name = "COM_AFF")
+	@Column(name = "COM_AFF", precision = 15, scale = 3)
 	public BigDecimal getComAff() {
 		return this.comAff;
 	}
@@ -127,7 +125,7 @@ public class AffaireApporteur implements java.io.Serializable {
 		this.etatReglAff = etatReglAff;
 	}
 
-	@Column(name = "RESTE_A_PAYER_AFF")
+	@Column(name = "RESTE_A_PAYER_AFF", precision = 15, scale = 3)
 	public BigDecimal getResteAPayerAff() {
 		return this.resteAPayerAff;
 	}
@@ -136,7 +134,7 @@ public class AffaireApporteur implements java.io.Serializable {
 		this.resteAPayerAff = resteAPayerAff;
 	}
 
-	@Column(name = "MouvementAffApp", length = 40)
+	@Column(name = "MOUVEMENT_AFF_APP", length = 40)
 	public String getMouvementAffApp() {
 		return this.mouvementAffApp;
 	}
@@ -146,12 +144,11 @@ public class AffaireApporteur implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "affaireApporteur")
-	public Set<ReglementApporteur> getReglementApporteurs() {
+	public Set getReglementApporteurs() {
 		return this.reglementApporteurs;
 	}
 
-	public void setReglementApporteurs(
-			Set<ReglementApporteur> reglementApporteurs) {
+	public void setReglementApporteurs(Set reglementApporteurs) {
 		this.reglementApporteurs = reglementApporteurs;
 	}
 

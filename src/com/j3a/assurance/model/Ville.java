@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +24,7 @@ public class Ville implements java.io.Serializable {
 	private Province province;
 	private ZoneGeographique zoneGeographique;
 	private String libelleVille;
-	private Set<PointVente> pointVentes = new HashSet<PointVente>(0);
+	private Set pointVentes = new HashSet(0);
 
 	public Ville() {
 	}
@@ -39,7 +38,7 @@ public class Ville implements java.io.Serializable {
 
 	public Ville(String codeVille, Province province,
 			ZoneGeographique zoneGeographique, String libelleVille,
-			Set<PointVente> pointVentes) {
+			Set pointVentes) {
 		this.codeVille = codeVille;
 		this.province = province;
 		this.zoneGeographique = zoneGeographique;
@@ -67,7 +66,7 @@ public class Ville implements java.io.Serializable {
 		this.province = province;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CODE_ZONE_GEO", nullable = false)
 	public ZoneGeographique getZoneGeographique() {
 		return this.zoneGeographique;
@@ -87,11 +86,11 @@ public class Ville implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ville")
-	public Set<PointVente> getPointVentes() {
+	public Set getPointVentes() {
 		return this.pointVentes;
 	}
 
-	public void setPointVentes(Set<PointVente> pointVentes) {
+	public void setPointVentes(Set pointVentes) {
 		this.pointVentes = pointVentes;
 	}
 

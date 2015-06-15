@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,17 +23,15 @@ public class Categorie implements java.io.Serializable {
 	private String codeCategorie;
 	private Risque risque;
 	private String libelleCategorie;
-	private Set<AdherentsSante> adherentsSantes = new HashSet<AdherentsSante>(0);
-	private Set<RisqueNta> risqueNtas = new HashSet<RisqueNta>(0);
-	private Set<AssureIa> assureIas = new HashSet<AssureIa>(0);
-	private Set<Habitation> habitations = new HashSet<Habitation>(0);
-	private Set<TypeApporteurCategorie> typeApporteurCategories = new HashSet<TypeApporteurCategorie>(
-			0);
-	private Set<Aliment> aliments = new HashSet<Aliment>(0);
-	private Set<CorpsEngin> corpsEngins = new HashSet<CorpsEngin>(0);
-	private Set<GestionConfiee> gestionConfiees = new HashSet<GestionConfiee>(0);
-	private Set<SousCatVehicule> sousCatVehicules = new HashSet<SousCatVehicule>(
-			0);
+	private Set adherentsSantes = new HashSet(0);
+	private Set assureIas = new HashSet(0);
+	private Set habitations = new HashSet(0);
+	private Set aliments = new HashSet(0);
+	private Set sousCatVehicules = new HashSet(0);
+	private Set corpsEngins = new HashSet(0);
+	private Set gestionConfiees = new HashSet(0);
+	private Set risqueNtas = new HashSet(0);
+	private Set typeApporteurCategories = new HashSet(0);
 
 	public Categorie() {
 	}
@@ -44,25 +41,22 @@ public class Categorie implements java.io.Serializable {
 	}
 
 	public Categorie(String codeCategorie, Risque risque,
-			String libelleCategorie, Set<AdherentsSante> adherentsSantes,
-			Set<RisqueNta> risqueNtas, Set<AssureIa> assureIas,
-			Set<Habitation> habitations,
-			Set<TypeApporteurCategorie> typeApporteurCategories,
-			Set<Aliment> aliments, Set<CorpsEngin> corpsEngins,
-			Set<GestionConfiee> gestionConfiees,
-			Set<SousCatVehicule> sousCatVehicules) {
+			String libelleCategorie, Set adherentsSantes, Set assureIas,
+			Set habitations, Set aliments, Set sousCatVehicules,
+			Set corpsEngins, Set gestionConfiees, Set risqueNtas,
+			Set typeApporteurCategories) {
 		this.codeCategorie = codeCategorie;
 		this.risque = risque;
 		this.libelleCategorie = libelleCategorie;
 		this.adherentsSantes = adherentsSantes;
-		this.risqueNtas = risqueNtas;
 		this.assureIas = assureIas;
 		this.habitations = habitations;
-		this.typeApporteurCategories = typeApporteurCategories;
 		this.aliments = aliments;
+		this.sousCatVehicules = sousCatVehicules;
 		this.corpsEngins = corpsEngins;
 		this.gestionConfiees = gestionConfiees;
-		this.sousCatVehicules = sousCatVehicules;
+		this.risqueNtas = risqueNtas;
+		this.typeApporteurCategories = typeApporteurCategories;
 	}
 
 	@Id
@@ -95,85 +89,84 @@ public class Categorie implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
-	public Set<AdherentsSante> getAdherentsSantes() {
+	public Set getAdherentsSantes() {
 		return this.adherentsSantes;
 	}
 
-	public void setAdherentsSantes(Set<AdherentsSante> adherentsSantes) {
+	public void setAdherentsSantes(Set adherentsSantes) {
 		this.adherentsSantes = adherentsSantes;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
-	public Set<RisqueNta> getRisqueNtas() {
-		return this.risqueNtas;
-	}
-
-	public void setRisqueNtas(Set<RisqueNta> risqueNtas) {
-		this.risqueNtas = risqueNtas;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
-	public Set<AssureIa> getAssureIas() {
+	public Set getAssureIas() {
 		return this.assureIas;
 	}
 
-	public void setAssureIas(Set<AssureIa> assureIas) {
+	public void setAssureIas(Set assureIas) {
 		this.assureIas = assureIas;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
-	public Set<Habitation> getHabitations() {
+	public Set getHabitations() {
 		return this.habitations;
 	}
 
-	public void setHabitations(Set<Habitation> habitations) {
+	public void setHabitations(Set habitations) {
 		this.habitations = habitations;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
-	public Set<TypeApporteurCategorie> getTypeApporteurCategories() {
-		return this.typeApporteurCategories;
-	}
-
-	public void setTypeApporteurCategories(
-			Set<TypeApporteurCategorie> typeApporteurCategories) {
-		this.typeApporteurCategories = typeApporteurCategories;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
-	public Set<Aliment> getAliments() {
+	public Set getAliments() {
 		return this.aliments;
 	}
 
-	public void setAliments(Set<Aliment> aliments) {
+	public void setAliments(Set aliments) {
 		this.aliments = aliments;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
-	public Set<CorpsEngin> getCorpsEngins() {
+	public Set getSousCatVehicules() {
+		return this.sousCatVehicules;
+	}
+
+	public void setSousCatVehicules(Set sousCatVehicules) {
+		this.sousCatVehicules = sousCatVehicules;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
+	public Set getCorpsEngins() {
 		return this.corpsEngins;
 	}
 
-	public void setCorpsEngins(Set<CorpsEngin> corpsEngins) {
+	public void setCorpsEngins(Set corpsEngins) {
 		this.corpsEngins = corpsEngins;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
-	public Set<GestionConfiee> getGestionConfiees() {
+	public Set getGestionConfiees() {
 		return this.gestionConfiees;
 	}
 
-	public void setGestionConfiees(Set<GestionConfiee> gestionConfiees) {
+	public void setGestionConfiees(Set gestionConfiees) {
 		this.gestionConfiees = gestionConfiees;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
-	public Set<SousCatVehicule> getSousCatVehicules() {
-		return this.sousCatVehicules;
+	public Set getRisqueNtas() {
+		return this.risqueNtas;
 	}
 
-	public void setSousCatVehicules(Set<SousCatVehicule> sousCatVehicules) {
-		this.sousCatVehicules = sousCatVehicules;
+	public void setRisqueNtas(Set risqueNtas) {
+		this.risqueNtas = risqueNtas;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
+	public Set getTypeApporteurCategories() {
+		return this.typeApporteurCategories;
+	}
+
+	public void setTypeApporteurCategories(Set typeApporteurCategories) {
+		this.typeApporteurCategories = typeApporteurCategories;
 	}
 
 }

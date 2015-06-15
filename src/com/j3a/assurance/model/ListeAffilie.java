@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,8 +23,7 @@ public class ListeAffilie implements java.io.Serializable {
 	private String codeListeAffilie;
 	private AdherentsSante adherentsSante;
 	private String libelleListeAffilie;
-	private Set<AffilieListeAffilie> affilieListeAffilies = new HashSet<AffilieListeAffilie>(
-			0);
+	private Set affilieListeAffilies = new HashSet(0);
 
 	public ListeAffilie() {
 	}
@@ -35,8 +33,7 @@ public class ListeAffilie implements java.io.Serializable {
 	}
 
 	public ListeAffilie(String codeListeAffilie, AdherentsSante adherentsSante,
-			String libelleListeAffilie,
-			Set<AffilieListeAffilie> affilieListeAffilies) {
+			String libelleListeAffilie, Set affilieListeAffilies) {
 		this.codeListeAffilie = codeListeAffilie;
 		this.adherentsSante = adherentsSante;
 		this.libelleListeAffilie = libelleListeAffilie;
@@ -73,12 +70,11 @@ public class ListeAffilie implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeAffilie")
-	public Set<AffilieListeAffilie> getAffilieListeAffilies() {
+	public Set getAffilieListeAffilies() {
 		return this.affilieListeAffilies;
 	}
 
-	public void setAffilieListeAffilies(
-			Set<AffilieListeAffilie> affilieListeAffilies) {
+	public void setAffilieListeAffilies(Set affilieListeAffilies) {
 		this.affilieListeAffilies = affilieListeAffilies;
 	}
 

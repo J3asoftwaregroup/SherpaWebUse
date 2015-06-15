@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
-
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -35,7 +34,6 @@ public class GestionnaireGc implements java.io.Serializable {
 	private BigDecimal tvaGestgc;
 	private BigDecimal minCgrie;
 	private Date dateGestionnaireGc;
-	private Date dateAvAdherent;
 
 	public GestionnaireGc() {
 	}
@@ -51,8 +49,7 @@ public class GestionnaireGc implements java.io.Serializable {
 			Gestionnaire gestionnaire, BigDecimal tauxComGestgc,
 			BigDecimal comGestgc, BigDecimal tauxAccGestgc,
 			BigDecimal accGestgc, BigDecimal tauxTvaGestgc,
-			BigDecimal tvaGestgc, BigDecimal minCgrie, Date dateGestionnaireGc,
-			Date dateAvAdherent) {
+			BigDecimal tvaGestgc, BigDecimal minCgrie, Date dateGestionnaireGc) {
 		this.id = id;
 		this.gestionConfiee = gestionConfiee;
 		this.gestionnaire = gestionnaire;
@@ -64,7 +61,6 @@ public class GestionnaireGc implements java.io.Serializable {
 		this.tvaGestgc = tvaGestgc;
 		this.minCgrie = minCgrie;
 		this.dateGestionnaireGc = dateGestionnaireGc;
-		this.dateAvAdherent = dateAvAdherent;
 	}
 
 	@EmbeddedId
@@ -170,16 +166,6 @@ public class GestionnaireGc implements java.io.Serializable {
 
 	public void setDateGestionnaireGc(Date dateGestionnaireGc) {
 		this.dateGestionnaireGc = dateGestionnaireGc;
-	}
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "DATE_AV_ADHERENT", length = 19)
-	public Date getDateAvAdherent() {
-		return this.dateAvAdherent;
-	}
-
-	public void setDateAvAdherent(Date dateAvAdherent) {
-		this.dateAvAdherent = dateAvAdherent;
 	}
 
 }

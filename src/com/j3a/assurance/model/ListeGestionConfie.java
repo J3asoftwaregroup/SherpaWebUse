@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,9 +20,8 @@ public class ListeGestionConfie implements java.io.Serializable {
 
 	private String codeListeGestionConfie;
 	private String libelleListeGestionConfie;
-	private Set<AvenantListeGestionConfie> avenantListeGestionConfies = new HashSet<AvenantListeGestionConfie>(
-			0);
-	private Set<GestionConfiee> gestionConfiees = new HashSet<GestionConfiee>(0);
+	private Set avenantListeGestionConfies = new HashSet(0);
+	private Set gestionConfiees = new HashSet(0);
 
 	public ListeGestionConfie() {
 	}
@@ -33,9 +31,8 @@ public class ListeGestionConfie implements java.io.Serializable {
 	}
 
 	public ListeGestionConfie(String codeListeGestionConfie,
-			String libelleListeGestionConfie,
-			Set<AvenantListeGestionConfie> avenantListeGestionConfies,
-			Set<GestionConfiee> gestionConfiees) {
+			String libelleListeGestionConfie, Set avenantListeGestionConfies,
+			Set gestionConfiees) {
 		this.codeListeGestionConfie = codeListeGestionConfie;
 		this.libelleListeGestionConfie = libelleListeGestionConfie;
 		this.avenantListeGestionConfies = avenantListeGestionConfies;
@@ -62,21 +59,20 @@ public class ListeGestionConfie implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeGestionConfie")
-	public Set<AvenantListeGestionConfie> getAvenantListeGestionConfies() {
+	public Set getAvenantListeGestionConfies() {
 		return this.avenantListeGestionConfies;
 	}
 
-	public void setAvenantListeGestionConfies(
-			Set<AvenantListeGestionConfie> avenantListeGestionConfies) {
+	public void setAvenantListeGestionConfies(Set avenantListeGestionConfies) {
 		this.avenantListeGestionConfies = avenantListeGestionConfies;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeGestionConfie")
-	public Set<GestionConfiee> getGestionConfiees() {
+	public Set getGestionConfiees() {
 		return this.gestionConfiees;
 	}
 
-	public void setGestionConfiees(Set<GestionConfiee> gestionConfiees) {
+	public void setGestionConfiees(Set gestionConfiees) {
 		this.gestionConfiees = gestionConfiees;
 	}
 

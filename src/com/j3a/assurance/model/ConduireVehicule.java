@@ -1,9 +1,8 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.Date;
-
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -78,8 +77,8 @@ public class ConduireVehicule implements java.io.Serializable {
 		this.vehicule = vehicule;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "DATE_CONDUITE", length = 19)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "DATE_CONDUITE", length = 10)
 	public Date getDateConduite() {
 		return this.dateConduite;
 	}

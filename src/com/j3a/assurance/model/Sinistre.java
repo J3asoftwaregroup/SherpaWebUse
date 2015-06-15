@@ -1,12 +1,11 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,29 +34,20 @@ public class Sinistre implements java.io.Serializable {
 	private BigDecimal evaluationNette;
 	private String positionDossier;
 	private String codeAvenantSinistre;
-	private Set<GestionConfieeSinistre> gestionConfieeSinistres = new HashSet<GestionConfieeSinistre>(
-			0);
-	private Set<CorpsSinistre> corpsSinistres = new HashSet<CorpsSinistre>(0);
-	private Set<Victime> victimes = new HashSet<Victime>(0);
-	private Set<GarantieSinistre> garantieSinistres = new HashSet<GarantieSinistre>(
-			0);
-	private Set<AlimentSinistre> alimentSinistres = new HashSet<AlimentSinistre>(
-			0);
-	private Set<HabitationSinistre> habitationSinistres = new HashSet<HabitationSinistre>(
-			0);
-	private Set<RisqueNtaSinistre> risqueNtaSinistres = new HashSet<RisqueNtaSinistre>(
-			0);
-	private Set<Expertise> expertises = new HashSet<Expertise>(0);
-	private Set<SinistreConducteur> sinistreConducteurs = new HashSet<SinistreConducteur>(
-			0);
-	private Set<PartieAdverse> partieAdverses = new HashSet<PartieAdverse>(0);
-	private Set<Intervention> interventions = new HashSet<Intervention>(0);
-	private Set<ReglementSinistreGc> reglementSinistreGcs = new HashSet<ReglementSinistreGc>(
-			0);
-	private Set<VehiculeSinistre> vehiculeSinistres = new HashSet<VehiculeSinistre>(
-			0);
-	private Set<AssureIaSinistre> assureIaSinistres = new HashSet<AssureIaSinistre>(
-			0);
+	private Set garantieSinistres = new HashSet(0);
+	private Set gestionConfieeSinistres = new HashSet(0);
+	private Set vehiculeSinistres = new HashSet(0);
+	private Set corpsSinistres = new HashSet(0);
+	private Set reglementSinistreGcs = new HashSet(0);
+	private Set victimes = new HashSet(0);
+	private Set alimentSinistres = new HashSet(0);
+	private Set habitationSinistres = new HashSet(0);
+	private Set sinistreConducteurs = new HashSet(0);
+	private Set expertises = new HashSet(0);
+	private Set risqueNtaSinistres = new HashSet(0);
+	private Set partieAdverses = new HashSet(0);
+	private Set interventions = new HashSet(0);
+	private Set assureIaSinistres = new HashSet(0);
 
 	public Sinistre() {
 	}
@@ -71,18 +61,12 @@ public class Sinistre implements java.io.Serializable {
 			String circonstance, Date dateDeclaration, Date dateEvaluation,
 			BigDecimal evaluationBrute, BigDecimal evaluationNette,
 			String positionDossier, String codeAvenantSinistre,
-			Set<GestionConfieeSinistre> gestionConfieeSinistres,
-			Set<CorpsSinistre> corpsSinistres, Set<Victime> victimes,
-			Set<GarantieSinistre> garantieSinistres,
-			Set<AlimentSinistre> alimentSinistres,
-			Set<HabitationSinistre> habitationSinistres,
-			Set<RisqueNtaSinistre> risqueNtaSinistres,
-			Set<Expertise> expertises,
-			Set<SinistreConducteur> sinistreConducteurs,
-			Set<PartieAdverse> partieAdverses, Set<Intervention> interventions,
-			Set<ReglementSinistreGc> reglementSinistreGcs,
-			Set<VehiculeSinistre> vehiculeSinistres,
-			Set<AssureIaSinistre> assureIaSinistres) {
+			Set garantieSinistres, Set gestionConfieeSinistres,
+			Set vehiculeSinistres, Set corpsSinistres,
+			Set reglementSinistreGcs, Set victimes, Set alimentSinistres,
+			Set habitationSinistres, Set sinistreConducteurs, Set expertises,
+			Set risqueNtaSinistres, Set partieAdverses, Set interventions,
+			Set assureIaSinistres) {
 		this.codeSinistre = codeSinistre;
 		this.contrat = contrat;
 		this.dateSurvenance = dateSurvenance;
@@ -93,19 +77,19 @@ public class Sinistre implements java.io.Serializable {
 		this.evaluationNette = evaluationNette;
 		this.positionDossier = positionDossier;
 		this.codeAvenantSinistre = codeAvenantSinistre;
-		this.gestionConfieeSinistres = gestionConfieeSinistres;
-		this.corpsSinistres = corpsSinistres;
-		this.victimes = victimes;
 		this.garantieSinistres = garantieSinistres;
+		this.gestionConfieeSinistres = gestionConfieeSinistres;
+		this.vehiculeSinistres = vehiculeSinistres;
+		this.corpsSinistres = corpsSinistres;
+		this.reglementSinistreGcs = reglementSinistreGcs;
+		this.victimes = victimes;
 		this.alimentSinistres = alimentSinistres;
 		this.habitationSinistres = habitationSinistres;
-		this.risqueNtaSinistres = risqueNtaSinistres;
-		this.expertises = expertises;
 		this.sinistreConducteurs = sinistreConducteurs;
+		this.expertises = expertises;
+		this.risqueNtaSinistres = risqueNtaSinistres;
 		this.partieAdverses = partieAdverses;
 		this.interventions = interventions;
-		this.reglementSinistreGcs = reglementSinistreGcs;
-		this.vehiculeSinistres = vehiculeSinistres;
 		this.assureIaSinistres = assureIaSinistres;
 	}
 
@@ -205,132 +189,128 @@ public class Sinistre implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<GestionConfieeSinistre> getGestionConfieeSinistres() {
-		return this.gestionConfieeSinistres;
-	}
-
-	public void setGestionConfieeSinistres(
-			Set<GestionConfieeSinistre> gestionConfieeSinistres) {
-		this.gestionConfieeSinistres = gestionConfieeSinistres;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<CorpsSinistre> getCorpsSinistres() {
-		return this.corpsSinistres;
-	}
-
-	public void setCorpsSinistres(Set<CorpsSinistre> corpsSinistres) {
-		this.corpsSinistres = corpsSinistres;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<Victime> getVictimes() {
-		return this.victimes;
-	}
-
-	public void setVictimes(Set<Victime> victimes) {
-		this.victimes = victimes;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<GarantieSinistre> getGarantieSinistres() {
+	public Set getGarantieSinistres() {
 		return this.garantieSinistres;
 	}
 
-	public void setGarantieSinistres(Set<GarantieSinistre> garantieSinistres) {
+	public void setGarantieSinistres(Set garantieSinistres) {
 		this.garantieSinistres = garantieSinistres;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<AlimentSinistre> getAlimentSinistres() {
-		return this.alimentSinistres;
+	public Set getGestionConfieeSinistres() {
+		return this.gestionConfieeSinistres;
 	}
 
-	public void setAlimentSinistres(Set<AlimentSinistre> alimentSinistres) {
-		this.alimentSinistres = alimentSinistres;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<HabitationSinistre> getHabitationSinistres() {
-		return this.habitationSinistres;
-	}
-
-	public void setHabitationSinistres(
-			Set<HabitationSinistre> habitationSinistres) {
-		this.habitationSinistres = habitationSinistres;
+	public void setGestionConfieeSinistres(Set gestionConfieeSinistres) {
+		this.gestionConfieeSinistres = gestionConfieeSinistres;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<RisqueNtaSinistre> getRisqueNtaSinistres() {
-		return this.risqueNtaSinistres;
-	}
-
-	public void setRisqueNtaSinistres(Set<RisqueNtaSinistre> risqueNtaSinistres) {
-		this.risqueNtaSinistres = risqueNtaSinistres;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<Expertise> getExpertises() {
-		return this.expertises;
-	}
-
-	public void setExpertises(Set<Expertise> expertises) {
-		this.expertises = expertises;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<SinistreConducteur> getSinistreConducteurs() {
-		return this.sinistreConducteurs;
-	}
-
-	public void setSinistreConducteurs(
-			Set<SinistreConducteur> sinistreConducteurs) {
-		this.sinistreConducteurs = sinistreConducteurs;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<PartieAdverse> getPartieAdverses() {
-		return this.partieAdverses;
-	}
-
-	public void setPartieAdverses(Set<PartieAdverse> partieAdverses) {
-		this.partieAdverses = partieAdverses;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<Intervention> getInterventions() {
-		return this.interventions;
-	}
-
-	public void setInterventions(Set<Intervention> interventions) {
-		this.interventions = interventions;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<ReglementSinistreGc> getReglementSinistreGcs() {
-		return this.reglementSinistreGcs;
-	}
-
-	public void setReglementSinistreGcs(
-			Set<ReglementSinistreGc> reglementSinistreGcs) {
-		this.reglementSinistreGcs = reglementSinistreGcs;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<VehiculeSinistre> getVehiculeSinistres() {
+	public Set getVehiculeSinistres() {
 		return this.vehiculeSinistres;
 	}
 
-	public void setVehiculeSinistres(Set<VehiculeSinistre> vehiculeSinistres) {
+	public void setVehiculeSinistres(Set vehiculeSinistres) {
 		this.vehiculeSinistres = vehiculeSinistres;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
-	public Set<AssureIaSinistre> getAssureIaSinistres() {
+	public Set getCorpsSinistres() {
+		return this.corpsSinistres;
+	}
+
+	public void setCorpsSinistres(Set corpsSinistres) {
+		this.corpsSinistres = corpsSinistres;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
+	public Set getReglementSinistreGcs() {
+		return this.reglementSinistreGcs;
+	}
+
+	public void setReglementSinistreGcs(Set reglementSinistreGcs) {
+		this.reglementSinistreGcs = reglementSinistreGcs;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
+	public Set getVictimes() {
+		return this.victimes;
+	}
+
+	public void setVictimes(Set victimes) {
+		this.victimes = victimes;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
+	public Set getAlimentSinistres() {
+		return this.alimentSinistres;
+	}
+
+	public void setAlimentSinistres(Set alimentSinistres) {
+		this.alimentSinistres = alimentSinistres;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
+	public Set getHabitationSinistres() {
+		return this.habitationSinistres;
+	}
+
+	public void setHabitationSinistres(Set habitationSinistres) {
+		this.habitationSinistres = habitationSinistres;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
+	public Set getSinistreConducteurs() {
+		return this.sinistreConducteurs;
+	}
+
+	public void setSinistreConducteurs(Set sinistreConducteurs) {
+		this.sinistreConducteurs = sinistreConducteurs;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
+	public Set getExpertises() {
+		return this.expertises;
+	}
+
+	public void setExpertises(Set expertises) {
+		this.expertises = expertises;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
+	public Set getRisqueNtaSinistres() {
+		return this.risqueNtaSinistres;
+	}
+
+	public void setRisqueNtaSinistres(Set risqueNtaSinistres) {
+		this.risqueNtaSinistres = risqueNtaSinistres;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
+	public Set getPartieAdverses() {
+		return this.partieAdverses;
+	}
+
+	public void setPartieAdverses(Set partieAdverses) {
+		this.partieAdverses = partieAdverses;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
+	public Set getInterventions() {
+		return this.interventions;
+	}
+
+	public void setInterventions(Set interventions) {
+		this.interventions = interventions;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinistre")
+	public Set getAssureIaSinistres() {
 		return this.assureIaSinistres;
 	}
 
-	public void setAssureIaSinistres(Set<AssureIaSinistre> assureIaSinistres) {
+	public void setAssureIaSinistres(Set assureIaSinistres) {
 		this.assureIaSinistres = assureIaSinistres;
 	}
 

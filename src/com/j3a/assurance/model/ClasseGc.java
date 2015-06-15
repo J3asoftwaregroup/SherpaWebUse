@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,7 +22,7 @@ public class ClasseGc implements java.io.Serializable {
 	private String libelleClasseGc;
 	private String natureClasseGc;
 	private String tarifClasseGc;
-	private Set<GestionConfiee> gestionConfiees = new HashSet<GestionConfiee>(0);
+	private Set gestionConfiees = new HashSet(0);
 
 	public ClasseGc() {
 	}
@@ -33,8 +32,7 @@ public class ClasseGc implements java.io.Serializable {
 	}
 
 	public ClasseGc(String codeClasseGc, String libelleClasseGc,
-			String natureClasseGc, String tarifClasseGc,
-			Set<GestionConfiee> gestionConfiees) {
+			String natureClasseGc, String tarifClasseGc, Set gestionConfiees) {
 		this.codeClasseGc = codeClasseGc;
 		this.libelleClasseGc = libelleClasseGc;
 		this.natureClasseGc = natureClasseGc;
@@ -80,11 +78,11 @@ public class ClasseGc implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "classeGc")
-	public Set<GestionConfiee> getGestionConfiees() {
+	public Set getGestionConfiees() {
 		return this.gestionConfiees;
 	}
 
-	public void setGestionConfiees(Set<GestionConfiee> gestionConfiees) {
+	public void setGestionConfiees(Set gestionConfiees) {
 		this.gestionConfiees = gestionConfiees;
 	}
 

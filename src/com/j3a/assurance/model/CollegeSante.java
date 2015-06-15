@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,8 +21,8 @@ public class CollegeSante implements java.io.Serializable {
 	private String codeCollege;
 	private String libelleCollege;
 	private String tarifSante;
-	private Set<AdherentsSante> adherentsSantes = new HashSet<AdherentsSante>(0);
-	private Set<GestionConfiee> gestionConfiees = new HashSet<GestionConfiee>(0);
+	private Set adherentsSantes = new HashSet(0);
+	private Set gestionConfiees = new HashSet(0);
 
 	public CollegeSante() {
 	}
@@ -33,8 +32,7 @@ public class CollegeSante implements java.io.Serializable {
 	}
 
 	public CollegeSante(String codeCollege, String libelleCollege,
-			String tarifSante, Set<AdherentsSante> adherentsSantes,
-			Set<GestionConfiee> gestionConfiees) {
+			String tarifSante, Set adherentsSantes, Set gestionConfiees) {
 		this.codeCollege = codeCollege;
 		this.libelleCollege = libelleCollege;
 		this.tarifSante = tarifSante;
@@ -71,20 +69,20 @@ public class CollegeSante implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "collegeSante")
-	public Set<AdherentsSante> getAdherentsSantes() {
+	public Set getAdherentsSantes() {
 		return this.adherentsSantes;
 	}
 
-	public void setAdherentsSantes(Set<AdherentsSante> adherentsSantes) {
+	public void setAdherentsSantes(Set adherentsSantes) {
 		this.adherentsSantes = adherentsSantes;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "collegeSante")
-	public Set<GestionConfiee> getGestionConfiees() {
+	public Set getGestionConfiees() {
 		return this.gestionConfiees;
 	}
 
-	public void setGestionConfiees(Set<GestionConfiee> gestionConfiees) {
+	public void setGestionConfiees(Set gestionConfiees) {
 		this.gestionConfiees = gestionConfiees;
 	}
 

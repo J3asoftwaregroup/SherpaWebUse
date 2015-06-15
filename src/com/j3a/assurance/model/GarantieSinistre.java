@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
-
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -29,37 +28,36 @@ public class GarantieSinistre implements java.io.Serializable {
 	private Sinistre sinistre;
 	private Date dateGarantieSinistre;
 	private BigDecimal primeGarantieSinistre;
-	private BigDecimal montantEvaluationSin;
+	private BigDecimal montantEvalutationSin;
 	private BigDecimal autresFraisEvaluation;
 
 	public GarantieSinistre() {
 	}
 
 	public GarantieSinistre(GarantieSinistreId id, Garantie garantie,
-			Sinistre sinistre, Date dateGarantieSinistre) {
+			Sinistre sinistre) {
 		this.id = id;
 		this.garantie = garantie;
 		this.sinistre = sinistre;
-		this.dateGarantieSinistre = dateGarantieSinistre;
 	}
 
 	public GarantieSinistre(GarantieSinistreId id, Garantie garantie,
 			Sinistre sinistre, Date dateGarantieSinistre,
-			BigDecimal primeGarantieSinistre, BigDecimal montantEvaluationSin,
+			BigDecimal primeGarantieSinistre, BigDecimal montantEvalutationSin,
 			BigDecimal autresFraisEvaluation) {
 		this.id = id;
 		this.garantie = garantie;
 		this.sinistre = sinistre;
 		this.dateGarantieSinistre = dateGarantieSinistre;
 		this.primeGarantieSinistre = primeGarantieSinistre;
-		this.montantEvaluationSin = montantEvaluationSin;
+		this.montantEvalutationSin = montantEvalutationSin;
 		this.autresFraisEvaluation = autresFraisEvaluation;
 	}
 
 	@EmbeddedId
 	@AttributeOverrides({
-			@AttributeOverride(name = "codeSinistre", column = @Column(name = "CODE_SINISTRE", nullable = false, length = 40)),
-			@AttributeOverride(name = "codeGarantie", column = @Column(name = "CODE_GARANTIE", nullable = false, length = 12)) })
+			@AttributeOverride(name = "codeGarantie", column = @Column(name = "CODE_GARANTIE", nullable = false, length = 12)),
+			@AttributeOverride(name = "codeSinistre", column = @Column(name = "CODE_SINISTRE", nullable = false, length = 40)) })
 	public GarantieSinistreId getId() {
 		return this.id;
 	}
@@ -89,7 +87,7 @@ public class GarantieSinistre implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "DATE_GARANTIE_SINISTRE", nullable = false, length = 10)
+	@Column(name = "DATE_GARANTIE_SINISTRE", length = 10)
 	public Date getDateGarantieSinistre() {
 		return this.dateGarantieSinistre;
 	}
@@ -98,7 +96,7 @@ public class GarantieSinistre implements java.io.Serializable {
 		this.dateGarantieSinistre = dateGarantieSinistre;
 	}
 
-	@Column(name = "PRIME_GARANTIE_SINISTRE")
+	@Column(name = "PRIME_GARANTIE_SINISTRE", precision = 15, scale = 3)
 	public BigDecimal getPrimeGarantieSinistre() {
 		return this.primeGarantieSinistre;
 	}
@@ -107,16 +105,16 @@ public class GarantieSinistre implements java.io.Serializable {
 		this.primeGarantieSinistre = primeGarantieSinistre;
 	}
 
-	@Column(name = "MONTANT_EVALUATION_SIN")
-	public BigDecimal getMontantEvaluationSin() {
-		return this.montantEvaluationSin;
+	@Column(name = "MONTANT_EVALUTATION_SIN", precision = 15, scale = 3)
+	public BigDecimal getMontantEvalutationSin() {
+		return this.montantEvalutationSin;
 	}
 
-	public void setMontantEvaluationSin(BigDecimal montantEvaluationSin) {
-		this.montantEvaluationSin = montantEvaluationSin;
+	public void setMontantEvalutationSin(BigDecimal montantEvalutationSin) {
+		this.montantEvalutationSin = montantEvalutationSin;
 	}
 
-	@Column(name = "AUTRES_FRAIS_EVALUATION")
+	@Column(name = "AUTRES_FRAIS_EVALUATION", precision = 15, scale = 3)
 	public BigDecimal getAutresFraisEvaluation() {
 		return this.autresFraisEvaluation;
 	}

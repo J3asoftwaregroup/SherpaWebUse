@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -11,23 +11,14 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class GarantieSinistreId implements java.io.Serializable {
 
-	private String codeSinistre;
 	private String codeGarantie;
+	private String codeSinistre;
 
 	public GarantieSinistreId() {
 	}
 
-	public GarantieSinistreId(String codeSinistre, String codeGarantie) {
-		this.codeSinistre = codeSinistre;
+	public GarantieSinistreId(String codeGarantie, String codeSinistre) {
 		this.codeGarantie = codeGarantie;
-	}
-
-	@Column(name = "CODE_SINISTRE", nullable = false, length = 40)
-	public String getCodeSinistre() {
-		return this.codeSinistre;
-	}
-
-	public void setCodeSinistre(String codeSinistre) {
 		this.codeSinistre = codeSinistre;
 	}
 
@@ -40,6 +31,15 @@ public class GarantieSinistreId implements java.io.Serializable {
 		this.codeGarantie = codeGarantie;
 	}
 
+	@Column(name = "CODE_SINISTRE", nullable = false, length = 40)
+	public String getCodeSinistre() {
+		return this.codeSinistre;
+	}
+
+	public void setCodeSinistre(String codeSinistre) {
+		this.codeSinistre = codeSinistre;
+	}
+
 	public boolean equals(Object other) {
 		if ((this == other))
 			return true;
@@ -49,14 +49,14 @@ public class GarantieSinistreId implements java.io.Serializable {
 			return false;
 		GarantieSinistreId castOther = (GarantieSinistreId) other;
 
-		return ((this.getCodeSinistre() == castOther.getCodeSinistre()) || (this
-				.getCodeSinistre() != null
-				&& castOther.getCodeSinistre() != null && this
-				.getCodeSinistre().equals(castOther.getCodeSinistre())))
-				&& ((this.getCodeGarantie() == castOther.getCodeGarantie()) || (this
-						.getCodeGarantie() != null
-						&& castOther.getCodeGarantie() != null && this
-						.getCodeGarantie().equals(castOther.getCodeGarantie())));
+		return ((this.getCodeGarantie() == castOther.getCodeGarantie()) || (this
+				.getCodeGarantie() != null
+				&& castOther.getCodeGarantie() != null && this
+				.getCodeGarantie().equals(castOther.getCodeGarantie())))
+				&& ((this.getCodeSinistre() == castOther.getCodeSinistre()) || (this
+						.getCodeSinistre() != null
+						&& castOther.getCodeSinistre() != null && this
+						.getCodeSinistre().equals(castOther.getCodeSinistre())));
 	}
 
 	public int hashCode() {
@@ -64,11 +64,11 @@ public class GarantieSinistreId implements java.io.Serializable {
 
 		result = 37
 				* result
-				+ (getCodeSinistre() == null ? 0 : this.getCodeSinistre()
+				+ (getCodeGarantie() == null ? 0 : this.getCodeGarantie()
 						.hashCode());
 		result = 37
 				* result
-				+ (getCodeGarantie() == null ? 0 : this.getCodeGarantie()
+				+ (getCodeSinistre() == null ? 0 : this.getCodeSinistre()
 						.hashCode());
 		return result;
 	}

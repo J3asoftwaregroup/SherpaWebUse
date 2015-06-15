@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,8 +25,7 @@ public class Coassurance implements java.io.Serializable {
 	private Contrat contrat;
 	private BigDecimal montantCoassurance;
 	private String typeCoassurance;
-	private Set<CoassuranceCompagnie> coassuranceCompagnies = new HashSet<CoassuranceCompagnie>(
-			0);
+	private Set coassuranceCompagnies = new HashSet(0);
 
 	public Coassurance() {
 	}
@@ -39,7 +37,7 @@ public class Coassurance implements java.io.Serializable {
 
 	public Coassurance(String codeCoassurance, Contrat contrat,
 			BigDecimal montantCoassurance, String typeCoassurance,
-			Set<CoassuranceCompagnie> coassuranceCompagnies) {
+			Set coassuranceCompagnies) {
 		this.codeCoassurance = codeCoassurance;
 		this.contrat = contrat;
 		this.montantCoassurance = montantCoassurance;
@@ -86,12 +84,11 @@ public class Coassurance implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "coassurance")
-	public Set<CoassuranceCompagnie> getCoassuranceCompagnies() {
+	public Set getCoassuranceCompagnies() {
 		return this.coassuranceCompagnies;
 	}
 
-	public void setCoassuranceCompagnies(
-			Set<CoassuranceCompagnie> coassuranceCompagnies) {
+	public void setCoassuranceCompagnies(Set coassuranceCompagnies) {
 		this.coassuranceCompagnies = coassuranceCompagnies;
 	}
 

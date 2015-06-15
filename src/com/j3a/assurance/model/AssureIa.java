@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -39,13 +38,10 @@ public class AssureIa implements java.io.Serializable {
 	private String sexeAssIa;
 	private String adresseAssIa;
 	private String statutassureia;
-	private Set<AssureIaSinistre> assureIaSinistres = new HashSet<AssureIaSinistre>(
-			0);
-	private Set<GarantieChoisieIa> garantieChoisieIas = new HashSet<GarantieChoisieIa>(
-			0);
-	private Set<ApporteurAssure> apporteurAssures = new HashSet<ApporteurAssure>(
-			0);
-	private Set<Beneficiaire> beneficiaires = new HashSet<Beneficiaire>(0);
+	private Set assureIaSinistres = new HashSet(0);
+	private Set garantieChoisieIas = new HashSet(0);
+	private Set apporteurAssures = new HashSet(0);
+	private Set beneficiaires = new HashSet(0);
 
 	public AssureIa() {
 	}
@@ -59,10 +55,8 @@ public class AssureIa implements java.io.Serializable {
 			String prenomAssIa, Date datenaissAssIa, String lieunaissAssIa,
 			Integer dureeIj, String activiteAssIa, String professionAssIa,
 			String usageAssIa, String sexeAssIa, String adresseAssIa,
-			String statutassureia, Set<AssureIaSinistre> assureIaSinistres,
-			Set<GarantieChoisieIa> garantieChoisieIas,
-			Set<ApporteurAssure> apporteurAssures,
-			Set<Beneficiaire> beneficiaires) {
+			String statutassureia, Set assureIaSinistres,
+			Set garantieChoisieIas, Set apporteurAssures, Set beneficiaires) {
 		this.numIdentification = numIdentification;
 		this.categorie = categorie;
 		this.classeIa = classeIa;
@@ -225,38 +219,38 @@ public class AssureIa implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "assureIa")
-	public Set<AssureIaSinistre> getAssureIaSinistres() {
+	public Set getAssureIaSinistres() {
 		return this.assureIaSinistres;
 	}
 
-	public void setAssureIaSinistres(Set<AssureIaSinistre> assureIaSinistres) {
+	public void setAssureIaSinistres(Set assureIaSinistres) {
 		this.assureIaSinistres = assureIaSinistres;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "assureIa")
-	public Set<GarantieChoisieIa> getGarantieChoisieIas() {
+	public Set getGarantieChoisieIas() {
 		return this.garantieChoisieIas;
 	}
 
-	public void setGarantieChoisieIas(Set<GarantieChoisieIa> garantieChoisieIas) {
+	public void setGarantieChoisieIas(Set garantieChoisieIas) {
 		this.garantieChoisieIas = garantieChoisieIas;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "assureIa")
-	public Set<ApporteurAssure> getApporteurAssures() {
+	public Set getApporteurAssures() {
 		return this.apporteurAssures;
 	}
 
-	public void setApporteurAssures(Set<ApporteurAssure> apporteurAssures) {
+	public void setApporteurAssures(Set apporteurAssures) {
 		this.apporteurAssures = apporteurAssures;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "assureIa")
-	public Set<Beneficiaire> getBeneficiaires() {
+	public Set getBeneficiaires() {
 		return this.beneficiaires;
 	}
 
-	public void setBeneficiaires(Set<Beneficiaire> beneficiaires) {
+	public void setBeneficiaires(Set beneficiaires) {
 		this.beneficiaires = beneficiaires;
 	}
 

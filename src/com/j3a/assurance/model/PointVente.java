@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,9 +30,9 @@ public class PointVente implements java.io.Serializable {
 	private String telFaxPointVente;
 	private BigDecimal latitude;
 	private BigDecimal longitude;
-	private Set<Contrat> contrats = new HashSet<Contrat>(0);
-	private Set<Utilisateur> utilisateurs = new HashSet<Utilisateur>(0);
-	private Set<Stock> stocks = new HashSet<Stock>(0);
+	private Set utilisateurs = new HashSet(0);
+	private Set stocks = new HashSet(0);
+	private Set contrats = new HashSet(0);
 
 	public PointVente() {
 	}
@@ -48,8 +47,8 @@ public class PointVente implements java.io.Serializable {
 	public PointVente(String codePointVente, TypePointVente typePointVente,
 			Ville ville, String libellePointVente, String adressePointVente,
 			String telFixePointVente, String telFaxPointVente,
-			BigDecimal latitude, BigDecimal longitude, Set<Contrat> contrats,
-			Set<Utilisateur> utilisateurs, Set<Stock> stocks) {
+			BigDecimal latitude, BigDecimal longitude, Set utilisateurs,
+			Set stocks, Set contrats) {
 		this.codePointVente = codePointVente;
 		this.typePointVente = typePointVente;
 		this.ville = ville;
@@ -59,9 +58,9 @@ public class PointVente implements java.io.Serializable {
 		this.telFaxPointVente = telFaxPointVente;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.contrats = contrats;
 		this.utilisateurs = utilisateurs;
 		this.stocks = stocks;
+		this.contrats = contrats;
 	}
 
 	@Id
@@ -84,7 +83,7 @@ public class PointVente implements java.io.Serializable {
 		this.typePointVente = typePointVente;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CODE_VILLE", nullable = false)
 	public Ville getVille() {
 		return this.ville;
@@ -149,30 +148,30 @@ public class PointVente implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pointVente")
-	public Set<Contrat> getContrats() {
-		return this.contrats;
-	}
-
-	public void setContrats(Set<Contrat> contrats) {
-		this.contrats = contrats;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pointVente")
-	public Set<Utilisateur> getUtilisateurs() {
+	public Set getUtilisateurs() {
 		return this.utilisateurs;
 	}
 
-	public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
+	public void setUtilisateurs(Set utilisateurs) {
 		this.utilisateurs = utilisateurs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pointVente")
-	public Set<Stock> getStocks() {
+	public Set getStocks() {
 		return this.stocks;
 	}
 
-	public void setStocks(Set<Stock> stocks) {
+	public void setStocks(Set stocks) {
 		this.stocks = stocks;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pointVente")
+	public Set getContrats() {
+		return this.contrats;
+	}
+
+	public void setContrats(Set contrats) {
+		this.contrats = contrats;
 	}
 
 }

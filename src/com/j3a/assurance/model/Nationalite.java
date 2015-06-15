@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,8 +20,7 @@ public class Nationalite implements java.io.Serializable {
 
 	private int codeNationalite;
 	private String libelleNationalite;
-	private Set<PersonneNationalite> personneNationalites = new HashSet<PersonneNationalite>(
-			0);
+	private Set personneNationalites = new HashSet(0);
 
 	public Nationalite() {
 	}
@@ -32,7 +30,7 @@ public class Nationalite implements java.io.Serializable {
 	}
 
 	public Nationalite(int codeNationalite, String libelleNationalite,
-			Set<PersonneNationalite> personneNationalites) {
+			Set personneNationalites) {
 		this.codeNationalite = codeNationalite;
 		this.libelleNationalite = libelleNationalite;
 		this.personneNationalites = personneNationalites;
@@ -58,12 +56,11 @@ public class Nationalite implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nationalite")
-	public Set<PersonneNationalite> getPersonneNationalites() {
+	public Set getPersonneNationalites() {
 		return this.personneNationalites;
 	}
 
-	public void setPersonneNationalites(
-			Set<PersonneNationalite> personneNationalites) {
+	public void setPersonneNationalites(Set personneNationalites) {
 		this.personneNationalites = personneNationalites;
 	}
 

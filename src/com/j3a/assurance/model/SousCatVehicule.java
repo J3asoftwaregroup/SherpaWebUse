@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,9 +22,10 @@ public class SousCatVehicule implements java.io.Serializable {
 
 	private String codeSousCatVehicule;
 	private Categorie categorie;
+	private Tarif tarif;
 	private String libelleSousCatVehicule;
-	private String tarif;
-	private Set<Vehicule> vehicules = new HashSet<Vehicule>(0);
+	private String tarif_1;
+	private Set vehicules = new HashSet(0);
 
 	public SousCatVehicule() {
 	}
@@ -35,11 +35,13 @@ public class SousCatVehicule implements java.io.Serializable {
 	}
 
 	public SousCatVehicule(String codeSousCatVehicule, Categorie categorie,
-			String libelleSousCatVehicule, String tarif, Set<Vehicule> vehicules) {
+			Tarif tarif, String libelleSousCatVehicule, String tarif_1,
+			Set vehicules) {
 		this.codeSousCatVehicule = codeSousCatVehicule;
 		this.categorie = categorie;
-		this.libelleSousCatVehicule = libelleSousCatVehicule;
 		this.tarif = tarif;
+		this.libelleSousCatVehicule = libelleSousCatVehicule;
+		this.tarif_1 = tarif_1;
 		this.vehicules = vehicules;
 	}
 
@@ -53,7 +55,7 @@ public class SousCatVehicule implements java.io.Serializable {
 		this.codeSousCatVehicule = codeSousCatVehicule;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CODE_CATEGORIE")
 	public Categorie getCategorie() {
 		return this.categorie;
@@ -61,6 +63,16 @@ public class SousCatVehicule implements java.io.Serializable {
 
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "CODE_TARIF")
+	public Tarif getTarif() {
+		return this.tarif;
+	}
+
+	public void setTarif(Tarif tarif) {
+		this.tarif = tarif;
 	}
 
 	@Column(name = "LIBELLE_SOUS_CAT_VEHICULE", length = 40)
@@ -73,20 +85,20 @@ public class SousCatVehicule implements java.io.Serializable {
 	}
 
 	@Column(name = "TARIF", length = 10)
-	public String getTarif() {
-		return this.tarif;
+	public String getTarif_1() {
+		return this.tarif_1;
 	}
 
-	public void setTarif(String tarif) {
-		this.tarif = tarif;
+	public void setTarif_1(String tarif_1) {
+		this.tarif_1 = tarif_1;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sousCatVehicule")
-	public Set<Vehicule> getVehicules() {
+	public Set getVehicules() {
 		return this.vehicules;
 	}
 
-	public void setVehicules(Set<Vehicule> vehicules) {
+	public void setVehicules(Set vehicules) {
 		this.vehicules = vehicules;
 	}
 

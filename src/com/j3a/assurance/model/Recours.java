@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +23,7 @@ public class Recours implements java.io.Serializable {
 	private String raisonSocial;
 	private BigDecimal montant;
 	private String etat;
-	private Set<Victime> victimes = new HashSet<Victime>(0);
+	private Set victimes = new HashSet(0);
 
 	public Recours() {
 	}
@@ -34,7 +33,7 @@ public class Recours implements java.io.Serializable {
 	}
 
 	public Recours(String referenceTiers, String raisonSocial,
-			BigDecimal montant, String etat, Set<Victime> victimes) {
+			BigDecimal montant, String etat, Set victimes) {
 		this.referenceTiers = referenceTiers;
 		this.raisonSocial = raisonSocial;
 		this.montant = montant;
@@ -80,11 +79,11 @@ public class Recours implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "recours")
-	public Set<Victime> getVictimes() {
+	public Set getVictimes() {
 		return this.victimes;
 	}
 
-	public void setVictimes(Set<Victime> victimes) {
+	public void setVictimes(Set victimes) {
 		this.victimes = victimes;
 	}
 

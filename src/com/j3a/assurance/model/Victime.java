@@ -1,12 +1,11 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,11 +35,10 @@ public class Victime implements java.io.Serializable {
 	private String etatVictime;
 	private BigDecimal sommePrejudice;
 	private Boolean etatIndemniser;
-	private Set<Prejudice> prejudices = new HashSet<Prejudice>(0);
-	private Set<ReglementSinistre> reglementSinistres = new HashSet<ReglementSinistre>(
-			0);
-	private Set<ActeMedical> acteMedicals = new HashSet<ActeMedical>(0);
-	private Set<AyantDroit> ayantDroits = new HashSet<AyantDroit>(0);
+	private Set prejudices = new HashSet(0);
+	private Set acteMedicals = new HashSet(0);
+	private Set ayantDroits = new HashSet(0);
+	private Set reglementSinistres = new HashSet(0);
 
 	public Victime() {
 	}
@@ -54,9 +52,8 @@ public class Victime implements java.io.Serializable {
 			String nomVictime, String prenomVictime, Date dateNaissVictime,
 			String adresseVictime, String professionVictime,
 			String etatVictime, BigDecimal sommePrejudice,
-			Boolean etatIndemniser, Set<Prejudice> prejudices,
-			Set<ReglementSinistre> reglementSinistres,
-			Set<ActeMedical> acteMedicals, Set<AyantDroit> ayantDroits) {
+			Boolean etatIndemniser, Set prejudices, Set acteMedicals,
+			Set ayantDroits, Set reglementSinistres) {
 		this.numVictime = numVictime;
 		this.recours = recours;
 		this.sinistre = sinistre;
@@ -69,9 +66,9 @@ public class Victime implements java.io.Serializable {
 		this.sommePrejudice = sommePrejudice;
 		this.etatIndemniser = etatIndemniser;
 		this.prejudices = prejudices;
-		this.reglementSinistres = reglementSinistres;
 		this.acteMedicals = acteMedicals;
 		this.ayantDroits = ayantDroits;
+		this.reglementSinistres = reglementSinistres;
 	}
 
 	@Id
@@ -141,7 +138,7 @@ public class Victime implements java.io.Serializable {
 		this.adresseVictime = adresseVictime;
 	}
 
-	@Column(name = "PROFESSION_VICTIME", length = 40)
+	@Column(name = "PROFESSION_VICTIME", length = 30)
 	public String getProfessionVictime() {
 		return this.professionVictime;
 	}
@@ -178,39 +175,39 @@ public class Victime implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "victime")
-	public Set<Prejudice> getPrejudices() {
+	public Set getPrejudices() {
 		return this.prejudices;
 	}
 
-	public void setPrejudices(Set<Prejudice> prejudices) {
+	public void setPrejudices(Set prejudices) {
 		this.prejudices = prejudices;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "victime")
-	public Set<ReglementSinistre> getReglementSinistres() {
-		return this.reglementSinistres;
-	}
-
-	public void setReglementSinistres(Set<ReglementSinistre> reglementSinistres) {
-		this.reglementSinistres = reglementSinistres;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "victime")
-	public Set<ActeMedical> getActeMedicals() {
+	public Set getActeMedicals() {
 		return this.acteMedicals;
 	}
 
-	public void setActeMedicals(Set<ActeMedical> acteMedicals) {
+	public void setActeMedicals(Set acteMedicals) {
 		this.acteMedicals = acteMedicals;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "victime")
-	public Set<AyantDroit> getAyantDroits() {
+	public Set getAyantDroits() {
 		return this.ayantDroits;
 	}
 
-	public void setAyantDroits(Set<AyantDroit> ayantDroits) {
+	public void setAyantDroits(Set ayantDroits) {
 		this.ayantDroits = ayantDroits;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "victime")
+	public Set getReglementSinistres() {
+		return this.reglementSinistres;
+	}
+
+	public void setReglementSinistres(Set reglementSinistres) {
+		this.reglementSinistres = reglementSinistres;
 	}
 
 }

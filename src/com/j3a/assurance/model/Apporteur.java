@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,26 +30,17 @@ public class Apporteur implements java.io.Serializable {
 	private String contactApporteur;
 	private String adresseApporteur;
 	private Date dateCrea;
-	private Set<AffaireApporteur> affaireApporteurs = new HashSet<AffaireApporteur>(
-			0);
-	private Set<ApporteurAssure> apporteurAssures = new HashSet<ApporteurAssure>(
-			0);
-	private Set<ApporteurCorpsEngin> apporteurCorpsEngins = new HashSet<ApporteurCorpsEngin>(
-			0);
-	private Set<Contrat> contrats = new HashSet<Contrat>(0);
-	private Set<ApporteurHabitation> apporteurHabitations = new HashSet<ApporteurHabitation>(
-			0);
-	private Set<ApporteurGestionConfiee> apporteurGestionConfiees = new HashSet<ApporteurGestionConfiee>(
-			0);
-	private Set<ApporteurVehicule> apporteurVehicules = new HashSet<ApporteurVehicule>(
-			0);
-	private Set<ApporteurAdherent> apporteurAdherents = new HashSet<ApporteurAdherent>(
-			0);
-	private Set<ApporteurAliment> apporteurAliments = new HashSet<ApporteurAliment>(
-			0);
-	private Set<ApporteurNta> apporteurNtas = new HashSet<ApporteurNta>(0);
-	private Set<CompteApporteur> compteApporteurs = new HashSet<CompteApporteur>(
-			0);
+	private Set apporteurAssures = new HashSet(0);
+	private Set apporteurCorpsEngins = new HashSet(0);
+	private Set contrats = new HashSet(0);
+	private Set apporteurHabitations = new HashSet(0);
+	private Set apporteurGestionConfiees = new HashSet(0);
+	private Set apporteurVehicules = new HashSet(0);
+	private Set compteApporteurs = new HashSet(0);
+	private Set apporteurAdherents = new HashSet(0);
+	private Set apporteurAliments = new HashSet(0);
+	private Set affaireApporteurs = new HashSet(0);
+	private Set apporteurNtas = new HashSet(0);
 
 	public Apporteur() {
 	}
@@ -63,17 +53,11 @@ public class Apporteur implements java.io.Serializable {
 	public Apporteur(String codeApporteur, CompteApporteur compteApporteur,
 			TypeApporteur typeApporteur, String libelleApporteur,
 			String contactApporteur, String adresseApporteur, Date dateCrea,
-			Set<AffaireApporteur> affaireApporteurs,
-			Set<ApporteurAssure> apporteurAssures,
-			Set<ApporteurCorpsEngin> apporteurCorpsEngins,
-			Set<Contrat> contrats,
-			Set<ApporteurHabitation> apporteurHabitations,
-			Set<ApporteurGestionConfiee> apporteurGestionConfiees,
-			Set<ApporteurVehicule> apporteurVehicules,
-			Set<ApporteurAdherent> apporteurAdherents,
-			Set<ApporteurAliment> apporteurAliments,
-			Set<ApporteurNta> apporteurNtas,
-			Set<CompteApporteur> compteApporteurs) {
+			Set apporteurAssures, Set apporteurCorpsEngins, Set contrats,
+			Set apporteurHabitations, Set apporteurGestionConfiees,
+			Set apporteurVehicules, Set compteApporteurs,
+			Set apporteurAdherents, Set apporteurAliments,
+			Set affaireApporteurs, Set apporteurNtas) {
 		this.codeApporteur = codeApporteur;
 		this.compteApporteur = compteApporteur;
 		this.typeApporteur = typeApporteur;
@@ -81,17 +65,17 @@ public class Apporteur implements java.io.Serializable {
 		this.contactApporteur = contactApporteur;
 		this.adresseApporteur = adresseApporteur;
 		this.dateCrea = dateCrea;
-		this.affaireApporteurs = affaireApporteurs;
 		this.apporteurAssures = apporteurAssures;
 		this.apporteurCorpsEngins = apporteurCorpsEngins;
 		this.contrats = contrats;
 		this.apporteurHabitations = apporteurHabitations;
 		this.apporteurGestionConfiees = apporteurGestionConfiees;
 		this.apporteurVehicules = apporteurVehicules;
+		this.compteApporteurs = compteApporteurs;
 		this.apporteurAdherents = apporteurAdherents;
 		this.apporteurAliments = apporteurAliments;
+		this.affaireApporteurs = affaireApporteurs;
 		this.apporteurNtas = apporteurNtas;
-		this.compteApporteurs = compteApporteurs;
 	}
 
 	@Id
@@ -162,105 +146,102 @@ public class Apporteur implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "apporteur")
-	public Set<AffaireApporteur> getAffaireApporteurs() {
-		return this.affaireApporteurs;
-	}
-
-	public void setAffaireApporteurs(Set<AffaireApporteur> affaireApporteurs) {
-		this.affaireApporteurs = affaireApporteurs;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "apporteur")
-	public Set<ApporteurAssure> getApporteurAssures() {
+	public Set getApporteurAssures() {
 		return this.apporteurAssures;
 	}
 
-	public void setApporteurAssures(Set<ApporteurAssure> apporteurAssures) {
+	public void setApporteurAssures(Set apporteurAssures) {
 		this.apporteurAssures = apporteurAssures;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "apporteur")
-	public Set<ApporteurCorpsEngin> getApporteurCorpsEngins() {
+	public Set getApporteurCorpsEngins() {
 		return this.apporteurCorpsEngins;
 	}
 
-	public void setApporteurCorpsEngins(
-			Set<ApporteurCorpsEngin> apporteurCorpsEngins) {
+	public void setApporteurCorpsEngins(Set apporteurCorpsEngins) {
 		this.apporteurCorpsEngins = apporteurCorpsEngins;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "apporteur")
-	public Set<Contrat> getContrats() {
+	public Set getContrats() {
 		return this.contrats;
 	}
 
-	public void setContrats(Set<Contrat> contrats) {
+	public void setContrats(Set contrats) {
 		this.contrats = contrats;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "apporteur")
-	public Set<ApporteurHabitation> getApporteurHabitations() {
+	public Set getApporteurHabitations() {
 		return this.apporteurHabitations;
 	}
 
-	public void setApporteurHabitations(
-			Set<ApporteurHabitation> apporteurHabitations) {
+	public void setApporteurHabitations(Set apporteurHabitations) {
 		this.apporteurHabitations = apporteurHabitations;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "apporteur")
-	public Set<ApporteurGestionConfiee> getApporteurGestionConfiees() {
+	public Set getApporteurGestionConfiees() {
 		return this.apporteurGestionConfiees;
 	}
 
-	public void setApporteurGestionConfiees(
-			Set<ApporteurGestionConfiee> apporteurGestionConfiees) {
+	public void setApporteurGestionConfiees(Set apporteurGestionConfiees) {
 		this.apporteurGestionConfiees = apporteurGestionConfiees;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "apporteur")
-	public Set<ApporteurVehicule> getApporteurVehicules() {
+	public Set getApporteurVehicules() {
 		return this.apporteurVehicules;
 	}
 
-	public void setApporteurVehicules(Set<ApporteurVehicule> apporteurVehicules) {
+	public void setApporteurVehicules(Set apporteurVehicules) {
 		this.apporteurVehicules = apporteurVehicules;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "apporteur")
-	public Set<ApporteurAdherent> getApporteurAdherents() {
+	public Set getCompteApporteurs() {
+		return this.compteApporteurs;
+	}
+
+	public void setCompteApporteurs(Set compteApporteurs) {
+		this.compteApporteurs = compteApporteurs;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "apporteur")
+	public Set getApporteurAdherents() {
 		return this.apporteurAdherents;
 	}
 
-	public void setApporteurAdherents(Set<ApporteurAdherent> apporteurAdherents) {
+	public void setApporteurAdherents(Set apporteurAdherents) {
 		this.apporteurAdherents = apporteurAdherents;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "apporteur")
-	public Set<ApporteurAliment> getApporteurAliments() {
+	public Set getApporteurAliments() {
 		return this.apporteurAliments;
 	}
 
-	public void setApporteurAliments(Set<ApporteurAliment> apporteurAliments) {
+	public void setApporteurAliments(Set apporteurAliments) {
 		this.apporteurAliments = apporteurAliments;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "apporteur")
-	public Set<ApporteurNta> getApporteurNtas() {
-		return this.apporteurNtas;
+	public Set getAffaireApporteurs() {
+		return this.affaireApporteurs;
 	}
 
-	public void setApporteurNtas(Set<ApporteurNta> apporteurNtas) {
-		this.apporteurNtas = apporteurNtas;
+	public void setAffaireApporteurs(Set affaireApporteurs) {
+		this.affaireApporteurs = affaireApporteurs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "apporteur")
-	public Set<CompteApporteur> getCompteApporteurs() {
-		return this.compteApporteurs;
+	public Set getApporteurNtas() {
+		return this.apporteurNtas;
 	}
 
-	public void setCompteApporteurs(Set<CompteApporteur> compteApporteurs) {
-		this.compteApporteurs = compteApporteurs;
+	public void setApporteurNtas(Set apporteurNtas) {
+		this.apporteurNtas = apporteurNtas;
 	}
 
 }

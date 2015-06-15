@@ -1,12 +1,11 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,8 +41,7 @@ public class GarantieChoisie implements java.io.Serializable {
 	private BigDecimal accessoireauto;
 	private String codeAvenantAuto;
 	private BigDecimal surprime;
-	private Set<GarantieGarantieChoisie> garantieGarantieChoisies = new HashSet<GarantieGarantieChoisie>(
-			0);
+	private Set garantieGarantieChoisies = new HashSet(0);
 
 	public GarantieChoisie() {
 	}
@@ -61,7 +59,7 @@ public class GarantieChoisie implements java.io.Serializable {
 			BigDecimal reductionCommercial, BigDecimal autre,
 			BigDecimal montantReduction, BigDecimal accessoireauto,
 			String codeAvenantAuto, BigDecimal surprime,
-			Set<GarantieGarantieChoisie> garantieGarantieChoisies) {
+			Set garantieGarantieChoisies) {
 		this.codeGarantieChoisie = codeGarantieChoisie;
 		this.vehicule = vehicule;
 		this.libelleGarantieChosie = libelleGarantieChosie;
@@ -229,7 +227,7 @@ public class GarantieChoisie implements java.io.Serializable {
 		this.codeAvenantAuto = codeAvenantAuto;
 	}
 
-	@Column(name = "SURPRIME")
+	@Column(name = "SURPRIME", precision = 15, scale = 3)
 	public BigDecimal getSurprime() {
 		return this.surprime;
 	}
@@ -238,13 +236,12 @@ public class GarantieChoisie implements java.io.Serializable {
 		this.surprime = surprime;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "garantieChoisie")
-	public Set<GarantieGarantieChoisie> getGarantieGarantieChoisies() {
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantieChoisie")
+	public Set getGarantieGarantieChoisies() {
 		return this.garantieGarantieChoisies;
 	}
 
-	public void setGarantieGarantieChoisies(
-			Set<GarantieGarantieChoisie> garantieGarantieChoisies) {
+	public void setGarantieGarantieChoisies(Set garantieGarantieChoisies) {
 		this.garantieGarantieChoisies = garantieGarantieChoisies;
 	}
 

@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +23,7 @@ public class Province implements java.io.Serializable {
 	private String codeProvince;
 	private Pays pays;
 	private String libelleProvince;
-	private Set<Ville> villes = new HashSet<Ville>(0);
+	private Set villes = new HashSet(0);
 
 	public Province() {
 	}
@@ -35,7 +34,7 @@ public class Province implements java.io.Serializable {
 	}
 
 	public Province(String codeProvince, Pays pays, String libelleProvince,
-			Set<Ville> villes) {
+			Set villes) {
 		this.codeProvince = codeProvince;
 		this.pays = pays;
 		this.libelleProvince = libelleProvince;
@@ -72,11 +71,11 @@ public class Province implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "province")
-	public Set<Ville> getVilles() {
+	public Set getVilles() {
 		return this.villes;
 	}
 
-	public void setVilles(Set<Ville> villes) {
+	public void setVilles(Set villes) {
 		this.villes = villes;
 	}
 

@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -63,7 +62,7 @@ public class ReglementSinistre implements java.io.Serializable {
 	}
 
 	@Id
-	@Column(name = "CODE_REGLEMENT_SINISTRE", unique = true, nullable = false, length = 60)
+	@Column(name = "CODE_REGLEMENT_SINISTRE", unique = true, nullable = false, length = 10)
 	public String getCodeReglementSinistre() {
 		return this.codeReglementSinistre;
 	}

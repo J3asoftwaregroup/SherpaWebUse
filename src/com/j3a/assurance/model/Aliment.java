@@ -1,12 +1,11 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -52,12 +51,9 @@ public class Aliment implements java.io.Serializable {
 	private BigDecimal valeurContaineur;
 	private String immatriculationEngin;
 	private Date datePremiereCirculationEngin;
-	private Set<ApporteurAliment> apporteurAliments = new HashSet<ApporteurAliment>(
-			0);
-	private Set<GarantieChoisieTransport> garantieChoisieTransports = new HashSet<GarantieChoisieTransport>(
-			0);
-	private Set<AlimentSinistre> alimentSinistres = new HashSet<AlimentSinistre>(
-			0);
+	private Set apporteurAliments = new HashSet(0);
+	private Set garantieChoisieTransports = new HashSet(0);
+	private Set alimentSinistres = new HashSet(0);
 
 	public Aliment() {
 	}
@@ -75,9 +71,8 @@ public class Aliment implements java.io.Serializable {
 			BigDecimal valeur, String devise, Integer poidsBrutMarch,
 			Integer poidsNetMarch, String marque, BigDecimal valeurContaineur,
 			String immatriculationEngin, Date datePremiereCirculationEngin,
-			Set<ApporteurAliment> apporteurAliments,
-			Set<GarantieChoisieTransport> garantieChoisieTransports,
-			Set<AlimentSinistre> alimentSinistres) {
+			Set apporteurAliments, Set garantieChoisieTransports,
+			Set alimentSinistres) {
 		this.codeAliment = codeAliment;
 		this.categorie = categorie;
 		this.trafic = trafic;
@@ -361,30 +356,29 @@ public class Aliment implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "aliment")
-	public Set<ApporteurAliment> getApporteurAliments() {
+	public Set getApporteurAliments() {
 		return this.apporteurAliments;
 	}
 
-	public void setApporteurAliments(Set<ApporteurAliment> apporteurAliments) {
+	public void setApporteurAliments(Set apporteurAliments) {
 		this.apporteurAliments = apporteurAliments;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "aliment")
-	public Set<GarantieChoisieTransport> getGarantieChoisieTransports() {
+	public Set getGarantieChoisieTransports() {
 		return this.garantieChoisieTransports;
 	}
 
-	public void setGarantieChoisieTransports(
-			Set<GarantieChoisieTransport> garantieChoisieTransports) {
+	public void setGarantieChoisieTransports(Set garantieChoisieTransports) {
 		this.garantieChoisieTransports = garantieChoisieTransports;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "aliment")
-	public Set<AlimentSinistre> getAlimentSinistres() {
+	public Set getAlimentSinistres() {
 		return this.alimentSinistres;
 	}
 
-	public void setAlimentSinistres(Set<AlimentSinistre> alimentSinistres) {
+	public void setAlimentSinistres(Set alimentSinistres) {
 		this.alimentSinistres = alimentSinistres;
 	}
 

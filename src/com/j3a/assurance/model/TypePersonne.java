@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +20,7 @@ public class TypePersonne implements java.io.Serializable {
 
 	private int codeTypePers;
 	private String libelleTypePers;
-	private Set<Etre> etres = new HashSet<Etre>(0);
+	private Set etres = new HashSet(0);
 
 	public TypePersonne() {
 	}
@@ -30,8 +29,7 @@ public class TypePersonne implements java.io.Serializable {
 		this.codeTypePers = codeTypePers;
 	}
 
-	public TypePersonne(int codeTypePers, String libelleTypePers,
-			Set<Etre> etres) {
+	public TypePersonne(int codeTypePers, String libelleTypePers, Set etres) {
 		this.codeTypePers = codeTypePers;
 		this.libelleTypePers = libelleTypePers;
 		this.etres = etres;
@@ -57,11 +55,11 @@ public class TypePersonne implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typePersonne")
-	public Set<Etre> getEtres() {
+	public Set getEtres() {
 		return this.etres;
 	}
 
-	public void setEtres(Set<Etre> etres) {
+	public void setEtres(Set etres) {
 		this.etres = etres;
 	}
 

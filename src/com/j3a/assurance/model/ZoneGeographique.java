@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,9 +20,8 @@ public class ZoneGeographique implements java.io.Serializable {
 
 	private String codeZoneGeo;
 	private String libelleZoneGeo;
-	private Set<VehiculeZoneGeographique> vehiculeZoneGeographiques = new HashSet<VehiculeZoneGeographique>(
-			0);
-	private Set<Ville> villes = new HashSet<Ville>(0);
+	private Set villes = new HashSet(0);
+	private Set vehiculeZoneGeographiques = new HashSet(0);
 
 	public ZoneGeographique() {
 	}
@@ -33,12 +31,11 @@ public class ZoneGeographique implements java.io.Serializable {
 	}
 
 	public ZoneGeographique(String codeZoneGeo, String libelleZoneGeo,
-			Set<VehiculeZoneGeographique> vehiculeZoneGeographiques,
-			Set<Ville> villes) {
+			Set villes, Set vehiculeZoneGeographiques) {
 		this.codeZoneGeo = codeZoneGeo;
 		this.libelleZoneGeo = libelleZoneGeo;
-		this.vehiculeZoneGeographiques = vehiculeZoneGeographiques;
 		this.villes = villes;
+		this.vehiculeZoneGeographiques = vehiculeZoneGeographiques;
 	}
 
 	@Id
@@ -61,22 +58,21 @@ public class ZoneGeographique implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "zoneGeographique")
-	public Set<VehiculeZoneGeographique> getVehiculeZoneGeographiques() {
-		return this.vehiculeZoneGeographiques;
-	}
-
-	public void setVehiculeZoneGeographiques(
-			Set<VehiculeZoneGeographique> vehiculeZoneGeographiques) {
-		this.vehiculeZoneGeographiques = vehiculeZoneGeographiques;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "zoneGeographique")
-	public Set<Ville> getVilles() {
+	public Set getVilles() {
 		return this.villes;
 	}
 
-	public void setVilles(Set<Ville> villes) {
+	public void setVilles(Set villes) {
 		this.villes = villes;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "zoneGeographique")
+	public Set getVehiculeZoneGeographiques() {
+		return this.vehiculeZoneGeographiques;
+	}
+
+	public void setVehiculeZoneGeographiques(Set vehiculeZoneGeographiques) {
+		this.vehiculeZoneGeographiques = vehiculeZoneGeographiques;
 	}
 
 }

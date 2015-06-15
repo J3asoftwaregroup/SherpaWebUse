@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,11 +33,9 @@ public class AdherentsSante implements java.io.Serializable {
 	private Date naissAdherent;
 	private String localisationAdherent;
 	private String statutadhsante;
-	private Set<ApporteurAdherent> apporteurAdherents = new HashSet<ApporteurAdherent>(
-			0);
-	private Set<ListeAffilie> listeAffilies = new HashSet<ListeAffilie>(0);
-	private Set<ListeAdherentSante> listeAdherentSantes = new HashSet<ListeAdherentSante>(
-			0);
+	private Set apporteurAdherents = new HashSet(0);
+	private Set listeAffilies = new HashSet(0);
+	private Set listeAdherentSantes = new HashSet(0);
 
 	public AdherentsSante() {
 	}
@@ -52,9 +49,8 @@ public class AdherentsSante implements java.io.Serializable {
 			CollegeSante collegeSante, String nomAdherent,
 			String prenomAdherent, String sexeAdherent, String adresseAdherent,
 			Date naissAdherent, String localisationAdherent,
-			String statutadhsante, Set<ApporteurAdherent> apporteurAdherents,
-			Set<ListeAffilie> listeAffilies,
-			Set<ListeAdherentSante> listeAdherentSantes) {
+			String statutadhsante, Set apporteurAdherents, Set listeAffilies,
+			Set listeAdherentSantes) {
 		this.codeAdherent = codeAdherent;
 		this.categorie = categorie;
 		this.collegeSante = collegeSante;
@@ -165,30 +161,29 @@ public class AdherentsSante implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "adherentsSante")
-	public Set<ApporteurAdherent> getApporteurAdherents() {
+	public Set getApporteurAdherents() {
 		return this.apporteurAdherents;
 	}
 
-	public void setApporteurAdherents(Set<ApporteurAdherent> apporteurAdherents) {
+	public void setApporteurAdherents(Set apporteurAdherents) {
 		this.apporteurAdherents = apporteurAdherents;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "adherentsSante")
-	public Set<ListeAffilie> getListeAffilies() {
+	public Set getListeAffilies() {
 		return this.listeAffilies;
 	}
 
-	public void setListeAffilies(Set<ListeAffilie> listeAffilies) {
+	public void setListeAffilies(Set listeAffilies) {
 		this.listeAffilies = listeAffilies;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "adherentsSante")
-	public Set<ListeAdherentSante> getListeAdherentSantes() {
+	public Set getListeAdherentSantes() {
 		return this.listeAdherentSantes;
 	}
 
-	public void setListeAdherentSantes(
-			Set<ListeAdherentSante> listeAdherentSantes) {
+	public void setListeAdherentSantes(Set listeAdherentSantes) {
 		this.listeAdherentSantes = listeAdherentSantes;
 	}
 

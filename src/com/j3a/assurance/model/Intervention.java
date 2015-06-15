@@ -1,12 +1,11 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,8 +37,7 @@ public class Intervention implements java.io.Serializable {
 	private BigDecimal montantTtc;
 	private String etat;
 	private String sousGarantieSupportInt;
-	private Set<ReglementSinistre> reglementSinistres = new HashSet<ReglementSinistre>(
-			0);
+	private Set reglementSinistres = new HashSet(0);
 
 	public Intervention() {
 	}
@@ -54,8 +52,7 @@ public class Intervention implements java.io.Serializable {
 			Date dateIntervention, String rapport, String typeRapport,
 			BigDecimal chargesIntervention, BigDecimal taxe,
 			BigDecimal fraisAnnexe, BigDecimal montantTtc, String etat,
-			String sousGarantieSupportInt,
-			Set<ReglementSinistre> reglementSinistres) {
+			String sousGarantieSupportInt, Set reglementSinistres) {
 		this.refIntervention = refIntervention;
 		this.intervenant = intervenant;
 		this.sinistre = sinistre;
@@ -194,11 +191,11 @@ public class Intervention implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "intervention")
-	public Set<ReglementSinistre> getReglementSinistres() {
+	public Set getReglementSinistres() {
 		return this.reglementSinistres;
 	}
 
-	public void setReglementSinistres(Set<ReglementSinistre> reglementSinistres) {
+	public void setReglementSinistres(Set reglementSinistres) {
 		this.reglementSinistres = reglementSinistres;
 	}
 

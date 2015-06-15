@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,9 +20,9 @@ public class Risque implements java.io.Serializable {
 
 	private String codeRisque;
 	private String libelleRisque;
-	private Set<Garantie> garanties = new HashSet<Garantie>(0);
-	private Set<Categorie> categories = new HashSet<Categorie>(0);
-	private Set<Contrat> contrats = new HashSet<Contrat>(0);
+	private Set garanties = new HashSet(0);
+	private Set categories = new HashSet(0);
+	private Set contrats = new HashSet(0);
 
 	public Risque() {
 	}
@@ -32,9 +31,8 @@ public class Risque implements java.io.Serializable {
 		this.codeRisque = codeRisque;
 	}
 
-	public Risque(String codeRisque, String libelleRisque,
-			Set<Garantie> garanties, Set<Categorie> categories,
-			Set<Contrat> contrats) {
+	public Risque(String codeRisque, String libelleRisque, Set garanties,
+			Set categories, Set contrats) {
 		this.codeRisque = codeRisque;
 		this.libelleRisque = libelleRisque;
 		this.garanties = garanties;
@@ -62,29 +60,29 @@ public class Risque implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "risque")
-	public Set<Garantie> getGaranties() {
+	public Set getGaranties() {
 		return this.garanties;
 	}
 
-	public void setGaranties(Set<Garantie> garanties) {
+	public void setGaranties(Set garanties) {
 		this.garanties = garanties;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "risque")
-	public Set<Categorie> getCategories() {
+	public Set getCategories() {
 		return this.categories;
 	}
 
-	public void setCategories(Set<Categorie> categories) {
+	public void setCategories(Set categories) {
 		this.categories = categories;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "risque")
-	public Set<Contrat> getContrats() {
+	public Set getContrats() {
 		return this.contrats;
 	}
 
-	public void setContrats(Set<Contrat> contrats) {
+	public void setContrats(Set contrats) {
 		this.contrats = contrats;
 	}
 

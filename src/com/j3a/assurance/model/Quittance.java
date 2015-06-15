@@ -1,12 +1,11 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -47,7 +46,7 @@ public class Quittance implements java.io.Serializable {
 	private BigDecimal primeReport;
 	private BigDecimal prec;
 	private BigDecimal primeTotale;
-	private Set<Reglement> reglements = new HashSet<Reglement>(0);
+	private Set reglements = new HashSet(0);
 
 	public Quittance() {
 	}
@@ -66,7 +65,7 @@ public class Quittance implements java.io.Serializable {
 			BigDecimal comGestionnaire, BigDecimal comAperition,
 			BigDecimal commision, BigDecimal primeExoEncours,
 			BigDecimal primeReport, BigDecimal prec, BigDecimal primeTotale,
-			Set<Reglement> reglements) {
+			Set reglements) {
 		this.codeQuittance = codeQuittance;
 		this.avenant = avenant;
 		this.etatQuittance = etatQuittance;
@@ -257,7 +256,7 @@ public class Quittance implements java.io.Serializable {
 		this.commision = commision;
 	}
 
-	@Column(name = "PRIME_EXO_ENCOURS")
+	@Column(name = "PRIME_EXO_ENCOURS", precision = 15, scale = 3)
 	public BigDecimal getPrimeExoEncours() {
 		return this.primeExoEncours;
 	}
@@ -266,7 +265,7 @@ public class Quittance implements java.io.Serializable {
 		this.primeExoEncours = primeExoEncours;
 	}
 
-	@Column(name = "PRIME_REPORT")
+	@Column(name = "PRIME_REPORT", precision = 15, scale = 3)
 	public BigDecimal getPrimeReport() {
 		return this.primeReport;
 	}
@@ -275,7 +274,7 @@ public class Quittance implements java.io.Serializable {
 		this.primeReport = primeReport;
 	}
 
-	@Column(name = "PREC")
+	@Column(name = "PREC", precision = 15, scale = 3)
 	public BigDecimal getPrec() {
 		return this.prec;
 	}
@@ -284,7 +283,7 @@ public class Quittance implements java.io.Serializable {
 		this.prec = prec;
 	}
 
-	@Column(name = "PRIME_TOTALE")
+	@Column(name = "PRIME_TOTALE", precision = 15, scale = 3)
 	public BigDecimal getPrimeTotale() {
 		return this.primeTotale;
 	}
@@ -294,11 +293,11 @@ public class Quittance implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "quittance")
-	public Set<Reglement> getReglements() {
+	public Set getReglements() {
 		return this.reglements;
 	}
 
-	public void setReglements(Set<Reglement> reglements) {
+	public void setReglements(Set reglements) {
 		this.reglements = reglements;
 	}
 

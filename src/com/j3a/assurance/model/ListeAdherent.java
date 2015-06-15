@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,10 +20,8 @@ public class ListeAdherent implements java.io.Serializable {
 
 	private String codeListeAdherent;
 	private String libelleListeAdherent;
-	private Set<ListeAdherentSante> listeAdherentSantes = new HashSet<ListeAdherentSante>(
-			0);
-	private Set<AvListeAdherent> avListeAdherents = new HashSet<AvListeAdherent>(
-			0);
+	private Set listeAdherentSantes = new HashSet(0);
+	private Set avListeAdherents = new HashSet(0);
 
 	public ListeAdherent() {
 	}
@@ -34,8 +31,7 @@ public class ListeAdherent implements java.io.Serializable {
 	}
 
 	public ListeAdherent(String codeListeAdherent, String libelleListeAdherent,
-			Set<ListeAdherentSante> listeAdherentSantes,
-			Set<AvListeAdherent> avListeAdherents) {
+			Set listeAdherentSantes, Set avListeAdherents) {
 		this.codeListeAdherent = codeListeAdherent;
 		this.libelleListeAdherent = libelleListeAdherent;
 		this.listeAdherentSantes = listeAdherentSantes;
@@ -62,21 +58,20 @@ public class ListeAdherent implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeAdherent")
-	public Set<ListeAdherentSante> getListeAdherentSantes() {
+	public Set getListeAdherentSantes() {
 		return this.listeAdherentSantes;
 	}
 
-	public void setListeAdherentSantes(
-			Set<ListeAdherentSante> listeAdherentSantes) {
+	public void setListeAdherentSantes(Set listeAdherentSantes) {
 		this.listeAdherentSantes = listeAdherentSantes;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeAdherent")
-	public Set<AvListeAdherent> getAvListeAdherents() {
+	public Set getAvListeAdherents() {
 		return this.avListeAdherents;
 	}
 
-	public void setAvListeAdherents(Set<AvListeAdherent> avListeAdherents) {
+	public void setAvListeAdherents(Set avListeAdherents) {
 		this.avListeAdherents = avListeAdherents;
 	}
 

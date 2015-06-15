@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,9 +20,8 @@ public class ListeAssureIa implements java.io.Serializable {
 
 	private String codeListeAssureIa;
 	private String libelleListeAssureIa;
-	private Set<AssureIa> assureIas = new HashSet<AssureIa>(0);
-	private Set<AvListeAssureIa> avListeAssureIas = new HashSet<AvListeAssureIa>(
-			0);
+	private Set assureIas = new HashSet(0);
+	private Set avListeAssureIas = new HashSet(0);
 
 	public ListeAssureIa() {
 	}
@@ -33,7 +31,7 @@ public class ListeAssureIa implements java.io.Serializable {
 	}
 
 	public ListeAssureIa(String codeListeAssureIa, String libelleListeAssureIa,
-			Set<AssureIa> assureIas, Set<AvListeAssureIa> avListeAssureIas) {
+			Set assureIas, Set avListeAssureIas) {
 		this.codeListeAssureIa = codeListeAssureIa;
 		this.libelleListeAssureIa = libelleListeAssureIa;
 		this.assureIas = assureIas;
@@ -60,20 +58,20 @@ public class ListeAssureIa implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeAssureIa")
-	public Set<AssureIa> getAssureIas() {
+	public Set getAssureIas() {
 		return this.assureIas;
 	}
 
-	public void setAssureIas(Set<AssureIa> assureIas) {
+	public void setAssureIas(Set assureIas) {
 		this.assureIas = assureIas;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeAssureIa")
-	public Set<AvListeAssureIa> getAvListeAssureIas() {
+	public Set getAvListeAssureIas() {
 		return this.avListeAssureIas;
 	}
 
-	public void setAvListeAssureIas(Set<AvListeAssureIa> avListeAssureIas) {
+	public void setAvListeAssureIas(Set avListeAssureIas) {
 		this.avListeAssureIas = avListeAssureIas;
 	}
 

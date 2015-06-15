@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,8 +24,8 @@ public class ListeTrafic implements java.io.Serializable {
 	private String ressortie;
 	private BigDecimal pleinExped;
 	private Integer reductionListeTrafic;
-	private Set<Trafic> trafics = new HashSet<Trafic>(0);
-	private Set<AvTrafic> avTrafics = new HashSet<AvTrafic>(0);
+	private Set avTrafics = new HashSet(0);
+	private Set trafics = new HashSet(0);
 
 	public ListeTrafic() {
 	}
@@ -37,15 +36,14 @@ public class ListeTrafic implements java.io.Serializable {
 
 	public ListeTrafic(String codeListeTrafic, String cadence,
 			String ressortie, BigDecimal pleinExped,
-			Integer reductionListeTrafic, Set<Trafic> trafics,
-			Set<AvTrafic> avTrafics) {
+			Integer reductionListeTrafic, Set avTrafics, Set trafics) {
 		this.codeListeTrafic = codeListeTrafic;
 		this.cadence = cadence;
 		this.ressortie = ressortie;
 		this.pleinExped = pleinExped;
 		this.reductionListeTrafic = reductionListeTrafic;
-		this.trafics = trafics;
 		this.avTrafics = avTrafics;
+		this.trafics = trafics;
 	}
 
 	@Id
@@ -95,21 +93,21 @@ public class ListeTrafic implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeTrafic")
-	public Set<Trafic> getTrafics() {
-		return this.trafics;
-	}
-
-	public void setTrafics(Set<Trafic> trafics) {
-		this.trafics = trafics;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeTrafic")
-	public Set<AvTrafic> getAvTrafics() {
+	public Set getAvTrafics() {
 		return this.avTrafics;
 	}
 
-	public void setAvTrafics(Set<AvTrafic> avTrafics) {
+	public void setAvTrafics(Set avTrafics) {
 		this.avTrafics = avTrafics;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeTrafic")
+	public Set getTrafics() {
+		return this.trafics;
+	}
+
+	public void setTrafics(Set trafics) {
+		this.trafics = trafics;
 	}
 
 }

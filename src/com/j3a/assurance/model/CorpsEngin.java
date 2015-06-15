@@ -1,12 +1,11 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -59,11 +58,9 @@ public class CorpsEngin implements java.io.Serializable {
 	private String portDattach;
 	private Integer nbrePassagerEngin;
 	private Integer nbreEquipagesEngin;
-	private Set<ApporteurCorpsEngin> apporteurCorpsEngins = new HashSet<ApporteurCorpsEngin>(
-			0);
-	private Set<CorpsSinistre> corpsSinistres = new HashSet<CorpsSinistre>(0);
-	private Set<GarantieChoisieTransportCorps> garantieChoisieTransportCorpses = new HashSet<GarantieChoisieTransportCorps>(
-			0);
+	private Set apporteurCorpsEngins = new HashSet(0);
+	private Set corpsSinistres = new HashSet(0);
+	private Set garantieChoisieTransportCorpses = new HashSet(0);
 
 	public CorpsEngin() {
 	}
@@ -86,9 +83,8 @@ public class CorpsEngin implements java.io.Serializable {
 			BigDecimal valeurVenaleEngin, BigDecimal fraisRetirement,
 			String limiteNavigation, String systProtection, String portDattach,
 			Integer nbrePassagerEngin, Integer nbreEquipagesEngin,
-			Set<ApporteurCorpsEngin> apporteurCorpsEngins,
-			Set<CorpsSinistre> corpsSinistres,
-			Set<GarantieChoisieTransportCorps> garantieChoisieTransportCorpses) {
+			Set apporteurCorpsEngins, Set corpsSinistres,
+			Set garantieChoisieTransportCorpses) {
 		this.codeEngin = codeEngin;
 		this.categorie = categorie;
 		this.listeCorpsEngin = listeCorpsEngin;
@@ -439,31 +435,30 @@ public class CorpsEngin implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "corpsEngin")
-	public Set<ApporteurCorpsEngin> getApporteurCorpsEngins() {
+	public Set getApporteurCorpsEngins() {
 		return this.apporteurCorpsEngins;
 	}
 
-	public void setApporteurCorpsEngins(
-			Set<ApporteurCorpsEngin> apporteurCorpsEngins) {
+	public void setApporteurCorpsEngins(Set apporteurCorpsEngins) {
 		this.apporteurCorpsEngins = apporteurCorpsEngins;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "corpsEngin")
-	public Set<CorpsSinistre> getCorpsSinistres() {
+	public Set getCorpsSinistres() {
 		return this.corpsSinistres;
 	}
 
-	public void setCorpsSinistres(Set<CorpsSinistre> corpsSinistres) {
+	public void setCorpsSinistres(Set corpsSinistres) {
 		this.corpsSinistres = corpsSinistres;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "corpsEngin")
-	public Set<GarantieChoisieTransportCorps> getGarantieChoisieTransportCorpses() {
+	public Set getGarantieChoisieTransportCorpses() {
 		return this.garantieChoisieTransportCorpses;
 	}
 
 	public void setGarantieChoisieTransportCorpses(
-			Set<GarantieChoisieTransportCorps> garantieChoisieTransportCorpses) {
+			Set garantieChoisieTransportCorpses) {
 		this.garantieChoisieTransportCorpses = garantieChoisieTransportCorpses;
 	}
 

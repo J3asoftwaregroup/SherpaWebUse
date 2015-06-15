@@ -1,12 +1,11 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -56,21 +55,15 @@ public class Vehicule implements java.io.Serializable {
 	private String carrosserie;
 	private Boolean remorque;
 	private String typeTransporte;
-	private Short nbreTransporte;
-	private Set<Attestation> attestations = new HashSet<Attestation>(0);
-	private Set<HistoMouvement> histoMouvements = new HashSet<HistoMouvement>(0);
-	private Set<ApporteurVehicule> apporteurVehicules = new HashSet<ApporteurVehicule>(
-			0);
-	private Set<VehiculeSinistre> vehiculeSinistres = new HashSet<VehiculeSinistre>(
-			0);
-	private Set<VehiculeZoneGeographique> vehiculeZoneGeographiques = new HashSet<VehiculeZoneGeographique>(
-			0);
-	private Set<ConduireVehicule> conduireVehicules = new HashSet<ConduireVehicule>(
-			0);
-	private Set<HistoProprietesVehicule> histoProprietesVehicules = new HashSet<HistoProprietesVehicule>(
-			0);
-	private Set<GarantieChoisie> garantieChoisies = new HashSet<GarantieChoisie>(
-			0);
+	private Integer nbreTransporte;
+	private Set attestations = new HashSet(0);
+	private Set histoMouvements = new HashSet(0);
+	private Set apporteurVehicules = new HashSet(0);
+	private Set vehiculeZoneGeographiques = new HashSet(0);
+	private Set vehiculeSinistres = new HashSet(0);
+	private Set conduireVehicules = new HashSet(0);
+	private Set histoProprietesVehicules = new HashSet(0);
+	private Set garantieChoisies = new HashSet(0);
 
 	public Vehicule() {
 	}
@@ -90,14 +83,11 @@ public class Vehicule implements java.io.Serializable {
 			BigDecimal puissReelle, Short nbrePlaceCab, Short nbrePlaceHorscab,
 			BigDecimal valNeuf, BigDecimal valVenale, String couleur,
 			String protection, String carrosserie, Boolean remorque,
-			String typeTransporte, Short nbreTransporte,
-			Set<Attestation> attestations, Set<HistoMouvement> histoMouvements,
-			Set<ApporteurVehicule> apporteurVehicules,
-			Set<VehiculeSinistre> vehiculeSinistres,
-			Set<VehiculeZoneGeographique> vehiculeZoneGeographiques,
-			Set<ConduireVehicule> conduireVehicules,
-			Set<HistoProprietesVehicule> histoProprietesVehicules,
-			Set<GarantieChoisie> garantieChoisies) {
+			String typeTransporte, Integer nbreTransporte, Set attestations,
+			Set histoMouvements, Set apporteurVehicules,
+			Set vehiculeZoneGeographiques, Set vehiculeSinistres,
+			Set conduireVehicules, Set histoProprietesVehicules,
+			Set garantieChoisies) {
 		this.codeVehicule = codeVehicule;
 		this.sousCatVehicule = sousCatVehicule;
 		this.vehiculesAssures = vehiculesAssures;
@@ -133,8 +123,8 @@ public class Vehicule implements java.io.Serializable {
 		this.attestations = attestations;
 		this.histoMouvements = histoMouvements;
 		this.apporteurVehicules = apporteurVehicules;
-		this.vehiculeSinistres = vehiculeSinistres;
 		this.vehiculeZoneGeographiques = vehiculeZoneGeographiques;
+		this.vehiculeSinistres = vehiculeSinistres;
 		this.conduireVehicules = conduireVehicules;
 		this.histoProprietesVehicules = histoProprietesVehicules;
 		this.garantieChoisies = garantieChoisies;
@@ -150,7 +140,7 @@ public class Vehicule implements java.io.Serializable {
 		this.codeVehicule = codeVehicule;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CODE_SOUS_CAT_VEHICULE", nullable = false)
 	public SousCatVehicule getSousCatVehicule() {
 		return this.sousCatVehicule;
@@ -416,7 +406,7 @@ public class Vehicule implements java.io.Serializable {
 		this.remorque = remorque;
 	}
 
-	@Column(name = "TYPE_TRANSPORTE", length = 200)
+	@Column(name = "TYPE_TRANSPORTE", length = 65535)
 	public String getTypeTransporte() {
 		return this.typeTransporte;
 	}
@@ -426,85 +416,83 @@ public class Vehicule implements java.io.Serializable {
 	}
 
 	@Column(name = "NBRE_TRANSPORTE")
-	public Short getNbreTransporte() {
+	public Integer getNbreTransporte() {
 		return this.nbreTransporte;
 	}
 
-	public void setNbreTransporte(Short nbreTransporte) {
+	public void setNbreTransporte(Integer nbreTransporte) {
 		this.nbreTransporte = nbreTransporte;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
-	public Set<Attestation> getAttestations() {
+	public Set getAttestations() {
 		return this.attestations;
 	}
 
-	public void setAttestations(Set<Attestation> attestations) {
+	public void setAttestations(Set attestations) {
 		this.attestations = attestations;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
-	public Set<HistoMouvement> getHistoMouvements() {
+	public Set getHistoMouvements() {
 		return this.histoMouvements;
 	}
 
-	public void setHistoMouvements(Set<HistoMouvement> histoMouvements) {
+	public void setHistoMouvements(Set histoMouvements) {
 		this.histoMouvements = histoMouvements;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
-	public Set<ApporteurVehicule> getApporteurVehicules() {
+	public Set getApporteurVehicules() {
 		return this.apporteurVehicules;
 	}
 
-	public void setApporteurVehicules(Set<ApporteurVehicule> apporteurVehicules) {
+	public void setApporteurVehicules(Set apporteurVehicules) {
 		this.apporteurVehicules = apporteurVehicules;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
-	public Set<VehiculeSinistre> getVehiculeSinistres() {
-		return this.vehiculeSinistres;
-	}
-
-	public void setVehiculeSinistres(Set<VehiculeSinistre> vehiculeSinistres) {
-		this.vehiculeSinistres = vehiculeSinistres;
-	}
-
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vehicule")
-	public Set<VehiculeZoneGeographique> getVehiculeZoneGeographiques() {
+	public Set getVehiculeZoneGeographiques() {
 		return this.vehiculeZoneGeographiques;
 	}
 
-	public void setVehiculeZoneGeographiques(
-			Set<VehiculeZoneGeographique> vehiculeZoneGeographiques) {
+	public void setVehiculeZoneGeographiques(Set vehiculeZoneGeographiques) {
 		this.vehiculeZoneGeographiques = vehiculeZoneGeographiques;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vehicule")
-	public Set<ConduireVehicule> getConduireVehicules() {
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
+	public Set getVehiculeSinistres() {
+		return this.vehiculeSinistres;
+	}
+
+	public void setVehiculeSinistres(Set vehiculeSinistres) {
+		this.vehiculeSinistres = vehiculeSinistres;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
+	public Set getConduireVehicules() {
 		return this.conduireVehicules;
 	}
 
-	public void setConduireVehicules(Set<ConduireVehicule> conduireVehicules) {
+	public void setConduireVehicules(Set conduireVehicules) {
 		this.conduireVehicules = conduireVehicules;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
-	public Set<HistoProprietesVehicule> getHistoProprietesVehicules() {
+	public Set getHistoProprietesVehicules() {
 		return this.histoProprietesVehicules;
 	}
 
-	public void setHistoProprietesVehicules(
-			Set<HistoProprietesVehicule> histoProprietesVehicules) {
+	public void setHistoProprietesVehicules(Set histoProprietesVehicules) {
 		this.histoProprietesVehicules = histoProprietesVehicules;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vehicule")
-	public Set<GarantieChoisie> getGarantieChoisies() {
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
+	public Set getGarantieChoisies() {
 		return this.garantieChoisies;
 	}
 
-	public void setGarantieChoisies(Set<GarantieChoisie> garantieChoisies) {
+	public void setGarantieChoisies(Set garantieChoisies) {
 		this.garantieChoisies = garantieChoisies;
 	}
 

@@ -1,12 +1,11 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,9 +30,7 @@ public class CompteApporteur implements java.io.Serializable {
 	private BigDecimal totalComApp;
 	private BigDecimal totalComPaye;
 	private BigDecimal resteComPaye;
-	private Set<ReglementApporteur> reglementApporteurs = new HashSet<ReglementApporteur>(
-			0);
-	private Set<Apporteur> apporteurs = new HashSet<Apporteur>(0);
+	private Set apporteurs = new HashSet(0);
 
 	public CompteApporteur() {
 	}
@@ -45,21 +42,18 @@ public class CompteApporteur implements java.io.Serializable {
 
 	public CompteApporteur(String codeCompteApp, Apporteur apporteur,
 			Date dateCreationCompte, BigDecimal totalComApp,
-			BigDecimal totalComPaye, BigDecimal resteComPaye,
-			Set<ReglementApporteur> reglementApporteurs,
-			Set<Apporteur> apporteurs) {
+			BigDecimal totalComPaye, BigDecimal resteComPaye, Set apporteurs) {
 		this.codeCompteApp = codeCompteApp;
 		this.apporteur = apporteur;
 		this.dateCreationCompte = dateCreationCompte;
 		this.totalComApp = totalComApp;
 		this.totalComPaye = totalComPaye;
 		this.resteComPaye = resteComPaye;
-		this.reglementApporteurs = reglementApporteurs;
 		this.apporteurs = apporteurs;
 	}
 
 	@Id
-	@Column(name = "CODE_COMPTE_APP", unique = true, nullable = false)
+	@Column(name = "CODE_COMPTE_APP", unique = true, nullable = false, length = 16)
 	public String getCodeCompteApp() {
 		return this.codeCompteApp;
 	}
@@ -88,7 +82,7 @@ public class CompteApporteur implements java.io.Serializable {
 		this.dateCreationCompte = dateCreationCompte;
 	}
 
-	@Column(name = "TOTAL_COM_APP")
+	@Column(name = "TOTAL_COM_APP", precision = 15, scale = 3)
 	public BigDecimal getTotalComApp() {
 		return this.totalComApp;
 	}
@@ -97,7 +91,7 @@ public class CompteApporteur implements java.io.Serializable {
 		this.totalComApp = totalComApp;
 	}
 
-	@Column(name = "TOTAL_COM_PAYE")
+	@Column(name = "TOTAL_COM_PAYE", precision = 15, scale = 3)
 	public BigDecimal getTotalComPaye() {
 		return this.totalComPaye;
 	}
@@ -106,7 +100,7 @@ public class CompteApporteur implements java.io.Serializable {
 		this.totalComPaye = totalComPaye;
 	}
 
-	@Column(name = "RESTE_COM_PAYE")
+	@Column(name = "RESTE_COM_PAYE", precision = 15, scale = 3)
 	public BigDecimal getResteComPaye() {
 		return this.resteComPaye;
 	}
@@ -116,21 +110,11 @@ public class CompteApporteur implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "compteApporteur")
-	public Set<ReglementApporteur> getReglementApporteurs() {
-		return this.reglementApporteurs;
-	}
-
-	public void setReglementApporteurs(
-			Set<ReglementApporteur> reglementApporteurs) {
-		this.reglementApporteurs = reglementApporteurs;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "compteApporteur")
-	public Set<Apporteur> getApporteurs() {
+	public Set getApporteurs() {
 		return this.apporteurs;
 	}
 
-	public void setApporteurs(Set<Apporteur> apporteurs) {
+	public void setApporteurs(Set apporteurs) {
 		this.apporteurs = apporteurs;
 	}
 

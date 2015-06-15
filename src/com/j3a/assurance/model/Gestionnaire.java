@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,7 +25,7 @@ public class Gestionnaire implements java.io.Serializable {
 	private String adresseGestgc;
 	private BigDecimal tauxComGestionnaireGc;
 	private BigDecimal tauxAccGestionnairegc;
-	private Set<GestionnaireGc> gestionnaireGcs = new HashSet<GestionnaireGc>(0);
+	private Set gestionnaireGcs = new HashSet(0);
 
 	public Gestionnaire() {
 	}
@@ -38,8 +37,7 @@ public class Gestionnaire implements java.io.Serializable {
 	public Gestionnaire(String codeGestionnaire,
 			String raisonSocialGestionnaire, String contactGestgc,
 			String adresseGestgc, BigDecimal tauxComGestionnaireGc,
-			BigDecimal tauxAccGestionnairegc,
-			Set<GestionnaireGc> gestionnaireGcs) {
+			BigDecimal tauxAccGestionnairegc, Set gestionnaireGcs) {
 		this.codeGestionnaire = codeGestionnaire;
 		this.raisonSocialGestionnaire = raisonSocialGestionnaire;
 		this.contactGestgc = contactGestgc;
@@ -105,11 +103,11 @@ public class Gestionnaire implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "gestionnaire")
-	public Set<GestionnaireGc> getGestionnaireGcs() {
+	public Set getGestionnaireGcs() {
 		return this.gestionnaireGcs;
 	}
 
-	public void setGestionnaireGcs(Set<GestionnaireGc> gestionnaireGcs) {
+	public void setGestionnaireGcs(Set gestionnaireGcs) {
 		this.gestionnaireGcs = gestionnaireGcs;
 	}
 

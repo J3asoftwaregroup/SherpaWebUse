@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,7 +27,7 @@ public class Trafic implements java.io.Serializable {
 	private String designationTrafic;
 	private BigDecimal pleinExp;
 	private BigDecimal accessoires;
-	private Set<Aliment> aliments = new HashSet<Aliment>(0);
+	private Set aliments = new HashSet(0);
 
 	public Trafic() {
 	}
@@ -39,7 +38,7 @@ public class Trafic implements java.io.Serializable {
 
 	public Trafic(String codeTrafic, ListeTrafic listeTrafic,
 			Integer numeroTrafic, String designationTrafic,
-			BigDecimal pleinExp, BigDecimal accessoires, Set<Aliment> aliments) {
+			BigDecimal pleinExp, BigDecimal accessoires, Set aliments) {
 		this.codeTrafic = codeTrafic;
 		this.listeTrafic = listeTrafic;
 		this.numeroTrafic = numeroTrafic;
@@ -106,11 +105,11 @@ public class Trafic implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "trafic")
-	public Set<Aliment> getAliments() {
+	public Set getAliments() {
 		return this.aliments;
 	}
 
-	public void setAliments(Set<Aliment> aliments) {
+	public void setAliments(Set aliments) {
 		this.aliments = aliments;
 	}
 

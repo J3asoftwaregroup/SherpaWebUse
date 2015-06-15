@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,9 +32,8 @@ public class AyantDroit implements java.io.Serializable {
 	private String typeAyantDroit;
 	private String adresseAyantDroit;
 	private String contactAyantDroit;
-	private Set<Prejudice> prejudices = new HashSet<Prejudice>(0);
-	private Set<ReglementSinistre> reglementSinistres = new HashSet<ReglementSinistre>(
-			0);
+	private Set reglementSinistres = new HashSet(0);
+	private Set prejudices = new HashSet(0);
 
 	public AyantDroit() {
 	}
@@ -49,8 +47,7 @@ public class AyantDroit implements java.io.Serializable {
 			String prenom, Integer age, String sexe,
 			BigDecimal montantPrejudice, Boolean etatIndemniser,
 			String typeAyantDroit, String adresseAyantDroit,
-			String contactAyantDroit, Set<Prejudice> prejudices,
-			Set<ReglementSinistre> reglementSinistres) {
+			String contactAyantDroit, Set reglementSinistres, Set prejudices) {
 		this.codeAyantDroit = codeAyantDroit;
 		this.victime = victime;
 		this.nom = nom;
@@ -62,8 +59,8 @@ public class AyantDroit implements java.io.Serializable {
 		this.typeAyantDroit = typeAyantDroit;
 		this.adresseAyantDroit = adresseAyantDroit;
 		this.contactAyantDroit = contactAyantDroit;
-		this.prejudices = prejudices;
 		this.reglementSinistres = reglementSinistres;
+		this.prejudices = prejudices;
 	}
 
 	@Id
@@ -158,7 +155,7 @@ public class AyantDroit implements java.io.Serializable {
 		this.adresseAyantDroit = adresseAyantDroit;
 	}
 
-	@Column(name = "CONTACT_AYANT_DROIT", length = 30)
+	@Column(name = "CONTACT_AYANT_DROIT", length = 20)
 	public String getContactAyantDroit() {
 		return this.contactAyantDroit;
 	}
@@ -168,21 +165,21 @@ public class AyantDroit implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ayantDroit")
-	public Set<Prejudice> getPrejudices() {
-		return this.prejudices;
-	}
-
-	public void setPrejudices(Set<Prejudice> prejudices) {
-		this.prejudices = prejudices;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ayantDroit")
-	public Set<ReglementSinistre> getReglementSinistres() {
+	public Set getReglementSinistres() {
 		return this.reglementSinistres;
 	}
 
-	public void setReglementSinistres(Set<ReglementSinistre> reglementSinistres) {
+	public void setReglementSinistres(Set reglementSinistres) {
 		this.reglementSinistres = reglementSinistres;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ayantDroit")
+	public Set getPrejudices() {
+		return this.prejudices;
+	}
+
+	public void setPrejudices(Set prejudices) {
+		this.prejudices = prejudices;
 	}
 
 }

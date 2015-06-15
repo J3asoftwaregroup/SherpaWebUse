@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,9 +20,8 @@ public class ListeHabitation implements java.io.Serializable {
 
 	private String codeListeHabitation;
 	private String libelleListeHabitationMrh;
-	private Set<Habitation> habitations = new HashSet<Habitation>(0);
-	private Set<AvListeHabitation> avListeHabitations = new HashSet<AvListeHabitation>(
-			0);
+	private Set habitations = new HashSet(0);
+	private Set avListeHabitations = new HashSet(0);
 
 	public ListeHabitation() {
 	}
@@ -33,8 +31,8 @@ public class ListeHabitation implements java.io.Serializable {
 	}
 
 	public ListeHabitation(String codeListeHabitation,
-			String libelleListeHabitationMrh, Set<Habitation> habitations,
-			Set<AvListeHabitation> avListeHabitations) {
+			String libelleListeHabitationMrh, Set habitations,
+			Set avListeHabitations) {
 		this.codeListeHabitation = codeListeHabitation;
 		this.libelleListeHabitationMrh = libelleListeHabitationMrh;
 		this.habitations = habitations;
@@ -61,20 +59,20 @@ public class ListeHabitation implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeHabitation")
-	public Set<Habitation> getHabitations() {
+	public Set getHabitations() {
 		return this.habitations;
 	}
 
-	public void setHabitations(Set<Habitation> habitations) {
+	public void setHabitations(Set habitations) {
 		this.habitations = habitations;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeHabitation")
-	public Set<AvListeHabitation> getAvListeHabitations() {
+	public Set getAvListeHabitations() {
 		return this.avListeHabitations;
 	}
 
-	public void setAvListeHabitations(Set<AvListeHabitation> avListeHabitations) {
+	public void setAvListeHabitations(Set avListeHabitations) {
 		this.avListeHabitations = avListeHabitations;
 	}
 

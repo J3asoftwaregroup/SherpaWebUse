@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,9 +33,8 @@ public class Utilisateur implements java.io.Serializable {
 	private String motPasse;
 	private String mailUtilisateur;
 	private Integer activite;
-	private Set<Avenant> avenants = new HashSet<Avenant>(0);
-	private Set<ProfilUtilisateur> profilUtilisateurs = new HashSet<ProfilUtilisateur>(
-			0);
+	private Set avenants = new HashSet(0);
+	private Set profilUtilisateurs = new HashSet(0);
 
 	public Utilisateur() {
 	}
@@ -50,7 +48,7 @@ public class Utilisateur implements java.io.Serializable {
 			String matricule, String nomUtilisateur, String prenomUtilisateur,
 			Date dateCreationUtilisateur, String loginUtilisateur,
 			String motPasse, String mailUtilisateur, Integer activite,
-			Set<Avenant> avenants, Set<ProfilUtilisateur> profilUtilisateurs) {
+			Set avenants, Set profilUtilisateurs) {
 		this.codeUtilisateur = codeUtilisateur;
 		this.pointVente = pointVente;
 		this.matricule = matricule;
@@ -75,7 +73,7 @@ public class Utilisateur implements java.io.Serializable {
 		this.codeUtilisateur = codeUtilisateur;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CODE_POINT_VENTE", nullable = false)
 	public PointVente getPointVente() {
 		return this.pointVente;
@@ -159,20 +157,20 @@ public class Utilisateur implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
-	public Set<Avenant> getAvenants() {
+	public Set getAvenants() {
 		return this.avenants;
 	}
 
-	public void setAvenants(Set<Avenant> avenants) {
+	public void setAvenants(Set avenants) {
 		this.avenants = avenants;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
-	public Set<ProfilUtilisateur> getProfilUtilisateurs() {
+	public Set getProfilUtilisateurs() {
 		return this.profilUtilisateurs;
 	}
 
-	public void setProfilUtilisateurs(Set<ProfilUtilisateur> profilUtilisateurs) {
+	public void setProfilUtilisateurs(Set profilUtilisateurs) {
 		this.profilUtilisateurs = profilUtilisateurs;
 	}
 

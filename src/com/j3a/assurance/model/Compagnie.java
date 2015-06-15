@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,10 +20,8 @@ public class Compagnie implements java.io.Serializable {
 
 	private String codeCompagnie;
 	private String raisonSocialCompagnie;
-	private Set<CoassuranceCompagnie> coassuranceCompagnies = new HashSet<CoassuranceCompagnie>(
-			0);
-	private Set<ReassuranceCompagnie> reassuranceCompagnies = new HashSet<ReassuranceCompagnie>(
-			0);
+	private Set coassuranceCompagnies = new HashSet(0);
+	private Set reassuranceCompagnies = new HashSet(0);
 
 	public Compagnie() {
 	}
@@ -34,8 +31,7 @@ public class Compagnie implements java.io.Serializable {
 	}
 
 	public Compagnie(String codeCompagnie, String raisonSocialCompagnie,
-			Set<CoassuranceCompagnie> coassuranceCompagnies,
-			Set<ReassuranceCompagnie> reassuranceCompagnies) {
+			Set coassuranceCompagnies, Set reassuranceCompagnies) {
 		this.codeCompagnie = codeCompagnie;
 		this.raisonSocialCompagnie = raisonSocialCompagnie;
 		this.coassuranceCompagnies = coassuranceCompagnies;
@@ -62,22 +58,20 @@ public class Compagnie implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "compagnie")
-	public Set<CoassuranceCompagnie> getCoassuranceCompagnies() {
+	public Set getCoassuranceCompagnies() {
 		return this.coassuranceCompagnies;
 	}
 
-	public void setCoassuranceCompagnies(
-			Set<CoassuranceCompagnie> coassuranceCompagnies) {
+	public void setCoassuranceCompagnies(Set coassuranceCompagnies) {
 		this.coassuranceCompagnies = coassuranceCompagnies;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "compagnie")
-	public Set<ReassuranceCompagnie> getReassuranceCompagnies() {
+	public Set getReassuranceCompagnies() {
 		return this.reassuranceCompagnies;
 	}
 
-	public void setReassuranceCompagnies(
-			Set<ReassuranceCompagnie> reassuranceCompagnies) {
+	public void setReassuranceCompagnies(Set reassuranceCompagnies) {
 		this.reassuranceCompagnies = reassuranceCompagnies;
 	}
 

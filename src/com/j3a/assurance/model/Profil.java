@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,8 +20,7 @@ public class Profil implements java.io.Serializable {
 
 	private String codeProfil;
 	private String libelleProfil;
-	private Set<ProfilUtilisateur> profilUtilisateurs = new HashSet<ProfilUtilisateur>(
-			0);
+	private Set profilUtilisateurs = new HashSet(0);
 
 	public Profil() {
 	}
@@ -32,7 +30,7 @@ public class Profil implements java.io.Serializable {
 	}
 
 	public Profil(String codeProfil, String libelleProfil,
-			Set<ProfilUtilisateur> profilUtilisateurs) {
+			Set profilUtilisateurs) {
 		this.codeProfil = codeProfil;
 		this.libelleProfil = libelleProfil;
 		this.profilUtilisateurs = profilUtilisateurs;
@@ -58,11 +56,11 @@ public class Profil implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "profil")
-	public Set<ProfilUtilisateur> getProfilUtilisateurs() {
+	public Set getProfilUtilisateurs() {
 		return this.profilUtilisateurs;
 	}
 
-	public void setProfilUtilisateurs(Set<ProfilUtilisateur> profilUtilisateurs) {
+	public void setProfilUtilisateurs(Set profilUtilisateurs) {
 		this.profilUtilisateurs = profilUtilisateurs;
 	}
 

@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,9 +20,8 @@ public class ListeCorpsEngin implements java.io.Serializable {
 
 	private String codeListeCorpsEngin;
 	private String libelleListeCorpsEngin;
-	private Set<CorpsEngin> corpsEngins = new HashSet<CorpsEngin>(0);
-	private Set<AvListeCorpsEngin> avListeCorpsEngins = new HashSet<AvListeCorpsEngin>(
-			0);
+	private Set corpsEngins = new HashSet(0);
+	private Set avListeCorpsEngins = new HashSet(0);
 
 	public ListeCorpsEngin() {
 	}
@@ -33,8 +31,8 @@ public class ListeCorpsEngin implements java.io.Serializable {
 	}
 
 	public ListeCorpsEngin(String codeListeCorpsEngin,
-			String libelleListeCorpsEngin, Set<CorpsEngin> corpsEngins,
-			Set<AvListeCorpsEngin> avListeCorpsEngins) {
+			String libelleListeCorpsEngin, Set corpsEngins,
+			Set avListeCorpsEngins) {
 		this.codeListeCorpsEngin = codeListeCorpsEngin;
 		this.libelleListeCorpsEngin = libelleListeCorpsEngin;
 		this.corpsEngins = corpsEngins;
@@ -61,20 +59,20 @@ public class ListeCorpsEngin implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeCorpsEngin")
-	public Set<CorpsEngin> getCorpsEngins() {
+	public Set getCorpsEngins() {
 		return this.corpsEngins;
 	}
 
-	public void setCorpsEngins(Set<CorpsEngin> corpsEngins) {
+	public void setCorpsEngins(Set corpsEngins) {
 		this.corpsEngins = corpsEngins;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeCorpsEngin")
-	public Set<AvListeCorpsEngin> getAvListeCorpsEngins() {
+	public Set getAvListeCorpsEngins() {
 		return this.avListeCorpsEngins;
 	}
 
-	public void setAvListeCorpsEngins(Set<AvListeCorpsEngin> avListeCorpsEngins) {
+	public void setAvListeCorpsEngins(Set avListeCorpsEngins) {
 		this.avListeCorpsEngins = avListeCorpsEngins;
 	}
 

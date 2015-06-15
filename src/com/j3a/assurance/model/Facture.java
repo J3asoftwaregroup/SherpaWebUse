@@ -1,12 +1,11 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,10 +29,9 @@ public class Facture implements java.io.Serializable {
 	private BigDecimal montantTtcFact;
 	private String observation;
 	private String etatFacture;
-	private Set<ActeMedical> acteMedicals = new HashSet<ActeMedical>(0);
-	private Set<Expertise> expertises = new HashSet<Expertise>(0);
-	private Set<ReglementSinistre> reglementSinistres = new HashSet<ReglementSinistre>(
-			0);
+	private Set reglementSinistres = new HashSet(0);
+	private Set acteMedicals = new HashSet(0);
+	private Set expertises = new HashSet(0);
 
 	public Facture() {
 	}
@@ -45,8 +43,7 @@ public class Facture implements java.io.Serializable {
 	public Facture(String codeFacture, Date dateEmissionFact,
 			BigDecimal montantHtFact, BigDecimal tvaFact,
 			BigDecimal montantTtcFact, String observation, String etatFacture,
-			Set<ActeMedical> acteMedicals, Set<Expertise> expertises,
-			Set<ReglementSinistre> reglementSinistres) {
+			Set reglementSinistres, Set acteMedicals, Set expertises) {
 		this.codeFacture = codeFacture;
 		this.dateEmissionFact = dateEmissionFact;
 		this.montantHtFact = montantHtFact;
@@ -54,9 +51,9 @@ public class Facture implements java.io.Serializable {
 		this.montantTtcFact = montantTtcFact;
 		this.observation = observation;
 		this.etatFacture = etatFacture;
+		this.reglementSinistres = reglementSinistres;
 		this.acteMedicals = acteMedicals;
 		this.expertises = expertises;
-		this.reglementSinistres = reglementSinistres;
 	}
 
 	@Id
@@ -125,30 +122,30 @@ public class Facture implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "facture")
-	public Set<ActeMedical> getActeMedicals() {
+	public Set getReglementSinistres() {
+		return this.reglementSinistres;
+	}
+
+	public void setReglementSinistres(Set reglementSinistres) {
+		this.reglementSinistres = reglementSinistres;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "facture")
+	public Set getActeMedicals() {
 		return this.acteMedicals;
 	}
 
-	public void setActeMedicals(Set<ActeMedical> acteMedicals) {
+	public void setActeMedicals(Set acteMedicals) {
 		this.acteMedicals = acteMedicals;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "facture")
-	public Set<Expertise> getExpertises() {
+	public Set getExpertises() {
 		return this.expertises;
 	}
 
-	public void setExpertises(Set<Expertise> expertises) {
+	public void setExpertises(Set expertises) {
 		this.expertises = expertises;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "facture")
-	public Set<ReglementSinistre> getReglementSinistres() {
-		return this.reglementSinistres;
-	}
-
-	public void setReglementSinistres(Set<ReglementSinistre> reglementSinistres) {
-		this.reglementSinistres = reglementSinistres;
 	}
 
 }

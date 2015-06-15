@@ -1,9 +1,8 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +13,6 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -29,15 +27,17 @@ public class Morale implements java.io.Serializable {
 	private Personne personne;
 	private Date datePers;
 	private String nomRaisonSociale;
-	private String dirigeant;
-	private String numCc;
-	private String numRc;
-	private String mailDirigeant;
 	private String adresseGeo;
 	private String adresse;
 	private String telephone;
 	private String fax;
 	private String email;
+	private String loginPers;
+	private String motPassePers;
+	private String dirigeant;
+	private String numCc;
+	private String numRc;
+	private String mailDirigeant;
 
 	public Morale() {
 	}
@@ -47,21 +47,23 @@ public class Morale implements java.io.Serializable {
 	}
 
 	public Morale(Personne personne, Date datePers, String nomRaisonSociale,
-			String dirigeant, String numCc, String numRc, String mailDirigeant,
 			String adresseGeo, String adresse, String telephone, String fax,
-			String email) {
+			String email, String loginPers, String motPassePers,
+			String dirigeant, String numCc, String numRc, String mailDirigeant) {
 		this.personne = personne;
 		this.datePers = datePers;
 		this.nomRaisonSociale = nomRaisonSociale;
-		this.dirigeant = dirigeant;
-		this.numCc = numCc;
-		this.numRc = numRc;
-		this.mailDirigeant = mailDirigeant;
 		this.adresseGeo = adresseGeo;
 		this.adresse = adresse;
 		this.telephone = telephone;
 		this.fax = fax;
 		this.email = email;
+		this.loginPers = loginPers;
+		this.motPassePers = motPassePers;
+		this.dirigeant = dirigeant;
+		this.numCc = numCc;
+		this.numRc = numRc;
+		this.mailDirigeant = mailDirigeant;
 	}
 
 	@GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "personne"))
@@ -103,42 +105,6 @@ public class Morale implements java.io.Serializable {
 
 	public void setNomRaisonSociale(String nomRaisonSociale) {
 		this.nomRaisonSociale = nomRaisonSociale;
-	}
-
-	@Column(name = "DIRIGEANT", length = 70)
-	public String getDirigeant() {
-		return this.dirigeant;
-	}
-
-	public void setDirigeant(String dirigeant) {
-		this.dirigeant = dirigeant;
-	}
-
-	@Column(name = "NUM_CC", length = 16)
-	public String getNumCc() {
-		return this.numCc;
-	}
-
-	public void setNumCc(String numCc) {
-		this.numCc = numCc;
-	}
-
-	@Column(name = "NUM_RC", length = 16)
-	public String getNumRc() {
-		return this.numRc;
-	}
-
-	public void setNumRc(String numRc) {
-		this.numRc = numRc;
-	}
-
-	@Column(name = "MAIL_DIRIGEANT", length = 40)
-	public String getMailDirigeant() {
-		return this.mailDirigeant;
-	}
-
-	public void setMailDirigeant(String mailDirigeant) {
-		this.mailDirigeant = mailDirigeant;
 	}
 
 	@Column(name = "ADRESSE_GEO", length = 75)
@@ -184,6 +150,60 @@ public class Morale implements java.io.Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Column(name = "LOGIN_PERS", length = 20)
+	public String getLoginPers() {
+		return this.loginPers;
+	}
+
+	public void setLoginPers(String loginPers) {
+		this.loginPers = loginPers;
+	}
+
+	@Column(name = "MOT_PASSE_PERS", length = 10)
+	public String getMotPassePers() {
+		return this.motPassePers;
+	}
+
+	public void setMotPassePers(String motPassePers) {
+		this.motPassePers = motPassePers;
+	}
+
+	@Column(name = "DIRIGEANT", length = 70)
+	public String getDirigeant() {
+		return this.dirigeant;
+	}
+
+	public void setDirigeant(String dirigeant) {
+		this.dirigeant = dirigeant;
+	}
+
+	@Column(name = "NUM_CC", length = 16)
+	public String getNumCc() {
+		return this.numCc;
+	}
+
+	public void setNumCc(String numCc) {
+		this.numCc = numCc;
+	}
+
+	@Column(name = "NUM_RC", length = 16)
+	public String getNumRc() {
+		return this.numRc;
+	}
+
+	public void setNumRc(String numRc) {
+		this.numRc = numRc;
+	}
+
+	@Column(name = "MAIL_DIRIGEANT", length = 40)
+	public String getMailDirigeant() {
+		return this.mailDirigeant;
+	}
+
+	public void setMailDirigeant(String mailDirigeant) {
+		this.mailDirigeant = mailDirigeant;
 	}
 
 }

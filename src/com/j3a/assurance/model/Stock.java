@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,7 +29,7 @@ public class Stock implements java.io.Serializable {
 	private Long stkinit;
 	private Long stkrst;
 	private String situation;
-	private Set<Attestation> attestations = new HashSet<Attestation>(0);
+	private Set attestations = new HashSet(0);
 
 	public Stock() {
 	}
@@ -41,8 +40,7 @@ public class Stock implements java.io.Serializable {
 	}
 
 	public Stock(String idStock, PointVente pointVente, Date datestock,
-			Long stkinit, Long stkrst, String situation,
-			Set<Attestation> attestations) {
+			Long stkinit, Long stkrst, String situation, Set attestations) {
 		this.idStock = idStock;
 		this.pointVente = pointVente;
 		this.datestock = datestock;
@@ -110,11 +108,11 @@ public class Stock implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
-	public Set<Attestation> getAttestations() {
+	public Set getAttestations() {
 		return this.attestations;
 	}
 
-	public void setAttestations(Set<Attestation> attestations) {
+	public void setAttestations(Set attestations) {
 		this.attestations = attestations;
 	}
 

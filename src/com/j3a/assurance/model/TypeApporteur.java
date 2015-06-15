@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,9 +20,8 @@ public class TypeApporteur implements java.io.Serializable {
 
 	private String idType;
 	private String libelle;
-	private Set<TypeApporteurCategorie> typeApporteurCategories = new HashSet<TypeApporteurCategorie>(
-			0);
-	private Set<Apporteur> apporteurs = new HashSet<Apporteur>(0);
+	private Set apporteurs = new HashSet(0);
+	private Set typeApporteurCategories = new HashSet(0);
 
 	public TypeApporteur() {
 	}
@@ -32,13 +30,12 @@ public class TypeApporteur implements java.io.Serializable {
 		this.idType = idType;
 	}
 
-	public TypeApporteur(String idType, String libelle,
-			Set<TypeApporteurCategorie> typeApporteurCategories,
-			Set<Apporteur> apporteurs) {
+	public TypeApporteur(String idType, String libelle, Set apporteurs,
+			Set typeApporteurCategories) {
 		this.idType = idType;
 		this.libelle = libelle;
-		this.typeApporteurCategories = typeApporteurCategories;
 		this.apporteurs = apporteurs;
+		this.typeApporteurCategories = typeApporteurCategories;
 	}
 
 	@Id
@@ -61,22 +58,21 @@ public class TypeApporteur implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeApporteur")
-	public Set<TypeApporteurCategorie> getTypeApporteurCategories() {
-		return this.typeApporteurCategories;
-	}
-
-	public void setTypeApporteurCategories(
-			Set<TypeApporteurCategorie> typeApporteurCategories) {
-		this.typeApporteurCategories = typeApporteurCategories;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeApporteur")
-	public Set<Apporteur> getApporteurs() {
+	public Set getApporteurs() {
 		return this.apporteurs;
 	}
 
-	public void setApporteurs(Set<Apporteur> apporteurs) {
+	public void setApporteurs(Set apporteurs) {
 		this.apporteurs = apporteurs;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeApporteur")
+	public Set getTypeApporteurCategories() {
+		return this.typeApporteurCategories;
+	}
+
+	public void setTypeApporteurCategories(Set typeApporteurCategories) {
+		this.typeApporteurCategories = typeApporteurCategories;
 	}
 
 }

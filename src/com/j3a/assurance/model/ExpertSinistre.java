@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +23,7 @@ public class ExpertSinistre implements java.io.Serializable {
 	private String adresseExpert;
 	private String contactExpert;
 	private String mailExpert;
-	private Set<Expertise> expertises = new HashSet<Expertise>(0);
+	private Set expertises = new HashSet(0);
 
 	public ExpertSinistre() {
 	}
@@ -35,7 +34,7 @@ public class ExpertSinistre implements java.io.Serializable {
 
 	public ExpertSinistre(String codeExpertSinistre, String nomExpert,
 			String adresseExpert, String contactExpert, String mailExpert,
-			Set<Expertise> expertises) {
+			Set expertises) {
 		this.codeExpertSinistre = codeExpertSinistre;
 		this.nomExpert = nomExpert;
 		this.adresseExpert = adresseExpert;
@@ -91,11 +90,11 @@ public class ExpertSinistre implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "expertSinistre")
-	public Set<Expertise> getExpertises() {
+	public Set getExpertises() {
 		return this.expertises;
 	}
 
-	public void setExpertises(Set<Expertise> expertises) {
+	public void setExpertises(Set expertises) {
 		this.expertises = expertises;
 	}
 

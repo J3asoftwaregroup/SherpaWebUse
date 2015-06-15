@@ -1,12 +1,11 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,8 +31,7 @@ public class GarantieChoisieTransportCorps implements java.io.Serializable {
 	private BigDecimal montantGarantieCorps;
 	private BigDecimal accessoirecorps;
 	private String codeAvenantCorps;
-	private Set<GarantieGarantieChoisieCorps> garantieGarantieChoisieCorpses = new HashSet<GarantieGarantieChoisieCorps>(
-			0);
+	private Set garantieGarantieChoisieCorpses = new HashSet(0);
 
 	public GarantieChoisieTransportCorps() {
 	}
@@ -46,7 +44,7 @@ public class GarantieChoisieTransportCorps implements java.io.Serializable {
 			CorpsEngin corpsEngin, String libelleGarantieChoisieCorps,
 			Date dateGarantieChoisieCorps, BigDecimal montantGarantieCorps,
 			BigDecimal accessoirecorps, String codeAvenantCorps,
-			Set<GarantieGarantieChoisieCorps> garantieGarantieChoisieCorpses) {
+			Set garantieGarantieChoisieCorpses) {
 		this.codeGrtieChoisieTrspCorps = codeGrtieChoisieTrspCorps;
 		this.corpsEngin = corpsEngin;
 		this.libelleGarantieChoisieCorps = libelleGarantieChoisieCorps;
@@ -125,12 +123,12 @@ public class GarantieChoisieTransportCorps implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantieChoisieTransportCorps")
-	public Set<GarantieGarantieChoisieCorps> getGarantieGarantieChoisieCorpses() {
+	public Set getGarantieGarantieChoisieCorpses() {
 		return this.garantieGarantieChoisieCorpses;
 	}
 
 	public void setGarantieGarantieChoisieCorpses(
-			Set<GarantieGarantieChoisieCorps> garantieGarantieChoisieCorpses) {
+			Set garantieGarantieChoisieCorpses) {
 		this.garantieGarantieChoisieCorpses = garantieGarantieChoisieCorpses;
 	}
 

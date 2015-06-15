@@ -1,12 +1,11 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,9 +31,7 @@ public class GarantieChoisieTransport implements java.io.Serializable {
 	private BigDecimal montantGaranties;
 	private BigDecimal accessoiretrsp;
 	private String codeAvenantTransport;
-	private String codeAvenantTrsp;
-	private Set<GarantieGarantieChoisieTransport> garantieGarantieChoisieTransports = new HashSet<GarantieGarantieChoisieTransport>(
-			0);
+	private Set garantieGarantieChoisieTransports = new HashSet(0);
 
 	public GarantieChoisieTransport() {
 	}
@@ -43,16 +40,11 @@ public class GarantieChoisieTransport implements java.io.Serializable {
 		this.codeGarantieChoisieTransport = codeGarantieChoisieTransport;
 	}
 
-	public GarantieChoisieTransport(
-			String codeGarantieChoisieTransport,
-			Aliment aliment,
-			String libelleGarantieChosie,
-			Date dateGarantieChoisie,
-			BigDecimal montantGaranties,
-			BigDecimal accessoiretrsp,
-			String codeAvenantTransport,
-			String codeAvenantTrsp,
-			Set<GarantieGarantieChoisieTransport> garantieGarantieChoisieTransports) {
+	public GarantieChoisieTransport(String codeGarantieChoisieTransport,
+			Aliment aliment, String libelleGarantieChosie,
+			Date dateGarantieChoisie, BigDecimal montantGaranties,
+			BigDecimal accessoiretrsp, String codeAvenantTransport,
+			Set garantieGarantieChoisieTransports) {
 		this.codeGarantieChoisieTransport = codeGarantieChoisieTransport;
 		this.aliment = aliment;
 		this.libelleGarantieChosie = libelleGarantieChosie;
@@ -60,7 +52,6 @@ public class GarantieChoisieTransport implements java.io.Serializable {
 		this.montantGaranties = montantGaranties;
 		this.accessoiretrsp = accessoiretrsp;
 		this.codeAvenantTransport = codeAvenantTransport;
-		this.codeAvenantTrsp = codeAvenantTrsp;
 		this.garantieGarantieChoisieTransports = garantieGarantieChoisieTransports;
 	}
 
@@ -131,22 +122,13 @@ public class GarantieChoisieTransport implements java.io.Serializable {
 		this.codeAvenantTransport = codeAvenantTransport;
 	}
 
-	@Column(name = "CODE_AVENANT_TRSP", length = 28)
-	public String getCodeAvenantTrsp() {
-		return this.codeAvenantTrsp;
-	}
-
-	public void setCodeAvenantTrsp(String codeAvenantTrsp) {
-		this.codeAvenantTrsp = codeAvenantTrsp;
-	}
-
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantieChoisieTransport")
-	public Set<GarantieGarantieChoisieTransport> getGarantieGarantieChoisieTransports() {
+	public Set getGarantieGarantieChoisieTransports() {
 		return this.garantieGarantieChoisieTransports;
 	}
 
 	public void setGarantieGarantieChoisieTransports(
-			Set<GarantieGarantieChoisieTransport> garantieGarantieChoisieTransports) {
+			Set garantieGarantieChoisieTransports) {
 		this.garantieGarantieChoisieTransports = garantieGarantieChoisieTransports;
 	}
 

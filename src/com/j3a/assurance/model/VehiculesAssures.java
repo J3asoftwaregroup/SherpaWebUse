@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,8 +23,8 @@ public class VehiculesAssures implements java.io.Serializable {
 
 	private String idVehiculesAssures;
 	private Date dateVehiculesAssures;
-	private Set<Avenant> avenants = new HashSet<Avenant>(0);
-	private Set<Vehicule> vehicules = new HashSet<Vehicule>(0);
+	private Set avenants = new HashSet(0);
+	private Set vehicules = new HashSet(0);
 
 	public VehiculesAssures() {
 	}
@@ -35,8 +34,7 @@ public class VehiculesAssures implements java.io.Serializable {
 	}
 
 	public VehiculesAssures(String idVehiculesAssures,
-			Date dateVehiculesAssures, Set<Avenant> avenants,
-			Set<Vehicule> vehicules) {
+			Date dateVehiculesAssures, Set avenants, Set vehicules) {
 		this.idVehiculesAssures = idVehiculesAssures;
 		this.dateVehiculesAssures = dateVehiculesAssures;
 		this.avenants = avenants;
@@ -53,8 +51,8 @@ public class VehiculesAssures implements java.io.Serializable {
 		this.idVehiculesAssures = idVehiculesAssures;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "DATE_VEHICULES_ASSURES", length = 19)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "DATE_VEHICULES_ASSURES", length = 10)
 	public Date getDateVehiculesAssures() {
 		return this.dateVehiculesAssures;
 	}
@@ -64,20 +62,20 @@ public class VehiculesAssures implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehiculesAssures")
-	public Set<Avenant> getAvenants() {
+	public Set getAvenants() {
 		return this.avenants;
 	}
 
-	public void setAvenants(Set<Avenant> avenants) {
+	public void setAvenants(Set avenants) {
 		this.avenants = avenants;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vehiculesAssures")
-	public Set<Vehicule> getVehicules() {
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehiculesAssures")
+	public Set getVehicules() {
 		return this.vehicules;
 	}
 
-	public void setVehicules(Set<Vehicule> vehicules) {
+	public void setVehicules(Set vehicules) {
 		this.vehicules = vehicules;
 	}
 

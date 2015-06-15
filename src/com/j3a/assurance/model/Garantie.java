@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,24 +26,15 @@ public class Garantie implements java.io.Serializable {
 	private String capitalGarantie;
 	private String franchise;
 	private String categorieGarantie;
-	private Set<GarantieFormuleGc> garantieFormuleGcs = new HashSet<GarantieFormuleGc>(
-			0);
-	private Set<GarantieGarantieChoisieMrh> garantieGarantieChoisieMrhs = new HashSet<GarantieGarantieChoisieMrh>(
-			0);
-	private Set<GarantieGarantieChoisieTransport> garantieGarantieChoisieTransports = new HashSet<GarantieGarantieChoisieTransport>(
-			0);
-	private Set<GarantieGarantieChoisieSante> garantieGarantieChoisieSantes = new HashSet<GarantieGarantieChoisieSante>(
-			0);
-	private Set<GarantieGarantieChoisieCorps> garantieGarantieChoisieCorpses = new HashSet<GarantieGarantieChoisieCorps>(
-			0);
-	private Set<GarantieGarantieChoisie> garantieGarantieChoisies = new HashSet<GarantieGarantieChoisie>(
-			0);
-	private Set<GarantieGarantieChoisieIa> garantieGarantieChoisieIas = new HashSet<GarantieGarantieChoisieIa>(
-			0);
-	private Set<GarantieGarantieChoisieNta> garantieGarantieChoisieNtas = new HashSet<GarantieGarantieChoisieNta>(
-			0);
-	private Set<GarantieSinistre> garantieSinistres = new HashSet<GarantieSinistre>(
-			0);
+	private Set garantieFormuleGcs = new HashSet(0);
+	private Set garantieGarantieChoisieMrhs = new HashSet(0);
+	private Set garantieGarantieChoisieTransports = new HashSet(0);
+	private Set garantieGarantieChoisieSantes = new HashSet(0);
+	private Set garantieSinistres = new HashSet(0);
+	private Set garantieGarantieChoisieCorpses = new HashSet(0);
+	private Set garantieGarantieChoisies = new HashSet(0);
+	private Set garantieGarantieChoisieIas = new HashSet(0);
+	private Set garantieGarantieChoisieNtas = new HashSet(0);
 
 	public Garantie() {
 	}
@@ -53,22 +43,13 @@ public class Garantie implements java.io.Serializable {
 		this.codeGarantie = codeGarantie;
 	}
 
-	public Garantie(
-			String codeGarantie,
-			Risque risque,
-			String libelleGarantie,
-			String capitalGarantie,
-			String franchise,
-			String categorieGarantie,
-			Set<GarantieFormuleGc> garantieFormuleGcs,
-			Set<GarantieGarantieChoisieMrh> garantieGarantieChoisieMrhs,
-			Set<GarantieGarantieChoisieTransport> garantieGarantieChoisieTransports,
-			Set<GarantieGarantieChoisieSante> garantieGarantieChoisieSantes,
-			Set<GarantieGarantieChoisieCorps> garantieGarantieChoisieCorpses,
-			Set<GarantieGarantieChoisie> garantieGarantieChoisies,
-			Set<GarantieGarantieChoisieIa> garantieGarantieChoisieIas,
-			Set<GarantieGarantieChoisieNta> garantieGarantieChoisieNtas,
-			Set<GarantieSinistre> garantieSinistres) {
+	public Garantie(String codeGarantie, Risque risque, String libelleGarantie,
+			String capitalGarantie, String franchise, String categorieGarantie,
+			Set garantieFormuleGcs, Set garantieGarantieChoisieMrhs,
+			Set garantieGarantieChoisieTransports,
+			Set garantieGarantieChoisieSantes, Set garantieSinistres,
+			Set garantieGarantieChoisieCorpses, Set garantieGarantieChoisies,
+			Set garantieGarantieChoisieIas, Set garantieGarantieChoisieNtas) {
 		this.codeGarantie = codeGarantie;
 		this.risque = risque;
 		this.libelleGarantie = libelleGarantie;
@@ -79,11 +60,11 @@ public class Garantie implements java.io.Serializable {
 		this.garantieGarantieChoisieMrhs = garantieGarantieChoisieMrhs;
 		this.garantieGarantieChoisieTransports = garantieGarantieChoisieTransports;
 		this.garantieGarantieChoisieSantes = garantieGarantieChoisieSantes;
+		this.garantieSinistres = garantieSinistres;
 		this.garantieGarantieChoisieCorpses = garantieGarantieChoisieCorpses;
 		this.garantieGarantieChoisies = garantieGarantieChoisies;
 		this.garantieGarantieChoisieIas = garantieGarantieChoisieIas;
 		this.garantieGarantieChoisieNtas = garantieGarantieChoisieNtas;
-		this.garantieSinistres = garantieSinistres;
 	}
 
 	@Id
@@ -143,91 +124,87 @@ public class Garantie implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantie")
-	public Set<GarantieFormuleGc> getGarantieFormuleGcs() {
+	public Set getGarantieFormuleGcs() {
 		return this.garantieFormuleGcs;
 	}
 
-	public void setGarantieFormuleGcs(Set<GarantieFormuleGc> garantieFormuleGcs) {
+	public void setGarantieFormuleGcs(Set garantieFormuleGcs) {
 		this.garantieFormuleGcs = garantieFormuleGcs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantie")
-	public Set<GarantieGarantieChoisieMrh> getGarantieGarantieChoisieMrhs() {
+	public Set getGarantieGarantieChoisieMrhs() {
 		return this.garantieGarantieChoisieMrhs;
 	}
 
-	public void setGarantieGarantieChoisieMrhs(
-			Set<GarantieGarantieChoisieMrh> garantieGarantieChoisieMrhs) {
+	public void setGarantieGarantieChoisieMrhs(Set garantieGarantieChoisieMrhs) {
 		this.garantieGarantieChoisieMrhs = garantieGarantieChoisieMrhs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantie")
-	public Set<GarantieGarantieChoisieTransport> getGarantieGarantieChoisieTransports() {
+	public Set getGarantieGarantieChoisieTransports() {
 		return this.garantieGarantieChoisieTransports;
 	}
 
 	public void setGarantieGarantieChoisieTransports(
-			Set<GarantieGarantieChoisieTransport> garantieGarantieChoisieTransports) {
+			Set garantieGarantieChoisieTransports) {
 		this.garantieGarantieChoisieTransports = garantieGarantieChoisieTransports;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantie")
-	public Set<GarantieGarantieChoisieSante> getGarantieGarantieChoisieSantes() {
+	public Set getGarantieGarantieChoisieSantes() {
 		return this.garantieGarantieChoisieSantes;
 	}
 
 	public void setGarantieGarantieChoisieSantes(
-			Set<GarantieGarantieChoisieSante> garantieGarantieChoisieSantes) {
+			Set garantieGarantieChoisieSantes) {
 		this.garantieGarantieChoisieSantes = garantieGarantieChoisieSantes;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantie")
-	public Set<GarantieGarantieChoisieCorps> getGarantieGarantieChoisieCorpses() {
+	public Set getGarantieSinistres() {
+		return this.garantieSinistres;
+	}
+
+	public void setGarantieSinistres(Set garantieSinistres) {
+		this.garantieSinistres = garantieSinistres;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantie")
+	public Set getGarantieGarantieChoisieCorpses() {
 		return this.garantieGarantieChoisieCorpses;
 	}
 
 	public void setGarantieGarantieChoisieCorpses(
-			Set<GarantieGarantieChoisieCorps> garantieGarantieChoisieCorpses) {
+			Set garantieGarantieChoisieCorpses) {
 		this.garantieGarantieChoisieCorpses = garantieGarantieChoisieCorpses;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantie")
-	public Set<GarantieGarantieChoisie> getGarantieGarantieChoisies() {
+	public Set getGarantieGarantieChoisies() {
 		return this.garantieGarantieChoisies;
 	}
 
-	public void setGarantieGarantieChoisies(
-			Set<GarantieGarantieChoisie> garantieGarantieChoisies) {
+	public void setGarantieGarantieChoisies(Set garantieGarantieChoisies) {
 		this.garantieGarantieChoisies = garantieGarantieChoisies;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantie")
-	public Set<GarantieGarantieChoisieIa> getGarantieGarantieChoisieIas() {
+	public Set getGarantieGarantieChoisieIas() {
 		return this.garantieGarantieChoisieIas;
 	}
 
-	public void setGarantieGarantieChoisieIas(
-			Set<GarantieGarantieChoisieIa> garantieGarantieChoisieIas) {
+	public void setGarantieGarantieChoisieIas(Set garantieGarantieChoisieIas) {
 		this.garantieGarantieChoisieIas = garantieGarantieChoisieIas;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantie")
-	public Set<GarantieGarantieChoisieNta> getGarantieGarantieChoisieNtas() {
+	public Set getGarantieGarantieChoisieNtas() {
 		return this.garantieGarantieChoisieNtas;
 	}
 
-	public void setGarantieGarantieChoisieNtas(
-			Set<GarantieGarantieChoisieNta> garantieGarantieChoisieNtas) {
+	public void setGarantieGarantieChoisieNtas(Set garantieGarantieChoisieNtas) {
 		this.garantieGarantieChoisieNtas = garantieGarantieChoisieNtas;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantie")
-	public Set<GarantieSinistre> getGarantieSinistres() {
-		return this.garantieSinistres;
-	}
-
-	public void setGarantieSinistres(Set<GarantieSinistre> garantieSinistres) {
-		this.garantieSinistres = garantieSinistres;
 	}
 
 }

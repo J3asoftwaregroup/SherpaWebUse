@@ -1,11 +1,10 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,7 +34,7 @@ public class ConducteurAdverse implements java.io.Serializable {
 	private String telFixe;
 	private String telCell;
 	private String email;
-	private Set<PartieAdverse> partieAdverses = new HashSet<PartieAdverse>(0);
+	private Set partieAdverses = new HashSet(0);
 
 	public ConducteurAdverse() {
 	}
@@ -48,7 +47,7 @@ public class ConducteurAdverse implements java.io.Serializable {
 			String prenom, String numPermis, String categoriePermis,
 			Date validitePermis, String immatriculation, String marque,
 			String typeDuvehicule, String adresse, String telFixe,
-			String telCell, String email, Set<PartieAdverse> partieAdverses) {
+			String telCell, String email, Set partieAdverses) {
 		this.codeConducteurAdverse = codeConducteurAdverse;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -185,11 +184,11 @@ public class ConducteurAdverse implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "conducteurAdverse")
-	public Set<PartieAdverse> getPartieAdverses() {
+	public Set getPartieAdverses() {
 		return this.partieAdverses;
 	}
 
-	public void setPartieAdverses(Set<PartieAdverse> partieAdverses) {
+	public void setPartieAdverses(Set partieAdverses) {
 		this.partieAdverses = partieAdverses;
 	}
 

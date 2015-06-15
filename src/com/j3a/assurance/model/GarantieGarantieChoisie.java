@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
-
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -101,7 +100,7 @@ public class GarantieGarantieChoisie implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CODE_GARANTIE", nullable = false, insertable = false, updatable = false)
 	public Garantie getGarantie() {
 		return this.garantie;
@@ -111,7 +110,7 @@ public class GarantieGarantieChoisie implements java.io.Serializable {
 		this.garantie = garantie;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CODE_GARANTIE_CHOISIE", nullable = false, insertable = false, updatable = false)
 	public GarantieChoisie getGarantieChoisie() {
 		return this.garantieChoisie;

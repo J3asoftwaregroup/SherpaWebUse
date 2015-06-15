@@ -1,10 +1,9 @@
 package com.j3a.assurance.model;
 
-// Generated 5 mai 2015 11:21:10 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,7 +26,7 @@ public class Medecin implements java.io.Serializable {
 	private String telFixe;
 	private String telCell;
 	private String email;
-	private Set<ActeMedical> acteMedicals = new HashSet<ActeMedical>(0);
+	private Set acteMedicals = new HashSet(0);
 
 	public Medecin() {
 	}
@@ -38,7 +37,7 @@ public class Medecin implements java.io.Serializable {
 
 	public Medecin(String codeMedecin, String raisonSociale, String nom,
 			String prenom, String adresse, String telFixe, String telCell,
-			String email, Set<ActeMedical> acteMedicals) {
+			String email, Set acteMedicals) {
 		this.codeMedecin = codeMedecin;
 		this.raisonSociale = raisonSociale;
 		this.nom = nom;
@@ -124,11 +123,11 @@ public class Medecin implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "medecin")
-	public Set<ActeMedical> getActeMedicals() {
+	public Set getActeMedicals() {
 		return this.acteMedicals;
 	}
 
-	public void setActeMedicals(Set<ActeMedical> acteMedicals) {
+	public void setActeMedicals(Set acteMedicals) {
 		this.acteMedicals = acteMedicals;
 	}
 
