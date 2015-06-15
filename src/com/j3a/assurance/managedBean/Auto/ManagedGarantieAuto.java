@@ -136,13 +136,13 @@ public class ManagedGarantieAuto extends ManagedGarantie {
 
 		// prévoir une méthode de vérification de la sous catégorie à plus tard
 
-		primeGlobale.setCategorie(vehiculeRow.getSouCatVehi().getTarif());
+		primeGlobale.setCategorie(vehiculeRow.getSouCatVehi().getTarif().getCodeTarif());
 		primeGlobale.primeGlobale();
 		PrimeCategorieInterface prime = primeGlobale.primeGlobale();
 
 		CalculPrimeProrata prorata = new CalculPrimeProrata();
 		
-		prime.setCategorie(vehiculeRow.getSouCatVehi().getTarif());
+		prime.setCategorie(vehiculeRow.getSouCatVehi().getTarif().getCodeTarif());
 		prime.setEnergie(vehiculeRow.getVehi().getEnergie());
 		prime.setNbrecarte(vehiculeRow.getVehi().getNbreCarte());
 		prime.setChargeUtile(vehiculeRow.getVehi().getChargeUtile());

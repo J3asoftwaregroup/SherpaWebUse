@@ -13,6 +13,7 @@ import com.j3a.assurance.model.GarantieChoisie;
 import com.j3a.assurance.model.GarantieGarantieChoisie;
 import com.j3a.assurance.model.Permis;
 import com.j3a.assurance.model.SousCatVehicule;
+import com.j3a.assurance.model.Tarif;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.model.ZoneGeographique;
 
@@ -27,7 +28,10 @@ public class VehiculeRow {
 		SousCatVehicule sv = new SousCatVehicule();
 		sv.setCodeSousCatVehicule("");
 		sv.setLibelleSousCatVehicule("");
-		sv.setTarif("");
+		Tarif tarif = new Tarif();
+		tarif.setCodeTarif("");
+		tarif.setLibelleTarif("");
+		sv.setTarif(tarif);
 		Categorie cat = new Categorie();
 		cat.setCodeCategorie("");
 		cat.setLibelleCategorie("");

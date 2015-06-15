@@ -86,7 +86,7 @@ public class ScatVehiCvtr implements Converter {
 	}
 */
 	 public List<SousCatVehicule> getCatVehiList() {
-			if(CatVehiList.isEmpty()){
+			/*if(CatVehiList.isEmpty()){
 				SousCatVehicule A = new SousCatVehicule("SCAT1");
 				A.setLibelleSousCatVehicule("Vehicule de Tourisme");
 				Categorie catA = new Categorie();
@@ -122,14 +122,14 @@ public class ScatVehiCvtr implements Converter {
 				D.setTarif("TARIF3");
 				CatVehiList.add(D);
 				
-				/*SousCatVehicule E = new SousCatVehicule("SCAT4");
+				SousCatVehicule E = new SousCatVehicule("SCAT4");
 				E.setLibelleSousCatVehicule("Transport Public de Voyageurs");
 				Categorie catE = new Categorie();
 				catE.setId("4");
 				catE.setLibelleCategorie("Transport Public de Voyageurs");
 				E.setCodeCategorie(catE);
 				E.setTarif("TARIF4");
-				CatVehiList.add(E);*/
+				CatVehiList.add(E);
 				
 				SousCatVehicule F = new SousCatVehicule("SCAT5");
 				F.setLibelleSousCatVehicule("Vehicules Motorises 2 OU 3 Roues");
@@ -185,7 +185,14 @@ public class ScatVehiCvtr implements Converter {
 				K.setTarif("TARIF10");
 				CatVehiList.add(K);
 			}
-			return CatVehiList;
+			return CatVehiList;*/
+		 
+		 List<SousCatVehicule> A = new ArrayList<SousCatVehicule>();
+			for (Object c : getObjectService().getObjects("SousCatVehicule")) {  
+				A.add((SousCatVehicule) c);  
+	            } 
+			
+			return A;
 			}
 
 		public void setCatVehiList(List<SousCatVehicule> catVehiList) {

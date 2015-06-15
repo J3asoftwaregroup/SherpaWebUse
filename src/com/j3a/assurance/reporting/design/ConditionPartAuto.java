@@ -1067,14 +1067,14 @@ creerEmagementAttestation(document);
 		// 1ere colonne
 		cellLib = new PdfPCell(new Phrase("Tarif", normalText));
 		cellCont = new PdfPCell(new Phrase(vehicule.getSousCatVehicule()
-				.getTarif(), smallText));
+				.getTarif().getLibelleTarif(), smallText));
 		tableauVehicul.addCell(cellLib);
 		tableauVehicul.addCell(cellCont);
 		System.out.println("Tarif véhicule1");
 		// 2e colonne
 		cellLib = new PdfPCell(new Phrase("Catégorie", normalText));
 		cellCont = new PdfPCell(new Phrase(vehicule.getSousCatVehicule()
-				.getTarif(), smallText));
+				.getTarif().getLibelleTarif(), smallText));
 		tableauVehicul.addCell(cellLib);
 		tableauVehicul.addCell(cellCont);
 
