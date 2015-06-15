@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:51:51 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -32,6 +32,7 @@ public class Personne implements java.io.Serializable {
 	private String email;
 	private String loginPers;
 	private String motPassePers;
+	private String typeWebUser;
 	private Set<Contrat> contrats = new HashSet<Contrat>(0);
 	private Set<Etre> etres = new HashSet<Etre>(0);
 	private Physique physique;
@@ -49,8 +50,8 @@ public class Personne implements java.io.Serializable {
 	public Personne(String numSouscripteur, Date datePers,
 			String nomRaisonSociale, String adresseGeo, String adresse,
 			String telephone, String fax, String email, String loginPers,
-			String motPassePers, Set<Contrat> contrats, Set<Etre> etres,
-			Physique physique, Morale morale,
+			String motPassePers, String typeWebUser, Set<Contrat> contrats,
+			Set<Etre> etres, Physique physique, Morale morale,
 			Set<PersonneNationalite> personneNationalites) {
 		this.numSouscripteur = numSouscripteur;
 		this.datePers = datePers;
@@ -62,6 +63,7 @@ public class Personne implements java.io.Serializable {
 		this.email = email;
 		this.loginPers = loginPers;
 		this.motPassePers = motPassePers;
+		this.typeWebUser = typeWebUser;
 		this.contrats = contrats;
 		this.etres = etres;
 		this.physique = physique;
@@ -159,6 +161,15 @@ public class Personne implements java.io.Serializable {
 
 	public void setMotPassePers(String motPassePers) {
 		this.motPassePers = motPassePers;
+	}
+
+	@Column(name = "TYPE_WEB_USER", length = 100)
+	public String getTypeWebUser() {
+		return this.typeWebUser;
+	}
+
+	public void setTypeWebUser(String typeWebUser) {
+		this.typeWebUser = typeWebUser;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personne")

@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:51:51 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -23,36 +23,21 @@ public class RcTarif12 implements java.io.Serializable {
 
 	private String codeRcTarif12;
 	private Tarif tarif;
-	private BigDecimal pfEss1t12Zone1;
-	private BigDecimal pfEss2t12Zone1;
-	private BigDecimal pfEss3t12Zone1;
-	private BigDecimal pfEss4t12Zone1;
-	private BigDecimal pfEss5t12Zone1;
-	private BigDecimal pfEss1t12Zone2;
-	private BigDecimal pfEss2t12Zone2;
-	private BigDecimal pfEss3t12Zone2;
-	private BigDecimal pfEss4t12Zone2;
-	private BigDecimal pfEss5t12Zone2;
-	private BigDecimal pfEss1t12Zone3;
-	private BigDecimal pfEss2t12Zone3;
-	private BigDecimal pfEss3t12Zone3;
-	private BigDecimal pfEss4t12Zone3;
-	private BigDecimal pfEss5t12Zone3;
-	private BigDecimal pfDie1t12Zone1;
-	private BigDecimal pfDie2t12Zone1;
-	private BigDecimal pfDie3t12Zone1;
-	private BigDecimal pfDie4t12Zone1;
-	private BigDecimal pfDie5t12Zone1;
-	private BigDecimal pfDie1t12Zone2;
-	private BigDecimal pfDie2t12Zone2;
-	private BigDecimal pfDie3t12Zone2;
-	private BigDecimal pfDie4t12Zone2;
-	private BigDecimal pfDie5t12Zone2;
-	private BigDecimal pfDie1t12Zone3;
-	private BigDecimal pfDie2t12Zone3;
-	private BigDecimal pfDie3t12Zone3;
-	private BigDecimal pfDie4t12Zone3;
-	private BigDecimal pfDie5t12Zone3;
+	private BigDecimal pfEss12Dies1Zone1;
+	private BigDecimal pfEss36Dies24Zone1;
+	private BigDecimal pfEss79Dies56Zone1;
+	private BigDecimal pfEss1011Dies78Zone1;
+	private BigDecimal pfEss12Dies9Zone1;
+	private BigDecimal pfEss12Dies1Zone2;
+	private BigDecimal pfEss36Dies24Zone2;
+	private BigDecimal pfEss79Dies56Zone2;
+	private BigDecimal pfEss1011Dies78Zone2;
+	private BigDecimal pfEss12Dies9Zone2;
+	private BigDecimal pfEss12Dies1Zone3;
+	private BigDecimal pfEss36Dies24Zone3;
+	private BigDecimal pfEss79Dies56Zone3;
+	private BigDecimal pfEss1011Dies78Zone3;
+	private BigDecimal pfEss12Dies9Zone3;
 	private Float tauxMajredt12Remorque;
 	private Float tauxMajredt12Permi1;
 	private Float tauxMajredt12Permis2;
@@ -70,57 +55,35 @@ public class RcTarif12 implements java.io.Serializable {
 	}
 
 	public RcTarif12(String codeRcTarif12, Tarif tarif,
-			BigDecimal pfEss1t12Zone1, BigDecimal pfEss2t12Zone1,
-			BigDecimal pfEss3t12Zone1, BigDecimal pfEss4t12Zone1,
-			BigDecimal pfEss5t12Zone1, BigDecimal pfEss1t12Zone2,
-			BigDecimal pfEss2t12Zone2, BigDecimal pfEss3t12Zone2,
-			BigDecimal pfEss4t12Zone2, BigDecimal pfEss5t12Zone2,
-			BigDecimal pfEss1t12Zone3, BigDecimal pfEss2t12Zone3,
-			BigDecimal pfEss3t12Zone3, BigDecimal pfEss4t12Zone3,
-			BigDecimal pfEss5t12Zone3, BigDecimal pfDie1t12Zone1,
-			BigDecimal pfDie2t12Zone1, BigDecimal pfDie3t12Zone1,
-			BigDecimal pfDie4t12Zone1, BigDecimal pfDie5t12Zone1,
-			BigDecimal pfDie1t12Zone2, BigDecimal pfDie2t12Zone2,
-			BigDecimal pfDie3t12Zone2, BigDecimal pfDie4t12Zone2,
-			BigDecimal pfDie5t12Zone2, BigDecimal pfDie1t12Zone3,
-			BigDecimal pfDie2t12Zone3, BigDecimal pfDie3t12Zone3,
-			BigDecimal pfDie4t12Zone3, BigDecimal pfDie5t12Zone3,
-			Float tauxMajredt12Remorque, Float tauxMajredt12Permi1,
-			Float tauxMajredt12Permis2, Float tauxMajredt12Statutproa,
-			Float tauxMajredt12Statutprob, Float tauxMajredt12Statutproc,
-			Float tauxMajredt12Statutproautres, Set<Tarif> tarifs) {
+			BigDecimal pfEss12Dies1Zone1, BigDecimal pfEss36Dies24Zone1,
+			BigDecimal pfEss79Dies56Zone1, BigDecimal pfEss1011Dies78Zone1,
+			BigDecimal pfEss12Dies9Zone1, BigDecimal pfEss12Dies1Zone2,
+			BigDecimal pfEss36Dies24Zone2, BigDecimal pfEss79Dies56Zone2,
+			BigDecimal pfEss1011Dies78Zone2, BigDecimal pfEss12Dies9Zone2,
+			BigDecimal pfEss12Dies1Zone3, BigDecimal pfEss36Dies24Zone3,
+			BigDecimal pfEss79Dies56Zone3, BigDecimal pfEss1011Dies78Zone3,
+			BigDecimal pfEss12Dies9Zone3, Float tauxMajredt12Remorque,
+			Float tauxMajredt12Permi1, Float tauxMajredt12Permis2,
+			Float tauxMajredt12Statutproa, Float tauxMajredt12Statutprob,
+			Float tauxMajredt12Statutproc, Float tauxMajredt12Statutproautres,
+			Set<Tarif> tarifs) {
 		this.codeRcTarif12 = codeRcTarif12;
 		this.tarif = tarif;
-		this.pfEss1t12Zone1 = pfEss1t12Zone1;
-		this.pfEss2t12Zone1 = pfEss2t12Zone1;
-		this.pfEss3t12Zone1 = pfEss3t12Zone1;
-		this.pfEss4t12Zone1 = pfEss4t12Zone1;
-		this.pfEss5t12Zone1 = pfEss5t12Zone1;
-		this.pfEss1t12Zone2 = pfEss1t12Zone2;
-		this.pfEss2t12Zone2 = pfEss2t12Zone2;
-		this.pfEss3t12Zone2 = pfEss3t12Zone2;
-		this.pfEss4t12Zone2 = pfEss4t12Zone2;
-		this.pfEss5t12Zone2 = pfEss5t12Zone2;
-		this.pfEss1t12Zone3 = pfEss1t12Zone3;
-		this.pfEss2t12Zone3 = pfEss2t12Zone3;
-		this.pfEss3t12Zone3 = pfEss3t12Zone3;
-		this.pfEss4t12Zone3 = pfEss4t12Zone3;
-		this.pfEss5t12Zone3 = pfEss5t12Zone3;
-		this.pfDie1t12Zone1 = pfDie1t12Zone1;
-		this.pfDie2t12Zone1 = pfDie2t12Zone1;
-		this.pfDie3t12Zone1 = pfDie3t12Zone1;
-		this.pfDie4t12Zone1 = pfDie4t12Zone1;
-		this.pfDie5t12Zone1 = pfDie5t12Zone1;
-		this.pfDie1t12Zone2 = pfDie1t12Zone2;
-		this.pfDie2t12Zone2 = pfDie2t12Zone2;
-		this.pfDie3t12Zone2 = pfDie3t12Zone2;
-		this.pfDie4t12Zone2 = pfDie4t12Zone2;
-		this.pfDie5t12Zone2 = pfDie5t12Zone2;
-		this.pfDie1t12Zone3 = pfDie1t12Zone3;
-		this.pfDie2t12Zone3 = pfDie2t12Zone3;
-		this.pfDie3t12Zone3 = pfDie3t12Zone3;
-		this.pfDie4t12Zone3 = pfDie4t12Zone3;
-		this.pfDie5t12Zone3 = pfDie5t12Zone3;
+		this.pfEss12Dies1Zone1 = pfEss12Dies1Zone1;
+		this.pfEss36Dies24Zone1 = pfEss36Dies24Zone1;
+		this.pfEss79Dies56Zone1 = pfEss79Dies56Zone1;
+		this.pfEss1011Dies78Zone1 = pfEss1011Dies78Zone1;
+		this.pfEss12Dies9Zone1 = pfEss12Dies9Zone1;
+		this.pfEss12Dies1Zone2 = pfEss12Dies1Zone2;
+		this.pfEss36Dies24Zone2 = pfEss36Dies24Zone2;
+		this.pfEss79Dies56Zone2 = pfEss79Dies56Zone2;
+		this.pfEss1011Dies78Zone2 = pfEss1011Dies78Zone2;
+		this.pfEss12Dies9Zone2 = pfEss12Dies9Zone2;
+		this.pfEss12Dies1Zone3 = pfEss12Dies1Zone3;
+		this.pfEss36Dies24Zone3 = pfEss36Dies24Zone3;
+		this.pfEss79Dies56Zone3 = pfEss79Dies56Zone3;
+		this.pfEss1011Dies78Zone3 = pfEss1011Dies78Zone3;
+		this.pfEss12Dies9Zone3 = pfEss12Dies9Zone3;
 		this.tauxMajredt12Remorque = tauxMajredt12Remorque;
 		this.tauxMajredt12Permi1 = tauxMajredt12Permi1;
 		this.tauxMajredt12Permis2 = tauxMajredt12Permis2;
@@ -151,274 +114,139 @@ public class RcTarif12 implements java.io.Serializable {
 		this.tarif = tarif;
 	}
 
-	@Column(name = "PF_ESS1T12_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getPfEss1t12Zone1() {
-		return this.pfEss1t12Zone1;
+	@Column(name = "PF_ESS12_DIES1_ZONE1", precision = 15, scale = 3)
+	public BigDecimal getPfEss12Dies1Zone1() {
+		return this.pfEss12Dies1Zone1;
 	}
 
-	public void setPfEss1t12Zone1(BigDecimal pfEss1t12Zone1) {
-		this.pfEss1t12Zone1 = pfEss1t12Zone1;
+	public void setPfEss12Dies1Zone1(BigDecimal pfEss12Dies1Zone1) {
+		this.pfEss12Dies1Zone1 = pfEss12Dies1Zone1;
 	}
 
-	@Column(name = "PF_ESS2T12_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getPfEss2t12Zone1() {
-		return this.pfEss2t12Zone1;
+	@Column(name = "PF_ESS36_DIES24_ZONE1", precision = 15, scale = 3)
+	public BigDecimal getPfEss36Dies24Zone1() {
+		return this.pfEss36Dies24Zone1;
 	}
 
-	public void setPfEss2t12Zone1(BigDecimal pfEss2t12Zone1) {
-		this.pfEss2t12Zone1 = pfEss2t12Zone1;
+	public void setPfEss36Dies24Zone1(BigDecimal pfEss36Dies24Zone1) {
+		this.pfEss36Dies24Zone1 = pfEss36Dies24Zone1;
 	}
 
-	@Column(name = "PF_ESS3T12_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getPfEss3t12Zone1() {
-		return this.pfEss3t12Zone1;
+	@Column(name = "PF_ESS79_DIES56_ZONE1", precision = 15, scale = 3)
+	public BigDecimal getPfEss79Dies56Zone1() {
+		return this.pfEss79Dies56Zone1;
 	}
 
-	public void setPfEss3t12Zone1(BigDecimal pfEss3t12Zone1) {
-		this.pfEss3t12Zone1 = pfEss3t12Zone1;
+	public void setPfEss79Dies56Zone1(BigDecimal pfEss79Dies56Zone1) {
+		this.pfEss79Dies56Zone1 = pfEss79Dies56Zone1;
 	}
 
-	@Column(name = "PF_ESS4T12_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getPfEss4t12Zone1() {
-		return this.pfEss4t12Zone1;
+	@Column(name = "PF_ESS1011_DIES78_ZONE1", precision = 15, scale = 3)
+	public BigDecimal getPfEss1011Dies78Zone1() {
+		return this.pfEss1011Dies78Zone1;
 	}
 
-	public void setPfEss4t12Zone1(BigDecimal pfEss4t12Zone1) {
-		this.pfEss4t12Zone1 = pfEss4t12Zone1;
+	public void setPfEss1011Dies78Zone1(BigDecimal pfEss1011Dies78Zone1) {
+		this.pfEss1011Dies78Zone1 = pfEss1011Dies78Zone1;
 	}
 
-	@Column(name = "PF_ESS5T12_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getPfEss5t12Zone1() {
-		return this.pfEss5t12Zone1;
+	@Column(name = "PF_ESS12_DIES9_ZONE1", precision = 15, scale = 3)
+	public BigDecimal getPfEss12Dies9Zone1() {
+		return this.pfEss12Dies9Zone1;
 	}
 
-	public void setPfEss5t12Zone1(BigDecimal pfEss5t12Zone1) {
-		this.pfEss5t12Zone1 = pfEss5t12Zone1;
+	public void setPfEss12Dies9Zone1(BigDecimal pfEss12Dies9Zone1) {
+		this.pfEss12Dies9Zone1 = pfEss12Dies9Zone1;
 	}
 
-	@Column(name = "PF_ESS1T12_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getPfEss1t12Zone2() {
-		return this.pfEss1t12Zone2;
+	@Column(name = "PF_ESS12_DIES1_ZONE2", precision = 15, scale = 3)
+	public BigDecimal getPfEss12Dies1Zone2() {
+		return this.pfEss12Dies1Zone2;
 	}
 
-	public void setPfEss1t12Zone2(BigDecimal pfEss1t12Zone2) {
-		this.pfEss1t12Zone2 = pfEss1t12Zone2;
+	public void setPfEss12Dies1Zone2(BigDecimal pfEss12Dies1Zone2) {
+		this.pfEss12Dies1Zone2 = pfEss12Dies1Zone2;
 	}
 
-	@Column(name = "PF_ESS2T12_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getPfEss2t12Zone2() {
-		return this.pfEss2t12Zone2;
+	@Column(name = "PF_ESS36_DIES24_ZONE2", precision = 15, scale = 3)
+	public BigDecimal getPfEss36Dies24Zone2() {
+		return this.pfEss36Dies24Zone2;
 	}
 
-	public void setPfEss2t12Zone2(BigDecimal pfEss2t12Zone2) {
-		this.pfEss2t12Zone2 = pfEss2t12Zone2;
+	public void setPfEss36Dies24Zone2(BigDecimal pfEss36Dies24Zone2) {
+		this.pfEss36Dies24Zone2 = pfEss36Dies24Zone2;
 	}
 
-	@Column(name = "PF_ESS3T12_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getPfEss3t12Zone2() {
-		return this.pfEss3t12Zone2;
+	@Column(name = "PF_ESS79_DIES56_ZONE2", precision = 15, scale = 3)
+	public BigDecimal getPfEss79Dies56Zone2() {
+		return this.pfEss79Dies56Zone2;
 	}
 
-	public void setPfEss3t12Zone2(BigDecimal pfEss3t12Zone2) {
-		this.pfEss3t12Zone2 = pfEss3t12Zone2;
+	public void setPfEss79Dies56Zone2(BigDecimal pfEss79Dies56Zone2) {
+		this.pfEss79Dies56Zone2 = pfEss79Dies56Zone2;
 	}
 
-	@Column(name = "PF_ESS4T12_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getPfEss4t12Zone2() {
-		return this.pfEss4t12Zone2;
+	@Column(name = "PF_ESS1011_DIES78_ZONE2", precision = 15, scale = 3)
+	public BigDecimal getPfEss1011Dies78Zone2() {
+		return this.pfEss1011Dies78Zone2;
 	}
 
-	public void setPfEss4t12Zone2(BigDecimal pfEss4t12Zone2) {
-		this.pfEss4t12Zone2 = pfEss4t12Zone2;
+	public void setPfEss1011Dies78Zone2(BigDecimal pfEss1011Dies78Zone2) {
+		this.pfEss1011Dies78Zone2 = pfEss1011Dies78Zone2;
 	}
 
-	@Column(name = "PF_ESS5T12_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getPfEss5t12Zone2() {
-		return this.pfEss5t12Zone2;
+	@Column(name = "PF_ESS12_DIES9_ZONE2", precision = 15, scale = 3)
+	public BigDecimal getPfEss12Dies9Zone2() {
+		return this.pfEss12Dies9Zone2;
 	}
 
-	public void setPfEss5t12Zone2(BigDecimal pfEss5t12Zone2) {
-		this.pfEss5t12Zone2 = pfEss5t12Zone2;
+	public void setPfEss12Dies9Zone2(BigDecimal pfEss12Dies9Zone2) {
+		this.pfEss12Dies9Zone2 = pfEss12Dies9Zone2;
 	}
 
-	@Column(name = "PF_ESS1T12_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getPfEss1t12Zone3() {
-		return this.pfEss1t12Zone3;
+	@Column(name = "PF_ESS12_DIES1_ZONE3", precision = 15, scale = 3)
+	public BigDecimal getPfEss12Dies1Zone3() {
+		return this.pfEss12Dies1Zone3;
 	}
 
-	public void setPfEss1t12Zone3(BigDecimal pfEss1t12Zone3) {
-		this.pfEss1t12Zone3 = pfEss1t12Zone3;
+	public void setPfEss12Dies1Zone3(BigDecimal pfEss12Dies1Zone3) {
+		this.pfEss12Dies1Zone3 = pfEss12Dies1Zone3;
 	}
 
-	@Column(name = "PF_ESS2T12_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getPfEss2t12Zone3() {
-		return this.pfEss2t12Zone3;
+	@Column(name = "PF_ESS36_DIES24_ZONE3", precision = 15, scale = 3)
+	public BigDecimal getPfEss36Dies24Zone3() {
+		return this.pfEss36Dies24Zone3;
 	}
 
-	public void setPfEss2t12Zone3(BigDecimal pfEss2t12Zone3) {
-		this.pfEss2t12Zone3 = pfEss2t12Zone3;
+	public void setPfEss36Dies24Zone3(BigDecimal pfEss36Dies24Zone3) {
+		this.pfEss36Dies24Zone3 = pfEss36Dies24Zone3;
 	}
 
-	@Column(name = "PF_ESS3T12_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getPfEss3t12Zone3() {
-		return this.pfEss3t12Zone3;
+	@Column(name = "PF_ESS79_DIES56_ZONE3", precision = 15, scale = 3)
+	public BigDecimal getPfEss79Dies56Zone3() {
+		return this.pfEss79Dies56Zone3;
 	}
 
-	public void setPfEss3t12Zone3(BigDecimal pfEss3t12Zone3) {
-		this.pfEss3t12Zone3 = pfEss3t12Zone3;
+	public void setPfEss79Dies56Zone3(BigDecimal pfEss79Dies56Zone3) {
+		this.pfEss79Dies56Zone3 = pfEss79Dies56Zone3;
 	}
 
-	@Column(name = "PF_ESS4T12_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getPfEss4t12Zone3() {
-		return this.pfEss4t12Zone3;
+	@Column(name = "PF_ESS1011_DIES78_ZONE3", precision = 15, scale = 3)
+	public BigDecimal getPfEss1011Dies78Zone3() {
+		return this.pfEss1011Dies78Zone3;
 	}
 
-	public void setPfEss4t12Zone3(BigDecimal pfEss4t12Zone3) {
-		this.pfEss4t12Zone3 = pfEss4t12Zone3;
+	public void setPfEss1011Dies78Zone3(BigDecimal pfEss1011Dies78Zone3) {
+		this.pfEss1011Dies78Zone3 = pfEss1011Dies78Zone3;
 	}
 
-	@Column(name = "PF_ESS5T12_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getPfEss5t12Zone3() {
-		return this.pfEss5t12Zone3;
+	@Column(name = "PF_ESS12_DIES9_ZONE3", precision = 15, scale = 3)
+	public BigDecimal getPfEss12Dies9Zone3() {
+		return this.pfEss12Dies9Zone3;
 	}
 
-	public void setPfEss5t12Zone3(BigDecimal pfEss5t12Zone3) {
-		this.pfEss5t12Zone3 = pfEss5t12Zone3;
-	}
-
-	@Column(name = "PF_DIE1T12_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getPfDie1t12Zone1() {
-		return this.pfDie1t12Zone1;
-	}
-
-	public void setPfDie1t12Zone1(BigDecimal pfDie1t12Zone1) {
-		this.pfDie1t12Zone1 = pfDie1t12Zone1;
-	}
-
-	@Column(name = "PF_DIE2T12_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getPfDie2t12Zone1() {
-		return this.pfDie2t12Zone1;
-	}
-
-	public void setPfDie2t12Zone1(BigDecimal pfDie2t12Zone1) {
-		this.pfDie2t12Zone1 = pfDie2t12Zone1;
-	}
-
-	@Column(name = "PF_DIE3T12_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getPfDie3t12Zone1() {
-		return this.pfDie3t12Zone1;
-	}
-
-	public void setPfDie3t12Zone1(BigDecimal pfDie3t12Zone1) {
-		this.pfDie3t12Zone1 = pfDie3t12Zone1;
-	}
-
-	@Column(name = "PF_DIE4T12_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getPfDie4t12Zone1() {
-		return this.pfDie4t12Zone1;
-	}
-
-	public void setPfDie4t12Zone1(BigDecimal pfDie4t12Zone1) {
-		this.pfDie4t12Zone1 = pfDie4t12Zone1;
-	}
-
-	@Column(name = "PF_DIE5T12_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getPfDie5t12Zone1() {
-		return this.pfDie5t12Zone1;
-	}
-
-	public void setPfDie5t12Zone1(BigDecimal pfDie5t12Zone1) {
-		this.pfDie5t12Zone1 = pfDie5t12Zone1;
-	}
-
-	@Column(name = "PF_DIE1T12_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getPfDie1t12Zone2() {
-		return this.pfDie1t12Zone2;
-	}
-
-	public void setPfDie1t12Zone2(BigDecimal pfDie1t12Zone2) {
-		this.pfDie1t12Zone2 = pfDie1t12Zone2;
-	}
-
-	@Column(name = "PF_DIE2T12_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getPfDie2t12Zone2() {
-		return this.pfDie2t12Zone2;
-	}
-
-	public void setPfDie2t12Zone2(BigDecimal pfDie2t12Zone2) {
-		this.pfDie2t12Zone2 = pfDie2t12Zone2;
-	}
-
-	@Column(name = "PF_DIE3T12_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getPfDie3t12Zone2() {
-		return this.pfDie3t12Zone2;
-	}
-
-	public void setPfDie3t12Zone2(BigDecimal pfDie3t12Zone2) {
-		this.pfDie3t12Zone2 = pfDie3t12Zone2;
-	}
-
-	@Column(name = "PF_DIE4T12_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getPfDie4t12Zone2() {
-		return this.pfDie4t12Zone2;
-	}
-
-	public void setPfDie4t12Zone2(BigDecimal pfDie4t12Zone2) {
-		this.pfDie4t12Zone2 = pfDie4t12Zone2;
-	}
-
-	@Column(name = "PF_DIE5T12_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getPfDie5t12Zone2() {
-		return this.pfDie5t12Zone2;
-	}
-
-	public void setPfDie5t12Zone2(BigDecimal pfDie5t12Zone2) {
-		this.pfDie5t12Zone2 = pfDie5t12Zone2;
-	}
-
-	@Column(name = "PF_DIE1T12_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getPfDie1t12Zone3() {
-		return this.pfDie1t12Zone3;
-	}
-
-	public void setPfDie1t12Zone3(BigDecimal pfDie1t12Zone3) {
-		this.pfDie1t12Zone3 = pfDie1t12Zone3;
-	}
-
-	@Column(name = "PF_DIE2T12_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getPfDie2t12Zone3() {
-		return this.pfDie2t12Zone3;
-	}
-
-	public void setPfDie2t12Zone3(BigDecimal pfDie2t12Zone3) {
-		this.pfDie2t12Zone3 = pfDie2t12Zone3;
-	}
-
-	@Column(name = "PF_DIE3T12_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getPfDie3t12Zone3() {
-		return this.pfDie3t12Zone3;
-	}
-
-	public void setPfDie3t12Zone3(BigDecimal pfDie3t12Zone3) {
-		this.pfDie3t12Zone3 = pfDie3t12Zone3;
-	}
-
-	@Column(name = "PF_DIE4T12_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getPfDie4t12Zone3() {
-		return this.pfDie4t12Zone3;
-	}
-
-	public void setPfDie4t12Zone3(BigDecimal pfDie4t12Zone3) {
-		this.pfDie4t12Zone3 = pfDie4t12Zone3;
-	}
-
-	@Column(name = "PF_DIE5T12_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getPfDie5t12Zone3() {
-		return this.pfDie5t12Zone3;
-	}
-
-	public void setPfDie5t12Zone3(BigDecimal pfDie5t12Zone3) {
-		this.pfDie5t12Zone3 = pfDie5t12Zone3;
+	public void setPfEss12Dies9Zone3(BigDecimal pfEss12Dies9Zone3) {
+		this.pfEss12Dies9Zone3 = pfEss12Dies9Zone3;
 	}
 
 	@Column(name = "TAUX_MAJREDT12_REMORQUE", precision = 12, scale = 0)

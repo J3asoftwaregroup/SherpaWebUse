@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:51:51 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -34,6 +34,7 @@ public class Morale implements java.io.Serializable {
 	private String email;
 	private String loginPers;
 	private String motPassePers;
+	private String typeWebUser;
 	private String dirigeant;
 	private String numCc;
 	private String numRc;
@@ -49,7 +50,8 @@ public class Morale implements java.io.Serializable {
 	public Morale(Personne personne, Date datePers, String nomRaisonSociale,
 			String adresseGeo, String adresse, String telephone, String fax,
 			String email, String loginPers, String motPassePers,
-			String dirigeant, String numCc, String numRc, String mailDirigeant) {
+			String typeWebUser, String dirigeant, String numCc, String numRc,
+			String mailDirigeant) {
 		this.personne = personne;
 		this.datePers = datePers;
 		this.nomRaisonSociale = nomRaisonSociale;
@@ -60,6 +62,7 @@ public class Morale implements java.io.Serializable {
 		this.email = email;
 		this.loginPers = loginPers;
 		this.motPassePers = motPassePers;
+		this.typeWebUser = typeWebUser;
 		this.dirigeant = dirigeant;
 		this.numCc = numCc;
 		this.numRc = numRc;
@@ -168,6 +171,15 @@ public class Morale implements java.io.Serializable {
 
 	public void setMotPassePers(String motPassePers) {
 		this.motPassePers = motPassePers;
+	}
+
+	@Column(name = "TYPE_WEB_USER", length = 100)
+	public String getTypeWebUser() {
+		return this.typeWebUser;
+	}
+
+	public void setTypeWebUser(String typeWebUser) {
+		this.typeWebUser = typeWebUser;
 	}
 
 	@Column(name = "DIRIGEANT", length = 70)

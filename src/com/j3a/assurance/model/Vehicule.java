@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:51:51 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -55,7 +55,7 @@ public class Vehicule implements java.io.Serializable {
 	private String carrosserie;
 	private Boolean remorque;
 	private String typeTransporte;
-	private Integer nbreTransporte;
+	private Short nbreTransporte;
 	private Set<Attestation> attestations = new HashSet<Attestation>(0);
 	private Set<HistoMouvement> histoMouvements = new HashSet<HistoMouvement>(0);
 	private Set<ApporteurVehicule> apporteurVehicules = new HashSet<ApporteurVehicule>(
@@ -89,7 +89,7 @@ public class Vehicule implements java.io.Serializable {
 			BigDecimal puissReelle, Short nbrePlaceCab, Short nbrePlaceHorscab,
 			BigDecimal valNeuf, BigDecimal valVenale, String couleur,
 			String protection, String carrosserie, Boolean remorque,
-			String typeTransporte, Integer nbreTransporte,
+			String typeTransporte, Short nbreTransporte,
 			Set<Attestation> attestations, Set<HistoMouvement> histoMouvements,
 			Set<ApporteurVehicule> apporteurVehicules,
 			Set<VehiculeZoneGeographique> vehiculeZoneGeographiques,
@@ -425,11 +425,11 @@ public class Vehicule implements java.io.Serializable {
 	}
 
 	@Column(name = "NBRE_TRANSPORTE")
-	public Integer getNbreTransporte() {
+	public Short getNbreTransporte() {
 		return this.nbreTransporte;
 	}
 
-	public void setNbreTransporte(Integer nbreTransporte) {
+	public void setNbreTransporte(Short nbreTransporte) {
 		this.nbreTransporte = nbreTransporte;
 	}
 

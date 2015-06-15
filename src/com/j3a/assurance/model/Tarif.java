@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:51:51 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -37,6 +37,7 @@ public class Tarif implements java.io.Serializable {
 	private String libelleTarif;
 	private BigDecimal drDomage;
 	private BigDecimal drSansDomage;
+	private Float tauxDrPrimeFinale;
 	private BigDecimal immobVehicule;
 	private BigDecimal graAnnuelle;
 	private BigDecimal graCourt;
@@ -56,6 +57,16 @@ public class Tarif implements java.io.Serializable {
 	private Float tauxFranchVol;
 	private Float tauxPrimeVolAcc;
 	private Float tauxFranchVolAcc;
+	private BigDecimal primeVol11;
+	private BigDecimal primeVol12;
+	private BigDecimal primeVol13;
+	private BigDecimal primeVol14;
+	private BigDecimal primeVol15;
+	private BigDecimal primeVol21;
+	private BigDecimal primeVol22;
+	private BigDecimal primeVol23;
+	private BigDecimal primeVol24;
+	private BigDecimal primeVol25;
 	private Float tauxVandal;
 	private BigDecimal primeVandal;
 	private Float franchVandal;
@@ -63,6 +74,17 @@ public class Tarif implements java.io.Serializable {
 	private Float tauxPrimeIncendie2;
 	private Float tauxPrimeIncendie3;
 	private Float tauxFranchIncendie;
+	private BigDecimal primeIncendie11;
+	private BigDecimal primeIncendie12;
+	private BigDecimal primeIncendie13;
+	private BigDecimal primeIncendie14;
+	private BigDecimal primeIncendie15;
+	private BigDecimal primeIncendie21;
+	private BigDecimal primeIncendie22;
+	private BigDecimal primeIncendie23;
+	private BigDecimal primeIncendie24;
+	private BigDecimal primeIncendie25;
+	private Float surprimeTranspHyd;
 	private BigDecimal srDeces1;
 	private BigDecimal srDeces2;
 	private BigDecimal srDeces3;
@@ -118,17 +140,28 @@ public class Tarif implements java.io.Serializable {
 			RcTarif3 rcTarif3, RcTarif4 rcTarif4, RcTarif5 rcTarif5,
 			RcTarif6 rcTarif6, RcTarif7 rcTarif7, RcTarif8 rcTarif8,
 			RcTarif9 rcTarif9, String libelleTarif, BigDecimal drDomage,
-			BigDecimal drSansDomage, BigDecimal immobVehicule,
-			BigDecimal graAnnuelle, BigDecimal graCourt, Float tauxBgOpt1,
-			Float franchBgOpt1, Float tauxBgOpt2, Float franchBgOpt2,
-			Float tauxBgOpt3, Float francBgOpt3, Float tauxPrimeDomCol,
-			Float tauxFranchDomCol, Float tauxPrimeDomAcc,
-			Float tauxFranchDomAcc, Float tauxPrimeVol1, Float tauxPrimeVol2,
-			Float tauxPrimeVol3, Float tauxFranchVol, Float tauxPrimeVolAcc,
-			Float tauxFranchVolAcc, Float tauxVandal, BigDecimal primeVandal,
-			Float franchVandal, Float tauxPrimeIncendie1,
-			Float tauxPrimeIncendie2, Float tauxPrimeIncendie3,
-			Float tauxFranchIncendie, BigDecimal srDeces1, BigDecimal srDeces2,
+			BigDecimal drSansDomage, Float tauxDrPrimeFinale,
+			BigDecimal immobVehicule, BigDecimal graAnnuelle,
+			BigDecimal graCourt, Float tauxBgOpt1, Float franchBgOpt1,
+			Float tauxBgOpt2, Float franchBgOpt2, Float tauxBgOpt3,
+			Float francBgOpt3, Float tauxPrimeDomCol, Float tauxFranchDomCol,
+			Float tauxPrimeDomAcc, Float tauxFranchDomAcc, Float tauxPrimeVol1,
+			Float tauxPrimeVol2, Float tauxPrimeVol3, Float tauxFranchVol,
+			Float tauxPrimeVolAcc, Float tauxFranchVolAcc,
+			BigDecimal primeVol11, BigDecimal primeVol12,
+			BigDecimal primeVol13, BigDecimal primeVol14,
+			BigDecimal primeVol15, BigDecimal primeVol21,
+			BigDecimal primeVol22, BigDecimal primeVol23,
+			BigDecimal primeVol24, BigDecimal primeVol25, Float tauxVandal,
+			BigDecimal primeVandal, Float franchVandal,
+			Float tauxPrimeIncendie1, Float tauxPrimeIncendie2,
+			Float tauxPrimeIncendie3, Float tauxFranchIncendie,
+			BigDecimal primeIncendie11, BigDecimal primeIncendie12,
+			BigDecimal primeIncendie13, BigDecimal primeIncendie14,
+			BigDecimal primeIncendie15, BigDecimal primeIncendie21,
+			BigDecimal primeIncendie22, BigDecimal primeIncendie23,
+			BigDecimal primeIncendie24, BigDecimal primeIncendie25,
+			Float surprimeTranspHyd, BigDecimal srDeces1, BigDecimal srDeces2,
 			BigDecimal srDeces3, BigDecimal srIpt1, BigDecimal srIpt2,
 			BigDecimal srIpt3, BigDecimal srFraisTrait1,
 			BigDecimal srFraisTrait2, BigDecimal srFraisTrait3,
@@ -156,6 +189,7 @@ public class Tarif implements java.io.Serializable {
 		this.libelleTarif = libelleTarif;
 		this.drDomage = drDomage;
 		this.drSansDomage = drSansDomage;
+		this.tauxDrPrimeFinale = tauxDrPrimeFinale;
 		this.immobVehicule = immobVehicule;
 		this.graAnnuelle = graAnnuelle;
 		this.graCourt = graCourt;
@@ -175,6 +209,16 @@ public class Tarif implements java.io.Serializable {
 		this.tauxFranchVol = tauxFranchVol;
 		this.tauxPrimeVolAcc = tauxPrimeVolAcc;
 		this.tauxFranchVolAcc = tauxFranchVolAcc;
+		this.primeVol11 = primeVol11;
+		this.primeVol12 = primeVol12;
+		this.primeVol13 = primeVol13;
+		this.primeVol14 = primeVol14;
+		this.primeVol15 = primeVol15;
+		this.primeVol21 = primeVol21;
+		this.primeVol22 = primeVol22;
+		this.primeVol23 = primeVol23;
+		this.primeVol24 = primeVol24;
+		this.primeVol25 = primeVol25;
 		this.tauxVandal = tauxVandal;
 		this.primeVandal = primeVandal;
 		this.franchVandal = franchVandal;
@@ -182,6 +226,17 @@ public class Tarif implements java.io.Serializable {
 		this.tauxPrimeIncendie2 = tauxPrimeIncendie2;
 		this.tauxPrimeIncendie3 = tauxPrimeIncendie3;
 		this.tauxFranchIncendie = tauxFranchIncendie;
+		this.primeIncendie11 = primeIncendie11;
+		this.primeIncendie12 = primeIncendie12;
+		this.primeIncendie13 = primeIncendie13;
+		this.primeIncendie14 = primeIncendie14;
+		this.primeIncendie15 = primeIncendie15;
+		this.primeIncendie21 = primeIncendie21;
+		this.primeIncendie22 = primeIncendie22;
+		this.primeIncendie23 = primeIncendie23;
+		this.primeIncendie24 = primeIncendie24;
+		this.primeIncendie25 = primeIncendie25;
+		this.surprimeTranspHyd = surprimeTranspHyd;
 		this.srDeces1 = srDeces1;
 		this.srDeces2 = srDeces2;
 		this.srDeces3 = srDeces3;
@@ -366,6 +421,15 @@ public class Tarif implements java.io.Serializable {
 		this.drSansDomage = drSansDomage;
 	}
 
+	@Column(name = "TAUX_DR_PRIME_FINALE", precision = 12, scale = 0)
+	public Float getTauxDrPrimeFinale() {
+		return this.tauxDrPrimeFinale;
+	}
+
+	public void setTauxDrPrimeFinale(Float tauxDrPrimeFinale) {
+		this.tauxDrPrimeFinale = tauxDrPrimeFinale;
+	}
+
 	@Column(name = "IMMOB_VEHICULE", precision = 15, scale = 3)
 	public BigDecimal getImmobVehicule() {
 		return this.immobVehicule;
@@ -537,6 +601,96 @@ public class Tarif implements java.io.Serializable {
 		this.tauxFranchVolAcc = tauxFranchVolAcc;
 	}
 
+	@Column(name = "PRIME_VOL11", precision = 15, scale = 3)
+	public BigDecimal getPrimeVol11() {
+		return this.primeVol11;
+	}
+
+	public void setPrimeVol11(BigDecimal primeVol11) {
+		this.primeVol11 = primeVol11;
+	}
+
+	@Column(name = "PRIME_VOL12", precision = 15, scale = 3)
+	public BigDecimal getPrimeVol12() {
+		return this.primeVol12;
+	}
+
+	public void setPrimeVol12(BigDecimal primeVol12) {
+		this.primeVol12 = primeVol12;
+	}
+
+	@Column(name = "PRIME_VOL13", precision = 15, scale = 3)
+	public BigDecimal getPrimeVol13() {
+		return this.primeVol13;
+	}
+
+	public void setPrimeVol13(BigDecimal primeVol13) {
+		this.primeVol13 = primeVol13;
+	}
+
+	@Column(name = "PRIME_VOL14", precision = 15, scale = 3)
+	public BigDecimal getPrimeVol14() {
+		return this.primeVol14;
+	}
+
+	public void setPrimeVol14(BigDecimal primeVol14) {
+		this.primeVol14 = primeVol14;
+	}
+
+	@Column(name = "PRIME_VOL15", precision = 15, scale = 3)
+	public BigDecimal getPrimeVol15() {
+		return this.primeVol15;
+	}
+
+	public void setPrimeVol15(BigDecimal primeVol15) {
+		this.primeVol15 = primeVol15;
+	}
+
+	@Column(name = "PRIME_VOL21", precision = 15, scale = 3)
+	public BigDecimal getPrimeVol21() {
+		return this.primeVol21;
+	}
+
+	public void setPrimeVol21(BigDecimal primeVol21) {
+		this.primeVol21 = primeVol21;
+	}
+
+	@Column(name = "PRIME_VOL22", precision = 15, scale = 3)
+	public BigDecimal getPrimeVol22() {
+		return this.primeVol22;
+	}
+
+	public void setPrimeVol22(BigDecimal primeVol22) {
+		this.primeVol22 = primeVol22;
+	}
+
+	@Column(name = "PRIME_VOL23", precision = 15, scale = 3)
+	public BigDecimal getPrimeVol23() {
+		return this.primeVol23;
+	}
+
+	public void setPrimeVol23(BigDecimal primeVol23) {
+		this.primeVol23 = primeVol23;
+	}
+
+	@Column(name = "PRIME_VOL24", precision = 15, scale = 3)
+	public BigDecimal getPrimeVol24() {
+		return this.primeVol24;
+	}
+
+	public void setPrimeVol24(BigDecimal primeVol24) {
+		this.primeVol24 = primeVol24;
+	}
+
+	@Column(name = "PRIME_VOL25", precision = 15, scale = 3)
+	public BigDecimal getPrimeVol25() {
+		return this.primeVol25;
+	}
+
+	public void setPrimeVol25(BigDecimal primeVol25) {
+		this.primeVol25 = primeVol25;
+	}
+
 	@Column(name = "TAUX_VANDAL", precision = 12, scale = 0)
 	public Float getTauxVandal() {
 		return this.tauxVandal;
@@ -598,6 +752,105 @@ public class Tarif implements java.io.Serializable {
 
 	public void setTauxFranchIncendie(Float tauxFranchIncendie) {
 		this.tauxFranchIncendie = tauxFranchIncendie;
+	}
+
+	@Column(name = "PRIME_INCENDIE11", precision = 15, scale = 3)
+	public BigDecimal getPrimeIncendie11() {
+		return this.primeIncendie11;
+	}
+
+	public void setPrimeIncendie11(BigDecimal primeIncendie11) {
+		this.primeIncendie11 = primeIncendie11;
+	}
+
+	@Column(name = "PRIME_INCENDIE12", precision = 15, scale = 3)
+	public BigDecimal getPrimeIncendie12() {
+		return this.primeIncendie12;
+	}
+
+	public void setPrimeIncendie12(BigDecimal primeIncendie12) {
+		this.primeIncendie12 = primeIncendie12;
+	}
+
+	@Column(name = "PRIME_INCENDIE13", precision = 15, scale = 3)
+	public BigDecimal getPrimeIncendie13() {
+		return this.primeIncendie13;
+	}
+
+	public void setPrimeIncendie13(BigDecimal primeIncendie13) {
+		this.primeIncendie13 = primeIncendie13;
+	}
+
+	@Column(name = "PRIME_INCENDIE14", precision = 15, scale = 3)
+	public BigDecimal getPrimeIncendie14() {
+		return this.primeIncendie14;
+	}
+
+	public void setPrimeIncendie14(BigDecimal primeIncendie14) {
+		this.primeIncendie14 = primeIncendie14;
+	}
+
+	@Column(name = "PRIME_INCENDIE15", precision = 15, scale = 3)
+	public BigDecimal getPrimeIncendie15() {
+		return this.primeIncendie15;
+	}
+
+	public void setPrimeIncendie15(BigDecimal primeIncendie15) {
+		this.primeIncendie15 = primeIncendie15;
+	}
+
+	@Column(name = "PRIME_INCENDIE21", precision = 15, scale = 3)
+	public BigDecimal getPrimeIncendie21() {
+		return this.primeIncendie21;
+	}
+
+	public void setPrimeIncendie21(BigDecimal primeIncendie21) {
+		this.primeIncendie21 = primeIncendie21;
+	}
+
+	@Column(name = "PRIME_INCENDIE22", precision = 15, scale = 3)
+	public BigDecimal getPrimeIncendie22() {
+		return this.primeIncendie22;
+	}
+
+	public void setPrimeIncendie22(BigDecimal primeIncendie22) {
+		this.primeIncendie22 = primeIncendie22;
+	}
+
+	@Column(name = "PRIME_INCENDIE23", precision = 15, scale = 3)
+	public BigDecimal getPrimeIncendie23() {
+		return this.primeIncendie23;
+	}
+
+	public void setPrimeIncendie23(BigDecimal primeIncendie23) {
+		this.primeIncendie23 = primeIncendie23;
+	}
+
+	@Column(name = "PRIME_INCENDIE24", precision = 15, scale = 3)
+	public BigDecimal getPrimeIncendie24() {
+		return this.primeIncendie24;
+	}
+
+	public void setPrimeIncendie24(BigDecimal primeIncendie24) {
+		this.primeIncendie24 = primeIncendie24;
+	}
+
+	@Column(name = "PRIME_INCENDIE25", precision = 15, scale = 3)
+	public BigDecimal getPrimeIncendie25() {
+		return this.primeIncendie25;
+	}
+
+	public void setPrimeIncendie25(BigDecimal primeIncendie25) {
+		this.primeIncendie25 = primeIncendie25;
+	}
+
+	@Column(name = "SURPRIME_TRANSP_HYD", precision = 12, scale = 0)
+	public Float getSurprimeTranspHyd() {
+		return this.surprimeTranspHyd;
+	}
+
+	public void setSurprimeTranspHyd(Float surprimeTranspHyd) {
+		this.surprimeTranspHyd = surprimeTranspHyd;
 	}
 
 	@Column(name = "SR_DECES1", precision = 15, scale = 3)

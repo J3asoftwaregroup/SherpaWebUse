@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:51:51 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -40,6 +40,7 @@ public class Physique implements java.io.Serializable {
 	private String email;
 	private String loginPers;
 	private String motPassePers;
+	private String typeWebUser;
 	private String prenomPers;
 	private Date dateNaissPers;
 	private String lieuNaissPers;
@@ -62,10 +63,11 @@ public class Physique implements java.io.Serializable {
 	public Physique(Personne personne, Sexe sexe, Date datePers,
 			String nomRaisonSociale, String adresseGeo, String adresse,
 			String telephone, String fax, String email, String loginPers,
-			String motPassePers, String prenomPers, Date dateNaissPers,
-			String lieuNaissPers, String situationMatPers, String numPiecePers,
-			String titre, String profession, String categorieProfessionnelle,
-			String typePiece, Set<Permis> permises) {
+			String motPassePers, String typeWebUser, String prenomPers,
+			Date dateNaissPers, String lieuNaissPers, String situationMatPers,
+			String numPiecePers, String titre, String profession,
+			String categorieProfessionnelle, String typePiece,
+			Set<Permis> permises) {
 		this.personne = personne;
 		this.sexe = sexe;
 		this.datePers = datePers;
@@ -77,6 +79,7 @@ public class Physique implements java.io.Serializable {
 		this.email = email;
 		this.loginPers = loginPers;
 		this.motPassePers = motPassePers;
+		this.typeWebUser = typeWebUser;
 		this.prenomPers = prenomPers;
 		this.dateNaissPers = dateNaissPers;
 		this.lieuNaissPers = lieuNaissPers;
@@ -201,6 +204,15 @@ public class Physique implements java.io.Serializable {
 
 	public void setMotPassePers(String motPassePers) {
 		this.motPassePers = motPassePers;
+	}
+
+	@Column(name = "TYPE_WEB_USER", length = 100)
+	public String getTypeWebUser() {
+		return this.typeWebUser;
+	}
+
+	public void setTypeWebUser(String typeWebUser) {
+		this.typeWebUser = typeWebUser;
 	}
 
 	@Column(name = "PRENOM_PERS", length = 70)
