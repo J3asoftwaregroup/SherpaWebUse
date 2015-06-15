@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -55,11 +55,15 @@ public class GestionConfiee implements java.io.Serializable {
 	private BigDecimal surprimeGc;
 	private BigDecimal primeTotEnftGc;
 	private BigDecimal primeTotaleGc;
-	private Set gestionnaireGcs = new HashSet(0);
-	private Set apporteurGestionConfiees = new HashSet(0);
-	private Set histoGestionConfiees = new HashSet(0);
-	private Set gestionConfieFormules = new HashSet(0);
-	private Set gestionConfieeSinistres = new HashSet(0);
+	private Set<GestionnaireGc> gestionnaireGcs = new HashSet<GestionnaireGc>(0);
+	private Set<ApporteurGestionConfiee> apporteurGestionConfiees = new HashSet<ApporteurGestionConfiee>(
+			0);
+	private Set<HistoGestionConfiee> histoGestionConfiees = new HashSet<HistoGestionConfiee>(
+			0);
+	private Set<GestionConfieFormule> gestionConfieFormules = new HashSet<GestionConfieFormule>(
+			0);
+	private Set<GestionConfieeSinistre> gestionConfieeSinistres = new HashSet<GestionConfieeSinistre>(
+			0);
 
 	public GestionConfiee() {
 	}
@@ -84,9 +88,11 @@ public class GestionConfiee implements java.io.Serializable {
 			Integer nbreRetEnftGc, BigDecimal primeEnfant,
 			BigDecimal primeRetEnftGc, BigDecimal surprimeGc,
 			BigDecimal primeTotEnftGc, BigDecimal primeTotaleGc,
-			Set gestionnaireGcs, Set apporteurGestionConfiees,
-			Set histoGestionConfiees, Set gestionConfieFormules,
-			Set gestionConfieeSinistres) {
+			Set<GestionnaireGc> gestionnaireGcs,
+			Set<ApporteurGestionConfiee> apporteurGestionConfiees,
+			Set<HistoGestionConfiee> histoGestionConfiees,
+			Set<GestionConfieFormule> gestionConfieFormules,
+			Set<GestionConfieeSinistre> gestionConfieeSinistres) {
 		this.codeGestionConfie = codeGestionConfie;
 		this.categorie = categorie;
 		this.classeGc = classeGc;
@@ -440,47 +446,51 @@ public class GestionConfiee implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "gestionConfiee")
-	public Set getGestionnaireGcs() {
+	public Set<GestionnaireGc> getGestionnaireGcs() {
 		return this.gestionnaireGcs;
 	}
 
-	public void setGestionnaireGcs(Set gestionnaireGcs) {
+	public void setGestionnaireGcs(Set<GestionnaireGc> gestionnaireGcs) {
 		this.gestionnaireGcs = gestionnaireGcs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "gestionConfiee")
-	public Set getApporteurGestionConfiees() {
+	public Set<ApporteurGestionConfiee> getApporteurGestionConfiees() {
 		return this.apporteurGestionConfiees;
 	}
 
-	public void setApporteurGestionConfiees(Set apporteurGestionConfiees) {
+	public void setApporteurGestionConfiees(
+			Set<ApporteurGestionConfiee> apporteurGestionConfiees) {
 		this.apporteurGestionConfiees = apporteurGestionConfiees;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "gestionConfiee")
-	public Set getHistoGestionConfiees() {
+	public Set<HistoGestionConfiee> getHistoGestionConfiees() {
 		return this.histoGestionConfiees;
 	}
 
-	public void setHistoGestionConfiees(Set histoGestionConfiees) {
+	public void setHistoGestionConfiees(
+			Set<HistoGestionConfiee> histoGestionConfiees) {
 		this.histoGestionConfiees = histoGestionConfiees;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "gestionConfiee")
-	public Set getGestionConfieFormules() {
+	public Set<GestionConfieFormule> getGestionConfieFormules() {
 		return this.gestionConfieFormules;
 	}
 
-	public void setGestionConfieFormules(Set gestionConfieFormules) {
+	public void setGestionConfieFormules(
+			Set<GestionConfieFormule> gestionConfieFormules) {
 		this.gestionConfieFormules = gestionConfieFormules;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "gestionConfiee")
-	public Set getGestionConfieeSinistres() {
+	public Set<GestionConfieeSinistre> getGestionConfieeSinistres() {
 		return this.gestionConfieeSinistres;
 	}
 
-	public void setGestionConfieeSinistres(Set gestionConfieeSinistres) {
+	public void setGestionConfieeSinistres(
+			Set<GestionConfieeSinistre> gestionConfieeSinistres) {
 		this.gestionConfieeSinistres = gestionConfieeSinistres;
 	}
 

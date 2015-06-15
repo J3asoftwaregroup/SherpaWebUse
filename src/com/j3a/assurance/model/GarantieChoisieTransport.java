@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -31,7 +31,8 @@ public class GarantieChoisieTransport implements java.io.Serializable {
 	private BigDecimal montantGaranties;
 	private BigDecimal accessoiretrsp;
 	private String codeAvenantTransport;
-	private Set garantieGarantieChoisieTransports = new HashSet(0);
+	private Set<GarantieGarantieChoisieTransport> garantieGarantieChoisieTransports = new HashSet<GarantieGarantieChoisieTransport>(
+			0);
 
 	public GarantieChoisieTransport() {
 	}
@@ -40,11 +41,15 @@ public class GarantieChoisieTransport implements java.io.Serializable {
 		this.codeGarantieChoisieTransport = codeGarantieChoisieTransport;
 	}
 
-	public GarantieChoisieTransport(String codeGarantieChoisieTransport,
-			Aliment aliment, String libelleGarantieChosie,
-			Date dateGarantieChoisie, BigDecimal montantGaranties,
-			BigDecimal accessoiretrsp, String codeAvenantTransport,
-			Set garantieGarantieChoisieTransports) {
+	public GarantieChoisieTransport(
+			String codeGarantieChoisieTransport,
+			Aliment aliment,
+			String libelleGarantieChosie,
+			Date dateGarantieChoisie,
+			BigDecimal montantGaranties,
+			BigDecimal accessoiretrsp,
+			String codeAvenantTransport,
+			Set<GarantieGarantieChoisieTransport> garantieGarantieChoisieTransports) {
 		this.codeGarantieChoisieTransport = codeGarantieChoisieTransport;
 		this.aliment = aliment;
 		this.libelleGarantieChosie = libelleGarantieChosie;
@@ -123,12 +128,12 @@ public class GarantieChoisieTransport implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantieChoisieTransport")
-	public Set getGarantieGarantieChoisieTransports() {
+	public Set<GarantieGarantieChoisieTransport> getGarantieGarantieChoisieTransports() {
 		return this.garantieGarantieChoisieTransports;
 	}
 
 	public void setGarantieGarantieChoisieTransports(
-			Set garantieGarantieChoisieTransports) {
+			Set<GarantieGarantieChoisieTransport> garantieGarantieChoisieTransports) {
 		this.garantieGarantieChoisieTransports = garantieGarantieChoisieTransports;
 	}
 

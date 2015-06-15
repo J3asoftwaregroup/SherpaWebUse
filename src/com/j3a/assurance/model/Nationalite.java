@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +20,8 @@ public class Nationalite implements java.io.Serializable {
 
 	private int codeNationalite;
 	private String libelleNationalite;
-	private Set personneNationalites = new HashSet(0);
+	private Set<PersonneNationalite> personneNationalites = new HashSet<PersonneNationalite>(
+			0);
 
 	public Nationalite() {
 	}
@@ -30,7 +31,7 @@ public class Nationalite implements java.io.Serializable {
 	}
 
 	public Nationalite(int codeNationalite, String libelleNationalite,
-			Set personneNationalites) {
+			Set<PersonneNationalite> personneNationalites) {
 		this.codeNationalite = codeNationalite;
 		this.libelleNationalite = libelleNationalite;
 		this.personneNationalites = personneNationalites;
@@ -56,11 +57,12 @@ public class Nationalite implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nationalite")
-	public Set getPersonneNationalites() {
+	public Set<PersonneNationalite> getPersonneNationalites() {
 		return this.personneNationalites;
 	}
 
-	public void setPersonneNationalites(Set personneNationalites) {
+	public void setPersonneNationalites(
+			Set<PersonneNationalite> personneNationalites) {
 		this.personneNationalites = personneNationalites;
 	}
 

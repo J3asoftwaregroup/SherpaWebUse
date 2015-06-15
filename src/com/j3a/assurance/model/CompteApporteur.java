@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -30,7 +30,7 @@ public class CompteApporteur implements java.io.Serializable {
 	private BigDecimal totalComApp;
 	private BigDecimal totalComPaye;
 	private BigDecimal resteComPaye;
-	private Set apporteurs = new HashSet(0);
+	private Set<Apporteur> apporteurs = new HashSet<Apporteur>(0);
 
 	public CompteApporteur() {
 	}
@@ -42,7 +42,8 @@ public class CompteApporteur implements java.io.Serializable {
 
 	public CompteApporteur(String codeCompteApp, Apporteur apporteur,
 			Date dateCreationCompte, BigDecimal totalComApp,
-			BigDecimal totalComPaye, BigDecimal resteComPaye, Set apporteurs) {
+			BigDecimal totalComPaye, BigDecimal resteComPaye,
+			Set<Apporteur> apporteurs) {
 		this.codeCompteApp = codeCompteApp;
 		this.apporteur = apporteur;
 		this.dateCreationCompte = dateCreationCompte;
@@ -110,11 +111,11 @@ public class CompteApporteur implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "compteApporteur")
-	public Set getApporteurs() {
+	public Set<Apporteur> getApporteurs() {
 		return this.apporteurs;
 	}
 
-	public void setApporteurs(Set apporteurs) {
+	public void setApporteurs(Set<Apporteur> apporteurs) {
 		this.apporteurs = apporteurs;
 	}
 

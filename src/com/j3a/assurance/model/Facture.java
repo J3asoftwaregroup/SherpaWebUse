@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -29,9 +29,10 @@ public class Facture implements java.io.Serializable {
 	private BigDecimal montantTtcFact;
 	private String observation;
 	private String etatFacture;
-	private Set reglementSinistres = new HashSet(0);
-	private Set acteMedicals = new HashSet(0);
-	private Set expertises = new HashSet(0);
+	private Set<ReglementSinistre> reglementSinistres = new HashSet<ReglementSinistre>(
+			0);
+	private Set<ActeMedical> acteMedicals = new HashSet<ActeMedical>(0);
+	private Set<Expertise> expertises = new HashSet<Expertise>(0);
 
 	public Facture() {
 	}
@@ -43,7 +44,8 @@ public class Facture implements java.io.Serializable {
 	public Facture(String codeFacture, Date dateEmissionFact,
 			BigDecimal montantHtFact, BigDecimal tvaFact,
 			BigDecimal montantTtcFact, String observation, String etatFacture,
-			Set reglementSinistres, Set acteMedicals, Set expertises) {
+			Set<ReglementSinistre> reglementSinistres,
+			Set<ActeMedical> acteMedicals, Set<Expertise> expertises) {
 		this.codeFacture = codeFacture;
 		this.dateEmissionFact = dateEmissionFact;
 		this.montantHtFact = montantHtFact;
@@ -122,29 +124,29 @@ public class Facture implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "facture")
-	public Set getReglementSinistres() {
+	public Set<ReglementSinistre> getReglementSinistres() {
 		return this.reglementSinistres;
 	}
 
-	public void setReglementSinistres(Set reglementSinistres) {
+	public void setReglementSinistres(Set<ReglementSinistre> reglementSinistres) {
 		this.reglementSinistres = reglementSinistres;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "facture")
-	public Set getActeMedicals() {
+	public Set<ActeMedical> getActeMedicals() {
 		return this.acteMedicals;
 	}
 
-	public void setActeMedicals(Set acteMedicals) {
+	public void setActeMedicals(Set<ActeMedical> acteMedicals) {
 		this.acteMedicals = acteMedicals;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "facture")
-	public Set getExpertises() {
+	public Set<Expertise> getExpertises() {
 		return this.expertises;
 	}
 
-	public void setExpertises(Set expertises) {
+	public void setExpertises(Set<Expertise> expertises) {
 		this.expertises = expertises;
 	}
 

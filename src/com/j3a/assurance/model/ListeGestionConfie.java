@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,8 +20,9 @@ public class ListeGestionConfie implements java.io.Serializable {
 
 	private String codeListeGestionConfie;
 	private String libelleListeGestionConfie;
-	private Set avenantListeGestionConfies = new HashSet(0);
-	private Set gestionConfiees = new HashSet(0);
+	private Set<AvenantListeGestionConfie> avenantListeGestionConfies = new HashSet<AvenantListeGestionConfie>(
+			0);
+	private Set<GestionConfiee> gestionConfiees = new HashSet<GestionConfiee>(0);
 
 	public ListeGestionConfie() {
 	}
@@ -31,8 +32,9 @@ public class ListeGestionConfie implements java.io.Serializable {
 	}
 
 	public ListeGestionConfie(String codeListeGestionConfie,
-			String libelleListeGestionConfie, Set avenantListeGestionConfies,
-			Set gestionConfiees) {
+			String libelleListeGestionConfie,
+			Set<AvenantListeGestionConfie> avenantListeGestionConfies,
+			Set<GestionConfiee> gestionConfiees) {
 		this.codeListeGestionConfie = codeListeGestionConfie;
 		this.libelleListeGestionConfie = libelleListeGestionConfie;
 		this.avenantListeGestionConfies = avenantListeGestionConfies;
@@ -59,20 +61,21 @@ public class ListeGestionConfie implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeGestionConfie")
-	public Set getAvenantListeGestionConfies() {
+	public Set<AvenantListeGestionConfie> getAvenantListeGestionConfies() {
 		return this.avenantListeGestionConfies;
 	}
 
-	public void setAvenantListeGestionConfies(Set avenantListeGestionConfies) {
+	public void setAvenantListeGestionConfies(
+			Set<AvenantListeGestionConfie> avenantListeGestionConfies) {
 		this.avenantListeGestionConfies = avenantListeGestionConfies;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeGestionConfie")
-	public Set getGestionConfiees() {
+	public Set<GestionConfiee> getGestionConfiees() {
 		return this.gestionConfiees;
 	}
 
-	public void setGestionConfiees(Set gestionConfiees) {
+	public void setGestionConfiees(Set<GestionConfiee> gestionConfiees) {
 		this.gestionConfiees = gestionConfiees;
 	}
 

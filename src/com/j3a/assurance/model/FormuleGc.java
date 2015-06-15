@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,8 +21,10 @@ public class FormuleGc implements java.io.Serializable {
 	private String codeFormuleGc;
 	private String libelleFormuleGc;
 	private String couvertureFormule;
-	private Set garantieFormuleGcs = new HashSet(0);
-	private Set gestionConfieFormules = new HashSet(0);
+	private Set<GarantieFormuleGc> garantieFormuleGcs = new HashSet<GarantieFormuleGc>(
+			0);
+	private Set<GestionConfieFormule> gestionConfieFormules = new HashSet<GestionConfieFormule>(
+			0);
 
 	public FormuleGc() {
 	}
@@ -32,8 +34,9 @@ public class FormuleGc implements java.io.Serializable {
 	}
 
 	public FormuleGc(String codeFormuleGc, String libelleFormuleGc,
-			String couvertureFormule, Set garantieFormuleGcs,
-			Set gestionConfieFormules) {
+			String couvertureFormule,
+			Set<GarantieFormuleGc> garantieFormuleGcs,
+			Set<GestionConfieFormule> gestionConfieFormules) {
 		this.codeFormuleGc = codeFormuleGc;
 		this.libelleFormuleGc = libelleFormuleGc;
 		this.couvertureFormule = couvertureFormule;
@@ -70,20 +73,21 @@ public class FormuleGc implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "formuleGc")
-	public Set getGarantieFormuleGcs() {
+	public Set<GarantieFormuleGc> getGarantieFormuleGcs() {
 		return this.garantieFormuleGcs;
 	}
 
-	public void setGarantieFormuleGcs(Set garantieFormuleGcs) {
+	public void setGarantieFormuleGcs(Set<GarantieFormuleGc> garantieFormuleGcs) {
 		this.garantieFormuleGcs = garantieFormuleGcs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "formuleGc")
-	public Set getGestionConfieFormules() {
+	public Set<GestionConfieFormule> getGestionConfieFormules() {
 		return this.gestionConfieFormules;
 	}
 
-	public void setGestionConfieFormules(Set gestionConfieFormules) {
+	public void setGestionConfieFormules(
+			Set<GestionConfieFormule> gestionConfieFormules) {
 		this.gestionConfieFormules = gestionConfieFormules;
 	}
 

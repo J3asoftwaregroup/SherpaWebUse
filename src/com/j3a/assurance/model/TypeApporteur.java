@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,8 +20,9 @@ public class TypeApporteur implements java.io.Serializable {
 
 	private String idType;
 	private String libelle;
-	private Set apporteurs = new HashSet(0);
-	private Set typeApporteurCategories = new HashSet(0);
+	private Set<Apporteur> apporteurs = new HashSet<Apporteur>(0);
+	private Set<TypeApporteurCategorie> typeApporteurCategories = new HashSet<TypeApporteurCategorie>(
+			0);
 
 	public TypeApporteur() {
 	}
@@ -30,8 +31,9 @@ public class TypeApporteur implements java.io.Serializable {
 		this.idType = idType;
 	}
 
-	public TypeApporteur(String idType, String libelle, Set apporteurs,
-			Set typeApporteurCategories) {
+	public TypeApporteur(String idType, String libelle,
+			Set<Apporteur> apporteurs,
+			Set<TypeApporteurCategorie> typeApporteurCategories) {
 		this.idType = idType;
 		this.libelle = libelle;
 		this.apporteurs = apporteurs;
@@ -58,20 +60,21 @@ public class TypeApporteur implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeApporteur")
-	public Set getApporteurs() {
+	public Set<Apporteur> getApporteurs() {
 		return this.apporteurs;
 	}
 
-	public void setApporteurs(Set apporteurs) {
+	public void setApporteurs(Set<Apporteur> apporteurs) {
 		this.apporteurs = apporteurs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typeApporteur")
-	public Set getTypeApporteurCategories() {
+	public Set<TypeApporteurCategorie> getTypeApporteurCategories() {
 		return this.typeApporteurCategories;
 	}
 
-	public void setTypeApporteurCategories(Set typeApporteurCategories) {
+	public void setTypeApporteurCategories(
+			Set<TypeApporteurCategorie> typeApporteurCategories) {
 		this.typeApporteurCategories = typeApporteurCategories;
 	}
 

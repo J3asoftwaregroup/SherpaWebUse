@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -34,10 +34,10 @@ public class Contrat implements java.io.Serializable {
 	private String bareme;
 	private String modeReconduction;
 	private String typeContrat;
-	private Set sinistres = new HashSet(0);
-	private Set avenants = new HashSet(0);
-	private Set coassurances = new HashSet(0);
-	private Set reassurances = new HashSet(0);
+	private Set<Sinistre> sinistres = new HashSet<Sinistre>(0);
+	private Set<Avenant> avenants = new HashSet<Avenant>(0);
+	private Set<Coassurance> coassurances = new HashSet<Coassurance>(0);
+	private Set<Reassurance> reassurances = new HashSet<Reassurance>(0);
 
 	public Contrat() {
 	}
@@ -56,7 +56,8 @@ public class Contrat implements java.io.Serializable {
 			SocieteAssurance societeAssurance, String mentionParticuliere,
 			String remplace, String reference, BigDecimal commission,
 			String bareme, String modeReconduction, String typeContrat,
-			Set sinistres, Set avenants, Set coassurances, Set reassurances) {
+			Set<Sinistre> sinistres, Set<Avenant> avenants,
+			Set<Coassurance> coassurances, Set<Reassurance> reassurances) {
 		this.numPolice = numPolice;
 		this.apporteur = apporteur;
 		this.personne = personne;
@@ -200,38 +201,38 @@ public class Contrat implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contrat")
-	public Set getSinistres() {
+	public Set<Sinistre> getSinistres() {
 		return this.sinistres;
 	}
 
-	public void setSinistres(Set sinistres) {
+	public void setSinistres(Set<Sinistre> sinistres) {
 		this.sinistres = sinistres;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contrat")
-	public Set getAvenants() {
+	public Set<Avenant> getAvenants() {
 		return this.avenants;
 	}
 
-	public void setAvenants(Set avenants) {
+	public void setAvenants(Set<Avenant> avenants) {
 		this.avenants = avenants;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contrat")
-	public Set getCoassurances() {
+	public Set<Coassurance> getCoassurances() {
 		return this.coassurances;
 	}
 
-	public void setCoassurances(Set coassurances) {
+	public void setCoassurances(Set<Coassurance> coassurances) {
 		this.coassurances = coassurances;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contrat")
-	public Set getReassurances() {
+	public Set<Reassurance> getReassurances() {
 		return this.reassurances;
 	}
 
-	public void setReassurances(Set reassurances) {
+	public void setReassurances(Set<Reassurance> reassurances) {
 		this.reassurances = reassurances;
 	}
 

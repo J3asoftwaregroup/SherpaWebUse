@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -23,7 +23,7 @@ public class Recours implements java.io.Serializable {
 	private String raisonSocial;
 	private BigDecimal montant;
 	private String etat;
-	private Set victimes = new HashSet(0);
+	private Set<Victime> victimes = new HashSet<Victime>(0);
 
 	public Recours() {
 	}
@@ -33,7 +33,7 @@ public class Recours implements java.io.Serializable {
 	}
 
 	public Recours(String referenceTiers, String raisonSocial,
-			BigDecimal montant, String etat, Set victimes) {
+			BigDecimal montant, String etat, Set<Victime> victimes) {
 		this.referenceTiers = referenceTiers;
 		this.raisonSocial = raisonSocial;
 		this.montant = montant;
@@ -79,11 +79,11 @@ public class Recours implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "recours")
-	public Set getVictimes() {
+	public Set<Victime> getVictimes() {
 		return this.victimes;
 	}
 
-	public void setVictimes(Set victimes) {
+	public void setVictimes(Set<Victime> victimes) {
 		this.victimes = victimes;
 	}
 

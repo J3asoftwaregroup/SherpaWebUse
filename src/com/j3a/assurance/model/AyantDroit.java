@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -32,8 +32,9 @@ public class AyantDroit implements java.io.Serializable {
 	private String typeAyantDroit;
 	private String adresseAyantDroit;
 	private String contactAyantDroit;
-	private Set reglementSinistres = new HashSet(0);
-	private Set prejudices = new HashSet(0);
+	private Set<ReglementSinistre> reglementSinistres = new HashSet<ReglementSinistre>(
+			0);
+	private Set<Prejudice> prejudices = new HashSet<Prejudice>(0);
 
 	public AyantDroit() {
 	}
@@ -47,7 +48,8 @@ public class AyantDroit implements java.io.Serializable {
 			String prenom, Integer age, String sexe,
 			BigDecimal montantPrejudice, Boolean etatIndemniser,
 			String typeAyantDroit, String adresseAyantDroit,
-			String contactAyantDroit, Set reglementSinistres, Set prejudices) {
+			String contactAyantDroit,
+			Set<ReglementSinistre> reglementSinistres, Set<Prejudice> prejudices) {
 		this.codeAyantDroit = codeAyantDroit;
 		this.victime = victime;
 		this.nom = nom;
@@ -165,20 +167,20 @@ public class AyantDroit implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ayantDroit")
-	public Set getReglementSinistres() {
+	public Set<ReglementSinistre> getReglementSinistres() {
 		return this.reglementSinistres;
 	}
 
-	public void setReglementSinistres(Set reglementSinistres) {
+	public void setReglementSinistres(Set<ReglementSinistre> reglementSinistres) {
 		this.reglementSinistres = reglementSinistres;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ayantDroit")
-	public Set getPrejudices() {
+	public Set<Prejudice> getPrejudices() {
 		return this.prejudices;
 	}
 
-	public void setPrejudices(Set prejudices) {
+	public void setPrejudices(Set<Prejudice> prejudices) {
 		this.prejudices = prejudices;
 	}
 

@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,7 +26,7 @@ public class Intervenant implements java.io.Serializable {
 	private String telFixe;
 	private String telCell;
 	private String email;
-	private Set interventions = new HashSet(0);
+	private Set<Intervention> interventions = new HashSet<Intervention>(0);
 
 	public Intervenant() {
 	}
@@ -37,7 +37,8 @@ public class Intervenant implements java.io.Serializable {
 
 	public Intervenant(String codeIntervenant, String nomIntervenant,
 			String contactIntervenant, String typeIntervenant, String adresse,
-			String telFixe, String telCell, String email, Set interventions) {
+			String telFixe, String telCell, String email,
+			Set<Intervention> interventions) {
 		this.codeIntervenant = codeIntervenant;
 		this.nomIntervenant = nomIntervenant;
 		this.contactIntervenant = contactIntervenant;
@@ -123,11 +124,11 @@ public class Intervenant implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "intervenant")
-	public Set getInterventions() {
+	public Set<Intervention> getInterventions() {
 		return this.interventions;
 	}
 
-	public void setInterventions(Set interventions) {
+	public void setInterventions(Set<Intervention> interventions) {
 		this.interventions = interventions;
 	}
 

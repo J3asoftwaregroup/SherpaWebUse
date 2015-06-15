@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -24,7 +24,7 @@ public class Ville implements java.io.Serializable {
 	private Province province;
 	private ZoneGeographique zoneGeographique;
 	private String libelleVille;
-	private Set pointVentes = new HashSet(0);
+	private Set<PointVente> pointVentes = new HashSet<PointVente>(0);
 
 	public Ville() {
 	}
@@ -38,7 +38,7 @@ public class Ville implements java.io.Serializable {
 
 	public Ville(String codeVille, Province province,
 			ZoneGeographique zoneGeographique, String libelleVille,
-			Set pointVentes) {
+			Set<PointVente> pointVentes) {
 		this.codeVille = codeVille;
 		this.province = province;
 		this.zoneGeographique = zoneGeographique;
@@ -86,11 +86,11 @@ public class Ville implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ville")
-	public Set getPointVentes() {
+	public Set<PointVente> getPointVentes() {
 		return this.pointVentes;
 	}
 
-	public void setPointVentes(Set pointVentes) {
+	public void setPointVentes(Set<PointVente> pointVentes) {
 		this.pointVentes = pointVentes;
 	}
 

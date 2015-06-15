@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +22,7 @@ public class ClasseIa implements java.io.Serializable {
 	private String libelleClasseIa;
 	private String natureClasseIa;
 	private String tarifClasseIa;
-	private Set assureIas = new HashSet(0);
+	private Set<AssureIa> assureIas = new HashSet<AssureIa>(0);
 
 	public ClasseIa() {
 	}
@@ -32,7 +32,7 @@ public class ClasseIa implements java.io.Serializable {
 	}
 
 	public ClasseIa(String codeClasseIa, String libelleClasseIa,
-			String natureClasseIa, String tarifClasseIa, Set assureIas) {
+			String natureClasseIa, String tarifClasseIa, Set<AssureIa> assureIas) {
 		this.codeClasseIa = codeClasseIa;
 		this.libelleClasseIa = libelleClasseIa;
 		this.natureClasseIa = natureClasseIa;
@@ -78,11 +78,11 @@ public class ClasseIa implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "classeIa")
-	public Set getAssureIas() {
+	public Set<AssureIa> getAssureIas() {
 		return this.assureIas;
 	}
 
-	public void setAssureIas(Set assureIas) {
+	public void setAssureIas(Set<AssureIa> assureIas) {
 		this.assureIas = assureIas;
 	}
 

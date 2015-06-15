@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -38,7 +38,8 @@ public class GarantieChoisieSante implements java.io.Serializable {
 	private BigDecimal comcoasssante;
 	private BigDecimal accessoiresante;
 	private String codeAvenantSante;
-	private Set garantieGarantieChoisieSantes = new HashSet(0);
+	private Set<GarantieGarantieChoisieSante> garantieGarantieChoisieSantes = new HashSet<GarantieGarantieChoisieSante>(
+			0);
 
 	public GarantieChoisieSante() {
 	}
@@ -54,7 +55,8 @@ public class GarantieChoisieSante implements java.io.Serializable {
 			BigDecimal comconssante, BigDecimal taxesante,
 			BigDecimal reductionsante, BigDecimal comaperSante,
 			BigDecimal comcoasssante, BigDecimal accessoiresante,
-			String codeAvenantSante, Set garantieGarantieChoisieSantes) {
+			String codeAvenantSante,
+			Set<GarantieGarantieChoisieSante> garantieGarantieChoisieSantes) {
 		this.codeGarantieChoisiesante = codeGarantieChoisiesante;
 		this.affilieSante = affilieSante;
 		this.libelleGarantieChoisiesante = libelleGarantieChoisiesante;
@@ -203,12 +205,12 @@ public class GarantieChoisieSante implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "garantieChoisieSante")
-	public Set getGarantieGarantieChoisieSantes() {
+	public Set<GarantieGarantieChoisieSante> getGarantieGarantieChoisieSantes() {
 		return this.garantieGarantieChoisieSantes;
 	}
 
 	public void setGarantieGarantieChoisieSantes(
-			Set garantieGarantieChoisieSantes) {
+			Set<GarantieGarantieChoisieSante> garantieGarantieChoisieSantes) {
 		this.garantieGarantieChoisieSantes = garantieGarantieChoisieSantes;
 	}
 

@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -37,14 +37,20 @@ public class Avenant implements java.io.Serializable {
 	private String observation;
 	private Short envoyerMail;
 	private String mouvement;
-	private Set avListeCorpsEngins = new HashSet(0);
-	private Set avenantListeGestionConfies = new HashSet(0);
-	private Set avListeHabitations = new HashSet(0);
-	private Set avListeAssureIas = new HashSet(0);
-	private Set avListeAdherents = new HashSet(0);
-	private Set avenantRisqueNtas = new HashSet(0);
-	private Set avTrafics = new HashSet(0);
-	private Set quittances = new HashSet(0);
+	private Set<AvListeCorpsEngin> avListeCorpsEngins = new HashSet<AvListeCorpsEngin>(
+			0);
+	private Set<AvenantListeGestionConfie> avenantListeGestionConfies = new HashSet<AvenantListeGestionConfie>(
+			0);
+	private Set<AvListeHabitation> avListeHabitations = new HashSet<AvListeHabitation>(
+			0);
+	private Set<AvListeAssureIa> avListeAssureIas = new HashSet<AvListeAssureIa>(
+			0);
+	private Set<AvListeAdherent> avListeAdherents = new HashSet<AvListeAdherent>(
+			0);
+	private Set<AvenantRisqueNta> avenantRisqueNtas = new HashSet<AvenantRisqueNta>(
+			0);
+	private Set<AvTrafic> avTrafics = new HashSet<AvTrafic>(0);
+	private Set<Quittance> quittances = new HashSet<Quittance>(0);
 
 	public Avenant() {
 	}
@@ -59,10 +65,14 @@ public class Avenant implements java.io.Serializable {
 			Utilisateur utilisateur, VehiculesAssures vehiculesAssures,
 			Date dateAvenant, Date effet, Date dateEmission, Date echeance,
 			Short duree, Date resiliation, String observation,
-			Short envoyerMail, String mouvement, Set avListeCorpsEngins,
-			Set avenantListeGestionConfies, Set avListeHabitations,
-			Set avListeAssureIas, Set avListeAdherents, Set avenantRisqueNtas,
-			Set avTrafics, Set quittances) {
+			Short envoyerMail, String mouvement,
+			Set<AvListeCorpsEngin> avListeCorpsEngins,
+			Set<AvenantListeGestionConfie> avenantListeGestionConfies,
+			Set<AvListeHabitation> avListeHabitations,
+			Set<AvListeAssureIa> avListeAssureIas,
+			Set<AvListeAdherent> avListeAdherents,
+			Set<AvenantRisqueNta> avenantRisqueNtas, Set<AvTrafic> avTrafics,
+			Set<Quittance> quittances) {
 		this.numAvenant = numAvenant;
 		this.contrat = contrat;
 		this.exercice = exercice;
@@ -224,74 +234,75 @@ public class Avenant implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "avenant")
-	public Set getAvListeCorpsEngins() {
+	public Set<AvListeCorpsEngin> getAvListeCorpsEngins() {
 		return this.avListeCorpsEngins;
 	}
 
-	public void setAvListeCorpsEngins(Set avListeCorpsEngins) {
+	public void setAvListeCorpsEngins(Set<AvListeCorpsEngin> avListeCorpsEngins) {
 		this.avListeCorpsEngins = avListeCorpsEngins;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "avenant")
-	public Set getAvenantListeGestionConfies() {
+	public Set<AvenantListeGestionConfie> getAvenantListeGestionConfies() {
 		return this.avenantListeGestionConfies;
 	}
 
-	public void setAvenantListeGestionConfies(Set avenantListeGestionConfies) {
+	public void setAvenantListeGestionConfies(
+			Set<AvenantListeGestionConfie> avenantListeGestionConfies) {
 		this.avenantListeGestionConfies = avenantListeGestionConfies;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "avenant")
-	public Set getAvListeHabitations() {
+	public Set<AvListeHabitation> getAvListeHabitations() {
 		return this.avListeHabitations;
 	}
 
-	public void setAvListeHabitations(Set avListeHabitations) {
+	public void setAvListeHabitations(Set<AvListeHabitation> avListeHabitations) {
 		this.avListeHabitations = avListeHabitations;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "avenant")
-	public Set getAvListeAssureIas() {
+	public Set<AvListeAssureIa> getAvListeAssureIas() {
 		return this.avListeAssureIas;
 	}
 
-	public void setAvListeAssureIas(Set avListeAssureIas) {
+	public void setAvListeAssureIas(Set<AvListeAssureIa> avListeAssureIas) {
 		this.avListeAssureIas = avListeAssureIas;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "avenant")
-	public Set getAvListeAdherents() {
+	public Set<AvListeAdherent> getAvListeAdherents() {
 		return this.avListeAdherents;
 	}
 
-	public void setAvListeAdherents(Set avListeAdherents) {
+	public void setAvListeAdherents(Set<AvListeAdherent> avListeAdherents) {
 		this.avListeAdherents = avListeAdherents;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "avenant")
-	public Set getAvenantRisqueNtas() {
+	public Set<AvenantRisqueNta> getAvenantRisqueNtas() {
 		return this.avenantRisqueNtas;
 	}
 
-	public void setAvenantRisqueNtas(Set avenantRisqueNtas) {
+	public void setAvenantRisqueNtas(Set<AvenantRisqueNta> avenantRisqueNtas) {
 		this.avenantRisqueNtas = avenantRisqueNtas;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "avenant")
-	public Set getAvTrafics() {
+	public Set<AvTrafic> getAvTrafics() {
 		return this.avTrafics;
 	}
 
-	public void setAvTrafics(Set avTrafics) {
+	public void setAvTrafics(Set<AvTrafic> avTrafics) {
 		this.avTrafics = avTrafics;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "avenant")
-	public Set getQuittances() {
+	public Set<Quittance> getQuittances() {
 		return this.quittances;
 	}
 
-	public void setQuittances(Set quittances) {
+	public void setQuittances(Set<Quittance> quittances) {
 		this.quittances = quittances;
 	}
 

@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,8 +20,9 @@ public class ListeHabitation implements java.io.Serializable {
 
 	private String codeListeHabitation;
 	private String libelleListeHabitationMrh;
-	private Set habitations = new HashSet(0);
-	private Set avListeHabitations = new HashSet(0);
+	private Set<Habitation> habitations = new HashSet<Habitation>(0);
+	private Set<AvListeHabitation> avListeHabitations = new HashSet<AvListeHabitation>(
+			0);
 
 	public ListeHabitation() {
 	}
@@ -31,8 +32,8 @@ public class ListeHabitation implements java.io.Serializable {
 	}
 
 	public ListeHabitation(String codeListeHabitation,
-			String libelleListeHabitationMrh, Set habitations,
-			Set avListeHabitations) {
+			String libelleListeHabitationMrh, Set<Habitation> habitations,
+			Set<AvListeHabitation> avListeHabitations) {
 		this.codeListeHabitation = codeListeHabitation;
 		this.libelleListeHabitationMrh = libelleListeHabitationMrh;
 		this.habitations = habitations;
@@ -59,20 +60,20 @@ public class ListeHabitation implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeHabitation")
-	public Set getHabitations() {
+	public Set<Habitation> getHabitations() {
 		return this.habitations;
 	}
 
-	public void setHabitations(Set habitations) {
+	public void setHabitations(Set<Habitation> habitations) {
 		this.habitations = habitations;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "listeHabitation")
-	public Set getAvListeHabitations() {
+	public Set<AvListeHabitation> getAvListeHabitations() {
 		return this.avListeHabitations;
 	}
 
-	public void setAvListeHabitations(Set avListeHabitations) {
+	public void setAvListeHabitations(Set<AvListeHabitation> avListeHabitations) {
 		this.avListeHabitations = avListeHabitations;
 	}
 

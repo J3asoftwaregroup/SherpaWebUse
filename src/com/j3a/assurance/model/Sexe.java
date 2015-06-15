@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +20,7 @@ public class Sexe implements java.io.Serializable {
 
 	private int codeSexe;
 	private Character libelleSexe;
-	private Set physiques = new HashSet(0);
+	private Set<Physique> physiques = new HashSet<Physique>(0);
 
 	public Sexe() {
 	}
@@ -29,7 +29,7 @@ public class Sexe implements java.io.Serializable {
 		this.codeSexe = codeSexe;
 	}
 
-	public Sexe(int codeSexe, Character libelleSexe, Set physiques) {
+	public Sexe(int codeSexe, Character libelleSexe, Set<Physique> physiques) {
 		this.codeSexe = codeSexe;
 		this.libelleSexe = libelleSexe;
 		this.physiques = physiques;
@@ -55,11 +55,11 @@ public class Sexe implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sexe")
-	public Set getPhysiques() {
+	public Set<Physique> getPhysiques() {
 		return this.physiques;
 	}
 
-	public void setPhysiques(Set physiques) {
+	public void setPhysiques(Set<Physique> physiques) {
 		this.physiques = physiques;
 	}
 

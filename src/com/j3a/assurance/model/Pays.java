@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +20,7 @@ public class Pays implements java.io.Serializable {
 
 	private String codePays;
 	private String libellePays;
-	private Set provinces = new HashSet(0);
+	private Set<Province> provinces = new HashSet<Province>(0);
 
 	public Pays() {
 	}
@@ -29,7 +29,7 @@ public class Pays implements java.io.Serializable {
 		this.codePays = codePays;
 	}
 
-	public Pays(String codePays, String libellePays, Set provinces) {
+	public Pays(String codePays, String libellePays, Set<Province> provinces) {
 		this.codePays = codePays;
 		this.libellePays = libellePays;
 		this.provinces = provinces;
@@ -55,11 +55,11 @@ public class Pays implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pays")
-	public Set getProvinces() {
+	public Set<Province> getProvinces() {
 		return this.provinces;
 	}
 
-	public void setProvinces(Set provinces) {
+	public void setProvinces(Set<Province> provinces) {
 		this.provinces = provinces;
 	}
 

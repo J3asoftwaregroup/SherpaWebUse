@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,9 +20,9 @@ public class Risque implements java.io.Serializable {
 
 	private String codeRisque;
 	private String libelleRisque;
-	private Set garanties = new HashSet(0);
-	private Set categories = new HashSet(0);
-	private Set contrats = new HashSet(0);
+	private Set<Garantie> garanties = new HashSet<Garantie>(0);
+	private Set<Categorie> categories = new HashSet<Categorie>(0);
+	private Set<Contrat> contrats = new HashSet<Contrat>(0);
 
 	public Risque() {
 	}
@@ -31,8 +31,9 @@ public class Risque implements java.io.Serializable {
 		this.codeRisque = codeRisque;
 	}
 
-	public Risque(String codeRisque, String libelleRisque, Set garanties,
-			Set categories, Set contrats) {
+	public Risque(String codeRisque, String libelleRisque,
+			Set<Garantie> garanties, Set<Categorie> categories,
+			Set<Contrat> contrats) {
 		this.codeRisque = codeRisque;
 		this.libelleRisque = libelleRisque;
 		this.garanties = garanties;
@@ -60,29 +61,29 @@ public class Risque implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "risque")
-	public Set getGaranties() {
+	public Set<Garantie> getGaranties() {
 		return this.garanties;
 	}
 
-	public void setGaranties(Set garanties) {
+	public void setGaranties(Set<Garantie> garanties) {
 		this.garanties = garanties;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "risque")
-	public Set getCategories() {
+	public Set<Categorie> getCategories() {
 		return this.categories;
 	}
 
-	public void setCategories(Set categories) {
+	public void setCategories(Set<Categorie> categories) {
 		this.categories = categories;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "risque")
-	public Set getContrats() {
+	public Set<Contrat> getContrats() {
 		return this.contrats;
 	}
 
-	public void setContrats(Set contrats) {
+	public void setContrats(Set<Contrat> contrats) {
 		this.contrats = contrats;
 	}
 

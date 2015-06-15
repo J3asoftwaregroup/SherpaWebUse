@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -29,7 +29,7 @@ public class RcTarif9 implements java.io.Serializable {
 	private BigDecimal vhlRemorqueZone1;
 	private BigDecimal vhlRemorqueZone2;
 	private BigDecimal vhlRemorqueZone3;
-	private Set tarifs = new HashSet(0);
+	private Set<Tarif> tarifs = new HashSet<Tarif>(0);
 
 	public RcTarif9() {
 	}
@@ -41,7 +41,7 @@ public class RcTarif9 implements java.io.Serializable {
 	public RcTarif9(String codeRcTarif9, Tarif tarif, BigDecimal vhlSrZone1,
 			BigDecimal vhlSrZone2, BigDecimal vhlSrZone3,
 			BigDecimal vhlRemorqueZone1, BigDecimal vhlRemorqueZone2,
-			BigDecimal vhlRemorqueZone3, Set tarifs) {
+			BigDecimal vhlRemorqueZone3, Set<Tarif> tarifs) {
 		this.codeRcTarif9 = codeRcTarif9;
 		this.tarif = tarif;
 		this.vhlSrZone1 = vhlSrZone1;
@@ -128,11 +128,11 @@ public class RcTarif9 implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "rcTarif9")
-	public Set getTarifs() {
+	public Set<Tarif> getTarifs() {
 		return this.tarifs;
 	}
 
-	public void setTarifs(Set tarifs) {
+	public void setTarifs(Set<Tarif> tarifs) {
 		this.tarifs = tarifs;
 	}
 

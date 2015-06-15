@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +20,7 @@ public class TypePointVente implements java.io.Serializable {
 
 	private int codeTypePointVente;
 	private String libelleTypePointVente;
-	private Set pointVentes = new HashSet(0);
+	private Set<PointVente> pointVentes = new HashSet<PointVente>(0);
 
 	public TypePointVente() {
 	}
@@ -30,7 +30,7 @@ public class TypePointVente implements java.io.Serializable {
 	}
 
 	public TypePointVente(int codeTypePointVente, String libelleTypePointVente,
-			Set pointVentes) {
+			Set<PointVente> pointVentes) {
 		this.codeTypePointVente = codeTypePointVente;
 		this.libelleTypePointVente = libelleTypePointVente;
 		this.pointVentes = pointVentes;
@@ -56,11 +56,11 @@ public class TypePointVente implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "typePointVente")
-	public Set getPointVentes() {
+	public Set<PointVente> getPointVentes() {
 		return this.pointVentes;
 	}
 
-	public void setPointVentes(Set pointVentes) {
+	public void setPointVentes(Set<PointVente> pointVentes) {
 		this.pointVentes = pointVentes;
 	}
 

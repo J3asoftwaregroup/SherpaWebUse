@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -33,8 +33,9 @@ public class Utilisateur implements java.io.Serializable {
 	private String motPasse;
 	private String mailUtilisateur;
 	private Integer activite;
-	private Set avenants = new HashSet(0);
-	private Set profilUtilisateurs = new HashSet(0);
+	private Set<Avenant> avenants = new HashSet<Avenant>(0);
+	private Set<ProfilUtilisateur> profilUtilisateurs = new HashSet<ProfilUtilisateur>(
+			0);
 
 	public Utilisateur() {
 	}
@@ -48,7 +49,7 @@ public class Utilisateur implements java.io.Serializable {
 			String matricule, String nomUtilisateur, String prenomUtilisateur,
 			Date dateCreationUtilisateur, String loginUtilisateur,
 			String motPasse, String mailUtilisateur, Integer activite,
-			Set avenants, Set profilUtilisateurs) {
+			Set<Avenant> avenants, Set<ProfilUtilisateur> profilUtilisateurs) {
 		this.codeUtilisateur = codeUtilisateur;
 		this.pointVente = pointVente;
 		this.matricule = matricule;
@@ -157,20 +158,20 @@ public class Utilisateur implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
-	public Set getAvenants() {
+	public Set<Avenant> getAvenants() {
 		return this.avenants;
 	}
 
-	public void setAvenants(Set avenants) {
+	public void setAvenants(Set<Avenant> avenants) {
 		this.avenants = avenants;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
-	public Set getProfilUtilisateurs() {
+	public Set<ProfilUtilisateur> getProfilUtilisateurs() {
 		return this.profilUtilisateurs;
 	}
 
-	public void setProfilUtilisateurs(Set profilUtilisateurs) {
+	public void setProfilUtilisateurs(Set<ProfilUtilisateur> profilUtilisateurs) {
 		this.profilUtilisateurs = profilUtilisateurs;
 	}
 

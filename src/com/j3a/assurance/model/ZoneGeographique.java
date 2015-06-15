@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,8 +20,9 @@ public class ZoneGeographique implements java.io.Serializable {
 
 	private String codeZoneGeo;
 	private String libelleZoneGeo;
-	private Set villes = new HashSet(0);
-	private Set vehiculeZoneGeographiques = new HashSet(0);
+	private Set<Ville> villes = new HashSet<Ville>(0);
+	private Set<VehiculeZoneGeographique> vehiculeZoneGeographiques = new HashSet<VehiculeZoneGeographique>(
+			0);
 
 	public ZoneGeographique() {
 	}
@@ -31,7 +32,8 @@ public class ZoneGeographique implements java.io.Serializable {
 	}
 
 	public ZoneGeographique(String codeZoneGeo, String libelleZoneGeo,
-			Set villes, Set vehiculeZoneGeographiques) {
+			Set<Ville> villes,
+			Set<VehiculeZoneGeographique> vehiculeZoneGeographiques) {
 		this.codeZoneGeo = codeZoneGeo;
 		this.libelleZoneGeo = libelleZoneGeo;
 		this.villes = villes;
@@ -58,20 +60,21 @@ public class ZoneGeographique implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "zoneGeographique")
-	public Set getVilles() {
+	public Set<Ville> getVilles() {
 		return this.villes;
 	}
 
-	public void setVilles(Set villes) {
+	public void setVilles(Set<Ville> villes) {
 		this.villes = villes;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "zoneGeographique")
-	public Set getVehiculeZoneGeographiques() {
+	public Set<VehiculeZoneGeographique> getVehiculeZoneGeographiques() {
 		return this.vehiculeZoneGeographiques;
 	}
 
-	public void setVehiculeZoneGeographiques(Set vehiculeZoneGeographiques) {
+	public void setVehiculeZoneGeographiques(
+			Set<VehiculeZoneGeographique> vehiculeZoneGeographiques) {
 		this.vehiculeZoneGeographiques = vehiculeZoneGeographiques;
 	}
 

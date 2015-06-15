@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -26,7 +26,7 @@ public class Exercice implements java.io.Serializable {
 	private BigDecimal primeAReporterExo;
 	private BigDecimal precExo;
 	private String etatExercice;
-	private Set avenants = new HashSet(0);
+	private Set<Avenant> avenants = new HashSet<Avenant>(0);
 
 	public Exercice() {
 	}
@@ -38,7 +38,7 @@ public class Exercice implements java.io.Serializable {
 	public Exercice(int codeexercice, String libelleExercice,
 			BigDecimal chiffreAffExo, BigDecimal primeExercice,
 			BigDecimal primeAReporterExo, BigDecimal precExo,
-			String etatExercice, Set avenants) {
+			String etatExercice, Set<Avenant> avenants) {
 		this.codeexercice = codeexercice;
 		this.libelleExercice = libelleExercice;
 		this.chiffreAffExo = chiffreAffExo;
@@ -114,11 +114,11 @@ public class Exercice implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "exercice")
-	public Set getAvenants() {
+	public Set<Avenant> getAvenants() {
 		return this.avenants;
 	}
 
-	public void setAvenants(Set avenants) {
+	public void setAvenants(Set<Avenant> avenants) {
 		this.avenants = avenants;
 	}
 

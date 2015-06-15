@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,7 +26,7 @@ public class SocieteAssurance implements java.io.Serializable {
 	private String modPass;
 	private String mailSocieteAssurancePublic;
 	private String pays;
-	private Set contrats = new HashSet(0);
+	private Set<Contrat> contrats = new HashSet<Contrat>(0);
 
 	public SocieteAssurance() {
 	}
@@ -38,7 +38,8 @@ public class SocieteAssurance implements java.io.Serializable {
 	public SocieteAssurance(String codeSocieteAssurance, String abrege,
 			String nomSocieteAssurance, String adressePostale,
 			String deviseUtilise, String modPass,
-			String mailSocieteAssurancePublic, String pays, Set contrats) {
+			String mailSocieteAssurancePublic, String pays,
+			Set<Contrat> contrats) {
 		this.codeSocieteAssurance = codeSocieteAssurance;
 		this.abrege = abrege;
 		this.nomSocieteAssurance = nomSocieteAssurance;
@@ -124,11 +125,11 @@ public class SocieteAssurance implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "societeAssurance")
-	public Set getContrats() {
+	public Set<Contrat> getContrats() {
 		return this.contrats;
 	}
 
-	public void setContrats(Set contrats) {
+	public void setContrats(Set<Contrat> contrats) {
 		this.contrats = contrats;
 	}
 

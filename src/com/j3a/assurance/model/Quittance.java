@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -46,7 +46,7 @@ public class Quittance implements java.io.Serializable {
 	private BigDecimal primeReport;
 	private BigDecimal prec;
 	private BigDecimal primeTotale;
-	private Set reglements = new HashSet(0);
+	private Set<Reglement> reglements = new HashSet<Reglement>(0);
 
 	public Quittance() {
 	}
@@ -65,7 +65,7 @@ public class Quittance implements java.io.Serializable {
 			BigDecimal comGestionnaire, BigDecimal comAperition,
 			BigDecimal commision, BigDecimal primeExoEncours,
 			BigDecimal primeReport, BigDecimal prec, BigDecimal primeTotale,
-			Set reglements) {
+			Set<Reglement> reglements) {
 		this.codeQuittance = codeQuittance;
 		this.avenant = avenant;
 		this.etatQuittance = etatQuittance;
@@ -293,11 +293,11 @@ public class Quittance implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "quittance")
-	public Set getReglements() {
+	public Set<Reglement> getReglements() {
 		return this.reglements;
 	}
 
-	public void setReglements(Set reglements) {
+	public void setReglements(Set<Reglement> reglements) {
 		this.reglements = reglements;
 	}
 

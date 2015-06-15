@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +25,7 @@ public class SousCatVehicule implements java.io.Serializable {
 	private Tarif tarif;
 	private String libelleSousCatVehicule;
 	private String tarif_1;
-	private Set vehicules = new HashSet(0);
+	private Set<Vehicule> vehicules = new HashSet<Vehicule>(0);
 
 	public SousCatVehicule() {
 	}
@@ -36,7 +36,7 @@ public class SousCatVehicule implements java.io.Serializable {
 
 	public SousCatVehicule(String codeSousCatVehicule, Categorie categorie,
 			Tarif tarif, String libelleSousCatVehicule, String tarif_1,
-			Set vehicules) {
+			Set<Vehicule> vehicules) {
 		this.codeSousCatVehicule = codeSousCatVehicule;
 		this.categorie = categorie;
 		this.tarif = tarif;
@@ -94,11 +94,11 @@ public class SousCatVehicule implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sousCatVehicule")
-	public Set getVehicules() {
+	public Set<Vehicule> getVehicules() {
 		return this.vehicules;
 	}
 
-	public void setVehicules(Set vehicules) {
+	public void setVehicules(Set<Vehicule> vehicules) {
 		this.vehicules = vehicules;
 	}
 

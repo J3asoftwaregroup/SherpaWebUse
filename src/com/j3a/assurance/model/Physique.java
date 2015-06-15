@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -49,7 +49,7 @@ public class Physique implements java.io.Serializable {
 	private String profession;
 	private String categorieProfessionnelle;
 	private String typePiece;
-	private Set permises = new HashSet(0);
+	private Set<Permis> permises = new HashSet<Permis>(0);
 
 	public Physique() {
 	}
@@ -65,7 +65,7 @@ public class Physique implements java.io.Serializable {
 			String motPassePers, String prenomPers, Date dateNaissPers,
 			String lieuNaissPers, String situationMatPers, String numPiecePers,
 			String titre, String profession, String categorieProfessionnelle,
-			String typePiece, Set permises) {
+			String typePiece, Set<Permis> permises) {
 		this.personne = personne;
 		this.sexe = sexe;
 		this.datePers = datePers;
@@ -286,11 +286,11 @@ public class Physique implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "physique")
-	public Set getPermises() {
+	public Set<Permis> getPermises() {
 		return this.permises;
 	}
 
-	public void setPermises(Set permises) {
+	public void setPermises(Set<Permis> permises) {
 		this.permises = permises;
 	}
 

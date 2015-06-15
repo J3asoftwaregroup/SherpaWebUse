@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,7 +23,7 @@ public class ExpertSinistre implements java.io.Serializable {
 	private String adresseExpert;
 	private String contactExpert;
 	private String mailExpert;
-	private Set expertises = new HashSet(0);
+	private Set<Expertise> expertises = new HashSet<Expertise>(0);
 
 	public ExpertSinistre() {
 	}
@@ -34,7 +34,7 @@ public class ExpertSinistre implements java.io.Serializable {
 
 	public ExpertSinistre(String codeExpertSinistre, String nomExpert,
 			String adresseExpert, String contactExpert, String mailExpert,
-			Set expertises) {
+			Set<Expertise> expertises) {
 		this.codeExpertSinistre = codeExpertSinistre;
 		this.nomExpert = nomExpert;
 		this.adresseExpert = adresseExpert;
@@ -90,11 +90,11 @@ public class ExpertSinistre implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "expertSinistre")
-	public Set getExpertises() {
+	public Set<Expertise> getExpertises() {
 		return this.expertises;
 	}
 
-	public void setExpertises(Set expertises) {
+	public void setExpertises(Set<Expertise> expertises) {
 		this.expertises = expertises;
 	}
 

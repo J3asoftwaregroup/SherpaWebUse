@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -31,7 +31,8 @@ public class Conducteur implements java.io.Serializable {
 	private Short dureepermiscond;
 	private String categsocioprocond;
 	private String typcatsocprocond;
-	private Set conduireVehicules = new HashSet(0);
+	private Set<ConduireVehicule> conduireVehicules = new HashSet<ConduireVehicule>(
+			0);
 
 	public Conducteur() {
 	}
@@ -44,7 +45,7 @@ public class Conducteur implements java.io.Serializable {
 			Date dateNaissCond, String lieuNaisCond, String typpermiscond,
 			String numpermiscond, Short dureepermiscond,
 			String categsocioprocond, String typcatsocprocond,
-			Set conduireVehicules) {
+			Set<ConduireVehicule> conduireVehicules) {
 		this.numCond = numCond;
 		this.nonCond = nonCond;
 		this.prenomsCond = prenomsCond;
@@ -151,11 +152,11 @@ public class Conducteur implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "conducteur")
-	public Set getConduireVehicules() {
+	public Set<ConduireVehicule> getConduireVehicules() {
 		return this.conduireVehicules;
 	}
 
-	public void setConduireVehicules(Set conduireVehicules) {
+	public void setConduireVehicules(Set<ConduireVehicule> conduireVehicules) {
 		this.conduireVehicules = conduireVehicules;
 	}
 

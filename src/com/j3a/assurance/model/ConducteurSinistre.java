@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -31,7 +31,8 @@ public class ConducteurSinistre implements java.io.Serializable {
 	private String telFixe;
 	private String telCell;
 	private String email;
-	private Set sinistreConducteurs = new HashSet(0);
+	private Set<SinistreConducteur> sinistreConducteurs = new HashSet<SinistreConducteur>(
+			0);
 
 	public ConducteurSinistre() {
 	}
@@ -44,7 +45,8 @@ public class ConducteurSinistre implements java.io.Serializable {
 			String nomCondSinistre, String prenomCondSinistre,
 			Date dateNaissCondSinistre, String numPermis,
 			String categoriePermis, String adresse, String telFixe,
-			String telCell, String email, Set sinistreConducteurs) {
+			String telCell, String email,
+			Set<SinistreConducteur> sinistreConducteurs) {
 		this.codeConducteurSinistre = codeConducteurSinistre;
 		this.nomCondSinistre = nomCondSinistre;
 		this.prenomCondSinistre = prenomCondSinistre;
@@ -151,11 +153,12 @@ public class ConducteurSinistre implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "conducteurSinistre")
-	public Set getSinistreConducteurs() {
+	public Set<SinistreConducteur> getSinistreConducteurs() {
 		return this.sinistreConducteurs;
 	}
 
-	public void setSinistreConducteurs(Set sinistreConducteurs) {
+	public void setSinistreConducteurs(
+			Set<SinistreConducteur> sinistreConducteurs) {
 		this.sinistreConducteurs = sinistreConducteurs;
 	}
 

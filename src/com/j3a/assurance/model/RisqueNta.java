@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,10 +23,13 @@ public class RisqueNta implements java.io.Serializable {
 	private String codeRisquenta;
 	private Categorie categorie;
 	private String libelleRisquenta;
-	private Set apporteurNtas = new HashSet(0);
-	private Set risqueNtaSinistres = new HashSet(0);
-	private Set avenantRisqueNtas = new HashSet(0);
-	private Set garantieChoisieNtas = new HashSet(0);
+	private Set<ApporteurNta> apporteurNtas = new HashSet<ApporteurNta>(0);
+	private Set<RisqueNtaSinistre> risqueNtaSinistres = new HashSet<RisqueNtaSinistre>(
+			0);
+	private Set<AvenantRisqueNta> avenantRisqueNtas = new HashSet<AvenantRisqueNta>(
+			0);
+	private Set<GarantieChoisieNta> garantieChoisieNtas = new HashSet<GarantieChoisieNta>(
+			0);
 
 	public RisqueNta() {
 	}
@@ -36,8 +39,10 @@ public class RisqueNta implements java.io.Serializable {
 	}
 
 	public RisqueNta(String codeRisquenta, Categorie categorie,
-			String libelleRisquenta, Set apporteurNtas, Set risqueNtaSinistres,
-			Set avenantRisqueNtas, Set garantieChoisieNtas) {
+			String libelleRisquenta, Set<ApporteurNta> apporteurNtas,
+			Set<RisqueNtaSinistre> risqueNtaSinistres,
+			Set<AvenantRisqueNta> avenantRisqueNtas,
+			Set<GarantieChoisieNta> garantieChoisieNtas) {
 		this.codeRisquenta = codeRisquenta;
 		this.categorie = categorie;
 		this.libelleRisquenta = libelleRisquenta;
@@ -77,38 +82,39 @@ public class RisqueNta implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "risqueNta")
-	public Set getApporteurNtas() {
+	public Set<ApporteurNta> getApporteurNtas() {
 		return this.apporteurNtas;
 	}
 
-	public void setApporteurNtas(Set apporteurNtas) {
+	public void setApporteurNtas(Set<ApporteurNta> apporteurNtas) {
 		this.apporteurNtas = apporteurNtas;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "risqueNta")
-	public Set getRisqueNtaSinistres() {
+	public Set<RisqueNtaSinistre> getRisqueNtaSinistres() {
 		return this.risqueNtaSinistres;
 	}
 
-	public void setRisqueNtaSinistres(Set risqueNtaSinistres) {
+	public void setRisqueNtaSinistres(Set<RisqueNtaSinistre> risqueNtaSinistres) {
 		this.risqueNtaSinistres = risqueNtaSinistres;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "risqueNta")
-	public Set getAvenantRisqueNtas() {
+	public Set<AvenantRisqueNta> getAvenantRisqueNtas() {
 		return this.avenantRisqueNtas;
 	}
 
-	public void setAvenantRisqueNtas(Set avenantRisqueNtas) {
+	public void setAvenantRisqueNtas(Set<AvenantRisqueNta> avenantRisqueNtas) {
 		this.avenantRisqueNtas = avenantRisqueNtas;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "risqueNta")
-	public Set getGarantieChoisieNtas() {
+	public Set<GarantieChoisieNta> getGarantieChoisieNtas() {
 		return this.garantieChoisieNtas;
 	}
 
-	public void setGarantieChoisieNtas(Set garantieChoisieNtas) {
+	public void setGarantieChoisieNtas(
+			Set<GarantieChoisieNta> garantieChoisieNtas) {
 		this.garantieChoisieNtas = garantieChoisieNtas;
 	}
 

@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -30,9 +30,9 @@ public class PointVente implements java.io.Serializable {
 	private String telFaxPointVente;
 	private BigDecimal latitude;
 	private BigDecimal longitude;
-	private Set utilisateurs = new HashSet(0);
-	private Set stocks = new HashSet(0);
-	private Set contrats = new HashSet(0);
+	private Set<Utilisateur> utilisateurs = new HashSet<Utilisateur>(0);
+	private Set<Stock> stocks = new HashSet<Stock>(0);
+	private Set<Contrat> contrats = new HashSet<Contrat>(0);
 
 	public PointVente() {
 	}
@@ -47,8 +47,9 @@ public class PointVente implements java.io.Serializable {
 	public PointVente(String codePointVente, TypePointVente typePointVente,
 			Ville ville, String libellePointVente, String adressePointVente,
 			String telFixePointVente, String telFaxPointVente,
-			BigDecimal latitude, BigDecimal longitude, Set utilisateurs,
-			Set stocks, Set contrats) {
+			BigDecimal latitude, BigDecimal longitude,
+			Set<Utilisateur> utilisateurs, Set<Stock> stocks,
+			Set<Contrat> contrats) {
 		this.codePointVente = codePointVente;
 		this.typePointVente = typePointVente;
 		this.ville = ville;
@@ -148,29 +149,29 @@ public class PointVente implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pointVente")
-	public Set getUtilisateurs() {
+	public Set<Utilisateur> getUtilisateurs() {
 		return this.utilisateurs;
 	}
 
-	public void setUtilisateurs(Set utilisateurs) {
+	public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
 		this.utilisateurs = utilisateurs;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pointVente")
-	public Set getStocks() {
+	public Set<Stock> getStocks() {
 		return this.stocks;
 	}
 
-	public void setStocks(Set stocks) {
+	public void setStocks(Set<Stock> stocks) {
 		this.stocks = stocks;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pointVente")
-	public Set getContrats() {
+	public Set<Contrat> getContrats() {
 		return this.contrats;
 	}
 
-	public void setContrats(Set contrats) {
+	public void setContrats(Set<Contrat> contrats) {
 		this.contrats = contrats;
 	}
 

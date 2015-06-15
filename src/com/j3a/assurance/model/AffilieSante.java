@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -34,8 +34,10 @@ public class AffilieSante implements java.io.Serializable {
 	private String natExtAffilie;
 	private String formuleAffilie;
 	private String statutaffiliesante;
-	private Set affilieListeAffilies = new HashSet(0);
-	private Set garantieChoisieSantes = new HashSet(0);
+	private Set<AffilieListeAffilie> affilieListeAffilies = new HashSet<AffilieListeAffilie>(
+			0);
+	private Set<GarantieChoisieSante> garantieChoisieSantes = new HashSet<GarantieChoisieSante>(
+			0);
 
 	public AffilieSante() {
 	}
@@ -49,7 +51,8 @@ public class AffilieSante implements java.io.Serializable {
 			String sexeAffilie, String lienAffilie, String residenceAffilie,
 			String mobileAffilie, String courrielAffilie, String natExtAffilie,
 			String formuleAffilie, String statutaffiliesante,
-			Set affilieListeAffilies, Set garantieChoisieSantes) {
+			Set<AffilieListeAffilie> affilieListeAffilies,
+			Set<GarantieChoisieSante> garantieChoisieSantes) {
 		this.codeAffilie = codeAffilie;
 		this.nomAfflilie = nomAfflilie;
 		this.prenomAffilie = prenomAffilie;
@@ -187,20 +190,22 @@ public class AffilieSante implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "affilieSante")
-	public Set getAffilieListeAffilies() {
+	public Set<AffilieListeAffilie> getAffilieListeAffilies() {
 		return this.affilieListeAffilies;
 	}
 
-	public void setAffilieListeAffilies(Set affilieListeAffilies) {
+	public void setAffilieListeAffilies(
+			Set<AffilieListeAffilie> affilieListeAffilies) {
 		this.affilieListeAffilies = affilieListeAffilies;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "affilieSante")
-	public Set getGarantieChoisieSantes() {
+	public Set<GarantieChoisieSante> getGarantieChoisieSantes() {
 		return this.garantieChoisieSantes;
 	}
 
-	public void setGarantieChoisieSantes(Set garantieChoisieSantes) {
+	public void setGarantieChoisieSantes(
+			Set<GarantieChoisieSante> garantieChoisieSantes) {
 		this.garantieChoisieSantes = garantieChoisieSantes;
 	}
 

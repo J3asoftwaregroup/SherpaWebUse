@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -37,7 +37,8 @@ public class Intervention implements java.io.Serializable {
 	private BigDecimal montantTtc;
 	private String etat;
 	private String sousGarantieSupportInt;
-	private Set reglementSinistres = new HashSet(0);
+	private Set<ReglementSinistre> reglementSinistres = new HashSet<ReglementSinistre>(
+			0);
 
 	public Intervention() {
 	}
@@ -52,7 +53,8 @@ public class Intervention implements java.io.Serializable {
 			Date dateIntervention, String rapport, String typeRapport,
 			BigDecimal chargesIntervention, BigDecimal taxe,
 			BigDecimal fraisAnnexe, BigDecimal montantTtc, String etat,
-			String sousGarantieSupportInt, Set reglementSinistres) {
+			String sousGarantieSupportInt,
+			Set<ReglementSinistre> reglementSinistres) {
 		this.refIntervention = refIntervention;
 		this.intervenant = intervenant;
 		this.sinistre = sinistre;
@@ -191,11 +193,11 @@ public class Intervention implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "intervention")
-	public Set getReglementSinistres() {
+	public Set<ReglementSinistre> getReglementSinistres() {
 		return this.reglementSinistres;
 	}
 
-	public void setReglementSinistres(Set reglementSinistres) {
+	public void setReglementSinistres(Set<ReglementSinistre> reglementSinistres) {
 		this.reglementSinistres = reglementSinistres;
 	}
 

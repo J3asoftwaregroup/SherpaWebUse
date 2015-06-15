@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -29,7 +29,7 @@ public class Stock implements java.io.Serializable {
 	private Long stkinit;
 	private Long stkrst;
 	private String situation;
-	private Set attestations = new HashSet(0);
+	private Set<Attestation> attestations = new HashSet<Attestation>(0);
 
 	public Stock() {
 	}
@@ -40,7 +40,8 @@ public class Stock implements java.io.Serializable {
 	}
 
 	public Stock(String idStock, PointVente pointVente, Date datestock,
-			Long stkinit, Long stkrst, String situation, Set attestations) {
+			Long stkinit, Long stkrst, String situation,
+			Set<Attestation> attestations) {
 		this.idStock = idStock;
 		this.pointVente = pointVente;
 		this.datestock = datestock;
@@ -108,11 +109,11 @@ public class Stock implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
-	public Set getAttestations() {
+	public Set<Attestation> getAttestations() {
 		return this.attestations;
 	}
 
-	public void setAttestations(Set attestations) {
+	public void setAttestations(Set<Attestation> attestations) {
 		this.attestations = attestations;
 	}
 

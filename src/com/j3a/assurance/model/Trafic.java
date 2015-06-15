@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -27,7 +27,7 @@ public class Trafic implements java.io.Serializable {
 	private String designationTrafic;
 	private BigDecimal pleinExp;
 	private BigDecimal accessoires;
-	private Set aliments = new HashSet(0);
+	private Set<Aliment> aliments = new HashSet<Aliment>(0);
 
 	public Trafic() {
 	}
@@ -38,7 +38,7 @@ public class Trafic implements java.io.Serializable {
 
 	public Trafic(String codeTrafic, ListeTrafic listeTrafic,
 			Integer numeroTrafic, String designationTrafic,
-			BigDecimal pleinExp, BigDecimal accessoires, Set aliments) {
+			BigDecimal pleinExp, BigDecimal accessoires, Set<Aliment> aliments) {
 		this.codeTrafic = codeTrafic;
 		this.listeTrafic = listeTrafic;
 		this.numeroTrafic = numeroTrafic;
@@ -105,11 +105,11 @@ public class Trafic implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "trafic")
-	public Set getAliments() {
+	public Set<Aliment> getAliments() {
 		return this.aliments;
 	}
 
-	public void setAliments(Set aliments) {
+	public void setAliments(Set<Aliment> aliments) {
 		this.aliments = aliments;
 	}
 

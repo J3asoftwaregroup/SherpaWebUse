@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -24,7 +24,8 @@ public class Reassurance implements java.io.Serializable {
 	private String codeReassurance;
 	private Contrat contrat;
 	private BigDecimal montantReassurance;
-	private Set reassuranceCompagnies = new HashSet(0);
+	private Set<ReassuranceCompagnie> reassuranceCompagnies = new HashSet<ReassuranceCompagnie>(
+			0);
 
 	public Reassurance() {
 	}
@@ -35,7 +36,8 @@ public class Reassurance implements java.io.Serializable {
 	}
 
 	public Reassurance(String codeReassurance, Contrat contrat,
-			BigDecimal montantReassurance, Set reassuranceCompagnies) {
+			BigDecimal montantReassurance,
+			Set<ReassuranceCompagnie> reassuranceCompagnies) {
 		this.codeReassurance = codeReassurance;
 		this.contrat = contrat;
 		this.montantReassurance = montantReassurance;
@@ -72,11 +74,12 @@ public class Reassurance implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "reassurance")
-	public Set getReassuranceCompagnies() {
+	public Set<ReassuranceCompagnie> getReassuranceCompagnies() {
 		return this.reassuranceCompagnies;
 	}
 
-	public void setReassuranceCompagnies(Set reassuranceCompagnies) {
+	public void setReassuranceCompagnies(
+			Set<ReassuranceCompagnie> reassuranceCompagnies) {
 		this.reassuranceCompagnies = reassuranceCompagnies;
 	}
 

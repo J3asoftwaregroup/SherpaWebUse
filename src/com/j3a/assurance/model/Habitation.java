@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 12:08:18 by Hibernate Tools 4.3.1
+// Generated 15 juin 2015 17:23:41 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -48,9 +48,12 @@ public class Habitation implements java.io.Serializable {
 	private BigDecimal objetPrecieux;
 	private BigDecimal risqueLocatif;
 	private String statutHabitation;
-	private Set apporteurHabitations = new HashSet(0);
-	private Set habitationSinistres = new HashSet(0);
-	private Set garantieChoisieMrhs = new HashSet(0);
+	private Set<ApporteurHabitation> apporteurHabitations = new HashSet<ApporteurHabitation>(
+			0);
+	private Set<HabitationSinistre> habitationSinistres = new HashSet<HabitationSinistre>(
+			0);
+	private Set<GarantieChoisieMrh> garantieChoisieMrhs = new HashSet<GarantieChoisieMrh>(
+			0);
 
 	public Habitation() {
 	}
@@ -69,8 +72,10 @@ public class Habitation implements java.io.Serializable {
 			String gardiennage, String nomenclature, String zone,
 			BigDecimal valeurBatiment, BigDecimal valeurContenu,
 			BigDecimal objetPrecieux, BigDecimal risqueLocatif,
-			String statutHabitation, Set apporteurHabitations,
-			Set habitationSinistres, Set garantieChoisieMrhs) {
+			String statutHabitation,
+			Set<ApporteurHabitation> apporteurHabitations,
+			Set<HabitationSinistre> habitationSinistres,
+			Set<GarantieChoisieMrh> garantieChoisieMrhs) {
 		this.codeHabitation = codeHabitation;
 		this.categorie = categorie;
 		this.classeMrh = classeMrh;
@@ -351,29 +356,32 @@ public class Habitation implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "habitation")
-	public Set getApporteurHabitations() {
+	public Set<ApporteurHabitation> getApporteurHabitations() {
 		return this.apporteurHabitations;
 	}
 
-	public void setApporteurHabitations(Set apporteurHabitations) {
+	public void setApporteurHabitations(
+			Set<ApporteurHabitation> apporteurHabitations) {
 		this.apporteurHabitations = apporteurHabitations;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "habitation")
-	public Set getHabitationSinistres() {
+	public Set<HabitationSinistre> getHabitationSinistres() {
 		return this.habitationSinistres;
 	}
 
-	public void setHabitationSinistres(Set habitationSinistres) {
+	public void setHabitationSinistres(
+			Set<HabitationSinistre> habitationSinistres) {
 		this.habitationSinistres = habitationSinistres;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "habitation")
-	public Set getGarantieChoisieMrhs() {
+	public Set<GarantieChoisieMrh> getGarantieChoisieMrhs() {
 		return this.garantieChoisieMrhs;
 	}
 
-	public void setGarantieChoisieMrhs(Set garantieChoisieMrhs) {
+	public void setGarantieChoisieMrhs(
+			Set<GarantieChoisieMrh> garantieChoisieMrhs) {
 		this.garantieChoisieMrhs = garantieChoisieMrhs;
 	}
 
