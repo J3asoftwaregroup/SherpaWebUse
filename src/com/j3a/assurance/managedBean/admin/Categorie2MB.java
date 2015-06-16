@@ -30,6 +30,7 @@ public class Categorie2MB implements Serializable{
 		rcTarif2.setCodeRcTarif2("Tarif2");	
 		getObjectService().addObject(rcTarif2);	
 		tarif.setCodeTarif(rcTarif2.getCodeRcTarif2());
+		tarif.setRcTarif2(rcTarif2);
 		getObjectService().addObject(tarif);	
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success", "Enregistrement effectué"));
 	} catch (Exception e) {
