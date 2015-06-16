@@ -43,7 +43,7 @@ public class ManagedTarif7 implements Serializable{
 	 * 
 	 */
 		private static final long serialVersionUID = 1L;
-		private static final String SUCCESS = "success";
+		private static final String SUCCESS = "succes";
 		private static final String ERROR = "error";
 		
 		@Autowired
@@ -60,12 +60,16 @@ public class ManagedTarif7 implements Serializable{
 		
 		public  void enregistrer(){
 		try{	
-		rcTarif7.setCodeRcTarif7("codeRcTarif7");
+		rcTarif7.setCodeRcTarif7("RcTarif7");
 		getObjectService().addObject(rcTarif7);
-		tarif.setCodeTarif(rcTarif7.getCodeRcTarif7());
+		
+		
+		
+		tarif.setCodeTarif("tarif7");
+		tarif.setLibelleTarif("Tarif7");
 		getObjectService().addObject(tarif);
 		
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success", "Enregistrement effectué"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Succes", "Enregistrement effectué"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
