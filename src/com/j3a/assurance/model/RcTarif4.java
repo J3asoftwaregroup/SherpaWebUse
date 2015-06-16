@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 16 juin 2015 11:31:51 by Hibernate Tools 4.3.1
+// Generated 16 juin 2015 16:25:09 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,7 +20,6 @@ import javax.persistence.Table;
 public class RcTarif4 implements java.io.Serializable {
 
 	private String codeRcTarif4;
-	private Tarif tarif;
 	private BigDecimal nbPlTaxi1Zone1;
 	private BigDecimal nbPlTaxi1Zone2;
 	private BigDecimal nbPlTaxi1Zone3;
@@ -50,18 +47,17 @@ public class RcTarif4 implements java.io.Serializable {
 		this.codeRcTarif4 = codeRcTarif4;
 	}
 
-	public RcTarif4(String codeRcTarif4, Tarif tarif,
-			BigDecimal nbPlTaxi1Zone1, BigDecimal nbPlTaxi1Zone2,
-			BigDecimal nbPlTaxi1Zone3, BigDecimal nbPlTaxi2Zone1,
-			BigDecimal nbPlTaxi2Zone2, BigDecimal nbPlTaxi2Zone3,
-			BigDecimal nbPlCar1Zone1, BigDecimal nbPlCar1Zone2,
-			BigDecimal nbPlCar1Zone3, BigDecimal nbPlCar2Zone1,
-			BigDecimal nbPlCar2Zone2, BigDecimal nbPlCar2Zone3,
-			BigDecimal nbPlCar3Zone1, BigDecimal nbPlCar3Zone2,
-			BigDecimal nbPlCar3Zone3, Float tauxRemorquet4,
-			Float tauxPermis1t4, Float tauxPermis2t4, Set<Tarif> tarifs) {
+	public RcTarif4(String codeRcTarif4, BigDecimal nbPlTaxi1Zone1,
+			BigDecimal nbPlTaxi1Zone2, BigDecimal nbPlTaxi1Zone3,
+			BigDecimal nbPlTaxi2Zone1, BigDecimal nbPlTaxi2Zone2,
+			BigDecimal nbPlTaxi2Zone3, BigDecimal nbPlCar1Zone1,
+			BigDecimal nbPlCar1Zone2, BigDecimal nbPlCar1Zone3,
+			BigDecimal nbPlCar2Zone1, BigDecimal nbPlCar2Zone2,
+			BigDecimal nbPlCar2Zone3, BigDecimal nbPlCar3Zone1,
+			BigDecimal nbPlCar3Zone2, BigDecimal nbPlCar3Zone3,
+			Float tauxRemorquet4, Float tauxPermis1t4, Float tauxPermis2t4,
+			Set<Tarif> tarifs) {
 		this.codeRcTarif4 = codeRcTarif4;
-		this.tarif = tarif;
 		this.nbPlTaxi1Zone1 = nbPlTaxi1Zone1;
 		this.nbPlTaxi1Zone2 = nbPlTaxi1Zone2;
 		this.nbPlTaxi1Zone3 = nbPlTaxi1Zone3;
@@ -91,16 +87,6 @@ public class RcTarif4 implements java.io.Serializable {
 
 	public void setCodeRcTarif4(String codeRcTarif4) {
 		this.codeRcTarif4 = codeRcTarif4;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_TARIF")
-	public Tarif getTarif() {
-		return this.tarif;
-	}
-
-	public void setTarif(Tarif tarif) {
-		this.tarif = tarif;
 	}
 
 	@Column(name = "NB_PL_TAXI1_ZONE1", precision = 16, scale = 3)

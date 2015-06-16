@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 16 juin 2015 11:31:51 by Hibernate Tools 4.3.1
+// Generated 16 juin 2015 16:25:09 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,7 +20,6 @@ import javax.persistence.Table;
 public class RcTarif12 implements java.io.Serializable {
 
 	private String codeRcTarif12;
-	private Tarif tarif;
 	private BigDecimal pfEss12Dies1Zone1;
 	private BigDecimal pfEss36Dies24Zone1;
 	private BigDecimal pfEss79Dies56Zone1;
@@ -54,21 +51,19 @@ public class RcTarif12 implements java.io.Serializable {
 		this.codeRcTarif12 = codeRcTarif12;
 	}
 
-	public RcTarif12(String codeRcTarif12, Tarif tarif,
-			BigDecimal pfEss12Dies1Zone1, BigDecimal pfEss36Dies24Zone1,
-			BigDecimal pfEss79Dies56Zone1, BigDecimal pfEss1011Dies78Zone1,
-			BigDecimal pfEss12Dies9Zone1, BigDecimal pfEss12Dies1Zone2,
-			BigDecimal pfEss36Dies24Zone2, BigDecimal pfEss79Dies56Zone2,
-			BigDecimal pfEss1011Dies78Zone2, BigDecimal pfEss12Dies9Zone2,
-			BigDecimal pfEss12Dies1Zone3, BigDecimal pfEss36Dies24Zone3,
-			BigDecimal pfEss79Dies56Zone3, BigDecimal pfEss1011Dies78Zone3,
-			BigDecimal pfEss12Dies9Zone3, Float tauxMajredt12Remorque,
-			Float tauxMajredt12Permi1, Float tauxMajredt12Permis2,
-			Float tauxMajredt12Statutproa, Float tauxMajredt12Statutprob,
-			Float tauxMajredt12Statutproc, Float tauxMajredt12Statutproautres,
-			Set<Tarif> tarifs) {
+	public RcTarif12(String codeRcTarif12, BigDecimal pfEss12Dies1Zone1,
+			BigDecimal pfEss36Dies24Zone1, BigDecimal pfEss79Dies56Zone1,
+			BigDecimal pfEss1011Dies78Zone1, BigDecimal pfEss12Dies9Zone1,
+			BigDecimal pfEss12Dies1Zone2, BigDecimal pfEss36Dies24Zone2,
+			BigDecimal pfEss79Dies56Zone2, BigDecimal pfEss1011Dies78Zone2,
+			BigDecimal pfEss12Dies9Zone2, BigDecimal pfEss12Dies1Zone3,
+			BigDecimal pfEss36Dies24Zone3, BigDecimal pfEss79Dies56Zone3,
+			BigDecimal pfEss1011Dies78Zone3, BigDecimal pfEss12Dies9Zone3,
+			Float tauxMajredt12Remorque, Float tauxMajredt12Permi1,
+			Float tauxMajredt12Permis2, Float tauxMajredt12Statutproa,
+			Float tauxMajredt12Statutprob, Float tauxMajredt12Statutproc,
+			Float tauxMajredt12Statutproautres, Set<Tarif> tarifs) {
 		this.codeRcTarif12 = codeRcTarif12;
-		this.tarif = tarif;
 		this.pfEss12Dies1Zone1 = pfEss12Dies1Zone1;
 		this.pfEss36Dies24Zone1 = pfEss36Dies24Zone1;
 		this.pfEss79Dies56Zone1 = pfEss79Dies56Zone1;
@@ -102,16 +97,6 @@ public class RcTarif12 implements java.io.Serializable {
 
 	public void setCodeRcTarif12(String codeRcTarif12) {
 		this.codeRcTarif12 = codeRcTarif12;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_TARIF")
-	public Tarif getTarif() {
-		return this.tarif;
-	}
-
-	public void setTarif(Tarif tarif) {
-		this.tarif = tarif;
 	}
 
 	@Column(name = "PF_ESS12_DIES1_ZONE1", precision = 15, scale = 3)

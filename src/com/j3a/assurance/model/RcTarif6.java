@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 16 juin 2015 11:31:51 by Hibernate Tools 4.3.1
+// Generated 16 juin 2015 16:25:09 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,7 +20,6 @@ import javax.persistence.Table;
 public class RcTarif6 implements java.io.Serializable {
 
 	private String codeRcTarif6;
-	private Tarif tarif;
 	private BigDecimal vhl1Zone1;
 	private BigDecimal vhl1Zone2;
 	private BigDecimal vhl1Zone3;
@@ -77,7 +74,7 @@ public class RcTarif6 implements java.io.Serializable {
 		this.codeRcTarif6 = codeRcTarif6;
 	}
 
-	public RcTarif6(String codeRcTarif6, Tarif tarif, BigDecimal vhl1Zone1,
+	public RcTarif6(String codeRcTarif6, BigDecimal vhl1Zone1,
 			BigDecimal vhl1Zone2, BigDecimal vhl1Zone3, BigDecimal vhl2Zone1,
 			BigDecimal vhl2Zone2, BigDecimal vhl2Zone3, BigDecimal vhl3Zone1,
 			BigDecimal vhl3Zone2, BigDecimal vhl3Zone3, BigDecimal vhl4Zone1,
@@ -99,7 +96,6 @@ public class RcTarif6 implements java.io.Serializable {
 			BigDecimal autresVhl5Zone1, BigDecimal autresVhl5Zone2,
 			BigDecimal autresVhl5Zone3, Set<Tarif> tarifs) {
 		this.codeRcTarif6 = codeRcTarif6;
-		this.tarif = tarif;
 		this.vhl1Zone1 = vhl1Zone1;
 		this.vhl1Zone2 = vhl1Zone2;
 		this.vhl1Zone3 = vhl1Zone3;
@@ -156,16 +152,6 @@ public class RcTarif6 implements java.io.Serializable {
 
 	public void setCodeRcTarif6(String codeRcTarif6) {
 		this.codeRcTarif6 = codeRcTarif6;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_TARIF")
-	public Tarif getTarif() {
-		return this.tarif;
-	}
-
-	public void setTarif(Tarif tarif) {
-		this.tarif = tarif;
 	}
 
 	@Column(name = "VHL1_ZONE1", precision = 15, scale = 3)

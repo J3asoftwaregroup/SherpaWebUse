@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 16 juin 2015 11:31:51 by Hibernate Tools 4.3.1
+// Generated 16 juin 2015 16:25:09 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,7 +20,6 @@ import javax.persistence.Table;
 public class RcTarif12b implements java.io.Serializable {
 
 	private String codeRcTarif12b;
-	private Tarif tarif;
 	private BigDecimal pfCu1t12bZone1;
 	private BigDecimal pfCu2t12bZone1;
 	private BigDecimal pfCu3t12bZone1;
@@ -72,21 +69,21 @@ public class RcTarif12b implements java.io.Serializable {
 		this.codeRcTarif12b = codeRcTarif12b;
 	}
 
-	public RcTarif12b(String codeRcTarif12b, Tarif tarif,
-			BigDecimal pfCu1t12bZone1, BigDecimal pfCu2t12bZone1,
-			BigDecimal pfCu3t12bZone1, BigDecimal pfCu4t12bZone1,
-			BigDecimal pfCu5t12bZone1, BigDecimal pfCu6t12bZone1,
-			BigDecimal pfCu7t12bZone1, BigDecimal pfCu8t12bZone1,
-			BigDecimal pfCu9t12bZone1, BigDecimal pfCu1t12bZone2,
-			BigDecimal pfCu2t12bZone2, BigDecimal pfCu3t12bZone2,
-			BigDecimal pfCu4t12bZone2, BigDecimal pfCu5t12bZone2,
-			BigDecimal pfCu6t12bZone2, BigDecimal pfCu7t12bZone2,
-			BigDecimal pfCu8t12bZone2, BigDecimal pfCu9t12bZone2,
-			BigDecimal pfCu1t12bZone3, BigDecimal pfCu2t12bZone3,
-			BigDecimal pfCu3t12bZone3, BigDecimal pfCu4t12bZone3,
-			BigDecimal pfCu5t12bZone3, BigDecimal pfCu6t12bZone3,
-			BigDecimal pfCu7t12bZone3, BigDecimal pfCu8t12bZone3,
-			BigDecimal pfCu9t12bZone3, BigDecimal surprimePassSupHcabt12b,
+	public RcTarif12b(String codeRcTarif12b, BigDecimal pfCu1t12bZone1,
+			BigDecimal pfCu2t12bZone1, BigDecimal pfCu3t12bZone1,
+			BigDecimal pfCu4t12bZone1, BigDecimal pfCu5t12bZone1,
+			BigDecimal pfCu6t12bZone1, BigDecimal pfCu7t12bZone1,
+			BigDecimal pfCu8t12bZone1, BigDecimal pfCu9t12bZone1,
+			BigDecimal pfCu1t12bZone2, BigDecimal pfCu2t12bZone2,
+			BigDecimal pfCu3t12bZone2, BigDecimal pfCu4t12bZone2,
+			BigDecimal pfCu5t12bZone2, BigDecimal pfCu6t12bZone2,
+			BigDecimal pfCu7t12bZone2, BigDecimal pfCu8t12bZone2,
+			BigDecimal pfCu9t12bZone2, BigDecimal pfCu1t12bZone3,
+			BigDecimal pfCu2t12bZone3, BigDecimal pfCu3t12bZone3,
+			BigDecimal pfCu4t12bZone3, BigDecimal pfCu5t12bZone3,
+			BigDecimal pfCu6t12bZone3, BigDecimal pfCu7t12bZone3,
+			BigDecimal pfCu8t12bZone3, BigDecimal pfCu9t12bZone3,
+			BigDecimal surprimePassSupHcabt12b,
 			BigDecimal surprimeTranspElevt12b,
 			BigDecimal surprimeTranspCamt12b,
 			BigDecimal surpimeTranspAutocart12b, Float tauxPassagerClandt12b,
@@ -96,7 +93,6 @@ public class RcTarif12b implements java.io.Serializable {
 			Float tauxMajredStatutproct12b,
 			Float tauxMajredStatutproautrest12b, Set<Tarif> tarifs) {
 		this.codeRcTarif12b = codeRcTarif12b;
-		this.tarif = tarif;
 		this.pfCu1t12bZone1 = pfCu1t12bZone1;
 		this.pfCu2t12bZone1 = pfCu2t12bZone1;
 		this.pfCu3t12bZone1 = pfCu3t12bZone1;
@@ -148,16 +144,6 @@ public class RcTarif12b implements java.io.Serializable {
 
 	public void setCodeRcTarif12b(String codeRcTarif12b) {
 		this.codeRcTarif12b = codeRcTarif12b;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_TARIF")
-	public Tarif getTarif() {
-		return this.tarif;
-	}
-
-	public void setTarif(Tarif tarif) {
-		this.tarif = tarif;
 	}
 
 	@Column(name = "PF_CU1T12B_ZONE1", precision = 15, scale = 3)

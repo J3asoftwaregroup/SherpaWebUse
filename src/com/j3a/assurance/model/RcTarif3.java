@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 16 juin 2015 11:31:51 by Hibernate Tools 4.3.1
+// Generated 16 juin 2015 16:25:09 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,7 +20,6 @@ import javax.persistence.Table;
 public class RcTarif3 implements java.io.Serializable {
 
 	private String codeRcTarif3;
-	private Tarif tarif;
 	private BigDecimal pfCu1Zone1t3;
 	private BigDecimal pfCu2Zone1t3;
 	private BigDecimal pfCu3Zone1t3;
@@ -64,7 +61,7 @@ public class RcTarif3 implements java.io.Serializable {
 		this.codeRcTarif3 = codeRcTarif3;
 	}
 
-	public RcTarif3(String codeRcTarif3, Tarif tarif, BigDecimal pfCu1Zone1t3,
+	public RcTarif3(String codeRcTarif3, BigDecimal pfCu1Zone1t3,
 			BigDecimal pfCu2Zone1t3, BigDecimal pfCu3Zone1t3,
 			BigDecimal pfCu4Zone1t3, BigDecimal pfCu5Zone1t3,
 			BigDecimal pfCu6Zone1t3, BigDecimal pfCu7Zone1t3,
@@ -82,7 +79,6 @@ public class RcTarif3 implements java.io.Serializable {
 			Float tauxMajredStatutprodt3, Float tauxMajredStatutproet3,
 			Float tauxMajredStatutproautrest3, Set<Tarif> tarifs) {
 		this.codeRcTarif3 = codeRcTarif3;
-		this.tarif = tarif;
 		this.pfCu1Zone1t3 = pfCu1Zone1t3;
 		this.pfCu2Zone1t3 = pfCu2Zone1t3;
 		this.pfCu3Zone1t3 = pfCu3Zone1t3;
@@ -126,16 +122,6 @@ public class RcTarif3 implements java.io.Serializable {
 
 	public void setCodeRcTarif3(String codeRcTarif3) {
 		this.codeRcTarif3 = codeRcTarif3;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_TARIF")
-	public Tarif getTarif() {
-		return this.tarif;
-	}
-
-	public void setTarif(Tarif tarif) {
-		this.tarif = tarif;
 	}
 
 	@Column(name = "PF_CU1_ZONE1T3", precision = 15, scale = 3)

@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 16 juin 2015 11:31:51 by Hibernate Tools 4.3.1
+// Generated 16 juin 2015 16:25:09 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -8,8 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,7 +19,6 @@ import javax.persistence.Table;
 public class RcTarif7 implements java.io.Serializable {
 
 	private String codeRcTarif7;
-	private Tarif tarif;
 	private Float tauxVhldcTourisme;
 	private Float tauxVhldcUtilTransp;
 	private Float tauxVhlTourismeZone;
@@ -35,11 +32,10 @@ public class RcTarif7 implements java.io.Serializable {
 		this.codeRcTarif7 = codeRcTarif7;
 	}
 
-	public RcTarif7(String codeRcTarif7, Tarif tarif, Float tauxVhldcTourisme,
+	public RcTarif7(String codeRcTarif7, Float tauxVhldcTourisme,
 			Float tauxVhldcUtilTransp, Float tauxVhlTourismeZone,
 			Float tauxVhlUtilTranspZone, Set<Tarif> tarifs) {
 		this.codeRcTarif7 = codeRcTarif7;
-		this.tarif = tarif;
 		this.tauxVhldcTourisme = tauxVhldcTourisme;
 		this.tauxVhldcUtilTransp = tauxVhldcUtilTransp;
 		this.tauxVhlTourismeZone = tauxVhlTourismeZone;
@@ -55,16 +51,6 @@ public class RcTarif7 implements java.io.Serializable {
 
 	public void setCodeRcTarif7(String codeRcTarif7) {
 		this.codeRcTarif7 = codeRcTarif7;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_TARIF")
-	public Tarif getTarif() {
-		return this.tarif;
-	}
-
-	public void setTarif(Tarif tarif) {
-		this.tarif = tarif;
 	}
 
 	@Column(name = "TAUX_VHLDC_TOURISME", precision = 12, scale = 0)

@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 16 juin 2015 11:31:51 by Hibernate Tools 4.3.1
+// Generated 16 juin 2015 16:25:09 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,7 +20,6 @@ import javax.persistence.Table;
 public class RcTarif10 implements java.io.Serializable {
 
 	private String codeRcTarif10;
-	private Tarif tarif;
 	private BigDecimal paE12D1Zone1;
 	private BigDecimal paE36D24Zone1;
 	private BigDecimal paE79D56Zone1;
@@ -47,17 +44,15 @@ public class RcTarif10 implements java.io.Serializable {
 		this.codeRcTarif10 = codeRcTarif10;
 	}
 
-	public RcTarif10(String codeRcTarif10, Tarif tarif,
-			BigDecimal paE12D1Zone1, BigDecimal paE36D24Zone1,
-			BigDecimal paE79D56Zone1, BigDecimal paE1011D78Zone1,
-			BigDecimal paE12D9Zone1, BigDecimal paE12D1Zone2,
-			BigDecimal paE12D1Zone3, BigDecimal paE36D24Zone2,
-			BigDecimal paE36D24Zone3, BigDecimal paE79D56Zone2,
-			BigDecimal paE79D56Zone3, BigDecimal paE1011D78Zone2,
-			BigDecimal paE1011D78Zone3, BigDecimal paE12D9Zone2,
-			BigDecimal paE12D9Zone3, Set<Tarif> tarifs) {
+	public RcTarif10(String codeRcTarif10, BigDecimal paE12D1Zone1,
+			BigDecimal paE36D24Zone1, BigDecimal paE79D56Zone1,
+			BigDecimal paE1011D78Zone1, BigDecimal paE12D9Zone1,
+			BigDecimal paE12D1Zone2, BigDecimal paE12D1Zone3,
+			BigDecimal paE36D24Zone2, BigDecimal paE36D24Zone3,
+			BigDecimal paE79D56Zone2, BigDecimal paE79D56Zone3,
+			BigDecimal paE1011D78Zone2, BigDecimal paE1011D78Zone3,
+			BigDecimal paE12D9Zone2, BigDecimal paE12D9Zone3, Set<Tarif> tarifs) {
 		this.codeRcTarif10 = codeRcTarif10;
-		this.tarif = tarif;
 		this.paE12D1Zone1 = paE12D1Zone1;
 		this.paE36D24Zone1 = paE36D24Zone1;
 		this.paE79D56Zone1 = paE79D56Zone1;
@@ -84,16 +79,6 @@ public class RcTarif10 implements java.io.Serializable {
 
 	public void setCodeRcTarif10(String codeRcTarif10) {
 		this.codeRcTarif10 = codeRcTarif10;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_TARIF")
-	public Tarif getTarif() {
-		return this.tarif;
-	}
-
-	public void setTarif(Tarif tarif) {
-		this.tarif = tarif;
 	}
 
 	@Column(name = "PA_E12_D1_ZONE1", precision = 15, scale = 3)

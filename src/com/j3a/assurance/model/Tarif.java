@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 16 juin 2015 11:31:51 by Hibernate Tools 4.3.1
+// Generated 16 juin 2015 16:25:09 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -89,6 +89,10 @@ public class Tarif implements java.io.Serializable {
 	private BigDecimal srDeces1;
 	private BigDecimal srDeces2;
 	private BigDecimal srDeces3;
+	private BigDecimal indivChauffDeces;
+	private BigDecimal indivChauffLpt;
+	private BigDecimal indivChaufFraisTrait;
+	private BigDecimal primeIndivChauff;
 	private BigDecimal srIpt1;
 	private BigDecimal srIpt2;
 	private BigDecimal srIpt3;
@@ -98,42 +102,15 @@ public class Tarif implements java.io.Serializable {
 	private BigDecimal srPrime1;
 	private BigDecimal srPrime2;
 	private BigDecimal srPrime3;
-	private Set<RcTarif12b> rcTarif12bs = new HashSet<RcTarif12b>(0);
-	private Set<RcTarif8> rcTarif8s = new HashSet<RcTarif8>(0);
-	private Set<RcTarif3> rcTarif3s = new HashSet<RcTarif3>(0);
-	private Set<RcTarif9> rcTarif9s = new HashSet<RcTarif9>(0);
-	private Set<RcTarif7> rcTarif7s = new HashSet<RcTarif7>(0);
-	private Set<RcTarif12> rcTarif12s = new HashSet<RcTarif12>(0);
-	private Set<RcTarif10> rcTarif10s = new HashSet<RcTarif10>(0);
-	private Set<RcTarif1> rcTarif1s = new HashSet<RcTarif1>(0);
-	private Set<RcTarif2> rcTarif2s = new HashSet<RcTarif2>(0);
-	private Set<RcTarif4> rcTarif4s = new HashSet<RcTarif4>(0);
-	private Set<RcTarif5> rcTarif5s = new HashSet<RcTarif5>(0);
-	private Set<RcTarif6> rcTarif6s = new HashSet<RcTarif6>(0);
 	private Set<SousCatVehicule> sousCatVehicules = new HashSet<SousCatVehicule>(
 			0);
 
 	public Tarif() {
 	}
 
-	public Tarif(String codeTarif, RcTarif1 rcTarif1, RcTarif10 rcTarif10,
-			RcTarif12 rcTarif12, RcTarif12b rcTarif12b, RcTarif2 rcTarif2,
-			RcTarif3 rcTarif3, RcTarif4 rcTarif4, RcTarif5 rcTarif5,
-			RcTarif6 rcTarif6, RcTarif7 rcTarif7, RcTarif8 rcTarif8,
-			RcTarif9 rcTarif9) {
+	public Tarif(String codeTarif, RcTarif12 rcTarif12) {
 		this.codeTarif = codeTarif;
-		this.rcTarif1 = rcTarif1;
-		this.rcTarif10 = rcTarif10;
 		this.rcTarif12 = rcTarif12;
-		this.rcTarif12b = rcTarif12b;
-		this.rcTarif2 = rcTarif2;
-		this.rcTarif3 = rcTarif3;
-		this.rcTarif4 = rcTarif4;
-		this.rcTarif5 = rcTarif5;
-		this.rcTarif6 = rcTarif6;
-		this.rcTarif7 = rcTarif7;
-		this.rcTarif8 = rcTarif8;
-		this.rcTarif9 = rcTarif9;
 	}
 
 	public Tarif(String codeTarif, RcTarif1 rcTarif1, RcTarif10 rcTarif10,
@@ -164,16 +141,12 @@ public class Tarif implements java.io.Serializable {
 			BigDecimal primeIncendie23, BigDecimal primeIncendie24,
 			BigDecimal primeIncendie25, Float surprimeTranspHyd,
 			BigDecimal srDeces1, BigDecimal srDeces2, BigDecimal srDeces3,
+			BigDecimal indivChauffDeces, BigDecimal indivChauffLpt,
+			BigDecimal indivChaufFraisTrait, BigDecimal primeIndivChauff,
 			BigDecimal srIpt1, BigDecimal srIpt2, BigDecimal srIpt3,
 			BigDecimal srFraisTrait1, BigDecimal srFraisTrait2,
 			BigDecimal srFraisTrait3, BigDecimal srPrime1, BigDecimal srPrime2,
-			BigDecimal srPrime3, Set<RcTarif12b> rcTarif12bs,
-			Set<RcTarif8> rcTarif8s, Set<RcTarif3> rcTarif3s,
-			Set<RcTarif9> rcTarif9s, Set<RcTarif7> rcTarif7s,
-			Set<RcTarif12> rcTarif12s, Set<RcTarif10> rcTarif10s,
-			Set<RcTarif1> rcTarif1s, Set<RcTarif2> rcTarif2s,
-			Set<RcTarif4> rcTarif4s, Set<RcTarif5> rcTarif5s,
-			Set<RcTarif6> rcTarif6s, Set<SousCatVehicule> sousCatVehicules) {
+			BigDecimal srPrime3, Set<SousCatVehicule> sousCatVehicules) {
 		this.codeTarif = codeTarif;
 		this.rcTarif1 = rcTarif1;
 		this.rcTarif10 = rcTarif10;
@@ -242,6 +215,10 @@ public class Tarif implements java.io.Serializable {
 		this.srDeces1 = srDeces1;
 		this.srDeces2 = srDeces2;
 		this.srDeces3 = srDeces3;
+		this.indivChauffDeces = indivChauffDeces;
+		this.indivChauffLpt = indivChauffLpt;
+		this.indivChaufFraisTrait = indivChaufFraisTrait;
+		this.primeIndivChauff = primeIndivChauff;
 		this.srIpt1 = srIpt1;
 		this.srIpt2 = srIpt2;
 		this.srIpt3 = srIpt3;
@@ -251,18 +228,6 @@ public class Tarif implements java.io.Serializable {
 		this.srPrime1 = srPrime1;
 		this.srPrime2 = srPrime2;
 		this.srPrime3 = srPrime3;
-		this.rcTarif12bs = rcTarif12bs;
-		this.rcTarif8s = rcTarif8s;
-		this.rcTarif3s = rcTarif3s;
-		this.rcTarif9s = rcTarif9s;
-		this.rcTarif7s = rcTarif7s;
-		this.rcTarif12s = rcTarif12s;
-		this.rcTarif10s = rcTarif10s;
-		this.rcTarif1s = rcTarif1s;
-		this.rcTarif2s = rcTarif2s;
-		this.rcTarif4s = rcTarif4s;
-		this.rcTarif5s = rcTarif5s;
-		this.rcTarif6s = rcTarif6s;
 		this.sousCatVehicules = sousCatVehicules;
 	}
 
@@ -277,7 +242,7 @@ public class Tarif implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_RC_TARIF1", nullable = false)
+	@JoinColumn(name = "CODE_RC_TARIF1")
 	public RcTarif1 getRcTarif1() {
 		return this.rcTarif1;
 	}
@@ -287,7 +252,7 @@ public class Tarif implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_RC_TARIF10", nullable = false)
+	@JoinColumn(name = "CODE_RC_TARIF10")
 	public RcTarif10 getRcTarif10() {
 		return this.rcTarif10;
 	}
@@ -307,7 +272,7 @@ public class Tarif implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_RC_TARIF12B", nullable = false)
+	@JoinColumn(name = "CODE_RC_TARIF12B")
 	public RcTarif12b getRcTarif12b() {
 		return this.rcTarif12b;
 	}
@@ -317,7 +282,7 @@ public class Tarif implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_RC_TARIF2", nullable = false)
+	@JoinColumn(name = "CODE_RC_TARIF2")
 	public RcTarif2 getRcTarif2() {
 		return this.rcTarif2;
 	}
@@ -327,7 +292,7 @@ public class Tarif implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_RC_TARIF3", nullable = false)
+	@JoinColumn(name = "CODE_RC_TARIF3")
 	public RcTarif3 getRcTarif3() {
 		return this.rcTarif3;
 	}
@@ -337,7 +302,7 @@ public class Tarif implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_RC_TARIF4", nullable = false)
+	@JoinColumn(name = "CODE_RC_TARIF4")
 	public RcTarif4 getRcTarif4() {
 		return this.rcTarif4;
 	}
@@ -347,7 +312,7 @@ public class Tarif implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_RC_TARIF5", nullable = false)
+	@JoinColumn(name = "CODE_RC_TARIF5")
 	public RcTarif5 getRcTarif5() {
 		return this.rcTarif5;
 	}
@@ -357,7 +322,7 @@ public class Tarif implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_RC_TARIF6", nullable = false)
+	@JoinColumn(name = "CODE_RC_TARIF6")
 	public RcTarif6 getRcTarif6() {
 		return this.rcTarif6;
 	}
@@ -367,7 +332,7 @@ public class Tarif implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_RC_TARIF7", nullable = false)
+	@JoinColumn(name = "CODE_RC_TARIF7")
 	public RcTarif7 getRcTarif7() {
 		return this.rcTarif7;
 	}
@@ -377,7 +342,7 @@ public class Tarif implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_RC_TARIF8", nullable = false)
+	@JoinColumn(name = "CODE_RC_TARIF8")
 	public RcTarif8 getRcTarif8() {
 		return this.rcTarif8;
 	}
@@ -387,7 +352,7 @@ public class Tarif implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_RC_TARIF9", nullable = false)
+	@JoinColumn(name = "CODE_RC_TARIF9")
 	public RcTarif9 getRcTarif9() {
 		return this.rcTarif9;
 	}
@@ -891,6 +856,42 @@ public class Tarif implements java.io.Serializable {
 		this.srDeces3 = srDeces3;
 	}
 
+	@Column(name = "INDIV_CHAUFF_DECES", precision = 15, scale = 3)
+	public BigDecimal getIndivChauffDeces() {
+		return this.indivChauffDeces;
+	}
+
+	public void setIndivChauffDeces(BigDecimal indivChauffDeces) {
+		this.indivChauffDeces = indivChauffDeces;
+	}
+
+	@Column(name = "INDIV_CHAUFF_LPT", precision = 15, scale = 3)
+	public BigDecimal getIndivChauffLpt() {
+		return this.indivChauffLpt;
+	}
+
+	public void setIndivChauffLpt(BigDecimal indivChauffLpt) {
+		this.indivChauffLpt = indivChauffLpt;
+	}
+
+	@Column(name = "INDIV_CHAUF_FRAIS_TRAIT", precision = 15, scale = 3)
+	public BigDecimal getIndivChaufFraisTrait() {
+		return this.indivChaufFraisTrait;
+	}
+
+	public void setIndivChaufFraisTrait(BigDecimal indivChaufFraisTrait) {
+		this.indivChaufFraisTrait = indivChaufFraisTrait;
+	}
+
+	@Column(name = "PRIME_INDIV_CHAUFF", precision = 15, scale = 3)
+	public BigDecimal getPrimeIndivChauff() {
+		return this.primeIndivChauff;
+	}
+
+	public void setPrimeIndivChauff(BigDecimal primeIndivChauff) {
+		this.primeIndivChauff = primeIndivChauff;
+	}
+
 	@Column(name = "SR_IPT1", precision = 15, scale = 3)
 	public BigDecimal getSrIpt1() {
 		return this.srIpt1;
@@ -970,114 +971,6 @@ public class Tarif implements java.io.Serializable {
 
 	public void setSrPrime3(BigDecimal srPrime3) {
 		this.srPrime3 = srPrime3;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tarif")
-	public Set<RcTarif12b> getRcTarif12bs() {
-		return this.rcTarif12bs;
-	}
-
-	public void setRcTarif12bs(Set<RcTarif12b> rcTarif12bs) {
-		this.rcTarif12bs = rcTarif12bs;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tarif")
-	public Set<RcTarif8> getRcTarif8s() {
-		return this.rcTarif8s;
-	}
-
-	public void setRcTarif8s(Set<RcTarif8> rcTarif8s) {
-		this.rcTarif8s = rcTarif8s;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tarif")
-	public Set<RcTarif3> getRcTarif3s() {
-		return this.rcTarif3s;
-	}
-
-	public void setRcTarif3s(Set<RcTarif3> rcTarif3s) {
-		this.rcTarif3s = rcTarif3s;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tarif")
-	public Set<RcTarif9> getRcTarif9s() {
-		return this.rcTarif9s;
-	}
-
-	public void setRcTarif9s(Set<RcTarif9> rcTarif9s) {
-		this.rcTarif9s = rcTarif9s;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tarif")
-	public Set<RcTarif7> getRcTarif7s() {
-		return this.rcTarif7s;
-	}
-
-	public void setRcTarif7s(Set<RcTarif7> rcTarif7s) {
-		this.rcTarif7s = rcTarif7s;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tarif")
-	public Set<RcTarif12> getRcTarif12s() {
-		return this.rcTarif12s;
-	}
-
-	public void setRcTarif12s(Set<RcTarif12> rcTarif12s) {
-		this.rcTarif12s = rcTarif12s;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tarif")
-	public Set<RcTarif10> getRcTarif10s() {
-		return this.rcTarif10s;
-	}
-
-	public void setRcTarif10s(Set<RcTarif10> rcTarif10s) {
-		this.rcTarif10s = rcTarif10s;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tarif")
-	public Set<RcTarif1> getRcTarif1s() {
-		return this.rcTarif1s;
-	}
-
-	public void setRcTarif1s(Set<RcTarif1> rcTarif1s) {
-		this.rcTarif1s = rcTarif1s;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tarif")
-	public Set<RcTarif2> getRcTarif2s() {
-		return this.rcTarif2s;
-	}
-
-	public void setRcTarif2s(Set<RcTarif2> rcTarif2s) {
-		this.rcTarif2s = rcTarif2s;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tarif")
-	public Set<RcTarif4> getRcTarif4s() {
-		return this.rcTarif4s;
-	}
-
-	public void setRcTarif4s(Set<RcTarif4> rcTarif4s) {
-		this.rcTarif4s = rcTarif4s;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tarif")
-	public Set<RcTarif5> getRcTarif5s() {
-		return this.rcTarif5s;
-	}
-
-	public void setRcTarif5s(Set<RcTarif5> rcTarif5s) {
-		this.rcTarif5s = rcTarif5s;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tarif")
-	public Set<RcTarif6> getRcTarif6s() {
-		return this.rcTarif6s;
-	}
-
-	public void setRcTarif6s(Set<RcTarif6> rcTarif6s) {
-		this.rcTarif6s = rcTarif6s;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tarif")

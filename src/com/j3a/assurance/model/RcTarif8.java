@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 16 juin 2015 11:31:51 by Hibernate Tools 4.3.1
+// Generated 16 juin 2015 16:25:09 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -9,8 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,7 +20,6 @@ import javax.persistence.Table;
 public class RcTarif8 implements java.io.Serializable {
 
 	private String codeRcTarif8;
-	private Tarif tarif;
 	private BigDecimal vhlTourDies0Ess12Zone1;
 	private BigDecimal vhlTourDies0Ess12Zone2;
 	private BigDecimal vhlTourDies0Ess12Zone3;
@@ -95,8 +92,7 @@ public class RcTarif8 implements java.io.Serializable {
 		this.codeRcTarif8 = codeRcTarif8;
 	}
 
-	public RcTarif8(String codeRcTarif8, Tarif tarif,
-			BigDecimal vhlTourDies0Ess12Zone1,
+	public RcTarif8(String codeRcTarif8, BigDecimal vhlTourDies0Ess12Zone1,
 			BigDecimal vhlTourDies0Ess12Zone2,
 			BigDecimal vhlTourDies0Ess12Zone3,
 			BigDecimal vhlTourDies24Ess36Zone1,
@@ -136,7 +132,6 @@ public class RcTarif8 implements java.io.Serializable {
 			BigDecimal vhlCat37Zone1, BigDecimal vhlCat37Zone2,
 			BigDecimal vhlCat37Zone3, Set<Tarif> tarifs) {
 		this.codeRcTarif8 = codeRcTarif8;
-		this.tarif = tarif;
 		this.vhlTourDies0Ess12Zone1 = vhlTourDies0Ess12Zone1;
 		this.vhlTourDies0Ess12Zone2 = vhlTourDies0Ess12Zone2;
 		this.vhlTourDies0Ess12Zone3 = vhlTourDies0Ess12Zone3;
@@ -211,16 +206,6 @@ public class RcTarif8 implements java.io.Serializable {
 
 	public void setCodeRcTarif8(String codeRcTarif8) {
 		this.codeRcTarif8 = codeRcTarif8;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CODE_TARIF")
-	public Tarif getTarif() {
-		return this.tarif;
-	}
-
-	public void setTarif(Tarif tarif) {
-		this.tarif = tarif;
 	}
 
 	@Column(name = "VHL_TOUR_DIES0_ESS12_ZONE1", precision = 15, scale = 3)
