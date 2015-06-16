@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 17:51:51 by Hibernate Tools 4.3.1
+// Generated 16 juin 2015 11:31:51 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -38,6 +38,7 @@ public class Tarif implements java.io.Serializable {
 	private BigDecimal drDomage;
 	private BigDecimal drSansDomage;
 	private Float tauxDrPrimeFinale;
+	private BigDecimal primeBaseDr;
 	private BigDecimal immobVehicule;
 	private BigDecimal graAnnuelle;
 	private BigDecimal graCourt;
@@ -141,38 +142,38 @@ public class Tarif implements java.io.Serializable {
 			RcTarif6 rcTarif6, RcTarif7 rcTarif7, RcTarif8 rcTarif8,
 			RcTarif9 rcTarif9, String libelleTarif, BigDecimal drDomage,
 			BigDecimal drSansDomage, Float tauxDrPrimeFinale,
-			BigDecimal immobVehicule, BigDecimal graAnnuelle,
-			BigDecimal graCourt, Float tauxBgOpt1, Float franchBgOpt1,
-			Float tauxBgOpt2, Float franchBgOpt2, Float tauxBgOpt3,
-			Float francBgOpt3, Float tauxPrimeDomCol, Float tauxFranchDomCol,
-			Float tauxPrimeDomAcc, Float tauxFranchDomAcc, Float tauxPrimeVol1,
-			Float tauxPrimeVol2, Float tauxPrimeVol3, Float tauxFranchVol,
-			Float tauxPrimeVolAcc, Float tauxFranchVolAcc,
-			BigDecimal primeVol11, BigDecimal primeVol12,
-			BigDecimal primeVol13, BigDecimal primeVol14,
-			BigDecimal primeVol15, BigDecimal primeVol21,
-			BigDecimal primeVol22, BigDecimal primeVol23,
-			BigDecimal primeVol24, BigDecimal primeVol25, Float tauxVandal,
-			BigDecimal primeVandal, Float franchVandal,
-			Float tauxPrimeIncendie1, Float tauxPrimeIncendie2,
-			Float tauxPrimeIncendie3, Float tauxFranchIncendie,
-			BigDecimal primeIncendie11, BigDecimal primeIncendie12,
-			BigDecimal primeIncendie13, BigDecimal primeIncendie14,
-			BigDecimal primeIncendie15, BigDecimal primeIncendie21,
-			BigDecimal primeIncendie22, BigDecimal primeIncendie23,
-			BigDecimal primeIncendie24, BigDecimal primeIncendie25,
-			Float surprimeTranspHyd, BigDecimal srDeces1, BigDecimal srDeces2,
-			BigDecimal srDeces3, BigDecimal srIpt1, BigDecimal srIpt2,
-			BigDecimal srIpt3, BigDecimal srFraisTrait1,
-			BigDecimal srFraisTrait2, BigDecimal srFraisTrait3,
-			BigDecimal srPrime1, BigDecimal srPrime2, BigDecimal srPrime3,
-			Set<RcTarif12b> rcTarif12bs, Set<RcTarif8> rcTarif8s,
-			Set<RcTarif3> rcTarif3s, Set<RcTarif9> rcTarif9s,
-			Set<RcTarif7> rcTarif7s, Set<RcTarif12> rcTarif12s,
-			Set<RcTarif10> rcTarif10s, Set<RcTarif1> rcTarif1s,
-			Set<RcTarif2> rcTarif2s, Set<RcTarif4> rcTarif4s,
-			Set<RcTarif5> rcTarif5s, Set<RcTarif6> rcTarif6s,
-			Set<SousCatVehicule> sousCatVehicules) {
+			BigDecimal primeBaseDr, BigDecimal immobVehicule,
+			BigDecimal graAnnuelle, BigDecimal graCourt, Float tauxBgOpt1,
+			Float franchBgOpt1, Float tauxBgOpt2, Float franchBgOpt2,
+			Float tauxBgOpt3, Float francBgOpt3, Float tauxPrimeDomCol,
+			Float tauxFranchDomCol, Float tauxPrimeDomAcc,
+			Float tauxFranchDomAcc, Float tauxPrimeVol1, Float tauxPrimeVol2,
+			Float tauxPrimeVol3, Float tauxFranchVol, Float tauxPrimeVolAcc,
+			Float tauxFranchVolAcc, BigDecimal primeVol11,
+			BigDecimal primeVol12, BigDecimal primeVol13,
+			BigDecimal primeVol14, BigDecimal primeVol15,
+			BigDecimal primeVol21, BigDecimal primeVol22,
+			BigDecimal primeVol23, BigDecimal primeVol24,
+			BigDecimal primeVol25, Float tauxVandal, BigDecimal primeVandal,
+			Float franchVandal, Float tauxPrimeIncendie1,
+			Float tauxPrimeIncendie2, Float tauxPrimeIncendie3,
+			Float tauxFranchIncendie, BigDecimal primeIncendie11,
+			BigDecimal primeIncendie12, BigDecimal primeIncendie13,
+			BigDecimal primeIncendie14, BigDecimal primeIncendie15,
+			BigDecimal primeIncendie21, BigDecimal primeIncendie22,
+			BigDecimal primeIncendie23, BigDecimal primeIncendie24,
+			BigDecimal primeIncendie25, Float surprimeTranspHyd,
+			BigDecimal srDeces1, BigDecimal srDeces2, BigDecimal srDeces3,
+			BigDecimal srIpt1, BigDecimal srIpt2, BigDecimal srIpt3,
+			BigDecimal srFraisTrait1, BigDecimal srFraisTrait2,
+			BigDecimal srFraisTrait3, BigDecimal srPrime1, BigDecimal srPrime2,
+			BigDecimal srPrime3, Set<RcTarif12b> rcTarif12bs,
+			Set<RcTarif8> rcTarif8s, Set<RcTarif3> rcTarif3s,
+			Set<RcTarif9> rcTarif9s, Set<RcTarif7> rcTarif7s,
+			Set<RcTarif12> rcTarif12s, Set<RcTarif10> rcTarif10s,
+			Set<RcTarif1> rcTarif1s, Set<RcTarif2> rcTarif2s,
+			Set<RcTarif4> rcTarif4s, Set<RcTarif5> rcTarif5s,
+			Set<RcTarif6> rcTarif6s, Set<SousCatVehicule> sousCatVehicules) {
 		this.codeTarif = codeTarif;
 		this.rcTarif1 = rcTarif1;
 		this.rcTarif10 = rcTarif10;
@@ -190,6 +191,7 @@ public class Tarif implements java.io.Serializable {
 		this.drDomage = drDomage;
 		this.drSansDomage = drSansDomage;
 		this.tauxDrPrimeFinale = tauxDrPrimeFinale;
+		this.primeBaseDr = primeBaseDr;
 		this.immobVehicule = immobVehicule;
 		this.graAnnuelle = graAnnuelle;
 		this.graCourt = graCourt;
@@ -428,6 +430,15 @@ public class Tarif implements java.io.Serializable {
 
 	public void setTauxDrPrimeFinale(Float tauxDrPrimeFinale) {
 		this.tauxDrPrimeFinale = tauxDrPrimeFinale;
+	}
+
+	@Column(name = "PRIME_BASE_DR", precision = 15, scale = 3)
+	public BigDecimal getPrimeBaseDr() {
+		return this.primeBaseDr;
+	}
+
+	public void setPrimeBaseDr(BigDecimal primeBaseDr) {
+		this.primeBaseDr = primeBaseDr;
 	}
 
 	@Column(name = "IMMOB_VEHICULE", precision = 15, scale = 3)

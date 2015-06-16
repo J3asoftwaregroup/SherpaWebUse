@@ -1,8 +1,7 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 17:51:51 by Hibernate Tools 4.3.1
+// Generated 16 juin 2015 11:31:51 by Hibernate Tools 4.3.1
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -23,18 +22,10 @@ public class RcTarif7 implements java.io.Serializable {
 
 	private String codeRcTarif7;
 	private Tarif tarif;
-	private BigDecimal vhldcTourismeZone1;
-	private BigDecimal vhldcTourismeZone2;
-	private BigDecimal vhldcTourismeZone3;
-	private BigDecimal vhldcUtilTranspZone1;
-	private BigDecimal vhldcUtilTranspZone2;
-	private BigDecimal vhldcUtilTranspZone3;
-	private BigDecimal vhlTourismeZone1;
-	private BigDecimal vhlTourismeZone2;
-	private BigDecimal vhlTourismeZone3;
-	private BigDecimal vhlUtilTranspZone1;
-	private BigDecimal vhlUtilTranspZone2;
-	private BigDecimal vhlUtilTranspZone3;
+	private Float tauxVhldcTourisme;
+	private Float tauxVhldcUtilTransp;
+	private Float tauxVhlTourismeZone;
+	private Float tauxVhlUtilTranspZone;
 	private Set<Tarif> tarifs = new HashSet<Tarif>(0);
 
 	public RcTarif7() {
@@ -44,28 +35,15 @@ public class RcTarif7 implements java.io.Serializable {
 		this.codeRcTarif7 = codeRcTarif7;
 	}
 
-	public RcTarif7(String codeRcTarif7, Tarif tarif,
-			BigDecimal vhldcTourismeZone1, BigDecimal vhldcTourismeZone2,
-			BigDecimal vhldcTourismeZone3, BigDecimal vhldcUtilTranspZone1,
-			BigDecimal vhldcUtilTranspZone2, BigDecimal vhldcUtilTranspZone3,
-			BigDecimal vhlTourismeZone1, BigDecimal vhlTourismeZone2,
-			BigDecimal vhlTourismeZone3, BigDecimal vhlUtilTranspZone1,
-			BigDecimal vhlUtilTranspZone2, BigDecimal vhlUtilTranspZone3,
-			Set<Tarif> tarifs) {
+	public RcTarif7(String codeRcTarif7, Tarif tarif, Float tauxVhldcTourisme,
+			Float tauxVhldcUtilTransp, Float tauxVhlTourismeZone,
+			Float tauxVhlUtilTranspZone, Set<Tarif> tarifs) {
 		this.codeRcTarif7 = codeRcTarif7;
 		this.tarif = tarif;
-		this.vhldcTourismeZone1 = vhldcTourismeZone1;
-		this.vhldcTourismeZone2 = vhldcTourismeZone2;
-		this.vhldcTourismeZone3 = vhldcTourismeZone3;
-		this.vhldcUtilTranspZone1 = vhldcUtilTranspZone1;
-		this.vhldcUtilTranspZone2 = vhldcUtilTranspZone2;
-		this.vhldcUtilTranspZone3 = vhldcUtilTranspZone3;
-		this.vhlTourismeZone1 = vhlTourismeZone1;
-		this.vhlTourismeZone2 = vhlTourismeZone2;
-		this.vhlTourismeZone3 = vhlTourismeZone3;
-		this.vhlUtilTranspZone1 = vhlUtilTranspZone1;
-		this.vhlUtilTranspZone2 = vhlUtilTranspZone2;
-		this.vhlUtilTranspZone3 = vhlUtilTranspZone3;
+		this.tauxVhldcTourisme = tauxVhldcTourisme;
+		this.tauxVhldcUtilTransp = tauxVhldcUtilTransp;
+		this.tauxVhlTourismeZone = tauxVhlTourismeZone;
+		this.tauxVhlUtilTranspZone = tauxVhlUtilTranspZone;
 		this.tarifs = tarifs;
 	}
 
@@ -89,112 +67,40 @@ public class RcTarif7 implements java.io.Serializable {
 		this.tarif = tarif;
 	}
 
-	@Column(name = "VHLDC_TOURISME_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getVhldcTourismeZone1() {
-		return this.vhldcTourismeZone1;
+	@Column(name = "TAUX_VHLDC_TOURISME", precision = 12, scale = 0)
+	public Float getTauxVhldcTourisme() {
+		return this.tauxVhldcTourisme;
 	}
 
-	public void setVhldcTourismeZone1(BigDecimal vhldcTourismeZone1) {
-		this.vhldcTourismeZone1 = vhldcTourismeZone1;
+	public void setTauxVhldcTourisme(Float tauxVhldcTourisme) {
+		this.tauxVhldcTourisme = tauxVhldcTourisme;
 	}
 
-	@Column(name = "VHLDC_TOURISME_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getVhldcTourismeZone2() {
-		return this.vhldcTourismeZone2;
+	@Column(name = "TAUX_VHLDC_UTIL_TRANSP", precision = 12, scale = 0)
+	public Float getTauxVhldcUtilTransp() {
+		return this.tauxVhldcUtilTransp;
 	}
 
-	public void setVhldcTourismeZone2(BigDecimal vhldcTourismeZone2) {
-		this.vhldcTourismeZone2 = vhldcTourismeZone2;
+	public void setTauxVhldcUtilTransp(Float tauxVhldcUtilTransp) {
+		this.tauxVhldcUtilTransp = tauxVhldcUtilTransp;
 	}
 
-	@Column(name = "VHLDC_TOURISME_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getVhldcTourismeZone3() {
-		return this.vhldcTourismeZone3;
+	@Column(name = "TAUX_VHL_TOURISME_ZONE", precision = 12, scale = 0)
+	public Float getTauxVhlTourismeZone() {
+		return this.tauxVhlTourismeZone;
 	}
 
-	public void setVhldcTourismeZone3(BigDecimal vhldcTourismeZone3) {
-		this.vhldcTourismeZone3 = vhldcTourismeZone3;
+	public void setTauxVhlTourismeZone(Float tauxVhlTourismeZone) {
+		this.tauxVhlTourismeZone = tauxVhlTourismeZone;
 	}
 
-	@Column(name = "VHLDC_UTIL_TRANSP_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getVhldcUtilTranspZone1() {
-		return this.vhldcUtilTranspZone1;
+	@Column(name = "TAUX_VHL_UTIL_TRANSP_ZONE", precision = 12, scale = 0)
+	public Float getTauxVhlUtilTranspZone() {
+		return this.tauxVhlUtilTranspZone;
 	}
 
-	public void setVhldcUtilTranspZone1(BigDecimal vhldcUtilTranspZone1) {
-		this.vhldcUtilTranspZone1 = vhldcUtilTranspZone1;
-	}
-
-	@Column(name = "VHLDC_UTIL_TRANSP_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getVhldcUtilTranspZone2() {
-		return this.vhldcUtilTranspZone2;
-	}
-
-	public void setVhldcUtilTranspZone2(BigDecimal vhldcUtilTranspZone2) {
-		this.vhldcUtilTranspZone2 = vhldcUtilTranspZone2;
-	}
-
-	@Column(name = "VHLDC_UTIL_TRANSP_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getVhldcUtilTranspZone3() {
-		return this.vhldcUtilTranspZone3;
-	}
-
-	public void setVhldcUtilTranspZone3(BigDecimal vhldcUtilTranspZone3) {
-		this.vhldcUtilTranspZone3 = vhldcUtilTranspZone3;
-	}
-
-	@Column(name = "VHL_TOURISME_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getVhlTourismeZone1() {
-		return this.vhlTourismeZone1;
-	}
-
-	public void setVhlTourismeZone1(BigDecimal vhlTourismeZone1) {
-		this.vhlTourismeZone1 = vhlTourismeZone1;
-	}
-
-	@Column(name = "VHL_TOURISME_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getVhlTourismeZone2() {
-		return this.vhlTourismeZone2;
-	}
-
-	public void setVhlTourismeZone2(BigDecimal vhlTourismeZone2) {
-		this.vhlTourismeZone2 = vhlTourismeZone2;
-	}
-
-	@Column(name = "VHL_TOURISME_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getVhlTourismeZone3() {
-		return this.vhlTourismeZone3;
-	}
-
-	public void setVhlTourismeZone3(BigDecimal vhlTourismeZone3) {
-		this.vhlTourismeZone3 = vhlTourismeZone3;
-	}
-
-	@Column(name = "VHL_UTIL_TRANSP_ZONE1", precision = 15, scale = 3)
-	public BigDecimal getVhlUtilTranspZone1() {
-		return this.vhlUtilTranspZone1;
-	}
-
-	public void setVhlUtilTranspZone1(BigDecimal vhlUtilTranspZone1) {
-		this.vhlUtilTranspZone1 = vhlUtilTranspZone1;
-	}
-
-	@Column(name = "VHL_UTIL_TRANSP_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getVhlUtilTranspZone2() {
-		return this.vhlUtilTranspZone2;
-	}
-
-	public void setVhlUtilTranspZone2(BigDecimal vhlUtilTranspZone2) {
-		this.vhlUtilTranspZone2 = vhlUtilTranspZone2;
-	}
-
-	@Column(name = "VHL_UTIL_TRANSP_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getVhlUtilTranspZone3() {
-		return this.vhlUtilTranspZone3;
-	}
-
-	public void setVhlUtilTranspZone3(BigDecimal vhlUtilTranspZone3) {
-		this.vhlUtilTranspZone3 = vhlUtilTranspZone3;
+	public void setTauxVhlUtilTranspZone(Float tauxVhlUtilTranspZone) {
+		this.tauxVhlUtilTranspZone = tauxVhlUtilTranspZone;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "rcTarif7")

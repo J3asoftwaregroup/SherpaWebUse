@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 17:51:51 by Hibernate Tools 4.3.1
+// Generated 16 juin 2015 11:31:51 by Hibernate Tools 4.3.1
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

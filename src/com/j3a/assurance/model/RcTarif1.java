@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 15 juin 2015 17:51:51 by Hibernate Tools 4.3.1
+// Generated 16 juin 2015 11:31:51 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -33,8 +33,8 @@ public class RcTarif1 implements java.io.Serializable {
 	private BigDecimal pfE79d56Zone2;
 	private BigDecimal pfE79d56Zone3;
 	private BigDecimal pfE1011d78Zone1;
-	private BigDecimal pf1011d78Zone2;
-	private BigDecimal pf1011d78Zone3;
+	private BigDecimal pfE1011d78Zone2;
+	private BigDecimal pfE1011d78Zone3;
 	private BigDecimal pfE12d9Zone1;
 	private BigDecimal pfE12d9Zone2;
 	private BigDecimal pfE12d9Zone3;
@@ -61,8 +61,8 @@ public class RcTarif1 implements java.io.Serializable {
 			BigDecimal pfE36d24Zone1, BigDecimal pfE36d24Zone2,
 			BigDecimal pfE36d24Zone3, BigDecimal pfE79d56Zone1,
 			BigDecimal pfE79d56Zone2, BigDecimal pfE79d56Zone3,
-			BigDecimal pfE1011d78Zone1, BigDecimal pf1011d78Zone2,
-			BigDecimal pf1011d78Zone3, BigDecimal pfE12d9Zone1,
+			BigDecimal pfE1011d78Zone1, BigDecimal pfE1011d78Zone2,
+			BigDecimal pfE1011d78Zone3, BigDecimal pfE12d9Zone1,
 			BigDecimal pfE12d9Zone2, BigDecimal pfE12d9Zone3,
 			Float tauxMajredRemorque, Float tauxMajredPermi1,
 			Float tauxMajredPermis2, Float tauxMajredStatutproa,
@@ -81,8 +81,8 @@ public class RcTarif1 implements java.io.Serializable {
 		this.pfE79d56Zone2 = pfE79d56Zone2;
 		this.pfE79d56Zone3 = pfE79d56Zone3;
 		this.pfE1011d78Zone1 = pfE1011d78Zone1;
-		this.pf1011d78Zone2 = pf1011d78Zone2;
-		this.pf1011d78Zone3 = pf1011d78Zone3;
+		this.pfE1011d78Zone2 = pfE1011d78Zone2;
+		this.pfE1011d78Zone3 = pfE1011d78Zone3;
 		this.pfE12d9Zone1 = pfE12d9Zone1;
 		this.pfE12d9Zone2 = pfE12d9Zone2;
 		this.pfE12d9Zone3 = pfE12d9Zone3;
@@ -208,22 +208,22 @@ public class RcTarif1 implements java.io.Serializable {
 		this.pfE1011d78Zone1 = pfE1011d78Zone1;
 	}
 
-	@Column(name = "PF_1011D78_ZONE2", precision = 15, scale = 3)
-	public BigDecimal getPf1011d78Zone2() {
-		return this.pf1011d78Zone2;
+	@Column(name = "PF_E1011D78_ZONE2", precision = 15, scale = 3)
+	public BigDecimal getPfE1011d78Zone2() {
+		return this.pfE1011d78Zone2;
 	}
 
-	public void setPf1011d78Zone2(BigDecimal pf1011d78Zone2) {
-		this.pf1011d78Zone2 = pf1011d78Zone2;
+	public void setPfE1011d78Zone2(BigDecimal pfE1011d78Zone2) {
+		this.pfE1011d78Zone2 = pfE1011d78Zone2;
 	}
 
-	@Column(name = "PF_1011D78_ZONE3", precision = 15, scale = 3)
-	public BigDecimal getPf1011d78Zone3() {
-		return this.pf1011d78Zone3;
+	@Column(name = "PF_E1011D78_ZONE3", precision = 15, scale = 3)
+	public BigDecimal getPfE1011d78Zone3() {
+		return this.pfE1011d78Zone3;
 	}
 
-	public void setPf1011d78Zone3(BigDecimal pf1011d78Zone3) {
-		this.pf1011d78Zone3 = pf1011d78Zone3;
+	public void setPfE1011d78Zone3(BigDecimal pfE1011d78Zone3) {
+		this.pfE1011d78Zone3 = pfE1011d78Zone3;
 	}
 
 	@Column(name = "PF_E12D9_ZONE1", precision = 15, scale = 3)
