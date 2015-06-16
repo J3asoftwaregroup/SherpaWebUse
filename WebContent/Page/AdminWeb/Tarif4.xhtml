@@ -6,10 +6,14 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+	
+	
+	
+	
 
 <ui:composition template="/template/templateadmin.xhtml">
 	<ui:define name="content">
-		<h:form id="cat">
+		<h:form id="tarif4">
 		<p:messages id="growl" autoUpdate="true" showDetail="true" />
 			<p:panel header="TARIF 04 : TRANSPORT PUBLIC DE VOYAGEURS (Catégorie 4)">
 			
@@ -65,9 +69,9 @@
     <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">Jusqu’à 4 places</p:column>
         
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{managedTarif4.rcTarif4.nbPlTaxi1Zone1}" ></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{managedTarif4.rcTarif4.nbPlTaxi1Zone2}"  ></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText   value="#{managedTarif4.rcTarif4.nbPlTaxi1Zone3}"  ></p:inputText></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
@@ -78,9 +82,9 @@
      <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">8 places</p:column>
         
-        <p:column style="font-weight: bold; border: 1px solid black;">  <p:inputText ></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"> <p:inputText ></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"> <p:inputText ></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;">  <p:inputText value="#{managedTarif4.rcTarif4.nbPlTaxi2Zone1}" ></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"> <p:inputText  value="#{managedTarif4.rcTarif4.nbPlTaxi2Zone2}"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"> <p:inputText value="#{managedTarif4.rcTarif4.nbPlTaxi2Zone3}"></p:inputText></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
@@ -93,17 +97,17 @@
      <p:row>
         <p:column style="font-weight: bold;border: 1px solid black;">CARS</p:column>
         <p:column style="font-weight: bold;border: 1px solid black;" colspan="3"></p:column>
-        <p:column style="font-weight: bold;border-right: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold;border-right: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold;border-right: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold;border-right: 1px solid black;"><p:inputText  value="#{managedTarif4.rcTarif4.tauxRemorquet4}"></p:inputText></p:column>
+        <p:column style="font-weight: bold;border-right: 1px solid black;"><p:inputText value="#{managedTarif4.rcTarif4.tauxPermis1t4}"></p:inputText></p:column>
+        <p:column style="font-weight: bold;border-right: 1px solid black;"><p:inputText value="#{managedTarif4.rcTarif4.tauxPermis2t4}"></p:inputText></p:column>
     </p:row>
     
      <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">De 9 à 22</p:column>
        
-        <p:column style="font-weight: bold; border: 1px solid black;border-right: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black; border-right: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;border-right: 1px solid black;"><p:inputText value="#{managedTarif4.rcTarif4.nbPlCar1Zone1}"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black; border-right: 1px solid black;"><p:inputText value="#{managedTarif4.rcTarif4.nbPlCar1Zone2}"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{managedTarif4.rcTarif4.nbPlCar1Zone3}"></p:inputText></p:column>
         <p:column style="font-weight: bold; border: 1px outset black;"></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black; border-left: 1px solid black;"></p:column>
         <p:column style="font-weight: bold;border-right: 1px solid black;"></p:column>
@@ -114,9 +118,9 @@
   <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">De 23 à 40</p:column>
        
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{managedTarif4.rcTarif4.nbPlCar2Zone1}"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{managedTarif4.rcTarif4.nbPlCar2Zone2}"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{managedTarif4.rcTarif4.nbPlCar2Zone3}"></p:inputText></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold;  border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold;border-right: 1px solid black; "></p:column>
@@ -129,9 +133,9 @@
      <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">41 et plus</p:column>
        
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{managedTarif4.rcTarif4.nbPlCar3Zone1}" ></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{managedTarif4.rcTarif4.nbPlCar3Zone2}"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{managedTarif4.rcTarif4.nbPlCar3Zone3}"></p:inputText></p:column>
         <p:column style="font-weight: bold; border: 1px outset black;"></p:column>
         <p:column style="font-weight: bold; border: 1px outset black; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold;border-right: 1px solid black; border: 1px outset black;"></p:column>
@@ -148,7 +152,7 @@
 			<br />
 			<fieldset >	
 			<legend> Validation  </legend>
-			<p:commandButton   value="Valider "    style="width:80px;height:30px; font-size:12px; border-radius:10px;"/>
+			<p:commandButton   value="Valider "  actionListener="#{managedTarif4.enregistrer}"   style="width:80px;height:30px; font-size:12px; border-radius:10px;"/>
 				
 			 </fieldset>
 			
