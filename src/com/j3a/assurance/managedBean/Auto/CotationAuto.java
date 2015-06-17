@@ -88,8 +88,8 @@ public class CotationAuto implements Serializable{
 			/*getManagedQuittanceAuto().setQuittanceid(
 					getIdGenerateur().getIdQuittance(idAven));*/
 			setExercice(getContratMB().getExerciceOuvert()); 
-			System.out.println("+++++++Exercice+++++++"
-					+getExercice().getCodeexercice() );
+	//		System.out.println("+++++++Exercice+++++++"
+			//		+getExercice().getCodeexercice() );
 			
 		}
 

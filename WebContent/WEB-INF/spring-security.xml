@@ -12,7 +12,7 @@
 		<security:intercept-url pattern="/page/sinistreAutoWeb/"
 			access="ROLE_WEBUSER" />
 		<security:form-login login-page="/login.jsp"
-			authentication-failure-url="/login-failure.jsp" />
+			authentication-failure-url="/login-failure.jsp"/>
 		<security:logout logout-url="/logout.jsp"
 			logout-success-url="/accueil.xhtml" />
 	</security:http>
