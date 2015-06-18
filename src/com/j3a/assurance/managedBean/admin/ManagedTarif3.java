@@ -1,36 +1,16 @@
 package com.j3a.assurance.managedBean.admin;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
-import com.j3a.assurance.managedBean.ManagedGarantie;
-import com.j3a.assurance.model.Apporteur;
-import com.j3a.assurance.model.Avenant;
-import com.j3a.assurance.model.Contrat;
-import com.j3a.assurance.model.Exercice;
-import com.j3a.assurance.model.Personne;
-import com.j3a.assurance.model.Physique;
-import com.j3a.assurance.model.PointVente;
-import com.j3a.assurance.model.Quittance;
 import com.j3a.assurance.model.RcTarif3;
-import com.j3a.assurance.model.Risque;
-import com.j3a.assurance.model.SocieteAssurance;
-import com.j3a.assurance.model.SousCatVehicule;
 import com.j3a.assurance.model.Tarif;
-import com.j3a.assurance.model.Utilisateur;
-import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.utilitaire.IdGenerateur;
 
@@ -53,35 +33,65 @@ public class ManagedTarif3 implements Serializable{
 		
 		private Tarif tarif = new Tarif();
 		private RcTarif3 rcTarif3 = new RcTarif3();
+		private  String code;
+		private  String codetar;
 		
 		
+		@PostConstruct
+		public void PostConst(){
+			try {
+				setRcTarif3( (RcTarif3) getObjectService().getObjectById("Rctarif3", "RcTarif3"));
+				setTarif( (Tarif) getObjectService().getObjectById("tarif3", "Tarif"));
+				System.out.println("ok Enregistrement recuperee");
+			} catch (NullPointerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("non ok !Enregistrement non recuperée");		
+
+			}		
+			
+			}
 		
 		public  void enregistrer(){
 			
-		try{
-			
-			
-			if (getRcTarif3().getCodeRcTarif3() != null) {
+			//RcTarif3 rcTarif3 = new RcTarif3();
+			try {
+				
+				code ="Rctarif3";
+				codetar ="tarif3";
+			RcTarif3 rcTarif3Tempon = (RcTarif3) getObjectService().getObjectById(code, "RcTarif3");
+			Tarif tarifTempon = (Tarif) getObjectService().getObjectById(codetar, "Tarif");
+		
+				
+				if(rcTarif3Tempon==null){
 				rcTarif3.setCodeRcTarif3("Rctarif3");
 				getObjectService().addObject(rcTarif3);
+				//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "Enregistrement effectué"));
+				}
+				else {
+					getObjectService().updateObject(rcTarif3);
+					//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "La mise à jour a été bien effectuée"));
+				}
 				
+				if(tarifTempon==null){
 				tarif.setCodeTarif("tarif3");
+				tarif.setRcTarif3(rcTarif3);
 				tarif.setLibelleTarif("Tarif 3");
 				getObjectService().addObject(tarif);
 				
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "Enregistrement effectué"));
 			}
 				else{
-				
-					getObjectService().updateObject(rcTarif3);
-					
+		
 					getObjectService().updateObject(tarif);
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "La mise à jour a été bien effectuée"));
 			}
 		
 		
 		
 		
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "Enregistrement effectué"));
-		} catch (Exception e) {
+		
+		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Echec", "Enregistrement non effectué"));		
@@ -148,6 +158,40 @@ public class ManagedTarif3 implements Serializable{
 
 		public void setRcTarif3(RcTarif3 rcTarif3) {
 			this.rcTarif3 = rcTarif3;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		public String getCode() {
+			return code;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		public void setCode(String code) {
+			this.code = code;
 		}
 		
 		
