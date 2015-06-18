@@ -30,16 +30,16 @@
    
      <p:row>
         <p:column style="font-weight: bold;border: 1px solid black;" >Sans remorque</p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText   value="#{managedTarif9.rcTarif9.vhlSrZone1}"></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText  value="#{managedTarif9.rcTarif9.vhlSrZone2}"></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText   value="#{managedTarif9.rcTarif9.vhlSrZone3}"></p:inputText></p:column>  
     </p:row>
     
     <p:row>
         <p:column style="font-weight: bold;border: 1px solid black;" >Avec remorque</p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText></p:inputText></p:column>  
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText  value="#{managedTarif9.rcTarif9.vhlRemorqueZone1}" ></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText  value="#{managedTarif9.rcTarif9.vhlRemorqueZone2}"></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText  value="#{managedTarif9.rcTarif9.vhlRemorqueZone3}"></p:inputText></p:column>  
     </p:row>
    </p:panelGrid>	
    </p:panel>
@@ -50,9 +50,9 @@
 		<fieldset><legend>DEFENSE ET RECOURS</legend> 
 		<h:panelGrid columns="2">
 		<h:outputText value="Garantie Dommage ou Garantie Dommage  Collision souscrite  "></h:outputText>
-		<p:inputText></p:inputText>
+		<p:inputText  value="#{managedTarif9.tarif.drDomage}" ></p:inputText>
 		<h:outputText value="Absence de Garantie Dommage "></h:outputText>
-		<p:inputText></p:inputText>
+		<p:inputText value="#{managedTarif9.tarif.drSansDomage}"></p:inputText>
 		</h:panelGrid>
 		</fieldset>	
 			</h:panelGroup>
@@ -61,7 +61,7 @@
 			<fieldset><legend>IMMOBILISATION DU VEHICULE </legend> 
 		<h:panelGrid columns="1">
 		<h:outputText value="Prime forfaitaire"></h:outputText>
-		<p:inputText></p:inputText>
+		<p:inputText value="#{managedTarif9.tarif.immobVehicule}"></p:inputText>
 		</h:panelGrid>
 		</fieldset>
 			</h:panelGroup>
@@ -70,9 +70,9 @@
 		<fieldset><legend>GARANTIE REMBOURSEMENT ANTICIPE (GRA)</legend> 
 		<h:panelGrid columns="2">
 		<h:outputText value="Prime annuelle  "></h:outputText>
-		<p:inputText></p:inputText>
+		<p:inputText  value="#{managedTarif9.tarif.graAnnuelle}"></p:inputText>
 		<h:outputText value="Prime annuelle avec fractionnement"></h:outputText>
-		<p:inputText></p:inputText>
+		<p:inputText value="#{managedTarif9.tarif.graCourt}"></p:inputText>
 		</h:panelGrid>
 		</fieldset>	
 			</h:panelGroup>
@@ -103,7 +103,7 @@
  
     <p:row>
         <p:column style="font-weight: bold;border: 1px solid black;">Dommages tous accidents (tierce complète)</p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText/><h:outputText value="% de la valeur neuve du véhicule"/></p:column> 
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText  value="#{managedTarif9.tarif.tauxPrimeDomAcc}"/><h:outputText value="% de la valeur neuve du véhicule"/></p:column> 
          <p:column style="font-weight: bold;border: 1px solid black;">Néant</p:column>
     </p:row>
     </p:panelGrid>
@@ -112,10 +112,10 @@
 			<fieldset><legend>LE VOL </legend>
 		<h:panelGrid columns="3">
 		<h:outputText value="Prime  Vol + Vol à main armée "></h:outputText>
-		<p:inputText></p:inputText>
+		<p:inputText value="#{managedTarif9.tarif.tauxPrimeVol1}"></p:inputText>
 		<h:outputText value="% de la valeur vénale"/>
 		<h:outputText value="Franchise"></h:outputText>
-		<p:inputText value=""></p:inputText>
+		<p:inputText value="#{managedTarif9.tarif.tauxFranchVol}"></p:inputText>
 		<h:outputText value="du sinistre avec un minimum de 250 000"></h:outputText>
 		</h:panelGrid>
 		</fieldset>
@@ -126,7 +126,7 @@
 			<fieldset><legend>INCENDIE </legend>
 		<h:panelGrid columns="3">
 		<h:outputText value="Prime"></h:outputText>
-		<p:inputText></p:inputText>
+		<p:inputText   value="#{managedTarif9.tarif.tauxPrimeIncendie1}"></p:inputText>
 		<h:outputText value="% de la valeur vénale"/>
 		<h:outputText value="Franchise"></h:outputText>
 		<p:inputText value="Néant"></p:inputText>
@@ -147,28 +147,28 @@
  
     <p:row>
         <p:column style="font-weight: bold;border: 1px solid black;">Décès</p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText/></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText  value="#{managedTarif9.tarif.srDeces1}"/></p:column>
     </p:row>
  
     <p:row>
         <p:column style="font-weight: bold;border: 1px solid black;">Ipt</p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText/></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{managedTarif9.tarif.srIpt1}"/></p:column>
     </p:row>
     
     <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">Frais de traitement</p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText/></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText  value="#{managedTarif9.tarif.srFraisTrait1}"/></p:column>
     </p:row>
     
     <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">PRIME</p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText/></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{managedTarif9.tarif.srPrime1}"/></p:column>
     </p:row>
     </p:panelGrid>
     <br />
     
 		<fieldset>
-<h:commandButton value="Enregistrer"  style="width:150px;height:40px; margin-left: 35px;font-size:15px;border-radius:20px;margin-left:250px"/>
+<h:commandButton value="Enregistrer"  actionListener="#{managedTarif9.enregistrer}" style="width:150px;height:40px; margin-left: 35px;font-size:15px;border-radius:20px;margin-left:250px"/>
 		</fieldset>
 		
 		
