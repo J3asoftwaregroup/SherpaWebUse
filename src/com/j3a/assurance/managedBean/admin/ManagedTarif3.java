@@ -39,10 +39,17 @@ public class ManagedTarif3 implements Serializable{
 		
 		@PostConstruct
 		public void PostConst(){
+			
+			RcTarif3 rcTarif3t2 = (RcTarif3) getObjectService().getObjectById("Rctarif3", "RcTarif3");
+			Tarif tarift = (Tarif) getObjectService().getObjectById("tarif3", "Tarif");
 			try {
-				setRcTarif3( (RcTarif3) getObjectService().getObjectById("Rctarif3", "RcTarif3"));
-				setTarif( (Tarif) getObjectService().getObjectById("tarif3", "Tarif"));
-				System.out.println("ok Enregistrement recuperee");
+				 
+				if(rcTarif3t2 !=null ){ 
+				setRcTarif3(rcTarif3t2 );}
+				
+				if (tarift !=null){
+				setTarif(tarift);
+				System.out.println("ok Enregistrement recuperee");}
 			} catch (NullPointerException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -54,7 +61,7 @@ public class ManagedTarif3 implements Serializable{
 		
 		public  void enregistrer(){
 			
-			//RcTarif3 rcTarif3 = new RcTarif3();
+			
 			try {
 				
 				code ="Rctarif3";
@@ -63,17 +70,12 @@ public class ManagedTarif3 implements Serializable{
 			Tarif tarifTempon = (Tarif) getObjectService().getObjectById(codetar, "Tarif");
 		
 				
-				if(rcTarif3Tempon==null){
+				if((rcTarif3Tempon==null) && (tarifTempon==null)){
 				rcTarif3.setCodeRcTarif3("Rctarif3");
 				getObjectService().addObject(rcTarif3);
-				//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "Enregistrement effectué"));
-				}
-				else {
-					getObjectService().updateObject(rcTarif3);
-					//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "La mise à jour a été bien effectuée"));
-				}
 				
-				if(tarifTempon==null){
+				
+				
 				tarif.setCodeTarif("tarif3");
 				tarif.setRcTarif3(rcTarif3);
 				tarif.setLibelleTarif("Tarif 3");
@@ -82,7 +84,7 @@ public class ManagedTarif3 implements Serializable{
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "Enregistrement effectué"));
 			}
 				else{
-		
+					getObjectService().updateObject(rcTarif3);
 					getObjectService().updateObject(tarif);
 					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "La mise à jour a été bien effectuée"));
 			}
@@ -172,6 +174,14 @@ public class ManagedTarif3 implements Serializable{
 
 
 
+
+		public String getCodetar() {
+			return codetar;
+		}
+
+		public void setCodetar(String codetar) {
+			this.codetar = codetar;
+		}
 
 		public String getCode() {
 			return code;
