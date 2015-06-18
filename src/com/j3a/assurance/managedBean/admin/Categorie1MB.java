@@ -27,9 +27,9 @@ public class Categorie1MB implements Serializable{
 	
 	public void addCategorie(){
 	try {
-		rcTarif1.setCodeRcTarif1("Tarif1");	
+		rcTarif1.setCodeRcTarif1("RcTarif1");	
 		getObjectService().addObject(rcTarif1);	
-		tarif.setCodeTarif(rcTarif1.getCodeRcTarif1());
+		tarif.setCodeTarif("Tarif1");
 		tarif.setRcTarif1(rcTarif1);
 		getObjectService().addObject(tarif);	
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success", "Enregistrement effectué"));
@@ -43,20 +43,26 @@ public class Categorie1MB implements Serializable{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public RcTarif1 getRcTarif1() {
+		return rcTarif1;
+	}
+
+
+	public void setRcTarif1(RcTarif1 rcTarif1) {
+		this.rcTarif1 = rcTarif1;
+	}
+
+
+	public Tarif getTarif() {
+		return tarif;
+	}
+
+
+	public void setTarif(Tarif tarif) {
+		this.tarif = tarif;
+	}
+
+
 	public ObjectService getObjectService() {
 		return objectService;
 	}

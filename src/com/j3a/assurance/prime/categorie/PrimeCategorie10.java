@@ -1,6 +1,8 @@
 package com.j3a.assurance.prime.categorie;
 import java.math.BigDecimal;
 
+import com.j3a.assurance.model.Tarif;
+
 public class PrimeCategorie10 implements PrimeCategorieInterface {
 
 	private String energie;
@@ -50,9 +52,21 @@ public class PrimeCategorie10 implements PrimeCategorieInterface {
 	private short nbrecarte;
 	private short nbrePlaceCab;
 	private short nbrePlaceHorscab;
+	
+	private Tarif tarif;
+	
+	public Tarif getTarif() {
+		return tarif;
+	}
+
+	public void setTarif(Tarif tarif) {
+		this.tarif = tarif;
+	}
 
 
 	/*---------------determination de la prime li�e aux garanties----------------------------------*/
+
+	
 
 	/*------------Determine la valeur de la prime de base------------------*/
 	public java.math.BigDecimal getPrimeBase() {

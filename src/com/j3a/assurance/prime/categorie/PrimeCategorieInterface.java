@@ -1,5 +1,7 @@
 package com.j3a.assurance.prime.categorie;
 
+import com.j3a.assurance.model.Tarif;
+
 public interface PrimeCategorieInterface {
 
 	/*---------------------------------------les Getters -----------------------------------------------*/
@@ -36,6 +38,7 @@ public interface PrimeCategorieInterface {
 	public java.math.BigDecimal getValeurNeuve();
 	public java.math.BigDecimal getValeurVenale();
 	
+	public Tarif getTarif();
 	public String getCategorie();
 	public String getTypeVehicule();
 	public String getTypeTransporte();
@@ -73,6 +76,7 @@ public interface PrimeCategorieInterface {
 	public void setValeurVenale(java.math.BigDecimal valeurVenale);
 	public void setValeurNeuve(java.math.BigDecimal valeurNeuve);
 	
+	public void setTarif(Tarif tarif);
 	public void setCategorie(String categorie);
 	public void setEnergie(String energie);
 	public void setZone(String zone);

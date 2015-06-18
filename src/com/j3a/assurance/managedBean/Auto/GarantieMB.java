@@ -149,6 +149,7 @@ public class GarantieMB implements Serializable {
 
 		CalculPrimeProrata prorata = new CalculPrimeProrata();
 		
+		prime.setTarif(vehiculeRow.getSouCatVehi().getTarif());
 		prime.setCategorie(vehiculeRow.getSouCatVehi().getTarif().getCodeTarif());
 		prime.setEnergie(vehiculeRow.getVehi().getEnergie());
 		prime.setNbrecarte(vehiculeRow.getVehi().getNbreCarte());
