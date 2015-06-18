@@ -47,8 +47,8 @@ public class Categorie1MB implements Serializable{
 	
 	public void addCategorie(){
 	try {
-		code ="Rctarif3";
-		codetar ="tarif3";
+		code ="Rctarif1";
+		codetar ="tarif1";
 	RcTarif1 rcTarif1Tempon = (RcTarif1) getObjectService().getObjectById(code, "RcTarif1");
 	Tarif tarifTempon = (Tarif) getObjectService().getObjectById(codetar, "Tarif");
 	

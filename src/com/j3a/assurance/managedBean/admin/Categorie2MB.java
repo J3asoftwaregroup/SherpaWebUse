@@ -2,12 +2,14 @@ package com.j3a.assurance.managedBean.admin;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.j3a.assurance.model.RcTarif1;
 import com.j3a.assurance.model.RcTarif2;
 import com.j3a.assurance.model.Tarif;
 import com.j3a.assurance.objetService.ObjectService;
@@ -21,9 +23,26 @@ public class Categorie2MB implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Autowired
     ObjectService objectService;
-	private RcTarif2 rcTarif2;
-	private Tarif tarif;
+	private RcTarif2 rcTarif2 = new RcTarif2();
+	private Tarif tarif = new Tarif();
+	private  String code;
+	private  String codetar;
 	
+	
+	@PostConstruct
+	public void PostConst(){
+		try {
+			setRcTarif2( (RcTarif2) getObjectService().getObjectById("Rctarif2", "RcTarif2"));
+			setTarif( (Tarif) getObjectService().getObjectById("tarif2", "Tarif"));
+			System.out.println("ok Enregistrement recuperee");
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("non ok !Enregistrement non recuperée");		
+
+		}		
+		
+		}
 	
 	public void addCategorie(){
 	try {
@@ -70,6 +89,22 @@ public class Categorie2MB implements Serializable{
 
 	public void setTarif(Tarif tarif) {
 		this.tarif = tarif;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getCodetar() {
+		return codetar;
+	}
+
+	public void setCodetar(String codetar) {
+		this.codetar = codetar;
 	}
 	
 	
