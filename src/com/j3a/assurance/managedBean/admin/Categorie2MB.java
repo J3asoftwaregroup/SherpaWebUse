@@ -9,7 +9,6 @@ import javax.faces.context.FacesContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.j3a.assurance.model.RcTarif1;
 import com.j3a.assurance.model.RcTarif2;
 import com.j3a.assurance.model.Tarif;
 import com.j3a.assurance.objetService.ObjectService;
@@ -29,7 +28,7 @@ public class Categorie2MB implements Serializable{
 	private  String codetar;
 	
 	
-	@PostConstruct
+	/*@PostConstruct
 	public void PostConst(){
 		try {
 			setRcTarif2( (RcTarif2) getObjectService().getObjectById("Rctarif2", "RcTarif2"));
@@ -42,16 +41,28 @@ public class Categorie2MB implements Serializable{
 
 		}		
 		
-		}
+		}*/
 	
 	public void addCategorie(){
 	try {
-		rcTarif2.setCodeRcTarif2("Tarif2");	
+		code ="Rctarif2";
+		codetar ="RcTarif2";
+	RcTarif2 rcTarif2Tempon = (RcTarif2) getObjectService().getObjectById(code, "RcTarif2");
+	Tarif tarifTempon = (Tarif) getObjectService().getObjectById(codetar, "Tarif");
+	if((rcTarif2Tempon==null) && (tarifTempon==null)){
+		rcTarif2.setCodeRcTarif2("RcTarif2");	
 		getObjectService().addObject(rcTarif2);	
 		tarif.setCodeTarif(rcTarif2.getCodeRcTarif2());
 		tarif.setRcTarif2(rcTarif2);
+		tarif.setLibelleTarif("Tarif 2");
 		getObjectService().addObject(tarif);	
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success", "Enregistrement effectué"));
+	}
+	else {
+		getObjectService().updateObject(rcTarif2);
+		getObjectService().updateObject(tarif);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "La mise à jour a été bien effectuée"));
+	}
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
