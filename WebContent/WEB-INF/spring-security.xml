@@ -7,14 +7,12 @@
 	<security:http>
 		<security:intercept-url pattern="/login.jsp" />
 		<security:intercept-url pattern="/login-failure.jsp" />
-		<security:intercept-url pattern="/pages/utilisateur/declarationSinnistreAuto.xhtml"
-			access="ROLE_USER,ROLE_ADMIN" />
-		<security:intercept-url pattern="/page/sinistreAutoWeb/"
+		<security:intercept-url pattern="/pages/sinistreAutoWeb/declarationSinnistreAuto.xhtml"
 			access="ROLE_WEBUSER" />
 		<security:form-login login-page="/login.jsp"
 			authentication-failure-url="/login-failure.jsp"/>
 		<security:logout logout-url="/logout.jsp"
-			logout-success-url="/accueil.xhtml" />
+			logout-success-url="/index.xhtml" />
 	</security:http>
 
 	<security:authentication-manager>
@@ -24,8 +22,8 @@
 
 			<security:jdbc-user-service
 				data-source-ref="dataSource"
-				users-by-username-query="select loginPers, motPassePers, from personne where loginPers=?"
-		        authorities-by-username-query="select ps.loginPers, ps.personne from personne ps"	 />
+				users-by-username-query="select LOGIN_PERS, MOT_PASSE_PERS, ENABLE_PERS from personne where LOGIN_PERS=?"
+				authorities-by-username-query="select pers.LOGIN_PERS, pers.user_role_libelle from personne pers, user_role ur where pers.user_role_id=ur.user_role_id and pers.user_pseudo=? " />
 		</security:authentication-provider>
 	</security:authentication-manager>
 </beans>
