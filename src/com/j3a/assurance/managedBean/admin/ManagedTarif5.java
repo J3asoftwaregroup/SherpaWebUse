@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -24,7 +25,7 @@ import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.model.PointVente;
 import com.j3a.assurance.model.Quittance;
-import com.j3a.assurance.model.RcTarif3;
+import com.j3a.assurance.model.RcTarif5;
 import com.j3a.assurance.model.RcTarif4;
 import com.j3a.assurance.model.RcTarif5;
 import com.j3a.assurance.model.Risque;
@@ -55,19 +56,68 @@ public class ManagedTarif5 implements Serializable{
 		
 		private Tarif tarif = new Tarif();
 		private RcTarif5 rcTarif5 = new RcTarif5();
+		private  String code;
+		private  String codetar;
 		
 		
+		
+		@PostConstruct
+		public void PostConst(){
+			
+			RcTarif5 rcTarif5t2 = (RcTarif5) getObjectService().getObjectById("Rctarif5", "RcTarif5");
+			Tarif tarift = (Tarif) getObjectService().getObjectById("tarif5", "Tarif");
+			try {
+				 
+				if(rcTarif5t2 !=null ){ 
+				setRcTarif5(rcTarif5t2 );}
+				
+				if (tarift !=null){
+				setTarif(tarift);
+				System.out.println("ok Enregistrement recuperee");}
+			} catch (NullPointerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("non ok !Enregistrement non recuperée");		
+
+			}		
+			
+			}
 		
 		public  void enregistrer(){
-		try{	
-		rcTarif5.setCodeRcTarif5("RcTarif5");
-		getObjectService().addObject(rcTarif5);
-		tarif.setCodeTarif("tarif5");
-		tarif.setLibelleTarif("Tarif5");
-		getObjectService().addObject(tarif);
+			
+			
+			try {
+				
+				code ="Rctarif5";
+				codetar ="tarif5";
+			RcTarif5 rcTarif5Tempon = (RcTarif5) getObjectService().getObjectById(code, "RcTarif5");
+			Tarif tarifTempon = (Tarif) getObjectService().getObjectById(codetar, "Tarif");
 		
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Succes", "Enregistrement effectué"));
-		} catch (Exception e) {
+				
+				if((rcTarif5Tempon==null) && (tarifTempon==null)){
+				rcTarif5.setCodeRcTarif5("Rctarif5");
+				getObjectService().addObject(rcTarif5);
+				
+				
+				
+				tarif.setCodeTarif("tarif5");
+				tarif.setRcTarif5(rcTarif5);
+				tarif.setLibelleTarif("Tarif 5");
+				getObjectService().addObject(tarif);
+				
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "Enregistrement effectué"));
+			}
+				else{
+					getObjectService().updateObject(rcTarif5);
+					getObjectService().updateObject(tarif);
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "La mise à jour a été bien effectuée"));
+			}
+		
+		
+		
+		
+		
+		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Echec", "Enregistrement non effectué"));		
@@ -75,13 +125,6 @@ public class ManagedTarif5 implements Serializable{
 		}		
 		
 		}
-
-		
-		
-		
-		
-		
-		
 
 		
 		
@@ -132,6 +175,22 @@ public class ManagedTarif5 implements Serializable{
 
 		public void setRcTarif5(RcTarif5 rcTarif5) {
 			this.rcTarif5 = rcTarif5;
+		}
+
+		public String getCode() {
+			return code;
+		}
+
+		public void setCode(String code) {
+			this.code = code;
+		}
+
+		public String getCodetar() {
+			return codetar;
+		}
+
+		public void setCodetar(String codetar) {
+			this.codetar = codetar;
 		}
 
 
