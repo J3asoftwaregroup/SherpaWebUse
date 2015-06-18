@@ -94,12 +94,12 @@
 			<fieldset><legend>DEFENSE ET RECOURS</legend> 
 		<h:panelGrid columns="2">
 		<h:outputText value="Prime de base "></h:outputText>
-		<p:inputText   action="#{managedTarif5.rcTarif5.tauxDrPrimeFinale}"></p:inputText>
+		<p:inputText   value="#{managedTarif5.tarif.primeBaseDr}"></p:inputText>
 		</h:panelGrid>
 		</fieldset>	
     
 		<fieldset>
-<h:commandButton value="Enregistrer"  actionListener="#{managedTarif5.enregistrer}" style="width:150px;height:40px; margin-left: 35px;font-size:15px;border-radius:20px;margin-left:250px"/>
+<p:commandButton value="Valider"  actionListener="#{managedTarif5.enregistrer}" style="width:80px;height:30px;margin-left: 450px; font-size:12px; border-radius:10px;"/>
 		</fieldset>
 		
 		
