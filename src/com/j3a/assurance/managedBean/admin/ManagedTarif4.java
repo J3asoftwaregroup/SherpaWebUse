@@ -1,37 +1,16 @@
 package com.j3a.assurance.managedBean.admin;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
-import com.j3a.assurance.managedBean.ManagedGarantie;
-import com.j3a.assurance.model.Apporteur;
-import com.j3a.assurance.model.Avenant;
-import com.j3a.assurance.model.Contrat;
-import com.j3a.assurance.model.Exercice;
-import com.j3a.assurance.model.Personne;
-import com.j3a.assurance.model.Physique;
-import com.j3a.assurance.model.PointVente;
-import com.j3a.assurance.model.Quittance;
-import com.j3a.assurance.model.RcTarif3;
 import com.j3a.assurance.model.RcTarif4;
-import com.j3a.assurance.model.Risque;
-import com.j3a.assurance.model.SocieteAssurance;
-import com.j3a.assurance.model.SousCatVehicule;
 import com.j3a.assurance.model.Tarif;
-import com.j3a.assurance.model.Utilisateur;
-import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.utilitaire.IdGenerateur;
 
@@ -56,23 +35,67 @@ public class ManagedTarif4 implements Serializable{
 		private RcTarif4 rcTarif4 = new RcTarif4();
 		
 		
+		private  String code ;
+		private  String codetar ;
+		
+		
+		@PostConstruct
+		public void PostConst(){
+			
+			RcTarif4 rcTarif4t2 = (RcTarif4) getObjectService().getObjectById("Rctarif4", "RcTarif4");
+			Tarif tarift = (Tarif) getObjectService().getObjectById("tarif4", "Tarif");
+			try {
+				 
+				if(rcTarif4t2 !=null ){ 
+				setRcTarif4(rcTarif4t2 );}
+				
+				if (tarift !=null){
+				setTarif(tarift);
+				System.out.println("ok Enregistrement recuperee");}
+			} catch (NullPointerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("non ok !Enregistrement non recuperée");		
+
+			}		
+			
+			}
 		
 		public  void enregistrer(){
-		try{	
-		rcTarif4.setCodeRcTarif4("RcTarif4");
-		getObjectService().addObject(rcTarif4);
+			
+			
+			try {
+				
+				code ="Rctarif4";
+				codetar ="tarif4";
+			RcTarif4 rcTarif4Tempon = (RcTarif4) getObjectService().getObjectById(code, "RcTarif4");
+			Tarif tarifTempon = (Tarif) getObjectService().getObjectById(codetar, "Tarif");
+		
+				
+				if((rcTarif4Tempon==null) && (tarifTempon==null)){
+				rcTarif4.setCodeRcTarif4("Rctarif4");
+				getObjectService().addObject(rcTarif4);
+				
+				
+				
+				tarif.setCodeTarif("tarif4");
+				tarif.setRcTarif4(rcTarif4);
+				tarif.setLibelleTarif("Tarif 4");
+				getObjectService().addObject(tarif);
+				
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "Enregistrement effectué"));
+			}
+				else{
+					getObjectService().updateObject(rcTarif4);
+					getObjectService().updateObject(tarif);
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "La mise à jour a été bien effectuée"));
+			}
 		
 		
 		
 		
 		
-		
-		tarif.setCodeTarif("tarif4");
-		tarif.setLibelleTarif("Tarif4");
-		getObjectService().addObject(tarif);
-		
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Succes", "Enregistrement effectué"));
-		} catch (Exception e) {
+		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Echec", "Enregistrement non effectué"));		
@@ -80,13 +103,6 @@ public class ManagedTarif4 implements Serializable{
 		}		
 		
 		}
-
-		
-		
-		
-		
-		
-		
 
 		
 		
@@ -137,6 +153,28 @@ public class ManagedTarif4 implements Serializable{
 
 		public void setRcTarif4(RcTarif4 rcTarif4) {
 			this.rcTarif4 = rcTarif4;
+		}
+
+
+
+
+
+
+
+
+		public String getCodetar() {
+			return codetar;
+		}
+
+
+
+
+
+
+
+
+		public void setCodetar(String codetar) {
+			this.codetar = codetar;
 		}
 
 

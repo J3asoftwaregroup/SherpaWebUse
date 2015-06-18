@@ -35,7 +35,7 @@
          <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 2</p:column>
         <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Zone 3</p:column>
         <p:column style="font-weight: bold;border: 1px solid black;" rowspan="2">Remorque</p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;" colspan="2">Ancienneté de permis (1)</p:column>
+        <p:column style="font-weight: bold;border: 1px solid black; " colspan="2">Ancienneté de permis (1)</p:column>
         <p:column style="font-weight: bold;border: 1px solid black;" colspan="6">Statut professionnel (2)</p:column>
     </p:row>
  
@@ -112,15 +112,15 @@
         <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{managedTarif3.rcTarif3.pfCu4Zone1t3}" ></p:inputText></p:column>
         <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{managedTarif3.rcTarif3.pfCu4Zone2t3}"></p:inputText></p:column>
         <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{managedTarif3.rcTarif3.pfCu4Zone3t3}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText value="#{managedTarif3.rcTarif3.tauxMajredRemorquet3}"           style="width:30px"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText value="#{managedTarif3.rcTarif3.tauxMajredPermi1t3}"       style="width:30px"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText value="#{managedTarif3.rcTarif3.tauxMajredPermis2t3}"      style="width:30px"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText value="#{managedTarif3.rcTarif3.tauxMajredStatutproat3}"   style="width:30px"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText  value="#{managedTarif3.rcTarif3.tauxMajredStatutprobt3}"  style="width:30px"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText  value="#{managedTarif3.rcTarif3.tauxMajredStatutproct3}"  style="width:30px"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText  value="#{managedTarif3.rcTarif3.tauxMajredStatutprodt3}"  style="width:30px"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText  value="#{managedTarif3.rcTarif3.tauxMajredStatutproet3}"    style="width:30px"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText  value="#{managedTarif3.rcTarif3.tauxMajredStatutproautrest3}"  style="width:30px"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText value="#{managedTarif3.rcTarif3.tauxMajredRemorquet3}"           style="width:30px"></p:inputText> <h:outputText value="% "/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText value="#{managedTarif3.rcTarif3.tauxMajredPermi1t3}"       style="width:30px"></p:inputText> <h:outputText value="%"/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText value="#{managedTarif3.rcTarif3.tauxMajredPermis2t3}"      style="width:30px"></p:inputText> <h:outputText value="%"/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText value="#{managedTarif3.rcTarif3.tauxMajredStatutproat3}"   style="width:30px"></p:inputText> <h:outputText value="%"/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText  value="#{managedTarif3.rcTarif3.tauxMajredStatutprobt3}"  style="width:30px"></p:inputText> <h:outputText value="%"/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText  value="#{managedTarif3.rcTarif3.tauxMajredStatutproct3}"  style="width:30px"></p:inputText> <h:outputText value="%"/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText  value="#{managedTarif3.rcTarif3.tauxMajredStatutprodt3}"  style="width:30px"></p:inputText> <h:outputText value="%"/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText  value="#{managedTarif3.rcTarif3.tauxMajredStatutproet3}"    style="width:30px"></p:inputText> <h:outputText value="%"/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText  value="#{managedTarif3.rcTarif3.tauxMajredStatutproautrest3}"  style="width:30px"></p:inputText> <h:outputText value="%"/></p:column>
         
         
         
@@ -216,7 +216,7 @@
 		<fieldset><legend>DEFENSE ET RECOURS</legend> 
 		
 		<h:outputText value="Prime :Prime  finale  RC "></h:outputText>
-		<p:inputText  value="#{managedTarif3.tarif.primeBaseDr}"   style="width:50px"> </p:inputText> <h:outputText value="%"></h:outputText>
+		<p:inputText  value="#{managedTarif3.tarif.tauxDrPrimeFinale}"   style="width:50px"> </p:inputText> <h:outputText value="%"></h:outputText>
 		
 		
 		</fieldset>	
