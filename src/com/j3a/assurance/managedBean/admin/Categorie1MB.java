@@ -29,7 +29,7 @@ public class Categorie1MB implements Serializable{
 	private  String codetar;
 	
 	
-	/*@PostConstruct
+	@PostConstruct
 	public void PostConst(){
 		try {
 			setRcTarif1( (RcTarif1) getObjectService().getObjectById("Rctarif1", "RcTarif1"));
@@ -42,7 +42,7 @@ public class Categorie1MB implements Serializable{
 
 		}		
 		
-		}*/
+		}
 	
 	
 	public void addCategorie(){

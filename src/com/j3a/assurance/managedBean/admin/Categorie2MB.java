@@ -28,7 +28,7 @@ public class Categorie2MB implements Serializable{
 	private  String codetar;
 	
 	
-	/*@PostConstruct
+	@PostConstruct
 	public void PostConst(){
 		try {
 			setRcTarif2( (RcTarif2) getObjectService().getObjectById("Rctarif2", "RcTarif2"));
@@ -41,18 +41,18 @@ public class Categorie2MB implements Serializable{
 
 		}		
 		
-		}*/
+		}
 	
 	public void addCategorie(){
 	try {
 		code ="Rctarif2";
-		codetar ="RcTarif2";
+		codetar ="tarif2";
 	RcTarif2 rcTarif2Tempon = (RcTarif2) getObjectService().getObjectById(code, "RcTarif2");
 	Tarif tarifTempon = (Tarif) getObjectService().getObjectById(codetar, "Tarif");
 	if((rcTarif2Tempon==null) && (tarifTempon==null)){
 		rcTarif2.setCodeRcTarif2("RcTarif2");	
 		getObjectService().addObject(rcTarif2);	
-		tarif.setCodeTarif(rcTarif2.getCodeRcTarif2());
+		tarif.setCodeTarif("tarif2");
 		tarif.setRcTarif2(rcTarif2);
 		tarif.setLibelleTarif("Tarif 2");
 		getObjectService().addObject(tarif);	
