@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 16 juin 2015 18:00:51 by Hibernate Tools 4.3.1
+// Generated 18 juin 2015 16:44:49 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -25,6 +25,7 @@ public class Morale implements java.io.Serializable {
 
 	private String numSouscripteur;
 	private Personne personne;
+	private Integer userRoleId;
 	private Date datePers;
 	private String nomRaisonSociale;
 	private String adresseGeo;
@@ -34,7 +35,7 @@ public class Morale implements java.io.Serializable {
 	private String email;
 	private String loginPers;
 	private String motPassePers;
-	private String typeWebUser;
+	private Boolean enable;
 	private String dirigeant;
 	private String numCc;
 	private String numRc;
@@ -47,12 +48,13 @@ public class Morale implements java.io.Serializable {
 		this.personne = personne;
 	}
 
-	public Morale(Personne personne, Date datePers, String nomRaisonSociale,
-			String adresseGeo, String adresse, String telephone, String fax,
-			String email, String loginPers, String motPassePers,
-			String typeWebUser, String dirigeant, String numCc, String numRc,
-			String mailDirigeant) {
+	public Morale(Personne personne, Integer userRoleId, Date datePers,
+			String nomRaisonSociale, String adresseGeo, String adresse,
+			String telephone, String fax, String email, String loginPers,
+			String motPassePers, Boolean enable, String dirigeant,
+			String numCc, String numRc, String mailDirigeant) {
 		this.personne = personne;
+		this.userRoleId = userRoleId;
 		this.datePers = datePers;
 		this.nomRaisonSociale = nomRaisonSociale;
 		this.adresseGeo = adresseGeo;
@@ -62,7 +64,7 @@ public class Morale implements java.io.Serializable {
 		this.email = email;
 		this.loginPers = loginPers;
 		this.motPassePers = motPassePers;
-		this.typeWebUser = typeWebUser;
+		this.enable = enable;
 		this.dirigeant = dirigeant;
 		this.numCc = numCc;
 		this.numRc = numRc;
@@ -89,6 +91,15 @@ public class Morale implements java.io.Serializable {
 
 	public void setPersonne(Personne personne) {
 		this.personne = personne;
+	}
+
+	@Column(name = "USER_ROLE_ID")
+	public Integer getUserRoleId() {
+		return this.userRoleId;
+	}
+
+	public void setUserRoleId(Integer userRoleId) {
+		this.userRoleId = userRoleId;
 	}
 
 	@Temporal(TemporalType.DATE)
@@ -173,13 +184,13 @@ public class Morale implements java.io.Serializable {
 		this.motPassePers = motPassePers;
 	}
 
-	@Column(name = "TYPE_WEB_USER", length = 100)
-	public String getTypeWebUser() {
-		return this.typeWebUser;
+	@Column(name = "ENABLE")
+	public Boolean getEnable() {
+		return this.enable;
 	}
 
-	public void setTypeWebUser(String typeWebUser) {
-		this.typeWebUser = typeWebUser;
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
 	}
 
 	@Column(name = "DIRIGEANT", length = 70)

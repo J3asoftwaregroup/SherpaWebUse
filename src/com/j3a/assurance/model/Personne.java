@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 16 juin 2015 18:00:51 by Hibernate Tools 4.3.1
+// Generated 18 juin 2015 16:44:49 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,6 +25,7 @@ import javax.persistence.TemporalType;
 public class Personne implements java.io.Serializable {
 
 	private String numSouscripteur;
+	private UserRole userRole;
 	private Date datePers;
 	private String nomRaisonSociale;
 	private String adresseGeo;
@@ -32,7 +35,7 @@ public class Personne implements java.io.Serializable {
 	private String email;
 	private String loginPers;
 	private String motPassePers;
-	private String typeWebUser;
+	private Boolean enable;
 	private Set<Contrat> contrats = new HashSet<Contrat>(0);
 	private Set<Etre> etres = new HashSet<Etre>(0);
 	private Physique physique;
@@ -43,17 +46,19 @@ public class Personne implements java.io.Serializable {
 	public Personne() {
 	}
 
-	public Personne(String numSouscripteur) {
+	public Personne(String numSouscripteur, UserRole userRole) {
 		this.numSouscripteur = numSouscripteur;
+		this.userRole = userRole;
 	}
 
-	public Personne(String numSouscripteur, Date datePers,
+	public Personne(String numSouscripteur, UserRole userRole, Date datePers,
 			String nomRaisonSociale, String adresseGeo, String adresse,
 			String telephone, String fax, String email, String loginPers,
-			String motPassePers, String typeWebUser, Set<Contrat> contrats,
+			String motPassePers, Boolean enable, Set<Contrat> contrats,
 			Set<Etre> etres, Physique physique, Morale morale,
 			Set<PersonneNationalite> personneNationalites) {
 		this.numSouscripteur = numSouscripteur;
+		this.userRole = userRole;
 		this.datePers = datePers;
 		this.nomRaisonSociale = nomRaisonSociale;
 		this.adresseGeo = adresseGeo;
@@ -63,7 +68,7 @@ public class Personne implements java.io.Serializable {
 		this.email = email;
 		this.loginPers = loginPers;
 		this.motPassePers = motPassePers;
-		this.typeWebUser = typeWebUser;
+		this.enable = enable;
 		this.contrats = contrats;
 		this.etres = etres;
 		this.physique = physique;
@@ -79,6 +84,16 @@ public class Personne implements java.io.Serializable {
 
 	public void setNumSouscripteur(String numSouscripteur) {
 		this.numSouscripteur = numSouscripteur;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "USER_ROLE_ID", nullable = false)
+	public UserRole getUserRole() {
+		return this.userRole;
+	}
+
+	public void setUserRole(UserRole userRole) {
+		this.userRole = userRole;
 	}
 
 	@Temporal(TemporalType.DATE)
@@ -163,13 +178,13 @@ public class Personne implements java.io.Serializable {
 		this.motPassePers = motPassePers;
 	}
 
-	@Column(name = "TYPE_WEB_USER", length = 100)
-	public String getTypeWebUser() {
-		return this.typeWebUser;
+	@Column(name = "ENABLE")
+	public Boolean getEnable() {
+		return this.enable;
 	}
 
-	public void setTypeWebUser(String typeWebUser) {
-		this.typeWebUser = typeWebUser;
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "personne")

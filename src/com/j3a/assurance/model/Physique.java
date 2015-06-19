@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 16 juin 2015 18:00:51 by Hibernate Tools 4.3.1
+// Generated 18 juin 2015 16:44:49 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -31,6 +31,7 @@ public class Physique implements java.io.Serializable {
 	private String numSouscripteur;
 	private Personne personne;
 	private Sexe sexe;
+	private Integer userRoleId;
 	private Date datePers;
 	private String nomRaisonSociale;
 	private String adresseGeo;
@@ -40,7 +41,7 @@ public class Physique implements java.io.Serializable {
 	private String email;
 	private String loginPers;
 	private String motPassePers;
-	private String typeWebUser;
+	private Boolean enable;
 	private String prenomPers;
 	private Date dateNaissPers;
 	private String lieuNaissPers;
@@ -60,16 +61,17 @@ public class Physique implements java.io.Serializable {
 		this.sexe = sexe;
 	}
 
-	public Physique(Personne personne, Sexe sexe, Date datePers,
-			String nomRaisonSociale, String adresseGeo, String adresse,
-			String telephone, String fax, String email, String loginPers,
-			String motPassePers, String typeWebUser, String prenomPers,
-			Date dateNaissPers, String lieuNaissPers, String situationMatPers,
-			String numPiecePers, String titre, String profession,
-			String categorieProfessionnelle, String typePiece,
-			Set<Permis> permises) {
+	public Physique(Personne personne, Sexe sexe, Integer userRoleId,
+			Date datePers, String nomRaisonSociale, String adresseGeo,
+			String adresse, String telephone, String fax, String email,
+			String loginPers, String motPassePers, Boolean enable,
+			String prenomPers, Date dateNaissPers, String lieuNaissPers,
+			String situationMatPers, String numPiecePers, String titre,
+			String profession, String categorieProfessionnelle,
+			String typePiece, Set<Permis> permises) {
 		this.personne = personne;
 		this.sexe = sexe;
+		this.userRoleId = userRoleId;
 		this.datePers = datePers;
 		this.nomRaisonSociale = nomRaisonSociale;
 		this.adresseGeo = adresseGeo;
@@ -79,7 +81,7 @@ public class Physique implements java.io.Serializable {
 		this.email = email;
 		this.loginPers = loginPers;
 		this.motPassePers = motPassePers;
-		this.typeWebUser = typeWebUser;
+		this.enable = enable;
 		this.prenomPers = prenomPers;
 		this.dateNaissPers = dateNaissPers;
 		this.lieuNaissPers = lieuNaissPers;
@@ -122,6 +124,15 @@ public class Physique implements java.io.Serializable {
 
 	public void setSexe(Sexe sexe) {
 		this.sexe = sexe;
+	}
+
+	@Column(name = "USER_ROLE_ID")
+	public Integer getUserRoleId() {
+		return this.userRoleId;
+	}
+
+	public void setUserRoleId(Integer userRoleId) {
+		this.userRoleId = userRoleId;
 	}
 
 	@Temporal(TemporalType.DATE)
@@ -206,13 +217,13 @@ public class Physique implements java.io.Serializable {
 		this.motPassePers = motPassePers;
 	}
 
-	@Column(name = "TYPE_WEB_USER", length = 100)
-	public String getTypeWebUser() {
-		return this.typeWebUser;
+	@Column(name = "ENABLE")
+	public Boolean getEnable() {
+		return this.enable;
 	}
 
-	public void setTypeWebUser(String typeWebUser) {
-		this.typeWebUser = typeWebUser;
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
 	}
 
 	@Column(name = "PRENOM_PERS", length = 70)
