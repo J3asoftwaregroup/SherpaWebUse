@@ -53,9 +53,9 @@
     
     <p:row>
         <p:column style="font-weight: bold;border: 1px solid black;">Jusqu’à 1T</p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu1Zone1}"></p:inputText></p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu1Zone2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu1Zone3}"></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu1Zone1}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu1Zone2}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu1Zone3}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
         <p:column style="font-weight: bold;border-right: 1px solid black;"></p:column>
          <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
@@ -71,9 +71,9 @@
     
     <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">De 1,001T à 3T</p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu2Zone1}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu2Zone2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu2Zone3}"/></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu2Zone1}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu2Zone2}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu2Zone3}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
@@ -87,18 +87,18 @@
     
      <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">De 3,001 T à 5T</p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu3Zone1}"/></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu3Zone2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu3Zone3}"></p:inputText ></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px" value="#{categorie2MB.rcTarif2.tauxMajredRemorquet2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px" value="#{categorie2MB.rcTarif2.tauxMajredPermi1t2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px" value="#{categorie2MB.rcTarif2.tauxMajredPermis2t2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px" value="#{categorie2MB.rcTarif2.tauxMajredStatutproat2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px" value="#{categorie2MB.rcTarif2.tauxMajredStatutprobt2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px" value="#{categorie2MB.rcTarif2.tauxMajredStatutproct2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px" value="#{categorie2MB.rcTarif2.tauxMajredStatutprodt2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px" value="#{categorie2MB.rcTarif2.tauxMajredStatutproet2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px" value="#{categorie2MB.rcTarif2.tauxMajredStatutproautrest2}"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu3Zone1}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu3Zone2}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu3Zone3}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText ></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px" value="#{categorie2MB.rcTarif2.tauxMajredRemorquet2}"></p:inputText><h:outputText value="% "/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px" value="#{categorie2MB.rcTarif2.tauxMajredPermi1t2}"></p:inputText><h:outputText value="% "/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:30px" value="#{categorie2MB.rcTarif2.tauxMajredPermis2t2}"></p:inputText><h:outputText value="% "/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:15px" value="#{categorie2MB.rcTarif2.tauxMajredStatutproat2}"></p:inputText><h:outputText value="% "/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:15px" value="#{categorie2MB.rcTarif2.tauxMajredStatutprobt2}"></p:inputText><h:outputText value="% "/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:15px" value="#{categorie2MB.rcTarif2.tauxMajredStatutproct2}"></p:inputText><h:outputText value="% "/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:15px" value="#{categorie2MB.rcTarif2.tauxMajredStatutprodt2}"></p:inputText><h:outputText value="% "/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:15px" value="#{categorie2MB.rcTarif2.tauxMajredStatutproet2}"></p:inputText><h:outputText value="% "/></p:column>
+        <p:column style="font-weight: bold; border-right: 1px solid black;"><p:inputText style="width:15px" value="#{categorie2MB.rcTarif2.tauxMajredStatutproautrest2}"></p:inputText><h:outputText value="% "/></p:column>
         
         
         
@@ -106,9 +106,9 @@
     
      <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">De 5,001T à 8T</p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu4Zone1}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu4Zone2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu4Zone3}"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu4Zone1}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu4Zone2}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu4Zone3}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
@@ -122,9 +122,9 @@
     
      <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">De 8,001T à 11T</p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu5Zone1}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu5Zone2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu5Zone3}"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu5Zone1}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu5Zone2}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu5Zone3}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
         <p:column style="font-weight: bold; border: 1px outset black;"></p:column>
         <p:column style="font-weight: bold; border: 1px outset black; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold;border-right: 1px solid black; border: 1px outset black;"></p:column>
@@ -138,9 +138,9 @@
     
     <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">De 11,001T à 13T</p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu6Zone1}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu6Zone2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu6Zone3}"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu6Zone1}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu6Zone2}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu6Zone3}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black; "></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold;border-right: 1px solid black; "></p:column>
@@ -154,9 +154,9 @@
     
     <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">De 13,001T à 15T</p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu7Zone1}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu7Zone2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu7Zone3}"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu7Zone1}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu7Zone2}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu7Zone3}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black; "></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold;border-right: 1px solid black; "></p:column>
@@ -170,9 +170,9 @@
     
     <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">Plus de 15T</p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu8Zone1}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu8Zone2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu8Zone3}"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu8Zone1}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu8Zone2}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu8Zone3}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
          <p:column style="font-weight: bold; border-right: 1px solid black; "></p:column>
         <p:column style="font-weight: bold; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold;border-right: 1px solid black; "></p:column>
@@ -186,9 +186,9 @@
     
     <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">Tracteur routier</p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu9Zone1}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu9Zone2}"></p:inputText></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu9Zone3}"></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu9Zone1}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu9Zone2}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.rcTarif2.pfCu9Zone3}" style="width:70px"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
         <p:column style="font-weight: bold; border: 1px outset black;"></p:column>
         <p:column style="font-weight: bold; border: 1px outset black; border-right: 1px solid black;"></p:column>
         <p:column style="font-weight: bold;border-right: 1px solid black; border: 1px outset black;"></p:column>
@@ -209,16 +209,16 @@
 		<fieldset><legend>SURPRIMES</legend> 
 		<h:panelGrid columns="3">
 		<h:outputText value="Passagers supplémentaires hors de la cabine  "></h:outputText>
-		<p:inputText value="#{categorie2MB.rcTarif2.surprimePassSupHcab}"></p:inputText>
+		<p:inputText value="#{categorie2MB.rcTarif2.surprimePassSupHcab}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText>
 		<h:outputText value="Par place"></h:outputText>
 		<h:outputText value="Transport d’élève "></h:outputText>
-		<p:inputText value="#{categorie2MB.rcTarif2.surprimeTranspElev}"></p:inputText>
+		<p:inputText value="#{categorie2MB.rcTarif2.surprimeTranspElev}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText>
 		<h:outputText value="Par place"></h:outputText>
 		<h:outputText value="Transport d’employés en camion  "></h:outputText>
-		<p:inputText value="#{categorie2MB.rcTarif2.surprimeTranspCam}"></p:inputText>
+		<p:inputText value="#{categorie2MB.rcTarif2.surprimeTranspCam}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText>
 		<h:outputText value="Par place"></h:outputText>
 		<h:outputText value="Transport d’employés en autocar "></h:outputText>
-		<p:inputText value="#{categorie2MB.rcTarif2.surpimeTranspAutocar}"></p:inputText>
+		<p:inputText value="#{categorie2MB.rcTarif2.surpimeTranspAutocar}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText>
 		<h:outputText value="Par place"></h:outputText>
 		<h:outputText value="Passagers clandestins "></h:outputText>
 		<p:inputText value="#{categorie2MB.rcTarif2.tauxPassagerCland}"></p:inputText>
@@ -236,9 +236,9 @@
 		<fieldset><legend>DEFENSE ET RECOURS</legend> 
 		<h:panelGrid columns="2">
 		<h:outputText value="Garantie Dommage ou Garantie Dommage  Collision souscrite"></h:outputText>
-		<p:inputText value="#{categorie2MB.tarif.drDomage}"></p:inputText>
+		<p:inputText value="#{categorie2MB.tarif.drDomage}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText>
 		<h:outputText value="Absence de Garantie Dommage "></h:outputText>
-		<p:inputText value="#{categorie2MB.tarif.drSansDomage}"></p:inputText>
+		<p:inputText value="#{categorie2MB.tarif.drSansDomage}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText>
 		</h:panelGrid>
 		</fieldset>	
 			</h:panelGroup>
@@ -247,7 +247,7 @@
 			<fieldset><legend>IMMOBILISATION DU VEHICULE </legend> 
 		<h:panelGrid columns="1">
 		<h:outputText value="Forfait"></h:outputText>
-		<p:inputText value="#{categorie2MB.tarif.immobVehicule}"></p:inputText>
+		<p:inputText value="#{categorie2MB.tarif.immobVehicule}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText>
 		</h:panelGrid>
 		</fieldset>
 			</h:panelGroup>
@@ -256,9 +256,9 @@
 		<fieldset><legend>GARANTIE REMBOURSEMENT ANTICIPE (GRA)</legend> 
 		<h:panelGrid columns="2">
 		<h:outputText value="Prime annuelle  "></h:outputText>
-		<p:inputText value="#{categorie2MB.tarif.graAnnuelle}"></p:inputText>
+		<p:inputText value="#{categorie2MB.tarif.graAnnuelle}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText>
 		<h:outputText value="Prime annuelle avec fractionnement "></h:outputText>
-		<p:inputText value="#{categorie2MB.tarif.graCourt}"></p:inputText>
+		<p:inputText value="#{categorie2MB.tarif.graCourt}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText>
 		</h:panelGrid>
 		</fieldset>	
 			</h:panelGroup>
@@ -421,30 +421,30 @@
  
     <p:row>
         <p:column style="font-weight: bold;border: 1px solid black;">Décès</p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srDeces1}"/></p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srDeces2}"/></p:column>
-         <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srDeces3}"/></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srDeces1}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srDeces2}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+         <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srDeces3}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
     </p:row>
  
     <p:row>
         <p:column style="font-weight: bold;border: 1px solid black;">Ipt</p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srIpt1}"/></p:column>
-        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srIpt2}"/></p:column> 
-         <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srIpt3}"/></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srIpt1}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srIpt2}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column> 
+         <p:column style="font-weight: bold;border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srIpt3}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
     </p:row>
     
     <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">Frais de traitement</p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srFraisTrait1}"/></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srFraisTrait2}"/></p:column>
-        <p:column style="font-weight: bold; border:1px solid black;"><p:inputText value="#{categorie2MB.tarif.srFraisTrait3}"/></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srFraisTrait1}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srFraisTrait2}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border:1px solid black;"><p:inputText value="#{categorie2MB.tarif.srFraisTrait3}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
     </p:row>
     
     <p:row>
         <p:column style="font-weight: bold; border: 1px solid black;">PRIME</p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srPrime1}"/></p:column>
-        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srPrime2}"/></p:column>
-        <p:column style="font-weight: bold; border:1px solid black;"><p:inputText value="#{categorie2MB.tarif.srPrime3}"/></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srPrime1}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border: 1px solid black;"><p:inputText value="#{categorie2MB.tarif.srPrime2}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
+        <p:column style="font-weight: bold; border:1px solid black;"><p:inputText value="#{categorie2MB.tarif.srPrime3}"><f:convertNumber pattern="##,###.##"></f:convertNumber><p:ajax update="@this" global="false"/></p:inputText></p:column>
     </p:row>
     </p:panelGrid>
     

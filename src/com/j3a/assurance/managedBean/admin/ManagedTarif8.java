@@ -24,6 +24,7 @@ import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.model.PointVente;
 import com.j3a.assurance.model.Quittance;
+import com.j3a.assurance.model.RcTarif2;
 import com.j3a.assurance.model.RcTarif3;
 import com.j3a.assurance.model.RcTarif4;
 import com.j3a.assurance.model.RcTarif8;
@@ -50,7 +51,8 @@ public class ManagedTarif8 implements Serializable{
 		ObjectService objectService;
 		@Autowired
 		IdGenerateur idGenerateur;
-		
+		private  String code;
+		private  String codetar;
 		
 		
 		private Tarif tarif = new Tarif();
@@ -59,18 +61,24 @@ public class ManagedTarif8 implements Serializable{
 		
 		
 		public  void enregistrer(){
-		try{	
+		try{
+			code ="Rctarif8";
+			codetar ="tarif8";
+		RcTarif2 rcTarif7Tempon = (RcTarif2) getObjectService().getObjectById(code, "RcTarif8");
+		Tarif tarifTempon = (Tarif) getObjectService().getObjectById(codetar, "Tarif");
+		if((rcTarif7Tempon==null) && (tarifTempon==null)){
 		rcTarif8.setCodeRcTarif8("RcTarif8");
 		getObjectService().addObject(rcTarif8);
-		
-		
-		
-		
 		tarif.setCodeTarif("tarif8");
 		tarif.setLibelleTarif("Tarif8");
 		getObjectService().addObject(tarif);
-		
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Succes", "Enregistrement effectué"));
+		}
+		else {
+			getObjectService().updateObject(rcTarif8);
+			getObjectService().updateObject(tarif);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "La mise à jour a été bien effectuée"));
+		}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -136,6 +144,70 @@ public class ManagedTarif8 implements Serializable{
 
 		public void setRcTarif8(RcTarif8 rcTarif8) {
 			this.rcTarif8 = rcTarif8;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+		public String getCode() {
+			return code;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+		public void setCode(String code) {
+			this.code = code;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+		public String getCodetar() {
+			return codetar;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+		public void setCodetar(String codetar) {
+			this.codetar = codetar;
 		}
 
 

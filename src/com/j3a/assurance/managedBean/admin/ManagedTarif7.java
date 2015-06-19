@@ -24,6 +24,7 @@ import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.model.PointVente;
 import com.j3a.assurance.model.Quittance;
+import com.j3a.assurance.model.RcTarif2;
 import com.j3a.assurance.model.RcTarif3;
 import com.j3a.assurance.model.RcTarif4;
 import com.j3a.assurance.model.RcTarif7;
@@ -43,33 +44,36 @@ public class ManagedTarif7 implements Serializable{
 	 * 
 	 */
 		private static final long serialVersionUID = 1L;
-		private static final String SUCCESS = "succes";
-		private static final String ERROR = "error";
-		
+		private  String code;
+		private  String codetar;
 		@Autowired
 		ObjectService objectService;
 		@Autowired
 		IdGenerateur idGenerateur;
-		
-		
-		
 		private Tarif tarif = new Tarif();
 		private RcTarif7 rcTarif7 = new RcTarif7();
 		
 		
 		
 		public  void enregistrer(){
-		try{	
+		try{
+			code ="Rctarif7";
+			codetar ="tarif7";
+		RcTarif2 rcTarif7Tempon = (RcTarif2) getObjectService().getObjectById(code, "RcTarif7");
+		Tarif tarifTempon = (Tarif) getObjectService().getObjectById(codetar, "Tarif");
+		if((rcTarif7Tempon==null) && (tarifTempon==null)){
 		rcTarif7.setCodeRcTarif7("RcTarif7");
 		getObjectService().addObject(rcTarif7);
-		
-		
-		
 		tarif.setCodeTarif("tarif7");
-		tarif.setLibelleTarif("Tarif7");
+		tarif.setLibelleTarif("Tarif 7");
 		getObjectService().addObject(tarif);
-		
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Succes", "Enregistrement effectué"));
+		}
+		else {
+			getObjectService().updateObject(rcTarif7);
+			getObjectService().updateObject(tarif);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "La mise à jour a été bien effectuée"));
+		}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -135,6 +139,70 @@ public class ManagedTarif7 implements Serializable{
 
 		public void setRcTarif7(RcTarif7 rcTarif7) {
 			this.rcTarif7 = rcTarif7;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+		public String getCode() {
+			return code;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+		public void setCode(String code) {
+			this.code = code;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+		public String getCodetar() {
+			return codetar;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+		public void setCodetar(String codetar) {
+			this.codetar = codetar;
 		}
 
 
