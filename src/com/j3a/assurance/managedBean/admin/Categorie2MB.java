@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.j3a.assurance.model.RcTarif1;
 import com.j3a.assurance.model.RcTarif2;
 import com.j3a.assurance.model.Tarif;
 import com.j3a.assurance.objetService.ObjectService;
@@ -30,18 +31,30 @@ public class Categorie2MB implements Serializable{
 	
 	@PostConstruct
 	public void PostConst(){
-		try {
+		
 			setRcTarif2( (RcTarif2) getObjectService().getObjectById("Rctarif2", "RcTarif2"));
 			setTarif( (Tarif) getObjectService().getObjectById("tarif2", "Tarif"));
-			System.out.println("ok Enregistrement recuperee");
-		} catch (NullPointerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("non ok !Enregistrement non recuperée");		
-
+			try { 
+				if((rcTarif2 !=null) && (tarif !=null) ){ 
+				setRcTarif2(rcTarif2 );
+				setTarif(tarif);
+				}
+				
+				else{
+				    rcTarif2=new RcTarif2();
+					rcTarif2.setCodeRcTarif2("Rctarif2");
+					
+					tarif=new Tarif();
+					tarif.setCodeTarif("tarif2");
+					
+				}
+				
+			} catch (NullPointerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("non ok !Enregistrement non recuperée");	
+			}
 		}		
-		
-		}
 	
 	public void addCategorie(){
 	try {

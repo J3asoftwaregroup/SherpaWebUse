@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -24,6 +25,7 @@ import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.model.PointVente;
 import com.j3a.assurance.model.Quittance;
+import com.j3a.assurance.model.RcTarif10;
 import com.j3a.assurance.model.RcTarif2;
 import com.j3a.assurance.model.RcTarif3;
 import com.j3a.assurance.model.RcTarif4;
@@ -54,12 +56,39 @@ public class ManagedTarif7 implements Serializable{
 		private RcTarif7 rcTarif7 = new RcTarif7();
 		
 		
+		@PostConstruct
+		public void PostConst(){
+				setRcTarif7( (RcTarif7) getObjectService().getObjectById("Rctarif7", "RcTarif7"));
+				setTarif( (Tarif) getObjectService().getObjectById("tarif7", "Tarif"));
+				try { 
+					if((rcTarif7 !=null) && (tarif !=null) ){ 
+					setRcTarif7(rcTarif7 );
+					setTarif(tarif);
+					}
+					
+					else{
+					    rcTarif7=new RcTarif7();
+						rcTarif7.setCodeRcTarif7("Rctarif7");
+						rcTarif7.setTauxVhldcTourisme((float) 0);
+						tarif=new Tarif();
+						tarif.setCodeTarif("tarif7");
+						
+					}
+					
+				} catch (NullPointerException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("non ok !Enregistrement non recuperée");		
+			}		
+			
+			}
+		
 		
 		public  void enregistrer(){
 		try{
 			code ="Rctarif7";
 			codetar ="tarif7";
-		RcTarif2 rcTarif7Tempon = (RcTarif2) getObjectService().getObjectById(code, "RcTarif7");
+		RcTarif7 rcTarif7Tempon = (RcTarif7) getObjectService().getObjectById(code, "RcTarif7");
 		Tarif tarifTempon = (Tarif) getObjectService().getObjectById(codetar, "Tarif");
 		if((rcTarif7Tempon==null) && (tarifTempon==null)){
 		rcTarif7.setCodeRcTarif7("RcTarif7");

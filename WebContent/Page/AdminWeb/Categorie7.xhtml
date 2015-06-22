@@ -78,12 +78,25 @@
 		<br />
     
 		<fieldset>
-<p:commandButton value="Valider"  actionListener="#{managedTarif7.enregistrer}" style="width:80px;height:30px;margin-left: 450px; font-size:12px; border-radius:10px;" />
+<p:commandButton value="Valider" onclick="confirm.show();" style="width:80px;height:30px;margin-left: 450px; font-size:12px; border-radius:10px;" />
 		</fieldset>
 		
-		
-		
 		</h:form>
+		
+		<p:dialog header="Confirmer" widgetVar="confirm" resizable="false"
+			id="conf" width="400" showEffect="fade" hideEffect="explode"  appendTo="@(body)">
+			<h:form id="ca1">
+				<h:panelGrid>
+					<f:facet name="header">
+						<h:outputText value="Veillez confirmer" />
+					</f:facet>
+					<h:panelGrid columns="2">
+					<p:commandButton id="ok" value="Enregistrer" actionListener="#{managedTarif7.enregistrer}"  oncomplete="confirm.hide();"/>
+					<p:commandButton id="non" value="Annuler"  oncomplete="confirm.hide();"/>
+					</h:panelGrid>
+					</h:panelGrid>
+								
+			</h:form></p:dialog>
 	</ui:define>
 </ui:composition>
 </html>

@@ -1,6 +1,7 @@
 package com.j3a.assurance.managedBean.admin;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.RcTarif1;
 import com.j3a.assurance.model.RcTarif3;
+import com.j3a.assurance.model.RcTarif8;
 import com.j3a.assurance.model.Tarif;
 import com.j3a.assurance.objetService.ObjectService;
 
@@ -31,18 +33,30 @@ public class Categorie1MB implements Serializable{
 	
 	@PostConstruct
 	public void PostConst(){
-		try {
 			setRcTarif1( (RcTarif1) getObjectService().getObjectById("Rctarif1", "RcTarif1"));
 			setTarif( (Tarif) getObjectService().getObjectById("tarif1", "Tarif"));
-			System.out.println("ok Enregistrement recuperee");
-		} catch (NullPointerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("non ok !Enregistrement non recuperée");		
-
+			try { 
+				if((rcTarif1 !=null) && (tarif !=null) ){ 
+				setRcTarif1(rcTarif1 );
+				setTarif(tarif);
+				}
+				
+				else{
+				    rcTarif1=new RcTarif1();
+					rcTarif1.setCodeRcTarif1("Rctarif1");
+					tarif=new Tarif();
+					tarif.setCodeTarif("tarif1");
+					
+				}
+				
+			} catch (NullPointerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("non ok !Enregistrement non recuperée");		
 		}		
 		
 		}
+	
 	
 	
 	public void addCategorie(){

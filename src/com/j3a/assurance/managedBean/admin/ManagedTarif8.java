@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -24,6 +25,7 @@ import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.model.PointVente;
 import com.j3a.assurance.model.Quittance;
+import com.j3a.assurance.model.RcTarif1;
 import com.j3a.assurance.model.RcTarif2;
 import com.j3a.assurance.model.RcTarif3;
 import com.j3a.assurance.model.RcTarif4;
@@ -53,24 +55,59 @@ public class ManagedTarif8 implements Serializable{
 		IdGenerateur idGenerateur;
 		private  String code;
 		private  String codetar;
-		
-		
 		private Tarif tarif = new Tarif();
 		private RcTarif8 rcTarif8 = new RcTarif8();
 		
+		
+		
+		@PostConstruct
+		public void PostConst(){
+				setRcTarif8( (RcTarif8) getObjectService().getObjectById("Rctarif8", "RcTarif8"));
+				setTarif( (Tarif) getObjectService().getObjectById("tarif8", "Tarif"));
+				try { 
+					if((rcTarif8 !=null) && (tarif !=null) ){ 
+					setRcTarif8(rcTarif8 );
+					setTarif(tarif);
+					System.out.println("ok Enregistrement recuperee");}
+					
+					else{
+					    rcTarif8=new RcTarif8();
+						rcTarif8.setCodeRcTarif8("Rctarif8");
+						rcTarif8.setVhlCat21Zone1(new BigDecimal(0));
+						rcTarif8.setVhlCat21Zone2(new BigDecimal(0));
+						rcTarif8.setVhlCat21Zone3(new BigDecimal(0));
+						rcTarif8.setVhlCat22Zone1(new BigDecimal(0));
+						rcTarif8.setVhlCat22Zone2(new BigDecimal(0));
+						rcTarif8.setVhlCat22Zone3(new BigDecimal(0));
+						rcTarif8.setVhlCat23Zone1(new BigDecimal(0));
+						rcTarif8.setVhlCat23Zone2(new BigDecimal(0));
+						rcTarif8.setVhlCat23Zone3(new BigDecimal(0));
+						
+						tarif=new Tarif();
+						tarif.setCodeTarif("tarif8");
+						
+					}
+					
+				} catch (NullPointerException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					System.out.println("non ok !Enregistrement non recuperée");		
+			}		
+			
+			}
 		
 		
 		public  void enregistrer(){
 		try{
 			code ="Rctarif8";
 			codetar ="tarif8";
-		RcTarif2 rcTarif7Tempon = (RcTarif2) getObjectService().getObjectById(code, "RcTarif8");
+		RcTarif8 rcTarif8Tempon = (RcTarif8) getObjectService().getObjectById(code, "RcTarif8");
 		Tarif tarifTempon = (Tarif) getObjectService().getObjectById(codetar, "Tarif");
-		if((rcTarif7Tempon==null) && (tarifTempon==null)){
+		if((rcTarif8Tempon==null) && (tarifTempon==null)){
 		rcTarif8.setCodeRcTarif8("RcTarif8");
 		getObjectService().addObject(rcTarif8);
 		tarif.setCodeTarif("tarif8");
-		tarif.setLibelleTarif("Tarif8");
+		tarif.setLibelleTarif("Tarif 8");
 		getObjectService().addObject(tarif);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Succes", "Enregistrement effectué"));
 		}
