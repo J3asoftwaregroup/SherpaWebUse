@@ -1,6 +1,7 @@
 package com.j3a.assurance.managedBean.admin;
 
 import java.io.Serializable;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -81,8 +82,11 @@ public class ManagedTarif3 implements Serializable{
 				tarif.setLibelleTarif("Tarif 3");
 				getObjectService().addObject(tarif);
 				
+				
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("succes", "Enregistrement effectué"));
-			}
+				/*Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+				sessionMap.clear();*/
+				}
 				else{
 					getObjectService().updateObject(rcTarif3);
 					getObjectService().updateObject(tarif);
