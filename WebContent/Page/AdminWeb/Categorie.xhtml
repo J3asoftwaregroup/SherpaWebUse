@@ -16,13 +16,13 @@
 		<p:messages id="growl" autoUpdate="true" showDetail="true" />
 					
 						<fieldset id="recher_risque" class="fieldset">		
-						<legend>Gestion de Catégorie</legend>
+						<legend>Gestion de CatÃ©gorie</legend>
 						
 						
 								<h:panelGrid id="grid_cat" columns="3" style="margin-bottom:10px" cellpadding="6">
 								<h:outputText value="Categorie*" />							
 								<p:inputText value="#{mnagedCategorie.libelleCategorie}" id="id_libelleCategorie" 
-								validatorMessage="Pas plus de 30 caractère" required="true" requiredMessage="Aucune Catégorie concernée par cette action">
+								validatorMessage="Pas plus de 30 caractÃ¨re" required="true" requiredMessage="Aucune CatÃ©gorie concernÃ©e par cette action">
 							     <f:validateLength minimum="0" maximum="30" for="id_libelleCategorie"/>
 							    </p:inputText>
 							    <p:message for="id_libelleCategorie" display="icon" />
@@ -34,7 +34,8 @@
 											
 											<f:selectItems
 												value="#{mnagedCategorie.risqueList}"
-												var="risque" itemLabel="#{risque.libelleRisque}" itemValue="#{risque.codeRisque}" />
+												var="risque" itemLabel="#{risque.libelleRisque}" 
+												itemValue="#{risque.codeRisque}" />
 											</p:selectOneMenu>						
 							                <p:message for="cb_risque" display="icon" />
 							    
@@ -55,7 +56,8 @@
 						 </div>
 							
 								<br />
-								<p:dataTable id="Categories" var="categorie" value="#{mnagedCategorie.CategorieList}" rowKey="#{categorie.codeCategorie}" selection="#{mnagedCategorie.CategorieSup}" selectionMode="single">
+								<p:dataTable id="Categories" var="categorie" value="#{mnagedCategorie.categorieList}" rowKey="#{categorie.codeCategorie}" 
+								selection="#{mnagedCategorie.categorieSup}" selectionMode="single">
          <p:ajax event="rowSelect" listener="#{mnagedCategorie.affecterCategorie}"
         >
          </p:ajax>
@@ -68,7 +70,7 @@
             #{categorie.codeCategorie}  
         </p:column>  
   
-        <p:column headerText="Risque">  
+        <p:column headerText="CatÃ©gories">  
             #{categorie.libelleCategorie}  
         </p:column>  
     </p:dataTable> 
