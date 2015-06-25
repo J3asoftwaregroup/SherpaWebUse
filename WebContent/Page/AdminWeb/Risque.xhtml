@@ -42,7 +42,7 @@
 						 </div>
 							
 								<br />
-								<p:dataTable id="Risques" var="risque" value="#{managedRisque.risqueList}" rowKey="#{risque.id}" selection="#{managedRisque.risqueSup}" selectionMode="single">
+								<p:dataTable id="Risques" var="risque" value="#{managedRisque.risqueList}" rowKey="#{risque.codeRisque}" selection="#{managedRisque.risqueSup}" selectionMode="single">
          <p:ajax event="rowSelect" listener="#{managedRisque.affecterRisque}"
         >
          </p:ajax>
@@ -52,7 +52,7 @@
         </f:facet>  
   
         <p:column headerText="Code">  
-            #{risque.id}  
+            #{risque.codeRisque}  
         </p:column>  
   
         <p:column headerText="Risque">  

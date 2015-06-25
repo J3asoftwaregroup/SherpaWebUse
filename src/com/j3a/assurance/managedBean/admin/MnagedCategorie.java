@@ -74,23 +74,7 @@ public class MnagedCategorie implements Serializable{
 	}		
 
 	
-	public List<SelectItem> getElements() {
-		
-		if (elements == null) {
-			 elements = new ArrayList<SelectItem>();
-			 for (Object obj : getObjectService().getObjects("Categorie")) {
-		
-		        	elements.add(new SelectItem(  ((Categorie) obj).getCodeCategorie(),   ((Categorie) obj).getLibelleCategorie()));
-		        
-			 }
-		    }
-		return elements;
-	}
-
-	public void setElements(List<SelectItem> elements) {
-		this.elements = elements;
-	}
-
+	
 		
 
 	public void setButtonadd(UIComponent buttonadd) {
@@ -226,4 +210,22 @@ public class MnagedCategorie implements Serializable{
 	public void setRisqueList(List<Risque> risqueList) {
 		this.risqueList = risqueList;
 	}
+	
+public List<SelectItem> getElements() {
+		
+		if (elements == null) {
+			 elements = new ArrayList<SelectItem>();
+			 for (Object obj : getObjectService().getObjects("Risque")) {
+		
+		        	elements.add(new SelectItem(  ((Risque) obj).getCodeRisque(),   ((Risque) obj).getLibelleRisque()));
+		        
+			 }
+		    }
+		return elements;
+	}
+
+	public void setElements(List<SelectItem> elements) {
+		this.elements = elements;
+	}
+
 }
