@@ -698,7 +698,7 @@ public class ClientMB implements Serializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "vehicule";
+		return "/Page/Paypal/inscriptionPaypal.xhtml?faces-redirect=true";
 	}
 
 
