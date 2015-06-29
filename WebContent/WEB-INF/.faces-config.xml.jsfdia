@@ -3,10 +3,10 @@
  <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,16,53,74" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="inscriptionPaypal::#Page#AutoWeb#devisAuto.xhtml" NAME="output"
-    PATH="/Page/AutoWeb/devisAuto.xhtml"
-    TARGET="rules:#Page#AutoWeb#devisAuto.xhtml"
-    TITLE="inscriptionPaypal" model-entity="JSFProcessItemOutput"/>
+    ID="redirection::#Page#AutoWeb#pageRedirectConnection.xhtml"
+    NAME="output" PATH="/Page/AutoWeb/pageRedirectConnection.xhtml"
+    TARGET="rules:#Page#AutoWeb#pageRedirectConnection.xhtml"
+    TITLE="redirection" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="vehicule::#Page#AutoWeb#vehicule.xhtml"
     NAME="output1" PATH="/Page/AutoWeb/vehicule.xhtml"
     TARGET="rules:#Page#AutoWeb#vehicule.xhtml" TITLE="vehicule" model-entity="JSFProcessItemOutput"/>
@@ -15,8 +15,6 @@
     TARGET="rules:#Page#AutoWeb#Validation.xhtml" TITLE="Validation" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#Page#AutoWeb#vehicule.xhtml"
-  PATH="/Page/AutoWeb/vehicule.xhtml" SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#Page#AutoWeb#Validation.xhtml"
   PATH="/Page/AutoWeb/Validation.xhtml" SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#Page#sinistreAutoWeb#pageConnexion.xhtml"
@@ -35,6 +33,8 @@
   NAME="rules:#Page#sinistreAutoWeb#declarationSinnistreAuto.xhtml"
   PATH="/Page/sinistreAutoWeb/declarationSinnistreAuto.xhtml"
   SHAPE="759,355,0,0" model-entity="JSFProcessGroup" persistent="true"/>
- <PROCESS-ITEM NAME="rules:#Page#AutoWeb#devisAuto.xhtml"
-  PATH="/Page/AutoWeb/devisAuto.xhtml" SHAPE="272,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Page#AutoWeb#vehicule.xhtml"
+  PATH="/Page/AutoWeb/vehicule.xhtml" SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Page#AutoWeb#pageRedirectConnection.xhtml"
+  PATH="/Page/AutoWeb/pageRedirectConnection.xhtml" SHAPE="272,33,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
