@@ -148,20 +148,18 @@ public class ClientMB implements Serializable{
 				physique.setAdresseGeo(maPersonne.getAdresseGeo());
 				
 				//Affecter la valeur des combos
-				
 				Sexe sexe= new Sexe();
-				//Integer.getInteger(getSlctsexe()).intValue()
 				sexe.setCodeSexe(1);
 				physique.setSexe(sexe);
 				
 				
-					//Reseigner Personne_Nationalite
+				//Reseigner Personne_Nationalite
 				personneNationalitePk.setNumSouscripteur(personne.getNumSouscripteur());
 				personneNationalitePk.setCodeNationalite(1);
 				personneNationalite.setId(personneNationalitePk);
 				personneNationalite.setDateNationalite(Calendar.getInstance().getTime());
 							
-					//Renseigner EtreType (client)
+				//Renseigner EtreType (client)
 				typePersonne=(TypePersonne) getObjectService().getObjectById(1, "TypePersonne");
 				etrePk.setCodeTypePers(typePersonne.getCodeTypePers());
 				etrePk.setNumSouscripteur(personne.getNumSouscripteur());
@@ -169,7 +167,7 @@ public class ClientMB implements Serializable{
 				etre.setDatePers(Calendar.getInstance().getTime());
 				
 				
-					//Enregistrement en basse
+				//Enregistrement en basse
 				getObjectService().addObject(personne);
 				getObjectService().addObject(physique);
 				getObjectService().addObject(etre);
@@ -211,8 +209,6 @@ public class ClientMB implements Serializable{
 			// Vider l'objet physique de l'affichage
 			objPhyq.setNumSouscripteur(null);
 			objPhyq.setDatePers(null);
-			//objPhyq.setTitre(null);
-			//objPhyq.setNationalites(null);
 			objPhyq.setNomRaisonSociale(null);
 			objPhyq.setPrenomPers(null);
 			objPhyq.setDatePers(null);
@@ -244,8 +240,7 @@ public class ClientMB implements Serializable{
 			objPersonne.setFax(null);
 			objPersonne.setEmail(null);
 			objPersonne.setContrats(null);
-			//objPersonne.setTypePersonnes(null);
-			//objPersonne.setNationalites(null);
+	
 			
 		}
 		

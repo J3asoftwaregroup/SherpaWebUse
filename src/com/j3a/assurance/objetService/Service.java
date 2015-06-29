@@ -231,6 +231,16 @@ public class Service implements ObjectService {
 	public Personne personneByLogin(String login, String motPass) {
 		return getDao().personneByLogin(login, motPass);
 	}
+	
+	@Override
+	public List<Physique> checkPersonPhysique(Personne personne, Physique physique) {
+		return getDao().checkPersonPhysique(personne, physique);
+	}
+	
+	
+	
+	
+	
 
 	//getter et setter de Idao qui a été injecté
 	
@@ -241,4 +251,5 @@ public class Service implements ObjectService {
 	public void setDao(IDao dao) {
 		this.dao = dao;
 	}
+
 }

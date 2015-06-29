@@ -81,4 +81,6 @@ public void addObject(Object objet);
 	public Quittance recoverQuittanceOfLasAvenant(String paramNumPolice);		
 	public Quittance recoverQuittanceAuto(String paramNumPolice);
 	public Personne personneByLogin(String login, String motPass);
+	public List<Physique> checkPersonPhysique(Personne personne , Physique physique);
+
 }

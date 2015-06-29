@@ -218,7 +218,6 @@ public class ManagedSinistre implements Serializable {
 	
 	@Transactional
 	public void rechercherDossierProduction(){//By ALekerand
-		System.out.println("----->>> Méthode called");
 		//Vider la liste a chaque fois que la methode est appele
 		listeContratResum.clear();
 		

@@ -47,6 +47,9 @@ public class ContratMB implements Serializable{
 		ObjectService objectService;
 		@Autowired
 		IdGenerateur idGenerateur;
+		@Autowired
+		NotificationBean notificationBean;
+		
 		private String slctdApporteur;
 		private String slctdTypeApporteur;
 		private String id;

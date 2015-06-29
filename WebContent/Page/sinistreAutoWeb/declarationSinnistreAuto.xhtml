@@ -41,11 +41,10 @@
 		
 	<p:inputText value="#{managedSinistre.valeurDeRecherche}" style="width: 138px; margin-left: 60px;"  
 	 required="true" requiredMessage="Veuillez entrez un numero de police ou l'immatriculation du véhicule" placeholder="Entrer le critère" />
-	<h:commandButton id="rech_button" value="Rechercher" action="#{managedSinistre.rechercherDossierProduction}"   
+	<p:commandButton id="rech_button" value="Rechercher" action="#{managedSinistre.rechercherDossierProduction}"   
 	style="width: 100px;" update="resulTable, infoGrid, growl, :sous_form"/>
 	</h:panelGrid>
 	<fieldset>
-	
 	<br />
 	
 	<h:panelGrid id="infoGrid" columns="8">

@@ -1,5 +1,7 @@
 package com.j3a.assurance.objetDao;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -531,6 +533,20 @@ public class Dao implements IDao {
 	
     public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+
+	@Override
+	public List<Physique> checkPersonPhysique(Personne personne, Physique physique) {
+	 List<Physique> maListe = new ArrayList<>();
+			maListe.clear();
+			SimpleDateFormat dateStandard = new SimpleDateFormat("yyyy/MM/dd");			
+			String myQuery = "SELECT * FROM physique WHERE NOM_RAISON_SOCIALE ='"+personne.getNomRaisonSociale()+"' " +
+					"AND `PRENOM_PERS`='"+physique.getPrenomPers()+"' " +
+							"AND `DATE_NAISS_PERS`='"+dateStandard.format(physique.getDateNaissPers())+"' " +
+									"AND `LIEU_NAISS_PERS`='"+physique.getLieuNaissPers()+"'";
+			 maListe = getSessionFactory().getCurrentSession().createSQLQuery(myQuery).addEntity(Physique.class).list();
+	
+		 return maListe;
 	}
 
 	
