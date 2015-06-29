@@ -11,11 +11,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Categorie;
 import com.j3a.assurance.model.Risque;
 import com.j3a.assurance.objetService.ObjectService;
 
+@Component
 public class MnagedCategorie implements Serializable{
 
 	/**
@@ -30,12 +32,12 @@ public class MnagedCategorie implements Serializable{
 	 private String libelleCategorie;
 	 
 	 private List<SelectItem> elements;
-	 private List<Categorie> CategorieList;
+	 private List<Categorie> categorieList;
 	 
 	 private UIComponent buttonadd;
 	 private UIComponent buttonupdate;
 	 private UIComponent buttondelete;
-	 private Categorie CategorieSup = new Categorie();
+	 private Categorie categorieSup;
 	 private String slctRisque;
 	 private List<Risque> risqueList;
 	
@@ -60,17 +62,17 @@ public class MnagedCategorie implements Serializable{
 	
 
 	public List<Categorie> getCategoriList() {	
-		CategorieList = new ArrayList<Categorie>();
+		categorieList = new ArrayList<Categorie>();
 		List<Object> listObject = getObjectService().getObjects("Categorie");			
 		for (Iterator it = listObject.iterator(); it.hasNext();) {
 			Categorie categorie = (Categorie) it.next();
 			try {
-				CategorieList.add(categorie);
+				categorieList.add(categorie);
 			} catch (Exception e) {
 			}
 	
 		}
-		return CategorieList;
+		return categorieList;
 	}		
 
 	
@@ -158,8 +160,8 @@ public class MnagedCategorie implements Serializable{
 	
 	
 	public String validateupdate() {
-		CategorieSup.setLibelleCategorie(libelleCategorie);
-		getObjectService().updateObject(CategorieSup);
+		categorieSup.setLibelleCategorie(libelleCategorie);
+		getObjectService().updateObject(categorieSup);
 		viderCategorie();
 		 FacesMessage msg = new FacesMessage( FacesMessage.SEVERITY_INFO,"Succès"," Modification efféctué");
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -169,7 +171,7 @@ public class MnagedCategorie implements Serializable{
 	   
 	public void validatedelete()  {
 		try {
-			getObjectService().deleteObject(CategorieSup);
+			getObjectService().deleteObject(categorieSup);
 		} catch ( org.springframework.dao.DataIntegrityViolationException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
@@ -181,21 +183,17 @@ public class MnagedCategorie implements Serializable{
 
 	
 
+	
+
+	
+
 	public List<Categorie> getCategorieList() {
 		getCategoriList();
-		return CategorieList;
+		return categorieList;
 	}
 
 	public void setCategorieList(List<Categorie> categorieList) {
-		CategorieList = categorieList;
-	}
-
-	public Categorie getCategorieSup() {
-		return CategorieSup;
-	}
-
-	public void setCategorieSup(Categorie categorieSup) {
-		CategorieSup = categorieSup;
+		this.categorieList = categorieList;
 	}
 
 	public String getLibelleCategorie() {
@@ -215,15 +213,32 @@ public class MnagedCategorie implements Serializable{
 	}
 
 	public List<Risque> getRisqueList() {
-		List<Risque> A = new ArrayList<Risque>();
-		for (Object c : getObjectService().getObjects("Risque")) {  
-			A.add((Risque) c);  
-            } 
-		
-		return A;
+		risqueList = new ArrayList<Risque>();
+		List<Object> listObject = getObjectService().getObjects("Risque");			
+		for (Iterator it = listObject.iterator(); it.hasNext();) {
+			Risque risque = (Risque) it.next();
+			try {
+				risqueList.add(risque);
+				System.out.println("risque"+risqueList.size());
+			} catch (Exception e) {
+			}
+	
+		}
+		return risqueList;
 	}
 
 	public void setRisqueList(List<Risque> risqueList) {
 		this.risqueList = risqueList;
 	}
+
+	public Categorie getCategorieSup() {
+		return categorieSup;
+	}
+
+	public void setCategorieSup(Categorie categorieSup) {
+		this.categorieSup = categorieSup;
+	}
+	
+	
+	
 }

@@ -5,7 +5,7 @@
   <from-view-id>*</from-view-id>
   <navigation-case>
    <from-outcome>inscriptionPaypal</from-outcome>
-   <to-view-id>/Page/Paypal/inscriptionPaypal.xhtml</to-view-id>
+   <to-view-id>/Page/AutoWeb/devisAuto.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
   <navigation-case>
