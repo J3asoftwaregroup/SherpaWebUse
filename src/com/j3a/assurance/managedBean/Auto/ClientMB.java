@@ -48,12 +48,11 @@ public class ClientMB implements Serializable{
 		
 		@Autowired
 	    ObjectService objectService;
+		@Autowired
+		IdGenerateur idGenerateur;
 		
 		private Personne maPersonne= new Personne() ;
 		private ComboSexes comboSexe;
-		
-		@Autowired
-		IdGenerateur idGenerateur;
 		
 		private String slctsexe;
 		private List<Sexe> sexeList;
@@ -248,6 +247,26 @@ public class ClientMB implements Serializable{
 		public void messageEmptyField() {
 			RequestContext.getCurrentInstance().execute("empty_field.show();");
 		}
+		
+		public String validerClient() {
+			List list = getObjectService().checkPersonPhysique(maPersonne, monPhysique);
+			if(list.size() > 0){
+				RequestContext.getCurrentInstance().execute("personne_Eng.show();");
+			}
+			
+			try {
+				setClient(getMaPersonne());
+				nomClient = getMaPersonne().getNomRaisonSociale()+" "+getMonPhysique().getPrenomPers();
+			} catch (Exception e) {
+				
+			}
+			return "/Page/Paypal/inscriptionPaypal.xhtml?faces-redirect=true";
+		}
+		
+		
+		
+		
+		
 		//**************************ACCESSEURS********************************************//
 
 		public Personne getPersonne() {
@@ -681,25 +700,6 @@ public class ClientMB implements Serializable{
 		public void setEtatEngSouscripteur(boolean etatEngSouscripteur) {
 			this.etatEngSouscripteur = etatEngSouscripteur;
 		}
-
-	
-
-
-	public String validerClient() {
-		try {
-			setClient(getMaPersonne());
-			nomClient = getMaPersonne().getNomRaisonSociale()+" "+getMonPhysique().getPrenomPers();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "/Page/Paypal/inscriptionPaypal.xhtml?faces-redirect=true";
-	}
-
-
-
-
-
 
 	public boolean isEtatClient() {
 		return etatClient;
