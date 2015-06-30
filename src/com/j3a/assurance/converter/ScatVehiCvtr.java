@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Categorie;
+import com.j3a.assurance.model.RcTarif1;
 import com.j3a.assurance.model.SousCatVehicule;
+import com.j3a.assurance.model.Tarif;
 import com.j3a.assurance.objetService.ObjectService;
 
 
@@ -86,22 +88,27 @@ public class ScatVehiCvtr implements Converter {
 	}
 */
 	 public List<SousCatVehicule> getCatVehiList() {
-			/*if(CatVehiList.isEmpty()){
+			if(CatVehiList.isEmpty()){
+				Tarif tarif1  = new Tarif();
+				tarif1.setCodeTarif("Tarif1");
+				RcTarif1 rc1  = new RcTarif1();
+				tarif1.setRcTarif1(rc1);
+				rc1.setCodeRcTarif1("RcTarif1");
 				SousCatVehicule A = new SousCatVehicule("SCAT1");
 				A.setLibelleSousCatVehicule("Vehicule de Tourisme");
 				Categorie catA = new Categorie();
 				catA.setCodeCategorie("1");
 				catA.setLibelleCategorie("Promenade et Affaires");
 				A.setCategorie(catA);
-			
-				A.setTarif("TARIF1");
+				A.setTarif_1("TARIF1");
+				A.setTarif(tarif1);
 				CatVehiList.add(A);
+				
 				
 				SousCatVehicule B = new SousCatVehicule("SCAT12");
 				B.setLibelleSousCatVehicule("Vehicule Professionnel");
 				B.setCategorie(catA);
-				
-				B.setTarif("TARIF12");
+				B.setTarif_1("TARIF12");
 				CatVehiList.add(B);
 				
 				SousCatVehicule C = new SousCatVehicule("SCAT2");
@@ -110,7 +117,7 @@ public class ScatVehiCvtr implements Converter {
 				catC.setCodeCategorie("2");
 				catC.setLibelleCategorie("Transport pour propre compte");
 				C.setCategorie(catC);
-				C.setTarif("TARIF2");
+				C.setTarif_1("TARIF2");
 				CatVehiList.add(C);
 				
 				SousCatVehicule D = new SousCatVehicule("SCAT3");
@@ -119,17 +126,17 @@ public class ScatVehiCvtr implements Converter {
 				catD.setCodeCategorie("3");
 				catD.setLibelleCategorie("Transport Public de Marchandises");
 				D.setCategorie(catD);
-				D.setTarif("TARIF3");
+				D.setTarif_1("TARIF3");
 				CatVehiList.add(D);
 				
-				SousCatVehicule E = new SousCatVehicule("SCAT4");
+				/*SousCatVehicule E = new SousCatVehicule("SCAT4");
 				E.setLibelleSousCatVehicule("Transport Public de Voyageurs");
 				Categorie catE = new Categorie();
 				catE.setId("4");
 				catE.setLibelleCategorie("Transport Public de Voyageurs");
 				E.setCodeCategorie(catE);
 				E.setTarif("TARIF4");
-				CatVehiList.add(E);
+				CatVehiList.add(E);*/
 				
 				SousCatVehicule F = new SousCatVehicule("SCAT5");
 				F.setLibelleSousCatVehicule("Vehicules Motorises 2 OU 3 Roues");
@@ -137,7 +144,7 @@ public class ScatVehiCvtr implements Converter {
 				catF.setCodeCategorie("5");
 				catF.setLibelleCategorie("Vehicules Motorises 2 OU 3 Roues");
 				F.setCategorie(catF);
-				F.setTarif("TARIF5");
+				F.setTarif_1("TARIF5");
 				CatVehiList.add(F);
 				
 				SousCatVehicule G = new SousCatVehicule("SCAT6");
@@ -146,7 +153,7 @@ public class ScatVehiCvtr implements Converter {
 				catG.setCodeCategorie("6");
 				catG.setLibelleCategorie("Garagistes");
 				G.setCategorie(catG);
-				G.setTarif("TARIF6");
+				G.setTarif_1("TARIF6");
 				CatVehiList.add(G);
 				
 				SousCatVehicule H = new SousCatVehicule("SCAT7");
@@ -155,7 +162,7 @@ public class ScatVehiCvtr implements Converter {
 				catH.setCodeCategorie("7");
 				catH.setLibelleCategorie("Auto Ecole");
 				H.setCategorie(catH);
-				H.setTarif("TARIF7");
+				H.setTarif_1("TARIF7");
 				CatVehiList.add(H);
 				
 				SousCatVehicule I = new SousCatVehicule("SCAT8");
@@ -164,7 +171,7 @@ public class ScatVehiCvtr implements Converter {
 				catI.setCodeCategorie("8");
 				catI.setLibelleCategorie("Véhicule de Location");
 				I.setCategorie(catI);
-				I.setTarif("TARIF8");
+				I.setTarif_1("TARIF8");
 				CatVehiList.add(I);
 				
 				SousCatVehicule J = new SousCatVehicule("SCAT9");
@@ -173,7 +180,7 @@ public class ScatVehiCvtr implements Converter {
 				catJ.setCodeCategorie("9");
 				catJ.setLibelleCategorie("Engins de Chantier");
 				J.setCategorie(catJ);
-				J.setTarif("TARIF9");
+				J.setTarif_1("TARIF9");
 				CatVehiList.add(J);
 				
 				SousCatVehicule K = new SousCatVehicule("SCAT10");
@@ -182,17 +189,10 @@ public class ScatVehiCvtr implements Converter {
 				catK.setCodeCategorie("10");
 				catK.setLibelleCategorie("Véhicule spéciaux");
 				K.setCategorie(catK);
-				K.setTarif("TARIF10");
+				K.setTarif_1("TARIF10");
 				CatVehiList.add(K);
 			}
-			return CatVehiList;*/
-		 
-		 List<SousCatVehicule> A = new ArrayList<SousCatVehicule>();
-			for (Object c : getObjectService().getObjects("SousCatVehicule")) {  
-				A.add((SousCatVehicule) c);  
-	            } 
-			
-			return A;
+			return CatVehiList;
 			}
 
 		public void setCatVehiList(List<SousCatVehicule> catVehiList) {

@@ -135,6 +135,7 @@ public class PrimeCategorie1 implements PrimeCategorieInterface {
 		java.math.BigDecimal red = BigDecimal.ZERO;
 		getPrimeBase();
 		 primeRc = primeBase;
+		 System.out.println("-------------PrimeRC----------------"+primeRc);
 		 try {
 			if (dureePermis <= 2) {
 				classe = "classe1";
@@ -146,42 +147,45 @@ public class PrimeCategorie1 implements PrimeCategorieInterface {
 			if (classe.equals("classe2")) {
 				
 				//primeRc = primeRc.multiply(BigDecimal.valueOf(0.95));
-				red = red.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredPermis2())));
+				red = red.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredPermis2())).multiply(BigDecimal.valueOf(0.01)));
 			}
 
 			if (statut.equals("a")) {
 				//primeRc = primeRc.multiply(BigDecimal.valueOf(0.95));
-				red = red.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredStatutproa())));
+				red = red.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredStatutproa())).multiply(BigDecimal.valueOf(0.01)));
 			}
 			
 			if (statut.equals("b")) {
 				//primeRc = primeRc.multiply(BigDecimal.valueOf(0.95));
-				red = red.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredStatutprob())));
+				red = red.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredStatutprob())).multiply(BigDecimal.valueOf(0.01)));
 			}
 			
 			if (statut.equals("c")) {
 				//primeRc = primeRc.multiply(BigDecimal.valueOf(0.95));
-				red = red.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredStatutproc())));
+				red = red.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredStatutproc())).multiply(BigDecimal.valueOf(0.01)));
 			}
 
 			if (statut.equals("d")) {
 				//primeRc = primeRc.multiply(BigDecimal.valueOf(0.90));
-				red = red.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredStatutprod())));
+				red = red.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredStatutprod())).multiply(BigDecimal.valueOf(0.01)));
 			}
 			
 			if (statut.equals("e")) {
 				//primeRc = primeRc.multiply(BigDecimal.valueOf(0.90));
-				red = red.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredStatutproe())));
+				red = red.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredStatutproe())).multiply(BigDecimal.valueOf(0.01)));
 			}
 
 			if (remorque == true) {
 				//primeRc = primeRc.multiply(BigDecimal.valueOf(1.2));
-				primeRemorque = primeRemorque.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredRemorque())));
+				primeRemorque = primeRemorque.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif1().getTauxMajredRemorque())).multiply(BigDecimal.valueOf(0.01)));
 			
 			}
-			
+			//System.out.println("-------------Reduction----------------"+red);
 			reduction = red;
+			//System.out.println("-------------Remorque----------------"+primeRemorque);
 			primeRc = primeRc.add(primeRemorque).subtract(reduction);
+			
+			//System.out.println("-------------Prime RC----------------"+primeRc);
 			//calcul des surprimes pour la RC
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
@@ -242,7 +246,7 @@ public class PrimeCategorie1 implements PrimeCategorieInterface {
 	/*-------------------determination de la prime en brise de glace--------------------*/
 	public java.math.BigDecimal getBrisGlaceRC() {
 		try{
-		brisGlaceRC = brisGlaceRC.add(getValeurNeuve().multiply(BigDecimal.valueOf(getTarif().getTauxBgOpt1())));
+		brisGlaceRC = brisGlaceRC.add(getValeurNeuve().multiply(BigDecimal.valueOf(getTarif().getTauxBgOpt1())).multiply(BigDecimal.valueOf(0.01)));
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -252,7 +256,7 @@ public class PrimeCategorie1 implements PrimeCategorieInterface {
 	
 	public java.math.BigDecimal getBrisGlaceRNC1() {
 		try{
-		brisGlaceRNC1 = brisGlaceRNC1.add(getValeurNeuve().multiply(BigDecimal.valueOf(getTarif().getTauxBgOpt2())));
+		brisGlaceRNC1 = brisGlaceRNC1.add(getValeurNeuve().multiply(BigDecimal.valueOf(getTarif().getTauxBgOpt2())).multiply(BigDecimal.valueOf(0.01)));
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -261,7 +265,7 @@ public class PrimeCategorie1 implements PrimeCategorieInterface {
 	}
 	public java.math.BigDecimal getBrisGlaceRNC2() {
 		try{
-		brisGlaceRNC2 = brisGlaceRNC2.add(getValeurNeuve().multiply(BigDecimal.valueOf(getTarif().getTauxBgOpt3())));
+		brisGlaceRNC2 = brisGlaceRNC2.add(getValeurNeuve().multiply(BigDecimal.valueOf(getTarif().getTauxBgOpt3())).multiply(BigDecimal.valueOf(0.01)));
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -272,7 +276,7 @@ public class PrimeCategorie1 implements PrimeCategorieInterface {
 	/*-------------------determination de la prime en dommage--------------------*/
 	public java.math.BigDecimal getDommage() {
 		try{
-		dommage = dommage.add(getValeurNeuve().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeDomAcc())));
+		dommage = dommage.add(getValeurNeuve().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeDomAcc())).multiply(BigDecimal.valueOf(0.01)));
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -282,7 +286,7 @@ public class PrimeCategorie1 implements PrimeCategorieInterface {
 	
 	public java.math.BigDecimal getCollision() {
 		try{
-		collision = collision.add(getValeurNeuve().multiply(BigDecimal.valueOf(getTarif().getTauxFranchDomCol())));
+		collision = collision.add(getValeurNeuve().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeDomCol())).multiply(BigDecimal.valueOf(0.01)));
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -295,13 +299,13 @@ public class PrimeCategorie1 implements PrimeCategorieInterface {
 	public java.math.BigDecimal getVolMain() {
 		try {
 			if (getValeurVenale().intValue() > 0 & getValeurVenale().intValue() <= 10000000) {
-				volMain = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeVol1()));
+				volMain = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeVol1())).multiply(BigDecimal.valueOf(0.01));
 			}
 			if (getValeurVenale().intValue() > 10000001 & getValeurVenale().intValue() <= 20000000) {
-				volMain = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeVol2()));
+				volMain = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeVol2())).multiply(BigDecimal.valueOf(0.01));
 			}
 			if (getValeurVenale().intValue() > 20000001) {
-				volMain = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeVol3()));
+				volMain = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeVol3())).multiply(BigDecimal.valueOf(0.01));
 			}
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
@@ -313,7 +317,7 @@ public class PrimeCategorie1 implements PrimeCategorieInterface {
 	/*-------------------determination de la prime en vol accessoires--------------------*/
 	public java.math.BigDecimal getVolAccessoires() {
 		try{
-		volAccessoires = getMontantAccessoires().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeVolAcc()));
+		volAccessoires = getMontantAccessoires().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeVolAcc())).multiply(BigDecimal.valueOf(0.01));
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -336,13 +340,13 @@ public class PrimeCategorie1 implements PrimeCategorieInterface {
 	public java.math.BigDecimal getIncendie() {
 		try {
 			if (getValeurVenale().intValue() > 0 & getValeurVenale().intValue() <= 10000000) {
-				incendie = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeIncendie1()));
+				incendie = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeIncendie1())).multiply(BigDecimal.valueOf(0.01));
 			}
 			if (getValeurVenale().intValue() > 10000001 & getValeurVenale().intValue() <= 20000000) {
-				incendie = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeIncendie2()));
+				incendie = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeIncendie2())).multiply(BigDecimal.valueOf(0.01));
 			}
 			if (getValeurVenale().intValue() > 20000001) {
-				incendie = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeIncendie3()));
+				incendie = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeIncendie3())).multiply(BigDecimal.valueOf(0.01));
 			}
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block

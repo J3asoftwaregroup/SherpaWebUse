@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.Garantie;
+import com.j3a.assurance.model.Tarif;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.prime.CalculPrimeGlobale;
 import com.j3a.assurance.prime.CalculPrimeProrata;
@@ -142,14 +143,16 @@ public class GarantieMB implements Serializable {
 		CalculPrimeGlobale primeGlobale = new CalculPrimeGlobale();
 
 		// prévoir une méthode de vérification de la sous catégorie à plus tard
-
-		primeGlobale.setCategorie(vehiculeRow.getSouCatVehi().getTarif().getCodeTarif());
+		Tarif tarif = (Tarif)getObjectService().getObjectById(vehiculeRow.getSouCatVehi().getTarif().getCodeTarif(), "Tarif");
+		System.out.println("-------------Code Tarif----------------"+tarif.getCodeTarif());
+		System.out.println("-------------Code RC1----------------"+tarif.getRcTarif1().getCodeRcTarif1());
+		primeGlobale.setCategorie(tarif.getCodeTarif());
 		primeGlobale.primeGlobale();
 		PrimeCategorieInterface prime = primeGlobale.primeGlobale();
 
 		CalculPrimeProrata prorata = new CalculPrimeProrata();
 		
-		prime.setTarif(vehiculeRow.getSouCatVehi().getTarif());
+		prime.setTarif(tarif);
 		prime.setCategorie(vehiculeRow.getSouCatVehi().getTarif().getCodeTarif());
 		prime.setEnergie(vehiculeRow.getVehi().getEnergie());
 		prime.setNbrecarte(vehiculeRow.getVehi().getNbreCarte());
@@ -169,7 +172,7 @@ public class GarantieMB implements Serializable {
 		// prime.setMontantAccessoires();
 		ReturnPrimeCategorie r = new ReturnPrimeCategorie();
 		setPrimeCategorie(r.returnPrimecategorie(prime));
-		System.out.println("valeur de primecategorie"
+		System.out.println("valeur de primecategorie "
 				+ getPrimeCategorie().getBrisGlaceRC());
 		List<Garanties> garantieList = new ArrayList<Garanties>();
 		garantieList.clear();
