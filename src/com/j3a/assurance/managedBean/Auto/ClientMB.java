@@ -58,6 +58,7 @@ public class ClientMB implements Serializable{
 		private List<Sexe> sexeList;
 		private Conducteur conducteur=new Conducteur();
 		private Morale maMorale = new Morale();
+		private String retour;
 		
 		private Physique monPhysique = new Physique();
 		private Personne client = new Personne() ;
@@ -249,18 +250,18 @@ public class ClientMB implements Serializable{
 		}
 		
 		public String validerClient() {
+			retour="";
 			List list = getObjectService().checkPersonPhysique(maPersonne, monPhysique);
 			if(list.size() > 0){
+				System.out.println("----------Enregistrement pas possible");//clean after
 				RequestContext.getCurrentInstance().execute("personne_Eng.show();");
-			}
-			
-			try {
+			}else {
+				System.out.println("----------Enregistrement possible");//clean after
+				retour="/Page/Paypal/inscriptionPaypal.xhtml?faces-redirect=true";
 				setClient(getMaPersonne());
 				nomClient = getMaPersonne().getNomRaisonSociale()+" "+getMonPhysique().getPrenomPers();
-			} catch (Exception e) {
-				
 			}
-			return "/Page/Paypal/inscriptionPaypal.xhtml?faces-redirect=true";
+			return retour;
 		}
 		
 		
