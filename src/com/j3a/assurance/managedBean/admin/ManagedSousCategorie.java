@@ -130,7 +130,7 @@ public class ManagedSousCategorie implements Serializable{
 	}
 	
 	public String validateadd() { 
-	    String key = getObjectService().getCodeTable("SCAT", 4, 2,"SousCatVehicule", "codeSousCatVehicule");
+	    String key = getObjectService().getCodeTable("SCAT", 4, 2,"sous_cat_vehicule", "CODE_SOUS_CAT_VEHICULE");
 	    SousCatVehicule sousCatVehicule = new SousCatVehicule();
 	    sousCatVehicule.setCodeSousCatVehicule(key);
 	    sousCatVehicule.setLibelleSousCatVehicule(getLibelleCategorie());
