@@ -66,70 +66,78 @@ public class PrimeCategorie5 implements PrimeCategorieInterface {
 
 	/*------------Determine la valeur de la prime de base------------------*/
 	public java.math.BigDecimal getPrimeBase() {
+		
+		
+		try{
 		 primeBase = BigDecimal.ZERO;
 		 if(getTypeVehicule().equalsIgnoreCase("VT")){
 			 if (getPuissReel().doubleValue() < 175) {
 					if (zone.equals("zone1"))
-						primeBase = BigDecimal.valueOf(30017);
+						primeBase = getTarif().getRcTarif5().getTandems1Zone1();
 					if (zone.equals("zone2"))
-						primeBase = BigDecimal.valueOf(28516);
+						primeBase = getTarif().getRcTarif5().getTandems1Zone2();
 					if (zone.equals("zone3"))
-						primeBase = BigDecimal.valueOf(27015);
+						primeBase = getTarif().getRcTarif5().getTandems1Zone3();
 				}
 			 if ( getPuissReel().doubleValue() >= 175) {
 					if (zone.equals("zone1"))
-						primeBase = BigDecimal.valueOf(43838);
+						primeBase = getTarif().getRcTarif5().getTandems2Zone1();
 					if (zone.equals("zone2"))
-						primeBase = BigDecimal.valueOf(41646);
+						primeBase = getTarif().getRcTarif5().getTandems2Zone2();
 					if (zone.equals("zone3"))
-						primeBase = BigDecimal.valueOf(39454);
+						primeBase = getTarif().getRcTarif5().getTandems2Zone3();
 				}
 			 
 		 }else{
 			if (getPuissReel().doubleValue() <= 50) {
 				if (zone.equals("zone1"))
-					primeBase = BigDecimal.valueOf(11642);
+					primeBase = getTarif().getRcTarif5().getCyl1Zone1();
 				if (zone.equals("zone2"))
-					primeBase = BigDecimal.valueOf(11060);
+					primeBase = getTarif().getRcTarif5().getCyl1Zone2();
 				if (zone.equals("zone3"))
-					primeBase = BigDecimal.valueOf(10478);
+					primeBase = getTarif().getRcTarif5().getCyl1Zone3();
 			}
 			if ( getPuissReel().doubleValue() >= 51 & getPuissReel().doubleValue() <= 99) {
 				if (zone.equals("zone1"))
-					primeBase = BigDecimal.valueOf(19058);
+					primeBase = getTarif().getRcTarif5().getCyl2Zone1();
 				if (zone.equals("zone2"))
-					primeBase = BigDecimal.valueOf(18105);
+					primeBase = getTarif().getRcTarif5().getCyl2Zone2();
 				if (zone.equals("zone3"))
-					primeBase = BigDecimal.valueOf(17152);
+					primeBase = getTarif().getRcTarif5().getCyl2Zone3();
 			}
 			
 			if ( getPuissReel().doubleValue() >= 100 & getPuissReel().doubleValue() <= 175) {
 				if (zone.equals("zone1"))
-					primeBase = BigDecimal.valueOf(27891);
+					primeBase = getTarif().getRcTarif5().getCyl3Zone1();
 				if (zone.equals("zone2"))
-					primeBase = BigDecimal.valueOf(26496);
+					primeBase = getTarif().getRcTarif5().getCyl3Zone2();
 				if (zone.equals("zone3"))
-					primeBase = BigDecimal.valueOf(25102);
+					primeBase = getTarif().getRcTarif5().getCyl3Zone3();
 			}
 			
 			if ( getPuissReel().doubleValue() >= 176 & getPuissReel().doubleValue() <= 350) {
 				if (zone.equals("zone1"))
-					primeBase = BigDecimal.valueOf(35858);
+					primeBase = getTarif().getRcTarif5().getCyl4Zone1();
 				if (zone.equals("zone2"))
-					primeBase = BigDecimal.valueOf(34065);
+					primeBase = getTarif().getRcTarif5().getCyl4Zone2();
 				if (zone.equals("zone3"))
-					primeBase = BigDecimal.valueOf(32272);
+					primeBase = getTarif().getRcTarif5().getCyl4Zone3();
 			}
 			if ( getPuissReel().doubleValue() > 350) {
 				if (zone.equals("zone1"))
-					primeBase = BigDecimal.valueOf(47814);
+					primeBase = getTarif().getRcTarif5().getCyl5Zone1();
 				if (zone.equals("zone2"))
-					primeBase = BigDecimal.valueOf(45423);
+					primeBase = getTarif().getRcTarif5().getCyl5Zone2();
 				if (zone.equals("zone3"))
-					primeBase = BigDecimal.valueOf(43033);
+					primeBase = getTarif().getRcTarif5().getCyl5Zone3();
 			}
 		 }
 
+		 
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return primeBase;
 	}
 
@@ -142,10 +150,18 @@ public class PrimeCategorie5 implements PrimeCategorieInterface {
 
 	/*------------determination de la prime en defense recours--------------------------------*/
 	public java.math.BigDecimal getDefenseRecours() {
-		defenseRecours = BigDecimal.valueOf(1060);
+		try {
+			
+			defenseRecours = getTarif().getPrimeBaseDr();
+			
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return defenseRecours;
 	}
 
+	
 	public java.math.BigDecimal getDefenseRecoursDommage() {
 		defenseRecoursDommage = BigDecimal.ZERO;
 		return defenseRecoursDommage;

@@ -66,6 +66,8 @@ public class PrimeCategorie3 implements PrimeCategorieInterface {
 	/*------------Determine la valeur de la prime de base------------------*/
 	public java.math.BigDecimal getPrimeBase() {
 
+		
+		try{
 		 primeBase = BigDecimal.ZERO;
 		if (getChargeUtile().intValue() <= 1) {
 			if (zone.equals("zone1"))
@@ -134,6 +136,11 @@ public class PrimeCategorie3 implements PrimeCategorieInterface {
 				primeBase = getTarif().getRcTarif3().getPfCu7Zone3t3();
 		}
 
+		
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return primeBase;
 	}
 

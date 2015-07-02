@@ -71,19 +71,21 @@ public class PrimeCategorie10 implements PrimeCategorieInterface {
 	/*------------Determine la valeur de la prime de base------------------*/
 	public java.math.BigDecimal getPrimeBase() {
 
+		
+		try {
 		 primeBase = BigDecimal.ZERO;
 		 if(typeVehicule.equalsIgnoreCase("AMBULANCES") & typeVehicule.equalsIgnoreCase("CORBILLARDS") & typeVehicule.equalsIgnoreCase("FOURGONS FUNERAIRES")){
 		 if ((energie.equals("essence") & puissFisc.intValue() >= 1 & puissFisc.intValue() <= 2)
 					|| (energie.equals("diesel") & puissFisc.intValue() == 1)) {
 				if (zone.equals("zone1"))
 					// setprimeRc(58675);
-					primeBase = BigDecimal.valueOf(53340);
+					primeBase = getTarif().getRcTarif10().getPaE12D1Zone1();
 				if (zone.equals("zone2"))
 					// setprimeBase(55741);
-					primeBase = BigDecimal.valueOf(50673);
+					primeBase = getTarif().getRcTarif10().getPaE12D1Zone2();
 				if (zone.equals("zone3"))
 					// setprimeBase(52808);
-					primeBase = BigDecimal.valueOf(48006);
+					primeBase = getTarif().getRcTarif10().getPaE12D1Zone3();
 			}
 		
 
@@ -91,143 +93,155 @@ public class PrimeCategorie10 implements PrimeCategorieInterface {
 					|| (energie.equals("diesel") & puissFisc.intValue() >= 2 & puissFisc.intValue() <= 4)) {
 				if (zone.equals("zone1"))
 					// setprimeBase(66885);
-					primeBase = BigDecimal.valueOf(60802);
+					primeBase = getTarif().getRcTarif10().getPaE36D24Zone1();
 				if (zone.equals("zone2"))
 					// setprimeBase(63541);
-					primeBase = BigDecimal.valueOf(57762);
+					primeBase = getTarif().getRcTarif10().getPaE36D24Zone2();
 				if (zone.equals("zone3"))
 					// setprimeBase(60197);
-					primeBase = BigDecimal.valueOf(54722);
+					primeBase = getTarif().getRcTarif10().getPaE36D24Zone3();
 			}
 
 			if ((energie.equals("essence") & puissFisc.intValue() >= 7 & puissFisc.intValue() <= 9)
 					|| (energie.equals("diesel") & puissFisc.intValue() >= 5 & puissFisc.intValue() <= 6)) {
 				if (zone.equals("zone1"))
 					// setprimeBase(73415);
-					primeBase = BigDecimal.valueOf(66741);
+					primeBase = getTarif().getRcTarif10().getPaE79D56Zone1();
 				if (zone.equals("zone2"))
 					// setprimeBase(69744);
-					primeBase = BigDecimal.valueOf(63404);
+					primeBase = getTarif().getRcTarif10().getPaE79D56Zone2();
 				if (zone.equals("zone3"))
 					// setprimeBase(66074);
-					primeBase = BigDecimal.valueOf(60067);
+					primeBase = getTarif().getRcTarif10().getPaE79D56Zone3();
 			}
 			if ((energie.equals("essence") & puissFisc.intValue() >= 10 & puissFisc.intValue() <= 11)
 					|| (energie.equals("diesel") & puissFisc.intValue() >= 7 & puissFisc.intValue() <= 8)) {
 				if (zone.equals("zone1"))
 					// setprimeBase(114693);
-					primeBase = BigDecimal.valueOf(104265);
+					primeBase = getTarif().getRcTarif10().getPaE1011D78Zone1();
 				if (zone.equals("zone2"))
 					// setprimeBase(108958);
-					primeBase = BigDecimal.valueOf(99052);
+					primeBase = getTarif().getRcTarif10().getPaE1011D78Zone2();
 				if (zone.equals("zone3"))
 					// setprimeBase(103224);
-					primeBase = BigDecimal.valueOf(93839);
+					primeBase = getTarif().getRcTarif10().getPaE1011D78Zone3();
 			}
 			if ((energie.equals("essence") & puissFisc.intValue() >= 12)
 					|| (energie.equals("diesel") & puissFisc.intValue() >= 9)) {
 				if (zone.equals("zone1"))
 					// setprimeBase(129058);
-					primeBase = BigDecimal.valueOf(117324);
+					primeBase = getTarif().getRcTarif10().getPaE12D9Zone1();
 				if (zone.equals("zone2"))
 					// setprimeBase(122605);
-					primeBase = BigDecimal.valueOf(111458);
+					primeBase = getTarif().getRcTarif10().getPaE12D9Zone2();
 				if (zone.equals("zone3"))
 					// setprimeBase(116152);
-					primeBase = BigDecimal.valueOf(105592);
+					primeBase = getTarif().getRcTarif10().getPaE12D9Zone3();
 			}
 		 }
 		
+		 
+		 
+		 
 		 if(typeVehicule.equalsIgnoreCase("Arroseuses") & typeVehicule.equalsIgnoreCase("Balayeuses") & typeVehicule.equalsIgnoreCase("Camions")  &
 		typeVehicule.equalsIgnoreCase("Bennes") & typeVehicule.equalsIgnoreCase("Goudronneuses") & typeVehicule.equalsIgnoreCase("Voitures de vidange")){
 			 primeBase = BigDecimal.valueOf(100000);
 				if (getChargeUtile().doubleValue() <= 1) {
 					if (zone.equals("zone1"))
-						primeBase = BigDecimal.valueOf(118965);
+						primeBase = getTarif().getRcTarif2().getPfCu1Zone1();
 					if (zone.equals("zone2"))
-						primeBase = BigDecimal.valueOf(113017);
+						primeBase = getTarif().getRcTarif2().getPfCu1Zone2();
 					if (zone.equals("zone3"))
-						primeBase = BigDecimal.valueOf(107069);
+						primeBase = getTarif().getRcTarif2().getPfCu1Zone3();
 				}
 
 				if (getChargeUtile().intValue() > 1 & getChargeUtile().intValue() <= 3) {
 					if (zone.equals("zone1"))
-						primeBase = BigDecimal.valueOf(155190);
+						primeBase = getTarif().getRcTarif2().getPfCu2Zone1();
 					if (zone.equals("zone2"))
-						primeBase = BigDecimal.valueOf(147431);
+						primeBase = getTarif().getRcTarif2().getPfCu2Zone2();
 					if (zone.equals("zone3"))
-						primeBase = BigDecimal.valueOf(139671);
+						primeBase = getTarif().getRcTarif2().getPfCu2Zone3();
 				}
 
 				if (getChargeUtile().intValue() > 3 & getChargeUtile().intValue() <= 5) {
 					if (zone.equals("zone1"))
-						primeBase = BigDecimal.valueOf(189715);
+						primeBase = getTarif().getRcTarif2().getPfCu3Zone1();
 					if (zone.equals("zone2"))
-						primeBase = BigDecimal.valueOf(180229);
+						primeBase = getTarif().getRcTarif2().getPfCu3Zone2();
 					if (zone.equals("zone3"))
-						primeBase = BigDecimal.valueOf(170744);
+						primeBase = getTarif().getRcTarif2().getPfCu3Zone3();
 				}
 				
 				if (getChargeUtile().intValue() > 5 & getChargeUtile().intValue() <= 8) {
 					if (zone.equals("zone1"))
-						primeBase = BigDecimal.valueOf(244617);
+						primeBase = getTarif().getRcTarif2().getPfCu4Zone1();
 					if (zone.equals("zone2"))
-						primeBase = BigDecimal.valueOf(232386);
+						primeBase = getTarif().getRcTarif2().getPfCu4Zone2();
 					if (zone.equals("zone3"))
-						primeBase = BigDecimal.valueOf(220155);
+						primeBase = getTarif().getRcTarif2().getPfCu4Zone3();
 				}
 				
 				if (getChargeUtile().intValue() > 8 & getChargeUtile().intValue() <= 11) {
 					if (zone.equals("zone1"))
-						primeBase = BigDecimal.valueOf(260925);
+						primeBase = getTarif().getRcTarif2().getPfCu5Zone1();
 					if (zone.equals("zone2"))
-						primeBase = BigDecimal.valueOf(247879);
+						primeBase = getTarif().getRcTarif2().getPfCu5Zone2();
 					if (zone.equals("zone3"))
-						primeBase = BigDecimal.valueOf(234833);
+						primeBase = getTarif().getRcTarif2().getPfCu5Zone3();
 				}
 				
 				if (getChargeUtile().intValue() > 11 & getChargeUtile().intValue() <= 13) {
 					if (zone.equals("zone1"))
-						primeBase = BigDecimal.valueOf(273407);
+						primeBase = getTarif().getRcTarif2().getPfCu6Zone1();
 					if (zone.equals("zone2"))
-						primeBase = BigDecimal.valueOf(259737);
+						primeBase = getTarif().getRcTarif2().getPfCu6Zone2();
 					if (zone.equals("zone3"))
-						primeBase = BigDecimal.valueOf(246066);
+						primeBase = getTarif().getRcTarif2().getPfCu6Zone3();
 				}
 				
 				if (getChargeUtile().intValue() > 13 & getChargeUtile().intValue() <= 15) {
 					if (zone.equals("zone1"))
-						primeBase = BigDecimal.valueOf(329405);
+						primeBase = getTarif().getRcTarif2().getPfCu7Zone1();
 					if (zone.equals("zone2"))
-						primeBase = BigDecimal.valueOf(312935);
+						primeBase = getTarif().getRcTarif2().getPfCu7Zone2();
 					if (zone.equals("zone3"))
-						primeBase = BigDecimal.valueOf(296465);
+						primeBase = getTarif().getRcTarif2().getPfCu7Zone3();
 				}
 				
 				if (getChargeUtile().intValue() > 15) {
 					if (zone.equals("zone1"))
-						primeBase = BigDecimal.valueOf(431327);
+						primeBase = getTarif().getRcTarif2().getPfCu8Zone1();
 					if (zone.equals("zone2"))
-						primeBase = BigDecimal.valueOf(409761);
+						primeBase = getTarif().getRcTarif2().getPfCu8Zone2();
 					if (zone.equals("zone3"))
-						primeBase = BigDecimal.valueOf(388194);
+						primeBase = getTarif().getRcTarif2().getPfCu8Zone3();
 				}
 				
 				if(getTypeVehicule().equals("VAT")){
 					if (zone.equals("zone1"))
-						primeBase = BigDecimal.valueOf(463925);
+						primeBase = getTarif().getRcTarif2().getPfCu9Zone1();
 					if (zone.equals("zone2"))
-						primeBase = BigDecimal.valueOf(440729);
+						primeBase = getTarif().getRcTarif2().getPfCu9Zone2();
 					if (zone.equals("zone3"))
-						primeBase = BigDecimal.valueOf(418692);
+						primeBase = getTarif().getRcTarif2().getPfCu9Zone3();
 					
 				}
 				
 		 }
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
 		return primeBase;
 
 	}
 	
+	
+	
+	
+	//
 	public java.math.BigDecimal getPrimeRc() {
 		java.math.BigDecimal red = BigDecimal.ZERO;
 		getPrimeBase();

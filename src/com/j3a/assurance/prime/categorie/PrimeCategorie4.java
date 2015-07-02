@@ -66,58 +66,66 @@ public class PrimeCategorie4 implements PrimeCategorieInterface {
 	/*------------Determine la valeur de la prime de base------------------*/
 	public java.math.BigDecimal getPrimeBase() {
 
+		try{
 		 primeBase = BigDecimal.ZERO;
 		 if (getTypeVehicule().equalsIgnoreCase("Taxi") & getNbreTransporte()<=(short)4) {
 				if (zone.equals("zone1"))
-					primeBase = BigDecimal.valueOf(155520);
+					primeBase = getTarif().getRcTarif4().getNbPlTaxi1Zone1();
+					
 				if (zone.equals("zone2"))
-					primeBase = BigDecimal.valueOf(147744);
+					primeBase = getTarif().getRcTarif4().getNbPlTaxi1Zone2();
 				if (zone.equals("zone3"))
-					primeBase = BigDecimal.valueOf(139968);
-			}
+					primeBase = getTarif().getRcTarif4().getNbPlTaxi1Zone3();
+				}
 		 
 		 if (getTypeVehicule().equalsIgnoreCase("Taxi") & getNbreTransporte()> (short)4 & getNbreTransporte()<= (short)8) {
 			 if (zone.equals("zone1"))
-					primeBase = BigDecimal.valueOf(288000);
+				    primeBase = getTarif().getRcTarif4().getNbPlTaxi2Zone1();
 				if (zone.equals("zone2"))
-					primeBase = BigDecimal.valueOf(273600);
+					 primeBase = getTarif().getRcTarif4().getNbPlTaxi2Zone2();
 				if (zone.equals("zone3"))
-					primeBase = BigDecimal.valueOf(259200);
+					 primeBase = getTarif().getRcTarif4().getNbPlTaxi2Zone3();
 			}
 		 if (getTypeVehicule().equalsIgnoreCase("Cars") & getNbreTransporte()>= (short)9 & getNbreTransporte()<= (short)22) {
 			 if (zone.equals("zone1"))
-					primeBase = BigDecimal.valueOf(402228);
+				 primeBase = getTarif().getRcTarif4().getNbPlCar1Zone1();
 				if (zone.equals("zone2"))
-					primeBase = BigDecimal.valueOf(382117);
+					primeBase = getTarif().getRcTarif4().getNbPlCar1Zone2();
 				if (zone.equals("zone3"))
-					primeBase = BigDecimal.valueOf(362005);	
+					primeBase = getTarif().getRcTarif4().getNbPlCar1Zone3();	
 			}
 		 if (getTypeVehicule().equalsIgnoreCase("Cars") & getNbreTransporte()>= (short)23 & getNbreTransporte()<= (short)40) {
 			 if (zone.equals("zone1"))
-					primeBase = BigDecimal.valueOf(510060);
+				 primeBase = getTarif().getRcTarif4().getNbPlCar2Zone1();
 				if (zone.equals("zone2"))
-					primeBase = BigDecimal.valueOf(484557);
+					primeBase = getTarif().getRcTarif4().getNbPlCar2Zone2();
 				if (zone.equals("zone3"))
-					primeBase = BigDecimal.valueOf(459054);		
+					primeBase = getTarif().getRcTarif4().getNbPlCar2Zone3();	
 			}
 		 
 		
 		 if (getTypeVehicule().equalsIgnoreCase("Cars") & getNbreTransporte()>=(short)41) {
 			 if (zone.equals("zone1"))
-					primeBase = BigDecimal.valueOf(760000);
+				 primeBase = getTarif().getRcTarif4().getNbPlCar3Zone1();
 				if (zone.equals("zone2"))
-					primeBase = BigDecimal.valueOf(722000);
+					primeBase = getTarif().getRcTarif4().getNbPlCar3Zone2();
 				if (zone.equals("zone3"))
-					primeBase = BigDecimal.valueOf(684000);		
+					primeBase = getTarif().getRcTarif4().getNbPlCar3Zone3();	
 			}
 
 		
+		 
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return primeBase;
 	}
 
 	/*---------------	calcul de la prime RC-------------------------------*/
 	public java.math.BigDecimal getPrimeRc() {
+		try{
 		primeRc = getPrimeBase();
 		java.math.BigDecimal red = BigDecimal.ZERO;
 		primeRc = getPrimeBase();
@@ -129,18 +137,22 @@ public class PrimeCategorie4 implements PrimeCategorieInterface {
 		}
 
 		if (classe.equals("classe2")) {
-			red = red.add(primeBase.multiply(BigDecimal.valueOf(0.05)) );
+			
+			red = red.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif4().getTauxPermis2t4())).multiply(BigDecimal.valueOf(0.01)));
 		}
 
 		if (remorque == true) {
-			primeRemorque = primeRemorque.add(primeBase.multiply(BigDecimal.valueOf(0.1)));
+			primeRemorque = primeRemorque.add(primeBase.multiply(BigDecimal.valueOf(getTarif().getRcTarif4().getTauxRemorquet4())).multiply(BigDecimal.valueOf(0.01)));
 		}
 		
 		reduction = red;
 		
 		primeRc = primeRc.add(primeRemorque).subtract(reduction);
 
-
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return primeRc;
 	}
 

@@ -66,65 +66,67 @@ public class PrimeCategorie6 implements PrimeCategorieInterface {
 	/*------------Determine la valeur de la prime de base------------------*/
 	public java.math.BigDecimal getPrimeBase() {
 
+		
+		try{
 		 primeBase = BigDecimal.valueOf(0);
 		 if(typeVehicule.equalsIgnoreCase("VP")){
 		if (getNbrecarte() == 1) {
 			if (zone.equals("zone1"))
-				// setPrimeBase(58675);
-				primeBase = BigDecimal.valueOf(351965);
+				primeBase = getTarif().getRcTarif6().getVhl1Zone1();
 			if (zone.equals("zone2"))
 				// setPrimeBase(55741);
-				primeBase = BigDecimal.valueOf(334367);
+				primeBase = getTarif().getRcTarif6().getVhl1Zone2();
 			if (zone.equals("zone3"))
 				// setPrimeBase(52808);
-				primeBase = BigDecimal.valueOf(316769);
+				primeBase = getTarif().getRcTarif6().getVhl1Zone3();
 		}
 
 			if (getNbrecarte() == 2) {
 				if (zone.equals("zone1"))
 					// setPrimeBase(58675);
-					primeBase = BigDecimal.valueOf(527948);
+					primeBase = getTarif().getRcTarif6().getVhl2Zone1();
 				if (zone.equals("zone2"))
 					// setPrimeBase(55741);
-					primeBase = BigDecimal.valueOf(501551);
+					primeBase = getTarif().getRcTarif6().getVhl2Zone2();
 				if (zone.equals("zone3"))
 					// setPrimeBase(52808);
-					primeBase = BigDecimal.valueOf(475153);
+					primeBase = getTarif().getRcTarif6().getVhl2Zone3();
 			}
 
 			if (getNbrecarte() == 3) {
 				if (zone.equals("zone1"))
 					// setPrimeBase(58675);
-					primeBase = BigDecimal.valueOf(703931);
+					primeBase = getTarif().getRcTarif6().getVhl3Zone1();
 				if (zone.equals("zone2"))
 					// setPrimeBase(55741);
-					primeBase = BigDecimal.valueOf(668734);
+					primeBase = getTarif().getRcTarif6().getVhl3Zone2();
 				if (zone.equals("zone3"))
 					// setPrimeBase(52808);
-					primeBase = BigDecimal.valueOf(633538);
+					primeBase = getTarif().getRcTarif6().getVhl3Zone3();
 			}
 			
 			if (getNbrecarte() == 4) {
 				if (zone.equals("zone1"))
 					// setPrimeBase(58675);
-					primeBase = BigDecimal.valueOf(879913);
+					primeBase = getTarif().getRcTarif6().getVhl4Zone1();
 				if (zone.equals("zone2"))
 					// setPrimeBase(55741);
-					primeBase = BigDecimal.valueOf(835917);
+					primeBase = getTarif().getRcTarif6().getVhl4Zone2();
 				if (zone.equals("zone3"))
 					// setPrimeBase(52808);
-					primeBase = BigDecimal.valueOf(791922);
+					primeBase = getTarif().getRcTarif6().getVhl4Zone3();
 			}
 			if (getNbrecarte() > 4) {
 				if (zone.equals("zone1"))
 					// setPrimeBase(58675);
-					primeBase = primeBase.add(BigDecimal.valueOf(175983*(getNbrecarte()-4)));
+					//primeBase = primeBase.add(BigDecimal.valueOf(175983*(getNbrecarte()-4)));
+					primeBase = getTarif().getRcTarif6().getVhl5Zone1();
 				if (zone.equals("zone2"))
 					// setPrimeBase(55741);
-					primeBase = primeBase.add(BigDecimal.valueOf(167184*(getNbrecarte()-4)));
+					primeBase = getTarif().getRcTarif6().getVhl5Zone2();
 				if (zone.equals("zone3"))
 					// setPrimeBase(52808);
-					primeBase = primeBase.add(BigDecimal.valueOf(158385*(getNbrecarte()-4)));
+					primeBase = getTarif().getRcTarif6().getVhl5Zone3();
 			}
 			}
 		 
@@ -132,62 +134,63 @@ public class PrimeCategorie6 implements PrimeCategorieInterface {
 				if (getNbrecarte() == 1) {
 					if (zone.equals("zone1"))
 						// setPrimeBase(58675);
-						primeBase = BigDecimal.valueOf(41344);
+						primeBase = getTarif().getRcTarif6().getCyclo1Zone1();
 					if (zone.equals("zone2"))
 						// setPrimeBase(55741);
-						primeBase = BigDecimal.valueOf(39277);
+						primeBase = getTarif().getRcTarif6().getCyclo1Zone2();
 					if (zone.equals("zone3"))
 						// setPrimeBase(52808);
-						primeBase = BigDecimal.valueOf(37210);
+						primeBase = getTarif().getRcTarif6().getCyclo1Zone3();
 				}
 
 					if (getNbrecarte() == 2) {
 						if (zone.equals("zone1"))
 							// setPrimeBase(58675);
-							primeBase = BigDecimal.valueOf(62016);
+							primeBase = getTarif().getRcTarif6().getCyclo2Zone1();
 						if (zone.equals("zone2"))
 							// setPrimeBase(55741);
-							primeBase = BigDecimal.valueOf(58915);
+							primeBase = getTarif().getRcTarif6().getCyclo2Zone2();
 						if (zone.equals("zone3"))
 							// setPrimeBase(52808);
-							primeBase = BigDecimal.valueOf(55814);
+							primeBase = getTarif().getRcTarif6().getCyclo2Zone3();
 					}
 
 					if (getNbrecarte() == 3) {
 						if (zone.equals("zone1"))
 							// setPrimeBase(58675);
-							primeBase = BigDecimal.valueOf(82688);
+							primeBase = getTarif().getRcTarif6().getCyclo3Zone1();
 						if (zone.equals("zone2"))
 							// setPrimeBase(55741);
-							primeBase = BigDecimal.valueOf(78554);
+							primeBase = getTarif().getRcTarif6().getCyclo3Zone2();
 						if (zone.equals("zone3"))
 							// setPrimeBase(52808);
-							primeBase = BigDecimal.valueOf(74419);
+							primeBase = getTarif().getRcTarif6().getCyclo3Zone3();
 					}
 					
 					if (getNbrecarte() == 4) {
 						if (zone.equals("zone1"))
 							// setPrimeBase(58675);
-							primeBase = BigDecimal.valueOf(103359);
+							primeBase = getTarif().getRcTarif6().getCyclo4Zone1();
 						if (zone.equals("zone2"))
 							// setPrimeBase(55741);
-							primeBase = BigDecimal.valueOf(98191);
+							primeBase = getTarif().getRcTarif6().getCyclo4Zone2();
 						if (zone.equals("zone3"))
 							// setPrimeBase(52808);
-							primeBase = BigDecimal.valueOf(93023);
+							primeBase = getTarif().getRcTarif6().getCyclo4Zone3();
 					}
 					if (getNbrecarte() > 4) {
 						if (zone.equals("zone1"))
 							// setPrimeBase(58675);
-							primeBase = primeBase.add(BigDecimal.valueOf(20672*(getNbrecarte()-4)));
+							//primeBase = primeBase.add(BigDecimal.valueOf(20672*(getNbrecarte()-4)));
+						primeBase = getTarif().getRcTarif6().getCyclo5Zone1();
 						
 						if (zone.equals("zone2"))
 							// setPrimeBase(55741);
-							primeBase = primeBase.add(BigDecimal.valueOf(19638*(getNbrecarte()-4)));
+							primeBase = getTarif().getRcTarif6().getCyclo5Zone2();
 						
 						if (zone.equals("zone3"))
 							// setPrimeBase(52808);
-							primeBase = primeBase.add(BigDecimal.valueOf(18605*(getNbrecarte()-4)));
+							primeBase = getTarif().getRcTarif6().getCyclo5Zone3();
 						
 					}
 					}
@@ -197,65 +200,70 @@ public class PrimeCategorie6 implements PrimeCategorieInterface {
 				if (getNbrecarte() == 1) {
 					if (zone.equals("zone1"))
 						// setPrimeBase(58675);
-						primeBase = BigDecimal.valueOf(82688);
+						primeBase = getTarif().getRcTarif6().getAutresVhl1Zone1();
 					if (zone.equals("zone2"))
 						// setPrimeBase(55741);
-						primeBase = BigDecimal.valueOf(78554);
+						primeBase = getTarif().getRcTarif6().getAutresVhl1Zone2();
 					if (zone.equals("zone3"))
 						// setPrimeBase(52808);
-						primeBase = BigDecimal.valueOf(74419);
+						primeBase = getTarif().getRcTarif6().getAutresVhl1Zone3();
 				}
 
 					if (getNbrecarte() == 2) {
 						if (zone.equals("zone1"))
 							// setPrimeBase(58675);
-							primeBase = BigDecimal.valueOf(124031);
+							primeBase = getTarif().getRcTarif6().getAutresVhl2Zone1();
 						if (zone.equals("zone2"))
 							// setPrimeBase(55741);
-							primeBase = BigDecimal.valueOf(117829);
+							primeBase = getTarif().getRcTarif6().getAutresVhl2Zone2();
 						if (zone.equals("zone3"))
 							// setPrimeBase(52808);
-							primeBase = BigDecimal.valueOf(111628);
+							primeBase = getTarif().getRcTarif6().getAutresVhl2Zone3();
 					}
 
 					if (getNbrecarte() == 3) {
 						if (zone.equals("zone1"))
 							// setPrimeBase(58675);
-							primeBase = BigDecimal.valueOf(165375);
+							primeBase = getTarif().getRcTarif6().getAutresVhl3Zone1();;
 						if (zone.equals("zone2"))
 							// setPrimeBase(55741);
-							primeBase = BigDecimal.valueOf(157106);
+							primeBase = getTarif().getRcTarif6().getAutresVhl3Zone2();
 						if (zone.equals("zone3"))
 							// setPrimeBase(52808);
-							primeBase = BigDecimal.valueOf(148838);
+							primeBase = getTarif().getRcTarif6().getAutresVhl3Zone3();
 					}
 					
 					if (getNbrecarte() == 4) {
 						if (zone.equals("zone1"))
 							// setPrimeBase(58675);
-							primeBase = BigDecimal.valueOf(206719);
+							primeBase = getTarif().getRcTarif6().getAutresVhl4Zone1();
 						if (zone.equals("zone2"))
 							// setPrimeBase(55741);
-							primeBase = BigDecimal.valueOf(196383);
+							primeBase = getTarif().getRcTarif6().getAutresVhl4Zone2();
 						if (zone.equals("zone3"))
 							// setPrimeBase(52808);
-							primeBase = BigDecimal.valueOf(186047);
+							primeBase = getTarif().getRcTarif6().getAutresVhl4Zone3();
 					}
 					if (getNbrecarte() > 4) {
 						if (zone.equals("zone1"))
 							// setPrimeBase(58675);
-							primeBase = primeBase.add(BigDecimal.valueOf(41345*(getNbrecarte()-4)));
+							primeBase = getTarif().getRcTarif6().getAutresVhl5Zone1();
 						
 						if (zone.equals("zone2"))
 							// setPrimeBase(55741);
-							primeBase = primeBase.add(BigDecimal.valueOf(39278*(getNbrecarte()-4)));
+							primeBase = getTarif().getRcTarif6().getAutresVhl5Zone2();
 							
 						if (zone.equals("zone3"))
 							// setPrimeBase(52808);
-							primeBase = primeBase.add(BigDecimal.valueOf(37211*(getNbrecarte()-4)));
+							primeBase = getTarif().getRcTarif6().getAutresVhl5Zone3();
 					
 					}
 					}
+		 
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return primeBase;
 	}
 
@@ -295,7 +303,7 @@ public class PrimeCategorie6 implements PrimeCategorieInterface {
 	/*-------------------determination de la prime en brise de glace--------------------*/
 	public java.math.BigDecimal getBrisGlaceRC() {
 		
-		brisGlaceRC = getValeurNeuve().multiply(BigDecimal.valueOf(0.003));
+		//brisGlaceRC = getValeurNeuve().multiply(BigDecimal.valueOf(0.003));
 		return brisGlaceRC;
 	}
 	

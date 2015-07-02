@@ -66,100 +66,137 @@ public class PrimeCategorie9 implements PrimeCategorieInterface {
 	/*------------Determine la valeur de la prime de base------------------*/
 	public java.math.BigDecimal getPrimeBase() {
 
+		try {
 		 primeBase = BigDecimal.ZERO;
 		if (remorque == true) {
 			if (zone.equals("zone1"))
-				primeBase = BigDecimal.valueOf(86269);
+				primeBase = getTarif().getRcTarif9().getVhlRemorqueZone1();
 			if (zone.equals("zone2"))
-				primeBase = BigDecimal.valueOf(81956);
+				primeBase = getTarif().getRcTarif9().getVhlRemorqueZone2();
 			if (zone.equals("zone3"))
-				primeBase = BigDecimal.valueOf(77642);
+				primeBase = getTarif().getRcTarif9().getVhlRemorqueZone3();
 		}
 
 		if (remorque == false) {
 			if (zone.equals("zone1"))
 				// setPrimeBase(66885);
-				primeBase = BigDecimal.valueOf(78431);
+				primeBase = getTarif().getRcTarif9().getVhlSrZone1();
 			if (zone.equals("zone2"))
 				// setPrimeBase(63541);
-				primeBase =BigDecimal.valueOf(74509);
+				primeBase = getTarif().getRcTarif9().getVhlSrZone2();
 			if (zone.equals("zone3"))
 				// setPrimeBase(60197);
-				primeBase = BigDecimal.valueOf(70588);
+				primeBase = getTarif().getRcTarif9().getVhlSrZone3();
 		}
-
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return primeBase;
 	}
 
 	/*---------------	calcul de la prime RC-------------------------------*/
 	public java.math.BigDecimal getPrimeRc() {
-		primeRc = getPrimeBase();
+		//primeRc = getPrimeBase();
 		return primeRc;
 	}
 
 	/*------------determination de la prime en defense recours--------------------------------*/
 	public java.math.BigDecimal getDefenseRecours() {
-		defenseRecours = BigDecimal.valueOf(7950 );
+		try {
+			defenseRecours = getTarif().getDrSansDomage();
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return defenseRecours;
 	}
 
 	public java.math.BigDecimal getDefenseRecoursDommage() {
-		defenseRecoursDommage = BigDecimal.valueOf(14240 );
+		try{
+		defenseRecoursDommage = getTarif().getDrDomage();
+	} catch (NullPointerException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 		return defenseRecoursDommage;
 	}
 
 	/*-------------------determination de la prime en immobilisation--------------------*/
 	public java.math.BigDecimal getImmobilisation() {
-		immobilisation = BigDecimal.valueOf(17000 );
+		try{
+		immobilisation = getTarif().getImmobVehicule();
+	} catch (NullPointerException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 		return immobilisation;
 	}
 
 	/*-------------------determination de la prime en remboursement anticipe--------------------*/
 	public java.math.BigDecimal getRemboursemmentAnticipe() {
+		try{
 		if(dureeContrat<12){
-		remboursemmentAnticipe = BigDecimal.valueOf(15000);
+		remboursemmentAnticipe = getTarif().getGraCourt();
 		}else{
-		remboursemmentAnticipe = BigDecimal.valueOf(10000);
+		remboursemmentAnticipe = getTarif().getGraAnnuelle();
+		}
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return remboursemmentAnticipe;
 	}
+	
+	/*-------------------determination de la prime en dommage--------------------*/
+	public java.math.BigDecimal getDommage() {
+		try{
+		dommage = dommage.add(getValeurNeuve().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeDomAcc())).multiply(BigDecimal.valueOf(0.01)));
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dommage;
+	}
+	
+	public java.math.BigDecimal getCollision() {
+		try{
+		collision = collision.add(getValeurNeuve().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeDomCol())).multiply(BigDecimal.valueOf(0.01)));
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return collision;
+	}
+
+	
+	/*-------------------determination de la prime en vol � main arm�e--------------------*/
+	public java.math.BigDecimal getVolMain() {
+		try {
+			
+				volMain = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeVol1())).multiply(BigDecimal.valueOf(0.01));
+			
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return volMain;
+	}
+	
 
 	/*-------------------determination de la prime en brise de glace--------------------*/
 	public java.math.BigDecimal getBrisGlaceRC() {
 		
-	//	brisGlaceRC = getValeurNeuve().multiply(BigDecimal.valueOf(0.003));
 		return brisGlaceRC;
 	}
 	
 	public java.math.BigDecimal getBrisGlaceRNC1() {
 		
-		//brisGlaceRNC1 = getValeurNeuve().multiply(BigDecimal.valueOf(0.0047));
 		return brisGlaceRNC1;
 	}
 	public java.math.BigDecimal getBrisGlaceRNC2() {
 		
-		//brisGlaceRNC2 = getValeurNeuve().multiply(BigDecimal.valueOf(0.004));
 		return brisGlaceRNC2;
-	}
-
-	/*-------------------determination de la prime en dommage--------------------*/
-	public java.math.BigDecimal getDommage() {
-		dommage = getValeurNeuve().multiply(BigDecimal.valueOf(0.018));
-		return dommage;
-	}
-	
-	public java.math.BigDecimal getCollision() {
-		//collision = getValeurNeuve().multiply(BigDecimal.valueOf(0.075));
-		
-		return collision;
-	}
-
-	/*-------------------determination de la prime en vol � main arm�e--------------------*/
-
-	public java.math.BigDecimal getVolMain() {
-		
-			volMain = getValeurVenale().multiply(BigDecimal.valueOf(0.0021));
-		return volMain;
 	}
 
 	/*-------------------determination de la prime en vol accessoires--------------------*/
@@ -173,13 +210,26 @@ public class PrimeCategorie9 implements PrimeCategorieInterface {
 		return volVandalisme;
 	}
 
+	
 	/*-------------------determination de la prime en incendie--------------------*/
 
 	public java.math.BigDecimal getIncendie() {
-			incendie = getValeurVenale().multiply(BigDecimal.valueOf(0.0016));
+		try {
+			if (getValeurVenale().intValue() > 0 & getValeurVenale().intValue() <= 10000000) {
+				incendie = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeIncendie1())).multiply(BigDecimal.valueOf(0.01));
+			}
+			if (getValeurVenale().intValue() > 10000001 & getValeurVenale().intValue() <= 20000000) {
+				incendie = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeIncendie2())).multiply(BigDecimal.valueOf(0.01));
+			}
+			if (getValeurVenale().intValue() > 20000001) {
+				incendie = getValeurVenale().multiply(BigDecimal.valueOf(getTarif().getTauxPrimeIncendie3())).multiply(BigDecimal.valueOf(0.01));
+			}
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return incendie;
 	}
-
 	/*-------------------determination de la prime en securit�--------------------*/
 	public java.math.BigDecimal getSecuriteRoutiere1() {
 		//securiteRoutiere1 = BigDecimal.valueOf(9650);
@@ -197,7 +247,12 @@ public class PrimeCategorie9 implements PrimeCategorieInterface {
 	
 	public java.math.BigDecimal getIndividuelChauf1(){
 		
-		individuelChauf1=BigDecimal.valueOf(10000);
+		try {
+		individuelChauf1 = getTarif().getIndivChauffDeces();
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return individuelChauf1;
 	}
 	
