@@ -1,40 +1,16 @@
 package com.j3a.assurance.managedBean.admin;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
-import com.j3a.assurance.managedBean.ManagedGarantie;
-import com.j3a.assurance.model.Apporteur;
-import com.j3a.assurance.model.Avenant;
-import com.j3a.assurance.model.Contrat;
-import com.j3a.assurance.model.Exercice;
-import com.j3a.assurance.model.Personne;
-import com.j3a.assurance.model.Physique;
-import com.j3a.assurance.model.PointVente;
-import com.j3a.assurance.model.Quittance;
-import com.j3a.assurance.model.RcTarif3;
-import com.j3a.assurance.model.RcTarif4;
 import com.j3a.assurance.model.RcTarif6;
-import com.j3a.assurance.model.RcTarif6;
-import com.j3a.assurance.model.Risque;
-import com.j3a.assurance.model.SocieteAssurance;
-import com.j3a.assurance.model.SousCatVehicule;
 import com.j3a.assurance.model.Tarif;
-import com.j3a.assurance.model.Utilisateur;
-import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.utilitaire.IdGenerateur;
 

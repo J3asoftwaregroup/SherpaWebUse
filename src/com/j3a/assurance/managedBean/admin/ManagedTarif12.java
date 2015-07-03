@@ -10,7 +10,6 @@ import javax.faces.context.FacesContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.j3a.assurance.model.RcTarif10;
 import com.j3a.assurance.model.RcTarif12;
 import com.j3a.assurance.model.RcTarif12b;
 import com.j3a.assurance.model.Tarif;

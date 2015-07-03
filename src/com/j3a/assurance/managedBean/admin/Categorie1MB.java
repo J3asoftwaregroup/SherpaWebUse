@@ -1,7 +1,6 @@
 package com.j3a.assurance.managedBean.admin;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -11,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.RcTarif1;
-import com.j3a.assurance.model.RcTarif3;
-import com.j3a.assurance.model.RcTarif8;
 import com.j3a.assurance.model.Tarif;
 import com.j3a.assurance.objetService.ObjectService;
 

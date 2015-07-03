@@ -1,7 +1,6 @@
 package com.j3a.assurance.managedBean.admin;
 
 import java.io.Serializable;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
