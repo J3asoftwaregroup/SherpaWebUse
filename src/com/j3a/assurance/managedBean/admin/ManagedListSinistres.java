@@ -25,6 +25,10 @@ import com.j3a.assurance.model.ReglementSinistreGc;
 import com.j3a.assurance.model.Risque;
 import com.j3a.assurance.model.Sinistre;
 import com.j3a.assurance.objetService.ObjectService;
+import com.j3a.assurance.utilitaires.hybride.ClientPV;
+import com.j3a.assurance.utilitaires.hybride.SinistreparPV;
+import com.j3a.assurance.utilitaires.hybride.nbrebyrisquesinistre;
+import com.j3a.assurance.utilitaires.hybride.nbrerisquesinistrebyPV;
 
 @Component
 @Scope("session")
@@ -101,17 +105,17 @@ public class ManagedListSinistres {
 		for(Sinistre pv: listesinistres)
 		{
 			SinistreparPV spv = new SinistreparPV();
-			libellepv = getpoitvente (pv.getId()).getLibellePointVente() ;
+			libellepv = getpoitvente (pv.getCodeSinistre()).getLibellePointVente() ;
 			spv.setPointVente(libellepv);
-			spv.setSinistre(pv.getId());
-			libeller = getRisque(pv.getId()).getLibelleRisque();
+			spv.setSinistre(pv.getCodeSinistre());
+			libeller = getRisque(pv.getCodeSinistre()).getLibelleRisque();
 			spv.setRisque(libeller);
 			
 			listesinistrestriee.add(spv);
 			
 			/////////////////////////////////////////////////////////////////
 			List<ReglementSinistreGc> ll;
-			ll = getReglementSinistreGc(pv.getId());
+			ll = getReglementSinistreGc(pv.getCodeSinistre());
 			
 			for(ReglementSinistreGc rsg: ll)
 			{
@@ -145,7 +149,7 @@ public class ManagedListSinistres {
 		if (!getSelectedPointVente().isEmpty()) {
 			X = " P.CODE_POINT_VENTE IN (";
 			for (PointVente p : getSelectedPointVente()) {
-				X = X + "'" + p.getId() + "',";
+				X = X + "'" + p.getCodePointVente() + "',";
 			}
 			X = X.substring(0, X.length() - 1) + ") ";
 		}
@@ -157,7 +161,7 @@ public class ManagedListSinistres {
 		if (!getSelectedRisque().isEmpty()) {
 			X = " R.CODE_RISQUE IN (";
 			for (Risque r : getSelectedRisque()) {
-				X = X + "'" + r.getId() + "',";
+				X = X + "'" + r.getCodeRisque() + "',";
 			}
 			X = X.substring(0, X.length() - 1) + ") ";
 		}
@@ -217,7 +221,7 @@ public class ManagedListSinistres {
 			nbrebyrisquesinistre nrs = new nbrebyrisquesinistre();
 			nrs.setRisque(r);
 			String qry= "SELECT COUNT(A.CODE_SINISTRE) AS SOMME FROM  sinistre A JOIN contrat C ON C.NUM_POLICE = A.NUM_POLICE JOIN  point_vente P ON P.CODE_POINT_VENTE = C.CODE_POINT_VENTE JOIN  risque R ON R.CODE_RISQUE = C.CODE_RISQUE  WHERE "
-					+ " R.CODE_RISQUE = '"+r.getId()+"' AND P.CODE_POINT_VENTE = '"+pv.getId()+"' and A.DATE_SURVENANCE BETWEEN '" + formatDate(getDateDeb()) + "' AND '"+ formatDate(getDateFin()) + "'";
+					+ " R.CODE_RISQUE = '"+r.getCodeRisque()+"' AND P.CODE_POINT_VENTE = '"+pv.getCodePointVente()+"' and A.DATE_SURVENANCE BETWEEN '" + formatDate(getDateDeb()) + "' AND '"+ formatDate(getDateFin()) + "'";
 			java.math.BigInteger t = (java.math.BigInteger) getSessionFactory().getCurrentSession().createSQLQuery(qry).addScalar("SOMME").uniqueResult();
 			nrs.setNombre(t);
 			LN.add(nrs);
@@ -247,7 +251,7 @@ public class ManagedListSinistres {
 		setModelrisqPV1(new PieChartModel());
 		setModelrisqPV2(new PieChartModel());
 			for (nbrerisquesinistrebyPV r : listnbrerisqbypt) {
-				if(r.getPtVte().getId().equals("PV001"))
+				if(r.getPtVte().getCodePointVente().equals("PV001"))
 					{
 						for(nbrebyrisquesinistre nn: r.getListCAandRisq())
 						{

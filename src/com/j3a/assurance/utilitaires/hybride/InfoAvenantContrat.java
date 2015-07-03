@@ -408,7 +408,7 @@ public class InfoAvenantContrat {
 		System.out.println("////////////////////query  =" + query);
 		for (CompteClient cc : obj) {
 			System.out.println("////////////////////query  ="
-					+ cc.getPersonne().getId());
+					+ cc.getPersonne().getNumSouscripteur());
 		}
 		return obj;
 	}

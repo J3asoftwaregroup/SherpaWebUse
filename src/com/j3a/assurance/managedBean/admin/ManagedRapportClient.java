@@ -21,6 +21,7 @@ import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.PointVente;
 import com.j3a.assurance.model.Risque;
 import com.j3a.assurance.objetService.ObjectService;
+import com.j3a.assurance.utilitaires.hybride.ClientPV;
 
 
 /**
@@ -110,7 +111,7 @@ public class ManagedRapportClient {
 				//Gestion de la partie Affaire nouvelle
 			for(Avenant av: listAfN){
 					//Vérifier que le point de vente correspont à celui que nous manipulons
-				if(av.getNumPolice().getCodePointVente().equals(pv)){
+				if(av.getContrat().getPointVente().equals(pv)){
 					clientPVAF.setTotalSouscripteur(clientPVAF.getTotalSouscripteur()+1);
 				}	
 			}
@@ -122,7 +123,7 @@ public class ManagedRapportClient {
 			//Gestion de la partie Renouvellement
 			for(Avenant av: listRenouv){
 					//Vérifier que le point de vente correspont à celui que nous manipulons
-				if(av.getNumPolice().getCodePointVente().equals(pv)){
+				if(av.getContrat().getPointVente().equals(pv)){
 					clientPVRENOUV.setTotalSouscripteur(clientPVRENOUV.getTotalSouscripteur()+1);
 				}	
 			}
@@ -158,7 +159,7 @@ public class ManagedRapportClient {
 		if (!getSelectedPointVente().isEmpty()) {
 			X = " P.CODE_POINT_VENTE IN (";
 			for (PointVente p : getSelectedPointVente()) {
-				X = X + "'" + p.getId() + "',";
+				X = X + "'" + p.getCodePointVente() + "',";
 			}
 			X = X.substring(0, X.length() - 1) + ") ";
 		}
@@ -170,7 +171,7 @@ public class ManagedRapportClient {
 		if (!getSelectedRisque().isEmpty()) {
 			X = " R.CODE_RISQUE IN (";
 			for (Risque r : getSelectedRisque()) {
-				X = X + "'" + r.getId() + "',";
+				X = X + "'" + r.getCodeRisque() + "',";
 			}
 			X = X.substring(0, X.length() - 1) + ") ";
 		}

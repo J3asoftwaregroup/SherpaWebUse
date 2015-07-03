@@ -25,6 +25,8 @@ import com.j3a.assurance.model.Garantie;
 import com.j3a.assurance.model.Risque;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.utilitaire.Garanties;
+import com.j3a.assurance.utilitaires.hybride.GarantiesCategorie;
+import com.j3a.assurance.utilitaires.hybride.GarantiesRisque;
 
 @Component
 @Scope("session")
@@ -97,14 +99,14 @@ public class PilotageGarantie {
 
 				for (Categorie c : getCategorieCvtr().getListCategorie()) {
 
-					if (c.getCodeRisque().getId().equalsIgnoreCase(r.getId()))
+					if (c.getRisque().getCodeRisque().equalsIgnoreCase(r.getCodeRisque()))
 						getCategorieCvtr().getListCategorieCopie().add(c);
 				}
 				// alimente les garanties
 
 				for (Garantie g : getGarantieCvtr().getListGarantie()) {
 
-					if (g.getCodeRisque().getId().equalsIgnoreCase(r.getId()))
+					if (g.getRisque().getCodeRisque().equalsIgnoreCase(r.getCodeRisque()))
 						getGarantieCvtr().getListGarantieCopie().add(g);
 				}
 			}
@@ -118,13 +120,13 @@ public class PilotageGarantie {
 		for (Iterator it = listObject.iterator(); it.hasNext();) {
 			Garantie garantie = (Garantie) it.next();
 			Garanties garanties = new Garanties();
-			garanties.setId(garantie.getId());
+			garanties.setCodeGarantie(garantie.getCodeGarantie());
 			garanties.setLibelleGarantie(garantie.getLibelleGarantie());
-			garanties.getRisque().setId(garantie.getCodeRisque().getId());
+			garanties.getRisque().setCodeRisque(garantie.getRisque().getCodeRisque());
 			garanties.getRisque().setLibelleRisque(
-					garantie.getCodeRisque().getLibelleRisque());
-			if (garantie.getCodeRisque().getCategories().iterator().hasNext())
-				garanties.setCategorie(garantie.getCodeRisque().getCategories()
+					garantie.getRisque().getLibelleRisque());
+			if (garantie.getRisque().getCategories().iterator().hasNext())
+				garanties.setCategorie(garantie.getRisque().getCategories()
 						.iterator().next());
 			garantiesList.add(garanties);
 		}
@@ -136,71 +138,71 @@ public class PilotageGarantie {
 		// Risque NTA par defaut
 		X = "SELECT SUM(gGcN.PRIME_NETTE_NTA)" + "as TOTAL_GARANTIE FROM "
 				+ "garantie_garantie_choisie_nta gGcN WHERE "
-				+ "gGcN.CODE_GARANTIE='" + g.getId() + "'"
+				+ "gGcN.CODE_GARANTIE='" + g.getCodeGarantie()+ "'"
 				+ " AND (gGcN.DATE_GARANTIE_GARANTIE_CHOISIE_NTA BETWEEN '"
 				+ formatDate(getDateDebut()) + "' AND '"
 				+ formatDate(getDateFin()) + "')";
 
-		if (g.getRisque().getId().equalsIgnoreCase("1")) {
+		if (g.getRisque().getCodeRisque().equalsIgnoreCase("1")) {
 			// Risque Automobile 1
 			X = "SELECT SUM(gGc.PRIME_NETTE_PRORATA) "
 					+ "as TOTAL_GARANTIE FROM "
 					+ "garantie_garantie_choisie gGc WHERE "
-					+ "gGc.CODE_GARANTIE='" + g.getId() + "'"
+					+ "gGc.CODE_GARANTIE='" + g.getCodeGarantie() + "'"
 					+ " AND (gGc.DATE_GARANTIE_GARANTIE_CHOISIE BETWEEN '"
 					+ formatDate(getDateDebut()) + "' AND '"
 					+ formatDate(getDateFin()) + "')";
 
 		}
-		if (g.getRisque().getId().equalsIgnoreCase("2")
-				|| g.getRisque().getId().equalsIgnoreCase("3")
-				|| g.getRisque().getId().equalsIgnoreCase("4")) {
+		if (g.getRisque().getCodeRisque().equalsIgnoreCase("2")
+				|| g.getRisque().getCodeRisque().equalsIgnoreCase("3")
+				|| g.getRisque().getCodeRisque().equalsIgnoreCase("4")) {
 			// Risque Transport Faculté 2,3,4
 			X = "SELECT SUM(gGcT.MONTANT_GARANTIE) "
 					+ "as TOTAL_GARANTIE FROM "
 					+ "garantie_garantie_choisie_transport gGcT WHERE "
-					+ "gGcT.CODE_GARANTIE='" + g.getId() + "'"
+					+ "gGcT.CODE_GARANTIE='" + g.getCodeGarantie() + "'"
 					+ " AND (gGcT.DATE_GARANTIE_CHOISIE BETWEEN '"
 					+ formatDate(getDateDebut()) + "' AND '"
 					+ formatDate(getDateFin()) + "')";
 		}
-		if (g.getRisque().getId().equalsIgnoreCase("5")
-				|| g.getRisque().getId().equalsIgnoreCase("6")) {
+		if (g.getRisque().getCodeRisque().equalsIgnoreCase("5")
+				|| g.getRisque().getCodeRisque().equalsIgnoreCase("6")) {
 			// Risque Transport Corps 5,6
 			X = "SELECT SUM(gGcC.MONTANT_GARANTIE_CORPS) "
 					+ "as TOTAL_GARANTIE FROM "
 					+ "garantie_garantie_choisie_corps gGcC WHERE "
-					+ "gGcC.CODE_GARANTIE='" + g.getId() + "'"
+					+ "gGcC.CODE_GARANTIE='" + g.getCodeGarantie() + "'"
 					+ " AND (gGcC.DATE_GARANTIE_CHOISIE_CORPS BETWEEN '"
 					+ formatDate(getDateDebut()) + "' AND '"
 					+ formatDate(getDateFin()) + "')";
 		}
-		if (g.getRisque().getId().equalsIgnoreCase("8")) {
+		if (g.getRisque().getCodeRisque().equalsIgnoreCase("8")) {
 			// Risque IA
 			X = "SELECT SUM(gGcI.PRIME_NETTE_IA)" + "as TOTAL_GARANTIE FROM "
 					+ "garantie_garantie_choisie_ia gGcI WHERE "
-					+ "gGcI.CODE_GARANTIE='" + g.getId() + "'"
+					+ "gGcI.CODE_GARANTIE='" + g.getCodeGarantie() + "'"
 					+ " AND (gGcI.DATE_GARANTIE_GARANTIE_CHOISIE_IA BETWEEN '"
 					+ formatDate(getDateDebut()) + "' AND '"
 					+ formatDate(getDateFin()) + "')";
 		}
 
-		if (g.getRisque().getId().equalsIgnoreCase("7")) {
+		if (g.getRisque().getCodeRisque().equalsIgnoreCase("7")) {
 			// Risque MRH
 			X = "SELECT SUM(gGcM.PRIME_NETTE_MRH) " + "as TOTAL_GARANTIE FROM "
 					+ "garantie_garantie_choisie_mrh gGcM WHERE "
-					+ "gGcM.CODE_GARANTIE='" + g.getId() + "'"
+					+ "gGcM.CODE_GARANTIE='" + g.getCodeGarantie() + "'"
 					+ " AND (gGcM.DATE_GARANTIE_GARANTIE_CHOISIE_MRH BETWEEN '"
 					+ formatDate(getDateDebut()) + "' AND '"
 					+ formatDate(getDateFin()) + "')";
 		}
-		if (g.getRisque().getId().equalsIgnoreCase("11")) {
+		if (g.getRisque().getCodeRisque().equalsIgnoreCase("11")) {
 			// Risque SANTE
 			X = "SELECT SUM(gGcS.PRIME_NETTE_SANTE) "
 					+ "as TOTAL_GARANTIE FROM "
 					+ "garantie_garantie_choisie_sante gGcS WHERE "
 					+ "gGcS.CODE_GARANTIE='"
-					+ g.getId()
+					+ g.getCodeGarantie()
 					+ "'"
 					+ " AND (gGcS.DATE_GARANTIE_GARANTIE_CHOISIE_SANTE BETWEEN '"
 					+ formatDate(getDateDebut()) + "' AND '"
@@ -230,7 +232,7 @@ public class PilotageGarantie {
 		if (!getSlctdGarantie().isEmpty()){
 			for (Garantie g : getSlctdGarantie()) {
 				for (Garanties gs : getGarantiesList()) {
-					if (g.getId().equalsIgnoreCase(gs.getId()))
+					if (g.getCodeGarantie().equalsIgnoreCase(gs.getCodeGarantie()))
 						getGarantiesListSelectd().add(gs);
 				}
 			}
@@ -276,10 +278,10 @@ public class PilotageGarantie {
 		BigDecimal X = BigDecimal.ZERO;
 
 		for (Categorie c : getSlctdCategorie()) {
-			if (c.getId().equalsIgnoreCase(cat.getId())) {
+			if (c.getCodeCategorie().equalsIgnoreCase(cat.getCodeCategorie())) {
 				for (Garanties g : getGarantiesListSelectd()) {
-					if (g.getRisque().getId()
-							.equalsIgnoreCase(c.getCodeRisque().getId()))
+					if (g.getRisque().getCodeRisque()
+							.equalsIgnoreCase(c.getRisque().getCodeRisque()))
 						X = X.add(g.getPrime());
 				}
 			}
@@ -311,7 +313,7 @@ public class PilotageGarantie {
 		BigDecimal X = BigDecimal.ZERO;
 
 		for (Garanties g : getGarantiesListSelectd()) {
-			if (g.getId().equalsIgnoreCase(gar.getId()))
+			if (g.getCodeGarantie().equalsIgnoreCase(gar.getCodeGarantie()))
 				X = X.add(g.getPrime());
 		}
 
@@ -339,9 +341,9 @@ public class PilotageGarantie {
 	public Number risqPieChartData(Risque risq) {
 		BigDecimal X = BigDecimal.ZERO;
 		for (Risque r : getSlctdRisques()) {
-			if (r.getId().equalsIgnoreCase(risq.getId()))
+			if (r.getCodeRisque().equalsIgnoreCase(risq.getCodeRisque()))
 				for (Garanties g : getGarantiesListSelectd()) {
-					if (g.getRisque().getId().equalsIgnoreCase(risq.getId()))
+					if (g.getRisque().getCodeRisque().equalsIgnoreCase(risq.getCodeRisque()))
 						X = X.add(g.getPrime());
 				}
 		}
