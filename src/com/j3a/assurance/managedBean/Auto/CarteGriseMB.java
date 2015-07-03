@@ -914,147 +914,245 @@ public class CarteGriseMB implements Serializable {
 		public void choixSousCat() {
 			// default
 			inputPr.setRendered(false);
-			inputPf.setRendered(false);
-			inputPlcCab.setRendered(false);
-			inputPlcHcab.setRendered(false);
-			inputPoidV.setRendered(false);
-			inputCu.setRendered(false);
-			inputValNeuv.setRendered(false);
-			inputValVen.setRendered(false);
-			
-			
-			inputValNeuv.setRequired(false);
-			inputValVen.setRequired(false);
-			inputPf.setRequired(false);
-			inputPr.setRequired(false);
-			inputCu.setRequired(false);
-			
 			outputPr.setRendered(false);
+			
+			inputPf.setRendered(false);
 			outputPf.setRendered(false);
+			
+			inputPlcCab.setRendered(false);
 			outputPlcCab.setRendered(false);
+			
+			inputPlcHcab.setRendered(false);
 			outputPlcHcab.setRendered(false);
+			
+			inputPoidV.setRendered(false);
 			outputPoidV.setRendered(false);
+			
+			inputCu.setRendered(false);
 			outputCu.setRendered(false);
+			
+			inputValNeuv.setRendered(false);
 			outputValNeuv.setRendered(false);
+			
+			inputValVen.setRendered(false);
 			outputValVen.setRendered(false);
+			
+			inputNbrTran.setRendered(false);
+			outputNbrTran.setRendered(false);
+			
+		
+			
+			
+			
+			
+			
 			
 
 			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT1")||getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT10")) {
-				inputPr.setRendered(false);
-				inputPf.setRendered(true);
-				inputPlcCab.setRendered(false);
-				inputPlcHcab.setRendered(false);
-				inputPoidV.setRendered(false);
-				inputCu.setRendered(false);
-				inputValNeuv.setRendered(true);
-				inputValVen.setRendered(true);
-
-
 				
+				inputPr.setRendered(false);
 				outputPr.setRendered(false);
+				
+				inputPf.setRendered(true);
 				outputPf.setRendered(true);
+				
+				inputPlcCab.setRendered(false);
 				outputPlcCab.setRendered(false);
+				
+				inputPlcHcab.setRendered(false);
 				outputPlcHcab.setRendered(false);
+				
+				inputPoidV.setRendered(false);
 				outputPoidV.setRendered(false);
+				
+				inputCu.setRendered(false);
 				outputCu.setRendered(false);
+				
+				inputValNeuv.setRendered(true);
 				outputValNeuv.setRendered(true);
+				
+				inputValVen.setRendered(true);
 				outputValVen.setRendered(true);
+				
+				inputNbrTran.setRendered(false);
+				outputNbrTran.setRendered(false);
 			}
 			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT2")||getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT3")) {
-				inputPr.setRendered(true);
-				inputPf.setRendered(true);
-				inputPlcCab.setRendered(false);
-				inputPlcHcab.setRendered(false);
-				inputPoidV.setRendered(false);
-				inputCu.setRendered(false);
-				inputCu.setRequired(true);
-				inputValNeuv.setRendered(true);
-				inputValVen.setRendered(true);
+				inputPr.setRendered(false);
+				outputPr.setRendered(false);
 				
-				inputValNeuv.setRequired(false);
-				inputValVen.setRequired(false);
-				inputPf.setRequired(false);
-				inputPr.setRequired(false);
-				inputCu.setRequired(false);
+				inputPf.setRendered(false);
+				outputPf.setRendered(false);
 				
-				outputPr.setRendered(true);
-				outputPf.setRendered(true);
+				inputPlcCab.setRendered(true);
 				outputPlcCab.setRendered(true);
-				outputPlcHcab.setRendered(true);
-				outputPoidV.setRendered(true);
-				outputCu.setRendered(true);
-				outputValNeuv.setRendered(true);
-				outputValVen.setRendered(true);
-			}
-			/*if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT4")) {
-				inputPr.setRendered(true);
-				inputPf.setRendered(true);
-				inputPlcCab.setRendered(false);
-				inputPlcHcab.setRendered(false);
-				inputPoidV.setRendered(true);
-				inputCu.setRendered(true);
-				inputValNeuv.setRendered(true);
-				inputValVen.setRendered(true);
 				
-				inputValNeuv.setRequired(false);
-				inputValVen.setRequired(false);
-				inputPf.setRequired(false);
-				inputPr.setRequired(false);
-				inputCu.setRequired(false);
-			}*/
+				inputPlcHcab.setRendered(true);
+				outputPlcHcab.setRendered(true);
+				
+				inputPoidV.setRendered(false);
+				outputPoidV.setRendered(false);
+				
+				inputCu.setRendered(true);
+				outputCu.setRendered(true);
+				
+				inputValNeuv.setRendered(false);
+				outputValNeuv.setRendered(false);
+				
+				inputValVen.setRendered(false);
+				outputValVen.setRendered(false);
+				
+				inputNbrTran.setRendered(true);
+				outputNbrTran.setRendered(true);
+				
+			}
+			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT4")) {
+				
+				inputPr.setRendered(false);
+				outputPr.setRendered(false);
+				
+				inputPf.setRendered(false);
+				outputPf.setRendered(false);
+				
+				inputPlcCab.setRendered(true);
+				outputPlcCab.setRendered(true);
+				
+				inputPlcHcab.setRendered(true);
+				outputPlcHcab.setRendered(true);
+				
+				inputPoidV.setRendered(false);
+				outputPoidV.setRendered(false);
+				
+				inputCu.setRendered(false);
+				outputCu.setRendered(false);
+				
+				inputValNeuv.setRendered(false);
+				outputValNeuv.setRendered(false);
+				
+				inputValVen.setRendered(false);
+				outputValVen.setRendered(false);
+				
+				inputNbrTran.setRendered(true);
+				outputNbrTran.setRendered(true);
+			}
 			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT5")) {
 				inputPr.setRendered(false);
-				inputPf.setRendered(true);
-				inputPlcCab.setRendered(true);
-				inputPlcHcab.setRendered(true);
-				inputPoidV.setRendered(true);
-				inputCu.setRendered(true);
-				inputValNeuv.setRendered(true);
-				inputValVen.setRendered(true);
+				outputPr.setRendered(false);
 				
-				inputValNeuv.setRequired(false);
-				inputValVen.setRequired(false);
-				inputPf.setRequired(false);
-				inputPr.setRequired(true);
-				inputCu.setRequired(false);
+				inputPf.setRendered(false);
+				outputPf.setRendered(false);
+				
+				inputPlcCab.setRendered(false);
+				outputPlcCab.setRendered(false);
+				
+				inputPlcHcab.setRendered(false);
+				outputPlcHcab.setRendered(false);
+				
+				inputPoidV.setRendered(false);
+				outputPoidV.setRendered(false);
+				
+				inputCu.setRendered(false);
+				outputCu.setRendered(false);
+				
+				inputValNeuv.setRendered(false);
+				outputValNeuv.setRendered(false);
+				
+				inputValVen.setRendered(false);
+				outputValVen.setRendered(false);
+				
+				inputNbrTran.setRendered(false);
+				outputNbrTran.setRendered(false);
+				
 			}
 			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT6")||getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT9")) {
+				inputPr.setRendered(false);
+				outputPr.setRendered(false);
+				
+				inputPf.setRendered(false);
+				outputPf.setRendered(false);
+				
+				inputPlcCab.setRendered(false);
+				outputPlcCab.setRendered(false);
+				
+				inputPlcHcab.setRendered(false);
+				outputPlcHcab.setRendered(false);
+				
+				inputPoidV.setRendered(false);
+				outputPoidV.setRendered(false);
+				
+				inputCu.setRendered(false);
+				outputCu.setRendered(false);
+				
+				inputValNeuv.setRendered(false);
+				outputValNeuv.setRendered(false);
+				
+				inputValVen.setRendered(false);
+				outputValVen.setRendered(false);
+				
+				inputNbrTran.setRendered(false);
+				outputNbrTran.setRendered(false);
 				
 			}
 			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT7")||getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT8")||
 					getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT12")	) {
-				inputPr.setRendered(true);
-				inputPf.setRendered(false);
-				inputPlcCab.setRendered(false);
-				inputPlcHcab.setRendered(false);
-				inputPoidV.setRendered(false);
-				inputCu.setRendered(false);
-				inputValNeuv.setRendered(false);
-				inputValVen.setRendered(false);
+				inputPr.setRendered(false);
+				outputPr.setRendered(false);
 				
-				inputValNeuv.setRequired(false);
-				inputValVen.setRequired(false);
-				inputPf.setRequired(false);
-				inputPr.setRequired(false);
-				inputCu.setRequired(false);
+				inputPf.setRendered(false);
+				outputPf.setRendered(false);
+				
+				inputPlcCab.setRendered(false);
+				outputPlcCab.setRendered(false);
+				
+				inputPlcHcab.setRendered(false);
+				outputPlcHcab.setRendered(false);
+				
+				inputPoidV.setRendered(false);
+				outputPoidV.setRendered(false);
+				
+				inputCu.setRendered(false);
+				outputCu.setRendered(false);
+				
+				inputValNeuv.setRendered(false);
+				outputValNeuv.setRendered(false);
+				
+				inputValVen.setRendered(false);
+				outputValVen.setRendered(false);
+				
+				inputNbrTran.setRendered(false);
+				outputNbrTran.setRendered(false);
+				
 			}
 			
 			
 			if (getSlctdVehiRw().getSouCatVehi().getCodeSousCatVehicule().equalsIgnoreCase("SCAT10")) {
 				inputPr.setRendered(false);
-				inputPf.setRendered(true);
-				inputPlcCab.setRendered(true);
-				inputPlcHcab.setRendered(true);
-				inputPoidV.setRendered(true);
-				inputCu.setRendered(true);
-				inputValNeuv.setRendered(true);
-				inputValVen.setRendered(true);
+				outputPr.setRendered(false);
 				
-				inputValNeuv.setRequired(false);
-				inputValVen.setRequired(false);
-				inputPf.setRequired(false);
-				inputPr.setRequired(true);
-				inputCu.setRequired(false);
+				inputPf.setRendered(false);
+				outputPf.setRendered(false);
+				
+				inputPlcCab.setRendered(false);
+				outputPlcCab.setRendered(false);
+				
+				inputPlcHcab.setRendered(false);
+				outputPlcHcab.setRendered(false);
+				
+				inputPoidV.setRendered(false);
+				outputPoidV.setRendered(false);
+				
+				inputCu.setRendered(false);
+				outputCu.setRendered(false);
+				
+				inputValNeuv.setRendered(false);
+				outputValNeuv.setRendered(false);
+				
+				inputValVen.setRendered(false);
+				outputValVen.setRendered(false);
+				
+				inputNbrTran.setRendered(false);
+				outputNbrTran.setRendered(false);
+				
 			}
 		}
 
