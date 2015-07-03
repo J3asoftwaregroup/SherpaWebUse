@@ -937,6 +937,51 @@ height: auto !important;
      background-image:url(../resources/images/connexionHover.png);
  }
  
+   .paramCpte{
+        display: block;
+        width: 98px ;
+        height: 98px;
+        background-image:url(../resources/images/paramCpte.png);
+       
+    }
+    
+ .paramCpte:hover {
+     display: block;
+     width: 98px;
+     height: 98px;
+     background-image:url(../resources/images/paramCpteHover.png);
+ }
+ 
+    .ctraSin{
+        display: block;
+        width: 98px ;
+        height: 98px;
+        background-image:url(../resources/images/ctraSin.png);
+       
+    }
+    
+ .ctraSin:hover {
+     display: block;
+     width: 98px;
+     height: 98px;
+     background-image:url(../resources/images/ctraSinHover.png);
+ }
+ 
+     .documents{
+        display: block;
+        width: 98px ;
+        height: 98px;
+        background-image:url(../resources/images/document.png);
+       
+    }
+    
+ .documents:hover {
+     display: block;
+     width: 98px;
+     height: 98px;
+     background-image:url(../resources/images/documentHover.png);
+ }
+ 
    .cotation{
         display: block;
         width: 98px ;
@@ -1240,6 +1285,26 @@ height: 50px;
 }
 
 
+.divConnex strong {line-height:30px;}
+ .divConnex:hover {text-decoration:none;}
+.divConnex span {
+    z-index:10;display:none; padding:14px 20px;
+    margin-top:110px; margin-left:-90px;
+    width:300px; line-height:16px;
+}
+.divConnex:hover span{
+    display:inline; position:absolute; 
+    border:2px solid #FFF;  color:#EEE;
+    background:#333 url(../resources/images/css-tooltip-gradient-bg.png) repeat-x 0 0;
+}
+/*CSS3 extras*/
+.divConnex span
+{
+    border-radius:2px;        
+    box-shadow: 0px 0px 8px 4px #666;
+    /*opacity: 0.8;*/
+}
+
  
  
 .divDecla strong {line-height:30px;}
@@ -1283,4 +1348,17 @@ height: 50px;
     border-radius:2px;        
     box-shadow: 0px 0px 8px 4px #666;
     /*opacity: 0.8;*/
+}
+.headerlogo{
+	width: 40%;
+	text-align: left;
+}
+.headerName{
+	width: 40%;
+	text-align: left;
+}
+.headerUser{
+	width: 20%;
+	text-align: right;
+	 white-space: pre-wrap;
 }
