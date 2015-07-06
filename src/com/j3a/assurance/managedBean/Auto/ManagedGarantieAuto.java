@@ -18,9 +18,9 @@ import com.j3a.assurance.prime.CalculPrimeProrata;
 import com.j3a.assurance.prime.ReturnPrimeCategorie;
 import com.j3a.assurance.prime.categorie.PrimeCategorie;
 import com.j3a.assurance.prime.categorie.PrimeCategorieInterface;
-import com.j3a.assurance.utilitaire.GarantieTable;
-import com.j3a.assurance.utilitaire.Garanties;
-import com.j3a.assurance.utilitaire.VehiculeRow;
+import com.j3a.assurance.utilitaires.GarantieTable;
+import com.j3a.assurance.utilitaires.Garanties;
+import com.j3a.assurance.utilitaires.VehiculeRow;
 
 public class ManagedGarantieAuto extends ManagedGarantie {
 	Logger logger = Logger.getLogger(ManagedGarantieAuto.class);

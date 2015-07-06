@@ -17,8 +17,8 @@ import com.j3a.assurance.model.Risque;
 import com.j3a.assurance.model.SocieteAssurance;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.model.VehiculesAssures;
-import com.j3a.assurance.utilitaire.QuittanceAuto;
-import com.j3a.assurance.utilitaire.VehiculeRow;
+import com.j3a.assurance.utilitaires.QuittanceAuto;
+import com.j3a.assurance.utilitaires.VehiculeRow;
 
 @Component
 public class ReportingAuto implements Serializable {

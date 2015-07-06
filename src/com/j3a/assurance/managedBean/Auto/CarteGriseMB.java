@@ -38,10 +38,10 @@ import com.j3a.assurance.model.VehiculeZoneGeographiqueId;
 import com.j3a.assurance.model.VehiculesAssures;
 import com.j3a.assurance.model.Ville;
 import com.j3a.assurance.objetService.ObjectService;
-import com.j3a.assurance.utilitaire.Garanties;
-import com.j3a.assurance.utilitaire.HistoProprietesVehiTool;
-import com.j3a.assurance.utilitaire.IdGenerateur;
-import com.j3a.assurance.utilitaire.VehiculeRow;
+import com.j3a.assurance.utilitaires.Garanties;
+import com.j3a.assurance.utilitaires.HistoProprietesVehiTool;
+import com.j3a.assurance.utilitaires.IdGenerateur;
+import com.j3a.assurance.utilitaires.VehiculeRow;
 
 /**
  *

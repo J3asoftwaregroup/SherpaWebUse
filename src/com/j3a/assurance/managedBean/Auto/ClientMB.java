@@ -29,10 +29,9 @@ import com.j3a.assurance.model.PersonneNationaliteId;
 import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.model.Sexe;
 import com.j3a.assurance.model.TypePersonne;
-import com.j3a.assurance.model.Ville;
 import com.j3a.assurance.objetService.ObjectService;
-import com.j3a.assurance.utilitaire.ClientView;
-import com.j3a.assurance.utilitaire.IdGenerateur;
+import com.j3a.assurance.utilitaires.ClientView;
+import com.j3a.assurance.utilitaires.IdGenerateur;
 
 @Component
 public class ClientMB implements Serializable{

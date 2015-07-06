@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,9 +32,9 @@ import com.j3a.assurance.model.VehiculesAssures;
 import com.j3a.assurance.reporting.bean.ReportingAuto;
 import com.j3a.assurance.reporting.design.ConditionPartAuto;
 import com.j3a.assurance.reporting.design.QuittanceDesignAuto;
-import com.j3a.assurance.utilitaire.IdGenerateur;
-import com.j3a.assurance.utilitaire.RecupObjetRow;
-import com.j3a.assurance.utilitaire.VehiculeRow;
+import com.j3a.assurance.utilitaires.IdGenerateur;
+import com.j3a.assurance.utilitaires.RecupObjetRow;
+import com.j3a.assurance.utilitaires.VehiculeRow;
 
 @Component
 public class CotationAuto implements Serializable{

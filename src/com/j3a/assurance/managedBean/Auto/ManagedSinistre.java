@@ -52,10 +52,8 @@ import com.j3a.assurance.model.VehiculeSinistre;
 import com.j3a.assurance.model.VehiculeSinistreId;
 import com.j3a.assurance.model.VehiculesAssures;
 import com.j3a.assurance.objetService.ObjectService;
-import com.j3a.assurance.utilitaire.ContratResum;
-import com.j3a.assurance.utilitaire.IdGenerateur;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Font;
+import com.j3a.assurance.utilitaires.ContratResum;
+import com.j3a.assurance.utilitaires.IdGenerateur;
 
 @Component
 public class ManagedSinistre implements Serializable {

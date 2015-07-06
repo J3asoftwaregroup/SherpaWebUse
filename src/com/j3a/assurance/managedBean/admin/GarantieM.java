@@ -17,7 +17,7 @@ import com.j3a.assurance.model.Garantie;
 import com.j3a.assurance.model.Risque;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.prime.categorie.PrimeCategorie;
-import com.j3a.assurance.utilitaire.Garanties;
+import com.j3a.assurance.utilitaires.Garanties;
 
 @Component
 public class GarantieM {
