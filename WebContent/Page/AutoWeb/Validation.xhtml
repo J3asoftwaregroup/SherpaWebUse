@@ -12,13 +12,14 @@
 		<h:form>
 		<p:menubar>
 			<p:submenu label="Acceuil" icon="ui-icon-home">
-	            <p:menuitem value="Assurance Automobile" action="/index?faces-redirect=true"  />
+	            <p:menuitem value="Assurance Automobile" action="/index?faces-redirect=true"/>
 	            <p:menuitem value="Assurance Indiduel Accident" url="#"  />
 	            <p:menuitem value="Assurance MultiRisque Habitation" url="#"  />
 	            <p:menuitem value="Acceuil" action="/index?faces-redirect=true" />
 	        </p:submenu>
 		    
 		    <p:separator/>
+		    
 		    <p:submenu label="Assurances Automobile" >
 		    	<p:menuitem value="Cotation -Auto-" action="/Page/AutoWeb/devisAuto?faces-redirect=true"  />
 	            <p:menuitem value="Souscription en ligne -Auto-" action="/Page/AutoWeb/devisAuto?faces-redirect=true"  />
@@ -40,18 +41,12 @@
 	<h:outputLabel value="Voici l'offre que nous allons négocier pour vous dans l'heure!" style="margin-left:200px ;font-size:15px; color:red" />
 	
 	
-										<fieldset>
-								<legend>RECAPITULATIF </legend>
-									<p:panel header="Voiture à assurer" />
-					<br />
-											
-									
-									
-									<h:outputLabel     style="margin-left:250px ;font-size:20px"  value="le vehicule à assurer est :#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.marque}  #{cotationAuto.carteGriseMB.slctdVehiRw.vehi.energie}  #{cotationAuto.carteGriseMB.slctdVehiRw.vehi.carrosserie}  #{cotationAuto.carteGriseMB.slctdVehiRw.vehi.puissFisc}CV"/>
-									
-									
-									
-									</fieldset>
+	<fieldset>
+	<legend>RECAPITULATIF </legend>
+		<p:panel header="Voiture à assurer" />
+		<br />
+		<h:outputLabel     style="margin-left:250px ;font-size:20px"  value="le vehicule à assurer est :#{cotationAuto.carteGriseMB.slctdVehiRw.vehi.marque}  #{cotationAuto.carteGriseMB.slctdVehiRw.vehi.energie}  #{cotationAuto.carteGriseMB.slctdVehiRw.vehi.carrosserie}  #{cotationAuto.carteGriseMB.slctdVehiRw.vehi.puissFisc}CV"/>
+	</fieldset>
 									
                                 
                                 <br />

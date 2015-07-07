@@ -1,5 +1,6 @@
 package com.j3a.assurance.objetService;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -237,11 +238,13 @@ public class Service implements ObjectService {
 		return getDao().checkPersonPhysique(personne, physique);
 	}
 	
+	@Override
+	public List<Avenant> AvenantAFNPeriode(String mouvement, Date Date1,
+			Date Date2) {
+		return getDao().AvenantAFNPeriode(mouvement, Date1, Date2);
+	}
 	
 	
-	
-	
-
 	//getter et setter de Idao qui a été injecté
 	
 	public IDao getDao() {
@@ -251,5 +254,4 @@ public class Service implements ObjectService {
 	public void setDao(IDao dao) {
 		this.dao = dao;
 	}
-
 }

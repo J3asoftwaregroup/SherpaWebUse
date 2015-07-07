@@ -1,5 +1,6 @@
 package com.j3a.assurance.objetDao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.j3a.assurance.model.ApporteurVehicule;
@@ -75,5 +76,6 @@ public interface IDao {
 	public Quittance recoverQuittanceAuto(String paramNumPolice);
 	public Personne personneByLogin(String login, String motPass);
 	public List<Physique> checkPersonPhysique(Personne personne , Physique physique);
+	public List<Avenant> AvenantAFNPeriode(String mouvement, Date Date1, Date Date2);
 		
 }

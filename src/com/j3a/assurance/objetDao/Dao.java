@@ -2,6 +2,7 @@ package com.j3a.assurance.objetDao;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -535,6 +536,7 @@ public class Dao implements IDao {
 		this.sessionFactory = sessionFactory;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Physique> checkPersonPhysique(Personne personne, Physique physique) {
 	 List<Physique> maListe = new ArrayList<>();
@@ -547,6 +549,17 @@ public class Dao implements IDao {
 			 maListe = getSessionFactory().getCurrentSession().createSQLQuery(myQuery).addEntity(Physique.class).list();
 	
 		 return maListe;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Avenant> AvenantAFNPeriode(String mouvement, Date Date1,
+			Date Date2) {
+		List<Avenant> list = new ArrayList<Avenant>();
+		String query = "SELECT `avenant`.* FROM avenant WHERE ((`avenant`.`MOUVEMENT` ='"+mouvement+"') AND (`avenant`.`DATE_AVENANT` BETWEEN '"+Date1+"' AND '"+Date2+"' ))";
+	//	String query = "SELECT `avenant`.* FROM avenant WHERE ((`avenant`.`MOUVEMENT` ='"+mouvement+"') AND (`avenant`.`DATE_AVENANT` BETWEEN '"+Date1+"' AND '"+Date2+"' ))";
+		list = getSessionFactory().getCurrentSession().createSQLQuery(query).addEntity(Avenant.class).list();
+		return list;
 	}
 
 	
