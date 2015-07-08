@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
- <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,16,53,74" model-entity="JSFProcessGroup">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="56,24,53,74" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
     ID="redirection::#Page#AutoWeb#pageRedirectConnection.xhtml"
@@ -37,4 +37,18 @@
   PATH="/Page/AutoWeb/vehicule.xhtml" SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#Page#AutoWeb#pageRedirectConnection.xhtml"
   PATH="/Page/AutoWeb/pageRedirectConnection.xhtml" SHAPE="272,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Page#AutoWeb#NewSouscripteur.xhtml"
+  PATH="/Page/AutoWeb/NewSouscripteur.xhtml" SHAPE="47,401,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Page#AutoWeb#NewSouscripteur.xhtml:0"
+   NAME="item" PATH="/Page/AutoWeb/NewSouscripteur.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="inscriptionPaypalNewSous::#Page#Paypal# inscriptionPaypalNewSous.xhtml"
+    NAME="output" PATH="/Page/Paypal/ inscriptionPaypalNewSous.xhtml"
+    TARGET="rules:#Page#Paypal# inscriptionPaypalNewSous.xhtml"
+    TITLE="inscriptionPaypalNewSous" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#Page#Paypal# inscriptionPaypalNewSous.xhtml"
+  PATH="/Page/Paypal/ inscriptionPaypalNewSous.xhtml"
+  SHAPE="483,391,0,0" model-entity="JSFProcessGroup" persistent="true"/>
 </PROCESS>

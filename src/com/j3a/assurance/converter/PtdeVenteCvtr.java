@@ -10,11 +10,13 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.model.PointVente;
 import com.j3a.assurance.objetService.ObjectService;
 
-
+@Component
 public class PtdeVenteCvtr implements Converter{
 	
 	public PtdeVenteCvtr() {
@@ -23,6 +25,7 @@ public class PtdeVenteCvtr implements Converter{
 
 	
 	//Spring Apporteur Service is injected...
+	@Autowired
 	 ObjectService objectService;
 	 
 	 public List<PointVente> pointVenteList=new ArrayList<PointVente>();

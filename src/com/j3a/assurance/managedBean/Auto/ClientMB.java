@@ -35,9 +35,6 @@ import com.j3a.assurance.utilitaires.IdGenerateur;
 
 @Component
 public class ClientMB implements Serializable{
-
-	
-
 	/**
 	 * 
 	 */
@@ -195,8 +192,6 @@ public class ClientMB implements Serializable{
 			}
 			
 			
-
-
 		public void addConducteur(){
 		String id=getIdGenerateur().getIdConducteur(getMaPersonne());
 		getConducteur().setNumCond(id);
@@ -244,27 +239,21 @@ public class ClientMB implements Serializable{
 		}
 		
 
-		public void messageEmptyField() {
-			RequestContext.getCurrentInstance().execute("empty_field.show();");
-		}
-		
 		public String validerClient() {
 			retour="";
-			List list = getObjectService().checkPersonPhysique(maPersonne, monPhysique);
+				List list = getObjectService().checkPersonPhysique(maPersonne, monPhysique);
 			if(list.size() > 0){
-				System.out.println("----------Enregistrement pas possible");//clean after
 				RequestContext.getCurrentInstance().execute("personne_Eng.show();");
+				FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Creation du client", "Personne déjà enregistré.");
+				RequestContext.getCurrentInstance().showMessageInDialog(message);
 			}else {
-				System.out.println("----------Enregistrement possible");//clean after
-				retour="/Page/Paypal/inscriptionPaypal.xhtml?faces-redirect=true";
 				setClient(getMaPersonne());
 				nomClient = getMaPersonne().getNomRaisonSociale()+" "+getMonPhysique().getPrenomPers();
+			//	retour="/Page/Paypal/NewSouscripteur.xhtml?faces-redirect=true";
+				retour="inscriptionPaypalNewSous";
 			}
 			return retour;
 		}
-		
-		
-		
 		
 		
 		//**************************ACCESSEURS********************************************//

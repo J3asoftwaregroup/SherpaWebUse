@@ -2,6 +2,7 @@ package com.j3a.assurance.objetDao;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -594,6 +595,13 @@ public class Dao implements IDao {
 			listexpertise = list;
 			return  listexpertise;
 	}
+
+		@Override
+		public List<Avenant> AvenantAFNPeriode(String mouvement, Date Date1,
+				Date Date2) {
+			// TODO Auto-generated method stub
+			return null;
+		}
     
     
 }

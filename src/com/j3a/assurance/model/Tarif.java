@@ -1,6 +1,6 @@
 package com.j3a.assurance.model;
 
-// Generated 22 juin 2015 11:50:15 by Hibernate Tools 4.3.1
+// Generated 6 juil. 2015 11:25:44 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -240,7 +240,7 @@ public class Tarif implements java.io.Serializable {
 		this.codeTarif = codeTarif;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CODE_RC_TARIF1")
 	public RcTarif1 getRcTarif1() {
 		return this.rcTarif1;

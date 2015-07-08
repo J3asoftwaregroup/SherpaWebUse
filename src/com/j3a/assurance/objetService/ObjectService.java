@@ -1,5 +1,6 @@
 package com.j3a.assurance.objetService;
 
+import java.util.Date;
 import java.util.List;
 
 import com.j3a.assurance.model.ApporteurVehicule;
@@ -85,8 +86,8 @@ public void addObject(Object objet);
 	public Quittance recoverQuittanceAuto(String paramNumPolice);
 	public Personne personneByLogin(String login, String motPass);
 	public List<Physique> checkPersonPhysique(Personne personne , Physique physique);
+	public List<Avenant> AvenantAFNPeriode(String mouvement, Date Date1, Date Date2);
 	public List<Victime> getvictimes (String idsinistre);
-	
 	public List<String> getVictime();
 	public List<Sinistre> sinistreparpolice(String NumPolice);
 	public List<AyantDroit> getayantdroits (String idsinistre);
