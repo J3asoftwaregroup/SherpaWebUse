@@ -131,21 +131,21 @@
 					</p:submenu>
 					
 					<p:submenu label="Points de vente">
-						<p:menuitem value="Client par point de vente" />
+						<p:menuitem value="Client par point de vente" outcome="/Page/AdminWeb/ListingSouscripteur.xhtml"/>
 					</p:submenu>
 					<p:submenu label="Risques">
-					<p:menuitem value="Chiffre d'affaire par risque et par point de vente" />
+					<p:menuitem value="Chiffre d'affaire par risque et par point de vente" outcome="/Page/AdminWeb/ListingparRisque.xhtml"/>
 					</p:submenu>
 					<p:submenu label="Sinistre">
-					<p:menuitem value="Statistique Evaluation" />
-					 <p:menuitem value="Liste des sinistres" />
-					 <p:menuitem value="Etat de gestion des sinistres"  />
+					<p:menuitem value="Statistique Evaluation" outcome="/Page/AdminWeb/ListingMvtParCategCima.xhtml"/>
+					 <p:menuitem value="Liste des sinistres" outcome="/Page/AdminWeb/ListingSinistres.xhtml"/>
+					 <p:menuitem value="Etat de gestion des sinistres"  outcome="/Page/AdminWeb/etatavcmtSinistre.xhtml"/>
 					</p:submenu>
 					<p:submenu label="Garanties">
-					<p:menuitem value="Garanties par Risque et Categorie"  />
+					<p:menuitem value="Garanties par Risque et Categorie"  outcome="/pages/AdminWeb/ListingGarantie"/>
 					</p:submenu>
 					<p:submenu label="Gestion des Sinitres">
-						<p:menuitem value="Consulter les Alertes"/>
+						<p:menuitem value="Consulter les Alertes" />
 					</p:submenu>
 				
 					</p:panelMenu>
