@@ -28,7 +28,6 @@ import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.utilitaires.AvenantByPointVenteRow;
 
 @Component
-@Scope("session")
 @Transactional
 public class ManagedCApporteur {
 
