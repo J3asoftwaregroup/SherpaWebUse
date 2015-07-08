@@ -30,8 +30,7 @@ import com.j3a.assurance.utilitaires.AvenantByPointVenteRow;
 @Component
 @Transactional
 public class ManagedCApporteur {
-
-
+    
 	@Autowired
 	private PtdeVenteCvtr ptdeVenteCvtr;
 	@Autowired
