@@ -5,9 +5,11 @@ import java.util.List;
 
 import com.j3a.assurance.model.ApporteurVehicule;
 import com.j3a.assurance.model.Avenant;
+import com.j3a.assurance.model.AyantDroit;
 import com.j3a.assurance.model.ConduireVehicule;
 import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.Exercice;
+import com.j3a.assurance.model.Expertise;
 import com.j3a.assurance.model.GarantieChoisie;
 import com.j3a.assurance.model.GarantieGarantieChoisie;
 import com.j3a.assurance.model.HistoMouvement;
@@ -21,6 +23,7 @@ import com.j3a.assurance.model.SocieteAssurance;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.model.VehiculeSinistre;
 import com.j3a.assurance.model.VehiculeZoneGeographique;
+import com.j3a.assurance.model.Victime;
 
 public interface ObjectService {
 public void addObject(Object objet);
@@ -84,5 +87,9 @@ public void addObject(Object objet);
 	public Personne personneByLogin(String login, String motPass);
 	public List<Physique> checkPersonPhysique(Personne personne , Physique physique);
 	public List<Avenant> AvenantAFNPeriode(String mouvement, Date Date1, Date Date2);
-
+	public List<Victime> getvictimes (String idsinistre);
+	public List<String> getVictime();
+	public List<Sinistre> sinistreparpolice(String NumPolice);
+	public List<AyantDroit> getayantdroits (String idsinistre);
+	public List<Expertise> getexpertise (String idsinistre);
 }

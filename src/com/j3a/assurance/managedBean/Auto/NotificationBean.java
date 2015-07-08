@@ -30,7 +30,7 @@ public class NotificationBean {
 	
 	@PostConstruct
 	public List<Avenant> afficherListContrat(){
-		return listAffairesNouvelles = getObjectService().AvenantAFNPeriode("AFFAIRE NOUVELLE", dateduJour-1, dateduJour);
+		return listAffairesNouvelles = getObjectService().AvenantAFNPeriode("AFFAIRE NOUVELLE", dateduJour, dateduJour);
 	}
 	
 	

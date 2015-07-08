@@ -17,11 +17,11 @@ import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.CompteApporteur;
 import com.j3a.assurance.model.Quittance;
 import com.j3a.assurance.objetService.ObjectService;
-import com.j3a.assurance.utilitaire.ClasseCalculDure;
-import com.j3a.assurance.utilitaire.Garanties;
-import com.j3a.assurance.utilitaire.IdGenerateur;
-import com.j3a.assurance.utilitaire.QuittanceAuto;
-import com.j3a.assurance.utilitaire.VehiculeRow;
+import com.j3a.assurance.utilitaires.ClasseCalculDure;
+import com.j3a.assurance.utilitaires.Garanties;
+import com.j3a.assurance.utilitaires.IdGenerateur;
+import com.j3a.assurance.utilitaires.QuittanceAuto;
+import com.j3a.assurance.utilitaires.VehiculeRow;
 @Component
 public class ManagedQuittanceAuto {
 

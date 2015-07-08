@@ -16,9 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.j3a.assurance.model.ApporteurVehicule;
 import com.j3a.assurance.model.Avenant;
+import com.j3a.assurance.model.AyantDroit;
 import com.j3a.assurance.model.ConduireVehicule;
 import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.Exercice;
+import com.j3a.assurance.model.Expertise;
 import com.j3a.assurance.model.GarantieChoisie;
 import com.j3a.assurance.model.GarantieGarantieChoisie;
 import com.j3a.assurance.model.HistoMouvement;
@@ -32,6 +34,7 @@ import com.j3a.assurance.model.SocieteAssurance;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.model.VehiculeSinistre;
 import com.j3a.assurance.model.VehiculeZoneGeographique;
+import com.j3a.assurance.model.Victime;
 
 @Repository
 public class Dao implements IDao {
@@ -536,7 +539,6 @@ public class Dao implements IDao {
 		this.sessionFactory = sessionFactory;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Physique> checkPersonPhysique(Personne personne, Physique physique) {
 	 List<Physique> maListe = new ArrayList<>();
@@ -551,18 +553,55 @@ public class Dao implements IDao {
 		 return maListe;
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Avenant> AvenantAFNPeriode(String mouvement, Date Date1,
-			Date Date2) {
-		List<Avenant> list = new ArrayList<Avenant>();
-		String query = "SELECT `avenant`.* FROM avenant WHERE ((`avenant`.`MOUVEMENT` ='"+mouvement+"') AND (`avenant`.`DATE_AVENANT` BETWEEN '"+Date1+"' AND '"+Date2+"' ))";
-	//	String query = "SELECT `avenant`.* FROM avenant WHERE ((`avenant`.`MOUVEMENT` ='"+mouvement+"') AND (`avenant`.`DATE_AVENANT` BETWEEN '"+Date1+"' AND '"+Date2+"' ))";
-		list = getSessionFactory().getCurrentSession().createSQLQuery(query).addEntity(Avenant.class).list();
-		return list;
+	public List<Sinistre> sinistreparpolice(String NumPolice)
+			throws HibernateException {
+			List list = getSessionFactory()
+					.getCurrentSession()
+					.createSQLQuery(
+							" SELECT * FROM  sinistre WHERE NUM_POLICE = '"+NumPolice+"'").addEntity(Sinistre.class).list();
+			return list;
+		}
+		public List<Victime> getvictimes (String idsinistre)  
+		throws HibernateException {
+			List listVictimes = new ArrayList<Victime>();
+			List list = getSessionFactory()
+					.getCurrentSession()
+					.createSQLQuery(
+							"SELECT V.* FROM  victime V where V.CODE_SINISTRE = '"+idsinistre
+									+"'").addEntity(Victime.class).list();
+			listVictimes = list;
+			return  listVictimes;
+	}
+		
+		public List<AyantDroit> getayantdroits (String idsinistre)  
+		throws HibernateException {
+			List listayantdroit = new ArrayList<AyantDroit>();
+			List list = getSessionFactory()
+					.getCurrentSession()
+					.createSQLQuery(
+							"SELECT A.* FROM  ayant_droit A where A.NUM_VICTIME = '"+idsinistre
+									+"'").addEntity(AyantDroit.class).list();
+			listayantdroit = list;
+			return  listayantdroit;
+	}
+		public List<Expertise> getexpertise (String idsinistre)  
+		throws HibernateException {
+			List listexpertise = new ArrayList<Expertise>();
+			List list = getSessionFactory()
+					.getCurrentSession()
+					.createSQLQuery(
+							"SELECT A.* FROM  expertise A where A.CODE_SINISTRE = '"+idsinistre
+									+"'").addEntity(Expertise.class).list();
+			listexpertise = list;
+			return  listexpertise;
 	}
 
-	
+		@Override
+		public List<Avenant> AvenantAFNPeriode(String mouvement, Date Date1,
+				Date Date2) {
+			// TODO Auto-generated method stub
+			return null;
+		}
     
     
 }

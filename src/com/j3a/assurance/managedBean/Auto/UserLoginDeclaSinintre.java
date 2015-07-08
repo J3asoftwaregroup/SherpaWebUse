@@ -1,13 +1,8 @@
 package com.j3a.assurance.managedBean.Auto;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
-import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

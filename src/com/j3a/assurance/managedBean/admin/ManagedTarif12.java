@@ -14,7 +14,7 @@ import com.j3a.assurance.model.RcTarif12;
 import com.j3a.assurance.model.RcTarif12b;
 import com.j3a.assurance.model.Tarif;
 import com.j3a.assurance.objetService.ObjectService;
-import com.j3a.assurance.utilitaire.IdGenerateur;
+import com.j3a.assurance.utilitaires.IdGenerateur;
 
 @Component
 public class ManagedTarif12 implements Serializable{

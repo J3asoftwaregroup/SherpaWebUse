@@ -29,7 +29,7 @@ import com.j3a.assurance.model.SousCatVehicule;
 import com.j3a.assurance.model.Utilisateur;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.objetService.ObjectService;
-import com.j3a.assurance.utilitaire.IdGenerateur;
+import com.j3a.assurance.utilitaires.IdGenerateur;
 
 @Component
 public class ContratMB implements Serializable{

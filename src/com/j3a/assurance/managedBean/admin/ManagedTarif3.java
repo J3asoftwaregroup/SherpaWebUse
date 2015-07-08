@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import com.j3a.assurance.model.RcTarif3;
 import com.j3a.assurance.model.Tarif;
 import com.j3a.assurance.objetService.ObjectService;
-import com.j3a.assurance.utilitaire.IdGenerateur;
+import com.j3a.assurance.utilitaires.IdGenerateur;
 
 @Component
 public class ManagedTarif3 implements Serializable{

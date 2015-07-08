@@ -9,9 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.j3a.assurance.model.ApporteurVehicule;
 import com.j3a.assurance.model.Avenant;
+import com.j3a.assurance.model.AyantDroit;
 import com.j3a.assurance.model.ConduireVehicule;
 import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.Exercice;
+import com.j3a.assurance.model.Expertise;
 import com.j3a.assurance.model.GarantieChoisie;
 import com.j3a.assurance.model.GarantieGarantieChoisie;
 import com.j3a.assurance.model.HistoMouvement;
@@ -25,6 +27,7 @@ import com.j3a.assurance.model.SocieteAssurance;
 import com.j3a.assurance.model.Vehicule;
 import com.j3a.assurance.model.VehiculeSinistre;
 import com.j3a.assurance.model.VehiculeZoneGeographique;
+import com.j3a.assurance.model.Victime;
 import com.j3a.assurance.objetDao.IDao;
 
 @org.springframework.stereotype.Service
@@ -244,6 +247,22 @@ public class Service implements ObjectService {
 		return getDao().AvenantAFNPeriode(mouvement, Date1, Date2);
 	}
 	
+	public List<Sinistre> sinistreparpolice(String NumPolice)
+			throws HibernateException {
+			return getDao().sinistreparpolice(NumPolice);
+		}
+		public List<Victime> getvictimes (String idsinistre)  
+				throws HibernateException{
+			return getDao().getvictimes(idsinistre);
+		}
+		public List<AyantDroit> getayantdroits (String idsinistre)  
+		throws HibernateException{
+			return getDao().getayantdroits (idsinistre);
+		}
+		public List<Expertise> getexpertise (String idsinistre)  
+				throws HibernateException{	
+			return getDao().getexpertise(idsinistre);
+		}
 	
 	//getter et setter de Idao qui a été injecté
 	
@@ -253,5 +272,11 @@ public class Service implements ObjectService {
 	
 	public void setDao(IDao dao) {
 		this.dao = dao;
+	}
+
+	@Override
+	public List<String> getVictime() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

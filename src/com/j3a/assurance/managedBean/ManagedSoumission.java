@@ -25,14 +25,14 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.ActeMedical;
+import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.Facture;
 import com.j3a.assurance.model.Intervenant;
 import com.j3a.assurance.model.Intervention;
 import com.j3a.assurance.model.Sinistre;
 import com.j3a.assurance.objetService.ObjectService;
-import com.j3a.assurance.utilitaire.IdGenerateur;
+import com.j3a.assurance.utilitaires.IdGenerateur;
 
 
 @Component

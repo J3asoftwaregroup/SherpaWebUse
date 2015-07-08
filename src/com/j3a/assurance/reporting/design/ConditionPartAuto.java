@@ -33,12 +33,8 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.pdf.PdfContentByte;
-import com.itextpdf.text.pdf.PdfDocument;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.j3a.assurance.model.ConduireVehicule;
 import com.j3a.assurance.model.Garantie;
@@ -51,8 +47,8 @@ import com.j3a.assurance.model.VehiculeZoneGeographique;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.reporting.bean.ReportingAuto;
 import com.j3a.assurance.reporting.bean.factory.ReportFactoryAuto;
-import com.j3a.assurance.utilitaire.Garanties;
-import com.j3a.assurance.utilitaire.VehiculeRow;
+import com.j3a.assurance.utilitaires.Garanties;
+import com.j3a.assurance.utilitaires.VehiculeRow;
 import com.lowagie.text.Cell;
 
 /**
