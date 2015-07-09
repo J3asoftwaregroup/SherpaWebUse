@@ -38,6 +38,8 @@ import com.j3a.assurance.model.Victime;
 
 @Repository
 public class Dao implements IDao {
+	
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
 	//Injection par Spring
 	@Autowired
@@ -599,8 +601,13 @@ public class Dao implements IDao {
 		@Override
 		public List<Avenant> AvenantAFNPeriode(String mouvement, Date Date1,
 				Date Date2) {
-			// TODO Auto-generated method stub
-			return null;
+			List<Avenant> list = new ArrayList<Avenant>();
+			String query = "SELECT `avenant`.* FROM avenant WHERE ((`avenant`.`MOUVEMENT` ='"+mouvement+"') AND (`avenant`.`DATE_AVENANT` BETWEEN '"+sdf.format(Date1)+"' AND '"+sdf.format(Date2)+"' ))";
+			list = getSessionFactory().getCurrentSession().createSQLQuery(query).addEntity(Avenant.class).list();
+			System.out.println("----->> Date1 "+sdf.format(Date1));// clean after
+			System.out.println("----->> Date2 "+sdf.format(Date2));// clean after
+			System.out.println("------->> Taille du fichier"+list.size());// clean after
+			return list;
 		}
     
     

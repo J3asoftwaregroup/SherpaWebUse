@@ -3,6 +3,7 @@ package com.j3a.assurance.reporting.design;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 
 import org.apache.log4j.Logger;
 
@@ -40,6 +41,7 @@ public class QuittanceDesign {
 	private String chemainPDF;
 	private QuittanceReportFactory quittanceReportFactory;
 	private QuittanceReport reportField;
+
 
 	public void generateRapport() {
 		File dir = new File("c:/reports/quittances");

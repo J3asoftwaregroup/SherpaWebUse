@@ -1,8 +1,10 @@
 package com.j3a.assurance.managedBean.Auto;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -30,7 +32,22 @@ public class NotificationBean {
 	
 	@PostConstruct
 	public List<Avenant> afficherListContrat(){
-		return listAffairesNouvelles = getObjectService().AvenantAFNPeriode("AFFAIRE NOUVELLE", dateduJour, dateduJour);
+		
+		//obtenir la date de demain cause Mysql ne exclu l'extremité sup de la clause between de 
+		
+		Calendar cal = Calendar.getInstance();  
+		cal.add(Calendar.DATE, 1);  
+		Date demain = cal.getTime();
+		
+		//Obtenir la date d'hier
+		Calendar cal1 = Calendar.getInstance();  
+		cal.add(Calendar.DATE, -1);  
+		Date hier = cal1.getTime();
+		
+		System.out.println("----> date Hier:"+hier);
+		System.out.println("----> date dateJour:"+dateduJour);
+		System.out.println("----> date demain:"+demain);
+		return listAffairesNouvelles = getObjectService().AvenantAFNPeriode("AFFAIRE NOUVELLE", hier, demain);
 	}
 	
 	
