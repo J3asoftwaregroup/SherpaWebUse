@@ -30,8 +30,7 @@ import com.j3a.assurance.utilitaires.AvenantByPointVenteRow;
 @Component
 @Transactional
 public class ManagedCApporteur {
-
-
+    
 	@Autowired
 	private PtdeVenteCvtr ptdeVenteCvtr;
 	@Autowired
@@ -74,6 +73,7 @@ public class ManagedCApporteur {
 	}
 	
 	public void valider(){
+		System.out.println("ffffffffffffffffffffff"+getPointVente());
 		exeQuery(getPointVente().getCodePointVente());
 		
 	}

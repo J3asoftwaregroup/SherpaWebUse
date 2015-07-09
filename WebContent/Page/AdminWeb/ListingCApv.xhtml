@@ -28,7 +28,8 @@
 			       <p:inputMask
 						value="#{managedCApporteur.dateDeb}"
 						required="true"
-						requiredMessage="Debut de Période non renseignée" mask="99/99/9999"
+						requiredMessage="Debut de Période non renseignée" 
+						mask="99/99/9999"
 						 style="width:100%;"
 						>
 						<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
@@ -57,7 +58,7 @@
 				    	<h:outputText value="Choix du Point de Vente" style="font-weight:bold;"/>
 				    			
 				 		<h:outputText style="width:100%"></h:outputText>		
-						<p:selectOneMenu converter="#{ptdeVenteCvtr}" value="#{managedCApporteur.pointVente}"  style="width:100%" filter="true" filterMatchMode="startsWith"> 	 
+						<p:selectOneMenu id="cbPte" converter="#{ptdeVenteCvtr}" value="#{managedCApporteur.pointVente}"  style="width:100%" filter="true" filterMatchMode="startsWith"> 	 
                     <f:selectItem itemLabel="" itemValue=""></f:selectItem>
                      <f:selectItems value="#{ptdeVenteCvtr.pointVenteList}" var="ca"  itemLabel="#{ca.libellePointVente}" itemValue="#{ca}" />
 						</p:selectOneMenu>
