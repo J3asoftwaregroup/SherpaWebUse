@@ -39,11 +39,11 @@ public class PtdeVenteCvtr implements Converter{
 	            return null;  
 	        } else {  
 	            try {  
-	            	String X = submittedValue;  
+	            	//String X = submittedValue;  
 	  
 	                for (PointVente c : getPointVenteList()) {  
 	                	//if (c.getLibellePointVente().equalsIgnoreCase(X)) {
-	                    if (c.getCodePointVente().equalsIgnoreCase(X)) {  
+	                    if (c.getCodePointVente().equalsIgnoreCase(submittedValue)) {  
 	                        return c;  
 	                    }  
 	                }  

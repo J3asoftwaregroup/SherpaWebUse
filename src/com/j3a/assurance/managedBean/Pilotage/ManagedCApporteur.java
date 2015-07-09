@@ -73,6 +73,7 @@ public class ManagedCApporteur {
 	}
 	
 	public void valider(){
+		System.out.println("ffffffffffffffffffffff"+getPointVente());
 		exeQuery(getPointVente().getCodePointVente());
 		
 	}
