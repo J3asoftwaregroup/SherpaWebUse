@@ -102,7 +102,10 @@ public class CotationAuto implements Serializable{
 		    	//contrat
 				String pv = getContratMB().getUtilisateur().getPointVente()
 				.getCodePointVente();
-				String util =getContratMB().getUtilisateur().getCodeUtilisateur();
+				
+				
+					
+			 String util =getContratMB().getUtilisateur().getCodeUtilisateur();
 				getContratMB().getContrat().setNumPolice(getIdGenerateur().getPoliceID(pv, util, "AUT"));
 				getContratMB().getContrat().setPointVente(getContratMB().getUtilisateur().getPointVente());
 				getContratMB().getContrat().setPersonne(getClientMB().getPhysique().getPersonne());
@@ -300,6 +303,14 @@ public class CotationAuto implements Serializable{
 			report.setPersonne(getClientMB().getClient());
 			if(getContratMB().getUtilisateur().getPointVente()!=null){
 			report.setPointVente(getContratMB().getUtilisateur().getPointVente());
+			System.out.println("************************point de vente cotation Auto not null PV:" +report.getPointVente());
+			System.out.println("************************point de vente cotation Auto not null PV:" +report.getPointVente().getLibellePointVente());
+			}else {
+				getContratMB().setUtilisateur(getContratMB().utlsateur());
+				String pv = getContratMB().getUtilisateur().getPointVente().getCodePointVente();
+				
+				System.out.println("************************point de vente cotation Auto:" +pv);
+				report.setPointVente(getContratMB().getUtilisateur().getPointVente());
 			}
 			report.setRisque(getContratMB().getRisque());
 			report.setSocieteAssurance(getContratMB().getSocieteAssurance());

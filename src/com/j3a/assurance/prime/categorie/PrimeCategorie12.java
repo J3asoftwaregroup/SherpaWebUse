@@ -326,12 +326,12 @@ public class PrimeCategorie12 implements PrimeCategorieInterface {
 
 	/*-------------------determination de la prime en vol accessoires--------------------*/
 	public java.math.BigDecimal getVolAccessoires() {
-		volAccessoires = getMontantAccessoires().multiply(BigDecimal.valueOf(0.08));
+		//volAccessoires = getMontantAccessoires().multiply(BigDecimal.valueOf(0.08));
 		return volAccessoires;
 	}
 	/*-------------------determination de la prime en vol vandalisme--------------------*/
 	public java.math.BigDecimal getVolVandalisme() {
-		volVandalisme = BigDecimal.valueOf(12000);
+		//volVandalisme = BigDecimal.valueOf(12000);
 		return volVandalisme;
 	}
 
@@ -352,16 +352,16 @@ public class PrimeCategorie12 implements PrimeCategorieInterface {
 
 	/*-------------------determination de la prime en securit�--------------------*/
 	public java.math.BigDecimal getSecuriteRoutiere1() {
-		securiteRoutiere1 = BigDecimal.valueOf(9650);
+		//securiteRoutiere1 = BigDecimal.valueOf(9650);
 		return securiteRoutiere1;
 	}
 	
 	public java.math.BigDecimal getSecuriteRoutiere2() {
-		securiteRoutiere2 = BigDecimal.valueOf(16420);
+		//securiteRoutiere2 = BigDecimal.valueOf(16420);
 		return securiteRoutiere2;
 	}
 	public java.math.BigDecimal getSecuriteRoutiere3() {
-		securiteRoutiere3 = BigDecimal.valueOf(19120);
+		//securiteRoutiere3 = BigDecimal.valueOf(19120);
 		return securiteRoutiere3;
 	}
 	
