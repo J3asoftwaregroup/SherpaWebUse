@@ -93,4 +93,5 @@ public void addObject(Object objet);
 	public List<AyantDroit> getayantdroits (String idsinistre);
 	public List<Expertise> getexpertise (String idsinistre);
 	public Personne RecupererUtilisateurCourrant();
+	public List <Personne> personneByLogin(String login);
 }

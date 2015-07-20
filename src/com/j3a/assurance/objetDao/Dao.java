@@ -639,6 +639,15 @@ public class Dao implements IDao {
 			return connected;
 			
 		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		public List<Personne> personneByLogin(String login) {
+			List<Personne> maListe = new ArrayList<>();
+			String myQuery = "SELECT `personne`.* FROM personne WHERE (`personne`.`LOGIN_PERS` ='"+login+"')";
+			 maListe = getSessionFactory().getCurrentSession().createSQLQuery(myQuery).addEntity(Personne.class).list();
+			return maListe;
+		}
     
     
 }
