@@ -160,7 +160,13 @@ public class CarteGriseMB implements Serializable {
 
 					ConduireVehicule conduirVehi = new ConduireVehicule();
 					ConduireVehiculeId conduirVehiId = new ConduireVehiculeId();
+                 
+					String key = getObjectService().getCodeTable("Condu", 5, 4, "conducteur",
+							"NUM_COND");
+					F.getConduHab().setNumCond(key);
 
+					
+					
 				/*	ApporteurVehicule ApporteurVehi = new ApporteurVehicule();
 					ApporteurVehiculeId ApporteurVehiId = new ApporteurVehiculeId();*/
 
@@ -227,10 +233,17 @@ public class CarteGriseMB implements Serializable {
 					getObjectService().addObject(histoPropVehi);
 					getObjectService().addObject(histoMouvement);
 					// add Cond habituel
+					
+					
+					
+
+
 					cduc =  (Conducteur) getObjectService().getObjectById(getSlctdVehiRw().getConduHab().getNumCond(), "Conducteur");
 					if (cduc == null) {
 						getObjectService().addObject(F.getConduHab());
+
 					} else {
+
 						getObjectService().updateObject(F.getConduHab());
 					}
 
