@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template/templateUserSpace.xhtml">
+	<ui:define name="content">
+	
+	<br />
+	 <h:form id="form">
+	 <h:panelGrid columns="2" >
+	 <p:outputLabel for="login_inp" value="Login"/>
+	 <p:inputText id="login_inp"> </p:inputText>
+	 
+	 <p:outputLabel for="mdp1" value="Entrez le Nouveau mot de passe"/>
+	 <p:inputText id="mdp1"></p:inputText>
+	 
+	 <p:outputLabel for="mdp2" value="Entrez de nouveau le mot de passe"/>
+	 <p:inputText id="mdp2"></p:inputText>
+	 </h:panelGrid>
+		
+	 </h:form>
+	</ui:define>
+	
+</ui:composition>
+</html>
