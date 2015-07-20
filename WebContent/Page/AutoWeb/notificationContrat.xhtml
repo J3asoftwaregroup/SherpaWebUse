@@ -18,7 +18,7 @@
 	<p:commandButton value="Show" onclick="PF('bar').show()" type="button" icon="ui-icon-arrow-1-s"/>
 	<p:commandButton value="Hide" onclick="PF('bar').hide()" type="button" icon="ui-icon-arrow-1-n"/>
 	 	
-		<p:dataTable var="CT" value="#{notificationBean.listAffairesNouvelles}">
+		<p:dataTable var="CT" value="#{notificationBean.listAffairesNouvelles}" scrollable="true" scrollHeight="20">
 		<f:facet name="header">Soucriptions</f:facet>
 	    <p:column headerText="Police">
 	        <h:outputText value="#{CT.contrat.numPolice}"/>
@@ -35,10 +35,11 @@
 	    </p:column>
 			    </p:dataTable>
 			
-			<br />    
-			    
-		<hr />	    
-		<p:dataTable var="DS" value="">
+		<br />       
+		<hr />	
+		
+		    
+		<p:dataTable var="DS" value="" scrollable="true" scrollHeight="20">
 		<f:facet name="header">Déclaration de sinitre</f:facet>
 	    <p:column headerText="Police">
 	        <h:outputText value=""/>
@@ -53,8 +54,7 @@
 				<f:convertDateTime pattern="dd/MM/yyyy" />
 	        </h:outputText>
 	    </p:column>
-			    
-			    </p:dataTable>
+		</p:dataTable>
 		
 	 </h:form>
 	</ui:define>
