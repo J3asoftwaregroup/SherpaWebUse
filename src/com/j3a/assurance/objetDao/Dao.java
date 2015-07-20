@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.context.FacesContext;
+
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -14,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.j3a.assurance.managedBean.Auto.ManagedSinistre;
 import com.j3a.assurance.model.ApporteurVehicule;
 import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.AyantDroit;
@@ -40,6 +44,7 @@ import com.j3a.assurance.model.Victime;
 public class Dao implements IDao {
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+	private static  Logger logger=Logger.getLogger(Dao.class);
 
 	//Injection par Spring
 	@Autowired
@@ -608,6 +613,40 @@ public class Dao implements IDao {
 			//String query = "SELECT `avenant`.* FROM avenant WHERE ((`avenant`.`MOUVEMENT` ='"+mouvement+"') AND (`avenant`.`DATE_AVENANT` BETWEEN '"+sdf.format(Date1)+"' AND '"+sdf.format(Date2)+"' ))";
 			list = getSessionFactory().getCurrentSession().createSQLQuery(query1).addEntity(Avenant.class).list();
 			return list;
+		}
+
+		@Override
+		public Personne RecupererUtilisateurCourrant() {
+			// Recupération du login de l'utilisateur courant
+			String paramLogin = "";
+			if (FacesContext.getCurrentInstance().getExternalContext()
+					.getUserPrincipal() != null) {
+				paramLogin = FacesContext.getCurrentInstance().getExternalContext()
+						.getUserPrincipal().getName();
+				
+			}
+			String query = "SELECT * FROM personne WHERE LOGIN_PERS='"
+					+ paramLogin + "'";
+			Personne connected = null;
+			try {
+
+				connected = (Personne) getSessionFactory().getCurrentSession()
+						.createSQLQuery(query).addEntity(Personne.class)
+						.uniqueResult();
+			} catch (Exception e) {
+				logger.error(" Erreur sur la recupération de l'utilisateur");
+			}
+			return connected;
+			
+		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		public List<Personne> personneByLogin(String login) {
+			List<Personne> maListe = new ArrayList<>();
+			String myQuery = "SELECT `personne`.* FROM personne WHERE (`personne`.`LOGIN_PERS` ='"+login+"')";
+			 maListe = getSessionFactory().getCurrentSession().createSQLQuery(myQuery).addEntity(Personne.class).list();
+			return maListe;
 		}
     
     
