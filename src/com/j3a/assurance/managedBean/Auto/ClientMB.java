@@ -29,6 +29,7 @@ import com.j3a.assurance.model.PersonneNationaliteId;
 import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.model.Sexe;
 import com.j3a.assurance.model.TypePersonne;
+import com.j3a.assurance.model.UserRole;
 import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.utilitaires.ClientView;
 import com.j3a.assurance.utilitaires.IdGenerateur;
@@ -55,7 +56,8 @@ public class ClientMB implements Serializable{
 		private Conducteur conducteur=new Conducteur();
 		private Morale maMorale = new Morale();
 		private String retour;
-		
+		UserRole userRole=new UserRole();
+        private Physique physiqueCourant=new Physique();
 		private Physique monPhysique = new Physique();
 		private Personne client = new Personne() ;
 		private TypePersonne typePersonne = new TypePersonne();
@@ -81,6 +83,7 @@ public class ClientMB implements Serializable{
 		private String identiteClient;
 		private boolean etatEngSouscripteur = false;
 		private boolean etatClient=false;
+		private Personne personneCouante=new Personne();
 		//Gestion des champs du formulaire
 		//Physique
 		private InputText nomInputText = new InputText();
@@ -129,7 +132,9 @@ public class ClientMB implements Serializable{
 				personne.setDatePers(Calendar.getInstance().getTime());//Date création client
 				personne.setLoginPers(personne.getNomRaisonSociale());	
 				personne.setMotPassePers(personne.getNomRaisonSociale());
-				
+				personne.setEnable(true);
+				userRole=(UserRole) getObjectService().getObjectById(1, "UserRole");
+                personne.setUserRole(userRole);
 				//Renseigner l'objet Physique
 				setPhysique(monPhysique);
 				physique.setPersonne(personne);//Attribuer le code de pers à physique
@@ -142,7 +147,9 @@ public class ClientMB implements Serializable{
 				physique.setEmail(maPersonne.getEmail());
 				physique.setFax(maPersonne.getFax());
 				physique.setAdresseGeo(maPersonne.getAdresseGeo());
-				
+				physique.setLoginPers(maPersonne.getLoginPers());
+				physique.setMotPassePers(maPersonne.getMotPassePers());
+				physique.setEnable(maPersonne.getEnable());
 				//Affecter la valeur des combos
 				Sexe sexe= new Sexe();
 				sexe.setCodeSexe(1);
@@ -161,6 +168,8 @@ public class ClientMB implements Serializable{
 				etrePk.setNumSouscripteur(personne.getNumSouscripteur());
 				etre.setId(etrePk);
 				etre.setDatePers(Calendar.getInstance().getTime());
+				
+				
 				
 				
 				//Enregistrement en basse
@@ -256,6 +265,8 @@ public class ClientMB implements Serializable{
 		}
 		
 		
+		
+	
 		//**************************ACCESSEURS********************************************//
 
 		public Personne getPersonne() {
@@ -318,6 +329,27 @@ public class ClientMB implements Serializable{
 
 		
 		
+
+		public UserRole getUserRole() {
+			return userRole;
+		}
+
+
+		public void setUserRole(UserRole userRole) {
+			this.userRole = userRole;
+		}
+
+
+		public Personne getPersonneCouante() {
+			setPersonneCouante(getObjectService().RecupererUtilisateurCourrant());
+			return personneCouante;
+		}
+
+
+		public void setPersonneCouante(Personne personneCouante) {
+			this.personneCouante = personneCouante;
+		}
+
 
 		public String redirectEnregClient() {
 			return "redEngClient";
@@ -751,6 +783,17 @@ public class ClientMB implements Serializable{
 
 	public void setNomClient(String nomClient) {
 		this.nomClient = nomClient;
+	}
+
+
+	public Physique getPhysiqueCourant() {
+	   
+		return physiqueCourant;
+	}
+
+
+	public void setPhysiqueCourant(Physique physiqueCourant) {
+		this.physiqueCourant = physiqueCourant;
 	}
 
 }
