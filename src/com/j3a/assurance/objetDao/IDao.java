@@ -85,4 +85,5 @@ public interface IDao {
 	public List<AyantDroit> getayantdroits (String idsinistre);
 	public List<Expertise> getexpertise (String idsinistre);
 	public List<Victime> getvictimes(String idsinistre);	
+	public Personne RecupererUtilisateurCourrant();
 }
