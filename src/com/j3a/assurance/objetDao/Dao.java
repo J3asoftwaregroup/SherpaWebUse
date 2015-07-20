@@ -38,6 +38,8 @@ import com.j3a.assurance.model.Victime;
 
 @Repository
 public class Dao implements IDao {
+	
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
 	//Injection par Spring
 	@Autowired
@@ -596,11 +598,16 @@ public class Dao implements IDao {
 			return  listexpertise;
 	}
 
+		@SuppressWarnings("unchecked")
 		@Override
 		public List<Avenant> AvenantAFNPeriode(String mouvement, Date Date1,
 				Date Date2) {
-			// TODO Auto-generated method stub
-			return null;
+			List<Avenant> list = new ArrayList<Avenant>();
+			String query1= "SELECT avenant.* FROM `avenant` INNER JOIN contrat ON avenant.NUM_POLICE = contrat.NUM_POLICE INNER JOIN point_vente ON contrat.CODE_POINT_VENTE = point_vente.CODE_POINT_VENTE INNER JOIN risque ON contrat.CODE_RISQUE = risque.CODE_RISQUE WHERE ((`avenant`.`MOUVEMENT` ='AFFAIRE NOUVELLE') AND (`avenant`.`DATE_AVENANT` BETWEEN '"+sdf.format(Date1)+"' AND '"+sdf.format(Date2)+"') AND (risque.LIBELLE_RISQUE = 'AUTOMOBILE'))";
+			
+			//String query = "SELECT `avenant`.* FROM avenant WHERE ((`avenant`.`MOUVEMENT` ='"+mouvement+"') AND (`avenant`.`DATE_AVENANT` BETWEEN '"+sdf.format(Date1)+"' AND '"+sdf.format(Date2)+"' ))";
+			list = getSessionFactory().getCurrentSession().createSQLQuery(query1).addEntity(Avenant.class).list();
+			return list;
 		}
     
     

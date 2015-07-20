@@ -240,7 +240,7 @@ public class Tarif implements java.io.Serializable {
 		this.codeTarif = codeTarif;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CODE_RC_TARIF1")
 	public RcTarif1 getRcTarif1() {
 		return this.rcTarif1;
