@@ -270,6 +270,12 @@ public class Service implements ObjectService {
 		return null;
 	}
 
+	public boolean chercherLogin(String paramLogin) {
+		return getDao().chercherLogin(paramLogin);
+	}
+
+	
+	
 	@Override
 	public Personne RecupererUtilisateurCourrant() {
 		// TODO Auto-generated method stub

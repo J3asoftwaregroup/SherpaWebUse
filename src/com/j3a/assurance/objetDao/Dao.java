@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.j3a.assurance.managedBean.Auto.ManagedSinistre;
 import com.j3a.assurance.model.ApporteurVehicule;
 import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.AyantDroit;
@@ -649,5 +648,23 @@ public class Dao implements IDao {
 			return maListe;
 		}
     
-    
+		public boolean chercherLogin(String paramLogin) {
+			boolean etat;
+			String str = paramLogin;
+			etat = false;
+			try {
+
+				String query = "SELECT * FROM `personne` WHERE `LOGIN_PERS`='"
+						+ str + "'";
+				List list = (List) getSessionFactory().getCurrentSession()
+						.createSQLQuery(query).addEntity(Personne.class).list();
+				if (list.size() >= 1) {
+					etat = true;
+				}
+				System.out.println("Etat de la requête:" + etat);
+			} catch (Exception e) {
+				logger.error(" Problème de Base de données", e);
+			}
+			return etat;
+		}
 }
