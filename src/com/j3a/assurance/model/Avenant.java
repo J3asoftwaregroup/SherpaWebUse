@@ -137,7 +137,7 @@ public class Avenant implements java.io.Serializable {
 		this.utilisateur = utilisateur;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_VEHICULES_ASSURES")
 	public VehiculesAssures getVehiculesAssures() {
 		return this.vehiculesAssures;
@@ -297,7 +297,7 @@ public class Avenant implements java.io.Serializable {
 		this.avTrafics = avTrafics;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "avenant")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "avenant")
 	public Set<Quittance> getQuittances() {
 		return this.quittances;
 	}

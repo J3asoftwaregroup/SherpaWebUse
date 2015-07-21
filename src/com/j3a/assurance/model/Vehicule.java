@@ -159,7 +159,7 @@ public class Vehicule implements java.io.Serializable {
 		this.sousCatVehicule = sousCatVehicule;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_VEHICULES_ASSURES")
 	public VehiculesAssures getVehiculesAssures() {
 		return this.vehiculesAssures;
@@ -442,7 +442,7 @@ public class Vehicule implements java.io.Serializable {
 		this.attestations = attestations;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vehicule")
 	public Set<HistoMouvement> getHistoMouvements() {
 		return this.histoMouvements;
 	}
@@ -451,7 +451,7 @@ public class Vehicule implements java.io.Serializable {
 		this.histoMouvements = histoMouvements;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vehicule")
 	public Set<ApporteurVehicule> getApporteurVehicules() {
 		return this.apporteurVehicules;
 	}
@@ -460,7 +460,7 @@ public class Vehicule implements java.io.Serializable {
 		this.apporteurVehicules = apporteurVehicules;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vehicule")
 	public Set<VehiculeZoneGeographique> getVehiculeZoneGeographiques() {
 		return this.vehiculeZoneGeographiques;
 	}
@@ -479,7 +479,7 @@ public class Vehicule implements java.io.Serializable {
 		this.vehiculeSinistres = vehiculeSinistres;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vehicule")
 	public Set<ConduireVehicule> getConduireVehicules() {
 		return this.conduireVehicules;
 	}
@@ -488,7 +488,7 @@ public class Vehicule implements java.io.Serializable {
 		this.conduireVehicules = conduireVehicules;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vehicule")
 	public Set<HistoProprietesVehicule> getHistoProprietesVehicules() {
 		return this.histoProprietesVehicules;
 	}

@@ -7,51 +7,61 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/template/templateUserSpace.xhtml">
-	<ui:define name="i-page">
-		<p:menuitem value="Espace Personnel -Mes contrats/Mes Sinistres-" url="#"  />
-	</ui:define>
-	
-	<ui:define name="content">
-		<p:ajaxStatus styleClass="ajaxStatut">  
-	<f:facet name="prestart">
-	<h:outputText value="Starting..." />
-	</f:facet>
-	
-    <f:facet name="start">  
-        <h:graphicImage value="../../resources/images/loader16.gif"/>  
-    </f:facet>  
-      
-    <f:facet name="complete">  
-        <h:outputText value="" />  
-    </f:facet>  
-	</p:ajaxStatus> 
-		<h:form id="gnl">
-			<p:messages id="growl" showDetail="false" autoUpdate="true" closable="true"/>
-			<p:panel id="ctraEnCrs" header="List des contrats en cours" style="width:100%; margin:20px">
-				
-			    <f:facet name="actions">
-		            <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default"><h:outputText styleClass="ui-icon ui-icon-help" /></h:commandLink>
-		            <h:commandLink styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default" action="/index.xhtml?faces-redirect=true"><h:outputText styleClass="ui-icon ui-icon-home" /></h:commandLink>
-		        </f:facet>
-				
-				 <p:dataTable var="ctrCrs" value="#{managedUserCtraSinList.}">
+
+<h:form id="vehiForm">
+		    	<p:dataTable id="vehiList" var="vehi" value="#{managedUserVehiAssList.listVehiAssur}"
+				 			  rowKey="#{vehi.vehi.codeVehicule}" selection="#{managedUserVehiAssList.slctdVehiAss}"
+				 			  selectionMode="single" widgetVar="vehiTable">
+				 	 <p:ajax event="rowToggle" listener="#{managedUserVehiAssList.onRowToggle}"  />
 					 <f:facet name="header">
-						 Liste de vos  Contrats (Click droit pour les details et les options)
+						 Vehicules du Contrat "#{managedUserCtraSinList.slctdCtraRw.ctrat.numPolice}" (Derouler pour voir les garanties souscrites)
 					 </f:facet>
-					 <p:column headerText="N° Police">
-							 #{ctrCrs.}
+					 <p:column style="width:16px">
+			            <p:rowToggler />
+			        </p:column>
+					 <p:column headerText="N° Immaticulation" >
+							 <h:outputText value="#{vehi.vehi.numImmat}"/>
 					 </p:column>
-					 <p:column headerText="Effet-Echéance" >
-						 #{ctrCrs.}
+					 
+					 <p:column headerText="Numero Chassis">
+					 	<h:outputText value="#{vehi.vehi.chassis}"/>
 					 </p:column>
-					 <f:facet name="footer">
-						 Vous avez au total  #{fn:length(managedUserCtraSinList.)} contrats actifs.
-					 </f:facet>
+					 <p:column headerText="Marque">
+					 	<h:outputText value="#{vehi.vehi.marque}"/>
+					 </p:column>
+					 <p:column headerText="Couleur">
+						 <h:outputText value="#{vehi.vehi.couleur}"/>
+					 </p:column>
+					 
+					 <p:rowExpansion>
+					 <h:panelGrid>
+			 			<p:dataTable id="vehiGar" var="gar" value="#{vehi.infoGarList}"
+				 			  rowKey="#{gar.garantie.codeGarantie}" >
+							 <f:facet name="header">
+								 Garanties souscrites pour le Véhicule immatriculé - #{vehi.vehi.numImmat} -
+							 </f:facet>
+							 <p:column headerText="Intitulé de la Garantie" >
+									 <h:outputText value="#{gar.garantie.libelleGarantie}"/>
+							 </p:column>
+							 
+							 <p:column headerText="Prime Nette Annuelle">
+							 	<h:outputText value="#{gar.primeNetteAnnuelle}"/>
+							 </p:column>
+							 <p:column headerText="Prime Nette pour la durée du contrat">
+							 	<h:outputText value="#{gar.primeNetteProrata}"/>
+							 </p:column>
+							 
+			 			</p:dataTable>
+			 			<f:facet name="footer">
+				 			<p:commandButton id="toSin" 
+				 							 value="Consulter les sinistres de ce véhicule"
+											 actionListener="#{managedUserVehiAssList.viewVehiSin}">
+											 
+							</p:commandButton>
+						</f:facet>
+					</h:panelGrid>
+			 			
+			        </p:rowExpansion>
 				</p:dataTable>
-			</p:panel>
-			
-		</h:form>
-	</ui:define>
-</ui:composition>
+		    </h:form>
 </html>

@@ -87,4 +87,5 @@ public interface IDao {
 	public List<Victime> getvictimes(String idsinistre);	
 	public Personne RecupererUtilisateurCourrant();
 	public List <Personne> personneByLogin(String login);
-}
+	public boolean chercherLogin(String paramLogin);
+	}

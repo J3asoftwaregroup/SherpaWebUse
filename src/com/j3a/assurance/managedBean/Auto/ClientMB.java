@@ -123,6 +123,10 @@ public class ClientMB implements Serializable{
 		}
 		
 		
+		public boolean verifierLogin(){
+			return getObjectService().chercherLogin(getMaPersonne().getLoginPers());
+		}
+		
 		public void addPersonnePhysique() {	
 			
 			try {
@@ -250,6 +254,10 @@ public class ClientMB implements Serializable{
 
 		public String validerClient() {
 			retour="";
+			if (verifierLogin()==true){
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Echec ce Login existe déjà", "ce Login existe déjà"));		
+
+			}else{
 				List list = getObjectService().checkPersonPhysique(maPersonne, monPhysique);
 			if(list.size() > 0){
 				RequestContext.getCurrentInstance().execute("personne_Eng.show();");
@@ -261,6 +269,7 @@ public class ClientMB implements Serializable{
 			//	retour="/Page/Paypal/NewSouscripteur.xhtml?faces-redirect=true";
 				retour="inscriptionPaypalNewSous";
 			}
+			}
 			return retour;
 		}
 		
@@ -268,12 +277,14 @@ public class ClientMB implements Serializable{
 		
 		public String validerPersonneCourante(){
 			return "/Page/AutoWeb/vehicule.xhtml?faces-redirect=true";
-			
-		
 		}
 		
 		
-		
+
+		public String validerclien() {
+			return "/Page/Paypal/inscriptionPaypal.xhtml?-faces-redirect=true";
+
+		}
 	
 		//**************************ACCESSEURS********************************************//
 

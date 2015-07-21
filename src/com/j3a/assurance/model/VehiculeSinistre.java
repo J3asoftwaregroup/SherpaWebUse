@@ -77,7 +77,7 @@ public class VehiculeSinistre implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CODE_SINISTRE", nullable = false, insertable = false, updatable = false)
 	public Sinistre getSinistre() {
 		return this.sinistre;
@@ -87,7 +87,7 @@ public class VehiculeSinistre implements java.io.Serializable {
 		this.sinistre = sinistre;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CODE_VEHICULE", nullable = false, insertable = false, updatable = false)
 	public Vehicule getVehicule() {
 		return this.vehicule;
