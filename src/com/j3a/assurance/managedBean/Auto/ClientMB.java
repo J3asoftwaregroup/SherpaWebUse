@@ -273,7 +273,14 @@ public class ClientMB implements Serializable{
 		}
 		
 		
-		
+
+		public String validerclien() {
+			
+			
+			
+			return "/Page/Paypal/inscriptionPaypal.xhtml?-faces-redirect=true";
+
+		}
 	
 		//**************************ACCESSEURS********************************************//
 
