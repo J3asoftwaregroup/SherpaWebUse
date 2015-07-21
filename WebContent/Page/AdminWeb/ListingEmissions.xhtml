@@ -58,9 +58,13 @@
 				    			<h:outputText value="Choix des Risques" style="font-weight:bold;"/>
 				    			<h:outputText value="Choix des types de mouvement" style="font-weight:bold;"/>
 				    			
-					 			<p:selectCheckboxMenu  value="#{managedListEmissions.slctdPtVtes}" converter="#{ptdeVenteCvtr}" style="width:100%" showCheckbox="true">
-						            <f:selectItems value="#{ptdeVenteCvtr.pointVenteList}" var="ca" itemLabel="#{ca.libellePointVente}" itemValue="#{ca}" />
-								</p:selectCheckboxMenu>
+				    			<p:selectCheckboxMenu  id="slctPointV" label="Point de Vente"
+									value="#{managedListEmissions.slctdPtVtes}" converter="#{ptdeVenteCvtr}" style="width:100%" 
+									showCheckbox="true">
+						            <f:selectItems value="#{ptdeVenteCvtr.pointVenteList}" var="pointv"
+										itemLabel="#{pointv.libellePointVente}" itemValue="#{pointv}" />
+						        </p:selectCheckboxMenu>
+					 	
 						        
 				 				<p:selectCheckboxMenu  id="slctRisq" label="Risque"
 									value="#{managedListEmissions.slctdRisques}" converter="#{risqCvtr}" style="width:100%" 
@@ -69,7 +73,7 @@
 										itemLabel="#{risq.libelleRisque}" itemValue="#{risq}" />
 						        </p:selectCheckboxMenu>
 				 			
-				 				<p:selectCheckboxMenu value="#{managedListEmissions.slctdMvmts}"  style="width:100%" >
+				 				<p:selectCheckboxMenu id="mvmId" value="#{managedListEmissions.slctdMvmts}"  style="width:100%" >
 						            <f:selectItem itemLabel="Affaire Nouvelle" itemValue="Affaire Nouvelle" />
 						            <f:selectItem itemLabel="Incorporation" itemValue="Incorporation" />
 						            <f:selectItem itemLabel="Retrait" itemValue="Retrait" />
@@ -139,8 +143,8 @@
 												 <h:outputText value="#{em.exercice.id}" />
 									</p:column>
 									
-									<p:column filterBy="#{em.contrat.codeRisque.libelleRisque}" headerText="Risque"  filterMatchMode="startsWith" style="width:8%">
-												 <h:outputText value="#{em.contrat.codeRisque.libelleRisque}" />
+									<p:column filterBy="#{em.contrat.risque.libelleRisque}" headerText="Risque"  filterMatchMode="startsWith" style="width:8%">
+												 <h:outputText value="#{em.contrat.risque.libelleRisque}" />
 									</p:column>
 									
 									<p:column filterBy="#{em.contrat.id}" headerText="Police" filterMatchMode="startsWith" style="width:8%">

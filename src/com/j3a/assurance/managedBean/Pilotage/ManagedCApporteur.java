@@ -28,11 +28,12 @@ import com.j3a.assurance.objetService.ObjectService;
 import com.j3a.assurance.utilitaires.AvenantByPointVenteRow;
 
 @Component
+@Scope("session")
 @Transactional
 public class ManagedCApporteur {
     
 	@Autowired
-	private PtdeVenteCvtr ptdeVenteCvtr;
+	PtdeVenteCvtr ptdeVenteCvtr;
 	@Autowired
 	private SessionFactory sessionFactory;
 	private List<Apporteur> apporteurs=new ArrayList<Apporteur>();

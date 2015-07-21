@@ -286,6 +286,28 @@ public class CotationAuto implements Serializable{
 			return "Validation";
 		}
 		
+		public String voirQuittance1(){
+			getManagedQuittanceAuto().getListVehicules().clear();
+			getManagedQuittanceAuto().getListVehicules().addAll(
+					getCarteGriseMB().getVehiculeList());
+		
+			getContratMB().getAvenant().setEffet(getContratMB().getEffet());
+			getContratMB().getAvenant().setDateEmission(getContratMB().getEmission());
+			getContratMB().getAvenant().setEcheance(getContratMB().getEcheance());
+			
+			getManagedQuittanceAuto().setAvenant(
+					getContratMB().getAvenant());
+
+			getManagedQuittanceAuto().setExercice(getExercice().getCodeexercice());// A corriger
+
+			getManagedQuittanceAuto().calculPrime();
+			getManagedQuittanceAuto().calculQuittance();
+
+			return "ValidationPrime";
+		}
+
+		
+		
 		public void sendDevis(){
 			//chargement des données pour le rapport pdf
 			ReportingAuto report = new ReportingAuto();
@@ -335,16 +357,18 @@ public class CotationAuto implements Serializable{
 			if(getContratF().getNumPolice()!=null){
 				  police = getContratF().getNumPolice();
 			}else{
-				  police = "001WEB115AUT003";
+				  police = "001WEB115AUT005";
 			}
           
 			// getManagedClient().getValeurRecherche();
-		 
+			System.out.println("Recherche Contrat : Police avant "+police);
 				setContratF((Contrat)getContratMB().getObjectService().getObjectById(police,"Contrat"));
 
+				System.out.println("Recherche Contrat : Police après "+getContratF().getNumPolice());
 				getContratMB().setContrat(getContratF());
 
 				avenantF = getContratMB().getObjectService().DernierAvenant(police);
+				System.out.println("Recherche Contrat : Avenant "+avenantF.getNumAvenant());
 				avenantF.setMouvement("Affaire Nouvelle");
 				/*avenantF.setDateAvenant(date);
 				avenantF.setDateEmission(date);
@@ -352,6 +376,8 @@ public class CotationAuto implements Serializable{
 				//avenantF.setCodeexercice(getExercice());
 				/*avenantF.setEcheance(getContratMB().getDateEcheance(date,
 						getAvenantF().getDuree()));*/
+				System.out.println("Recherche Contrat : Vehicule Assuree-"+avenantF.getVehiculesAssures().getIdVehiculesAssures());
+				System.out.println("Recherche Contrat :Liste de Vehicule -"+avenantF.getVehiculesAssures().getVehicules().size());
 				rechercheVehicule();
 
 			
@@ -407,11 +433,12 @@ public class CotationAuto implements Serializable{
 			quit.setFga(getManagedQuittanceAuto().getQuittanceAuto().getTaxeFGA());
 			quit.setNetAPayer(getManagedQuittanceAuto().getQuittanceAuto().getNetteApayer());
 			report.setQuittance(quit);*/
-			report.setNom(getClientMB().getNomClient());
+			report.setNom(contratF.getPersonne().getNomRaisonSociale());
+			if(contratF.getPersonne().getPhysique()!=null){
+				report.setPersonne(getClientMB().getClient());
+				report.setPersonne(contratF.getPersonne());
+			}
 			
-			report.setPersonne(getClientMB().getClient());
-			report.setPhysique(getClientMB().getPhysique());
-			//report.setPersonne(contratF.getPersonne());
 			
 			try{
 				getConditionPartAuto().setReportingAuto(report);

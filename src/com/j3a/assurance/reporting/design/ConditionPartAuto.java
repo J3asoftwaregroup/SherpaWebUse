@@ -205,6 +205,7 @@ creerEmagementAttestation(document);
 	PdfPCell cell;
 
 	// 1er ligne Assuré et adresse
+	System.out.println("Info sur le Souscripteur nom personne");
 	String nomAssure = "";
 	if(reportingAuto.getPersonne().getNomRaisonSociale()!=null){
 		nomAssure = nomAssure+ reportingAuto.getPersonne().getNomRaisonSociale() +" "+reportingAuto.getPhysique().getPrenomPers();
@@ -244,7 +245,7 @@ creerEmagementAttestation(document);
 	
 
 	// 3em ligne Police
-	
+	System.out.println("Info sur le contrat police et avenant");
 	tabSous.addCell(new Phrase("Police :", smallText));
 	if(reportingAuto.getContrat().getNumPolice()!=null){
 		cell = new PdfPCell(new Phrase(reportingAuto.getContrat().getNumPolice(),
@@ -272,7 +273,7 @@ creerEmagementAttestation(document);
 	cell.setBorder(Rectangle.NO_BORDER);
 	tabSous.addCell(cell);
 	
-	
+	System.out.println("Info sur le vehicule");
 	// 5em ligne vehicule
 	tabSous.addCell(new Phrase("Vehicule :", smallText));
 	if(vehiculeRow.getVehi().getGenre()!=null){
@@ -307,13 +308,17 @@ creerEmagementAttestation(document);
 	tabSous.addCell(cell);
 	
 	
-	
+	System.out.println("Info sur la sous catégorie");
 	// Tableau général information
 	PdfPTable tabInfo = new PdfPTable(1);
 
 	tabInfo.addCell(tabSous);
 	if(vehiculeRow.getSouCatVehi().getCategorie().getCodeCategorie()!=null){
-		cell = new PdfPCell(new Phrase(vehiculeRow.getSouCatVehi().getTarif()+" "+vehiculeRow.getSouCatVehi().getCategorie().getLibelleCategorie(), normalText3));
+		String tarif = "";
+	if(vehiculeRow.getSouCatVehi().getTarif()!=null){
+		tarif = vehiculeRow.getSouCatVehi().getTarif().getCodeTarif();
+	}
+		cell = new PdfPCell(new Phrase(tarif+" "+vehiculeRow.getSouCatVehi().getCategorie().getLibelleCategorie(), normalText3));
 		cell.setPaddingLeft(100);
 		tabInfo.addCell(cell);
 		
