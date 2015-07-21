@@ -263,20 +263,33 @@ public class Service implements ObjectService {
 				throws HibernateException{	
 			return getDao().getexpertise(idsinistre);
 		}
-	
-	//getter et setter de Idao qui a été injecté
-	
-	public IDao getDao() {
-		return dao;
-		}
-	
-	public void setDao(IDao dao) {
-		this.dao = dao;
-	}
-
+		
 	@Override
 	public List<String> getVictime() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Personne RecupererUtilisateurCourrant() {
+		// TODO Auto-generated method stub
+		return getDao().RecupererUtilisateurCourrant();
+	}
+
+		@Override
+		public List<Personne> personneByLogin(String login) {
+			// TODO Auto-generated method stub
+			return getDao().personneByLogin(login);
+		}
+		
+		//getter et setter de Idao qui a été injecté
+		
+			public IDao getDao() {
+				return dao;
+				}
+			
+			public void setDao(IDao dao) {
+				this.dao = dao;
+			}
+
 }

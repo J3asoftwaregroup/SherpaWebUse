@@ -149,7 +149,7 @@ public class Vehicule implements java.io.Serializable {
 		this.codeVehicule = codeVehicule;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CODE_SOUS_CAT_VEHICULE", nullable = false)
 	public SousCatVehicule getSousCatVehicule() {
 		return this.sousCatVehicule;
@@ -159,7 +159,7 @@ public class Vehicule implements java.io.Serializable {
 		this.sousCatVehicule = sousCatVehicule;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_VEHICULES_ASSURES")
 	public VehiculesAssures getVehiculesAssures() {
 		return this.vehiculesAssures;
@@ -498,7 +498,7 @@ public class Vehicule implements java.io.Serializable {
 		this.histoProprietesVehicules = histoProprietesVehicules;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehicule")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vehicule")
 	public Set<GarantieChoisie> getGarantieChoisies() {
 		return this.garantieChoisies;
 	}

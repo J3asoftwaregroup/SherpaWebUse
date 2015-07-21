@@ -286,6 +286,28 @@ public class CotationAuto implements Serializable{
 			return "Validation";
 		}
 		
+		public String voirQuittance1(){
+			getManagedQuittanceAuto().getListVehicules().clear();
+			getManagedQuittanceAuto().getListVehicules().addAll(
+					getCarteGriseMB().getVehiculeList());
+		
+			getContratMB().getAvenant().setEffet(getContratMB().getEffet());
+			getContratMB().getAvenant().setDateEmission(getContratMB().getEmission());
+			getContratMB().getAvenant().setEcheance(getContratMB().getEcheance());
+			
+			getManagedQuittanceAuto().setAvenant(
+					getContratMB().getAvenant());
+
+			getManagedQuittanceAuto().setExercice(getExercice().getCodeexercice());// A corriger
+
+			getManagedQuittanceAuto().calculPrime();
+			getManagedQuittanceAuto().calculQuittance();
+
+			return "ValidationPrime";
+		}
+
+		
+		
 		public void sendDevis(){
 			//chargement des données pour le rapport pdf
 			ReportingAuto report = new ReportingAuto();

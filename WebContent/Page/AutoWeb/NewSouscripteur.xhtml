@@ -145,13 +145,32 @@
 													
 												<h:outputText value="Adr géo" style="margin-left:80px"/>
 												<p:inputTextarea rows="1" cols="20" value="#{cotationAuto.clientMB.maPersonne.adresseGeo}" />
-													
+												
+																																					
 													<h:outputText value="etes vous le conducteur? " style="margin-left:60px; font-size:9px;"></h:outputText>
 													<p:selectBooleanCheckbox value="#{cotationAuto.clientMB.etatClient}"/>
                                             
 							                </h:panelGrid>
+							                <br /><br />
+							                
+							                <h:panelGrid columns="2">
+							                
+							               	<p:outputLabel  value="Login" style="margin-left:80px"/>
+						             		<p:inputText value="#{cotationAuto.clientMB.maPersonne.loginPers}"/> 
+						                        
+												
+												
+											 <h:outputLabel for="pwd1" value="Mot de passe: *" style="margin-left:80px"/>
+                                              <p:password id="pwd1" value="#{cotationAuto.clientMB.maPersonne.motPassePers}" match="pwd2" label="mot de passe 1" feedback="true" required="true" />
+ 
+                                             <h:outputLabel for="pwd2" value="Confirmez : *" style="margin-left:80px"/>
+                                           <p:password id="pwd2" value="#{cotationAuto.clientMB.maPersonne.motPassePers}" label="Mot de passe 2" required="true" />
+																			
+							                </h:panelGrid>
+							                
 							                <br />
-				                        <h:commandButton value="Payer en ligne" action="#{cotationAuto.clientMB.validerClient}"  style="width:150px;height:40px; margin-left:350px;font-size:12px;border-radius:100px;"   /> 
+							                
+				                        <h:commandButton value="Payer en ligne" action="#{cotationAuto.clientMB.validerClient}"  style="width:150px;height:40px; margin-left:350px;font-size:12px;border-radius:100px;"/> 
 				 	                    </fieldset>
 											</p:panel>	
 											
