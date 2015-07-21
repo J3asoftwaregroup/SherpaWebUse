@@ -268,16 +268,11 @@ public class ClientMB implements Serializable{
 		
 		public String validerPersonneCourante(){
 			return "/Page/AutoWeb/vehicule.xhtml?faces-redirect=true";
-			
-		
 		}
 		
 		
 
 		public String validerclien() {
-			
-			
-			
 			return "/Page/Paypal/inscriptionPaypal.xhtml?-faces-redirect=true";
 
 		}
