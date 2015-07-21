@@ -614,31 +614,34 @@ public class Dao implements IDao {
 			list = getSessionFactory().getCurrentSession().createSQLQuery(query1).addEntity(Avenant.class).list();
 			return list;
 		}
+		
 
 		@Override
 		public Personne RecupererUtilisateurCourrant() {
 			// Recupération du login de l'utilisateur courant
-			String paramLogin = "";
-			if (FacesContext.getCurrentInstance().getExternalContext()
-					.getUserPrincipal() != null) {
-				paramLogin = FacesContext.getCurrentInstance().getExternalContext()
-						.getUserPrincipal().getName();
-				
-			}
-			String query = "SELECT * FROM personne WHERE LOGIN_PERS='"
-					+ paramLogin + "'";
-			Personne connected = null;
-			try {
+						String paramLogin = "";
+						if (FacesContext.getCurrentInstance().getExternalContext()
+								.getUserPrincipal() != null) {
+							paramLogin = FacesContext.getCurrentInstance().getExternalContext()
+									.getUserPrincipal().getName();
+							System.out.println("paramLogin:"+paramLogin);
 
-				connected = (Personne) getSessionFactory().getCurrentSession()
-						.createSQLQuery(query).addEntity(Personne.class)
-						.uniqueResult();
-			} catch (Exception e) {
-				logger.error(" Erreur sur la recupération de l'utilisateur");
-			}
-			return connected;
-			
+						}
+						String query = "SELECT * FROM personne WHERE LOGIN_PERS='"+ paramLogin + "'";
+						Personne connected = new Personne();
+						try {
+
+							connected = (Personne) getSessionFactory().getCurrentSession()
+									.createSQLQuery(query).addEntity(Personne.class)
+									.uniqueResult();
+						} catch (Exception e) {
+							logger.error(" Erreur sur la recupération de l'utilisateur");
+						}
+						System.out.println(" -----> paramLogin:"+paramLogin);
+						System.out.println(" -----> Utilisateur recupérer :"+connected.getLoginPers());
+						return connected;
 		}
+		
 
 		@SuppressWarnings("unchecked")
 		@Override
