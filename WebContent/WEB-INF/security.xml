@@ -11,6 +11,7 @@
 		<security:intercept-url pattern="/page/AutoWeb/clientAuto.xhtml" access="ROLE_WEBUSER"/>
 		<security:intercept-url pattern="/page/AutoWeb/inscriptionPaypal.xhtml" access="ROLE_WEBUSER"/>
 		<security:intercept-url pattern="/page/EspaceUser/*" access="ROLE_WEBUSER"/>
+		<security:intercept-url pattern="/page/AdminWeb/*" access="ROLE_WEBUSER"/>
 		
 	<security:form-login login-page="/login.jsp"
 			authentication-failure-url="/login-failure.jsp" />
