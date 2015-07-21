@@ -50,7 +50,7 @@ public class ClientMB implements Serializable{
 		
 		private Personne maPersonne= new Personne() ;
 		private ComboSexes comboSexe;
-		
+		private String numPiece,prenom,naissance,typePiec,situationMatPers;
 		private String slctsexe;
 		private List<Sexe> sexeList;
 		private Conducteur conducteur=new Conducteur();
@@ -813,6 +813,64 @@ public class ClientMB implements Serializable{
 
 	public void setPhysiqueCourant(Physique physiqueCourant) {
 		this.physiqueCourant = physiqueCourant;
+	}
+
+
+	public String getNumPiece() {
+		 numPiece=getPersonneCouante().getPhysique().getNumPiecePers();
+		return numPiece;
+	}
+
+
+	public void setNumPiece(String numPiece) {
+		this.numPiece = numPiece;
+	}
+
+
+	public String getPrenom() {
+		prenom=getPersonneCouante().getPhysique().getPrenomPers();
+
+		return prenom;
+	}
+
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+
+	public String getNaissance() {
+		naissance=getPersonneCouante().getPhysique().getNumPiecePers();
+		return naissance;
+	}
+
+
+	public void setNaissance(String naissance) {
+		this.naissance = naissance;
+	}
+
+
+	public String getTypePiec() {
+		typePiec=getPersonneCouante().getPhysique().getTypePiece();
+
+		return typePiec;
+	}
+
+
+	public void setTypePiec(String typePiec) {
+		this.typePiec = typePiec;
+	}
+
+
+	public String getSituationMatPers() {
+		situationMatPers=getPersonneCouante().getPhysique().getSituationMatPers();
+
+		return situationMatPers;
+	}
+
+
+	public void setSituationMatPers(String situationMatPers) {
+		this.situationMatPers = situationMatPers;
 	}
 
 }
