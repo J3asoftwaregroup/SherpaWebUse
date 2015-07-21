@@ -7,7 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-
+<h:form id="vehiSinForm">
 <p:dataTable id="vehiSinList" var="sin" value="#{managedUserVehiSinList.listVehiSin}"
 				 			  rowKey="#{sin.sinistre.codeSinistre}" 
 				 			  filteredValue="#{managedUserVehiSinList.fltrdVehiSin}" 
@@ -29,11 +29,12 @@
 					 <p:column headerText="Evaluation nette du sinistre XoF" sortBy="sinistre.evaluationNette">
 					 	<h:outputText value="#{sin.sinistre.evaluationNette}"/>
 					 </p:column>
-					 <p:column headerText="Votre responsabilité ds le sinistre" sortBy="rcAssure">
+					 <p:column headerText="Votre responsabilité dans le sinistre" sortBy="rcAssure">
 						 <h:outputText value="#{sin.rcAssure}"/>
 					 </p:column>
 					 
 					 
 				</p:dataTable>
+				</h:form>
 
 </html>

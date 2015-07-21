@@ -8,34 +8,37 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-<p:dataTable id="vehiList" var="vehi" value="#{managedUserVehiAssList.listVehiAssur}"
+<h:form id="vehiForm">
+		    	<p:dataTable id="vehiList" var="vehi" value="#{managedUserVehiAssList.listVehiAssur}"
 				 			  rowKey="#{vehi.vehi.codeVehicule}" selection="#{managedUserVehiAssList.slctdVehiAss}"
-				 			  filteredValue="#{managedUserVehiAssList.fltrdVehiLst}" 
 				 			  selectionMode="single" widgetVar="vehiTable">
 				 	 <p:ajax event="rowToggle" listener="#{managedUserVehiAssList.onRowToggle}"  />
 					 <f:facet name="header">
-						 Vehicule du Contrat "#{managedUserCtraSinList.slctdCtraRw.ctrat.numPolice}" (Derouler pour voir les garanties souscrites)
+						 Vehicules du Contrat "#{managedUserCtraSinList.slctdCtraRw.ctrat.numPolice}" (Derouler pour voir les garanties souscrites)
 					 </f:facet>
+					 <p:column style="width:16px">
+			            <p:rowToggler />
+			        </p:column>
 					 <p:column headerText="N° Immaticulation" >
-							 <h:outputText value="#{vehi.numImmat}"/>
+							 <h:outputText value="#{vehi.vehi.numImmat}"/>
 					 </p:column>
 					 
 					 <p:column headerText="Numero Chassis">
-					 	<h:outputText value="#{vehi.chassis}"/>
+					 	<h:outputText value="#{vehi.vehi.chassis}"/>
 					 </p:column>
 					 <p:column headerText="Marque">
-					 	<h:outputText value="#{vehi.marque}"/>
+					 	<h:outputText value="#{vehi.vehi.marque}"/>
 					 </p:column>
 					 <p:column headerText="Couleur">
-						 <h:outputText value="#{vehi.couleur}"/>
+						 <h:outputText value="#{vehi.vehi.couleur}"/>
 					 </p:column>
 					 
 					 <p:rowExpansion>
 					 <h:panelGrid>
 			 			<p:dataTable id="vehiGar" var="gar" value="#{vehi.infoGarList}"
-				 			  rowKey="#{gar.id.codeGarantie}" >
+				 			  rowKey="#{gar.garantie.codeGarantie}" >
 							 <f:facet name="header">
-								 Garanties souscrites pour le Véhicule immatriculé - #{vehi.numImmat} -
+								 Garanties souscrites pour le Véhicule immatriculé - #{vehi.vehi.numImmat} -
 							 </f:facet>
 							 <p:column headerText="Intitulé de la Garantie" >
 									 <h:outputText value="#{gar.garantie.libelleGarantie}"/>
@@ -60,5 +63,5 @@
 			 			
 			        </p:rowExpansion>
 				</p:dataTable>
-
+		    </h:form>
 </html>

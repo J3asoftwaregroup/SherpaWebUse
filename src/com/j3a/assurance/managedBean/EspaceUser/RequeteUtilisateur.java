@@ -1,6 +1,7 @@
 package com.j3a.assurance.managedBean.EspaceUser;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -19,8 +20,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.j3a.assurance.model.Avenant;
 import com.j3a.assurance.model.Contrat;
+import com.j3a.assurance.model.GarantieChoisie;
+import com.j3a.assurance.model.GarantieGarantieChoisie;
 import com.j3a.assurance.model.Personne;
+import com.j3a.assurance.model.Vehicule;
+import com.j3a.assurance.model.VehiculeSinistre;
 import com.j3a.assurance.utilitaires.ContratRw;
+import com.j3a.assurance.utilitaires.Garanties;
+import com.j3a.assurance.utilitaires.VehiAssur;
 
 @Component
 @Transactional
@@ -83,7 +90,7 @@ public class RequeteUtilisateur {
 						+ "AND Q.NUM_AVENANT IN (SELECT A2.NUM_AVENANT FROM avenant A2 WHERE A2.NUM_POLICE=ctrat.NUM_POLICE) "
 						+ "GROUP BY ctrat.NUM_POLICE";
 		//String query = "SELECT {ctrat.*}, {lastAven.*} FROM contrat ctrat JOIN avenant lastAven ON lastAven.NUM_POLICE=ctrat.NUM_POLICE WHERE ctrat.NUM_SOUSCRIPTEUR = '"+pers.getNumSouscripteur()+"' 	AND lastAven.DATE_AVENANT= (SELECT max(A1.DATE_AVENANT) FROM avenant A1 WHERE A1.NUM_POLICE=ctrat.NUM_POLICE)";
-		System.out.println("/////////"+q1);
+		//System.out.println("/////////"+q1);
 		try {
 			lC=getSessionFactory().getCurrentSession().createSQLQuery(q1).addEntity("ctrat", Contrat.class).addEntity("lastAven", Avenant.class).addScalar("netPaid", StandardBasicTypes.BIG_DECIMAL).setResultTransformer(Transformers.aliasToBean(ContratRw.class)).list();
 			calculateProgress (lC);
@@ -93,6 +100,80 @@ public class RequeteUtilisateur {
 		}
     	return lC;
     }
+	
+	public List<VehiculeSinistre> vehiSinByVehi(Vehicule vehi){
+		List<VehiculeSinistre> vSList = null;
+		String q1="SELECT  * FROM vehicule_sinistre Vs WHERE Vs.CODE_VEHICULE = '"+vehi.getCodeVehicule()+"'";
+		System.out.println("/////////"+q1);
+		try {
+			vSList=getSessionFactory().getCurrentSession().createSQLQuery(q1).addEntity(VehiculeSinistre.class).list();
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return vSList;
+    }
+	
+	public List<VehiculeSinistre> vehiSinByCtra(Contrat ctrat){
+		List<VehiculeSinistre> vSList = null;
+		String q1="SELECT  * FROM vehicule_sinistre Vs JOIN sinistre S ON  S.CODE_SINISTRE=Vs.CODE_SINISTRE WHERE S.NUM_POLICE = '"+ctrat.getNumPolice()+"' ";
+		System.out.println("/////////"+q1);
+		try {
+			vSList=getSessionFactory().getCurrentSession().createSQLQuery(q1).addEntity(VehiculeSinistre.class).list();
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return vSList;
+    }
+	
+	
+	
+	public void calculateProgress (List<ContratRw> Lc){
+		for(ContratRw cR: Lc){
+			LocalDate effet = new LocalDate(cR.getLastAven().getEffet().getTime());
+				LocalDate echeance = new LocalDate(cR.getLastAven().getEcheance().getTime()); 
+				LocalDate actu = new LocalDate(Calendar.getInstance());
+				int dur = Days.daysBetween(effet,echeance).getDays();
+				int used= Days.daysBetween(effet,actu).getDays();
+				if(dur>=1){
+					cR.setProgress((int) ((double)used/((double)dur)*100));
+					}
+				//System.out.println("Police: "+cR.getCtrat().getNumPolice()+" DateActu:"+actu.toString("dd-MMM-yyyy")+" Duree totate:"+dur+" Duree à ce jour"+used+ " Pourcentage de Progression "+(double)used/((double)dur));
+			}
+	}
+
+	
+	public List<VehiAssur> retrvInsuredVehi(Contrat ctra){
+		List<VehiAssur> lVa = null;
+		String q1="SELECT {vehi.*}, {vehiGc.*} "
+				+ "FROM vehicule vehi "
+				+ "JOIN garantie_choisie vehiGc ON vehiGc.CODE_VEHICULE = vehi.CODE_VEHICULE "
+				+ "JOIN vehicules_assures Va ON Va.ID_VEHICULES_ASSURES = vehi.ID_VEHICULES_ASSURES "
+				+ "JOIN avenant A ON A.ID_VEHICULES_ASSURES=Va.ID_VEHICULES_ASSURES "
+				+ "JOIN contrat C ON C.NUM_POLICE=A.NUM_POLICE "
+				+ "WHERE C.NUM_POLICE = '"+ctra.getNumPolice()+"' 	 	  "
+				+ "AND vehiGc.DATE_GARANTIE_CHOISIE= (SELECT max(Gc1.DATE_GARANTIE_CHOISIE) FROM garantie_choisie Gc1 			"
+				+ "WHERE Gc1.CODE_VEHICULE=vehi.CODE_VEHICULE) 	  ";
+		System.out.println("/////////"+q1);
+		try {
+			lVa=getSessionFactory().getCurrentSession().createSQLQuery(q1).addEntity("vehi", Vehicule.class).addEntity("vehiGc", GarantieChoisie.class).setResultTransformer(Transformers.aliasToBean(VehiAssur.class)).list();
+			loadGarantiesList(lVa);
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("/////////"+lVa);
+    	return lVa;
+    }
+	
+	public void loadGarantiesList (List<VehiAssur> lV){
+		for(VehiAssur vA: lV){
+			List<GarantieGarantieChoisie> X = new ArrayList<GarantieGarantieChoisie>(vA.getVehiGc().getGarantieGarantieChoisies());
+			vA.setInfoGarList(X);
+			}
+	}
+	
 	
 /*	public List<String> retriveBrchLib(){
 		List<String> lBrLib = null;
@@ -107,21 +188,6 @@ public class RequeteUtilisateur {
 		}
     	return lBrLib;
     }*/
-	
-	
-	public void calculateProgress (List<ContratRw> Lc){
-		for(ContratRw cR: Lc){
-			LocalDate effet = new LocalDate(cR.getLastAven().getEffet().getTime());
-				LocalDate echeance = new LocalDate(cR.getLastAven().getEcheance().getTime()); 
-				LocalDate actu = new LocalDate(Calendar.getInstance());
-				int dur = Days.daysBetween(effet,echeance).getDays();
-				int used= Days.daysBetween(effet,actu).getDays();
-				if(dur>=1){
-					cR.setProgress((int) ((double)used/((double)dur)*100));
-					}
-				System.out.println("Police: "+cR.getCtrat().getNumPolice()+" DateActu:"+actu.toString("dd-MMM-yyyy")+" Duree totate:"+dur+" Duree à ce jour"+used+ " Pourcentage de Progression "+(double)used/((double)dur));
-			}
-	}
 
 /*	public boolean chercherLogin(String paramLogin) {
 		boolean etat;
@@ -142,6 +208,12 @@ public class RequeteUtilisateur {
 		}
 		return etat;
 	}*/
+	
+	
+	
+
+	
+	
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;

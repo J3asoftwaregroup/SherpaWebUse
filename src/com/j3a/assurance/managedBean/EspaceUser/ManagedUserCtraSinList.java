@@ -1,70 +1,149 @@
 package com.j3a.assurance.managedBean.EspaceUser;
 
-import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import org.primefaces.event.CloseEvent;
-import org.primefaces.event.DashboardReorderEvent;
-import org.primefaces.event.ToggleEvent;
-import org.primefaces.model.DashboardColumn;
-import org.primefaces.model.DashboardModel;
-import org.primefaces.model.DefaultDashboardColumn;
-import org.primefaces.model.DefaultDashboardModel;
+import javax.annotation.PostConstruct;
+
+import org.primefaces.context.RequestContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.j3a.assurance.model.Personne;
+import com.j3a.assurance.utilitaires.ContratRw;
+
 @Component
+@Scope("session")
 public class ManagedUserCtraSinList {
 
-	private DashboardModel model;
+	@Autowired
+	RequeteUtilisateur requeteUtilisateur;
+	
+	@Autowired
+	ManagedUserVehiSinList managedUserVehiSinList;
+	
+	public ManagedUserCtraSinList() {
+		// TODO Auto-generated constructor stub
+	}
     
     @PostConstruct
     public void init() {
-        model = new DefaultDashboardModel();
-        DashboardColumn column1 = new DefaultDashboardColumn();
-        DashboardColumn column2 = new DefaultDashboardColumn();
-        //DashboardColumn column3 = new DefaultDashboardColumn();
-         
-        column1.addWidget("ctras");
-        column1.addWidget("online");
-         
-        column2.addWidget("docs");
-        column2.addWidget("cpte");
-         
-        //column3.addWidget("politics");
+    
+    }
  
-        model.addColumn(column1);
-        model.addColumn(column2);
-        //model.addColumn(column3);
+    private Personne cntedPerson;
+    private List<ContratRw> listCtrat = new ArrayList<ContratRw>();
+    private List<ContratRw> fltrdCtraLst = new ArrayList<ContratRw>();
+    /*private List<String> risqLibList = new ArrayList<String>();*/
+    private ContratRw slctdCtraRw;
+    
+   
+    /**/
+    
+    
+
+    
+    public void consultVehiAss(){
+    	//getManagedUserVehiAssList().setCtra(getSlctdCtraRw().getCtrat());;
+    	System.out.println("getSlctdCtraRw().getCtrat()////////////////////////////////////////"+getSlctdCtraRw().getCtrat());
+    	RequestContext.getCurrentInstance().execute("dlg.show();");
+    	//callDialog("listVehiAssures");
     }
-     
-    public void handleReorder(DashboardReorderEvent event) {
-        FacesMessage message = new FacesMessage();
-        message.setSeverity(FacesMessage.SEVERITY_INFO);
-        message.setSummary("Reordered: " + event.getWidgetId());
-        message.setDetail("Item index: " + event.getItemIndex() + ", Column index: " + event.getColumnIndex() + ", Sender index: " + event.getSenderColumnIndex());
-         
-        addMessage(message);
+    public void consultSin(){
+    	getManagedUserVehiSinList().setCtra(getSlctdCtraRw().getCtrat());
+    	RequestContext.getCurrentInstance().execute("dlgSin.show();");
+    	//callDialog("listVehiSin");
     }
-     
-    public void handleClose(CloseEvent event) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Panel Closed", "Closed panel id:'" + event.getComponent().getId() + "'");
-         
-        addMessage(message);
-    }
-     
-    public void handleToggle(ToggleEvent event) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, event.getComponent().getId() + " toggled", "Status:" + event.getVisibility().name());
-         
-        addMessage(message);
-    }
-     
-    private void addMessage(FacesMessage message) {
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }
-     
-    public DashboardModel getModel() {
-        return model;
-    }
+    
+    
+    public void callDialog(String X){
+		System.out.println("INSIDE callListVehi////////////////////////////////////////");
+		
+		RequestContext.getCurrentInstance().openDialog(X);
+		
+		//RequestContext.getCurrentInstance().execute("PF('Alert').show();");
+		System.out.println("AFTER callGraphStat////////////////////////////////////////");
+	}
+    
+    
+    
+
+
+	public RequeteUtilisateur getRequeteUtilisateur() {
+		return requeteUtilisateur;
+	}
+
+	public void setRequeteUtilisateur(RequeteUtilisateur requeteUtilisateur) {
+		this.requeteUtilisateur = requeteUtilisateur;
+	}
+
+	public Personne getCntedPerson() {
+		return cntedPerson;
+	}
+
+	public void setCntedPerson(Personne cntedPerson) {
+		this.cntedPerson = cntedPerson;
+	}
+
+	public List<ContratRw> getListCtrat() {
+		if(listCtrat.isEmpty()){
+			setCntedPerson(getRequeteUtilisateur().RecupererUtilisateurCourrant());
+			if(getCntedPerson()!=null){
+				listCtrat.addAll(getRequeteUtilisateur().retriveCtrat(getCntedPerson()));
+			}
+			
+		}
+		return listCtrat;
+	}
+
+	public void setListCtrat(List<ContratRw> listCtrat) {
+		this.listCtrat = listCtrat;
+	}
+
+	public ContratRw getSlctdCtraRw() {
+		return slctdCtraRw;
+	}
+
+	public void setSlctdCtraRw(ContratRw slctdCtraRw) {
+		this.slctdCtraRw = slctdCtraRw;
+	}
+
+	public List<ContratRw> getFltrdCtraLst() {
+		return fltrdCtraLst;
+	}
+
+	public void setFltrdCtraLst(List<ContratRw> fltrdCtraLst) {
+		this.fltrdCtraLst = fltrdCtraLst;
+	}
+
+	public ManagedUserVehiSinList getManagedUserVehiSinList() {
+		return managedUserVehiSinList;
+	}
+
+	public void setManagedUserVehiSinList(
+			ManagedUserVehiSinList managedUserVehiSinList) {
+		this.managedUserVehiSinList = managedUserVehiSinList;
+	}
+
 	
+	
+/*	public List<String> getRisqLibList() {
+		return risqLibList;
+	}
+
+	public void setRisqLibList(List<String> risqLibList) {
+		this.risqLibList = risqLibList;
+	}
+    */
+	
+    
+    
+    
+    
+    
+    
+    
 }

@@ -10,17 +10,26 @@ import javax.annotation.PostConstruct;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.ToggleEvent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.j3a.assurance.model.Contrat;
 import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.utilitaires.ContratRw;
 import com.j3a.assurance.utilitaires.VehiAssur;
 
 @Component
+@Scope("session")
 public class ManagedUserVehiAssList {
 
 	@Autowired
 	RequeteUtilisateur requeteUtilisateur;
+	
+	@Autowired
+	ManagedUserCtraSinList managedUserCtraSinList ;
+	
+	@Autowired
+	ManagedUserVehiSinList managedUserVehiSinList;
 	
 	public ManagedUserVehiAssList() {
 		// TODO Auto-generated constructor stub
@@ -31,23 +40,17 @@ public class ManagedUserVehiAssList {
     	
     }
  
-    private Personne cntedPerson;
+    private Contrat ctra;
     private List<VehiAssur> listVehiAssur = new ArrayList<VehiAssur>();
     private List<VehiAssur> fltrdVehiLst = new ArrayList<VehiAssur>();
     /*private List<String> risqLibList = new ArrayList<String>();*/
     private VehiAssur slctdVehiAss;
     
-   
-    /**/
-    
-    
 
     
-    public void consultVehiAss(){
-    	
-    }
     public void viewVehiSin(){
-    	
+    	//getManagedUserVehiSinList().setListVehiSin(getRequeteUtilisateur().vehiSinByVehi(getSlctdVehiAss().getVehi()));
+    	callListSinistre();
     }
     
     public void onRowToggle(ToggleEvent event) {
@@ -55,7 +58,19 @@ public class ManagedUserVehiAssList {
         setSlctdVehiAss((VehiAssur) event.getData());
     }
     
+    public void consultSin(){
+    	getManagedUserVehiSinList().setVehic(getSlctdVehiAss().getVehi());
+    	callDialog("listVehiSin");
+    }
     
+    public void callDialog(String X){
+		System.out.println("INSIDE callListVehi////////////////////////////////////////");
+		
+		RequestContext.getCurrentInstance().openDialog(X);
+		
+		//RequestContext.getCurrentInstance().execute("PF('Alert').show();");
+		System.out.println("AFTER callGraphStat////////////////////////////////////////");
+	}
     public void callListSinistre(){
 		System.out.println("INSIDE callGraphStat////////////////////////////////////////");
 		Map<String,Object> options = new HashMap<String, Object>();
@@ -65,7 +80,7 @@ public class ManagedUserVehiAssList {
 		options.put("contentHeight", 900);
 		options.put("contentWidth", 1300);
 		
-		RequestContext.getCurrentInstance().openDialog ("graphStatListEmiss", options, null);
+		RequestContext.getCurrentInstance().openDialog ("listVehiSin", options, null);
 		
 		//RequestContext.getCurrentInstance().execute("PF('Alert').show();");
 		System.out.println("AFTER callGraphStat////////////////////////////////////////");
@@ -83,15 +98,25 @@ public class ManagedUserVehiAssList {
 		this.requeteUtilisateur = requeteUtilisateur;
 	}
 
-	public Personne getCntedPerson() {
-		return cntedPerson;
+	
+
+	public Contrat getCtra() {
+		return ctra;
 	}
 
-	public void setCntedPerson(Personne cntedPerson) {
-		this.cntedPerson = cntedPerson;
+	public void setCtra(Contrat ctra) {
+		this.ctra = ctra;
 	}
 
 	public List<VehiAssur> getListVehiAssur() {
+		
+		if(listVehiAssur.isEmpty()){
+			if(getManagedUserCtraSinList().getSlctdCtraRw()!=null)
+				{
+				//System.out.println("listVehiAssur////"+listVehiAssur);
+				listVehiAssur.addAll(getRequeteUtilisateur().retrvInsuredVehi(getManagedUserCtraSinList().getSlctdCtraRw().getCtrat()));
+				}
+		}
 		return listVehiAssur;
 	}
 
@@ -114,6 +139,25 @@ public class ManagedUserVehiAssList {
 	public void setSlctdVehiAss(VehiAssur slctdVehiAss) {
 		this.slctdVehiAss = slctdVehiAss;
 	}
+
+	public ManagedUserCtraSinList getManagedUserCtraSinList() {
+		return managedUserCtraSinList;
+	}
+
+	public void setManagedUserCtraSinList(
+			ManagedUserCtraSinList managedUserCtraSinList) {
+		this.managedUserCtraSinList = managedUserCtraSinList;
+	}
+
+	public ManagedUserVehiSinList getManagedUserVehiSinList() {
+		return managedUserVehiSinList;
+	}
+
+	public void setManagedUserVehiSinList(
+			ManagedUserVehiSinList managedUserVehiSinList) {
+		this.managedUserVehiSinList = managedUserVehiSinList;
+	}
+
 
     
     
