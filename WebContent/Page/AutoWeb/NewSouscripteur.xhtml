@@ -163,7 +163,8 @@
 												
 												
 											 <h:outputLabel for="pwd1" value="Mot de passe: *" style="margin-left:150px"/>
-                                              <p:password id="pwd1" value="#{cotationAuto.clientMB.maPersonne.motPassePers}" match="pwd2" label="mot de passe 1" feedback="true" required="true" validatorMessage="Veuillez saisir le meme mot de passe"/>
+                                              <p:password id="pwd1" value="#{cotationAuto.clientMB.maPersonne.motPassePers}" promptLabel="Veillez saisir votre mot de passe" match="pwd2" label="mot de passe 1" feedback="true" required="true" validatorMessage="Veuillez saisir le meme mot de passe"
+                                              weakLabel="faible" goodLabel="Bien" strongLabel="Très bien" />
  
                                              <h:outputLabel for="pwd2" value="Confirmez : *" style="margin-left:150px"/>
                                            <p:password id="pwd2" value="#{cotationAuto.clientMB.maPersonne.motPassePers}" label="Mot de passe 2" required="true" />
