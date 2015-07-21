@@ -28,13 +28,13 @@ private	Physique physiqueConnecte;
 private String confirmeMdp;
 	
 	
-	@PostConstruct
+	/*@PostConstruct
 	public void chargerUtilisateur(){
 		personneConneter = new Personne();
 		physiqueConnecte = new Physique();
 		
 		personneConneter = getObjectService().RecupererUtilisateurCourrant();
-		Physique physiqueConnecte = (Physique) getObjectService().getObjectById(personneConneter.getNumSouscripteur(), "Physique");
+	//	Physique physiqueConnecte = (Physique) getObjectService().getObjectById(personneConneter.getNumSouscripteur(), "Physique");
 		personneModif.setNumSouscripteur(personneConneter.getNumSouscripteur());
 		personneModif.setLoginPers(personneConneter.getLoginPers());
 	}
@@ -51,7 +51,7 @@ private String confirmeMdp;
 		}else{
 			//Message login utilisable 
 		}
-	}
+	}*/
 	
 	/************************ACCESSEUR*************************************/
 
