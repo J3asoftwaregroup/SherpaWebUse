@@ -21,25 +21,27 @@ public class ModificationCompte {
 	@Autowired
 	private ObjectService objectService;
 	
-private	Personne personneModif = new Personne();
-private	Personne personneConneter;
-private	Physique physiqueConnecte;
 
-private String confirmeMdp;
-	
-	
-	/*@PostConstruct
+private	Personne personneConneter = new Personne();
+private	Physique physiqueConnecte = new Physique();
+
+private	Personne personneModif = new Personne();
+private	Physique physiqmodif = new Physique();
+private String Loginmodif;
+
+@PostConstruct
 	public void chargerUtilisateur(){
-		personneConneter = new Personne();
-		physiqueConnecte = new Physique();
-		
-		personneConneter = getObjectService().RecupererUtilisateurCourrant();
+		//Recuperer l'utilisateur courrant
+	//	personneConneter = getObjectService().RecupererUtilisateurCourrant();
+		System.out.println("utilisateur: "+personneConneter.getLoginPers());
+		//Recuperer la personne Physique concernée
 	//	Physique physiqueConnecte = (Physique) getObjectService().getObjectById(personneConneter.getNumSouscripteur(), "Physique");
-		personneModif.setNumSouscripteur(personneConneter.getNumSouscripteur());
-		personneModif.setLoginPers(personneConneter.getLoginPers());
+		
+		/*personneModif.setNumSouscripteur(personneConneter.getNumSouscripteur());
+		personneModif.setLoginPers(personneConneter.getLoginPers());*/
 	}
 	
-	public void modifierCompte(){
+	/*public void modifierCompte(){
 		getObjectService().updateObject(personneModif);
 	}
 	
@@ -52,7 +54,29 @@ private String confirmeMdp;
 			//Message login utilisable 
 		}
 	}*/
+
+
+	public void modifierLogin(){
+			//Recuperer l'utilisateur courrant
+		personneConneter = getObjectService().RecupererUtilisateurCourrant();
+		System.out.println("-------->> personneConneter: "+personneConneter.getLoginPers());//Clean after
+		
+			//Recuperer la personne Physique concernée
+		Physique physiqueConnecte = (Physique) getObjectService().getObjectById(personneConneter.getNumSouscripteur(), "Physique");
+		System.out.println("-------->> Physiqueconnecté: "+physiqueConnecte.getNumSouscripteur());//Clean after
+		
+		setPersonneModif(personneConneter);
+		personneModif.setLoginPers(Loginmodif);
+		
+		setPhysiqmodif(physiqueConnecte);
+		physiqmodif.setLoginPers(Loginmodif);
+		
+		getObjectService().updateObject(personneModif);
+		getObjectService().updateObject(physiqmodif);
+		System.out.println("mis a jour du login ok");//Clean after
+	}
 	
+
 	/************************ACCESSEUR*************************************/
 
 	public ObjectService getObjectService() {
@@ -95,11 +119,19 @@ private String confirmeMdp;
 		this.personneModif = personneModif;
 	}
 
-	public String getConfirmeMdp() {
-		return confirmeMdp;
+	public Physique getPhysiqmodif() {
+		return physiqmodif;
 	}
 
-	public void setConfirmeMdp(String confirmeMdp) {
-		this.confirmeMdp = confirmeMdp;
+	public void setPhysiqmodif(Physique physiqmodif) {
+		this.physiqmodif = physiqmodif;
+	}
+
+	public String getLoginmodif() {
+		return Loginmodif;
+	}
+
+	public void setLoginmodif(String loginmodif) {
+		Loginmodif = loginmodif;
 	}
 }
