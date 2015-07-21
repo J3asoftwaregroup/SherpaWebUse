@@ -97,7 +97,7 @@ public class Contrat implements java.io.Serializable {
 		this.apporteur = apporteur;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "NUM_SOUSCRIPTEUR", nullable = false)
 	public Personne getPersonne() {
 		return this.personne;
@@ -107,7 +107,7 @@ public class Contrat implements java.io.Serializable {
 		this.personne = personne;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CODE_POINT_VENTE", nullable = false)
 	public PointVente getPointVente() {
 		return this.pointVente;
@@ -117,7 +117,7 @@ public class Contrat implements java.io.Serializable {
 		this.pointVente = pointVente;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CODE_RISQUE", nullable = false)
 	public Risque getRisque() {
 		return this.risque;
@@ -127,7 +127,7 @@ public class Contrat implements java.io.Serializable {
 		this.risque = risque;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CODE_SOCIETE_ASSURANCE", nullable = false)
 	public SocieteAssurance getSocieteAssurance() {
 		return this.societeAssurance;
@@ -209,7 +209,7 @@ public class Contrat implements java.io.Serializable {
 		this.sinistres = sinistres;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "contrat")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "contrat")
 	public Set<Avenant> getAvenants() {
 		return this.avenants;
 	}

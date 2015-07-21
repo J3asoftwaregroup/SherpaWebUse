@@ -62,7 +62,7 @@ public class VehiculesAssures implements java.io.Serializable {
 		this.dateVehiculesAssures = dateVehiculesAssures;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vehiculesAssures")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "vehiculesAssures")
 	public Set<Avenant> getAvenants() {
 		return this.avenants;
 	}
