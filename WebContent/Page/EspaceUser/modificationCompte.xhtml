@@ -11,13 +11,15 @@
 	
 	<br />
 	 <h:form id="form">
+	 <h:panelGrid  >
 	 <p:commandLink oncomplete="garDialog.show()">
 		<h:outputText value="Modifier votre Login"  />
 	 </p:commandLink>
 	 
 	 <p:commandLink>
-		<h:outputText value="Modifier votre mot de passe"  />
+		<h:outputText value="Modifier votre mot de passe"/>
 	 </p:commandLink>
+	 </h:panelGrid>
 	 
 	 <h:panelGrid columns="2" >
 	 <p:outputLabel for="login_inp" value="Login"/>
@@ -27,21 +29,18 @@
 	 <p:inputText id="mdp1" value="#{modificationCompte.personneModif.motPassePers}" ></p:inputText>
 	 
 	 <p:outputLabel for="mdp2" value="Entrez de nouveau le mot de passe"/>
-	 <p:inputText id="mdp2" value="#{modificationCompte.personneModif.confirmeMdp}"></p:inputText>
+	 <p:inputText id="mdp2" value="#{modificationCompte.confirmeMdp}"></p:inputText>
 	 </h:panelGrid>
 	 
 	 	<!-- Dialog pour le changement de Login -->
-	 <p:dialog header="Garanties" widgetVar="garDialog" resizable="false" id="garDlg" showEffect="fade"  modal="true" appendTo="@(body)"> <fieldset>
+	 	<p:dialog header="Garanties" widgetVar="garDialog" resizable="false" id="garDlg" showEffect="fade"  modal="true" appendTo="@(body)"> <fieldset>
               <legend>Modification de Login</legend>
               <h:panelGrid id="display" columns="4" cellpadding="2" style="margin:0 auto;">
               	 <p:outputLabel for="login_input" value="Entrez le nouveau Login"/>
 	 			<p:inputText id="login_input" value="#{modificationCompte.personneModif.loginPers}" maxlength="10"> </p:inputText>
-	 			<p:commandButton value="Valider"></p:commandButton>
+	 			<p:commandButton value="Valider" actionListener="#{modificationCompte.modifierLogin}"></p:commandButton>
               </h:panelGrid>          
               </fieldset>
-              
-              
-              
     </p:dialog>  
 	 </h:form>
 	</ui:define>

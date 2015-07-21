@@ -42,13 +42,15 @@
   <PROCESS-ITEM ID="rules:#Page#AutoWeb#NewSouscripteur.xhtml:0"
    NAME="item" PATH="/Page/AutoWeb/NewSouscripteur.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
-    ID="inscriptionPaypalNewSous::#Page#Paypal# inscriptionPaypalNewSous.xhtml"
-    NAME="output" PATH="/Page/Paypal/ inscriptionPaypalNewSous.xhtml"
-    TARGET="rules:#Page#Paypal# inscriptionPaypalNewSous.xhtml"
+    ID="inscriptionPaypalNewSous::#Page#Paypal#inscriptionPaypalNewSous.xhtml"
+    NAME="output" PATH="/Page/Paypal/inscriptionPaypalNewSous.xhtml"
+    TARGET="rules:#Page#Paypal#inscriptionPaypalNewSous.xhtml"
     TITLE="inscriptionPaypalNewSous" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#Page#Paypal# inscriptionPaypalNewSous.xhtml"
   PATH="/Page/Paypal/ inscriptionPaypalNewSous.xhtml"
   SHAPE="483,391,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#Page#Paypal#inscriptionPaypalNewSous.xhtml"
+  PATH="/Page/Paypal/inscriptionPaypalNewSous.xhtml" SHAPE="240,545,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
