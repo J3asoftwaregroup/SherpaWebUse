@@ -7,13 +7,15 @@ import javax.annotation.PostConstruct;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.j3a.assurance.managedBean.Auto.ManagedSinistre;
 import com.j3a.assurance.model.Personne;
 import com.j3a.assurance.model.Physique;
 import com.j3a.assurance.objetService.ObjectService;
 
-public class MofificationCompte {
+@Component
+public class ModificationCompte {
 	private static  Logger logger=Logger.getLogger(ManagedSinistre.class);
 	
 	@Autowired
@@ -44,6 +46,11 @@ private String confirmeMdp;
 	public void verifierLogin(){
 		List<Personne> listPerLogin = new ArrayList<>();
 		listPerLogin = getObjectService().personneByLogin(personneModif.getLoginPers());
+		if ((listPerLogin.size()) > 0 && (personneConneter.getLoginPers().equalsIgnoreCase(personneModif.getLoginPers()))){
+			//Message possibilité de mis a jour
+		}else{
+			//Message login utilisable 
+		}
 	}
 	
 	/************************ACCESSEUR*************************************/
@@ -77,7 +84,7 @@ private String confirmeMdp;
 	}
 
 	public static void setLogger(Logger logger) {
-		MofificationCompte.logger = logger;
+		ModificationCompte.logger = logger;
 	}
 
 	public Personne getPersonneModif() {
