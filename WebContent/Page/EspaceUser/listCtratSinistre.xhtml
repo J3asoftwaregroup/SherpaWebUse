@@ -29,6 +29,46 @@
 		<h:form id="gnl">
 			<p:messages id="growl" showDetail="false" autoUpdate="true" closable="true"/>
 			
+				
+				<p:contextMenu for="ctraList" >
+			        <p:menuitem value="Consulter le(s) véhicule(s) assuré(s)" icon="ui-icon-search" actionListener="#{managedUserCtraSinList.consultVehiAss}" />
+			        <p:menuitem value="Consulter tous les sinistres" icon="ui-icon-search" actionListener="#{managedUserCtraSinList.consultSin}"/>
+			    </p:contextMenu>
+			    
+				 <p:dataTable id="ctraList" var="ctrCrs" value="#{managedUserCtraSinList.listCtrat}"
+				 			  rowKey="#{ctrCrs.ctrat.numPolice}" selection="#{managedUserCtraSinList.slctdCtraRw}"
+				 			  filteredValue="#{managedUserCtraSinList.fltrdCtraLst}" 
+				 			  selectionMode="single" widgetVar="ctraTable">
+					 <f:facet name="header">
+						 Liste de vos  Contrats (Click droit pour les details et les options)
+					 </f:facet>
+					 <p:column headerText="N° Police" style="width:16%;">
+							 <h:outputText value="#{ctrCrs.ctrat.numPolice}"/>
+					 </p:column>
+					 
+					 <p:column headerText="Effet" sortBy="lastAven.effet" style="width:10%;">
+					 	<h:outputText value="#{ctrCrs.lastAven.effet}">
+					 		<f:convertDateTime pattern="dd/MM/yyyy"/>
+					 	</h:outputText>
+					 </p:column>
+					 <p:column headerText="Echéance" sortBy="lastAven.echeance" style="width:10%;">
+					 	<h:outputText value="#{ctrCrs.lastAven.echeance}">
+					 		<f:convertDateTime pattern="dd/MM/yyyy"/>
+					 	</h:outputText>
+					 </p:column>
+					 <p:column headerText="Montant Net Payé" sortBy="netPaid" style="width:10%;">
+						 <h:outputText value="#{ctrCrs.netPaid}"/>
+					 </p:column>
+					 <p:column headerText="Branche" filterBy="#{ctrCrs.ctrat.risque.libelleRisque}" style="width:20%;">
+					 	<h:outputText value="#{ctrCrs.ctrat.risque.libelleRisque}"/>
+					 </p:column>
+					 
+					 <p:column headerText="Progression" style="width:34%;" sortBy="progress">
+					 	<p:progressBar value="#{ctrCrs.progress}" displayOnly="true" /> 
+					 </p:column>
+				</p:dataTable>
+	
+			
 		</h:form>
 	</ui:define>
 </ui:composition>
