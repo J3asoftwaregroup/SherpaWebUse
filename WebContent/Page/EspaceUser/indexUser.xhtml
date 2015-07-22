@@ -71,8 +71,10 @@
 		    <!-- Page Content -->
 		    <h:form id="gnl">
 		    <p:notificationBar position="top"  widgetVar="bar" autoDisplay="true" style="top:10px; height:30px" >
-					    <h:outputText value="Bienvenu(e) dans votre Espace Personnel, Utilisateur --#{managedIndexUserSpace.cntedPerson.loginPers}--" style="font-size:20px;"  />
-					    
+					    <h:panelGrid columns="2"  columnClasses="garLeft,garRight" style="margin-right:25px">
+						    <h:outputText value="Bienvenu(e) dans votre Espace Personnel, Utilisateur --#{managedIndexUserSpace.cntedPerson.loginPers}--" style="font-size:20px;"  />
+						    <p:commandLink value="Deconnexion"  style="text-align: right;"/>
+					    </h:panelGrid>
 					</p:notificationBar>
 		    <p:growl id="msgs" showDetail="true" />
 			<div class="wrapper">
