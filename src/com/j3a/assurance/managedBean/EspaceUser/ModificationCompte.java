@@ -27,7 +27,7 @@ private	Physique physiqueConnecte = new Physique();
 
 private	Personne personneModif = new Personne();
 private	Physique physiqmodif = new Physique();
-private String Loginmodif;
+private String loginmodif;
 
 @PostConstruct
 	public void chargerUtilisateur(){
@@ -66,10 +66,10 @@ private String Loginmodif;
 		System.out.println("-------->> Physiqueconnecté: "+physiqueConnecte.getNumSouscripteur());//Clean after
 		
 		setPersonneModif(personneConneter);
-		personneModif.setLoginPers(Loginmodif);
+		personneModif.setLoginPers(loginmodif);
 		
 		setPhysiqmodif(physiqueConnecte);
-		physiqmodif.setLoginPers(Loginmodif);
+		physiqmodif.setLoginPers(loginmodif);
 		
 		getObjectService().updateObject(personneModif);
 		getObjectService().updateObject(physiqmodif);
@@ -128,10 +128,12 @@ private String Loginmodif;
 	}
 
 	public String getLoginmodif() {
-		return Loginmodif;
+		return loginmodif;
 	}
 
 	public void setLoginmodif(String loginmodif) {
-		Loginmodif = loginmodif;
+		this.loginmodif = loginmodif;
 	}
+
+	
 }
