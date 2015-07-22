@@ -124,7 +124,10 @@ code {
 										ESPACE UTILISATEUR
 									</span>
 								</div>
-								<h:outputText value="Utilisateur: --#{managedIndexUserSpace.cntedPerson.loginPers}-- connecté"  />
+								<h:panelGroup>
+									<h:outputText value="Utilisateur: --#{managedIndexUserSpace.cntedPerson.loginPers}-- connecté"  />
+									<p:commandLink value="Deconnexion"/>
+								</h:panelGroup>
 							</h:panelGrid>
 						</div>
 					</ui:insert>
@@ -160,7 +163,8 @@ code {
 
 				<p:layoutUnit position="center" id="content" size="700">
 					<h:form>
-					
+						
+						
 						<p:menubar>
 							<p:submenu label="Acceuil" icon="ui-icon-home">
 								<p:menuitem value="Acceuil" action="/index?faces-redirect=true" />
