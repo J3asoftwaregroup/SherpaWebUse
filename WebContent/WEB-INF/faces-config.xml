@@ -18,6 +18,11 @@
    <to-view-id>/Page/AutoWeb/Validation.xhtml</to-view-id>
    <redirect/>
   </navigation-case>
+  <navigation-case>
+ 	<from-outcome>inscriptionPaypalNewSous</from-outcome>
+ 		<to-view-id>/Page/Paypal/ inscriptionPaypalNewSous.xhtml</to-view-id>
+ 		<redirect></redirect>
+ 	</navigation-case>
  </navigation-rule>
  <navigation-rule>
   <from-view-id>/Page/sinistreAutoWeb/pageConnexion.xhtml</from-view-id>
@@ -27,13 +32,11 @@
    <redirect/>
   </navigation-case>
  </navigation-rule>
- <navigation-rule>
-  <from-view-id>/Page/AutoWeb/NewSouscripteur.xhtml</from-view-id>
-  <navigation-case>
-   <from-outcome>inscriptionPaypalNewSous</from-outcome>
-   <to-view-id>/Page/Paypal/inscriptionPaypalNewSous.xhtml</to-view-id>
-  </navigation-case>
- </navigation-rule>
+ 
+ 	
+ 	
+ 	
+ 
  <application>
   <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
  </application>
