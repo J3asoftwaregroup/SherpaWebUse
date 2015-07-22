@@ -126,7 +126,7 @@
 				<p:dataTable id="emiss"  var="em" value="#{managedListEmissions.listAvenByPtvte}" widgetVar="emissTbl" paginator="true" rows="10"
 		                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 		                                     rowsPerPageTemplate="5,10,15" 
-		                                      rowKey="#{em.avenant.id}" 
+		                                      rowKey="#{em.avenant.numAvenant}" 
 		                                      style="width:100%"   
 		                                      filteredValue="#{managedListEmissions.filteredavenByPtvte}">
 		                                     
@@ -139,24 +139,24 @@
 		                                <h:outputText value="#{em.ptVte.libellePointVente}" />
 		                            </p:column>
 		                            
-		                            <p:column filterBy="#{em.exercice.id}" headerText="Exercice"  filterMatchMode="startsWith" style="width:8%">
-												 <h:outputText value="#{em.exercice.id}" />
+		                            <p:column filterBy="#{em.exercice.codeexercice}" headerText="Exercice"  filterMatchMode="startsWith" style="width:8%">
+												 <h:outputText value="#{em.exercice.codeexercice}" />
 									</p:column>
 									
 									<p:column filterBy="#{em.contrat.risque.libelleRisque}" headerText="Risque"  filterMatchMode="startsWith" style="width:8%">
 												 <h:outputText value="#{em.contrat.risque.libelleRisque}" />
 									</p:column>
 									
-									<p:column filterBy="#{em.contrat.id}" headerText="Police" filterMatchMode="startsWith" style="width:8%">
-												 <h:outputText value="#{em.contrat.id}" />
+									<p:column filterBy="#{em.contrat.numPolice}" headerText="Police" filterMatchMode="startsWith" style="width:8%">
+												 <h:outputText value="#{em.contrat.numPolice}" />
 									</p:column>
 									
 									<p:column filterBy="#{em.nomRsClient} #{em.prenomClient}" headerText="Souscripteur"  filterMatchMode="startsWith" style="width:8%">
 												 <h:outputText value="#{em.nomRsClient} #{em.prenomClient}" />
 									</p:column>
 									
-									<p:column filterBy="#{em.avenant.id}" headerText="N° Avenant" filterMatchMode="startsWith" style="width:8%">
-												 <h:outputText value="#{em.avenant.id}" />
+									<p:column filterBy="#{em.avenant.numAvenant}" headerText="N° Avenant" filterMatchMode="startsWith" style="width:8%">
+												 <h:outputText value="#{em.avenant.numAvenant}" />
 									</p:column>
 									
 									<p:column filterBy="#{em.avenant.mouvement}" headerText="Mouvement"  filterMatchMode="startsWith" style="width:8%">

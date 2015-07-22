@@ -64,7 +64,7 @@ public class AvenantDesign implements Serializable {
 	private String nomFichier;
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-	public static final String RESOURCE = "http://localhost:8080/Sherpa/resources/images/logo_j3a.jpg";
+	public static final String RESOURCE = "http://localhost:8080/SherpaWebUse/resources/images/logo_j3a.jpg";
 
 	// Pour la mise en forme
 	private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 28,
@@ -380,16 +380,31 @@ public class AvenantDesign implements Serializable {
 			tableauAvenants.addCell(cellCont);
 
 			// 10e Colonne
-			cellCont = new PdfPCell(new Phrase(""
-					+ avenants.getQuittance().getNetAPayer(), smallText));
-			cellCont.setHorizontalAlignment(Element.ALIGN_RIGHT);
-			tableauAvenants.addCell(cellCont);
+			if(avenants.getQuittance()!=null){
+				cellCont = new PdfPCell(new Phrase(""
+						+ avenants.getQuittance().getNetAPayer(), smallText));
+				cellCont.setHorizontalAlignment(Element.ALIGN_RIGHT);
+				tableauAvenants.addCell(cellCont);
+				
+				// 11e Colonne
+				cellCont = new PdfPCell(new Phrase(""
+						+ avenants.getQuittance().getEtatQuittance(), smallText));
+				cellCont.setHorizontalAlignment(Element.ALIGN_RIGHT);
+				tableauAvenants.addCell(cellCont);
+				
+			}else{
+				cellCont = new PdfPCell(new Phrase("", smallText));
+				cellCont.setHorizontalAlignment(Element.ALIGN_RIGHT);
+				tableauAvenants.addCell(cellCont);
+				
+				// 11e Colonne
+				cellCont = new PdfPCell(new Phrase("", smallText));
+				cellCont.setHorizontalAlignment(Element.ALIGN_RIGHT);
+				tableauAvenants.addCell(cellCont);
+			}
+			
 
-			// 11e Colonne
-			cellCont = new PdfPCell(new Phrase(""
-					+ avenants.getQuittance().getEtatQuittance(), smallText));
-			cellCont.setHorizontalAlignment(Element.ALIGN_RIGHT);
-			tableauAvenants.addCell(cellCont);
+			
 
 		}
 

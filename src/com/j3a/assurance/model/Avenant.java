@@ -117,7 +117,7 @@ public class Avenant implements java.io.Serializable {
 		this.contrat = contrat;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CODEEXERCICE")
 	public Exercice getExercice() {
 		return this.exercice;
