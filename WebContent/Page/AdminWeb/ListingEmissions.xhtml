@@ -186,7 +186,7 @@
 									
 									<f:facet name="footer">
 										<p:commandButton id="rep"  value="Imprimer le report" action="#{managedListEmissions.imprimerPDF}" icon="ui-icon-search" />
-										<p:commandButton id="graph" rendered="true" value="Afficher les graphes" actionListener="#{managedListEmissions.callGraphStat}"/>
+										<p:commandButton id="graph" rendered="true" value="Afficher les graphes" oncomplete="callGraphStat.show()"/>
 									</f:facet>
 		
 		         </p:dataTable>
@@ -196,9 +196,39 @@
 		         
 		 </h:form>
 		
-		 	
-		 
+		 	<p:dialog  widgetVar="callGraphStat" height="900px" width="1200px" closable="true">
+		 <h:form>
+		 <p:outputPanel id="alertForm" autoUpdate="true" global="false">
 			
+			 	<p:fieldset legend="CAMEMBERTS DE REPARTION DU CHIFFRE D'AFFAIRE" toggleable="true" >
+			 		<h:panelGrid id="charts" columns="2" style="width:100%" columnClasses="HalfLeft,HalfLeft">
+				        
+						 
+							 <p:pieChart value="#{managedListEmissions.modelPtvte}" title="REPARTION DU CHIFFRE D'AFFAIRE PAR POINTS DE VENTE" legendCols="2" legendPosition="e" showDataLabels="true"/>
+							 
+							 <p:pieChart value="#{managedListEmissions.modelRisque}" title="REPARTION DU CHIFFRE D'AFFAIRE PAR RISQUES" legendPosition="e" legendCols="2" showDataLabels="true"/>
+							 
+							 <p:pieChart  value="#{managedListEmissions.modelMvmt}" title="REPARTION DU CHIFFRE D'AFFAIRE PAR MOUVEMENT" legendPosition="w" legendCols="2" showDataLabels="true"/>
+							
+							 <h:outputText value=""/>	
+						 
+					</h:panelGrid>
+		         </p:fieldset>
+		         <p:fieldset legend="PROGRESSION TEMPORELLE DU CHIFFRE D'AFFAIRE" toggleable="true" collapsed="true">
+		         
+			         <p:panel>
+			         	<p:lineChart value="#{managedListEmissions.modelTemp}" legendPosition="e" animate="true" 
+			         				 showDatatip="true" breakOnNull="false" maxY="#{managedListEmissions.minY}" 
+			         				 minY="#{managedListEmissions.maxY}" 
+								 	title="COURBE D'EVOLUTION DES CHIFFRES D'AFFAIRE PAR POINT DE VENTE"  xaxisAngle="90" />
+						</p:panel>
+		         </p:fieldset>
+			
+		</p:outputPanel>
+		 
+		 
+		 </h:form>
+			</p:dialog>
 	
 				
 					
