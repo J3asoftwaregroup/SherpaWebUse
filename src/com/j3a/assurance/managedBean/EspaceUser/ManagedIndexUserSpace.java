@@ -1,5 +1,7 @@
 package com.j3a.assurance.managedBean.EspaceUser;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -19,7 +21,12 @@ import com.j3a.assurance.model.Personne;
 
 @Component
 @Scope("session")
-public class ManagedIndexUserSpace {
+public class ManagedIndexUserSpace implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3908968229815856385L;
 
 	@Autowired
 	RequeteUtilisateur requeteUtilisateur;
