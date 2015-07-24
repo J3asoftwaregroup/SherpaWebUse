@@ -169,8 +169,12 @@ public class CotationAuto implements Serializable{
 			getGarantieMB().cleanChamps();
 			getGarantieMB().setCodeRisque("1");
 			
-			getGarantieMB().affichegarantiesAuto(
-					getCarteGriseMB().getSlctdVehiRw());
+			try {
+				getGarantieMB().affichegarantiesAuto(
+						getCarteGriseMB().getSlctdVehiRw());
+			} catch (NullPointerException e) {
+				
+			}
 		}
 
 		// methode de validation de la prime
@@ -518,6 +522,9 @@ public class CotationAuto implements Serializable{
 							System.out.println("TRAITEMENT POUR LE PASSAGE du conducteur aux garanties");
 							getCarteGriseMB().validerProp();
 							tabChange();
+							if(getGarantieMB().affichegarantiesAuto(getCarteGriseMB().getSlctdVehiRw())==null){
+								a = "ongletCategorie";
+							}
 							
 							
 							
