@@ -636,8 +636,6 @@ public class Dao implements IDao {
 						} catch (Exception e) {
 							logger.error(" Erreur sur la recupération de l'utilisateur");
 						}
-						System.out.println(" -----> paramLogin:"+paramLogin);
-						System.out.println(" -----> Utilisateur recupérer :"+connected.getLoginPers());
 						return connected;
 		}
 		

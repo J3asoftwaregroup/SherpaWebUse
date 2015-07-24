@@ -34,7 +34,6 @@
 			</tr>			
 		</table>
 		</fieldset>
-		 	<h5 style="text-align: center; color: red"><a href="initialiserMDP.xhtml">Mot de passe oublié</a></h5>
  	</div>
  	
  	</div>

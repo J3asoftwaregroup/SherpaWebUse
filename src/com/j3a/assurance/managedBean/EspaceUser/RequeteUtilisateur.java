@@ -1,5 +1,6 @@
 package com.j3a.assurance.managedBean.EspaceUser;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,7 +32,11 @@ import com.j3a.assurance.utilitaires.VehiAssur;
 
 @Component
 @Transactional
-public class RequeteUtilisateur {
+public class RequeteUtilisateur implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger(RequeteUtilisateur.class);
 	@Autowired
 	private SessionFactory sessionFactory;

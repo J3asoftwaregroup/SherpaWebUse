@@ -27,53 +27,53 @@ private	Physique physiqueConnecte = new Physique();
 
 private	Personne personneModif = new Personne();
 private	Physique physiqmodif = new Physique();
-private String Loginmodif;
-
-@PostConstruct
-	public void chargerUtilisateur(){
-		//Recuperer l'utilisateur courrant
-	//	personneConneter = getObjectService().RecupererUtilisateurCourrant();
-		System.out.println("utilisateur: "+personneConneter.getLoginPers());
-		//Recuperer la personne Physique concernée
-	//	Physique physiqueConnecte = (Physique) getObjectService().getObjectById(personneConneter.getNumSouscripteur(), "Physique");
-		
-		/*personneModif.setNumSouscripteur(personneConneter.getNumSouscripteur());
-		personneModif.setLoginPers(personneConneter.getLoginPers());*/
-	}
-	
-	/*public void modifierCompte(){
-		getObjectService().updateObject(personneModif);
-	}
-	
-	public void verifierLogin(){
-		List<Personne> listPerLogin = new ArrayList<>();
-		listPerLogin = getObjectService().personneByLogin(personneModif.getLoginPers());
-		if ((listPerLogin.size()) > 0 && (personneConneter.getLoginPers().equalsIgnoreCase(personneModif.getLoginPers()))){
-			//Message possibilité de mis a jour
-		}else{
-			//Message login utilisable 
-		}
-	}*/
-
+private String loginmodif;
+private String mdpmodif;
+private String mdpCpnfirmmodif;
 
 	public void modifierLogin(){
 			//Recuperer l'utilisateur courrant
 		personneConneter = getObjectService().RecupererUtilisateurCourrant();
-		System.out.println("-------->> personneConneter: "+personneConneter.getLoginPers());//Clean after
-		
 			//Recuperer la personne Physique concernée
 		Physique physiqueConnecte = (Physique) getObjectService().getObjectById(personneConneter.getNumSouscripteur(), "Physique");
-		System.out.println("-------->> Physiqueconnecté: "+physiqueConnecte.getNumSouscripteur());//Clean after
 		
 		setPersonneModif(personneConneter);
-		personneModif.setLoginPers(Loginmodif);
+		personneModif.setLoginPers(getLoginmodif());
 		
 		setPhysiqmodif(physiqueConnecte);
-		physiqmodif.setLoginPers(Loginmodif);
+		physiqmodif.setLoginPers(getLoginmodif());
 		
 		getObjectService().updateObject(personneModif);
 		getObjectService().updateObject(physiqmodif);
-		System.out.println("mis a jour du login ok");//Clean after
+		System.out.println("------->>> mis a jour du login ok");//Clean after
+	}
+	
+	public void mofifierMDP(){
+			//Recuperer l'utilisateur courrant
+		personneConneter = getObjectService().RecupererUtilisateurCourrant();
+			//Recuperer la personne Physique concernée
+		Physique physiqueConnecte = (Physique) getObjectService().getObjectById(personneConneter.getNumSouscripteur(), "Physique");
+				
+		setPersonneModif(personneConneter);
+		personneModif.setMotPassePers(getMdpmodif());
+		setPhysiqmodif(physiqueConnecte);
+		physiqmodif.setMotPassePers(getMdpmodif());
+		
+		getObjectService().updateObject(personneModif);
+		getObjectService().updateObject(physiqmodif);
+		System.out.println("------>> mise à jour du mot de pass  ok");//Clean after
+		
+		//Vider les champs
+		personneModif.setMotPassePers("");
+		physiqmodif.setMotPassePers("");
+	}
+	
+	public void verifierMdpasse(){
+		if(mdpmodif.equalsIgnoreCase(mdpCpnfirmmodif)){
+			System.out.println("------>> Mot de passe confirmé");// Clean after
+		}else{
+			System.out.println("------>> Mot de passe non confirmé");// Clean after
+		}
 	}
 	
 
@@ -128,10 +128,26 @@ private String Loginmodif;
 	}
 
 	public String getLoginmodif() {
-		return Loginmodif;
+		return loginmodif;
 	}
 
 	public void setLoginmodif(String loginmodif) {
-		Loginmodif = loginmodif;
+		this.loginmodif = loginmodif;
+	}
+
+	public String getMdpmodif() {
+		return mdpmodif;
+	}
+
+	public void setMdpmodif(String mdpmodif) {
+		this.mdpmodif = mdpmodif;
+	}
+
+	public String getMdpCpnfirmmodif() {
+		return mdpCpnfirmmodif;
+	}
+
+	public void setMdpCpnfirmmodif(String mdpCpnfirmmodif) {
+		this.mdpCpnfirmmodif = mdpCpnfirmmodif;
 	}
 }

@@ -120,13 +120,12 @@ code {
 								style="width:100%;height:100%;padding:0px;">
 								<h:graphicImage name="images/logo_j3a.jpg" style="margin:0px;" />
 								<div style="color: #40B3DF; font-size: 18px; margin-left: 3%; ">
-									<span style="background-color: #B4009E; color: #ffffff; font-size: 18px">
-										ESPACE UTILISATEUR
-									</span>
+									<span style="background-color: #B4009E; color: #ffffff; font-size: 18px">ESPACE UTILISATEUR</span>
 								</div>
 								<h:panelGrid>
 									<h:outputText value="Utilisateur: --#{managedIndexUserSpace.cntedPerson.loginPers}-- connecté"  />
 									<p:commandLink value="Deconnexion"/>
+									<a href="/SherpaWebUse/logout.jsf" style="color: red">Deconnexion</a>
 								</h:panelGrid>
 							</h:panelGrid>
 						</div>
