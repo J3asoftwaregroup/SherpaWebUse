@@ -31,6 +31,33 @@ private String loginmodif;
 private String mdpmodif;
 private String mdpCpnfirmmodif;
 
+@PostConstruct
+	public void chargerUtilisateur(){
+		//Recuperer l'utilisateur courrant
+	//	personneConneter = getObjectService().RecupererUtilisateurCourrant();
+		System.out.println("utilisateur: "+personneConneter.getLoginPers());
+		//Recuperer la personne Physique concernée
+	//	Physique physiqueConnecte = (Physique) getObjectService().getObjectById(personneConneter.getNumSouscripteur(), "Physique");
+		
+		/*personneModif.setNumSouscripteur(personneConneter.getNumSouscripteur());
+		personneModif.setLoginPers(personneConneter.getLoginPers());*/
+	}
+	
+	/*public void modifierCompte(){
+		getObjectService().updateObject(personneModif);
+	}
+	
+	public void verifierLogin(){
+		List<Personne> listPerLogin = new ArrayList<>();
+		listPerLogin = getObjectService().personneByLogin(personneModif.getLoginPers());
+		if ((listPerLogin.size()) > 0 && (personneConneter.getLoginPers().equalsIgnoreCase(personneModif.getLoginPers()))){
+			//Message possibilité de mis a jour
+		}else{
+			//Message login utilisable 
+		}
+	}*/
+
+
 	public void modifierLogin(){
 			//Recuperer l'utilisateur courrant
 		personneConneter = getObjectService().RecupererUtilisateurCourrant();
@@ -39,9 +66,11 @@ private String mdpCpnfirmmodif;
 		
 		setPersonneModif(personneConneter);
 		personneModif.setLoginPers(getLoginmodif());
+		personneModif.setLoginPers(loginmodif);
 		
 		setPhysiqmodif(physiqueConnecte);
 		physiqmodif.setLoginPers(getLoginmodif());
+		physiqmodif.setLoginPers(loginmodif);
 		
 		getObjectService().updateObject(personneModif);
 		getObjectService().updateObject(physiqmodif);
@@ -133,6 +162,7 @@ private String mdpCpnfirmmodif;
 
 	public void setLoginmodif(String loginmodif) {
 		this.loginmodif = loginmodif;
+
 	}
 
 	public String getMdpmodif() {
@@ -150,4 +180,6 @@ private String mdpCpnfirmmodif;
 	public void setMdpCpnfirmmodif(String mdpCpnfirmmodif) {
 		this.mdpCpnfirmmodif = mdpCpnfirmmodif;
 	}
+
+	
 }

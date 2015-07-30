@@ -1,5 +1,6 @@
 package com.j3a.assurance.managedBean.EspaceUser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +18,12 @@ import com.j3a.assurance.utilitaires.ContratRw;
 
 @Component
 @Scope("session")
-public class ManagedUserCtraSinList {
+public class ManagedUserCtraSinList implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9074248436076212187L;
 
 	@Autowired
 	RequeteUtilisateur requeteUtilisateur;

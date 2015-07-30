@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.event.SelectEvent;
@@ -76,249 +78,267 @@ public class GarantieMB implements Serializable {
 
 
 	public List<Garanties> affichegarantiesAuto(VehiculeRow vehiculeRow) {
-		getListeGroupGaranties().clear();
-		getListegaranties().clear();
-		System.out.println("INSIDE AFFICHE GAR :::::::::*************");
-		primeTotale = BigDecimal.ZERO;
-		primeAnnuelle = BigDecimal.ZERO;
-		cleanChamps();
-		// reductionG = 0;
-		// bonus = 0;
-		// malus = 0;
-		vuePrimes = "false";
+		try {
+			getListeGroupGaranties().clear();
+			getListegaranties().clear();
+			System.out.println("INSIDE AFFICHE GAR :::::::::*************");
+			primeTotale = BigDecimal.ZERO;
+			primeAnnuelle = BigDecimal.ZERO;
+			cleanChamps();
+			// reductionG = 0;
+			// bonus = 0;
+			// malus = 0;
+			vuePrimes = "false";
 
-		getListegaranties().addAll(calculGarantieAuto(vehiculeRow));
-		Garanties garantie1 = new Garanties();
-		garantie1.setCodeGarantie("101");
-		garantie1.setLibelleGarantie("RESPONSABILITE CIVILE");
-		garantie1.setnOrdre(1);
-		getListeGroupGaranties().add(garantie1);
+			getListegaranties().addAll(calculGarantieAuto(vehiculeRow));
+			Garanties garantie1 = new Garanties();
+			garantie1.setCodeGarantie("101");
+			garantie1.setLibelleGarantie("RESPONSABILITE CIVILE");
+			garantie1.setnOrdre(1);
+			getListeGroupGaranties().add(garantie1);
 
-		Garanties garantie2 = new Garanties();
-		garantie2.setCodeGarantie("104");
-		garantie2.setLibelleGarantie("DEFENSE ET RECOURS");
-		garantie2.setnOrdre(2);
-		getListeGroupGaranties().add(garantie2);
+			Garanties garantie2 = new Garanties();
+			garantie2.setCodeGarantie("104");
+			garantie2.setLibelleGarantie("DEFENSE ET RECOURS");
+			garantie2.setnOrdre(2);
+			getListeGroupGaranties().add(garantie2);
 
-		Garanties garantie3 = new Garanties();
-		garantie3.setCodeGarantie("106");
-		garantie3.setLibelleGarantie("DOMMAGES");
-		garantie3.setnOrdre(3);
-		getListeGroupGaranties().add(garantie3);
+			Garanties garantie3 = new Garanties();
+			garantie3.setCodeGarantie("106");
+			garantie3.setLibelleGarantie("DOMMAGES");
+			garantie3.setnOrdre(3);
+			getListeGroupGaranties().add(garantie3);
 
-		Garanties garantie4 = new Garanties();
-		garantie4.setCodeGarantie("110");
-		garantie4.setnOrdre(4);
-		garantie4.setLibelleGarantie("INCENDIES");
-		getListeGroupGaranties().add(garantie4);
+			Garanties garantie4 = new Garanties();
+			garantie4.setCodeGarantie("110");
+			garantie4.setnOrdre(4);
+			garantie4.setLibelleGarantie("INCENDIES");
+			getListeGroupGaranties().add(garantie4);
 
-		Garanties garantie5 = new Garanties();
-		garantie5.setCodeGarantie("111");
-		garantie5.setnOrdre(5);
-		garantie5.setLibelleGarantie("VOLS");
-		getListeGroupGaranties().add(garantie5);
+			Garanties garantie5 = new Garanties();
+			garantie5.setCodeGarantie("111");
+			garantie5.setnOrdre(5);
+			garantie5.setLibelleGarantie("VOLS");
+			getListeGroupGaranties().add(garantie5);
 
-		Garanties garantie6 = new Garanties();
-		garantie6.setCodeGarantie("114");
-		garantie6.setnOrdre(6);
-		garantie6.setLibelleGarantie("SECURITE ROUTIERE");
-		getListeGroupGaranties().add(garantie6);
+			Garanties garantie6 = new Garanties();
+			garantie6.setCodeGarantie("114");
+			garantie6.setnOrdre(6);
+			garantie6.setLibelleGarantie("SECURITE ROUTIERE");
+			getListeGroupGaranties().add(garantie6);
 
-		calculPrimeGroupe();
-		// on se pointe sur la 1ier liste
-		setSelectGarantieGroup(garantie1);
-		getListegarantieFiltre().clear();
-		for (Garanties G : getListegaranties()) {
-			if (G.getCategorieGarantie().equalsIgnoreCase("RC")) {
-				getListegarantieFiltre().add(G);
+			calculPrimeGroupe();
+			// on se pointe sur la 1ier liste
+			setSelectGarantieGroup(garantie1);
+			getListegarantieFiltre().clear();
+			for (Garanties G : getListegaranties()) {
+				if (G.getCategorieGarantie().equalsIgnoreCase("RC")) {
+					getListegarantieFiltre().add(G);
+				}
 			}
-		}
 
-		return getListegaranties();
+			return getListegaranties();
+		} catch (NullPointerException e) {
+			
+		return null;
+		}
 	}
 
 	public List<Garanties> calculGarantieAuto(VehiculeRow vehiculeRow) {
-		System.out.println("-------------Calcul Garantie Debut----------------");
-		setPrimeCategorie(new PrimeCategorie());
-		CalculPrimeGlobale primeGlobale = new CalculPrimeGlobale();
-
-		// prévoir une méthode de vérification de la sous catégorie à plus tard
-		Tarif tarif = (Tarif)getObjectService().getObjectById(vehiculeRow.getSouCatVehi().getTarif().getCodeTarif(), "Tarif");
-		System.out.println("-------------Code Tarif----------------"+tarif.getCodeTarif());
-		System.out.println("-------------Code RC1----------------"+tarif.getRcTarif1().getCodeRcTarif1());
-		primeGlobale.setCategorie(tarif.getCodeTarif());
-		primeGlobale.primeGlobale();
-		PrimeCategorieInterface prime = primeGlobale.primeGlobale();
-
-		CalculPrimeProrata prorata = new CalculPrimeProrata();
-		
-		prime.setTarif(tarif);
-		prime.setCategorie(vehiculeRow.getSouCatVehi().getTarif().getCodeTarif());
-		prime.setEnergie(vehiculeRow.getVehi().getEnergie());
-		prime.setNbrecarte(vehiculeRow.getVehi().getNbreCarte());
-		prime.setChargeUtile(vehiculeRow.getVehi().getChargeUtile());
-		prime.setTypeTransporte(vehiculeRow.getVehi().getTypeTransporte());
-		prime.setPuissFisc(vehiculeRow.getVehi().getPuissFisc());
-		prime.setPuissReel(vehiculeRow.getVehi().getPuissReelle());
-		prime.setZone(vehiculeRow.getZonGeo().getCodeZoneGeo());
-		prime.setValeurNeuve(vehiculeRow.getVehi().getValNeuf());
-		prime.setValeurVenale(vehiculeRow.getVehi().getValVenale());
-		prime.setRemorque(vehiculeRow.getVehi().getRemorque());
-		prime.setTypeVehicule(vehiculeRow.getVehi().getTypeVehicule());
-		// Conducteur
-		prime.setStatut(vehiculeRow.getConduHab().getCategsocioprocond());
-		prime.setDureePermis(vehiculeRow.getConduHab().getDureepermiscond());
-
-		// prime.setMontantAccessoires();
-		ReturnPrimeCategorie r = new ReturnPrimeCategorie();
-		setPrimeCategorie(r.returnPrimecategorie(prime));
-		System.out.println("valeur de primecategorie "
-				+ getPrimeCategorie().getBrisGlaceRC());
-		List<Garanties> garantieList = new ArrayList<Garanties>();
-		garantieList.clear();
-		List listObject = getObjectService().getListGarantieByRisque(
-				getCodeRisque());
-		for (Iterator it = listObject.iterator(); it.hasNext();) {
-			Garantie gar = (Garantie) it.next();
-			Garanties garantie = new Garanties();
-			garantie.setCodeGarantie(gar.getCodeGarantie());
-			garantie.setLibelleGarantie(gar.getLibelleGarantie());
-			garantie.setCapitalGarantie(gar.getCapitalGarantie());
-			garantie.setFranchise(gar.getFranchise());
-			garantie.setCategorieGarantie(gar.getCategorieGarantie());
-
-			if (garantie.getCodeGarantie().equalsIgnoreCase("101")) {
-				BigDecimal rc = prorata.primeProrata(duree, prime.getPrimeRc());
-				BigDecimal v1 = prime.getPrimeRc();
-				garantie.setPrimesAnnuelle(v1);
-				garantie.setPrimesNetteAnnuelle(v1);
-				garantie.setPrimesProrata(rc);
-				garantie.setPrimeRC(rc);
-				garantie.setChoix(true);
-			}
-
-			if (garantie.getCodeGarantie().equals("104") == true) {
-
-				BigDecimal dr = prorata.primeProrata(duree,
-						prime.getDefenseRecours());
-				BigDecimal v1 = prime.getDefenseRecours();
-				garantie.setPrimesAnnuelle(v1);
-				garantie.setPrimesNetteAnnuelle(v1);
-				garantie.setPrimesProrata(dr);
-				garantie.setChoix(true);
-			}
-			if (garantie.getCodeGarantie().equals("105") == true) {
-
-				BigDecimal ra = prorata.primeProrata(duree,
-						prime.getRemboursemmentAnticipe());
-				BigDecimal v1 = prime.getRemboursemmentAnticipe();
-				garantie.setPrimesAnnuelle(v1);
-				garantie.setPrimesNetteAnnuelle(v1);
-				garantie.setPrimesProrata(ra);
-			}
-
-			if (garantie.getCodeGarantie().equals("106") == true) {
-
-				BigDecimal d = prorata.primeProrata(duree, prime.getDommage());
-				BigDecimal v1 = prime.getDommage();
-				garantie.setPrimesAnnuelle(v1);
-				garantie.setPrimesNetteAnnuelle(v1);
-				garantie.setPrimesProrata(d);
-
-			}
-
-			if (garantie.getCodeGarantie().equals("107") == true) {
-
-				BigDecimal d = prorata
-						.primeProrata(duree, prime.getCollision());
-				BigDecimal v1 = prime.getCollision();
-				garantie.setPrimesAnnuelle(v1);
-				garantie.setPrimesNetteAnnuelle(v1);
-				garantie.setPrimesProrata(d);
-
-			}
-			if (garantie.getCodeGarantie().equals("108") == true) {
-
-				BigDecimal bdg = prorata.primeProrata(duree,
-						prime.getBrisGlaceRC());
-				BigDecimal v1 = prime.getBrisGlaceRC();
-				garantie.setPrimesAnnuelle(v1);
-				garantie.setPrimesNetteAnnuelle(v1);
-				garantie.setPrimesProrata(bdg);
-
-			}
-
-			if (garantie.getCodeGarantie().equals("109") == true) {
-
-				BigDecimal im = prorata.primeProrata(duree,
-						prime.getImmobilisation());
-				BigDecimal v1 = prime.getImmobilisation();
-				garantie.setPrimesAnnuelle(v1);
-				garantie.setPrimesNetteAnnuelle(v1);
-				garantie.setPrimesProrata(im);
-
-			}
-
-			if (garantie.getCodeGarantie().equals("110") == true) {
-
-				BigDecimal inc = prorata.primeProrata(duree,
-						prime.getIncendie());
-				BigDecimal v1 = prime.getIncendie();
-				garantie.setPrimesAnnuelle(v1);
-				garantie.setPrimesNetteAnnuelle(v1);
-				garantie.setPrimesProrata(inc);
-
-			}
-
-			if (garantie.getCodeGarantie().equals("111") == true) {
-
-				BigDecimal vol = prorata
-						.primeProrata(duree, prime.getVolMain());
-				BigDecimal v1 = prime.getVolMain();
-				garantie.setPrimesAnnuelle(v1);
-				garantie.setPrimesNetteAnnuelle(v1);
-				garantie.setPrimesProrata(vol);
-
-			}
-			if (garantie.getCodeGarantie().equals("112") == true) {
-
-				BigDecimal volA = prorata.primeProrata(duree,
-						prime.getVolAccessoires());
-				BigDecimal v1 = prime.getVolAccessoires();
-				garantie.setPrimesAnnuelle(v1);
-				garantie.setPrimesNetteAnnuelle(v1);
-				garantie.setPrimesProrata(volA);
-
-			}
-			if (garantie.getCodeGarantie().equals("113") == true) {
-
-				BigDecimal v = prorata.primeProrata(duree,
-						prime.getVolVandalisme());
-				BigDecimal v1 = prime.getVolVandalisme();
-				garantie.setPrimesAnnuelle(v1);
-				garantie.setPrimesNetteAnnuelle(v1);
-				garantie.setPrimesProrata(v);
-
-			}
-
-			if (garantie.getCodeGarantie().equals("114") == true) {
-
-				BigDecimal sr = prorata.primeProrata(duree,
-						prime.getSecuriteRoutiere1());
-				BigDecimal v1 = prime.getSecuriteRoutiere1();
-				garantie.setPrimesAnnuelle(v1);
-				garantie.setPrimesNetteAnnuelle(v1);
-				garantie.setPrimesProrata(sr);
-
-			}
-			
+		try {
 			System.out.println("-------------Calcul Garantie Debut----------------");
-			System.out.println("ssssssssssssssssssssssssssssssssssss"
-					+ garantie.getCategorieGarantie());
-			garantieList.add(garantie);
-		}
+			
+				
+			setPrimeCategorie(new PrimeCategorie());
+			CalculPrimeGlobale primeGlobale = new CalculPrimeGlobale();
 
-		return garantieList;
+			// prévoir une méthode de vérification de la sous catégorie à plus tard
+			Tarif tarif;
+			
+				tarif = (Tarif)getObjectService().getObjectById(vehiculeRow.getSouCatVehi().getTarif().getCodeTarif(), "Tarif");
+				System.out.println("-------------Code Tarif----------------"+tarif.getCodeTarif());
+			
+			//System.out.println("-------------Code RC1----------------"+tarif.getRcTarif1().getCodeRcTarif1());
+			primeGlobale.setCategorie(tarif.getCodeTarif());
+			primeGlobale.primeGlobale();
+			PrimeCategorieInterface prime = primeGlobale.primeGlobale();
+
+			CalculPrimeProrata prorata = new CalculPrimeProrata();
+			
+			prime.setTarif(tarif);
+			prime.setCategorie(vehiculeRow.getSouCatVehi().getTarif().getCodeTarif());
+			prime.setEnergie(vehiculeRow.getVehi().getEnergie());
+			prime.setNbrecarte(vehiculeRow.getVehi().getNbreCarte());
+			prime.setChargeUtile(vehiculeRow.getVehi().getChargeUtile());
+			prime.setTypeTransporte(vehiculeRow.getVehi().getTypeTransporte());
+			prime.setPuissFisc(vehiculeRow.getVehi().getPuissFisc());
+			prime.setPuissReel(vehiculeRow.getVehi().getPuissReelle());
+			prime.setZone(vehiculeRow.getZonGeo().getCodeZoneGeo());
+			prime.setValeurNeuve(vehiculeRow.getVehi().getValNeuf());
+			prime.setValeurVenale(vehiculeRow.getVehi().getValVenale());
+			prime.setRemorque(vehiculeRow.getVehi().getRemorque());
+			prime.setTypeVehicule(vehiculeRow.getVehi().getTypeVehicule());
+			// Conducteur
+			prime.setStatut(vehiculeRow.getConduHab().getCategsocioprocond());
+			prime.setDureePermis(vehiculeRow.getConduHab().getDureepermiscond());
+
+			// prime.setMontantAccessoires();
+			ReturnPrimeCategorie r = new ReturnPrimeCategorie();
+			setPrimeCategorie(r.returnPrimecategorie(prime));
+			System.out.println("valeur de primecategorie "
+					+ getPrimeCategorie().getBrisGlaceRC());
+			List<Garanties> garantieList = new ArrayList<Garanties>();
+			garantieList.clear();
+			List listObject = getObjectService().getListGarantieByRisque(
+					getCodeRisque());
+			for (Iterator it = listObject.iterator(); it.hasNext();) {
+				Garantie gar = (Garantie) it.next();
+				Garanties garantie = new Garanties();
+				garantie.setCodeGarantie(gar.getCodeGarantie());
+				garantie.setLibelleGarantie(gar.getLibelleGarantie());
+				garantie.setCapitalGarantie(gar.getCapitalGarantie());
+				garantie.setFranchise(gar.getFranchise());
+				garantie.setCategorieGarantie(gar.getCategorieGarantie());
+
+				if (garantie.getCodeGarantie().equalsIgnoreCase("101")) {
+					BigDecimal rc = prorata.primeProrata(duree, prime.getPrimeRc());
+					BigDecimal v1 = prime.getPrimeRc();
+					garantie.setPrimesAnnuelle(v1);
+					garantie.setPrimesNetteAnnuelle(v1);
+					garantie.setPrimesProrata(rc);
+					garantie.setPrimeRC(rc);
+					garantie.setChoix(true);
+				}
+
+				if (garantie.getCodeGarantie().equals("104") == true) {
+
+					BigDecimal dr = prorata.primeProrata(duree,
+							prime.getDefenseRecours());
+					BigDecimal v1 = prime.getDefenseRecours();
+					garantie.setPrimesAnnuelle(v1);
+					garantie.setPrimesNetteAnnuelle(v1);
+					garantie.setPrimesProrata(dr);
+					garantie.setChoix(true);
+				}
+				if (garantie.getCodeGarantie().equals("105") == true) {
+
+					BigDecimal ra = prorata.primeProrata(duree,
+							prime.getRemboursemmentAnticipe());
+					BigDecimal v1 = prime.getRemboursemmentAnticipe();
+					garantie.setPrimesAnnuelle(v1);
+					garantie.setPrimesNetteAnnuelle(v1);
+					garantie.setPrimesProrata(ra);
+				}
+
+				if (garantie.getCodeGarantie().equals("106") == true) {
+
+					BigDecimal d = prorata.primeProrata(duree, prime.getDommage());
+					BigDecimal v1 = prime.getDommage();
+					garantie.setPrimesAnnuelle(v1);
+					garantie.setPrimesNetteAnnuelle(v1);
+					garantie.setPrimesProrata(d);
+
+				}
+
+				if (garantie.getCodeGarantie().equals("107") == true) {
+
+					BigDecimal d = prorata
+							.primeProrata(duree, prime.getCollision());
+					BigDecimal v1 = prime.getCollision();
+					garantie.setPrimesAnnuelle(v1);
+					garantie.setPrimesNetteAnnuelle(v1);
+					garantie.setPrimesProrata(d);
+
+				}
+				if (garantie.getCodeGarantie().equals("108") == true) {
+
+					BigDecimal bdg = prorata.primeProrata(duree,
+							prime.getBrisGlaceRC());
+					BigDecimal v1 = prime.getBrisGlaceRC();
+					garantie.setPrimesAnnuelle(v1);
+					garantie.setPrimesNetteAnnuelle(v1);
+					garantie.setPrimesProrata(bdg);
+
+				}
+
+				if (garantie.getCodeGarantie().equals("109") == true) {
+
+					BigDecimal im = prorata.primeProrata(duree,
+							prime.getImmobilisation());
+					BigDecimal v1 = prime.getImmobilisation();
+					garantie.setPrimesAnnuelle(v1);
+					garantie.setPrimesNetteAnnuelle(v1);
+					garantie.setPrimesProrata(im);
+
+				}
+
+				if (garantie.getCodeGarantie().equals("110") == true) {
+
+					BigDecimal inc = prorata.primeProrata(duree,
+							prime.getIncendie());
+					BigDecimal v1 = prime.getIncendie();
+					garantie.setPrimesAnnuelle(v1);
+					garantie.setPrimesNetteAnnuelle(v1);
+					garantie.setPrimesProrata(inc);
+
+				}
+
+				if (garantie.getCodeGarantie().equals("111") == true) {
+
+					BigDecimal vol = prorata
+							.primeProrata(duree, prime.getVolMain());
+					BigDecimal v1 = prime.getVolMain();
+					garantie.setPrimesAnnuelle(v1);
+					garantie.setPrimesNetteAnnuelle(v1);
+					garantie.setPrimesProrata(vol);
+
+				}
+				if (garantie.getCodeGarantie().equals("112") == true) {
+
+					BigDecimal volA = prorata.primeProrata(duree,
+							prime.getVolAccessoires());
+					BigDecimal v1 = prime.getVolAccessoires();
+					garantie.setPrimesAnnuelle(v1);
+					garantie.setPrimesNetteAnnuelle(v1);
+					garantie.setPrimesProrata(volA);
+
+				}
+				if (garantie.getCodeGarantie().equals("113") == true) {
+
+					BigDecimal v = prorata.primeProrata(duree,
+							prime.getVolVandalisme());
+					BigDecimal v1 = prime.getVolVandalisme();
+					garantie.setPrimesAnnuelle(v1);
+					garantie.setPrimesNetteAnnuelle(v1);
+					garantie.setPrimesProrata(v);
+
+				}
+
+				if (garantie.getCodeGarantie().equals("114") == true) {
+
+					BigDecimal sr = prorata.primeProrata(duree,
+							prime.getSecuriteRoutiere1());
+					BigDecimal v1 = prime.getSecuriteRoutiere1();
+					garantie.setPrimesAnnuelle(v1);
+					garantie.setPrimesNetteAnnuelle(v1);
+					garantie.setPrimesProrata(sr);
+
+				}
+				
+				System.out.println("-------------Calcul Garantie Debut----------------");
+				System.out.println("ssssssssssssssssssssssssssssssssssss"
+						+ garantie.getCategorieGarantie());
+				garantieList.add(garantie);
+			}
+
+			return garantieList;
+		} catch (NullPointerException e) {
+			FacesMessage msg = new FacesMessage(
+					"Tarif non configur� reportez vous � votre Administrateur !");
+			FacesContext.getCurrentInstance().addMessage(null, msg);
+		return null;	
+		}
+		
 	}
 
 	public void onEditRow(RowEditEvent event) {
